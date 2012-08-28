@@ -4128,6 +4128,10 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // in case the timestamp could not be parsed
                         // (the timestamp is not a number)
                         if (isNaN(timestamp)) {
+                            // adds the processed class to show the value
+                            // even for the default value (fallback)
+                            _element.addClass("processed");
+
                             // returns immediately (no change)
                             return;
                         }
