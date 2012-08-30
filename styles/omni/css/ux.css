@@ -692,18 +692,6 @@
     width: 16px;
 }
 
-.omni-style .cross-list .text-field {
-    background-image: url(../images/drop-field-dots.png);
-    background-position: right center;
-    background-repeat: no-repeat;
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    height: 26px;
-    padding-right: 28px;
-    width: 212px;
-}
-
 .omni-style .drop-field {
     line-height: 26px;
     width: 406px;
@@ -1638,6 +1626,18 @@
 
 .omni-style .slider .slider-panel a.sam-link:hover {
     border-bottom: 1px solid #009493;
+}
+
+.omni-style .source-list .text-field {
+    background-image: url(../images/source-list-dots.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    height: 26px;
+    padding-right: 28px;
+    width: 212px;
 }
 
 .omni-style .stats-panel {
