@@ -3295,7 +3295,7 @@ jQuery.uxctrl = function(keycode, callback, arguments) {
     };
 })(jQuery);
 
-jQuery.uxvisible = function(element, offset, delta) {
+jQuery.uxvisible = function(element, offset, delta, parent) {
     // retreives the offset value, talking into
     // acccount the default value
     offset = offset ? offset : 0;
@@ -3305,21 +3305,42 @@ jQuery.uxvisible = function(element, offset, delta) {
     // for visibility (margin delta)
     delta = delta ? delta : 0;
 
+    // retrieves the parent element for which the check
+    // for visibility will be made, in case none is provided
+    // the check is considered global (window)
+    parent = parent ? parent : window;
+
     // retrieves the window and the "proper"
     // element reference
-    var _window = jQuery(window);
+    var _parent = jQuery(parent);
     var element = jQuery(element);
 
     // retrieves the element height (for overflow calculation)
     var elementHeight = element.outerHeight();
 
+    // retrieves the offset values for the parent element (view)
+    // and calculates the height of that view taking into account
+    // if the current parent is the window (avoids problems)
+    var viewOffset = _parent.offset();
+    var viewOffsetTop = viewOffset ? viewOffset.top : 0;
+    var viewHeight = _parent[0] == window
+            ? _parent.height()
+            : _parent.outerHeight();
+    var viewScrollTop = _parent.scrollTop();
+
+    // retrieves the offset top the top of the element taking into
+    // account if the current parent in use is the window element
+    var elementOffsetTop = _parent[0] == window
+            ? element.offset().top
+            : element.offset().top + viewScrollTop;
+
     // retrieves the top and bottom positions of the
     // view(port) element
-    var viewTop = _window.scrollTop() + offset;
-    var viewBottom = _window.scrollTop() + _window.height();
+    var viewTop = viewOffsetTop + viewScrollTop + offset;
+    var viewBottom = viewOffsetTop + viewScrollTop + viewHeight;
 
     // retrieves the element top and bottom positions
-    var elementTop = element.offset().top + delta;
+    var elementTop = elementOffsetTop + delta;
     var elementBottom = elementTop + element.outerHeight();
 
     // runs the intersection test on the element against
@@ -3333,7 +3354,8 @@ jQuery.uxvisible = function(element, offset, delta) {
         // the default values for the scrill
         var defaults = {
             offset : 0,
-            padding : 0
+            padding : 0,
+            parent : window
         };
 
         // sets the default options value
@@ -3368,6 +3390,7 @@ jQuery.uxvisible = function(element, offset, delta) {
             // retrieves the offset and padding from the options
             var offset = options["offset"];
             var padding = options["padding"];
+            var parent = options["parent"];
 
             // retrieves the matched object height and
             // offset to top (from offset)
@@ -3384,25 +3407,41 @@ jQuery.uxvisible = function(element, offset, delta) {
             var bodyTop = _body.scrollTop();
             var scrollTop = htmlScrollTop > bodyTop ? htmlScrollTop : bodyTop;
 
-            // retrieves the window to retrieve its size
-            var _window = jQuery(window);
-            var windowHeight = _window.height();
+            // updates the scroll top value taking into account if the
+            // current parent elemeent is the window
+            scrollTop = _parent[0] == window ? scrollTop : _parent.scrollTop();
+
+            // retrieves the parent to retrieve its size
+            var _parent = jQuery(parent);
+            var parentHeight = _parent[0] == window
+                    ? _parent.height()
+                    : _parent.outerHeight();
+
+            // calculates the top offset value for the parent element
+            // to be used for some calculus (in no window mode)
+            var parentOffset = _parent.offset();
+            var parentOffsetTop = parentOffset
+                    ? parentOffset.top - scrollTop
+                    : 0;
 
             // calculates the bottom position for the matched object
             // and uses the value to determine if the element is position
             // below of above the position of the scroll viewport
-            var bottomPosition = offsetTop + matchedObject.outerHeight();
-            var isBelow = scrollTop + windowHeight < bottomPosition;
+            var bottomPosition = offsetTop - parentOffsetTop
+                    + matchedObject.outerHeight();
+            var isBelow = scrollTop + parentHeight < bottomPosition;
 
             // calculates the appropriate (new) scroll top value taking
             // into account if the element is below the viewport or
             // abover, this calculus also takes into account the offset
             // and padding values
-            var scrollTop = isBelow ? offsetTop - windowHeight + height
-                    + padding : offsetTop - offset - padding;
+            var scrollTop = isBelow ? offsetTop - parentOffsetTop
+                    - parentHeight + height + padding : offsetTop
+                    - parentOffsetTop - offset - padding;
 
-            // changes the scroll top value in the top elements
-            topElements.scrollTop(scrollTop);
+            // changes the scroll top value in the parent element,
+            // this should make visible the matched object
+            _parent.scrollTop(scrollTop);
         };
 
         /**
@@ -8828,7 +8867,7 @@ jQuery.uxvisible = function(element, offset, delta) {
             var pageOffset = marginOffset ? marginOffset.top : 0;
 
             // tries to retrieve the dom element
-            var _element = selectedListItem.get(0)
+            var _element = selectedListItem.get(0);
 
             // cheks if the element is visible
             var isVisible = _element ? jQuery.uxvisible(selectedListItem,
@@ -12829,11 +12868,65 @@ jQuery.uxvisible = function(element, offset, delta) {
             textField.keyup(function(event) {
                         // retrieves th current element
                         var element = jQuery(this);
-                        var sourceList = element.parents(".source-list");
+                        var sourceList = element.parent(".source-list");
+                        var selectList = jQuery(".select-list", sourceList);
 
-                        // runs the update operation using the current
-                        // source list with the set of options
-                        _update(sourceList, options);
+                        // retrieves the event key code
+                        var eventKeyCode = event.keyCode
+                                ? event.keyCode
+                                : event.which;
+
+                        // switches over the event key code
+                        switch (eventKeyCode) {
+                            // in case it's the enter key
+                            case 13 :
+                                // retrieves the set of selected element
+                                var selectedItems = jQuery("li.selected",
+                                        sourceList);
+
+                                // triggers the select event in the select list
+                                selectList.trigger("selected", [selectedItems]);
+
+                                // stops the event propagation
+                                // (avoids extra problems in form)
+                                event.stopPropagation();
+                                event.preventDefault();
+
+                                // breaks the switch
+                                break;
+
+                            // in case it's the page up key
+                            case 33 :
+                                break;
+
+                            // in case it's the page down key
+                            case 34 :
+                                break;
+
+                            // in case it's the up key
+                            case 38 :
+                                // runs the up action in the source list
+                                _up(sourceList, options);
+
+                                // breaks the switch
+                                break;
+
+                            // in case it's the down key
+                            case 40 :
+                                // runs teh down action in the source list
+                                _down(sourceList, options);
+
+                                // breaks the switch
+                                break;
+
+                            default :
+                                // runs the update operation using the current
+                                // source list with the set of options
+                                _update(sourceList, options);
+
+                                // breaks the switch
+                                break;
+                        }
                     });
         };
 
@@ -12957,6 +13050,77 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // updates the source list value with the current
                         // text field value
                         sourceList.data("value", textFieldValue);
+                    });
+        };
+
+        var _up = function(matchedObject, options) {
+            // sets the source list as the currently
+            // matched object
+            var sourceList = matchedObject;
+
+            // retrieves the set of selected elements
+            // and removes the selected class from them
+            var selectedItems = jQuery("li.selected", sourceList);
+            selectedItems.removeClass("selected");
+
+            // retrieves the complete set of items in the source list
+            var items = jQuery("li", sourceList);
+
+            // retrieves the current index value defaulting to zero
+            // in case no item is currently selected
+            var index = selectedItems.length ? selectedItems.index() : 0;
+            var _index = index > items.length - 1 ? items.length - 1 : index
+                    + 1;
+
+            sourceList.data("index", _index);
+            _updateList(sourceList, options);
+        };
+
+        var _down = function(matchedObject, options) {
+            // sets the source list as the currently
+            // matched object
+            var sourceList = matchedObject;
+
+            // retrieves the set of selected element
+            var selectedItems = jQuery("li.selected", sourceList);
+            selectedItems.removeClass("selected");
+
+            if (selectedItems.length) {
+                var index = selectedItems.index() + 1;
+            } else {
+                var index = 0;
+            }
+
+            sourceList.data("index", index);
+            _updateList(sourceList, options);
+        };
+
+        var _updateList = function(matchedObject, options) {
+            // sets the source list as the currently
+            // matched object, then uses it to retrieve the
+            // associate select list element
+            var sourceList = matchedObject;
+            var selectList = jQuery(".select-list", sourceList);
+
+            // retrieves the current selected index value
+            // in the source list to select and focus it
+            var index = sourceList.data("index");
+
+            // retrieves the target item using the "just"
+            // provided index value
+            var targetItem = jQuery("li:nth-child(" + (index + 1) + ")",
+                    sourceList);
+            targetItem.addClass("selected");
+
+            // checks if the element is visible, this should be the
+            // main reason for the scrolling of the select list
+            var isVisible = targetItem ? jQuery.uxvisible(targetItem, 0, 0,
+                    selectList) : true;
+
+            // scrolls to the select list in case the
+            // target item is not visible
+            !isVisible && targetItem.uxscroll({
+                        parent : selectList
                     });
         };
 
