@@ -89,6 +89,7 @@
             var linkConfirm = jQuery(".link-confirm", matchedObject).not(".template .link-confirm");
             var list = jQuery(".list", matchedObject).not(".template .list");
             var selectList = jQuery(".select-list", matchedObject).not(".template .select-list");
+            var sourceList = jQuery(".source-list", matchedObject).not(".template .source-list");
             var crossList = jQuery(".cross-list", matchedObject).not(".template .cross-list");
             var progressBar = jQuery(".progress-bar", matchedObject).not(".template .progress-bar");
             var passwordMeter = jQuery(".password-meter", matchedObject).not(".template .password-meter");
@@ -166,6 +167,7 @@
             linkConfirm.uxlinkconfirm();
             list.uxlist();
             selectList.uxselectlist();
+            sourceList.uxsourcelist();
             crossList.uxcrosslist();
             progressBar.uxprogressbar();
             passwordMeter.uxpasswordmeter();
@@ -6083,16 +6085,27 @@ jQuery.uxvisible = function(element, offset, delta) {
             var arrowLeft = jQuery(".arrow-left", matchedObject);
             var arrowRight = jQuery(".arrow-right", matchedObject);
 
+            // registers for the selected event on the source list to
+            // transfer the selected elements to the target list
             sourceList.bind("selected", function(event, element) {
+                        // removes the selected class from the element and
+                        // adds it to the target list
                         element.removeClass("selected");
                         targetList.append(element);
                     });
 
+            // registers for the selected event on the source list to
+            // transfer the selected elements to the target list
             targetList.bind("selected", function(event, element) {
+                        // removes the selected class from the element and
+                        // adds it to the source list
                         element.removeClass("selected");
                         sourceList.append(element);
                     });
 
+            // registers for the click event on the left arrow to be
+            // able to tranfers the selected target elements back to
+            // the source list
             arrowLeft.click(function() {
                         var element = jQuery(this);
                         var crossList = element.parents(".cross-list");
@@ -6107,6 +6120,9 @@ jQuery.uxvisible = function(element, offset, delta) {
                         sourceList.append(selectedItems);
                     });
 
+            // registers for the click event on the right arrow to be
+            // able to tranfers the selected source elements into
+            // the target list
             arrowRight.click(function() {
                         var element = jQuery(this);
                         var crossList = element.parents(".cross-list");
