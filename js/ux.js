@@ -6086,6 +6086,7 @@ jQuery.uxvisible = function(element, offset, delta) {
                 var sourceName = _element.attr("data-source");
                 var targetName = _element.attr("data-target");
                 var numberOptions = _element.attr("data-number_options");
+                var duplicates = _element.attr("data-duplicates") || false;
 
                 // creates the various section elements
                 var sourceSection = jQuery("<div class=\"section source-section\"></div>");
@@ -6144,7 +6145,7 @@ jQuery.uxvisible = function(element, offset, delta) {
                 // list of items in the source list (avoids duplicated)
                 // exposure of items
                 var targetItems = targetSource.data("items");
-                sourceList.data("exclusion", targetItems);
+                !duplicates && sourceList.data("exclusion", targetItems);
 
                 // starts the various source list elements
                 sourceList.uxsourcelist();
@@ -6197,6 +6198,10 @@ jQuery.uxvisible = function(element, offset, delta) {
                         var _element = jQuery(this);
                         var crossList = _element.parents(".cross-list");
 
+                        // retrieves the flag that controls if duplicates
+                        // should be avoided (default to false)
+                        var duplicates = crossList.attr("data-duplicates") || false;
+
                         // retrieves the target list associated with the
                         // cross list (current context)
                         var targetList = jQuery(".target-section .select-list",
@@ -6221,9 +6226,13 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // must return immediately cannot add duplicates to
                         // the target list
                         var exists = targetItems.indexOf(dataValue) != -1;
-                        if (exists) {
-                            return
+                        if (!duplicates && exists) {
+                            return;
                         }
+
+                        // clones the element in case duplicated elements are
+                        // allowed in the current source list
+                        element = duplicates ? element.clone(true) : element;
 
                         // adds the data value to the target items and then
                         // apends the element to the target list
@@ -6238,6 +6247,10 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // the associate top cross list element
                         var _element = jQuery(this);
                         var crossList = _element.parents(".cross-list");
+
+                        // retrieves the flag that controls if duplicates
+                        // should be avoided (default to false)
+                        var duplicates = crossList.attr("data-duplicates") || false;
 
                         // retrieves the source list associated with the
                         // cross list (current context)
@@ -6265,7 +6278,9 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // removes the selected class from the element and
                         // adds it to the source list
                         element.removeClass("selected");
-                        sourceList.append(element);
+                        duplicates
+                                ? element.remove()
+                                : sourceList.append(element);
                     });
 
             // registers for the click event on the left arrow to be
@@ -6276,6 +6291,10 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // retrieve the parent cross list element
                         var element = jQuery(this);
                         var crossList = element.parents(".cross-list");
+
+                        // retrieves the flag that controls if duplicates
+                        // should be avoided (default to false)
+                        var duplicates = crossList.attr("data-duplicates") || false;
 
                         // retrieves both the source list and the target list
                         // to be able to "transfer" the selected items
@@ -6316,7 +6335,9 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // removes the selected class from the selected items and then
                         // appends the various selected items to the source list
                         selectedItems.removeClass("selected");
-                        sourceList.append(selectedItems);
+                        duplicates
+                                ? selectedItems.remove()
+                                : sourceList.append(selectedItems);
                     });
 
             // registers for the click event on the right arrow to be
@@ -6327,6 +6348,10 @@ jQuery.uxvisible = function(element, offset, delta) {
                         // retrieve the parent cross list element
                         var element = jQuery(this);
                         var crossList = element.parents(".cross-list");
+
+                        // retrieves the flag that controls if duplicates
+                        // should be avoided (default to false)
+                        var duplicates = crossList.attr("data-duplicates") || false;
 
                         // retrieves both the source list and the target list
                         // to be able to "transfer" the selected items
@@ -6366,9 +6391,15 @@ jQuery.uxvisible = function(element, offset, delta) {
                             // checks if the data value already exists in the list of target
                             // items in case it does continues the loop (duplicated value)
                             var exists = targetItems.indexOf(dataValue) != -1;
-                            if (exists) {
+                            if (!duplicates && exists) {
                                 continue;
                             }
+
+                            // clones the selected item in case duplicated elements are
+                            // allowed in the current source list
+                            selectedItem = duplicates
+                                    ? _selectedItem.clone(true)[0]
+                                    : selectedItem;
 
                             // adds the selected items to the valid items and adds the data
                             // value to the list of target items (data source)
