@@ -26,6 +26,18 @@
  __license__   = Hive Solutions Confidential Usage License (HSCUL)
 */
 
+.no-select {
+    user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+.do-moving {
+    cursor: move !important;
+}
+
 .data-source {
     display: none;
 }
@@ -186,6 +198,15 @@ body.wait-load {
 .panel-stack > .panel:first-child {
     display: block;
     visibility: hidden;
+}
+
+.select-list li.moving {
+    visibility: hidden;
+}
+
+.select-list li.clone {
+    cursor: move !important;
+    position: absolute;
 }
 
 .slider {
