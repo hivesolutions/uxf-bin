@@ -6215,6 +6215,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 _element.append(crossSection);
                 _element.append(targetSection);
                 _element.append(clear);
+
+                // triggers the items changed event both in the source list
+                // and in the target list
+                sourceList.trigger("items_changed");
+                targetList.trigger("items_changed");
             });
         };
 
@@ -6333,6 +6338,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // apends the element to the target list
                         targetItems.push(dataValue);
                         targetList.append(element);
+                        targetList.trigger("items_changed");
                     });
 
             // registers for the selected event on the source list to
@@ -6375,7 +6381,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         element.removeClass("selected");
                         duplicates
                                 ? element.remove()
-                                : sourceList.append(element);
+                                : sourceList.append(element)
+                                        && sourceList.trigger("items_changed");
                     });
 
             // registers for the click event on the left arrow to be
@@ -6432,7 +6439,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         selectedItems.removeClass("selected");
                         duplicates
                                 ? selectedItems.remove()
-                                : sourceList.append(selectedItems);
+                                : sourceList.append(selectedItems)
+                                        && sourceList.trigger("items_changed");
                     });
 
             // registers for the click event on the right arrow to be
@@ -6506,6 +6514,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // it to the target list (should display the items visually)
                         var _validItems = jQuery(validItems);
                         targetList.append(_validItems);
+                        targetList.trigger("items_changed");
                     });
         };
 
@@ -12202,6 +12211,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // iterates over each of the matched object to arrange
+            // them according to their options
+            matchedObject.each(function(index, element) {
+                        // retrieves the current element and uses it
+                        // to update ths current arrange structure
+                        var _element = jQuery(this);
+                        _update(_element, options);
+                    });
         };
 
         /**
@@ -12212,165 +12229,18 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // in the select list
             var listItems = jQuery("li", matchedObject);
 
-            listItems.mousedown(function() {
-                // retrieves the current element reference and uses
-                // it to retrive the current select list
-                var element = jQuery(this);
-                var selectList = element.parent(".select-list");
+            // registers for the items changed event on the matched
+            // object to update the visuals of the new elements
+            matchedObject.bind("items_changed", function(event) {
+                        // retrieves the current element and runs the
+                        // visuals update operation on them
+                        var element = jQuery(this);
+                        _update(element, options);
 
-                // tries to retrieve the order attribute from the
-                // select list in case it's not set ignore the behaviour
-                var order = selectList.attr("data-order") || false;
-                if (!order) {
-                    return;
-                }
-
-                // retrieves the reference to the body
-                // element for event registration
-                var _body = jQuery("body");
-
-                // retrieves the current with for the select
-                // list to be used for the contruction of the
-                // cloned element
-                var selectListWidth = selectList.width();
-
-                // clones the current element and sets it
-                // up by adding the clone class then updates its
-                // with to reflect the one in the element
-                var cloned = element.clone(true);
-                cloned.addClass("clone");
-                cloned.width(selectListWidth - 12);
-
-                // adds the cloned element to the select list
-                // to make its position relative to the select list
-                selectList.prepend(cloned);
-
-                // retrieves the top an left position of the element
-                // and uses them to position the cloned element
-                var elementTop = element.offset().top;
-                var elementLeft = element.offset().left;
-                cloned.css("top", elementTop + "px");
-                cloned.css("left", elementLeft + "px");
-
-                // adds the no select and moving classes to the body
-                // element to avoid the selection of any input element
-                // and the moving cursor display
-                _body.addClass("no-select");
-                _body.addClass("do-moving");
-
-                var move = function(event) {
-                    // retrives the previous data from the select list
-                    // and uses it to set the mouse position
-                    var previousOffsetY = selectList.data("offset_y");
-                    var previousY = selectList.data("mouse_y");
-                    var previousX = selectList.data("mouse_x");
-                    var mouseY = event.pageY || previousY;
-                    var mouseX = event.pageX || previousX;
-
-                    // retrieves a series of size and position information
-                    // in the select list element
-                    var selectListHeight = selectList.outerHeight();
-                    var selectListTop = selectList.offset().top;
-                    var selectListScrollTop = selectList.scrollTop();
-
-                    // retrieves the height of the cloned element
-                    var clonedHeight = cloned.outerHeight();
-
-                    // calculates the target y (vertical) position
-                    // for the currenly selected element
-                    var targetY = mouseY - (clonedHeight / 2);
-
-                    // checks if the target position is overflowing
-                    // the top position of the select list
-                    if (targetY < selectListTop) {
-                        targetY = selectListTop;
-                    }
-                    // checks if the target position is overflowing
-                    // the bottom position of the select list
-                    else if (targetY + clonedHeight > selectListTop
-                            + selectListHeight) {
-                        targetY = selectListTop + selectListHeight
-                                - clonedHeight;
-                    }
-
-                    // calculates the offset position vertically and uses
-                    // it to calculate the index position for the element
-                    var offsetY = targetY + selectListScrollTop - selectListTop;
-                    var _index = Math.floor(offsetY / clonedHeight);
-
-                    // retrieves the complete set of list items, excluding
-                    // the cloned element (not part of the set) and then
-                    // retrieves the length of that set
-                    var listItems = jQuery("li:not(.clone)", selectList);
-                    var numberItems = listItems.length;
-
-                    // normalizes the index value, limiting its range
-                    // to the current number of items in the set
-                    _index = _index < numberItems ? _index : numberItems - 1;
-
-                    // retrieves the currently targeted list element
-                    var listElement = jQuery("li:nth-child(" + (_index + 2)
-                                    + ")", selectList);
-
-                    // checks if the current index position is
-                    // valid (new position) taking into account
-                    // the direction of the movement then in case
-                    // it's valid executes the position change
-                    var isValid = offsetY > previousOffsetY
-                            ? _index + 1 != element.index()
-                            : _index + 2 != element.index();
-                    isValid && listElement[0] != element[0]
-                            && listElement.after(element)
-                            && selectList.trigger("order_changed");
-                    offsetY == 0 && listElement[0] != element[0]
-                            && cloned.after(element)
-                            && selectList.trigger("order_changed");
-
-                    // updates the top position of the cloned element
-                    // to position it
-                    cloned.css("top", targetY + "px");
-
-                    // updates the various data values of the select
-                    // list to be used in the next iteration
-                    selectList.data("offset_y", offsetY);
-                    selectList.data("mouse_y", mouseY);
-                    selectList.data("mouse_x", mouseX);
-                };
-
-                var remove = function() {
-                    // retrieves the items that are consideres to be
-                    // cloned elements and removes (no more usage)
-                    var cloned = jQuery("li.clone", selectList);
-                    cloned.remove();
-
-                    // removes the moving class from the element
-                    element.removeClass("moving");
-
-                    // removes the no select from the body element
-                    // allowing selection on the body
-                    _body.removeClass("no-select");
-                    _body.removeClass("do-moving");
-
-                    // unbinds the existing event handlers associated
-                    // with the current select list
-                    _body.unbind("mouseup", remove);
-                    _body.unbind("mousemove", move);
-                    selectList.unbind("scroll", move);
-                };
-
-                // registers both the remove and the move operation
-                // functions for the mouse up and the mouse move events
-                _body.mouseup(remove);
-                _body.mousemove(move);
-
-                // registers for the scroll event in the select list so
-                // that it's possible to handle the movement of the select
-                // list as the movement of the mouse dragging
-                selectList.scroll(move);
-
-                // adds the moving class to the element
-                element.addClass("moving");
-            });
+                        // stops the event propagation to avoid
+                        // possible loops in the handling
+                        event.stopPropagation();
+                    });
 
             // registers for the click event on the list items
             // to change their selection states
@@ -12532,6 +12402,277 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             }
                         });
             });
+        };
+
+        var _update = function(matchedObject, options) {
+            // retrieves the current element in iteration
+            // to be used to add the order element
+            var _element = matchedObject;
+
+            // retrieves the value for the order attribute
+            // in case no order is set returns immediately
+            var order = _element.attr("data-order");
+            if (!order) {
+                // retrieves the complete set of list items that
+                // are considered part of a order structure then
+                // retrieves it order icons
+                var listItems = jQuery("li.order", _element);
+                var orderIcons = jQuery(".order-icon", listItems);
+
+                // removes the order class from the list items and
+                // removes the order icons elements
+                listItems.removeClass("order");
+                orderIcons.remove();
+
+                // returns immediately nothing more to be done
+                return;
+            }
+
+            // creates the element to be used to sort the elements
+            // of the select list
+            var orderIcon = jQuery("<div class=\"order-icon\"></div>");
+
+            // retrieves the set of list items in the select
+            // list and adds the order icon to them
+            var listItems = jQuery("li:not(.order)", _element);
+            listItems.prepend(orderIcon);
+
+            // adds the order class to the list items to "notify"
+            // of the order visuals intention
+            listItems.addClass("order");
+
+            // retrieves the complete set of order icons currently
+            // listed under the list items
+            var orderIcons = jQuery(".order-icon", listItems);
+
+            // registers for the mouse down event in the order icons
+            // to be used for the sorting of the elements
+            orderIcons.mousedown(function() {
+                // retrieves the current element reference and uses
+                // it to retrive the current select list
+                var orderIcon = jQuery(this);
+                var element = orderIcon.parent("li");
+                var selectList = element.parent(".select-list");
+
+                // tries to retrieve the order attribute from the
+                // select list in case it's not set ignore the behaviour
+                var order = selectList.attr("data-order") || false;
+                if (!order) {
+                    return;
+                }
+
+                // retrieves the reference to the body
+                // element for event registration
+                var _body = jQuery("body");
+
+                // retrieves the current with for the select
+                // list to be used for the contruction of the
+                // cloned element
+                var selectListWidth = selectList.width();
+
+                // clones the current element and sets it
+                // up by adding the clone class then updates its
+                // with to reflect the one in the element
+                var cloned = element.clone(true);
+                cloned.addClass("clone");
+                cloned.width(selectListWidth - 12);
+
+                // adds the cloned element to the select list
+                // to make its position relative to the select list
+                selectList.prepend(cloned);
+
+                // retrieves the top an left position of the element
+                // and uses them to position the cloned element
+                var elementTop = element.offset().top;
+                var elementLeft = element.offset().left;
+                cloned.css("top", elementTop + "px");
+                cloned.css("left", elementLeft + "px");
+
+                // adds the no select and moving classes to the body
+                // element to avoid the selection of any input element
+                // and the moving cursor display
+                _body.addClass("no-select");
+                _body.addClass("do-moving");
+
+                var move = function(event) {
+                    // retrives the previous data from the select list
+                    // and uses it to set the mouse position
+                    var previousOffsetY = selectList.data("offset_y");
+                    var previousY = selectList.data("mouse_y");
+                    var previousX = selectList.data("mouse_x");
+                    var mouseY = event.pageY || previousY;
+                    var mouseX = event.pageX || previousX;
+
+                    // retrieves a series of size and position information
+                    // in the select list element
+                    var selectListHeight = selectList.outerHeight();
+                    var selectListTop = selectList.offset().top;
+                    var selectListScrollTop = selectList.scrollTop();
+
+                    // retrieves the height of the cloned element
+                    var clonedHeight = cloned.outerHeight();
+
+                    // calculates the target y (vertical) position
+                    // for the currenly selected element
+                    var targetY = mouseY - (clonedHeight / 2);
+
+                    // checks if the target position is overflowing
+                    // the top position of the select list
+                    if (targetY < selectListTop) {
+                        targetY = selectListTop;
+                    }
+                    // checks if the target position is overflowing
+                    // the bottom position of the select list
+                    else if (targetY + clonedHeight > selectListTop
+                            + selectListHeight) {
+                        targetY = selectListTop + selectListHeight
+                                - clonedHeight;
+                    }
+
+                    // calculates the offset position vertically and uses
+                    // it to calculate the index position for the element
+                    var offsetY = targetY + selectListScrollTop - selectListTop;
+                    var _index = Math.floor(offsetY / clonedHeight);
+
+                    // retrieves the complete set of list items, excluding
+                    // the cloned element (not part of the set) and then
+                    // retrieves the length of that set
+                    var listItems = jQuery("li:not(.clone)", selectList);
+                    var numberItems = listItems.length;
+
+                    // normalizes the index value, limiting its range
+                    // to the current number of items in the set
+                    _index = _index < numberItems ? _index : numberItems - 1;
+
+                    // retrieves the currently targeted list element
+                    var listElement = jQuery("li:nth-child(" + (_index + 2)
+                                    + ")", selectList);
+
+                    // checks if the current index position is
+                    // valid (new position) taking into account
+                    // the direction of the movement then in case
+                    // it's valid executes the position change
+                    var isValid = offsetY > previousOffsetY
+                            ? _index + 1 != element.index()
+                            : _index + 2 != element.index();
+                    isValid && listElement[0] != element[0]
+                            && listElement.after(element)
+                            && selectList.trigger("order_changed");
+                    offsetY == 0 && listElement[0] != element[0]
+                            && cloned.after(element)
+                            && selectList.trigger("order_changed");
+
+                    // updates the top position of the cloned element
+                    // to position it
+                    cloned.css("top", targetY + "px");
+
+                    // updates the various data values of the select
+                    // list to be used in the next iteration
+                    selectList.data("offset_y", offsetY);
+                    selectList.data("mouse_y", mouseY);
+                    selectList.data("mouse_x", mouseX);
+                };
+
+                var remove = function() {
+                    // retrieves the items that are consideres to be
+                    // cloned elements and removes (no more usage)
+                    var cloned = jQuery("li.clone", selectList);
+                    cloned.remove();
+
+                    // removes the moving class from the element
+                    element.removeClass("moving");
+
+                    // removes the no select from the body element
+                    // allowing selection on the body
+                    _body.removeClass("no-select");
+                    _body.removeClass("do-moving");
+
+                    // unbinds the existing event handlers associated
+                    // with the current select list
+                    _body.unbind("mouseup", remove);
+                    _body.unbind("mousemove", move);
+                    selectList.unbind("scroll", move);
+                };
+
+                // registers both the remove and the move operation
+                // functions for the mouse up and the mouse move events
+                _body.mouseup(remove);
+                _body.mousemove(move);
+
+                // registers for the scroll event in the select list so
+                // that it's possible to handle the movement of the select
+                // list as the movement of the mouse dragging
+                selectList.scroll(move);
+
+                // adds the moving class to the element
+                element.addClass("moving");
+            });
+        };
+
+        // switches over the method
+        switch (method) {
+            case "default" :
+                // initializes the plugin
+                initialize();
+
+                // breaks the switch
+                break;
+        }
+
+        // returns the object
+        return this;
+    };
+})(jQuery);
+
+/**
+ * jQuery slider bar plugin, this jQuery plugin provides the base
+ * infra-structure for the creation of a slider bar component.
+ *
+ * @name jquery-slider-bar.js
+ * @author João Magalhães <joamag@hive.pt>
+ * @version 1.0
+ * @date March 10, 2010
+ * @category jQuery plugin
+ * @copyright Copyright (c) 2010-2012 Hive Solutions Lda.
+ * @license Hive Solutions Confidential Usage License (HSCUL) -
+ *          http://www.hive.pt/licenses/
+ */
+(function($) {
+    jQuery.fn.uxsliderbar = function(method, options) {
+        // the default values for the panel
+        var defaults = {};
+
+        // sets the default method value
+        var method = method ? method : "default";
+
+        // sets the default options value
+        var options = options ? options : {};
+
+        // constructs the options
+        var options = jQuery.extend(defaults, options);
+
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        /**
+         * Initializer of the plugin, runs the necessary functions to initialize
+         * the structures.
+         */
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
+        };
+
+        /**
+         * Creates the necessary html for the component.
+         */
+        var _appendHtml = function() {
+        };
+
+        /**
+         * Registers the event handlers for the created objects.
+         */
+        var _registerHandlers = function() {
         };
 
         // switches over the method
@@ -13048,7 +13189,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // starts both the text field and the select list and then
             // adds them to the source list (matched object)
             textField.uxtextfield();
-            textField.uxselectlist();
+            selectList.uxselectlist();
             matchedObject.append(textField);
             matchedObject.append(selectList);
 
@@ -13091,6 +13232,21 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // retrieves the source list elements
             var sourceList = matchedObject;
             var textField = jQuery(".text-field", sourceList);
+
+            // registers the source list to the items changed event
+            // to propagate it down to the assicated select list
+            sourceList.bind("items_changed", function() {
+                        // retrieves the current element (source list) and uses
+                        // it to retrieve the select list to propagate down the
+                        // event (lower propagation)
+                        var element = jQuery(this);
+                        var selectList = jQuery(".select-list", element);
+                        selectList.trigger("items_changed");
+
+                        // stops the event propagation to avoid
+                        // possible loops in the handling
+                        event.stopPropagation();
+                    });
 
             // registers for the key down event on the text field
             textField.keydown(function(event) {
@@ -13331,6 +13487,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // updates the source list value with the current
                         // text field value
                         sourceList.data("value", textFieldValue);
+
+                        // triggers the items changed event on the select list
+                        // to be used for the update of the layour
+                        selectList.trigger("items_changed");
                     });
         };
 
