@@ -13235,7 +13235,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // registers the source list to the items changed event
             // to propagate it down to the assicated select list
-            sourceList.bind("items_changed", function() {
+            sourceList.bind("items_changed", function(event) {
                         // retrieves the current element (source list) and uses
                         // it to retrieve the select list to propagate down the
                         // event (lower propagation)
