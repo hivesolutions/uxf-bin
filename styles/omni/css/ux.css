@@ -1490,6 +1490,10 @@
     background-position: 0 -16px;
 }
 
+.omni-style .select-list li.clone .order-icon {
+    background-position: 0 -16px;
+}
+
 .omni-style .slider-bar {
     background: #fdfdfd;
     height: 200px;
