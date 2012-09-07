@@ -146,6 +146,10 @@ body.wait-load {
     position: absolute;
 }
 
+.drop-field > .drop-field-clear {
+    clear: both;
+}
+
 .drop-field .hidden-field,
 .drop-field .hidden-template {
     display: none;
@@ -157,6 +161,10 @@ body.wait-load {
 
 .filter > .filter-no-results {
     display: none;
+}
+
+.filter > .filter-clear {
+    clear: both;
 }
 
 .filter > .filter-more {
