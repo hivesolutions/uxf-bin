@@ -2861,7 +2861,7 @@ jQuery.uxctrl = function(keycode, callback, arguments) {
                         // and then uses it to set the cursor position
                         // on the element (moves the cursor)
                         var dataValue = _element.attr("data-value");
-                        var dataValueLength = dataValue.length;
+                        var dataValueLength = dataValue ? dataValue.length : 0;
                         _element.uxcursor(dataValueLength);
                     });
         };
@@ -6115,7 +6115,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                 // retrieves the data source associated with the
                 // element, to "propagate" it to the source list
-                var dataSource = jQuery(".data-source", _element);
+                var dataSource = jQuery("> .data-source", _element);
 
                 // retrieves both the list that contains the various items
                 // to populate the target list and the items themselves
@@ -6611,6 +6611,30 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // retrieves the text field (element)
                 var textField = jQuery(".text-field", _element);
 
+                // in case there is no text field defined for the
+                // current element one must be created
+                if (textField.length == 0) {
+                    // retrieves the various attributes from the element
+                    // to be propagated to the text field
+                    var name = _element.attr("name");
+                    var value = _element.attr("value");
+                    var originalValue = _element.attr("data-original_value");
+                    var error = _element.attr("data-error");
+
+                    // creates the text field element and sets the various
+                    // attributes in it
+                    var textField = jQuery("<input type=\"text\" class=\"text-field\" />");
+                    textField.attr("name", name);
+                    textField.attr("value", value);
+                    textField.attr("data-original_value", originalValue);
+                    textField.attr("data-error", error);
+
+                    // runs the text field initialized and then appends
+                    // the text field to the element
+                    textField.uxtextfield();
+                    _element.append(textField);
+                }
+
                 // retrieves the text field value and if it's currently
                 // in the "lowered" state
                 var textFieldValue = textField.attr("value");
@@ -6624,6 +6648,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // adds the "extra" html to the matched object,
                 // in case no drop field contents is found
                 dropFieldContents.length == 0
+                        && _element.append("<div class=\"drop-field-clear\"></div>")
                         && _element.append("<ul class=\"drop-field-contents\"></ul>");
 
                 // retrieves the hidden field and tries
@@ -7180,7 +7205,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         var _update = function(matchedObject, options) {
             // retrieves the drop field elements
             var dropField = matchedObject;
-            var dataSource = jQuery(".data-source", dropField);
+            var dataSource = jQuery("> .data-source", dropField);
             var hiddenField = jQuery(".hidden-field", dropField);
             var hiddenTemplate = jQuery(".hidden-template", dropField);
             var textField = jQuery(".text-field", dropField);
@@ -7801,7 +7826,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
     jQuery.fn.uxfilter = function(options) {
         // the default values for the filter
         var defaults = {
-            numberRecords : 8
+            numberRecords : 9
         };
 
         // sets the default options value
@@ -7871,8 +7896,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     // creates the filter contents element and adds it to the
                     // filter according to the filter more status
                     var filterContents = jQuery("<div class=\"filter-contents\"></div>");
+                    var filterClear = jQuery("<div class=\"filter-clear\"></div>");
                     filterMoreLength > 0
                             ? filterContents.insertBefore(filterMore)
+                                    && filterClear.insertBefore(filterMore)
                             : _element.append(filterContents);
                 }
 
@@ -8221,7 +8248,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var filterContents = jQuery(".filter-contents", filter);
             var filterNoResults = jQuery(".filter-no-results", filter);
             var filterMore = jQuery(".filter-more", filter);
-            var dataSource = jQuery(".data-source", filter);
+            var dataSource = jQuery("> .data-source", filter);
             var template = jQuery(".template", filter);
 
             // retrieves the filter options
@@ -9705,7 +9732,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // retrieves the hovering box template and the data
             // source (elements)
             var hoveringBoxTemplate = jQuery("#" + hoveringBoxId);
-            var dataSource = jQuery(".data-source", hoveringBoxTemplate);
+            var dataSource = jQuery("> .data-source", hoveringBoxTemplate);
 
             // checks if the matched object contains the hovering
             // box right class (align the element to the right)
@@ -12063,7 +12090,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         var _registerHandlers = function() {
             // retrieves the text field and the data source
             var textField = jQuery(".text-field", matchedObject);
-            var dataSource = jQuery(".data-source", matchedObject);
+            var dataSource = jQuery("> .data-source", matchedObject);
 
             // registers for the change in the text field
             // (select) this occurs when a new option is selected
@@ -12080,7 +12107,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // associated data source
                 var _element = jQuery(element);
                 var textField = jQuery(".text-field", element);
-                var dataSource = jQuery(".data-source", element);
+                var dataSource = jQuery("> .data-source", element);
 
                 // retrieves the name of the value to be used for
                 // the comparision and then retrieves the name of
@@ -13370,7 +13397,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         var _update = function(matchedObject, options) {
             // retrieves the source list elements
             var sourceList = matchedObject;
-            var dataSource = jQuery(".data-source", sourceList);
+            var dataSource = jQuery("> .data-source", sourceList);
             var textField = jQuery(".text-field", sourceList);
             var selectList = jQuery(".select-list", sourceList);
 
@@ -14580,6 +14607,426 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
         // initializes the plugin
         initialize();
+
+        // returns the object
+        return this;
+    };
+})(jQuery);
+
+/**
+ * jQuery tag field plugin, this jQuery plugin provides the base infra-structure
+ * for the creation of a tag field component.
+ *
+ * @name jquery-select-list.js
+ * @author João Magalhães <joamag@hive.pt>
+ * @version 1.0
+ * @date March 10, 2010
+ * @category jQuery plugin
+ * @copyright Copyright (c) 2010-2012 Hive Solutions Lda.
+ * @license Hive Solutions Confidential Usage License (HSCUL) -
+ *          http://www.hive.pt/licenses/
+ */
+(function($) {
+    jQuery.fn.uxtagfield = function(method, options) {
+        // the default values for the panel
+        var defaults = {};
+
+        // sets the default method value
+        var method = method ? method : "default";
+
+        // sets the default options value
+        var options = options ? options : {};
+
+        // constructs the options
+        var options = jQuery.extend(defaults, options);
+
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        /**
+         * Initializer of the plugin, runs the necessary functions to initialize
+         * the structures.
+         */
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
+        };
+
+        /**
+         * Creates the necessary html for the component.
+         */
+        var _appendHtml = function() {
+            // adds the tag field tags to the matched object, this
+            // is the container to the tag representations
+            matchedObject.prepend("<div class=\"tag-field-tags\"></div>");
+
+            // iterates over each of the matched object to load
+            // its contents
+            matchedObject.each(function(index, element) {
+                        // retrieves the current element
+                        var _element = jQuery(this);
+
+                        // adds the drop field class to the element and
+                        // then initializes the drop field compoenent
+                        _element.addClass("drop-field");
+                        _element.uxdropfield();
+
+                        // retrieves the reference to the container of the
+                        // tag element for the current element (tag field)
+                        var tagsContainer = jQuery(".tag-field-tags", _element);
+
+                        // retrieves the text field element and calculates its
+                        // width and padding to the right to be used to set the
+                        // limits on the tags container
+                        var textField = jQuery(".text-field", _element);
+                        var textFieldWidth = textField.outerWidth();
+                        var textFieldPaddingRight = textField.css("padding-right");
+                        textFieldPaddingRight = parseInt(textFieldPaddingRight);
+                        var textFieldPaddingLeft = textField.css("padding-left");
+                        textFieldPaddingLeft = parseInt(textFieldPaddingLeft);
+
+                        // retrieves the original padding top of the text field
+                        // and "saves" it under the data structure
+                        var textFieldPaddingTop = textField.css("padding-top");
+                        textFieldPaddingTop = parseInt(textFieldPaddingTop);
+                        textField.data("padding_top", textFieldPaddingTop);
+
+                        // updates the maximum width value for the tag container
+                        // according to the size values of the text field
+                        tagsContainer.css(
+                                "max-width",
+                                (textFieldWidth - textFieldPaddingRight - textFieldPaddingLeft)
+                                        + "px");
+
+                        // removes the name attribute from the text field to avoid
+                        // duplicate submission of values
+                        textField.removeAttr("name");
+
+                        // retrieves the reference to the list of tags to be
+                        // parsed as the elements of the tag field
+                        var tagsList = jQuery(".tags", _element);
+                        var tags = jQuery("li", tagsList);
+
+                        // iterates over each of the tags to create their
+                        // internal representation
+                        tags.each(function(index, element) {
+                                    // retrieves the current element (tag) in
+                                    // iteration for interpretation
+                                    var __element = jQuery(this);
+
+                                    // retrieves the (possible virtual) value of the
+                                    // current tag element to be inserted then retrieves
+                                    // the html value of the tag (visual value)
+                                    var dataValue = __element.attr("data-value");
+                                    var dataHtml = __element.html();
+
+                                    // adds a new tag to the tags container, this operation
+                                    // will not trigger any layout change
+                                    _addTag(_element, options, dataHtml,
+                                            dataValue);
+                                });
+
+                        // removes the targs list from the tag field, this is
+                        // no longer required
+                        tagsList.remove();
+
+                        // updates (resizes) the tag field
+                        _update(_element, options);
+                    });
+        };
+
+        /**
+         * Registers the event handlers for the created objects.
+         */
+        var _registerHandlers = function() {
+            // retrieves the container of the tags for event
+            // registration its going to simulate the "normal"
+            // text field events
+            var tagsContainer = jQuery(".tag-field-tags", matchedObject);
+
+            // iterates over each of the matched objects
+            // to register them agains the submission of the form
+            matchedObject.each(function(index, element) {
+                // retrieves the current element for iteration
+                var _element = jQuery(element);
+
+                // retrieves the containing form
+                var parentForm = _element.parents("form");
+
+                // registers for the submit event
+                parentForm.submit(function() {
+                            // retrieves the name of the element, this value is
+                            // going to be used in the input element to be create
+                            // in case the name does not exists no submission of
+                            // values is created (returns immediately)
+                            var elementName = _element.attr("name");
+                            if (!elementName) {
+                                return;
+                            }
+
+                            // removes all the input elements contained inside the
+                            // current tag field (avoid duplicated submission)
+                            _element.remove("input");
+
+                            // retrieves the complete set of tags in the current
+                            // tag field this values are going to be used to create
+                            // the series of form input elements
+                            var tags = jQuery(".tag-field-tag", _element);
+
+                            // iterates over all the element in the tags to
+                            // creates the associated input values
+                            for (var index = 0; index < tags.length; index++) {
+                                // retrieves the current list items in iteration
+                                // and retrieves the value to be used as data value
+                                // defaulting to the html value in case none is provided
+                                var tag = jQuery(tags[index]);
+                                var dataValue = tag.attr("data-value");
+                                var displayValue = tag.attr("data-display");
+                                dataValue = dataValue
+                                        ? dataValue
+                                        : displayValue;
+
+                                // adds the input element representing the list item
+                                // to the list item itself
+                                _element.append("<input type=\"hidden\" name=\""
+                                        + elementName
+                                        + "\" value=\""
+                                        + dataValue + "\" />");
+                            }
+                        });
+            });
+
+            matchedObject.bind("value_select",
+                    function(event, value, valueLogic, item) {
+                        // retrieves the target element clicked
+                        var element = jQuery(this);
+
+                        // in case no value is select nothing is to
+                        // be done, returns immediately
+                        if (!value) {
+                            return;
+                        }
+
+                        // retrieves the text field assiciated with the
+                        // element and resets its value no value present
+                        var textField = jQuery(".text-field", element);
+                        textField.val("");
+
+                        // adds a new tag to the tags container, this operation
+                        // will not trigger any layout change
+                        _addTag(element, options, value, valueLogic);
+
+                        // updates the current tag field layout to reflect
+                        // the changes of adding the new tag
+                        _update(element, options);
+                    });
+
+            tagsContainer.mousedown(function(event) {
+                        // stops the event propagation and prevents the
+                        // default behavior to avoid possible problems
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        event.preventDefault();
+                    });
+
+            tagsContainer.click(function(event) {
+                        // retrieves the target element clicked
+                        var element = jQuery(this);
+
+                        // retrieves the parent tag field and uses
+                        // it to retrieve the associated text field
+                        var tagField = element.parent(".tag-field");
+                        var textField = jQuery(".text-field", tagField);
+
+                        // focus the cursor in the text field
+                        textField.focus();
+
+                        // stops the event propagation and prevents the
+                        // default behavior to avoid possible problems
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        event.preventDefault();
+                    });
+
+            tagsContainer.dblclick(function(event) {
+                        // retrieves the target element clicked
+                        var element = jQuery(this);
+
+                        // retrieves the parent tag field and uses
+                        // it to retrieve the associated text field
+                        var tagField = element.parent(".tag-field");
+                        var textField = jQuery(".text-field", tagField);
+
+                        // selest the text in the text field
+                        textField.select();
+
+                        // stops the event propagation and prevents the
+                        // default behavior to avoid possible problems
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        event.preventDefault();
+                    });
+        };
+
+        var _addTag = function(matcheObject, options, value, valueLogic) {
+            // retrieves the reference to the container of
+            // the tags (the place to insert the tags)
+            var tagsContainer = jQuery(".tag-field-tags", matcheObject);
+
+            // constructs the tag element and updates its
+            // (logic) data value reference in case it exists
+            var tag = jQuery("<div class=\"tag-field-tag\">"
+                    + "<div class=\"tag-field-label\">" + value + "</div>"
+                    + "<div class=\"tag-field-remove\"></div>"
+                    + "<div class=\"tag-field-clear\"></div>" + "</div>");
+            value && tag.attr("data-display", valueLogic);
+            valueLogic && tag.attr("data-value", valueLogic);
+
+            // retrieves the reference to the remove element of the tag
+            // and registers it for the click event to trigger the removal
+            // process for it
+            var tagRemove = jQuery(".tag-field-remove", tag);
+            tagRemove.click(function() {
+                        // retrieves the element and uses it to retrieve
+                        // the parent drop field
+                        var element = jQuery(this);
+                        var tag = element.parent(".tag-field-tag");
+                        var dropField = element.parents(".drop-field");
+
+                        // removes the tag from the structures and
+                        // runs the update operation to update the layout
+                        tag.remove();
+                        _update(dropField, options);
+                    });
+
+            // adds the tag element representation to the tags
+            // container (visual append)
+            tagsContainer.append(tag);
+        };
+
+        var _update = function(matchedObject, options) {
+            // retrieves the container of the tags, the text field and
+            // the complete set of tags
+            var tagsContainer = jQuery(".tag-field-tags", matchedObject);
+            var textField = jQuery(".text-field", matchedObject);
+            var tags = jQuery(".tag-field-tag", tagsContainer);
+
+            // retrieves the tags container height and the width
+            // of the text field width for future calculus
+            var tagsContainerHeight = tagsContainer.outerHeight();
+            var textFieldWidth = textField.outerWidth();
+
+            // retrieves the last tag in the tag sequence then uses
+            // it to retrieve the reference value to the top (offset y)
+            var lastTag = tags.length ? jQuery(tags[tags.length - 1]) : null;
+            var referenceTop = lastTag ? lastTag.offset().top : 0;
+
+            // starts the list of tags for the last line, this list will
+            // contain the various tags of the last line
+            var lineTags = [];
+
+            // iterates over all the tags to gather the ones that are part
+            // of the last line
+            for (var index = tags.length - 1; index >= 0; index--) {
+                // retrieves the current tag and retrieves its
+                // ofsset value to the top for comparision
+                var tag = jQuery(tags[index]);
+                var _referenceTop = tag.offset().top;
+
+                // in case the current reference to the top is not
+                // the same the tag is not in the last line, need
+                // to break the loop
+                if (_referenceTop != referenceTop) {
+                    break;
+                }
+
+                // adds the tag element to the list of tags in the last
+                // line (this tag is present in the last line)
+                lineTags.push(tag);
+            }
+
+            // converts the tags in the last line and calculates
+            // the total width for them
+            lineTags = jQuery(lineTags);
+            var lineWidth = lineTags.uxwidth();
+
+            // retrieves the tags container padding left and right to be used
+            // in the calculus of the line width
+            var tagsContainerPaddingLeft = tagsContainer.css("padding-left");
+            var tagsContainerPaddingRight = tagsContainer.css("padding-right");
+            tagsContainerPaddingLeft = parseInt(tagsContainerPaddingLeft);
+            tagsContainerPaddingRight = parseInt(tagsContainerPaddingRight);
+
+            // calculates the width of the line by adding the tags container
+            // padding left and right
+            lineWidth = lineWidth + tagsContainerPaddingLeft
+                    + tagsContainerPaddingRight;
+
+            // calculates the size of the line using the last tag
+            // height as reference and then devides the tags container
+            // height with the line height to calculate the number of
+            // lines in the tags container, using it to calculate the
+            // "new" padding to the top
+            var lineHeight = lastTag ? lastTag.outerHeight(true) : 0;
+            var numberLines = tagsContainerHeight / lineHeight;
+            var paddingTop = (numberLines - 1) * lineHeight;
+
+            // retrieves the original padding top value to be used to
+            // increment the new padding top
+            var textFieldPaddingTop = textField.data("padding_top",
+                    textFieldPaddingTop);
+            paddingTop += textFieldPaddingTop;
+
+            // retrieves the margin top of the text field
+            // to be used in the calculus of the top margin
+            // of the tag container
+            var textFieldMarginTop = textField.css("margin-top");
+            textFieldMarginTop = parseInt(textFieldMarginTop);
+
+            // retrieves the text field height to be used in the calculus
+            // of the delta value to the margin top
+            var textFieldHeight = textField.height();
+            var deltaMarginTop = (textFieldHeight - (lineHeight + 2)) / 2;
+
+            // retrieves the various extra components of the text field
+            // and adds them together to calculate the extra pixel values
+            // of the text field component
+            var textFieldPaddingRight = parseInt(textField.css("padding-right"));
+            var textFieldBorderRight = parseInt(textField.css("border-right"));
+            var textFieldBorderLeft = parseInt(textField.css("border-left"));
+            var textFieldExtra = lineWidth + textFieldPaddingRight
+                    + textFieldBorderRight + textFieldBorderLeft;
+
+            // calculates the "new" width value to be used validating it
+            // to be a positive value (avoids possible problems)
+            var width = textFieldWidth - textFieldExtra > 0 ? textFieldWidth
+                    - textFieldExtra : 0;
+
+            // updates the margin top of the tag container according to the
+            // margin top of the text field
+            tagsContainer.css("margin-top", (textFieldMarginTop
+                            + textFieldPaddingTop + deltaMarginTop)
+                            + "px");
+
+            // updates the padding top of the text field according
+            // to the calculated value
+            textField.css("padding-top", paddingTop + "px");
+
+            // sets the new width and padding left in the text
+            // field associated with the tag field
+            textField.css("width", width + "px");
+            textField.css("padding-left", lineWidth + "px");
+        };
+
+        // switches over the method
+        switch (method) {
+            case "default" :
+                // initializes the plugin
+                initialize();
+
+                // breaks the switch
+                break;
+        }
 
         // returns the object
         return this;
@@ -16471,6 +16918,31 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         // returns the object
         return this;
     };
+})(jQuery);
+
+(function($) {
+    jQuery.fn.uxwidth = function() {
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        // starts the value for the total width
+        // to be computed for the elements
+        var width = 0;
+
+        // iterates over all the matched objects
+        // to calculate the total width for them
+        matchedObject.each(function(index, element) {
+                    // retrieves the current element
+                    var _element = jQuery(this);
+
+                    // increments the current width counter
+                    // with the total width of the element
+                    width += _element.outerWidth(true);
+                });
+
+        // returns the calculated width
+        return width;
+    }
 })(jQuery);
 
 // registers for the ready event in
