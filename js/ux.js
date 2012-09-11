@@ -376,9 +376,20 @@
             // retrieves the "main" filter string
             var filterString = query["filterString"];
 
+            // retrieves the sort tuple to be used to sort
+            // the resulting set of elements
+            var sort = query["sort"];
+
             // retrieves the record count information
             var startRecord = query["startRecord"];
             var numberRecords = query["numberRecords"];
+
+            // unpacks the sort value and the sort oder from the
+            // sort tuple and uses them to create the "final" sort
+            // string to be used in the query string
+            var sortValue = sort[0];
+            var sortOrder = sort[1];
+            var sortString = sortValue + ":" + sortOrder;
 
             // sets the initial filter flag value
             var filter = false;
@@ -448,6 +459,7 @@
                     dataType : "text",
                     data : {
                         filter_string : filterString,
+                        sort : sortString,
                         start_record : startRecord,
                         number_records : numberRecords
                     },
@@ -7947,27 +7959,35 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 var dataOrder = jQuery(".order > li", dataSource);
 
                 // retrieves the sort section of the filter to be used
-                // to add more filter sort options
+                // to add more filter sort options and retrieves the
+                // associated clear element to be as anchor point
                 var filterSort = jQuery(".filter-sort", _element);
+                var filterClear = jQuery("> .filter-clear", filterSort);
 
                 // iterates over each of the data source order elements
                 // to create the associated (visual) sort options
                 dataOrder.each(function(index, element) {
-                            // retrieves the current element in
-                            // iteration to be added
-                            var _element = jQuery(this);
+                    // retrieves the current element in
+                    // iteration to be added
+                    var _element = jQuery(this);
 
-                            // retrieves the html (text) value of the current element
-                            // in iteration and uses it to create the filter sort option
-                            // element and then adds it to the filter sort
-                            var valueHtml = _element.html();
-                            filterSort.prepend("<div class=\"filter-sort-option\">"
-                                    + valueHtml + "</div>");
-                        });
+                    // retrieves the html (text) value of the current element
+                    // in iteration and uses it to create the filter sort option
+                    // element and then adds it to the filter sort (from clear)
+                    var valueHtml = _element.html();
+                    var valueName = _element.attr("data-name");
+                    var valueOrder = _element.attr("data-order")
+                            || "descending";
+                    var filterOption = jQuery("<div class=\"filter-sort-option\">"
+                            + valueHtml + "</div>");
+                    filterOption.attr("data-name", valueName);
+                    filterOption.attr("data-order", valueOrder);
+                    filterOption.insertBefore(filterClear);
+                });
 
                 // adds the devault sort option to the filter, this value exists for
                 // every search and indicates that no sort will occur (default is used)
-                filterSort.prepend("<div class=\"filter-sort-option selected descending\">default</div>");
+                filterSort.prepend("<div class=\"filter-sort-option selected equals\" data-order=\"equals\">default</div>");
 
                 // retrieves the text value from the filter more
                 // and then encapsulates it arround the text divisor
@@ -8233,6 +8253,18 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 ".filter-sort-option.selected", filter);
                         var isSame = element[0] == selectedOption[0];
 
+                        // retrieves the value for the order attribute of
+                        // the element to be used in case new element is selected
+                        var order = element.attr("data-order");
+
+                        // checks if the currently selected option is of
+                        // type equals in such case returns immediately, nothing
+                        // is meant to be done (no change)
+                        var isEquals = element.hasClass("equals");
+                        if (isEquals) {
+                            return;
+                        }
+
                         // in case the clicked option is the same the sorting
                         // order must be changed
                         if (isSame) {
@@ -8241,7 +8273,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             var isDescending = selectedOption.hasClass("descending");
                             isDescending
                                     ? selectedOption.removeClass("descending")
-                                    : selectedOption.addClass("ascending");
+                                    : selectedOption.removeClass("ascending");
                             isDescending
                                     ? selectedOption.addClass("ascending")
                                     : selectedOption.addClass("descending");
@@ -8255,12 +8287,17 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             selectedOption.removeClass("selected");
                             selectedOption.removeClass("ascending");
                             selectedOption.removeClass("descending");
+                            selectedOption.removeClass("equals");
 
                             // selects the clicked element by adding the selected
                             // class and the descending class (sort order)
                             element.addClass("selected");
-                            element.addClass("descending");
+                            element.addClass(order);
                         }
+
+                        // updates the filter state to reflect the changed
+                        // in the order for the filter
+                        _update(filter, options, true);
                     });
 
             // registers for the click event in the toggle advanced
@@ -8585,7 +8622,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     });
         };
 
-        var _update = function(matchedObject, options) {
+        var _update = function(matchedObject, options, force) {
             // retrieves the (parent) filter and the
             // associated template
             var filter = matchedObject;
@@ -8614,7 +8651,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // in case the value in the filter input
             // has changed (reset required)
-            if (filterString != filterInputValue) {
+            if (filterString != filterInputValue || force) {
                 // resets the (current) selection value
                 filter.data("selection", [0]);
                 filter.data("pivot", 0);
@@ -8639,6 +8676,19 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 }
             }
 
+            // retrieves the selected sort options and then uses it
+            // to retrieve the value to be used for the sorting
+            var sortSelected = jQuery(".filter-sort-option.selected", filter);
+            var sortValue = sortSelected.attr("data-name")
+                    || sortSelected.html();
+
+            // checks if the sort option is currently in the ascending mode
+            // and "calculates" the sort order string based on it, then created
+            // the sorting list (tuple) to be used in the query
+            var isAscending = sortSelected.hasClass("ascending");
+            var sortOrder = isAscending ? "ascending" : "descending";
+            var sort = [sortValue, sortOrder];
+
             // sets the (query) pending flag in the filter
             filter.data("pending", true);
 
@@ -8649,7 +8699,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // runs the query in the data source
             dataSource.uxdataquery({
                         filterString : filterInputValue,
-                        filterAttributes : ["name", "customer_code"],
+                        sort : sort,
                         startRecord : startRecord,
                         numberRecords : numberRecords
                     }, function(validItems, moreItems) {
