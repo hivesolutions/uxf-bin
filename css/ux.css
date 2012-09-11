@@ -171,6 +171,10 @@ body.wait-load {
     display: none;
 }
 
+.filter .filter-advanced-filter > .filter-clear {
+    clear: both;
+}
+
 .link {
     cursor: pointer;
 }
