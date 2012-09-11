@@ -163,15 +163,11 @@ body.wait-load {
     display: none;
 }
 
-.filter > .filter-clear {
-    clear: both;
-}
-
 .filter > .filter-more {
     display: none;
 }
 
-.filter .filter-advanced-filter > .filter-clear {
+.filter .filter-clear {
     clear: both;
 }
 
