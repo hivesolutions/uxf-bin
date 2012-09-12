@@ -378,11 +378,11 @@
 
             // retrieves the sort tuple to be used to sort
             // the resulting set of elements
-            var sort = query["sort"];
+            var sort = query["sort"] || ["default", "descending"];
 
             // retrieves the filter tuples to be used to filter
             // the result set around certain rules
-            var filters = query["filters"];
+            var filters = query["filters"] || [];
 
             // retrieves the record count information
             var startRecord = query["startRecord"];
@@ -391,9 +391,9 @@
             // unpacks the sort value and the sort oder from the
             // sort tuple and uses them to create the "final" sort
             // string to be used in the query string
-            var sortValue = sort[0];
-            var sortOrder = sort[1];
-            var sortString = sortValue + ":" + sortOrder;
+            var sortValue = sort ? sort[0] : null;
+            var sortOrder = sort ? sort[1] : null;
+            var sortString = sort ? sortValue + ":" + sortOrder : null;
 
             // creates the list that will hold the various filter strings
             // to be sent to the remote handler
@@ -6770,6 +6770,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // registers for the click event in the text field
                         // (select click)
                         isSelect && textField.click(function(event) {
+                                    // checks if the drop field to verify that the
+                                    // drop field is not disabled, in case it is
+                                    // no action is done
+                                    var isDisabled = dropField.hasClass("disabled");
+                                    if (isDisabled) {
+                                        return;
+                                    }
+
                                     // in case the drop field contents is visible
                                     // (should move the cursor)
                                     if (dropFieldContents.is(":visible")) {
@@ -6826,6 +6834,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         var dropField = element.parents(".drop-field");
                         var dropFieldContents = jQuery(".drop-field-contents",
                                 dropField);
+
+                        // checks if the drop field to verify that the
+                        // drop field is not disabled, in case it is
+                        // no action is done
+                        var isDisabled = dropField.hasClass("disabled");
+                        if (isDisabled) {
+                            return;
+                        }
 
                         // retrieves the event key code
                         var eventKeyCode = event.keyCode
@@ -6912,6 +6928,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 var dropFieldContents = jQuery(".drop-field-contents",
                         dropField);
                 var template = jQuery(".template", dropField);
+
+                // checks if the drop field to verify that the
+                // drop field is not disabled, in case it is
+                // no action is done
+                var isDisabled = dropField.hasClass("disabled");
+                if (isDisabled) {
+                    return;
+                }
 
                 // retrieves the event key code
                 var eventKeyCode = event.keyCode ? event.keyCode : event.which;
@@ -7023,6 +7047,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // this value must represent if the drop field is
                 // currently locked or not
                 var hiddenFieldValue = hiddenField.attr("value");
+
+                // checks if the drop field to verify that the
+                // drop field is not disabled, in case it is
+                // no action is done
+                var isDisabled = dropField.hasClass("disabled");
+                if (isDisabled) {
+                    return;
+                }
 
                 // retrieves the event key code
                 var eventKeyCode = event.keyCode ? event.keyCode : event.which;
@@ -8748,9 +8780,23 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         var operationSource = jQuery("> .data-source",
                                 operationField);
 
-                        // retrieves the value of the value field and in case
-                        // it's not set returns immediately (value is not valid)
-                        var value = valueField.val();
+                        // checks if the current value field is of type drop field
+                        // and retrieves the value accordingly
+                        var isDropField = valueField.hasClass("drop-field");
+                        if (isDropField) {
+                            // retrieves the hidden field associated with the value
+                            // field and uses its value as the value
+                            var hiddenField = jQuery(".hidden-field",
+                                    valueField);
+                            var value = hiddenField.val();
+                        } else {
+                            // retrieves the value of the value field using the text
+                            // field based approach
+                            var value = valueField.uxtextfield("value");
+                        }
+
+                        // in case no value is present this filter is ignored
+                        // not possible to filter value
                         if (!value) {
                             return;
                         }
@@ -9894,6 +9940,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var items = dropSource.data("items");
             var types = dropSource.data("types");
             var names = dropSource.data("names");
+            var elements = dropSource.data("elements");
 
             // retrieves the current index for the value in the items
             // sequence then uses it to retrieve the associated type
@@ -9901,6 +9948,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var index = items.indexOf(value);
             var type = types[index];
             var name = names[index];
+            var element = elements[index];
+
+            // sets the operation field disabled flag as unset by default
+            // (operations allowed by default)
+            var disabled = false;
 
             // sets the (data name) in the filter line to be latter used
             // to perform the query
@@ -9917,9 +9969,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 case "string" :
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    var _items = ["matches", "contains", "begins with",
+                    var _items = ["contains", "matches", "begins with",
                             "ends with"];
-                    var _operations = ["equals", "like", "rlike", "llike"];
+                    var _operations = ["like", "equals", "rlike", "llike"];
 
                     // creates the value field as a text field, inserts it
                     // after the operation field and initializes it
@@ -9949,13 +10001,58 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
                     var _items = ["in", "after", "before"];
-                    var _operations = ["equals", "greater", "lesser"];
+                    var _operations = ["in_day", "greater", "lesser"];
 
                     // creates the value field as a text field (calendar field),
                     // inserts it after the operation field and initializes it
                     var valueField = jQuery("<input type=\"text\" class=\"text-field small value-field\" data-type=\"date\" data-original_value=\"yyyy/mm/dd\" />");
                     valueField.insertAfter(operationField);
                     valueField.uxtextfield();
+
+                    // breaks the switch
+                    break;
+
+                case "reference" :
+                    // creates the list of items and then creates the list
+                    // of equivalent operations (index based association)
+                    var _items = ["search"];
+                    var _operations = ["equals"];
+
+                    // sets the disabled flag so that no operation changing
+                    // action is possible
+                    disabled = true
+
+                    // retrieves the url and the type (data source) from
+                    // the associated element
+                    var url = element.attr("data-surl");
+                    var _type = element.attr("data-stype");
+
+                    // retrieves the display and the value attributes from the
+                    // element to the propagated to the value field
+                    var displayAttribute = element.attr("data-sdisplay_attribute");
+                    var valueAttribute = element.attr("data-svalue_attribute");
+
+                    // creates the value field as a drop field (reference field),
+                    // inserts it after the operation field and initializes it
+                    var valueField = jQuery("<div class=\"drop-field small value-field\">"
+                            + "<input type=\"hidden\" class=\"hidden-field\" />"
+                            + "<ul class=\"data-source\"></ul>" + "</div>");
+
+                    // retrieves the data source associated with the value
+                    // field an then updates the url and the type of the
+                    // data source to point to the "reference" elements
+                    var valueSource = jQuery("> .data-source", valueField);
+                    valueSource.attr("data-url", url);
+                    valueSource.attr("data-type", _type);
+                    valueSource.uxdatasource();
+
+                    // updates the value field attributes in the value field and then
+                    // inserts it after the operation field and initializes it as a
+                    // drop field component
+                    valueField.attr("data-display_attribute", displayAttribute);
+                    valueField.attr("data-value_attribute", valueAttribute);
+                    valueField.insertAfter(operationField);
+                    valueField.uxdropfield();
 
                     // breaks the switch
                     break;
@@ -9994,6 +10091,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         value : _items[0]
                     });
 
+            // in case the disabled flag is set disables the operation
+            // field otherwise enables it
+            disabled ? operationField.uxdisable() : operationField.uxenable();
+
             // registers for the value select event in the
             // operation field to update the filter results
             operationField.bind("value_select",
@@ -10007,6 +10108,23 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // value field to update the filter results
             valueField.bind("value_change",
                     function(event, value, valueLogic, item) {
+                        // updates the current filter to reflect the
+                        // changes in the value field
+                        _update(_filter, options, true);
+                    });
+
+            // registers for the value select event in the
+            // value field to update the filter results
+            valueField.bind("value_select",
+                    function(event, value, valueLogic, item) {
+                        // updates the current filter to reflect the
+                        // changes in the value field
+                        _update(_filter, options, true);
+                    });
+
+            // registers for the value unselect event in the
+            // value field to update the filter results
+            valueField.bind("value_unselect", function(event) {
                         // updates the current filter to reflect the
                         // changes in the value field
                         _update(_filter, options, true);
@@ -10050,6 +10168,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var items = []
             var types = []
             var names = []
+            var elements = []
 
             // iterates over each of the data filtering elements to
             // be able to "parse" the items and insert them into the
@@ -10070,6 +10189,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         items.push(dataHtml);
                         types.push(dataType);
                         names.push(dataName);
+                        elements.push(_element);
                     });
 
             // updates the items, types and names lists in the drop
@@ -10077,6 +10197,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             dropSource.data("items", items);
             dropSource.data("types", types);
             dropSource.data("names", names);
+            dropSource.data("elements", elements);
 
             // registers for the value selection event in the drop field
             // so that the other components are changed according to the
@@ -10112,8 +10233,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // initializes the drop field components both in the
             // drop field and n the operation field
-            dropField.uxdropfield();
-            operationField.uxdropfield();
+            dropField.uxdropfield("default", {
+                        numberOptions : 10,
+                        filterOptions : true
+                    });
+            operationField.uxdropfield("default", {
+                        numberOptions : 10,
+                        filterOptions : true
+                    });
 
             // adds the various "partial" components to the filter
             // (line) component, there should be a visual impact
@@ -16127,6 +16254,15 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // retrieves the element value
                 var elementValue = matchedObject.attr("data-value");
 
+                // retrieves the data type for the matached object
+                // and uses it to create the (possible) value type
+                // retrieval method then calls it in case it exists
+                // otherwise used the noemal element value
+                var type = matchedObject.attr("data-type");
+                var valueMethodName = "__value" + type;
+                var elementValue = type ? __callMethod(valueMethodName,
+                        matchedObject, options) : elementValue
+
                 // returns the retrieved value
                 return elementValue;
             }
@@ -16338,9 +16474,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
         var __callMethod = function(methodName, element, options) {
             // creates the string to be eavluated and then evaluates it
-            var evalString = "if(typeof " + methodName + " != \"undefined\") {"
-                    + methodName + "(element, options)}";
+            var evalString = "if(typeof " + methodName
+                    + " != \"undefined\") { result = " + methodName
+                    + "(element, options)} else { result = null; }";
             eval(evalString);
+            return result;
         };
 
         var __startdatetime = function(element, options) {
@@ -16517,6 +16655,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // updates both the logical value and the real value
                         element.attr("data-value", dateString);
                         element.attr("value", dateString);
+
+                        // triggers the value change event for the element
+                        // to notify the event handlers
+                        element.triggerHandler("value_change", [dateString]);
                     });
 
             // registers for the mouse down event on the calendar
@@ -16587,6 +16729,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // sets the calendar in the element
             element.data("calendar", calendar);
+        };
+
+        var __valuedate = function(element, options) {
+            // retrieves the current value and then uses it to parse
+            // it as current timestamp then returns it
+            var currentValue = element.attr("value");
+            var currentTimestamp = Date.parse(currentValue + " UTC") / 1000;
+            return currentTimestamp;
         };
 
         var __showdate = function(element, options) {
