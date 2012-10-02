@@ -15712,6 +15712,15 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                         + "\" value=\""
                                         + dataValue + "\" />");
                             }
+
+                            // retrieves the empty field used to submit a default
+                            // value in case no tags are selected
+                            var tagEmptyField = jQuery(".tag-empty-field",
+                                    _element);
+
+                            // in case there are currently tags the empty field must
+                            // be removed to avoid unwanted behaviour
+                            tags.length && tagEmptyField.remove();
                         });
             });
 
