@@ -2771,7 +2771,7 @@ jQuery.uxctrl = function(keycode, callback, arguments) {
                         var target = jQuery(targetSelector);
 
                         // retrieves the target element value
-                        var value = target.attr("data-value");
+                        var value = target.uxvalue();
 
                         // replaces the elements (not focusing in the
                         // target element)
@@ -3844,6 +3844,25 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         // returns the object
         return this;
     };
+})(jQuery);
+
+(function($) {
+    jQuery.fn.uxvalue = function() {
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        var object = matchedObject.attr("data-object");
+
+        switch(object) {
+            case "textfield":
+                return matchedObject.uxtextfield("value");
+                break;
+
+            case "tagfield":
+                return matchedObject.uxtagfield("value");
+                break;
+        }
+    }
 })(jQuery);
 
 (function($) {
@@ -15551,6 +15570,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // sets the ux global object representation as text
+            // field, this vlaue may be used latter for fast ux
+            // object type access (hash based conditions)
+            matchedObject.attr("data-object", "tagfield");
+
             // adds the tag field tags to the matched object, this
             // is the container to the tag representations
             matchedObject.prepend("<div class=\"tag-field-tags\"></div>");
@@ -16010,6 +16034,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // sets the ux global object representation as text
+            // field, this vlaue may be used latter for fast ux
+            // object type access (hash based conditions)
+            matchedObject.attr("data-object", "textfield");
+
             // iterates over all the items in the matched object
             matchedObject.each(function(index, element) {
                         // retrieves the element reference
