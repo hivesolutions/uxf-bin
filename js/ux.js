@@ -53,6 +53,7 @@
             // retrieves the various elements based on their attribute
             // values (attribute based selection)
             var dataWidth = jQuery("[data-width]", matchedObject).not(".template [data-width]");
+            var dataDisabled = jQuery("[data-disabled]", matchedObject).not(".template [data-disabled]");
 
             // retrieves the various elements
             var overlay = jQuery(".overlay", matchedObject).not(".template .overlay");
@@ -218,6 +219,10 @@
 
             // applies the gateway plugins
             gatewayPrint.uxgprint();
+
+            // applies the various attribute based plugins (post
+            // structure construction apply)
+            dataDisabled.uxdisable();
 
             // shows the body in case it's meant to be
             // shown only after the ux script execution
@@ -6835,6 +6840,32 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 });
                     });
 
+            // binds the drop field do the enabled event
+            // so that is possible to propagate the enabling
+            matchedObject.bind("enabled", function() {
+                        // retrieves the current element and the associated
+                        // text field element
+                        var element = jQuery(this);
+                        var textField = jQuery(".text-field", element);
+
+                        // enables the text field associated with
+                        // the element (drop field)
+                        textField.uxenable();
+                    });
+
+            // binds the drop field to the disabled event
+            // so that is possible to propagate the disabling
+            matchedObject.bind("disabled", function() {
+                        // retrieves the current element and the associated
+                        // text field element
+                        var element = jQuery(this);
+                        var textField = jQuery(".text-field", element);
+
+                        // disables the text field associated with
+                        // the element (drop field)
+                        textField.uxdisable();
+                    });
+
             // registers for the click event in the body
             !isRegistered && _body.click(function() {
                         // retrieves the element
@@ -7813,94 +7844,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // breaks the switch
                 break;
         }
-
-        // returns the object
-        return this;
-    };
-})(jQuery);
-
-(function($) {
-    jQuery.fn.uxfiledrop = function(options) {
-        // the default values for the plugin
-        var defaults = {};
-
-        // sets the default options value
-        var options = options ? options : {};
-
-        // constructs the options
-        var options = jQuery.extend(defaults, options);
-
-        // sets the jquery matched object
-        var matchedObject = this;
-
-        /**
-         * Initializer of the plugin, runs the necessary functions to initialize
-         * the structures.
-         */
-        var initialize = function() {
-            _appendHtml();
-            _registerHandlers();
-        };
-
-        /**
-         * Creates the necessary html for the component.
-         */
-        var _appendHtml = function() {
-        };
-
-        /**
-         * Registers the event handlers for the created objects.
-         */
-        var _registerHandlers = function() {
-            // registers the matched object for the drag enter event
-            matchedObject.bind("dragenter", function(event) {
-                        // stops the event propagation and prevents
-                        // the default event operation
-                        event.stopPropagation();
-                        event.preventDefault();
-
-                        // triggers the file enter event
-                        matchedObject.triggerHandler("file_enter", [])
-                    });
-
-            // registers the matched object for the drag leave event
-            matchedObject.bind("dragleave", function(event) {
-                        // stops the event propagation and prevents
-                        // the default event operation
-                        event.stopPropagation();
-                        event.preventDefault();
-
-                        // triggers the file leave event
-                        matchedObject.triggerHandler("file_leave", [])
-                    });
-
-            // registers the matched object for the drag over event
-            matchedObject.bind("dragover", function(event) {
-                        // stops the event propagation and prevents
-                        // the default event operation
-                        event.stopPropagation();
-                        event.preventDefault();
-                    });
-
-            // registers the matched object for the drop event
-            matchedObject.bind("drop", function(event) {
-                        // stops the event propagation and prevents
-                        // the default event operation
-                        event.stopPropagation();
-                        event.preventDefault();
-
-                        // retrieves the data tranfer and the files
-                        // rom the original event
-                        var dataTransfer = event.originalEvent.dataTransfer;
-                        var files = dataTransfer.files;
-
-                        // triggers the file drop event
-                        matchedObject.triggerHandler("file_drop", [files])
-                    });
-        };
-
-        // initializes the plugin
-        initialize();
 
         // returns the object
         return this;
