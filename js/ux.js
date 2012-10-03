@@ -15745,6 +15745,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // no longer required
                         tagsList.remove();
 
+                        // hides the tags container visibility so that before
+                        // the last layout update is corrently executed not tag
+                        // is displayed (avoids visual glitches)
+                        tagsContainer.css("visibility", "hidden");
+
                         // updates (resizes) the tag field, then sets another
                         // update operation for the final part of the update
                         // lifecycle this way a new refresh happends after the
@@ -15755,6 +15760,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                     // runs a new update operation will fix the layout
                                     var isVisible = _element.is(":visible")
                                     isVisible && _update(_element, options);
+
+                                    // restores the tags container visibility the layout
+                                    // update is now complete
+                                    tagsContainer.css("visibility", "");
                                 });
                     });
         };
