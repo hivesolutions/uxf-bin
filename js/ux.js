@@ -2801,11 +2801,19 @@ jQuery.uxctrl = function(keycode, callback, arguments) {
             var targetSelector = matchedObject.attr("data-target");
             var target = jQuery(targetSelector);
 
+            // checks if the current target is a text field or a
+            // text area in case it's not the target for focus
+            // should be a sub element that is a text field (or area)
+            var isTextField = target.hasClass("text-field")
+                    || target.hasClass("text-area");
+            focusTarget = isTextField ? target : jQuery(
+                    ".text-field, .text-area", target);
+
             // hides the matched object and then shows (and focus)
             // the target (element)
             matchedObject.hide();
             target.show();
-            focus && target.focus();
+            focus && focusTarget.focus();
         };
 
         // initializes the plugin
@@ -3853,12 +3861,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
         var object = matchedObject.attr("data-object");
 
-        switch(object) {
-            case "textfield":
+        switch (object) {
+            case "textfield" :
                 return matchedObject.uxtextfield("value");
                 break;
 
-            case "tagfield":
+            case "tagfield" :
                 return matchedObject.uxtagfield("value");
                 break;
         }
@@ -15737,8 +15745,17 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // no longer required
                         tagsList.remove();
 
-                        // updates (resizes) the tag field
+                        // updates (resizes) the tag field, then sets another
+                        // update operation for the final part of the update
+                        // lifecycle this way a new refresh happends after the
+                        // complete layout is rendered
                         _update(_element, options);
+                        setTimeout(function() {
+                                    // check if the element is visible and in case it's
+                                    // runs a new update operation will fix the layout
+                                    var isVisible = _element.is(":visible")
+                                    isVisible && _update(_element, options);
+                                });
                     });
         };
 
@@ -15750,6 +15767,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // registration its going to simulate the "normal"
             // text field events
             var tagsContainer = jQuery(".tag-field-tags", matchedObject);
+
+            // retrieves the text field associated with the current
+            // tag field to be handler registration
+            var textField = jQuery(".text-field", matchedObject);
 
             // iterates over each of the matched objects
             // to register them agains the submission of the form
@@ -15881,6 +15902,17 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         event.stopPropagation();
                         event.stopImmediatePropagation();
                         event.preventDefault();
+                    });
+
+            textField.focus(function() {
+                        // retrieves the current element and the associated
+                        // parent tag field
+                        var element = jQuery(this);
+                        var tagField = element.parents(".tag-field");
+
+                        // updates the layout structure in the current
+                        // tag field (focus may change contents)
+                        _update(tagField, options);
                     });
         };
 
