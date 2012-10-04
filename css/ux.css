@@ -199,6 +199,10 @@ body.wait-load {
     top: 0px;
 }
 
+.panel-more .panel-more-contents {
+    display: none;
+}
+
 .panel-stack > .panel {
     display: none;
 }
