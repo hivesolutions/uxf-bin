@@ -5777,11 +5777,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         var link = _element.attr("data-link");
                         var submit = _element.attr("data-submit");
                         var action = _element.attr("data-action");
+                        var window = _element.attr("data-window");
 
                         // sets the "new" element data
                         _element.data("link", link);
                         _element.data("submit", submit);
                         _element.data("action", action);
+                        _element.data("window", window);
                     });
         };
 
@@ -5896,11 +5898,15 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         };
 
         var __link = function(matchedObject, options) {
-            // retrieves the matched object link
+            // retrieves the matched object link and the
+            // (open in) window flag
             var link = matchedObject.data("link");
+            var _window = matchedObject.data("window");
 
-            // sets the "new" document location
-            document.location = link;
+            // checks the window flag and in case it's set
+            // opens a new window with the link otherwise
+            // sets the "new" document location in
+            _window ? window.open(link) : document.location = link;
         };
 
         // switches over the method
