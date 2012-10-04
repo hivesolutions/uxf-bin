@@ -127,6 +127,10 @@ body.wait-load {
     cursor: default;
 }
 
+.check-field-label {
+    cursor: pointer;
+}
+
 .content-changer > .changer-panel {
     display: none;
 }
@@ -210,6 +214,10 @@ body.wait-load {
 .panel-stack > .panel:first-child {
     display: block;
     visibility: hidden;
+}
+
+.radio-field-label {
+    cursor: pointer;
 }
 
 .select-list li.moving {
