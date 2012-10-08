@@ -984,6 +984,12 @@
     padding: 2px 8px 2px 8px;
 }
 
+.ulite-style .select-field.small .text-field {
+    height: 20px;
+    padding: 0px 0px 0px 2px;
+    width: 128px;
+}
+
 .ulite-style .tag,
 .ulite-style .tag.grey {
     background-color: #bfbfbf;
