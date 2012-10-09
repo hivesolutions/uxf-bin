@@ -992,7 +992,7 @@
 
 .ulite-style .select-field.small .text-field {
     height: 20px;
-    padding: 0px 0px 0px 2px;
+    padding: 0px 0px 0px 3px;
     width: 128px;
 }
 
@@ -1077,7 +1077,7 @@
     font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
     font-size: 12px;
     height: 26px;
-    padding: 0px 6px 0px 6px;
+    padding: 0px 7px 0px 7px;
 }
 
 .ulite-style .text-field.active {
@@ -1096,15 +1096,15 @@
 
 .ulite-style .text-field.small {
     height: 20px;
-    width: 114px;
+    width: 112px;
 }
 
 .ulite-style .text-field.wide {
-    width: 260px;
+    width: 258px;
 }
 
 .ulite-style .text-field.medium-wide {
-    width: 220px;
+    width: 218px;
 }
 
 .ulite-style .text-field.search-field {
