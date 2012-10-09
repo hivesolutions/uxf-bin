@@ -501,7 +501,7 @@
 
 .ulite-style .label.related-title {
     color: #999999;
-    margin: 12px 0px 0px 24px;
+    margin: 8px 0px 0px 24px;
 }
 
 .ulite-style .label.form-label {
@@ -628,7 +628,7 @@
     font-size: 10px;
     height: 180px;
     list-style: none;
-    margin: 20px 20px 20px 20px;
+    margin: 16px 20px 20px 20px;
     padding: 0px 0px 0px 0px;
 }
 
@@ -636,6 +636,12 @@
     float: left;
     margin: 0px 5px 0px 5px;
     text-align: center;
+    width: 140px;
+}
+
+.ulite-style .list.featured-list li .image {
+    height: 140px;
+    margin: 0px 0px 8px 0px;
     width: 140px;
 }
 
@@ -653,9 +659,8 @@
 
 .ulite-style .list.related-list {
     font-size: 10px;
-    height: 180px;
     list-style: none;
-    margin: 14px 20px 14px 20px;
+    margin: 12px 20px 20px 20px;
     padding: 0px 0px 0px 0px;
 }
 
@@ -663,6 +668,12 @@
     float: left;
     margin: 0px 5px 0px 5px;
     text-align: center;
+    width: 140px;
+}
+
+.ulite-style .list.related-list li .image {
+    height: 140px;
+    margin: 0px 0px 8px 0px;
     width: 140px;
 }
 
