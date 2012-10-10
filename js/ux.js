@@ -6075,7 +6075,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // checks the window flag and in case it's set
             // opens a new window with the link otherwise
             // sets the "new" document location in
-            _window ? window.open(link) : document.location = link;
+            _window ? window.open(link, "_blank") : document.location = link;
         };
 
         // switches over the method
@@ -9679,7 +9679,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                         // the link in it (external opening)
                                         isDocument && index == 0
                                                 ? document.location = link
-                                                : window.open(link);
+                                                : window.open(link, "_blank");
                                     });
 
                             // tries to retrieve the bulk (to many link)
@@ -13572,7 +13572,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // elements (required width)
                 _element.width(width);
             });
-
         };
 
         /**
