@@ -14943,6 +14943,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     ? current + 1
                     : 0 : index;
 
+            // in case the current index is the same as the (target)
+            // index, no need to select it (returns immediately)
+            if (current === index) {
+                return;
+            }
+
             // retrieves the list of (selected) alternates and disables
             // the value (going to change the item)
             var alternates = jQuery(".slideshow-alternates > li.active",
