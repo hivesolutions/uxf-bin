@@ -243,7 +243,7 @@ else{var templateItem=jQuery("<li data-display=\""
 +"\" data-value=\""
 +currentValueAttribute+"\">"
 +currentDisplayAttribute+"</li>");templateItem.data("item",currentItem);}
-currentLinkAttribute&&templateItem.attr("data-link",currentLinkAttribute);dropFieldContents.append(templateItem);}
+var linkElement=jQuery("a",templateItem);currentLinkAttribute=link.length?link.attr("href"):currentLinkAttribute;currentLinkAttribute&&templateItem.attr("data-link",currentLinkAttribute);dropFieldContents.append(templateItem);}
 var listItems=jQuery(".drop-field-contents > *",dropField);listItems.mousedown(function(event){event.stopPropagation();event.preventDefault();});listItems.click(function(){var element=jQuery(this);var value=element.attr("data-display");var valueLogic=element.attr("data-value");var valueLink=element.attr("data-link");var item=element.data("item");var templateItem=template.uxtemplate(item);hiddenTemplate.empty();hiddenTemplate.append(templateItem);hiddenField.attr("value",valueLogic);textField.uxtextfield("value",{value:value});dropField.data("value",value);hiddenField.length>0&&valueLogic&&dropField.addClass("drop-field-lock");dropField.triggerHandler("value_select",[value,valueLogic,item]);if(valueLink){document.location=valueLink;}
 var selectionIndex=element.index()+1
 dropField.data("selection",selectionIndex);_updateSelection(dropField,options);dropFieldContents.hide();event.stopPropagation();event.preventDefault();});dropField.triggerHandler("value_unselect",[]);var preSelection=jQuery("li[data-display='"
