@@ -3746,7 +3746,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                         // checks if the currently element is an input field
                         // in case it is sets the disabled attribute
-                        var isInput = _element.is("input");
+                        var isInput = _element.is("input, textarea");
                         isInput && _element.attr("disabled", "1");
 
                         // triggers the disabled event on the element
@@ -3806,7 +3806,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                         // checks if the currently matche object is an input field
                         // in case it is removes the disabled attribute
-                        var isInput = matchedObject.is("input");
+                        var isInput = matchedObject.is("input, textarea");
                         isInput && matchedObject.removeAttr("disabled");
 
                         // triggers the enabled event on the element
