@@ -6005,8 +6005,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // element
             var element = matchedObject;
 
-            console.info(element);
-
             // checks if the button is disabled in case
             // it is, nothing should be done returns the
             // control to the caller function immediately
@@ -7670,8 +7668,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             // template item, then uses it to retrieve
                             // its hyperlink reference (in case it's necessary)
                             var linkElement = jQuery("a", templateItem);
-                            currentLinkAttribute = link.length
-                                    ? link.attr("href")
+                            currentLinkAttribute = linkElement.length
+                                    ? linkElement.attr("href")
                                     : currentLinkAttribute;
 
                             // sets the data link attribute in the
