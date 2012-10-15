@@ -711,7 +711,16 @@
                         compareStrings.push(compareString);
                     }
                 }
-                // otherwise the base item is used
+                // otherwise in case the current item is a map the
+                // default attribute must be used
+                else if (typeof currentItem == "string") {
+                    // retrieves the name attribute from the current
+                    // item and sets it in the list of compaare strings
+                    var name = currentItem["name"];
+                    var compareStrings = [name];
+                }
+                // otherwise the current item must be a string
+                // and so it's used directly as the compare strings
                 else {
                     // sets the current item as the only
                     // compare string
@@ -1014,13 +1023,42 @@
                         // to update it in the element
                         var items = _element.data("items");
 
-                        // updates the data tyle of the data source to local
+                        // updates the data style of the data source to local
                         // and adds the item elements into it, then runs the
                         // initializer of the local data source extension
                         _element.attr("data-type", "local");
                         for (var index = 0; index < items.length; index++) {
+                            // retrieves the current item in iteration and checks
+                            // if the type of it is a string, conditional action
                             var item = items[index];
-                            _element.append("<li>" + item + "</li>");
+                            var isString = typeof item == "string";
+
+                            // in case the current item is a string it must be
+                            // added directly
+                            if (isString) {
+                                _element.append("<li>" + item + "</li>");
+                            } else {
+                                // starts the string value with the initial
+                                // list item
+                                var _string = "<li>";
+
+                                // iterates over all the keys in the item to
+                                // create the various span elements representing
+                                // the various attributes
+                                for (key in item) {
+                                    // retrieves the value associated the current key
+                                    // and appends the span associated with the key
+                                    var value = item[key];
+                                    _string += "<span name=\"" + key + "\">"
+                                            + value + "</span>";
+                                }
+
+                                // adds the final list reference to the string and then
+                                // adds the list item to the string and the complete string
+                                // value list item to the element
+                                _string += "</li>";
+                                _element.append(_string);
+                            }
                         }
                         _element.uxdatasourcelocal();
                     });
@@ -1348,10 +1386,10 @@
                         var name = _element.attr("data-name");
 
                         // retrieves the various child list items to
-                        // be parsed and creates the map structure that
+                        // be parsed and creates the list structure that
                         // will hold them in such case
                         var items = jQuery("> li", _element);
-                        var _items = {};
+                        var _items = [];
 
                         // iterates over each of the items to construct
                         // the various structures
@@ -1365,9 +1403,16 @@
                                             || item.html();
                                     var value = item.html();
 
-                                    // sets the value in the "logical" map
+                                    // creates the item structure with the name
+                                    // and the value set
+                                    _item = {
+                                        "name" : name,
+                                        "value" : value
+                                    };
+
+                                    // adds the item to the "logical" list
                                     // containing the various items
-                                    _items[name] = value;
+                                    _items.push(_item);
                                 });
 
                         // creates the jquery function associated with the
@@ -4441,7 +4486,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                 // retrieves the type of the attribute value
                 // for later checking
-                var attributeValueType = typeof(attributeValue);
+                var attributeValueType = typeof attributeValue;
 
                 // in case the attribute value is
                 // an object
@@ -7752,6 +7797,22 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             var currentLinkAttribute = valueAttribute
                                     ? currentItem[linkAttribute]
                                     : null;
+
+                            // retrieves the default values for the display
+                            // and values taking into account the type of
+                            // the retrieved values (in case it's map resolves again)
+                            currentDisplayAttribute = currentDisplayAttribute
+                                    && typeof currentDisplayAttribute == "object"
+                                    ? currentDisplayAttribute["name"]
+                                    : currentDisplayAttribute;
+                            currentValueAttribute = currentValueAttribute
+                                    && typeof currentValueAttribute == "object"
+                                    ? currentValueAttribute["value"]
+                                    : currentValueAttribute;
+                            currentLinkAttribute = currentLinkAttribute
+                                    && typeof currentLinkAttribute == "object"
+                                    ? currentLinkAttribute["link"]
+                                    : currentLinkAttribute;
 
                             // in case the template is defined
                             if (template.length > 0) {
