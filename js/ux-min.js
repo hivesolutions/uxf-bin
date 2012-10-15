@@ -11,7 +11,7 @@ var items=element.data("items");var validItems=[];if(id){var itemsId=[];for(var 
 if(itemId==id){itemsId.push(item);}}
 items=itemsId;}
 for(var index=0;index<items.length;index++){var currentItem=items[index];if(filterAttributes){var compareStrings=[];for(var _index=0;_index<filterAttributes.length;_index++){var filterAttribute=filterAttributes[_index];var compareString=currentItem[filterAttribute];compareStrings.push(compareString);}}
-else if(typeof currentItem=="string"){var name=currentItem["name"];var compareStrings=[name];}
+else if(typeof currentItem=="object"){var name=currentItem["name"];var compareStrings=[name];}
 else{var compareStrings=[currentItem];}
 for(var _index=0;_index<compareStrings.length;_index++){var compareString=compareStrings[_index];if(compareString.indexOf(filterString)==0){validItems.push(currentItem);break;}}}
 var validItemsLength=validItems.length;var moreItems=validItemsLength>startRecord+numberRecords;var validItems=filter?validItems.slice(startRecord,startRecord
