@@ -15837,10 +15837,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     var _line = _newLine(table, tableBody, options);
 
                     // adds the class default field to the line and register
-                    // for the key down even on it for the removal of the
-                    // default field token
+                    // for the key down (and up) event on it for the removal
+                    // of the default field token
                     _line.addClass("table-default-field");
                     jQuery(".text-field", _line).keydown(function() {
+                                _line.removeClass("table-default-field");
+                            });
+                    jQuery(".text-field", _line).keyup(function() {
                                 _line.removeClass("table-default-field");
                             });
                 }
