@@ -7794,7 +7794,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             var currentValueAttribute = valueAttribute
                                     ? currentItem[valueAttribute]
                                     : currentItem;
-                            var currentLinkAttribute = valueAttribute
+                            var currentLinkAttribute = linkAttribute
                                     ? currentItem[linkAttribute]
                                     : null;
 
