@@ -7767,9 +7767,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 return;
             }
 
-            // in case the text field value is empty the drop field
-            // contents panel must be hidden
-            if (textFieldValue == "") {
+            // in case the text field value is empty and the current
+            // type is not select the drop field contents panel must
+            // be hidden (nova valid data to be shown)
+            if (textFieldValue == "" && !isSelect) {
                 dropFieldContents.hide();
             }
 
@@ -8072,7 +8073,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // are only shown in case there is still focus in
                         // the text field
                         validItems.length > 0 && textField.hasClass("focus")
-                                && textFieldValue != ""
+                                && (textFieldValue != "" || isSelect)
                                 ? dropFieldContents.show()
                                 : dropFieldContents.hide();
 
