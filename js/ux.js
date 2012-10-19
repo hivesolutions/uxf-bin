@@ -7208,7 +7208,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                     if (dropFieldContents.is(":visible")) {
                                         // hides the drop field contents
                                         dropFieldContents.hide();
-
                                     }
                                     // otherwise it should show the updated
                                     // drop field contents
@@ -7768,6 +7767,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 return;
             }
 
+            // in case the text field value is empty the drop field
+            // contents panel must be hidden
+            if (textFieldValue == "") {
+                dropFieldContents.hide();
+            }
+
             // creates the filter string from the text
             // field value in case the select mode is not
             // enabled
@@ -8066,7 +8071,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // an empty set of items, the drop field contents
                         // are only shown in case there is still focus in
                         // the text field
-                        validItems.length && textField.hasClass("focus") > 0
+                        validItems.length > 0 && textField.hasClass("focus")
+                                && textFieldValue != ""
                                 ? dropFieldContents.show()
                                 : dropFieldContents.hide();
 
