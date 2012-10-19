@@ -7831,6 +7831,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             dropFieldContents.append(_dropFieldNoResults);
                         }
 
+                        // retrieves the cache map to be used to determine if the
+                        // various elements should be contructed from scratch or
+                        // if an already existing element should be used instead
+                        var cache = dropField.data("cache");
+
                         // iterates over all the valid and filtered items
                         // to adds them to the drop field contents
                         for (var index = 0; index < validItems.length; index++) {
@@ -7838,14 +7843,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             var currentItem = validItems[index];
 
                             // tries to retrieve the unique identifier from the
-                            // current item to be used aas the cache key
+                            // current item to be used as the cache key
                             var uniqueId = currentItem["unique_id"];
 
                             // retrieves the cache map from the drop field and
                             // tries to find the cache item for the unique identifier
                             // in case it's found adds the item to the drop field
                             // contents and continues the loop immediately
-                            var cache = dropField.data("cache");
                             var cacheItem = cache[uniqueId];
                             if (cacheItem) {
                                 // sets the current item in the cache item data
@@ -8770,6 +8774,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             : _element.append(filterContents);
                 }
 
+                // sets the various initial data objects in the
+                // currently selected filter element
+                _element.data("cache", {});
+
                 // updates the element (matched object) state
                 // for the initial contents
                 _update(_element, options);
@@ -9560,6 +9568,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             filterElements.remove();
                         }
 
+                        // retrieves the cache map to be used to determine if the
+                        // various elements should be contructed from scratch or
+                        // if an already existing element should be used instead
+                        var cache = filter.data("cache");
+
                         // retrieves the valid items reference
                         var _validItems = jQuery(validItems);
 
@@ -9578,10 +9591,35 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 defaultValue : "-"
                             };
 
-                            // applies the template to the template (item)
-                            // retrieving the resulting template item
-                            var templateItem = template.uxtemplate(element,
-                                    options);
+                            // tries to retrieve the unique identifier from the
+                            // current item to be used as the cache key
+                            var uniqueId = element["unique_id"];
+
+                            // retrieves the cache map from the filter and
+                            // tries to find the cache item for the unique identifier
+                            // in case it's found sets the template item as the cached
+                            // item (cache match usage)
+                            var cacheItem = cache[uniqueId];
+                            if (cacheItem) {
+                                // sets the template item as the curreently cached
+                                // item so that no construction occurs then removes
+                                // the selection classes from it (avoiding possible
+                                // layout problems)
+                                var templateItem = cacheItem;
+                                templateItem.removeClass("selected");
+                                templateItem.removeClass("first");
+                                templateItem.removeClass("last");
+                            }
+                            // otherwise must re-create the template item by runing
+                            // the template engine again
+                            else {
+                                // applies the template to the template (item)
+                                // retrieving the resulting template item and
+                                // setting it the cache map for the unique id
+                                var templateItem = template.uxtemplate(element,
+                                        options);
+                                cache[uniqueId] = templateItem;
+                            }
 
                             // removes the filter element class from the template item,
                             // then adds it to the filter contents
