@@ -7848,7 +7848,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                             // tries to retrieve the unique identifier from the
                             // current item to be used as the cache key
-                            var uniqueId = currentItem["unique_id"];
+                            var uniqueId = currentItem["unique_id"]
+                                    || currentItem["uid"];
 
                             // retrieves the cache map from the drop field and
                             // tries to find the cache item for the unique identifier
@@ -7943,7 +7944,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                             // sets the template item in the cache map
                             // to provide cache for the visual element
-                            cache[uniqueId] = templateItem;
+                            // only in case the unique id is valid (set)
+                            if (uniqueId) {
+                                cache[uniqueId] = templateItem;
+                            }
 
                             // adds the template item item to the
                             // drop field contents
@@ -9597,7 +9601,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                             // tries to retrieve the unique identifier from the
                             // current item to be used as the cache key
-                            var uniqueId = element["unique_id"];
+                            var uniqueId = element["unique_id"]
+                                    || element["uid"];
 
                             // retrieves the cache map from the filter and
                             // tries to find the cache item for the unique identifier
@@ -9620,9 +9625,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 // applies the template to the template (item)
                                 // retrieving the resulting template item and
                                 // setting it the cache map for the unique id
+                                // only in case the unique id is valid (set)
                                 var templateItem = template.uxtemplate(element,
                                         options);
-                                cache[uniqueId] = templateItem;
+                                if (uniqueId) {
+                                    cache[uniqueId] = templateItem;
+                                }
                             }
 
                             // removes the filter element class from the template item,
