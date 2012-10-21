@@ -17242,8 +17242,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // and adds them together to calculate the extra pixel values
             // of the text field component
             var textFieldPaddingRight = parseInt(textField.css("padding-right"));
-            var textFieldBorderRight = parseInt(textField.css("border-right"));
-            var textFieldBorderLeft = parseInt(textField.css("border-left"));
+            var textFieldBorderRight = parseInt(textField.css("border-right-width"));
+            var textFieldBorderLeft = parseInt(textField.css("border-left-width"));
             var textFieldExtra = lineWidth + textFieldPaddingRight
                     + textFieldBorderRight + textFieldBorderLeft;
 
