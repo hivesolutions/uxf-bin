@@ -651,7 +651,7 @@ Md5._ff=function(a,b,c,d,x,s,t){return Md5._cmn((b&c)|((~b)&d),a,b,x,s,t);}
 Md5._gg=function(a,b,c,d,x,s,t){return Md5._cmn((b&d)|(c&(~d)),a,b,x,s,t);}
 Md5._hh=function(a,b,c,d,x,s,t){return Md5._cmn(b^c^d,a,b,x,s,t);}
 Md5._ii=function(a,b,c,d,x,s,t){return Md5._cmn(c^(b|(~d)),a,b,x,s,t);}
-Md5._md5=function(stringValue){var number=stringValue.length;var state=[1732584193,-271733879,-1732584194,271733878];var tail=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];for(var index=64;index<=stringValue.length;index+=64){Md5.__cmn(state,Md5.md5Block(stringValue.substring(index-64,index)));}
+Md5._md5=function(stringValue){var number=stringValue.length;var state=[1732584193,-271733879,-1732584194,271733878];var tail=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];for(var index=64;index<=stringValue.length;index+=64){Md5._md5Cycle(state,Md5.md5Block(stringValue.substring(index-64,index)));}
 stringValue=stringValue.substring(index-64);for(var index=0;index<stringValue.length;index++){tail[index>>2]|=stringValue.charCodeAt(index)<<((index%4)<<3);}
 tail[index>>2]|=0x80<<((index%4)<<3);if(index>55){Md5._md5Cycle(state,tail);for(var index=0;index<16;index++){tail[index]=0;}}
 tail[14]=number*8;Md5._md5Cycle(state,tail);return state;}

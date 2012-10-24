@@ -1219,6 +1219,10 @@
     margin: 0px 0px 0px 0px;
 }
 
+.ulite-style .subscript {
+    font-size: 70%;
+}
+
 .ulite-style .table.table-orders {
     border-collapse: separate;
     border-spacing: 0px;
