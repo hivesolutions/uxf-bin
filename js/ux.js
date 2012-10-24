@@ -503,7 +503,8 @@
             var cache = matchedObject.data("cache");
             var cacheItem = cache[queryHash];
             if (cacheItem) {
-                callback(cacheItem.validItems, cacheItem.moreItems);
+                callback(cacheItem.validItems, cacheItem.moreItems,
+                        cacheItem.extraItems);
                 return;
             }
 
@@ -551,15 +552,23 @@
                         callback(null, null);
                     },
                     success : function(data) {
-                        // parses the data, retriebing the valid items
+                        // parses the data, retrieving the valid items
                         var validItems = jQuery.parseJSON(data);
+                        var extraItems = validItems;
 
                         // in case the received (items) is not a list
                         // (single retrieval)
                         if (!(validItems.constructor == Array)) {
+                            // tries to retrieve the (private) base
+                            // values that will serve as prototype for
+                            // the retrieval of the valid items
+                            var baseValue = validItems._base;
+
                             // constructs a list of valid items
                             // from the single valid item
-                            validItems = [validItems];
+                            validItems = baseValue
+                                    ? validItems[baseValue]
+                                    : [validItems];
                         }
 
                         // retrieves the valid items length to check if there
@@ -578,7 +587,8 @@
                         var cache = matchedObject.data("cache");
                         cache[queryHash] = {
                             validItems : validItems,
-                            moreItems : moreItems
+                            moreItems : moreItems,
+                            extraItems : extraItems
                         };
 
                         // retrieves the current identifier from the
@@ -594,7 +604,8 @@
                         }
 
                         // calls the callback with the valid items
-                        callback(validItems, moreItems);
+                        // note that extra items are applied
+                        callback(validItems, moreItems, extraItems);
                     }
                 });
             }, timeout);
@@ -8325,9 +8336,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
  *          http://www.hive.pt/licenses/
  */
 (function($) {
-    jQuery.fn.uxdroptag = function(options) {
+    jQuery.fn.uxdroptag = function(method, options) {
         // the default values for the data query json
         var defaults = {};
+
+        // sets the default method value
+        var method = method ? method : "default";
 
         // sets the default options value
         var options = options ? options : {};
@@ -8358,6 +8372,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // its title attribute to create the strcture
                         var _element = jQuery(this);
                         var title = _element.attr("data-title");
+
+                        // retrieves the items section from the current element
+                        // and in case it does not exists creates an empty version
+                        // of it (default behaviour)
+                        var items = jQuery("> .items", _element);
+                        if (items.length == 0) {
+                            _element.append("<ul class=\"items\"></ul>");
+                        }
 
                         // adds the drop tag header and tag element to the
                         // drop tag taking into account the title
@@ -8403,6 +8425,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // current drop tag
                         var items = jQuery("> .items", dropTag);
 
+                        // checks if the drop tag is curently in the disable
+                        // state in such case returns immediately nothing to
+                        // be done on a disabled drop tag
+                        var isDisabled = dropTag.hasClass("disabled");
+                        if (isDisabled) {
+                            return;
+                        }
+
                         // checks if the drop tag is curently in the open
                         // state in order to change it
                         var isOpen = dropTag.hasClass("open");
@@ -8436,14 +8466,23 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // close element to revert the drop tag mode to
             // the normal drop mode
             dropTagClose.click(function() {
-                        // retrieves the current element and the associated
-                        // parent drop tag
+                        // retrieves the current element, the associated
+                        // parent drop tag and the list items
                         var element = jQuery(this);
                         var dropTag = element.parents(".drop-tag");
+                        var listItems = jQuery(".items > li.selected", dropTag);
+
+                        // removes the selected class from the "selected" list
+                        // item elements (unselects them)
+                        listItems.removeClass("selected");
 
                         // removes the tag mode class from the drop tag
                         // (reverts the state to drop mode)
                         dropTag.removeClass("tag-mode");
+
+                        // triggers the item unselected event the event is triggered without
+                        // any arguments
+                        dropTag.triggerHandler("item_unselected", [])
                     });
 
             // registers for the click event on the various list items
@@ -8460,8 +8499,16 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         var name = element.html();
                         dropTagText.html(name);
 
+                        // adds the selected class to the element, to mark
+                        // it as the selected element (selects them)
+                        element.addClass("selected");
+
                         // changes the current drop tag mode to tag mode
                         dropTag.addClass("tag-mode");
+
+                        // triggers the item selected event using the element
+                        // as the argument for the event handler
+                        dropTag.triggerHandler("item_selected", [element])
                     });
 
             // registers for the click event on the body element
@@ -8474,13 +8521,77 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     });
         };
 
-        // initializes the plugin
-        initialize();
+        var update = function() {
+            // retrieves the various list items for the currently
+            // selected object (matched object)
+            var listItems = jQuery(".items > li", matchedObject);
+
+            // registers for the click event on the various list items
+            // to select them (go into tag mode)
+            listItems.click(function() {
+                        // retieves the current element, the drop tag associated with
+                        // it and the drop tag text
+                        var element = jQuery(this);
+                        var dropTag = element.parents(".drop-tag");
+                        var dropTagText = jQuery(".drop-tag-text", dropTag);
+
+                        // retrieves the element value as the name and update
+                        // the drop tag text with that name
+                        var name = element.html();
+                        dropTagText.html(name);
+
+                        // adds the selected class to the element, to mark
+                        // it as the selected element (selects them)
+                        element.addClass("selected");
+
+                        // changes the current drop tag mode to tag mode
+                        dropTag.addClass("tag-mode");
+
+                        // triggers the item selected event using the element
+                        // as the argument for the event handler
+                        dropTag.triggerHandler("item_selected", [element])
+                    });
+        };
+
+        var release = function() {
+            var dropTag = matchedObject();
+
+            // removes the tag mode class from the drop tag
+            // (reverts the state to drop mode)
+            dropTag.removeClass("tag-mode");
+        };
+
+        // switches over the method
+        switch (method) {
+            case "update" :
+                // updates the component internal structures
+                // to reflect the layout changes
+                update();
+
+                // breaks the switch
+                break;
+
+            case "release" :
+                // updates the component internal structures
+                // to reflect the layout changes
+                release();
+
+                // breaks the switch
+                break;
+
+            case "default" :
+                // initializes the plugin
+                initialize();
+
+                // breaks the switch
+                break;
+        }
 
         // returns the object
         return this;
     };
 })(jQuery);
+
 
 (function($) {
     jQuery.fn.uxfiledrop = function(options) {
