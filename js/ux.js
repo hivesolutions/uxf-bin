@@ -8592,7 +8592,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
     };
 })(jQuery);
 
-
 (function($) {
     jQuery.fn.uxfiledrop = function(options) {
         // the default values for the plugin
