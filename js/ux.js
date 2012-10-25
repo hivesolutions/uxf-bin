@@ -18050,10 +18050,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         };
 
         var __startdatetime = function(element, options) {
-            // retrieves the reference to the top level
-            // window element
-            var _window = jQuery(window);
-
             // retrieves the value of the utc offset flag
             // (if the utc flag is set the date is set to work
             // in the utc zone)
@@ -18126,6 +18122,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         };
 
         var __startdate = function(element, options) {
+            // retrieves the reference to the top level
+            // window element
+            var _window = jQuery(window);
+
             // checks if the no calendar class (flag) is set
             var noCalendar = element.hasClass("no-calendar")
 
