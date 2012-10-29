@@ -10812,6 +10812,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var target = element.attr("data-target");
             var subMenu = jQuery(target, menu);
 
+            // checks if the sub menu element is already being shown
+            // in such case returns immediately to avoid problems
+            var showing = subMenu.data("showing");
+            if (showing) {
+                return false;
+            }
+
             // retrieves the top and left offset positions
             // for the current element (these are the offset
             // position of it)
@@ -10848,7 +10855,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             element.addClass("selected");
 
             // shows the sub menu with a fade effect
-            subMenu.fadeIn(150);
+            subMenu.fadeIn(150, function() {
+                        // unsets the flag that controlls the
+                        // showing state of the sub menu
+                        subMenu.data("showing", false);
+                    });
         };
 
         var _selectFilter = function(filter, value, select) {
