@@ -9909,6 +9909,17 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 _handleContext);
                         listItems.bind("contextmenu rightclick", _handleContext);
 
+                        // retrieves the complete set of menus from the
+                        // list items and then initializes them with the
+                        // the current filter
+                        var menus = jQuery(".menu", listItems);
+                        menus.each(function(index, element) {
+                                    // retrieves the element reference
+                                    // and initializes it as a menu
+                                    var _element = jQuery(element);
+                                    _initMenu(_element, filter, true);
+                                });
+
                         // triggers the update complete event
                         filter.triggerHandler("update_complete");
 
@@ -10003,15 +10014,20 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // selected element
             var filter = element.parents(".filter");
 
-            // retrieves the complete set of selected list items
-            // to apply the global characteristics to them
-            var selectedListItem = jQuery(".filter-contents > .selected",
-                    matchedObject);
+            // initializes the menu structure and event handlers so that
+            // the menu becoomes able to respond to the user interactions
+            _initMenu(menu, filter);
+        };
+
+        var _initMenu = function(menu, filter, stay) {
+            // retrieves the complete set of contents for the
+            // current menu, to be used further ahead
+            var menuContents = jQuery("> .menu-contents", menu);
 
             // retrieves ther complete set of buttons currently present
             // in the menu to register for their appropriate events and
             // remove the default buton behavior
-            var buttons = jQuery(".button", menu);
+            var buttons = jQuery(".button:not(.menu-link)", menu);
 
             // retrieves the target buttons and then retrieves also the non
             // target buttons (these button need to be registered for the
@@ -10107,16 +10123,26 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 return;
                             }
 
-                            // hides the menu and removes it from the current
-                            // context (it's not going to be used anymore)
-                            menu.hide();
-                            menu.remove();
+                            // retrieves the complete set of selected list items
+                            // to apply the global characteristics to them
+                            var selectedListItem = jQuery(
+                                    ".filter-contents > .selected", filter);
 
                             // retrieves the menu contents associated with the
                             // current element and then retrieves the identifier
                             // of that menu contents
-                            var menuContents = element.parents(".menu-contents");
-                            var menuId = menuContents.attr("data-menu_id");
+                            var _menuContents = element.parents(".menu-contents");
+                            var menuId = _menuContents.attr("data-menu_id");
+
+                            // removes the active class from the menu
+                            // (should disable the layout)
+                            menu.removeClass("active");
+
+                            // hides the menu and removes it from the current
+                            // context (it's not going to be used anymore) but
+                            // only in case the stay flag is not set
+                            menuContents.hide();
+                            !stay && menu.remove();
 
                             // iterates over each of the selected list items
                             // to execute the proper "sequential" action
@@ -10199,6 +10225,15 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                         + identifiersList;
                             }
 
+                            // stops the event propagation and prevents
+                            // the default bahavior (avoids propagation problems)
+                            event.stopPropagation();
+                            event.preventDefault();
+                        });
+
+                // registers for the double click event on the button
+                // to avoid unwanted propagation
+                _element.dblclick(function(event) {
                             // stops the event propagation and prevents
                             // the default bahavior (avoids propagation problems)
                             event.stopPropagation();
@@ -12483,8 +12518,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // retrieves the menu to retieve the
                         // menu contents
                         var menu = element.parents(".menu");
-                        var menuButton = jQuery(".menu-button", menu);
-                        var menuContents = jQuery(".menu-contents", menu);
+                        var menuButton = jQuery("> .menu-button", menu);
+                        var menuContents = jQuery(
+                                "> .menu-contents:not(.sub-menu)", menu);
 
                         // retrieves the current set of visible menus and menu
                         // contents to be able to control them
@@ -20191,7 +20227,8 @@ Md5._md5 = function(stringValue) {
     // the intermediate md5 cycles
     for (var index = 64; index <= stringValue.length; index += 64) {
         // runs the intermediate md5 cycle
-        Md5._md5Cycle(state, Md5.md5Block(stringValue.substring(index - 64, index)));
+        Md5._md5Cycle(state, Md5.md5Block(stringValue.substring(index - 64,
+                        index)));
     }
 
     // retrieves the initial string value
