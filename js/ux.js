@@ -7102,6 +7102,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     var value = _element.attr("value");
                     var originalValue = _element.attr("data-original_value");
                     var error = _element.attr("data-error");
+                    var type = _element.attr("data-type");
+                    var decimalPlaces = _element.attr("data-decimal_places");
 
                     // creates the text field element and sets the various
                     // attributes in it
@@ -7110,6 +7112,8 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     textField.attr("value", value);
                     textField.attr("data-original_value", originalValue);
                     textField.attr("data-error", error);
+                    textField.attr("data-type", type);
+                    textField.attr("data-decimal_places", decimalPlaces);
 
                     // appends the text field to the element and runs the
                     // text field initializer
