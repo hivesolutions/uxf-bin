@@ -255,7 +255,7 @@ else{var templateItem=jQuery("<li data-display=\""
 +currentValueAttribute+"\">"
 +currentDisplayAttribute+"</li>");currentExtraAttribute&&templateItem.append("<span class=\"subscript-extra\">"
 +currentExtraAttribute
-+"<span>");templateItem.data("item",currentItem);}
++"</span>");templateItem.data("item",currentItem);}
 var linkElement=jQuery("a",templateItem);currentLinkAttribute=linkElement.length?linkElement.attr("href"):currentLinkAttribute;currentLinkAttribute&&templateItem.attr("data-link",currentLinkAttribute);if(uniqueId){cache[uniqueId]=templateItem;}
 dropFieldContents.append(templateItem);}
 var listItems=jQuery(".drop-field-contents > *",dropField);listItems.mousedown(function(event){event.stopPropagation();event.preventDefault();});listItems.click(function(){var element=jQuery(this);var value=element.attr("data-display");var valueLogic=element.attr("data-value");var valueLink=element.attr("data-link");var valueFields=dropField.data("value_fields");var item=element.data("item");var templateItem=template.uxtemplate(item);hiddenTemplate.empty();hiddenTemplate.append(templateItem);hiddenField.attr("value",valueLogic);textField.uxtextfield("value",{value:value});dropField.data("value",value);for(var key in valueFields){var field=valueFields[key];var _value=item[key];field.attr("value",_value);}
