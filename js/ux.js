@@ -7078,8 +7078,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // checks if the element (drop field) is of type select
                 var isSelect = _element.hasClass("drop-field-select");
 
-                // retrieves both the display, value and link attributes
+                // retrieves both the display, extra, value and link attributes
                 var displayAttribute = _element.attr("data-display_attribute");
+                var extraAttribute = _element.attr("data-extra_attribute");
                 var valueAttribute = _element.attr("data-value_attribute");
                 var linkAttribute = _element.attr("data-link_attribute");
 
@@ -7185,6 +7186,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 _element.data("selection", 0);
                 _element.data("mouse_control", false);
                 _element.data("display_attribute", displayAttribute);
+                _element.data("extra_attribute", extraAttribute);
                 _element.data("value_attribute", valueAttribute);
                 _element.data("link_attribute", linkAttribute);
                 _element.data("filter_attributes", filterAttributesList);
@@ -7807,6 +7809,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // retrieves the display, value and the link attributes
             var displayAttribute = matchedObject.data("display_attribute");
+            var extraAttribute = matchedObject.data("extra_attribute");
             var valueAttribute = matchedObject.data("value_attribute");
             var linkAttribute = matchedObject.data("link_attribute");
 
@@ -7947,6 +7950,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             var currentDisplayAttribute = displayAttribute
                                     ? currentItem[displayAttribute]
                                     : currentItem;
+                            var currentExtraAttribute = extraAttribute
+                                    ? currentItem[extraAttribute]
+                                    : null;
                             var currentValueAttribute = valueAttribute
                                     ? currentItem[valueAttribute]
                                     : currentItem;
@@ -7961,6 +7967,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                     && typeof currentDisplayAttribute == "object"
                                     ? currentDisplayAttribute["name"]
                                     : currentDisplayAttribute;
+                            currentExtraAttribute = currentExtraAttribute
+                                    && typeof currentExtraAttribute == "object"
+                                    ? currentExtraAttribute["value"]
+                                    : currentExtraAttribute;
                             currentValueAttribute = currentValueAttribute
                                     && typeof currentValueAttribute == "object"
                                     ? currentValueAttribute["value"]
@@ -7997,6 +8007,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                         + "\" data-value=\""
                                         + currentValueAttribute + "\">"
                                         + currentDisplayAttribute + "</li>");
+
+                                // in case the extra attribute value is defined the
+                                // subscript section should also be added to
+                                // the generated template item
+                                currentExtraAttribute
+                                        && templateItem.append("<span class=\"subscript-extra\">"
+                                                + currentExtraAttribute
+                                                + "<span>");
 
                                 // sets the current item in the template item data
                                 // so that it can be used for latter template rendering
@@ -18013,13 +18031,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // retrieves the data type for the matached object
                 // and uses it to create the (possible) value type
                 // retrieval method then calls it in case it exists
-                // otherwise used the noemal element value
+                // otherwise uses the normal element value
                 var type = matchedObject.attr("data-type");
                 var valueMethodName = "__value" + type;
                 var hasMethod = __hasMethod(valueMethodName, matchedObject,
                         options);
                 var elementValue = hasMethod ? __callMethod(valueMethodName,
-                        matchedObject, options) : elementValue
+                        matchedObject, options) : elementValue;
 
                 // returns the retrieved value
                 return elementValue;
@@ -18027,6 +18045,17 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // otherwise the "target" value is valid
             // it's a set operation
             else {
+                // retrieves the data type for the matached object
+                // and uses it to create the (possible) format value
+                // retrieval method then calls it in case it exists
+                // otherwise uses the normal value
+                var type = matchedObject.attr("data-type");
+                var valueMethodName = "__fvalue" + type;
+                var hasMethod = __hasMethod(valueMethodName, matchedObject,
+                        options);
+                var value = hasMethod ? __callMethod(valueMethodName,
+                        matchedObject, value) : value;
+
                 // sets the value in the attributes
                 matchedObject.attr("value", value);
 
@@ -18517,6 +18546,42 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // sets the calendar in the element
             element.data("calendar", calendar);
+        };
+
+        var __fvaluefloatp = function(element, value) {
+            // retrieves the decimal places number and tries to
+            // parse it as an integer, incase it fails returns
+            // immediately the number without processing
+            var decimalPlaces = element.attr("data-decimal_places");
+            decimalPlaces = parseInt(decimalPlaces);
+            if (isNaN(decimalPlaces)) {
+                return value;
+            }
+
+            // converts teh provided value into a float value and
+            // then usees this value to convert it into a fixed
+            // representation with the requested number of decimal
+            // places (correct specification)
+            var valueF = parseFloat(value);
+            return valueF.toFixed(decimalPlaces);
+        };
+
+        var __fvaluefloat = function(element, value) {
+            // retrieves the decimal places number and tries to
+            // parse it as an integer, incase it fails returns
+            // immediately the number without processing
+            var decimalPlaces = element.attr("data-decimal_places");
+            decimalPlaces = parseInt(decimalPlaces);
+            if (isNaN(decimalPlaces)) {
+                return value;
+            }
+
+            // converts teh provided value into a float value and
+            // then usees this value to convert it into a fixed
+            // representation with the requested number of decimal
+            // places (correct specification)
+            var valueF = parseFloat(value);
+            return valueF.toFixed(decimalPlaces);
         };
 
         var __valuedate = function(element, options) {
