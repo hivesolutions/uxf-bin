@@ -10040,6 +10040,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // prevents the default behavior (avoids
             // possible problems)
+            event.stopPropagation();
             event.preventDefault();
 
             // retrieves the filter associated with the currently
@@ -10131,7 +10132,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                     if (!isHovered) {
                                         return;
                                     }
-                                    subMenu.hide();
+                                    _hideSubMenu(subMenu);
                                 }, 300);
                     });
 
@@ -10849,6 +10850,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var target = element.attr("data-target");
             var subMenu = jQuery(target, menu);
 
+            // retrieves ther complete set of buttons currently present
+            // in the sub menu to register for their appropriate events
+            var subButtons = jQuery(".button:not(.menu-link)", subMenu);
+
             // in case the submenu is currently visible
             // must return immediately not going to show it
             var isVisible = subMenu.is(":visible");
@@ -10902,12 +10907,26 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // so that it's highlighted
             element.addClass("selected");
 
+            // tries to retrieve the currently registered mouse enter
+            // event from the sub buttons in case the event does not exists
+            // registers a new function for the handling and sets it in
+            // the data for the sub buttons
+            var mouseenter = subButtons.data("mouseenter");
+            mouseenter = mouseenter || subButtons.mouseenter(function() {
+                        element.addClass("selected");
+                    });
+            subButtons.data("mouseenter", mouseenter);
+
             // shows the sub menu with a fade effect
             subMenu.fadeIn(150, function() {
                         // unsets the flag that controlls the
                         // showing state of the sub menu
                         subMenu.data("showing", false);
                     });
+        };
+
+        var _hideSubMenu = function(subMenu) {
+            subMenu.hide();
         };
 
         var _selectFilter = function(filter, value, select) {
@@ -12667,6 +12686,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 menu);
 
                         // checks if the current menu is of type drop
+                        // (it must be removed and not hidden)
                         var isDrop = menu.hasClass("drop-menu");
 
                         // in case the current menu is of type drop
@@ -12677,10 +12697,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         }
                         // otherwise the normal behavior applies (hidding)
                         else {
-                            // removes the active class from the manu
+                            // removes the active class from the manu and
+                            // then hides the menu contents
                             menu.removeClass("active");
-
-                            // hides the menu contents
                             menuContents.hide();
                         }
                     });
