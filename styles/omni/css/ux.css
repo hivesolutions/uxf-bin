@@ -1231,11 +1231,13 @@
 .omni-style .filter.entities-list .entity-name {
     font-size: 14px;
     font-weight: bold;
+    line-height: 16px;
     margin: 0px 0px 0px 0px;
 }
 
 .omni-style .filter.entities-list .entity-small-name {
     font-size: 12px;
+    line-height: 16px;
     margin: 8px 0px 0px 0px;
 }
 
@@ -1245,6 +1247,7 @@
 
 .omni-style .filter.entities-list .entity-details {
     color: #777777;
+    line-height: 16px;
     margin: 10px 0px 0px 0px;
 }
 
@@ -1594,6 +1597,7 @@
 
 .omni-style .list.side-entities-list .entity-name {
     color: #4d4d4d;
+    line-height: 20px;
     margin: 1px 0px 0px 0px;
 }
 
@@ -1605,6 +1609,7 @@
 
 .omni-style .list.side-entities-list .entity-details {
     color: #4d4d4d;
+    line-height: 20px;
     margin: 2px 0px 0px 0px;
 }
 
