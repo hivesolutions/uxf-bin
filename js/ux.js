@@ -8873,6 +8873,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // (in case it's set the advanced panel should be displayed)
                 var advanced = _element.attr("data-advanced");
 
+                // retrieves the value of the no unput value that controls if
+                // an input should be created if none is found
+                var noInput = _element.attr("data-no_input");
+
                 // retrieves the filter contents and
                 // the filter more (if present)
                 var filterContents = jQuery("> .filter-contents", _element);
@@ -8883,8 +8887,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 var textField = jQuery("> .text-field", _element);
 
                 // in case there is no text field defined for the
-                // current element one must be created
-                if (textField.length == 0) {
+                // current element one must be created, only in case
+                // the no input flag is not set
+                if (textField.length == 0 && !noInput) {
                     // retrieves the various attributes from the element
                     // to be propagated to the text field
                     var name = _element.attr("name");
@@ -9663,8 +9668,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // "forces" the number of records to the table list
             numberRecords = filter.hasClass("table-list") ? 14 : numberRecords;
 
-            // retrieves the filter input value
-            var filterInputValue = filterInput.attr("data-value");
+            // retrieves the filter input value, defaulting to empty
+            // string in case no valid value is retrieved
+            var filterInputValue = filterInput.attr("data-value") || "";
 
             // sets the initial vaalue for the reset flag
             var reset = false;
