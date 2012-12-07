@@ -11711,8 +11711,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var errorDescription = jQuery(".error-description", matchedObject);
             errorDescription.remove();
 
-            // retrieves both the form success panel and the other items and
-            // removes the form success (item) panel and show the "original" items
+            // retrieves both the form success panel and the other items and then
+            // removes the form success (item) panel and shows the "original" items
+            // then triggers the layout event to update any "upper" elements
             var formSuccessItem = jQuery(".form-success.item", matchedObject);
             var otherItems = jQuery("> :not(.form-success)", matchedObject);
             formSuccessItem.remove();
