@@ -212,6 +212,10 @@ body.wait-load {
     width: 0px;
 }
 
+.form > .form-success {
+    display: none;
+}
+
 .menu-contents {
     display: none;
 }
