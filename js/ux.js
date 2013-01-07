@@ -21784,10 +21784,10 @@ TemplateNode.prototype.getParameter = function(name) {
 
             // starts the connect command, this should be ran
             // at the end of the handlers registration
-            __connect(matchedObject, options);
+            _connect(matchedObject, options);
         };
 
-        var __connect = function(matchedObject, options) {
+        var _connect = function(matchedObject, options) {
             // retrieves the url data and the sequence containing
             // the various channels for which the connection is
             // going to be registered
@@ -21815,7 +21815,7 @@ TemplateNode.prototype.getParameter = function(name) {
 
                             // calls the initial update request and updates
                             // the status of the current connection to connected
-                            __update(matchedObject, options);
+                            _update(matchedObject, options);
                             __status(matchedObject, CONNECTED_STATUS);
                         },
                         error : function(data) {
@@ -21825,7 +21825,7 @@ TemplateNode.prototype.getParameter = function(name) {
                             // sets the timeout for connection, and
                             // retrieves the timeout handler
                             var timeoutHandler = setTimeout(function() {
-                                        __connect(matchedObject, options);
+                                        _connect(matchedObject, options);
                                     }, timeout);
 
                             // sets the timeout handler in the current matached
@@ -21929,7 +21929,7 @@ TemplateNode.prototype.getParameter = function(name) {
                     });
         };
 
-        var __update = function(matchedObject, options) {
+        var _update = function(matchedObject, options) {
             // retrieves the url data and the current connection
             // identifier to be used in the remote call
             var url = matchedObject.data("url");
@@ -21956,8 +21956,8 @@ TemplateNode.prototype.getParameter = function(name) {
                     // otherwise runs the "normal" update command to obtain new
                     // data fro the service source
                     var method = status == DISCONNECTED_STATUS
-                            ? __connect
-                            : __update;
+                            ? _connect
+                            : _update;
 
                     // sets the timeout for connection, and
                     // retrieves the timeout handler
