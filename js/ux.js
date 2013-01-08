@@ -21694,7 +21694,6 @@ TemplateNode.prototype.getParameter = function(name) {
                                 options.error(data);
                             }
                         } catch (message) {
-                            console.info(message);
                             options.error({
                                         result : "error",
                                         message : message
