@@ -19120,6 +19120,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // positions the window in the screen
             _positionWindow(matchedObject, options);
+
+            // triggers the show handler so that any handler
+            // may be notified about the visibility change
+            matchedObject.triggerHandler("show");
         };
 
         var _hide = function(matchedObject, options) {
@@ -19135,6 +19139,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // hides the window
             matchedObject.fadeOut(250);
+
+            // triggers the hide handler so that any handler
+            // may be notified about the visibility change
+            matchedObject.triggerHandler("hide");
         };
 
         var _showMask = function(matchedObject, options) {
