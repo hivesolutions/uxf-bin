@@ -21674,24 +21674,27 @@ TemplateNode.prototype.getParameter = function(name) {
                                 // tries to parse the received data as json information
                                 // in case it fails raises a message indicating that the
                                 // unpacking operation did not succeed
-                                var jsonData = jQuery.parseJSON(data);
+                                data = typeof data == "object"
+                                        ? data
+                                        : jQuery.parseJSON(data);
                             } catch (exception) {
                                 throw "No valid json data received";
                             }
 
-                            // retrieves the result string value from the json data
+                            // retrieves the result string value from the (json) data
                             // and notifies the success handler in case the result
                             // was success
-                            var result = jsonData["result"];
+                            var result = data["result"];
                             if (result == "success") {
-                                options.success(jsonData);
+                                options.success(data);
                             }
                             // in case the result value from the message is not succes
                             // notifies the rror handler of the received data
                             else {
-                                options.error(jsonData);
+                                options.error(data);
                             }
                         } catch (message) {
+                            console.info(message);
                             options.error({
                                         result : "error",
                                         message : message
@@ -21701,13 +21704,13 @@ TemplateNode.prototype.getParameter = function(name) {
                     },
                     error : function(request, textStatus, errorThrown) {
                         try {
-                            var jsonData = textStatus
+                            var data = textStatus
                                     ? jQuery.parseJSON(textStatus)
                                     : {};
                         } catch (exception) {
-                            var jsonData = {};
+                            var data = {};
                         }
-                        options.error(jsonData);
+                        options.error(data);
                     }
                 });
     };
