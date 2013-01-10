@@ -1643,6 +1643,10 @@
     };
 })(jQuery);
 
+jQuery.expr[":"].parents = function(a, i, m) {
+    return jQuery(a).parents(m[3]).length < 1;
+};
+
 (function($) {
     jQuery.fn.uxvideo = function(options) {
         // the map for the youtube
@@ -4166,6 +4170,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return value;
     }
 })(jQuery);
+
 (function($) {
     jQuery.fn.uxdatetime = function(options) {
         // the default values for the name change
