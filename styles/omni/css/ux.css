@@ -376,6 +376,7 @@
     background-position: left 0px;
 }
 
+.omni-style .button-group .button.medium.active,
 .omni-style .button-group .button.medium:active {
     background-position: left -36px;
 }
@@ -392,6 +393,7 @@
     background-position: left -108px;
 }
 
+.omni-style .button-group .button.medium.valid.active,
 .omni-style .button-group .button.medium.valid:active {
     background-position: left -144px;
 }
@@ -408,6 +410,7 @@
     background-position: left -216px;
 }
 
+.omni-style .button-group .button.medium.invalid.active,
 .omni-style .button-group .button.medium.invalid:active {
     background-position: left -252px;
 }
@@ -434,6 +437,7 @@
     background-position: left 0px;
 }
 
+.omni-style .button-group .button.small.active,
 .omni-style .button-group .button.small:active {
     background-position: left -30px;
 }
@@ -449,7 +453,7 @@
 .omni-style .button-group .button.small.valid {
     background-position: left -90px;
 }
-
+.omni-style .button-group .button.small.valid.active,
 .omni-style .button-group .button.small.valid:active {
     background-position: left -120px;
 }
@@ -466,6 +470,7 @@
     background-position: left -180px;
 }
 
+.omni-style .button-group .button.small.invalid.active,
 .omni-style .button-group .button.small.invalid:active {
     background-position: left -210px;
 }
@@ -499,6 +504,7 @@
     background-position: left -36px;
 }
 
+.omni-style .button.button-green.active,
 .omni-style .button.button-green:active {
     background-position: left -72px;
 }
@@ -522,6 +528,7 @@
     background-position: left -36px;
 }
 
+.omni-style .button.button-blue.active,
 .omni-style .button.button-blue:active {
     background-position: left -72px;
 }
@@ -545,6 +552,7 @@
     background-position: left -36px;
 }
 
+.omni-style .button.button-red.active,
 .omni-style .button.button-red:active {
     background-position: left -72px;
 }
@@ -568,6 +576,7 @@
     background-position: left -36px;
 }
 
+.omni-style .button.button-grey.active,
 .omni-style .button.button-grey:active {
     background-position: left -72px;
 }
@@ -598,6 +607,7 @@
     background-position: 0px -48px;
 }
 
+.omni-style .button.large.active,
 .omni-style .button.large:active {
     background-position: 0px -96px;
 }
@@ -639,6 +649,7 @@
     background-color: #f0f0f0;
 }
 
+.omni-style .button.large.button-light-grey.active,
 .omni-style .button.large.button-light-grey:active {
     background-color: #e8e8e8;
 }
@@ -665,6 +676,7 @@
     background-position: 0px -28px;
 }
 
+.omni-style .button.small.active,
 .omni-style .button.small:active {
     background-position: 0px -56px;
 }
@@ -703,6 +715,7 @@
     color: #777777;
 }
 
+.omni-style .button.button-more.active,
 .omni-style .button.button-more:active {
     background-position: left -80px;
 }
@@ -1407,6 +1420,7 @@
     background-color: #f0f0f0;
 }
 
+.incremental-field .button.active,
 .incremental-field .button:active {
     background-color: #e8e8e8;
 }
@@ -1429,6 +1443,7 @@
     background-color: #f4f4f4;
 }
 
+.incremental-field.disabled .button.active,
 .incremental-field.disabled .button:active {
     background-color: #f4f4f4;
 }
