@@ -533,88 +533,92 @@
 
                 // executes the remote ajax call
                 jQuery.ajax({
-                    url : url,
-                    dataType : "text",
-                    data : query,
-                    error : function(request, status, error) {
-                        // retrieves the current identifier from the
-                        // matched object and checks it against the
-                        // clojure based identifier in case it's not
-                        // the same (the current response is not the
-                        // latest no need to parse it)
-                        var current = matchedObject.data("current");
-                        if (current != identifier) {
-                            // returns immediately not going to parse
-                            // the response (not required)
-                            return;
-                        }
+                            url : url,
+                            dataType : "text",
+                            data : query,
+                            error : function(request, status, error) {
+                                // retrieves the current identifier from the
+                                // matched object and checks it against the
+                                // clojure based identifier in case it's not
+                                // the same (the current response is not the
+                                // latest no need to parse it)
+                                var current = matchedObject.data("current");
+                                if (current != identifier) {
+                                    // returns immediately not going to parse
+                                    // the response (not required)
+                                    return;
+                                }
 
-                        // retrieves the body
-                        var _body = jQuery("body");
+                                // retrieves the body
+                                var _body = jQuery("body");
 
-                        // shows an alert window about the error
-                        _body.uxalert("There was an error retrieving json data");
+                                // shows an info window about the problem retrieving
+                                // the data from the remote data source
+                                _body.uxinfo(
+                                        "There was an error retrieving json data",
+                                        "Warning", "warning");
 
-                        // calls the callback with the failure values
-                        callback(null, null);
-                    },
-                    success : function(data) {
-                        // parses the data, retrieving the valid items
-                        var validItems = jQuery.parseJSON(data);
-                        var extraItems = validItems;
+                                // calls the callback with the failure values
+                                callback(null, null);
+                            },
+                            success : function(data) {
+                                // parses the data, retrieving the valid items
+                                var validItems = jQuery.parseJSON(data);
+                                var extraItems = validItems;
 
-                        // in case the received (items) is not a list
-                        // (single retrieval)
-                        if (!(validItems.constructor == Array)) {
-                            // tries to retrieve the (private) base
-                            // values that will serve as prototype for
-                            // the retrieval of the valid items
-                            var baseValue = validItems._base;
+                                // in case the received (items) is not a list
+                                // (single retrieval)
+                                if (!(validItems.constructor == Array)) {
+                                    // tries to retrieve the (private) base
+                                    // values that will serve as prototype for
+                                    // the retrieval of the valid items
+                                    var baseValue = validItems._base;
 
-                            // constructs a list of valid items
-                            // from the single valid item
-                            validItems = baseValue
-                                    ? validItems[baseValue]
-                                    : [validItems];
-                        }
+                                    // constructs a list of valid items
+                                    // from the single valid item
+                                    validItems = baseValue
+                                            ? validItems[baseValue]
+                                            : [validItems];
+                                }
 
-                        // retrieves the valid items length to check if there
-                        // is more items available
-                        var validItemsLength = validItems.length;
-                        var moreItems = validItemsLength == numberRecords;
+                                // retrieves the valid items length to check if there
+                                // is more items available
+                                var validItemsLength = validItems.length;
+                                var moreItems = validItemsLength == numberRecords;
 
-                        // filters the valid valid items using the calculated
-                        // end slice to filter the "extra" items
-                        var endSlice = numberRecords ? numberRecords - 1 : 1;
-                        validItems = validItems.slice(0, endSlice);
+                                // filters the valid valid items using the calculated
+                                // end slice to filter the "extra" items
+                                var endSlice = numberRecords ? numberRecords
+                                        - 1 : 1;
+                                validItems = validItems.slice(0, endSlice);
 
-                        // retrieves the current cache structure and updates
-                        // it with the newly found item, indexing it by the
-                        // (representing) query hash value
-                        var cache = matchedObject.data("cache");
-                        cache[queryHash] = {
-                            validItems : validItems,
-                            moreItems : moreItems,
-                            extraItems : extraItems
-                        };
+                                // retrieves the current cache structure and updates
+                                // it with the newly found item, indexing it by the
+                                // (representing) query hash value
+                                var cache = matchedObject.data("cache");
+                                cache[queryHash] = {
+                                    validItems : validItems,
+                                    moreItems : moreItems,
+                                    extraItems : extraItems
+                                };
 
-                        // retrieves the current identifier from the
-                        // matched object and checks it against the
-                        // clojure based identifier in case it's not
-                        // the same (the current response is not the
-                        // latest no call the callback for it)
-                        var current = matchedObject.data("current");
-                        if (current != identifier) {
-                            // returns immediately not going to send
-                            // the response (not required)
-                            return;
-                        }
+                                // retrieves the current identifier from the
+                                // matched object and checks it against the
+                                // clojure based identifier in case it's not
+                                // the same (the current response is not the
+                                // latest no call the callback for it)
+                                var current = matchedObject.data("current");
+                                if (current != identifier) {
+                                    // returns immediately not going to send
+                                    // the response (not required)
+                                    return;
+                                }
 
-                        // calls the callback with the valid items
-                        // note that extra items are applied
-                        callback(validItems, moreItems, extraItems);
-                    }
-                });
+                                // calls the callback with the valid items
+                                // note that extra items are applied
+                                callback(validItems, moreItems, extraItems);
+                            }
+                        });
             }, timeout);
         };
 
@@ -3963,10 +3967,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         var _appendHtml = function() {
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
-                        // retrieves the element reference
+                        // retrieves the element reference and
+                        // adds the disabled class from to it
                         var _element = jQuery(element);
-
-                        // adds the disabled class from the element
                         _element.addClass("disabled");
 
                         // checks if the currently element is an input field
@@ -4023,20 +4026,19 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         var _appendHtml = function() {
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
-                        // retrieves the element reference
+                        // retrieves the element reference and
+                        // removes the disabled class from the it
                         var _element = jQuery(element);
-
-                        // removes the disabled class from the element
-                        matchedObject.removeClass("disabled");
+                        _element.removeClass("disabled");
 
                         // checks if the currently matche object is an input field
                         // in case it is removes the disabled attribute
-                        var isInput = matchedObject.is("input, textarea");
-                        isInput && matchedObject.removeAttr("disabled");
+                        var isInput = _element.is("input, textarea");
+                        isInput && _element.removeAttr("disabled");
 
                         // triggers the enabled event on the element
                         // to indicate that it has been enabled
-                        matchedObject.triggerHandler("enabled");
+                        _element.triggerHandler("enabled");
                     });
         };
 
@@ -4052,6 +4054,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         // returns the object
         return this;
     };
+})(jQuery);
+
+(function($) {
+    jQuery.fn.uxfields = function() {
+        // returns the complete set of fields (valid fields)
+        // for the provided context
+        return jQuery("[data-object]", this)
+    }
 })(jQuery);
 
 (function($) {
@@ -4107,9 +4117,41 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 })(jQuery);
 
 (function($) {
+    jQuery.fn.uxreset = function() {
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        // iterates over all the elements that were selected
+        // in order to perform the reset operation in each of them
+        matchedObject.each(function(index, element) {
+                    // retrieves the reference to the current
+                    // element for which the reset operation will
+                    // be perfomed and the value set to the original
+                    var _element = jQuery(this);
+
+                    // retrieves the object (type) for the currently
+                    // matched object then uses it to construct the method
+                    // name to be used and uses it to retrieve the the
+                    // value for the component
+                    var object = _element.attr("data-object");
+                    var method = _element["ux" + object]
+                    method && method.call(_element, "reset");
+                });
+    }
+})(jQuery);
+
+(function($) {
     jQuery.fn.uxvalue = function() {
         // sets the jquery matched object
         var matchedObject = this;
+
+        // tries to retrieve the complete set of arguments
+        // for the value operation (in case an argument is
+        // provided this is a set operation)
+        var options = arguments.length > 0 ? {
+            value : arguments[0]
+        } : {};
+        var _arguments = ["value", options];
 
         // retrieves the object (type) for the currently
         // matched object then uses it to contruct the method
@@ -4117,14 +4159,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         // value for the component
         var object = matchedObject.attr("data-object");
         var method = matchedObject["ux" + object]
-        var value = method ? method.call(matchedObject, "value") : null;
+        var value = method ? method.apply(matchedObject, _arguments) : null;
 
         // returns the just retrived value from the component
         // to the caller method
         return value;
     }
 })(jQuery);
-
 (function($) {
     jQuery.fn.uxdatetime = function(options) {
         // the default values for the name change
@@ -7095,6 +7136,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // sets the ux global object representation as drop
+            // field, this value may be used latter for fast ux
+            // object type access (hash based conditions)
+            matchedObject.attr("data-object", "dropfield");
+
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
                 // retrieves the element reference
@@ -8096,7 +8142,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 });
 
                         // registers for the click event in the list items
-                        listItems.click(function() {
+                        listItems.click(function(event) {
                                     // retrieves the element
                                     var element = jQuery(this);
 
@@ -8245,14 +8291,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         };
 
         var _value = function(matchedObject, options) {
-            // retrieves the text field
+            // retrieves the text field associated with the
+            // current matched object and runs the value method
+            // in it retrieving and returning the value (pipeline)
             var textField = jQuery(".text-field", matchedObject);
-
-            // retrieves the text field value
-            var elementValue = textField.attr("data-value");
-
-            // returns the retrieved value
-            return elementValue;
+            var returnValue = textField.uxtextfield("value", options);
+            return returnValue;
         };
 
         var _incrementSelection = function(matchedObject, options) {
@@ -11617,9 +11661,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // retrieves the various attributes from the matched
             // object that are going to be used to creates the
             // "simulated" ajax request
-            var method = matchedObject.attr("method");
+            var method = matchedObject.attr("method") || "get";
             var action = matchedObject.attr("action");
             var data = matchedObject.serialize();
+
+            // triggers the submit data handler so that any listening
+            // handler may be able to handle the data
+            matchedObject.triggerHandler("submit_data");
 
             // creates the ajax request that is going to simulate
             // a complete form request in the background
@@ -11737,6 +11785,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             formSuccessItem.remove();
             otherItems.show();
             matchedObject.trigger("layout");
+
+            // retrieves the complete set of elements from the matched object
+            // and runs the reset operation on all of them, this should be able
+            // to restore them to their original values
+            var elements = matchedObject.uxfields();
+            elements.uxreset();
         };
 
         // initializes the plugin
@@ -12360,6 +12414,76 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // breaks the switch
                 break;
         }
+
+        // returns the object
+        return this;
+    };
+})(jQuery);
+
+(function($) {
+    jQuery.fn.uxinfo = function(message, title, type, callback, options) {
+        // the default values for the alert
+        var defaults = {};
+
+        // sets the default options value
+        var options = options ? options : {};
+
+        // constructs the options
+        var options = jQuery.extend(defaults, options);
+
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        /**
+         * Initializer of the plugin, runs the necessary functions to initialize
+         * the structures.
+         */
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
+        };
+
+        /**
+         * Creates the necessary html for the component.
+         */
+        var _appendHtml = function() {
+            // retrieves the window (alert window) elements
+            var window = jQuery(".window.window-info", matchedObject);
+            if (window.length == 0) {
+                window = jQuery("<div class=\"window window-info window-hide\">"
+                        + "<h1></h1>" + "<p class=\"single\"></p>" + "</div>");
+                window.uxwindow();
+                matchedObject.append(window);
+            }
+            var windowHeader = jQuery("h1", window);
+            var windowContents = jQuery("p", window);
+
+            // removes the various classes from the window header and
+            // then adds the appropriate class according to the type
+            windowHeader.removeClass("information");
+            windowHeader.removeClass("warning");
+            windowHeader.addClass(type || "information");
+
+            // processes the "wiki" message
+            message = matchedObject.uxwiki(message);
+
+            // sets the window properties and hides
+            // button cancel
+            windowHeader.html(title || "Information");
+            windowContents.html(message);
+
+            // shows the window
+            window.uxwindow("show");
+        };
+
+        /**
+         * Registers the event handlers for the created objects.
+         */
+        var _registerHandlers = function() {
+        };
+
+        // initializes the plugin
+        initialize();
 
         // returns the object
         return this;
@@ -17426,7 +17550,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
          */
         var _appendHtml = function() {
             // sets the ux global object representation as text
-            // field, this vlaue may be used latter for fast ux
+            // field, this value may be used latter for fast ux
             // object type access (hash based conditions)
             matchedObject.attr("data-object", "tagfield");
 
@@ -17844,7 +17968,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // iterates over all the elements in the tags to
             // creates the sequence value
             for (var index = 0; index < tags.length; index++) {
-
                 // retrieves the current list items in iteration
                 // and retrieves the value to be used as data value
                 // defaulting to the html value in case none is provided
@@ -17929,7 +18052,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
          */
         var _appendHtml = function() {
             // sets the ux global object representation as text
-            // field, this vlaue may be used latter for fast ux
+            // field, this value may be used latter for fast ux
             // object type access (hash based conditions)
             matchedObject.attr("data-object", "textfield");
 
@@ -18289,6 +18412,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // resets the element
                 __reset(matchedObject, options);
             }
+        };
+
+        var _reset = function(matchedObject, options) {
+            _value(matchedObject, {
+                        value : ""
+                    });
         };
 
         var _focus = function(matchedObject, options) {
@@ -18959,6 +19088,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // returns the value
                 return value;
 
+            case "reset" :
+                // resets the current text field value to
+                // its original value
+                _reset(matchedObject, options);
+
+                // breaks the switch
+                break;
+
             case "focus" :
                 // focus the matched object
                 _focus(matchedObject, options);
@@ -19114,6 +19251,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // shows the window
             matchedObject.fadeIn(250);
 
+            // registers for the click event on the global overlay
+            // so that the window hides in such case
+            __registerClick(matchedObject, options);
+
             // registers for the key event for the dismissal
             // of the window on the key press
             __registerKey(matchedObject, options);
@@ -19129,6 +19270,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         var _hide = function(matchedObject, options) {
             // retrieves the overlay element
             var overlay = jQuery(".overlay");
+
+            // unregisters from the click event on the global overlay
+            // so that the windows stop respoding from the event
+            __unregisterClick(matchedObject, options);
 
             // unregisters from the key event for the dismissal
             // of the window on the key press
@@ -19224,6 +19369,31 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
             // updates the window mask dots contents
             windowMaskDots.html(windowMaskDotsContents)
+        };
+
+        var __registerClick = function(matchedObject, options) {
+            // retrieves the overlay element and registers for
+            // the click event on it in order to hide the current
+            // window then stores it in the data element
+            var overlay = jQuery(".overlay");
+            var handler = function() {
+                var isHiddable = matchedObject.hasClass("window-hide");
+                if (!isHiddable) {
+                    return;
+                }
+                matchedObject.uxwindow("hide");
+            };
+            overlay.click(handler);
+            matchedObject.data("click_handler", handler);
+        };
+
+        var __unregisterClick = function(matchedObject, options) {
+            // retrieves the global overlay and the handle to the
+            // callback function then unbinds it from the click
+            // even on the overlay
+            var overlay = jQuery(".overlay");
+            var handle = matchedObject.data("click_handler");
+            overlay.unbind("click", handle);
         };
 
         var __registerKey = function(matchedObject, options) {
