@@ -4157,13 +4157,21 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         } : {};
         var _arguments = ["value", options];
 
+        // retrieves the correct fallback method to be used to
+        // retrieve (or set) the value according to its type
+        var valueF = matchedObject.is("input, textarea")
+                ? matchedObject.val
+                : matchedObject.text;
+
         // retrieves the object (type) for the currently
         // matched object then uses it to contruct the method
         // name to be used and uses it to retrieve the the
         // value for the component
         var object = matchedObject.attr("data-object");
         var method = matchedObject["ux" + object]
-        var value = method ? method.apply(matchedObject, _arguments) : null;
+        var value = method
+                ? method.apply(matchedObject, _arguments)
+                : valueF.apply(matchedObject, arguments);
 
         // returns the just retrived value from the component
         // to the caller method
@@ -6220,6 +6228,16 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // retrieves the element in order trigger
                         // the action operation
                         var element = jQuery(this);
+
+                        // verifies if the button is currently disabled
+                        // and in such cases prevents the propagation and
+                        // returns control immediately to the caller method
+                        var isDisabled = element.hasClass("disabled");
+                        if (isDisabled) {
+                            event.stopPropagation();
+                            event.stopImmediatePropagation();
+                            return;
+                        }
 
                         // checks if the current click is from a middle
                         // button and in such case sets the new window
@@ -12279,6 +12297,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             incrementalField.prepend("<div class=\"button minus\"></div>");
             incrementalField.append("<div class=\"button plus\"></div>");
 
+            // sets the ux global object representation as incremental
+            // field, this value may be used latter for fast ux
+            // object type access (hash based conditions)
+            incrementalField.attr("data-object", "incrementalfield");
+
             // removes the incremental field from the text field base element
             // and then add the text field class and registers it as a text field
             matchedObject.removeClass("incremental-field");
@@ -13071,6 +13094,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // visibility status is based on this flag
                         var isActive = menu.hasClass("active");
 
+                        // iterates over each of the other menu in order to be
+                        // able to inactivate their owners
+                        _menu.each(function(index, element) {
+                                    var _element = jQuery(this);
+                                    var owner = _element.data("owner");
+                                    owner && owner.removeClass("active");
+                                });
+
                         // removes the active class from the visible menus
                         // and hides the menu contents
                         _menu.removeClass("active");
@@ -13080,6 +13111,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // in case the menu already has the active class
                         // (the menu is shown)
                         if (isActive) {
+                            // tries to retrieve the current owner of the menu
+                            // contents and in case it exists removes the active
+                            // class from it
+                            var owner = menu.data("owner");
+                            owner && owner.removeClass("active");
+
                             // triggers the hide event handler on the
                             // on the menu and removes the active class
                             // from the same menu
@@ -13096,6 +13133,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         }
                         // otherwise the menu contents are probably hidden
                         else {
+                            // sets the owner of the menu contents as the current
+                            // element as it was the responsible for the show of
+                            // the contents
+                            menu.data("owner", element);
+                            element.addClass("active");
+
                             // triggers the show event handler on the
                             // on the menu and adds the active class
                             // into the same menu
@@ -13156,6 +13199,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         }
                         // otherwise the normal behavior applies (hidding)
                         else {
+                            // tries to retrieve the current owner of the menu
+                            // contents and in case it exists removes the active
+                            // class from it
+                            var owner = menu.data("owner");
+                            owner && owner.removeClass("active");
+
                             // removes the active class from the manu and
                             // then hides the menu contents
                             menu.removeClass("active");
@@ -16730,6 +16779,11 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // retrieves the element reference
                 var elementReference = jQuery(element);
 
+                // sets the ux global object representation as table
+                // this value may be used latter for fast ux
+                // object type access (hash based conditions)
+                elementReference.attr("data-object", "table");
+
                 // retrieves all the rows from the element reference
                 // and all the text fields associated with the element reference
                 var rows = jQuery("tbody > tr:not(.template)", elementReference);
@@ -17023,6 +17077,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             // triggers the removed line event, sends the removed
                             // line as an event argument, then returns immediately
                             table.triggerHandler("removed_line", [elementRow]);
+                            table.triggerHandler("value_change", [elementRow]);
                             return;
                         }
 
@@ -17033,8 +17088,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         lastRow.addClass("last");
 
                         // triggers the removed line event, sends the removed
-                        // line as an event argument
+                        // line as an event argument, then triggers the value change
+                        // event to indicate the changing in the "logical" value
                         table.triggerHandler("removed_line", [elementRow]);
+                        table.triggerHandler("value_change", [elementRow]);
                     });
 
             // registers for the click on the text field
@@ -17273,8 +17330,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             _registerLineHandlers(templateItem, options);
 
             // triggers the added line event, sends the created
-            // line as an event argument
+            // line as an event argument, the also triggers a value
+            // changed event to indicate the changing of the "logical value"
             matchedObject.triggerHandler("created_line", [templateItem]);
+            matchedObject.triggerHandler("value_change", [templateItem]);
 
             // returns the created line
             return templateItem;
@@ -17398,6 +17457,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         // switches over the method
         switch (method) {
             case "clear" :
+                // clears the table contents
+                _clear(matchedObject, options);
+
+                // breaks the switch
+                break;
+
+            case "reset" :
                 // clears the table contents
                 _clear(matchedObject, options);
 
@@ -18437,13 +18503,15 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // retrieves the data type for the matached object
                 // and uses it to create the (possible) format value
                 // retrieval method then calls it in case it exists
-                // otherwise uses the normal value
+                // otherwise uses the normal value, note that the method
+                // is not called in case the value is empty (nothing will
+                // be formatted for such case)
                 var type = matchedObject.attr("data-type");
                 var valueMethodName = "__fvalue" + type;
                 var hasMethod = __hasMethod(valueMethodName, matchedObject,
                         options);
-                var value = hasMethod ? __callMethod(valueMethodName,
-                        matchedObject, value) : value;
+                var value = hasMethod && value != "" ? __callMethod(
+                        valueMethodName, matchedObject, value) : value;
 
                 // sets the value in the attributes
                 matchedObject.attr("value", value);
