@@ -17781,7 +17781,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                 // retrieves the containing form
                 var parentForm = _element.parents("form");
 
-                // registers for the submit event
+                // registers for the submit event on the parent
+                // form, in order to be able to create the appropriate
+                // structures for proper submission
                 parentForm.submit(function() {
                             // retrieves the name of the element, this value is
                             // going to be used in the input element to be create
