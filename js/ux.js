@@ -4086,8 +4086,9 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return valueF;
     }
 })(jQuery);
+
 (function($) {
-    jQuery.fn.uxfint = function() {
+    jQuery.fn.uxint = function() {
         // sets the jquery matched object
         var matchedObject = this;
 
@@ -4097,13 +4098,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         // in case it failed default to a zero value
         var value = matchedObject.uxvalue();
         var valueI = parseInt(value);
-        valueI = isNaN(valueI) ? 0 : valueF;
+        valueI = isNaN(valueI) ? 0 : valueI;
 
         // returns the value that was retrieved and converted
         // into a integer value
         return valueI;
     }
 })(jQuery);
+
 (function($) {
     jQuery.fn.uxprint = function(method, options) {
         // the default values for the enable
