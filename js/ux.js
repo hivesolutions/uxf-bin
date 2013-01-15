@@ -459,6 +459,7 @@
             // for the processing of the "remote" query
             var url = element.data("url");
             var data = element.data("data");
+            var cacheD = element.data("cache_d");
 
             // adds the id (part) to the url (in case
             // it's necessary)
@@ -540,7 +541,8 @@
                     query[key] = data[key];
                 }
 
-                // executes the remote ajax call
+                // executes the remote ajax call, with the provided
+                // query and for the defined url
                 jQuery.ajax({
                             url : url,
                             dataType : "text",
@@ -603,9 +605,10 @@
 
                                 // retrieves the current cache structure and updates
                                 // it with the newly found item, indexing it by the
-                                // (representing) query hash value
+                                // (representing) query hash value, note that if the
+                                // cache disable flag is set no value is set in cache
                                 var cache = matchedObject.data("cache");
-                                cache[queryHash] = {
+                                cache[queryHash] = cacheD ? null : {
                                     validItems : validItems,
                                     moreItems : moreItems,
                                     extraItems : extraItems
@@ -661,7 +664,6 @@
         return this;
     };
 })(jQuery);
-
 (function($) {
     jQuery.fn.uxdataquerylocal = function(query, callback, options) {
         // the default values for the data query local
@@ -1202,12 +1204,15 @@
         };
 
         var _updateQueryElement = function(element, options) {
-            // retrieves the url for the element
+            // retrieves the various attributes that are
+            // going to be used for configuration
             var url = element.attr("data-url")
+            var cacheDisable = element.attr("data-cache_disable")
 
             // updates the element data
             element.data("type", "json");
             element.data("url", url);
+            element.data("cache_d", cacheDisable);
             element.data("data", {});
             element.data("cache", {});
         };
@@ -1219,7 +1224,6 @@
         return this;
     };
 })(jQuery);
-
 (function($) {
     jQuery.fn.uxdatasourcelocal = function(options) {
         // the default values for the data source local
@@ -4071,10 +4075,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 })(jQuery);
 
 (function($) {
-    jQuery.fn.uxfields = function() {
+    jQuery.fn.uxfields = function(nested) {
         // returns the complete set of fields (valid fields)
-        // for the provided context
-        return jQuery("[data-object]", this)
+        // for the provided context, note that in case the
+        // nested flag is not set and a field is contained
+        // inside a valid parent field it's filtered
+        var fields = jQuery("[data-object]", this);
+        fields = nested ? fields : fields.not(":parents([data-object])");
+        return fields;
     }
 })(jQuery);
 
