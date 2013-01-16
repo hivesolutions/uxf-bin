@@ -664,6 +664,7 @@
         return this;
     };
 })(jQuery);
+
 (function($) {
     jQuery.fn.uxdataquerylocal = function(query, callback, options) {
         // the default values for the data query local
@@ -1224,6 +1225,7 @@
         return this;
     };
 })(jQuery);
+
 (function($) {
     jQuery.fn.uxdatasourcelocal = function(options) {
         // the default values for the data source local
@@ -8091,10 +8093,19 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                             // retrieves the cache map from the drop field and
                             // tries to find the cache item for the unique identifier
-                            // in case it's found adds the item to the drop field
-                            // contents and continues the loop immediately
+                            // in case it's found validates it so that the data contained
+                            // in it matches the one cached in such case (valid case)
+                            // adds the item to the drop field contents and continues
+                            // the loop immediately (no layout rendering)
                             var cacheItem = cache[uniqueId];
-                            if (cacheItem) {
+                            var cachedData = cacheItem ? cacheItem.data : null;
+                            var cacheValid = cachedData ? Object.equals(
+                                    cachedData, currentItem) : false;
+                            if (cacheItem && cacheValid) {
+                                // sets the cache item as the inner item contained
+                                // in the cache item (layout element)
+                                cacheItem = cacheItem.item;
+
                                 // sets the current item in the cache item data
                                 // so that it can be used for latter template rendering
                                 cacheItem.data("item", currentItem);
@@ -8199,7 +8210,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                             // to provide cache for the visual element
                             // only in case the unique id is valid (set)
                             if (uniqueId) {
-                                cache[uniqueId] = templateItem;
+                                cache[uniqueId] = {
+                                    item : templateItem,
+                                    data : currentItem
+                                }
                             }
 
                             // adds the template item item to the
@@ -10007,10 +10021,18 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                             // retrieves the cache map from the filter and
                             // tries to find the cache item for the unique identifier
-                            // in case it's found sets the template item as the cached
-                            // item (cache match usage)
+                            // validates it so that the data contained in it matches
+                            // the one cached in such case sets the template item as
+                            // the cached item (cache match usage)
                             var cacheItem = cache[uniqueId];
-                            if (cacheItem) {
+                            var cachedData = cacheItem ? cacheItem.data : null;
+                            var cacheValid = cachedData ? Object.equals(
+                                    cachedData, currentItem) : false;
+                            if (cacheItem && cacheValid) {
+                                // sets the item contained in the cache item as
+                                // the current cache item (layout item reference)
+                                cacheItem = cacheItem.item;
+
                                 // sets the template item as the curreently cached
                                 // item so that no construction occurs then removes
                                 // the selection classes from it (avoiding possible
@@ -10030,7 +10052,10 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                                 var templateItem = template.uxtemplate(element,
                                         options);
                                 if (uniqueId) {
-                                    cache[uniqueId] = templateItem;
+                                    cache[uniqueId] = {
+                                        item : templateItem,
+                                        data : element
+                                    }
                                 }
                             }
 
