@@ -397,7 +397,7 @@
             // appropriate comparision operations
             switch (type) {
                 case "object" :
-                    if (!Object.equals(valueF, valueS)) {
+                    if (!jQuery.uxequals(valueF, valueS)) {
                         return false;
                     }
 

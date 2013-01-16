@@ -2,7 +2,7 @@
 return false;}
 for(element in second){valueF=first[element];if(valueF!==undefined){continue;}
 return false;}
-for(element in first){valueF=first[element];valueS=second[element];type=typeof(valueF);switch(type){case"object":if(!Object.equals(valueF,valueS)){return false;}
+for(element in first){valueF=first[element];valueS=second[element];type=typeof(valueF);switch(type){case"object":if(!jQuery.uxequals(valueF,valueS)){return false;}
 break;default:if(valueF!==valueS){return false;}
 break;}}
 return true;};})(jQuery);(function($){jQuery.fn.uxdataqueryjson=function(query,callback,options){var DEFAULT_TIMEOUT=250;var defaults={};var options=options?options:{};var options=jQuery.extend(defaults,options);var matchedObject=this;var initialize=function(){_appendHtml();_registerHandlers();};var _appendHtml=function(){};var _registerHandlers=function(){matchedObject.each(function(index,element){var _element=jQuery(element);_getResults(_element,query,callback);});};var _getResults=function(element,query,callback){var id=query["id"];var filterString=query["filterString"];var sort=query["sort"]||["default","descending"];var filters=query["filters"]||[];var startRecord=query["startRecord"];var numberRecords=query["numberRecords"];var sortValue=sort?sort[0]:null;var sortOrder=sort?sort[1]:null;var sortString=sort?sortValue+":"+sortOrder:null;var _filters=[];for(var index=0;index<filters.length;index++){var filter=filters[index];var attribute=filter[0];var operation=filter[1];var value=filter[2];var isSequence=typeof value=="object";if(isSequence){value=value.join(";")}
