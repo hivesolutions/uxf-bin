@@ -12642,6 +12642,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return this;
     };
 })(jQuery);
+
 (function($) {
     jQuery.fn.uxinfo = function(message, title, type, callback, options) {
         // the default values for the alert
@@ -19541,6 +19542,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         // and in case it's ignores the click event, returning
                         // immediately the control to the caller method
                         var isDisabled = textField.hasClass("disabled");
+                        isDisabled = isDisabled || element.hasClass("disabled");
                         if (isDisabled) {
                             return;
                         }
@@ -19659,6 +19661,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return this;
     };
 })(jQuery);
+
 /**
  * jQuery window plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a window component.
