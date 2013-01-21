@@ -12512,8 +12512,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                         // retrieves the incremental field associated with
                         // the current element and uses it to decrement the field
+                        // note that the text field is focused while the operation
+                        // is done this ensures total text field "emulation"
                         var incrementalField = element.parents(".incremental-field");
+                        var textField = jQuery(".text-field", incrementalField);
+                        textField.focus();
                         __decrement(incrementalField, options);
+                        textField.blur();
                     });
 
             // registers for the click event on the plus button
@@ -12523,8 +12528,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
                         // retrieves the incremental field associated with
                         // the current element and uses it to increment the field
+                        // note that the text field is focused while the operation
+                        // is done this ensures total text field "emulation"
                         var incrementalField = element.parents(".incremental-field");
+                        var textField = jQuery(".text-field", incrementalField);
+                        textField.focus();
                         __increment(incrementalField, options);
+                        textField.blur();
                     });
 
             // binds the incremental field do the enabled event
@@ -12632,7 +12642,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return this;
     };
 })(jQuery);
-
 (function($) {
     jQuery.fn.uxinfo = function(message, title, type, callback, options) {
         // the default values for the alert
@@ -19542,9 +19551,13 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                         var index = toggleField.data("index");
 
                         // calculates the new mode index value and sets it in
-                        // the (parent) toggle field
+                        // the (parent) toggle field, note that the text field
+                        // is focused while the operation is done this ensures
+                        // total text field "emulation"
                         var _index = index == modes.length - 1 ? 0 : index + 1;
+                        textField.focus();
                         _setMode(toggleField, options, _index);
+                        textField.blur();
                     });
 
             // binds the toggle field do the enabled event
@@ -19646,7 +19659,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return this;
     };
 })(jQuery);
-
 /**
  * jQuery window plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a window component.
