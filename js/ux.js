@@ -19578,6 +19578,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
                     });
         };
 
+        var _reset = function(matchedObject, options) {
+            // sets the mode to the oginal zero based index
+            // so that the original mode is set
+            _setMode(matchedObject, options, 0);
+        };
+
         var _setMode = function(matchedObject, options, index) {
             // retrieves the complete set of modes for the current
             // matched object and in case none is set returns immediately
@@ -19620,6 +19626,14 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
 
         // switches over the method
         switch (method) {
+            case "reset" :
+                // resets the matched object to the value
+                // in the current state
+                _reset(matchedObject, options);
+
+                // breaks the switch
+                break;
+
             case "default" :
                 // initializes the plugin
                 initialize();
