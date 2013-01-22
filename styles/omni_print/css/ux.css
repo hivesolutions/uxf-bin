@@ -29,13 +29,9 @@
  __license__   = GNU General Public License (GPL), Version 3
 */
 
-.omni-print-style .field-set {
-    margin-left: 32px;
-}
-
 .omni-print-style .field {
     margin-bottom: 22px;
-    width: 300px;
+    width: 340px;
 }
 
 .omni-print-style .field label {
@@ -47,10 +43,6 @@
 .omni-print-style .field div {
     font-size: 18px;
     margin-top: 4px;
-}
-
-.omni-print-style.small .field-set {
-    margin-left: 0px;
 }
 
 .omni-print-style.small .field {
@@ -93,6 +85,7 @@
     width: 180px;
 }
 
+
 .omni-print-style .table {
     border-collapse: collapse;
     text-align: center;
@@ -101,12 +94,11 @@
 
 .omni-print-style .table td,
 .omni-print-style .table th {
-    padding: 3px 10px 3px 10px;
+    padding: 3px 0px 3px 0px;
 }
 
 .omni-print-style .table thead th {
-    border-bottom: 1px solid #dddddd;
-    border-left: 1px solid #dddddd;
+    border-bottom: 2px solid #4d4d4d;
     color: #484848;
     font-size: 14px;
     font-weight: bold;
@@ -120,16 +112,11 @@
 }
 
 .omni-print-style .table tbody td {
-    border-left: 1px solid #dddddd;
+    border-bottom: 1px solid #aaaaaa;
     color: #444444; ;
     font-size: 14px;
     font-weight: normal;
     line-height: 24px;
-}
-
-.omni-print-style.small .table td,
-.omni-print-style.small .table th {
-    padding: 3px 0px 3px 0px;
 }
 
 .omni-print-style.small .table thead th {
