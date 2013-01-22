@@ -432,6 +432,14 @@
 })(jQuery);
 
 (function($) {
+    jQuery.uxexception = function(message) {
+        return {
+            message : message
+        }
+    };
+})(jQuery);
+
+(function($) {
     jQuery.fn.uxdataqueryjson = function(query, callback, options) {
         // the default timeout to be used in the request
         // (this value is used to delay the request)
