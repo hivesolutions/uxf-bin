@@ -432,6 +432,14 @@
 })(jQuery);
 
 (function($) {
+    jQuery.uxerror = function(message) {
+        return {
+            message : message
+        }
+    };
+})(jQuery);
+
+(function($) {
     jQuery.uxexception = function(message) {
         return {
             message : message
