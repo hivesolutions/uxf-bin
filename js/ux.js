@@ -432,7 +432,7 @@
 })(jQuery);
 
 (function($) {
-    jQuery.uxerror = function(message) {
+    jQuery.uxruntimeerror = function(message) {
         return {
             message : message
         }
