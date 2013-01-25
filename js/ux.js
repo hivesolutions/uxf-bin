@@ -12711,8 +12711,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // field then retrieves the current value of it and converts
             // it into a float representation
             var textField = jQuery(".text-field", incrementalField);
-            var textFieldValue = textField.attr("value");
-            var floatvalue = parseFloat(textFieldValue);
+            var floatvalue = textField.uxfloat()
 
             // checks if the incremental field to verify that the
             // incremental field is not disabled, in case it is
@@ -12735,8 +12734,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // field then retrieves the current value of it and converts
             // it into a float representation
             var textField = jQuery(".text-field", incrementalField);
-            var textFieldValue = textField.attr("value");
-            var floatvalue = parseFloat(textFieldValue);
+            var floatvalue = textField.uxfloat();
 
             // retrieves the data type for associated with the text field
             // for the incremental field (non natural validation)
@@ -12753,7 +12751,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             // in case the current text field is of data type natural
             // (negative numbers not allowed) and the value is zero or
             // less no changes are done
-            if (type == "natural" && floatvalue <= 0) {
+            if ((type == "natural" || type == "floatp") && floatvalue <= 0) {
                 // returns immediately (avoids changing the value)
                 return;
             }
@@ -12780,7 +12778,6 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return this;
     };
 })(jQuery);
-
 (function($) {
     jQuery.fn.uxinfo = function(message, title, type, callback, options) {
         // the default values for the alert
