@@ -12778,6 +12778,7 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
         return this;
     };
 })(jQuery);
+
 (function($) {
     jQuery.fn.uxinfo = function(message, title, type, callback, options) {
         // the default values for the alert
@@ -20055,11 +20056,12 @@ jQuery.uxvisible = function(element, offset, delta, parent) {
             var fields = matchedObject.uxfields()
             var first = jQuery(fields[0]);
 
-            // focus the first field in the form and then resets
-            // the complete set of fields in the form to their
-            // original values (form reset operation)
-            first.uxfocus();
+            // resets the complete set of form fields and then
+            // focus the control on the first field of the window
+            // form, providing a rapid interaction scheme for
+            // the end user (form reset operation)
             fields.uxreset();
+            first.uxfocus();
         };
 
         var __updateDots = function(matchedObject, options) {
