@@ -20,7 +20,7 @@
 // __copyright__ = Copyright (c) 2010-2012 Hive Solutions Lda.
 // __license__   = Hive Solutions Confidential Usage License (HSCUL)
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxapply = function(options) {
         // the default values for the apply
         var defaults = {};
@@ -292,7 +292,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatapivot = function(query, callback, options) {
         // the value to be used as the maximum (overflow) value
         // for the width of the pivot column.
@@ -351,7 +351,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatawidth = function(query, callback, options) {
         // the default values for the data query json
         var defaults = {};
@@ -407,7 +407,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.uxclone = function(value) {
         // in case the provided value is not valid or
         // in case it's not an object returns the same
@@ -440,7 +440,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.uxequals = function(first, second) {
         // allocates space for the variables that will be
         // used to store the temporary values, no multiple
@@ -525,7 +525,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.uxruntimeerror = function(message) {
         return {
             message : message
@@ -533,7 +533,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.uxexception = function(message) {
         return {
             message : message
@@ -541,7 +541,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.uxround = function(value, decimalPlaces) {
         // rounds the specified value to the
         // specified number of decimal places
@@ -550,7 +550,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdataqueryjson = function(query, callback, options) {
         // the default timeout to be used in the request
         // (this value is used to delay the request)
@@ -871,7 +871,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdataquerylocal = function(query, callback, options) {
         // the default values for the data query local
         var defaults = {};
@@ -1057,7 +1057,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdataquery = function(query, callback, options) {
         // the default values for the data query
         var defaults = {};
@@ -1120,7 +1120,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatasourcecountries = function(options) {
         // the set of countries to be used
         var COUNTRIES = ["Afghanistan", "Albania", "Algeria", "Andorra",
@@ -1219,7 +1219,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatasourcegenders = function(options) {
         // the set of genders to be used
         var GENDERS = ["Male", "Female"];
@@ -1276,7 +1276,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatasourceitems = function(options) {
         // the default values for the data source local
         var defaults = {};
@@ -1367,7 +1367,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatasourcejson = function(options) {
         // the default values for the data source json
         var defaults = {};
@@ -1432,7 +1432,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatasourcelocal = function(options) {
         // the default values for the data source local
         var defaults = {};
@@ -1569,7 +1569,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatasource = function(options) {
         // the default values for the data source
         var defaults = {};
@@ -1642,7 +1642,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxsource = function(query, callback, options) {
         // the default values for the data query json
         var defaults = {};
@@ -1753,7 +1753,7 @@
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxerror = function(method, options) {
         // the regex for string character regex,
         // for string replacement
@@ -1869,7 +1869,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     return jQuery(a).parents(m[3]).length > 0;
 };
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxvideo = function(options) {
         // the map for the youtube
         // base addresses
@@ -2164,7 +2164,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxg = function(strict) {
         // the name of the gateway plugin, should not
         // change during the timeline
@@ -2243,7 +2243,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxgateway = function(options) {
         // the name of the gateway plugin, should not
         // change during the timeline
@@ -2346,7 +2346,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxgprint = function(method, options) {
         // the default values for the print
         var defaults = {};
@@ -2496,7 +2496,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxgprintpdf = function(gateway, data) {
         // retrieves the complete set of device specifications
         // for the current system and sets the intial value of
@@ -2528,7 +2528,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxchart = function(query, callback, options) {
         // the default values for the data query json
         var defaults = {};
@@ -2649,7 +2649,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.uxctrl = function(keycode, callback, arguments) {
         // retrieves the document element
         var _document = jQuery(document);
@@ -2677,7 +2677,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxkey = function(element, options) {
         // the default values for the key
         var defaults = {};
@@ -2779,7 +2779,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxscan = function(element, options) {
         // the ammount of time to considered between letter sending any letter
         // sending in bettwen this value is discarded, This value should be
@@ -3083,7 +3083,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxshortcuts = function(element, options) {
         // the default values for the shortcuts
         var defaults = {};
@@ -3179,7 +3179,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxcenter = function(topOffset, leftOffset, useMargin, avoidTop, avoidLeft) {
         // sets the jquery matched object
         var matchedObject = this;
@@ -3257,7 +3257,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxreplacer = function(options) {
         // the default values for the replacer
         var defaults = {};
@@ -3349,7 +3349,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxcursor = function(position) {
         // the default values for the next
         var defaults = {};
@@ -3392,7 +3392,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxfocus = function(options) {
         // the default values for the next
         var defaults = {};
@@ -3467,7 +3467,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxnext = function(options) {
         // the default values for the next
         var defaults = {};
@@ -3527,7 +3527,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxprevious = function(options) {
         // the default values for the previous
         var defaults = {};
@@ -3882,7 +3882,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.uxvisible = function(element, offset, delta, parent) {
         // retreives the offset value, talking into
         // acccount the default value
@@ -3938,7 +3938,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxscroll = function(options) {
         // the default values for the scrill
         var defaults = {
@@ -4050,7 +4050,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxattr = function(attrName, attrNameTarget) {
         // sets the jquery matched object
         var matchedObject = this;
@@ -4074,7 +4074,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     }
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxbrowser = function(options) {
         // the data browser values
         var DATA_BROWSER = [{
@@ -4236,7 +4236,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdisable = function(options) {
         // the default values for the disable
         var defaults = {};
@@ -4295,7 +4295,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxenable = function(method, options) {
         // the default values for the enable
         var defaults = {};
@@ -4354,7 +4354,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxfields = function(nested) {
         // returns the complete set of fields (valid fields)
         // for the provided context, note that in case the
@@ -4366,7 +4366,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     }
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxfloat = function() {
         // sets the jquery matched object
         var matchedObject = this;
@@ -4385,7 +4385,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     }
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxint = function() {
         // sets the jquery matched object
         var matchedObject = this;
@@ -4404,7 +4404,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     }
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxprint = function(method, options) {
         // the default values for the enable
         var defaults = {};
@@ -4456,7 +4456,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxreset = function() {
         // sets the jquery matched object
         var matchedObject = this;
@@ -4480,7 +4480,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     }
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxvalue = function() {
         // sets the jquery matched object
         var matchedObject = this;
@@ -4515,7 +4515,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     }
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdatetime = function(options) {
         // the default values for the name change
         var defaults = {};
@@ -4605,7 +4605,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxenumeration = function(options) {
         // the regex for string character regex,
         // for string replacement
@@ -4685,7 +4685,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxnumber = function(options) {
         // the default values for the name change
         var defaults = {};
@@ -4831,7 +4831,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxtemplate = function(attributes, options) {
         // the default values for the template
         var defaults = {};
@@ -5058,7 +5058,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxtimestamp = function(method, options) {
         // the various regex values for the time
         // date format part replacement
@@ -5267,7 +5267,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxwiki = function(message, options) {
         // the default values for the wiki
         var defaults = {};
@@ -5329,7 +5329,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxtransformflip = function(element, options) {
         // the default values for the transform flip
         var defaults = {};
@@ -5392,7 +5392,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxalert = function(message, callback, options) {
         // the default values for the alert
         var defaults = {};
@@ -5482,7 +5482,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxbreadcrumbs = function(method, options) {
         // the default values for the window
         var defaults = {};
@@ -6175,7 +6175,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxchanger = function(path, callback, options) {
         // the default timeout to be used in the changer
         var DEFAULT_TIMEOUT = 1000;
@@ -6763,7 +6763,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxconfirm = function(message, callback, options) {
         // the default values for the confirm
         var defaults = {};
@@ -6856,7 +6856,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxcontentchanger = function(path, callback, options) {
         // the default timeout to be used in the changer
         var DEFAULT_TIMEOUT = 1000;
@@ -6995,7 +6995,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxcrosslist = function(method, options) {
         // the default values for the panel
         var defaults = {};
@@ -8983,7 +8983,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxdroptag = function(method, options) {
         // the default values for the data query json
         var defaults = {};
@@ -9240,7 +9240,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxfiledrop = function(options) {
         // the default values for the plugin
         var defaults = {};
@@ -9341,7 +9341,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxfilter = function(options) {
         // the default values for the filter
         var defaults = {
@@ -11952,7 +11952,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxheadernotification = function(options) {
         // the default values for the plugin
         var defaults = {};
@@ -12026,7 +12026,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxform = function(options) {
         // the default values for the form
         var defaults = {};
@@ -12266,7 +12266,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxhightlightbox = function(options) {
         // the default values for the data source
         var defaults = {};
@@ -12311,7 +12311,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxhoveringbox = function(options) {
         // the default values for the hovering box
         var defaults = {};
@@ -12512,7 +12512,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uximageupload = function(element, options) {
         // the default values for the image upload
         var defaults = {};
@@ -12897,7 +12897,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxinfo = function(message, title, type, callback, options) {
         // the default values for the alert
         var defaults = {};
@@ -12967,7 +12967,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxlightbox = function(path, callback, options) {
         // the default values for the alert
         var defaults = {};
@@ -13075,7 +13075,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxlinkconfirm = function(message, options) {
         // the default values for the link confirm
         var defaults = {};
@@ -13153,7 +13153,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxlink = function(options) {
         // the default values for the link confirm
         var defaults = {};
@@ -13273,7 +13273,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxlist = function(options) {
         // the default values for the link confirm
         var defaults = {};
@@ -13464,7 +13464,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxmenulink = function(method, options) {
         // the default values for the eval
         var defaults = {};
@@ -13770,7 +13770,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxnotification = function(options) {
         // the default values for the notification
         var defaults = {
@@ -13855,7 +13855,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxoverlaypanel = function(options) {
         // the default values for the plugin
         var defaults = {};
@@ -14040,7 +14040,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxoverlaysearch = function(options) {
         // the default values for the plugin
         var defaults = {};
@@ -14131,7 +14131,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxoverlay = function(options) {
         // the default values for the overlay
         var defaults = {};
@@ -14255,7 +14255,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxpanelmore = function(options) {
         // the default values for the panel
         var defaults = {};
@@ -14368,7 +14368,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxpanelstack = function(method, options) {
         // the default values for the panel
         var defaults = {};
@@ -14542,7 +14542,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxpanel = function(method, options) {
         // the default values for the panel
         var defaults = {};
@@ -14660,7 +14660,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxpasswordmeter = function(options) {
         // the various regex values for password
         // strength validation
@@ -14836,7 +14836,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxprogressbar = function(method, options) {
         // the default values for the progress bar
         var defaults = {};
@@ -15069,7 +15069,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxscrolllist = function(options) {
         // the default values for the data query json
         var defaults = {};
@@ -15378,7 +15378,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxselectlist = function(method, options) {
         // the default values for the panel
         var defaults = {};
@@ -15834,7 +15834,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxsliderbar = function(method, options) {
         // the default values for the panel
         var defaults = {};
@@ -16342,7 +16342,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxslideshow = function(options) {
         // the default values for the data query json
         var defaults = {};
@@ -16605,7 +16605,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxsourcelist = function(method, options) {
         // the default values for the panel
         var defaults = {};
@@ -17932,7 +17932,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxuploader = function(options) {
         // the default values for the data query json
         var defaults = {};
@@ -18079,7 +18079,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxtagfield = function(method, options) {
         // the default values for the panel
         var defaults = {};
@@ -19935,7 +19935,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxwindow = function(method, options) {
         // the default values for the window
         var defaults = {};
@@ -20342,7 +20342,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxwizard = function(method, options) {
         // the default values for the window
         var defaults = {};
@@ -20640,7 +20640,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxeval = function(element, options) {
         // the defaut timeout for eval
         var DEFAULT_TIMEOUT = 1000;
@@ -20882,7 +20882,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxnamechange = function(options) {
         // the default values for the name change
         var defaults = {};
@@ -20974,7 +20974,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
     };
 })(jQuery);
 
-(function($) {
+(function(jQuery) {
     jQuery.fn.uxwidth = function() {
         // sets the jquery matched object
         var matchedObject = this;
