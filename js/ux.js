@@ -57,6 +57,7 @@
             // retrieves the various elements based on their attribute
             // values (attribute based selection)
             var dataWidth = jQuery("[data-width]", matchedObject).not(".template [data-width]");
+            var dataPivot = jQuery("[data-pivot]", matchedObject).not(".template [data-pivot]");
             var dataDisabled = jQuery("[data-disabled]", matchedObject).not(".template [data-disabled]");
 
             // retrieves the various elements
@@ -145,6 +146,7 @@
 
             // applies the various attribute base plugins
             dataWidth.uxdatawidth();
+            dataPivot.uxdatapivot();
 
             // applies the scan plugin (must have register priority)
             scan.uxscan();
