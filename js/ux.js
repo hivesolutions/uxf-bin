@@ -10154,8 +10154,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
                         // retrieves the top offset of the page, using
                         // the margin element (from the margin top)
                         var margin = jQuery(".margin");
-                        var marginOffset = margin.offset();
-                        var pageOffset = marginOffset ? marginOffset.top : 0;
+                        var pageOffset = margin.outerHeight(true);
 
                         // retrieves the filter more element height as the
                         // delta value for the visibility testing this way
@@ -11105,8 +11104,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
             var margin = jQuery(".margin");
-            var marginOffset = margin.offset();
-            var pageOffset = marginOffset ? marginOffset.top : 0;
+            var pageOffset = margin.outerHeight(true);
 
             // tries to retrieve the dom element
             var _element = selectedListItem.get(0);
@@ -11177,8 +11175,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
             var margin = jQuery(".margin");
-            var marginOffset = margin.offset();
-            var pageOffset = marginOffset ? marginOffset.top : 0;
+            var pageOffset = margin.outerHeight(true);
 
             // in case the current first element is the pivot
             // need to use the last value as reference
@@ -11259,8 +11256,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
             var margin = jQuery(".margin");
-            var marginOffset = margin.offset();
-            var pageOffset = marginOffset ? marginOffset.top : 0;
+            var pageOffset = margin.outerHeight(true);
 
             // in case the current last element is the pivot
             // need to use the first value as reference
@@ -11306,8 +11302,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
             var margin = jQuery(".margin");
-            var marginOffset = margin.offset();
-            var pageOffset = marginOffset ? marginOffset.top : 0;
+            var pageOffset = margin.outerHeight(true);
 
             // retrieves the first item as the reference one
             var item = jQuery(selectedListItem[0]);
@@ -11359,8 +11354,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
             var margin = jQuery(".margin");
-            var marginOffset = margin.offset();
-            var pageOffset = marginOffset ? marginOffset.top : 0;
+            var pageOffset = margin.outerHeight(true);
 
             // retrieves the last item as the reference one
             var item = jQuery(selectedListItem[selectedListItem.length - 1]);
