@@ -556,6 +556,11 @@
         // (this value is used to delay the request)
         var DEFAULT_TIMEOUT = 250;
 
+        // the default value to be used when no number of
+        // records field is defined (should be a very large
+        // value) so that all the records are retrieved
+        var MAX_RECORDS = 100000000;
+
         // the default values for the data query json
         var defaults = {};
 
@@ -614,8 +619,8 @@
             var filters = query["filters"] || [];
 
             // retrieves the record count information
-            var startRecord = query["startRecord"];
-            var numberRecords = query["numberRecords"];
+            var startRecord = query["startRecord"] || 0;
+            var numberRecords = query["numberRecords"] || MAX_RECORDS;
 
             // unpacks the sort value and the sort oder from the
             // sort tuple and uses them to create the "final" sort
@@ -873,6 +878,11 @@
 
 (function(jQuery) {
     jQuery.fn.uxdataquerylocal = function(query, callback, options) {
+        // the default value to be used when no number of
+        // records field is defined (should be a very large
+        // value) so that all the records are retrieved
+        var MAX_RECORDS = 100000000;
+
         // the default values for the data query local
         var defaults = {};
 
@@ -924,8 +934,8 @@
             var filterAttributes = query["filterAttributes"];
 
             // retrieves the record count information
-            var startRecord = query["startRecord"];
-            var numberRecords = query["numberRecords"];
+            var startRecord = query["startRecord"] || 0;
+            var numberRecords = query["numberRecords"] || MAX_RECORDS;
 
             // sets the initial filter flag value
             var filter = false;
@@ -8356,7 +8366,8 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // nullifies the number of options in case it's necessary
             numberOptions = filterOptions ? numberOptions : null;
 
-            // runs the query in the data source
+            // runs the query in the data source, this should be
+            // redirected to the proper data source handler
             dataSource.uxdataquery({
                         filterString : filterString,
                         filterAttributes : filterAttributes,
@@ -10357,6 +10368,10 @@ jQuery.expr[":"].parents = function(a, i, m) {
                         // retrieves the valid items length
                         var validItemsLength = validItems.length;
 
+                        // creates the list that will hold the complete set of elements
+                        // resulting from the apply of the template
+                        var templateItems = [];
+
                         // iterates over all the valid items to create
                         // proper elements
                         _validItems.each(function(index, element) {
@@ -10426,7 +10441,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
                             // removes the filter element class from the template item,
                             // then adds it to the filter contents
                             templateItem.addClass("filter-element");
-                            filterContents.append(templateItem);
+                            templateItems.push(templateItem[0]);
 
                             // registers the template item for the click event
                             // to select the template item in case a click happens
@@ -10531,6 +10546,10 @@ jQuery.expr[":"].parents = function(a, i, m) {
                                         _select(templateItem, filter, options);
                                     });
                         });
+
+                        // adds the complete set of generated template items to the
+                        // contents of the current filter
+                        filterContents.append(templateItems);
 
                         // in case there are no items to be shown
                         if (validItemsLength > 0) {
