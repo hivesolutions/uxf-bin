@@ -50,6 +50,14 @@
             // retrieves the body
             var _body = jQuery("body");
 
+            // retrieves the complete set of template elements and applies
+            // the attribute name obfuscation in each of them so that the
+            // attributes do not "collide" creating unwanted behavior
+            var template = jQuery(".template", matchedObject);
+            template.uxattr("name", "data-name");
+            template.uxattr("class", "data-class");
+            template.uxattr("src", "data-src");
+
             // retrieves the meta source element to be started in the
             // first state of the apply (going to create functions)
             var source = jQuery(".source", matchedObject).not(".template .source");
@@ -4065,21 +4073,23 @@ jQuery.expr[":"].parents = function(a, i, m) {
         // sets the jquery matched object
         var matchedObject = this;
 
-        // creates the attribute selector
+        // creates the attribute selector and uses it to retrieve
+        // only the elements that have the requested attribute set
         var attributeSelector = "[" + attrName + "]";
-
-        // retrieves the elements that contain the attribute
         var attributeElements = jQuery(attributeSelector, matchedObject);
 
         // iterates over all the attribute elements
         attributeElements.each(function(index, element) {
                     // retrieves the current attribute element
-                    var attributeElement = jQuery(element);
+                    var _element = jQuery(element);
 
                     // retrieves the attribute and re-sets it
-                    // under the "new" attribute name
-                    var attribute = attributeElement.attr(attrName);
-                    attributeElement.attr(attrNameTarget, attribute);
+                    // under the "new" attribute name, then remove
+                    // the old attribute name from the element, should
+                    // avoid possible collisions
+                    var attribute = _element.attr(attrName);
+                    _element.attr(attrNameTarget, attribute);
+                    _element.removeAttr(attrName);
                 });
     }
 })(jQuery);
@@ -4447,7 +4457,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
                 return;
             }
 
-            // pritns the current document
+            // prints the current document
             // to the printer
             window.print();
         };
@@ -4907,6 +4917,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // re-sets the the "obfuscated" name and src
             // attributes to the original form
             templateElement.uxattr("data-name", "name");
+            templateElement.uxattr("data-class", "class");
             templateElement.uxattr("data-src", "src");
 
             // returns the template element (cloned element)
