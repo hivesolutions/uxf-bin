@@ -231,7 +231,7 @@ body.wait-load {
     top: 0px;
 }
 
-.panel-more .panel-more-contents {
+.panel-more > .panel-more-contents {
     display: none;
 }
 
