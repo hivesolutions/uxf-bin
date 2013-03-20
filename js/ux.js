@@ -17570,10 +17570,12 @@ jQuery.expr[":"].parents = function(a, i, m) {
                         // rertrieves the current element (text field)
                         var element = jQuery(this);
 
-                        // retrieves the cell and the row associated
-                        // with the text field
+                        // retrieves the cell, the row associated with
+                        // the text field and the complete set of cells
+                        // considered to be valid (not hidden)
                         var cell = element.parents("td");
                         var row = element.parents("tr");
+                        var cells = jQuery("td:not(.hidden)", row);
 
                         // retrieves both the next cell and the next row for
                         // the text field
@@ -17582,9 +17584,9 @@ jQuery.expr[":"].parents = function(a, i, m) {
 
                         // retrieves the current index for the cell and then uses
                         // it to retrieve the equivalent cell in the next row
-                        var cellIndex = cell.index();
-                        var nextRowCell = jQuery("td:eq(" + cellIndex + ")",
-                                nextRow);
+                        var cellIndex = cells.index(cell);
+                        var nextRowCell = jQuery("td:not(.hidden):eq("
+                                        + cellIndex + ")", nextRow);
 
                         // adds the next horizontal and next vertical classes to the
                         // next cell and to the next row equivalent cell
