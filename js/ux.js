@@ -5444,6 +5444,17 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var _appendHtml = function() {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
+            if (window.length == 0) {
+                window = jQuery("<div class=\"window window-alert window-hide\">"
+                        + "<h1></h1>"
+                        + "<p class=\"single\"></p>"
+                        + "<div class=\"window-buttons\">"
+                        + "<span class=\"button button-cancel\">Cancel</span>"
+                        + "<span class=\"button button-confirm\">Confirm</span>"
+                        + "</div>");
+                window.uxwindow();
+                matchedObject.append(window);
+            }
             var windowHeader = jQuery("h1", window);
             var windowContents = jQuery("p", window);
             var windowButtonCancel = jQuery(".button-cancel", window);
@@ -5467,6 +5478,17 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var _registerHandlers = function() {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
+            if (window.length == 0) {
+                window = jQuery("<div class=\"window window-alert window-hide\">"
+                        + "<h1></h1>"
+                        + "<p class=\"single\"></p>"
+                        + "<div class=\"window-buttons\">"
+                        + "<span class=\"button button-cancel\">Cancel</span>"
+                        + "<span class=\"button button-confirm\">Confirm</span>"
+                        + "</div>");
+                window.uxwindow();
+                matchedObject.append(window);
+            }
             var windowButtonConfirm = jQuery(".button-confirm", window);
 
             // registers for the click event on the button confirm
@@ -6815,6 +6837,17 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var _appendHtml = function() {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
+            if (window.length == 0) {
+                window = jQuery("<div class=\"window window-alert window-hide\">"
+                        + "<h1></h1>"
+                        + "<p class=\"single\"></p>"
+                        + "<div class=\"window-buttons\">"
+                        + "<span class=\"button button-cancel\">Cancel</span>"
+                        + "<span class=\"button button-confirm\">Confirm</span>"
+                        + "</div>");
+                window.uxwindow();
+                matchedObject.append(window);
+            }
             var windowHeader = jQuery("h1", window);
             var windowContents = jQuery("p", window);
             var windowButtonConfirm = jQuery(".button-confirm", window);
@@ -6839,6 +6872,17 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var _registerHandlers = function() {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
+            if (window.length == 0) {
+                window = jQuery("<div class=\"window window-alert window-hide\">"
+                        + "<h1></h1>"
+                        + "<p class=\"single\"></p>"
+                        + "<div class=\"window-buttons\">"
+                        + "<span class=\"button button-cancel\">Cancel</span>"
+                        + "<span class=\"button button-confirm\">Confirm</span>"
+                        + "</div>");
+                window.uxwindow();
+                matchedObject.append(window);
+            }
             var windowButtonConfirm = jQuery(".button-confirm", window);
             var windowButtonCancel = jQuery(".button-cancel", window);
 
@@ -13173,14 +13217,15 @@ jQuery.expr[":"].parents = function(a, i, m) {
         };
 
         var _call = function(matchedObject, options) {
-            // retrieves the document
-            var _document = jQuery(document);
+            // retrieves the body element for the current
+            // structure model
+            var _body = jQuery("body");
 
             // retrieves the message from the matched object
             var message = matchedObject.attr("data-message");
 
             // calls the confirm window in the document
-            _document.uxconfirm(message, function(result) {
+            _body.uxconfirm(message, function(result) {
                         // in case the result is cancel,
                         // avoids execution
                         if (!result) {
@@ -20112,9 +20157,19 @@ jQuery.expr[":"].parents = function(a, i, m) {
         };
 
         var _show = function(matchedObject, options) {
-            // retrieves the overlay element and forces a resize
-            // on it to ensure dimensions (ensures proper size)
+            // retrieves the overlay element and in case it's not present
+            // creates a default element adding it to the start of the
+            // top level body element (default behaviour)
             var overlay = jQuery(".overlay");
+            if (overlay.length == 0) {
+                var _body = jQuery("body");
+                overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
+                _body.prepend(overlay);
+            }
+
+            // triggers the resize event on the overlay in order
+            // to force a resize on it to ensure dimensions
+            // (ensures proper "final" size)
             overlay.trigger("resize");
 
             // makes sure that the current object is the only visible
