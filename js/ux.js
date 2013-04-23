@@ -3261,7 +3261,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
 
         // returns the object
         return this;
-    }
+    };
 })(jQuery);
 
 /**
@@ -3313,14 +3313,19 @@ jQuery.expr[":"].parents = function(a, i, m) {
                         // retrieves the selector value for the target
                         // and then uses it to retrieve the target
                         var targetSelector = replacer.attr("data-target");
+                        var noAuto = replacer.attr("data-no_auto");
                         var target = jQuery(targetSelector);
 
-                        // retrieves the target element value
+                        // retrieves the target element value so that it's
+                        // possible to check if the target should be automaitcally
+                        // shown (replaced)
                         var value = target.uxvalue();
 
                         // replaces the elements (not focusing in the
-                        // target element)
-                        value && _replace(replacer, options, false);
+                        // target element) because the target element
+                        // already contains a value, this is only done
+                        // when the not auto attribute is not set
+                        !noAuto && value && _replace(replacer, options, false);
                     });
         };
 
@@ -4093,7 +4098,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
                     _element.attr(attrNameTarget, attribute);
                     _element.removeAttr(attrName);
                 });
-    }
+    };
 })(jQuery);
 
 (function(jQuery) {
@@ -4385,7 +4390,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var fields = jQuery("[data-object]", this);
         fields = nested ? fields : fields.not(":parents([data-object])");
         return fields;
-    }
+    };
 })(jQuery);
 
 (function(jQuery) {
@@ -4404,7 +4409,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
         // returns the value that was retrieved and converted
         // into a float value
         return valueF;
-    }
+    };
 })(jQuery);
 
 (function(jQuery) {
@@ -4423,7 +4428,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
         // returns the value that was retrieved and converted
         // into a integer value
         return valueI;
-    }
+    };
 })(jQuery);
 
 (function(jQuery) {
@@ -4499,7 +4504,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
                     var method = _element["ux" + object]
                     method && method.call(_element, "reset");
                 });
-    }
+    };
 })(jQuery);
 
 (function(jQuery) {
@@ -4534,7 +4539,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
         // returns the just retrived value from the component
         // to the caller method
         return value;
-    }
+    };
 })(jQuery);
 
 (function(jQuery) {
@@ -21099,7 +21104,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
 
         // returns the calculated width
         return width;
-    }
+    };
 })(jQuery);
 
 // registers for the ready event in
