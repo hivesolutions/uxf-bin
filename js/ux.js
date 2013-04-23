@@ -5457,6 +5457,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             }
             var windowHeader = jQuery("h1", window);
             var windowContents = jQuery("p", window);
+            var windowButtonConfirm = jQuery(".button-confirm", window);
             var windowButtonCancel = jQuery(".button-cancel", window);
 
             // processes the "wiki" message
@@ -5468,6 +5469,10 @@ jQuery.expr[":"].parents = function(a, i, m) {
             windowContents.html(message);
             windowButtonCancel.hide();
 
+            // removes all the current event handlers from the confirm
+            // button, this avoid possible errors with multiple click handlers
+            windowButtonConfirm.unbind("click");
+
             // shows the window
             window.uxwindow("show");
         };
@@ -5478,17 +5483,6 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var _registerHandlers = function() {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
-            if (window.length == 0) {
-                window = jQuery("<div class=\"window window-alert window-hide\">"
-                        + "<h1></h1>"
-                        + "<p class=\"single\"></p>"
-                        + "<div class=\"window-buttons\">"
-                        + "<span class=\"button button-cancel\">Cancel</span>"
-                        + "<span class=\"button button-confirm\">Confirm</span>"
-                        + "</div>");
-                window.uxwindow();
-                matchedObject.append(window);
-            }
             var windowButtonConfirm = jQuery(".button-confirm", window);
 
             // registers for the click event on the button confirm
@@ -6862,6 +6856,12 @@ jQuery.expr[":"].parents = function(a, i, m) {
             windowContents.html(message);
             windowButtonCancel.show();
 
+            // removes all the current event handlers from both the
+            // confirm and the cance buttons, this avoid possible errors
+            // with multiple click event handlers
+            windowButtonConfirm.unbind("click");
+            windowButtonCancel.unbind("click");
+
             // shows the window
             window.uxwindow("show");
         };
@@ -6872,17 +6872,6 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var _registerHandlers = function() {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
-            if (window.length == 0) {
-                window = jQuery("<div class=\"window window-alert window-hide\">"
-                        + "<h1></h1>"
-                        + "<p class=\"single\"></p>"
-                        + "<div class=\"window-buttons\">"
-                        + "<span class=\"button button-cancel\">Cancel</span>"
-                        + "<span class=\"button button-confirm\">Confirm</span>"
-                        + "</div>");
-                window.uxwindow();
-                matchedObject.append(window);
-            }
             var windowButtonConfirm = jQuery(".button-confirm", window);
             var windowButtonCancel = jQuery(".button-cancel", window);
 
@@ -13227,9 +13216,8 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // calls the confirm window in the document
             _body.uxconfirm(message, function(result) {
                         // in case the result is cancel,
-                        // avoids execution
+                        // avoids execution and returns immediately
                         if (!result) {
-                            // returns immediately
                             return;
                         }
 
