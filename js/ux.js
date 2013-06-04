@@ -111,6 +111,7 @@
             var selectList = jQuery(".select-list", matchedObject).not(".template .select-list");
             var sourceList = jQuery(".source-list", matchedObject).not(".template .source-list");
             var crossList = jQuery(".cross-list", matchedObject).not(".template .cross-list");
+            var option = jQuery(".option", matchedObject).not(".template .option");
             var progressBar = jQuery(".progress-bar", matchedObject).not(".template .progress-bar");
             var passwordMeter = jQuery(".password-meter", matchedObject).not(".template .password-meter");
             var changer = jQuery(".changer", matchedObject).not(".template .changer");
@@ -201,6 +202,7 @@
             selectList.uxselectlist();
             sourceList.uxsourcelist();
             crossList.uxcrosslist();
+            option.uxoption();
             progressBar.uxprogressbar();
             passwordMeter.uxpasswordmeter();
             changer.uxchanger();
@@ -13940,6 +13942,52 @@ jQuery.expr[":"].parents = function(a, i, m) {
         initialize();
 
         // returns the object
+        return this;
+    };
+})(jQuery);
+
+(function(jQuery) {
+    jQuery.fn.uxoption = function(options) {
+        // the default values for the button
+        var defaults = {};
+
+        // sets the default options value
+        var options = options ? options : {};
+
+        // constructs the options
+        var options = jQuery.extend(defaults, options);
+
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        /**
+         * Initializer of the plugin, runs the necessary functions to initialize
+         * the structures.
+         */
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
+        };
+
+        /**
+         * Creates the necessary html for the component.
+         */
+        var _appendHtml = function() {
+            // adds the clear element to the complete set of selected
+            // options elements, this is required to provide a correct
+            // alyout structure in terms of breaking
+            matchedObject.append("<div class=\"option-clear\"></div>");
+        };
+
+        /**
+         * Registers the event handlers for the created objects.
+         */
+        var _registerHandlers = function() {
+        };
+
+        // initializes the plugin and then
+        // returns the current object
+        initialize();
         return this;
     };
 })(jQuery);

@@ -220,6 +220,18 @@ body.wait-load {
     display: none;
 }
 
+.option-key {
+    float: left;
+}
+
+.option-value {
+    float: right;
+}
+
+.option-clear {
+    clear: both;
+}
+
 .overlay-panel {
     display: none;
 }
