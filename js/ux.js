@@ -22915,7 +22915,7 @@ canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
 
     // restores the state
     this.restore();
-}
+};
 
 canvasRenderingContext.roundRectangle = function(x, y, width, height, radius) {
     // draws the various corners by moving the cursor to each of them
@@ -22930,7 +22930,10 @@ canvasRenderingContext.roundRectangle = function(x, y, width, height, radius) {
     this.quadraticCurveTo(x, y + height, x, y + height - radius);
     this.lineTo(x, y + radius);
     this.quadraticCurveTo(x, y, x + radius, y);
-}
+};
+
+canvasRenderingContext.extra = function(x, y, width, height, radius) {
+};
 
 // Hive Colony Framework
 // Copyright (c) 2008-2012 Hive Solutions Lda.
