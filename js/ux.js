@@ -5467,7 +5467,9 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var windowButtonConfirm = jQuery(".button-confirm", window);
             var windowButtonCancel = jQuery(".button-cancel", window);
 
-            // processes the "wiki" message
+            // converts the message into a string in case that's required
+            // (diferent data type) and then processes the "wiki" message
+            message = typeof message === "string" ? message : String(message);
             message = matchedObject.uxwiki(message);
 
             // sets the window properties and hides
@@ -6854,7 +6856,9 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var windowButtonConfirm = jQuery(".button-confirm", window);
             var windowButtonCancel = jQuery(".button-cancel", window);
 
-            // processes the "wiki" message
+            // converts the message into a string in case that's required
+            // (diferent data type) and then processes the "wiki" message
+            message = typeof message === "string" ? message : String(message);
             message = matchedObject.uxwiki(message);
 
             // sets the window properties and shows
@@ -13045,7 +13049,9 @@ jQuery.expr[":"].parents = function(a, i, m) {
             windowHeader.removeClass("warning");
             windowHeader.addClass(type || "information");
 
-            // processes the "wiki" message
+            // converts the message into a string in case that's required
+            // (diferent data type) and then processes the "wiki" message
+            message = typeof message === "string" ? message : String(message);
             message = matchedObject.uxwiki(message);
 
             // sets the window properties and hides
