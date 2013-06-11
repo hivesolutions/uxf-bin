@@ -3202,7 +3202,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.fn.uxcenter = function(topOffset, leftOffset, useMargin, avoidTop, avoidLeft) {
+    jQuery.fn.uxcenter = function(topOffset, leftOffset, useMargin, avoidTop, avoidLeft, keep) {
         // sets the jquery matched object
         var matchedObject = this;
 
@@ -3217,6 +3217,11 @@ jQuery.expr[":"].parents = function(a, i, m) {
         // flags values
         var avoidTop = avoidTop ? avoidTop : false;
         var avoidLeft = avoidLeft ? avoidLeft : false;
+
+        // if the centering operation should be performed
+        // as a persistent operation (global resizing trigger
+        // a new center operation)
+        var keep = keep ? keep : false;
 
         // retrieves the window
         var _window = jQuery(window);
@@ -3259,6 +3264,35 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // sets the element (matched object) position
             !avoidTop && matchedObject.css("top", topPosition + "px");
             !avoidLeft && matchedObject.css("left", leftPosition + "px");
+        }
+
+        // in case the keep flag is set the element must be registered
+        // for the various event that require a new "centering"
+        if (keep) {
+            // iterates over all the elements in the matched object
+            // to register them for the events that require centering
+            matchedObject.each(function(index, element) {
+                        // retrieves the element reference
+                        var _element = jQuery(element);
+
+                        // registers the resize in the window
+                        // should keep the window centered
+                        _window.resize(function(event) {
+                                    _element.uxcenter();
+                                });
+
+                        // registers the scroll in the window
+                        // should keep the window centered
+                        _window.scroll(function() {
+                                    _element.uxcenter();
+                                });
+
+                        // registers the changing of contents in
+                        // the itnernal structure of the window
+                        _element.bind("layout", function() {
+                                    _element.uxcenter();
+                                });
+                    });
         }
 
         // returns the object
