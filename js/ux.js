@@ -2544,6 +2544,38 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
+    jQuery.fn.uxgprintpdf = function(gateway, data) {
+        // retrieves the complete set of device specifications
+        // for the current system and sets the intial value of
+        // the default device variable as unset
+        var devices = gateway.pdevices();
+        var defaultDevice = null;
+
+        // iterates over all the (printing) devices in the system
+        // to try to "find" the one that's the default
+        for (var index = 0; index < devices.length; index++) {
+            var device = devices[index];
+            if (!device.isDefault) {
+                continue;
+            }
+            defaultDevice = device;
+            break;
+        }
+
+        // in case no default device is found must return immediately
+        // nothing to be set for the current situation
+        if (!defaultDevice) {
+            return;
+        }
+
+        // updates the data structure with the device with and length
+        // for the defined paper size
+        data["width"] = defaultDevice["width"];
+        data["height"] = defaultDevice["length"];
+    };
+})(jQuery);
+
+(function(jQuery) {
     jQuery.fn.uxchart = function(query, callback, options) {
         // the default values for the data query json
         var defaults = {};
