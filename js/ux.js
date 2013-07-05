@@ -299,6 +299,13 @@
         // initializes the plugin
         initialize();
 
+        // triggers an event indicating that the ux components
+        // have finished the application of the structures, note
+        // that the base of the apply is sent as an argument, this
+        // is not a jquery standard and is used as an exception
+        var _body = jQuery("body");
+        _body.triggerHandler("applied", [matchedObject]);
+
         // returns the object
         return this;
     };
@@ -550,6 +557,42 @@
         return {
             message : message
         }
+    };
+})(jQuery);
+
+(function(jQuery) {
+    jQuery.uxlocation = function(location) {
+        var body = jQuery("body");
+        var result = body.triggerHandler("location", [location]);
+        if (result == false) {
+            return;
+        } else {
+            document.location = location;
+        }
+    };
+})(jQuery);
+
+(function(jQuery) {
+    jQuery.uxresolve = function(url, base_url) {
+        var doc = document;
+        var oldBase = doc.getElementsByTagName("base")[0];
+        var oldHref = oldBase && oldBase.href, docHead = doc.head
+                || doc.getElementsByTagName("head")[0];
+        var ourBase = oldBase || docHead.appendChild(doc.createElement("base"));
+        var resolver = doc.createElement("a")
+        var resolvedUrl;
+
+        ourBase.href = base_url;
+        resolver.href = url;
+        resolvedUrl = resolver.href;
+
+        if (oldBase) {
+            oldBase.href = oldHref;
+        } else {
+            docHead.removeChild(ourBase);
+        }
+
+        return resolvedUrl;
     };
 })(jQuery);
 
@@ -1887,6 +1930,16 @@
     };
 })(jQuery);
 
+(function(jQuery) {
+    jQuery.event.special.destroyed = {
+        remove : function(object) {
+            if (object.handler) {
+                object.handler()
+            }
+        }
+    }
+})(jQuery);
+
 jQuery.expr[":"].parents = function(a, i, m) {
     return jQuery(a).parents(m[3]).length > 0;
 };
@@ -2516,7 +2569,7 @@ function onYouTubePlayerReady(id) {
                 else {
                     // sets the new location for the document as the
                     // fallback url
-                    document.location = fallbackUrl;
+                    jQuery.uxlocation(fallbackUrl);
                 }
             }
         };
@@ -2540,38 +2593,6 @@ function onYouTubePlayerReady(id) {
 
         // returns the object
         return this;
-    };
-})(jQuery);
-
-(function(jQuery) {
-    jQuery.fn.uxgprintpdf = function(gateway, data) {
-        // retrieves the complete set of device specifications
-        // for the current system and sets the intial value of
-        // the default device variable as unset
-        var devices = gateway.pdevices();
-        var defaultDevice = null;
-
-        // iterates over all the (printing) devices in the system
-        // to try to "find" the one that's the default
-        for (var index = 0; index < devices.length; index++) {
-            var device = devices[index];
-            if (!device.isDefault) {
-                continue;
-            }
-            defaultDevice = device;
-            break;
-        }
-
-        // in case no default device is found must return immediately
-        // nothing to be set for the current situation
-        if (!defaultDevice) {
-            return;
-        }
-
-        // updates the data structure with the device with and length
-        // for the defined paper size
-        data["width"] = defaultDevice["width"];
-        data["height"] = defaultDevice["length"];
     };
 })(jQuery);
 
@@ -2804,7 +2825,7 @@ function onYouTubePlayerReady(id) {
                                         // in case it's the target key
                                         case keyInteger :
                                             // sets the "new" document location
-                                            document.location = url;
+                                            jQuery.uxlocation(url);
 
                                             // breaks the switch
                                             break;
@@ -3596,7 +3617,7 @@ function onYouTubePlayerReady(id) {
             }
 
             // sets the new location in the document (redirect)
-            document.location = nextUrlValue;
+            jQuery.uxlocation(nextUrlValue);
         };
 
         /**
@@ -3656,7 +3677,7 @@ function onYouTubePlayerReady(id) {
             }
 
             // sets the new location in the document (redirect)
-            document.location = previousUrlValue;
+            jQuery.uxlocation(previousUrlValue);
         };
 
         /**
@@ -6841,7 +6862,7 @@ function onYouTubePlayerReady(id) {
             // checks the window flag and in case it's set
             // opens a new window with the link otherwise
             // sets the "new" document location in
-            _window ? window.open(link, "_blank") : document.location = link;
+            _window ? window.open(link, "_blank") : jQuery.uxlocation(link);
         };
 
         var __windowOpen = function(matchedObject, options) {
@@ -8278,7 +8299,7 @@ function onYouTubePlayerReady(id) {
                                 else {
                                     // changes the document location to
                                     // the value link value
-                                    document.location = valueLink;
+                                    jQuery.uxlocation(valueLink);
                                 }
                             }
 
@@ -9040,7 +9061,7 @@ function onYouTubePlayerReady(id) {
             if (valueLink) {
                 // changes the document location to
                 // the value link value
-                document.location = valueLink;
+                jQuery.uxlocation(valueLink);
             }
 
             // calculates the new selection index from the element
@@ -10227,8 +10248,11 @@ function onYouTubePlayerReady(id) {
                     });
 
             // registers for the key down in the document
-            // element in case the matched object is valid
-            matchedObject.length > 0 && _document.keydown(function(event) {
+            // element in case the matched object is valid and then
+            // sets the on destroy handler to avoid duplicated
+            // handlers in a multiple filter environment
+            matchedObject.length > 0
+                    && _document.keydown(onKeyDown = function(event) {
                         // sets the filter as the matched object
                         var filter = matchedObject;
 
@@ -10293,6 +10317,9 @@ function onYouTubePlayerReady(id) {
                                 // breaks the switch
                                 break;
                         }
+                    });
+            matchedObject.bind("destroyed", function() {
+                        _document.unbind("keydown", onKeyDown);
                     });
 
             // registers for the click event in order
@@ -10968,7 +10995,7 @@ function onYouTubePlayerReady(id) {
                                         // document otherwise creates a new window and opend
                                         // the link in it (external opening)
                                         isDocument && index == 0
-                                                ? document.location = link
+                                                ? jQuery.uxlocation(link)
                                                 : window.open(link, "_blank");
                                     });
 
@@ -11006,8 +11033,8 @@ function onYouTubePlayerReady(id) {
 
                                 // updates the current documents location to the bulk
                                 // link, so that the bulk operation takes place
-                                document.location = linkBulk + "?object_id="
-                                        + identifiersList;
+                                jQuery.uxlocation(linkBulk + "?object_id="
+                                        + identifiersList);
                             }
 
                             // stops the event propagation and prevents
@@ -11573,7 +11600,7 @@ function onYouTubePlayerReady(id) {
                         // document location, otherwise opens a new window
                         // with the value link location (popup)
                         listItem.length <= 1
-                                ? document.location = valueLink
+                                ? jQuery.uxlocation(valueLink)
                                 : window.open(valueLink, "_blank");
                     }
                 }
@@ -13342,7 +13369,11 @@ function onYouTubePlayerReady(id) {
                         // calls the confirm part
                         _call(element, options);
 
-                        // prevents the default event
+                        // stops the propagation of the event both
+                        // ot the next handlers and to the immediate
+                        //one and then prevent the default behaviour
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
                         event.preventDefault();
                     });
         };
@@ -13366,7 +13397,7 @@ function onYouTubePlayerReady(id) {
                         // retrieves the matched object location and
                         // sets it in the document
                         var location = matchedObject.attr("href");
-                        document.location = location;
+                        jQuery.uxlocation(location);
                     });
         };
 
@@ -14185,6 +14216,16 @@ function onYouTubePlayerReady(id) {
                         // stops the event propagation, no need
                         // to propagate clicks to the upper levels
                         event.stopPropagation();
+                    });
+
+            // registers for the hide event and if it's
+            // triggered the hide function is called for the
+            // associated element (indirect hide)
+            matchedObject.bind("hide", function() {
+                        // retrieves the current elemenet and runs the hide
+                        // operation in it (to hide it)
+                        var element = jQuery(this);
+                        _hide(element, options);
                     });
 
             // iterates over all the elements in the matched object
@@ -16734,9 +16775,7 @@ function onYouTubePlayerReady(id) {
                         var url = slideshow.data("url");
                         if (url) {
                             var _window = event.which == 2
-                            _window
-                                    ? window.open(url)
-                                    : document.location = url;
+                            _window ? window.open(url) : jQuery.uxlocation(url);
                         }
                     });
 
@@ -16753,9 +16792,7 @@ function onYouTubePlayerReady(id) {
                         var url = slideshow.data("url");
                         if (url) {
                             var _window = event.which == 2
-                            _window
-                                    ? window.open(url)
-                                    : document.location = url;
+                            _window ? window.open(url) : jQuery.uxlocation(url);
                         }
                     });
 
@@ -23237,6 +23274,14 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
+            // in case the matched object is not defined
+            // or in case it's an empty list must return
+            // immediatly initialization is not meant to
+            // be run (corruption may occur)
+            if (!matchedObject || matchedObject.length == 0) {
+                return;
+            }
+
             // retrieves the various options that were provided
             // to configure the current matched object
             var url = options["url"];
