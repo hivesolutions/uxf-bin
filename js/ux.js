@@ -587,7 +587,7 @@
             var values = SYMBOLS[key] || {};
 
             values[locale] = value;
-            bundle[key] = values;
+            SYMBOLS[key] = values;
         }
     };
 })(jQuery);
@@ -3520,17 +3520,21 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
-var BUNDLE = {
-    "Loading" : "Loading"
-}
+(function(jQuery) {
+    var BUNDLE_EN_US = {
+        "Loading" : "Loading"
+    }
 
-jQuery.uxloadbundle(BUNDLE, "en-us")
+    jQuery.uxloadbundle(BUNDLE_EN_US, "en-us")
+})(jQuery);
 
-var BUNDLE = {
-    "Loading" : "Carregando"
-}
+(function(jQuery) {
+    var BUNDLE_PT_PT = {
+        "Loading" : "Carregando"
+    }
 
-jQuery.uxloadbundle(BUNDLE, "pt-pt")
+    jQuery.uxloadbundle(BUNDLE_PT_PT, "pt-pt")
+})(jQuery);
 
 (function(jQuery) {
     jQuery.fn.uxcursor = function(position) {
