@@ -3543,7 +3543,26 @@ function onYouTubePlayerReady(id) {
 
 (function(jQuery) {
     var BUNDLE_EN_US = {
-        "Loading" : "Loading"
+        "Loading" : "Loading",
+        "January" : "January",
+        "February" : "February",
+        "March" : "March",
+        "April" : "April",
+        "May" : "May",
+        "June" : "June",
+        "July" : "July",
+        "August" : "August",
+        "September" : "September",
+        "October" : "October",
+        "November" : "November",
+        "December" : "December",
+        "Su" : "Su",
+        "Mo" : "Mo",
+        "Tu" : "Tu",
+        "We" : "We",
+        "Th" : "Th",
+        "Fr" : "Fr",
+        "Sa" : "Sa"
     }
 
     jQuery.uxloadbundle(BUNDLE_EN_US, "en-us")
@@ -3551,7 +3570,26 @@ function onYouTubePlayerReady(id) {
 
 (function(jQuery) {
     var BUNDLE_PT_PT = {
-        "Loading" : "Carregando"
+        "Loading" : "Carregando",
+        "January" : "Janeiro",
+        "February" : "Fevereiro",
+        "March" : "Março",
+        "April" : "Abril",
+        "May" : "Maio",
+        "June" : "Junho",
+        "July" : "Julho",
+        "August" : "Agosto",
+        "September" : "Setembro",
+        "October" : "Outubro",
+        "November" : "Novembro",
+        "December" : "Dezembro",
+        "Su" : "Do",
+        "Mo" : "Se",
+        "Tu" : "Te",
+        "We" : "Qa",
+        "Th" : "Qi",
+        "Fr" : "Se",
+        "Sa" : "Sá"
     }
 
     jQuery.uxloadbundle(BUNDLE_PT_PT, "pt-pt")
@@ -5931,8 +5969,10 @@ function onYouTubePlayerReady(id) {
             // iterates over all the week days to add them to the week
             // days string
             for (var index = 0; index < WEEK_DAYS.length; index++) {
-                // retrieves the current week day
+                // retrieves the current week day and localizes the
+                // value into the proper locale
                 var weekDay = WEEK_DAYS[index];
+                weekDay = jQuery.uxlocale(weekDay);
 
                 // adds the week day partial string to the week days string
                 weekDaysString += "<th><span>" + weekDay + "</span></th>";
@@ -6258,10 +6298,15 @@ function onYouTubePlayerReady(id) {
             // adds the (generated) html code to the table body
             tableBody.append(htmlCode);
 
+            // retrieves the year month values and then localizes the
+            // value into the proper locale
+            var yearMonth = YEAR_MONTHS[month];
+            yearMonth = jQuery.uxlocale(yearMonth);
+
             // retrieves the calendar title and updates it
             // accordingly
             var title = jQuery(".calendar-title", matchedObject);
-            title.html(YEAR_MONTHS[month] + " " + String(year));
+            title.html(yearMonth + " " + String(year));
 
             // updates the (cell) handlers in the matched object
             _updateHandlers(matchedObject, options);
