@@ -563,10 +563,10 @@
 (function(jQuery) {
 
     /**
-     * The map of symbols associating the value with a map
-     * containing all of its localized values.
+     * The map of symbols associating the value with a map containing all of its
+     * localized values.
      */
-    SYMBOLS = {}
+    var SYMBOLS = {};
 
     jQuery.uxlocale = function(string) {
         var _body = jQuery("body");
@@ -579,6 +579,16 @@
         var stringLocale = locales[locale] || string;
 
         return stringLocale;
+    };
+
+    jQuery.uxloadbundle = function(bundle, locale) {
+        for (var key in bundle) {
+            var value = bundle[key];
+            var values = SYMBOLS[key] || {};
+
+            values[locale] = value;
+            bundle[key] = values;
+        }
     };
 })(jQuery);
 
@@ -3509,6 +3519,18 @@ function onYouTubePlayerReady(id) {
         return this;
     };
 })(jQuery);
+
+var BUNDLE = {
+    "Loading" : "Loading"
+}
+
+jQuery.uxloadbundle(BUNDLE, "en-us")
+
+var BUNDLE = {
+    "Loading" : "Carregando"
+}
+
+jQuery.uxloadbundle(BUNDLE, "pt-pt")
 
 (function(jQuery) {
     jQuery.fn.uxcursor = function(position) {
