@@ -3556,6 +3556,18 @@ function onYouTubePlayerReady(id) {
         "October" : "October",
         "November" : "November",
         "December" : "December",
+        "Jan" : "Jan",
+        "Feb" : "Feb",
+        "Mar" : "Mar",
+        "Apr" : "Apr",
+        "May" : "May",
+        "Jun" : "Jun",
+        "Jul" : "Jul",
+        "Aug" : "Aug",
+        "Sep" : "Sep",
+        "Oct" : "Oct",
+        "Nov" : "Nov",
+        "Dec" : "Dec",
         "Su" : "Su",
         "Mo" : "Mo",
         "Tu" : "Tu",
@@ -3583,6 +3595,18 @@ function onYouTubePlayerReady(id) {
         "October" : "Outubro",
         "November" : "Novembro",
         "December" : "Dezembro",
+        "Jan" : "Jan",
+        "Feb" : "Fev",
+        "Mar" : "Mar",
+        "Apr" : "Abr",
+        "May" : "Mai",
+        "Jun" : "Jun",
+        "Jul" : "Jul",
+        "Aug" : "Ago",
+        "Sep" : "Set",
+        "Oct" : "Out",
+        "Nov" : "Nov",
+        "Dec" : "Dez",
         "Su" : "Do",
         "Mo" : "Se",
         "Tu" : "Te",
@@ -5413,9 +5437,12 @@ function onYouTubePlayerReady(id) {
             var minutes = utc ? date.getUTCMinutes() : date.getMinutes();
             var seconds = utc ? date.getUTCSeconds() : date.getSeconds();
 
-            // retrieves the full and abbreviated month values
+            // retrieves the full and abbreviated month values and then
+            // localizes them into the proper locale representation
             var fullMonth = FULL_MONTHS[month - 1];
             var abbreviatedMonth = ABBREVIATED_MONTHS[month - 1];
+            fullMonth = jQuery.uxlocale(fullMonth);
+            abbreviatedMonth = jQuery.uxlocale(abbreviatedMonth);
 
             // in case the format is defined, the date is
             // meant to be formatted
