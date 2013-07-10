@@ -12568,12 +12568,6 @@ function onYouTubePlayerReady(id) {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
-            // retrieves the current body element and uses it to retrieve
-            // the async flag state, that indicates if the interactions with
-            // the server side should be performed using an async strategy
-            var _body = jQuery("body");
-            var async = _body.data("async");
-
             // registers for the submit event so that
             // duplicate submits may be avoided
             matchedObject.submit(function(event) {
@@ -12625,6 +12619,12 @@ function onYouTubePlayerReady(id) {
                                     value = value.trim();
                                     _element.uxvalue(value);
                                 });
+
+                        // retrieves the current body element and uses it to retrieve
+                        // the async flag state, that indicates if the interactions with
+                        // the server side should be performed using an async strategy
+                        var _body = jQuery("body");
+                        var async = _body.data("async");
 
                         // checks if the current element has the ajax form
                         // class, in such cases must avoid normal submission
@@ -12707,6 +12707,11 @@ function onYouTubePlayerReady(id) {
                 if (request.readyState != 4) {
                     return;
                 }
+
+                // triggers the post submit event in the current matched object
+                // (form) indicating that the form has been submitted
+                matchedObject.triggerHandler("post_submit");
+
                 // verifies if the current result if of type (async) redirect, this
                 // is a special case and the redirection must be performed using a
                 // special strateg by retrieving the new location and setting it as
@@ -20677,9 +20682,13 @@ function onYouTubePlayerReady(id) {
             var _window = jQuery(window);
 
             // retrieves the references to both the close and
-            // the accept buttons
+            // the accept buttons to be used in the registration
             var closeButton = jQuery(".close-button", matchedObject);
             var acceptButton = jQuery(".accept-button", matchedObject);
+
+            // gathers references to any underlying form element in the
+            // current window to handle it's events
+            var form = jQuery("form", matchedObject);
 
             // registers for the click in the close button
             closeButton.click(function(event) {
@@ -20703,6 +20712,16 @@ function onYouTubePlayerReady(id) {
                         // hides the window with the success flag
                         // set to valid
                         _hide(window, options, true);
+                    });
+
+            // registers for the post submit event triggered when
+            // an async based form has completed the submission
+            form.bind("post_submit", function() {
+                        // retrieves the reference to the current form element
+                        // and uses it to gather the parent window and hide it
+                        var element = jQuery(this);
+                        var window = element.parents(".window");
+                        window.uxwindow("hide");
                     });
 
             // registers for the click event in the matched
