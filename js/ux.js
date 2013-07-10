@@ -1219,51 +1219,6 @@
 
 (function(jQuery) {
     jQuery.fn.uxdatasourcecountries = function(options) {
-        // the set of countries to be used
-        var COUNTRIES = ["Afghanistan", "Albania", "Algeria", "Andorra",
-                "Angola", "Antigua & Deps", "Argentina", "Armenia",
-                "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
-                "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
-                "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana",
-                "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi",
-                "Cambodia", "Cameroon", "Canada", "Cape Verde",
-                "Central African Rep", "Chad", "Chile", "China", "Colombia",
-                "Comoros", "Congo", "Congo {Democratic Rep}", "Costa Rica",
-                "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
-                "Djibouti", "Dominica", "Dominican Republic", "East Timor",
-                "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
-                "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France",
-                "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
-                "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-                "Haiti", "Honduras", "Hungary", "Iceland", "India",
-                "Indonesia", "Iran", "Iraq", "Ireland {Republic}", "Israel",
-                "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan",
-                "Kazakhstan", "Kenya", "Kiribati", "Korea North",
-                "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
-                "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya",
-                "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia",
-                "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali",
-                "Malta", "Marshall Islands", "Mauritania", "Mauritius",
-                "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia",
-                "Montenegro", "Morocco", "Mozambique", "Myanmar, {Burma}",
-                "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand",
-                "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan",
-                "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru",
-                "Philippines", "Poland", "Portugal", "Qatar", "Romania",
-                "Russian Federation", "Rwanda", "St Kitts & Nevis", "St Lucia",
-                "Saint Vincent & the Grenadines", "Samoa", "San Marino",
-                "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia",
-                "Seychelles", "Sierra Leone", "Singapore", "Slovakia",
-                "Slovenia", "Solomon Islands", "Somalia", "South Africa",
-                "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland",
-                "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan",
-                "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago",
-                "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
-                "Ukraine", "United Arab Emirates", "United Kingdom",
-                "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-                "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia",
-                "Zimbabwe"];
-
         // the default values for the data source local
         var defaults = {};
 
@@ -1293,6 +1248,12 @@
             matchedObject.each(function(index, element) {
                         // retrieves the element reference
                         var _element = jQuery(element);
+
+                        // retrieves the list of countries to be used according
+                        // to the currently defined locale
+                        var COUNTRIES = jQuery.uxlocale("COUNTRIES");
+                        COUNTRIES = COUNTRIES.slice();
+                        COUNTRIES.sort();
 
                         // updates the items data in the current element
                         // ands runs the initializer of the items data
@@ -3583,7 +3544,49 @@ function onYouTubePlayerReady(id) {
         "We" : "We",
         "Th" : "Th",
         "Fr" : "Fr",
-        "Sa" : "Sa"
+        "Sa" : "Sa",
+        "COUNTRIES" : ["Afghanistan", "Albania", "Algeria", "Andorra",
+                "Angola", "Antigua & Deps", "Argentina", "Armenia",
+                "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
+                "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
+                "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana",
+                "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi",
+                "Cambodia", "Cameroon", "Canada", "Cape Verde",
+                "Central African Rep", "Chad", "Chile", "China", "Colombia",
+                "Comoros", "Congo", "Congo Democratic Republic", "Costa Rica",
+                "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
+                "Djibouti", "Dominica", "Dominican Republic", "East Timor",
+                "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
+                "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France",
+                "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
+                "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+                "Haiti", "Honduras", "Hungary", "Iceland", "India",
+                "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
+                "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan",
+                "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo",
+                "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho",
+                "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+                "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives",
+                "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
+                "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia",
+                "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
+                "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
+                "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau",
+                "Panama", "Papua New Guinea", "Paraguay", "Peru",
+                "Philippines", "Poland", "Portugal", "Qatar", "Romania",
+                "Russia", "Rwanda", "St Kitts & Nevis", "St Lucia",
+                "Saint Vincent & the Grenadines", "Samoa", "San Marino",
+                "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia",
+                "Seychelles", "Sierra Leone", "Singapore", "Slovakia",
+                "Slovenia", "Solomon Islands", "Somalia", "South Africa",
+                "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland",
+                "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan",
+                "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago",
+                "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
+                "Ukraine", "United Arab Emirates", "United Kingdom",
+                "United States", "Uruguay", "Uzbekistan", "Vanuatu",
+                "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia",
+                "Zimbabwe"]
     }
 
     jQuery.uxloadbundle(BUNDLE_EN_US, "en-us")
@@ -3622,7 +3625,51 @@ function onYouTubePlayerReady(id) {
         "We" : "Qa",
         "Th" : "Qi",
         "Fr" : "Se",
-        "Sa" : "Sá"
+        "Sa" : "Sá",
+        "COUNTRIES" : ["Afeganistão", "Albania", "Argélia", "Andorra",
+                "Angola", "Antigua e Dependencias", "Argentina", "Arménia",
+                "Austrália", "Austria", "Azerbaijão", "Bahamas", "Bahrein",
+                "Bangladesh", "Barbados", "Bielorrússia", "Bélgica", "Belize",
+                "Benin", "Butão", "Bolívia", "Bósnia e Herzegovina",
+                "Botswana", "Brasil", "Brunei", "Bulgária", "Burkina Faso",
+                "Burundi", "Camboja", "Camarões", "Canadá", "Cabo Verde",
+                "República Centro-Africana", "Chade", "Chile", "China",
+                "Colômbia", "Comoros", "Congo",
+                " República Democrática do Congo", "Costa Rica", "Croácia",
+                "Cuba", "Chipre", "República Checa", "Dinamarca", "Djibouti",
+                "Dominica", "República Dominicana", "Timor-Leste", "Equador",
+                "Egito", "El Salvador", "Guiné Equatorial", "Eritrea",
+                "Estónia", "Etiópia", "Fiji", "Finlândia", "França", "Gabão",
+                "Gâmbia", "Geórgia", "Alemanha", "Gana", "Grécia", "Granada",
+                "Guatemala", "Guiné", "Guiné-Bissau", "Guiana", "Haiti",
+                "Honduras", "Hungria", "Islândia", "Índia", "Indonésia",
+                "Irão", "Iraque", "Irlanda", "Israel", "Itália",
+                "Costa do Marfim", "Jamaica", "Japão", "Jordânia",
+                "Cazaquistão", "Quénia", "Kiribati", "Coreia do Norte",
+                "Coreia do Sul", "Kosovo", "Kuwait", "Quirguistão", "Laos",
+                "Letónia", "Líbano", "Lesoto", "Libéria", "Líbia",
+                "Liechtenstein", "Lituânia", "Luxemburgo", "Macedónia",
+                "Madagáscar", "Malawi", "Malásia", "Maldivas", "Mali", "Malta",
+                "Ilhas Marshall", "Mauritânia", "Maurícia", "México",
+                "Micronésia", "Moldávia", "Mónaco", "Mongólia", "Montenegro",
+                "Marrocos", "Moçambique", "Myanmar", "Namíbia", "Nauru",
+                "Nepal", "Países Baixos", "Nova Zelândia", "Nicarágua",
+                "Níger", "Nigéria", "Noruega", "Omã", "Paquistão", "Palau",
+                "Panamá", "Papua-Nova Guiné", "Paraguai", "Peru", "Filipinas",
+                "Polónia", "Portugal", "Catar", "Roménia", "Rússia", "Ruanda",
+                "São Cristóvão e Nevis", "Santa Lúcia",
+                "São Vicente e Granadinas", "Samoa", "San Marino",
+                "São Tomé e Príncipe", "Arábia Saudita", "Senegal", "Sérvia",
+                "Seychelles", "Serra Leoa", "Singapura", "Eslováquia",
+                "Eslovénia", "Ilhas Salomão", "Somália", "África do Sul",
+                "Espanha", "Sri Lanka", "Sudão", "Suriname", "Suazilândia",
+                "Suécia", "Suíça", "Síria", "Taiwan", "Tajiquistão",
+                "Tanzânia", "Tailândia", "Togo", "Tonga", "Trinidad e Tobago",
+                "Tunísia", "Turquia", "Turquemenistão", "Tuvalu", "Uganda",
+                "Ucrânia", "Emirados Árabes Unidos", "Reino Unido",
+                "Estados Unidos", "Uruguai", "Uzbequistão", "Vanuatu",
+                "Vaticano", "Venezuela", "Vietname", "Iémen", "Zâmbia",
+                "Zimbabwe"]
     }
 
     jQuery.uxloadbundle(BUNDLE_PT_PT, "pt-pt")
