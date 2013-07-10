@@ -4753,6 +4753,24 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
+    jQuery.fn.uxindom = function() {
+        // retrieves the current matched object and in case the
+        // length of it is zero returns immediately in error
+        var matchedObject = this;
+        if (matchedObject.length == 0) {
+            return false;
+        }
+
+        // retrieves the first element from the matched object and
+        // then verifies if the element is contained in the current
+        // document element (dom verification)
+        var element = matchedObject[0];
+        var inDom = jQuery.contains(document, element);
+        return inDom;
+    };
+})(jQuery);
+
+(function(jQuery) {
     jQuery.fn.uxint = function() {
         // sets the jquery matched object
         var matchedObject = this;
@@ -23694,6 +23712,14 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {
             var url = matchedObject.data("url");
             var channels = matchedObject.data("channels");
 
+            // verifies if the current communication object is valid,
+            // must be present in the current dom, in case it does not
+            // returns immediately (not possible to perform request)
+            var isValid = matchedObject.uxindom();
+            if (!isValid) {
+                return;
+            }
+
             // creates the channels string by joining the various
             // channel names using the comma separator
             var channelsS = channels.join(",")
@@ -23834,6 +23860,14 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {
             // identifier to be used in the remote call
             var url = matchedObject.data("url");
             var connectionId = matchedObject.data("id");
+
+            // verifies if the current communication object is valid,
+            // must be present in the current dom, in case it does not
+            // returns immediately (not possible to perform request)
+            var isValid = matchedObject.uxindom();
+            if (!isValid) {
+                return;
+            }
 
             // runs the remote call to the server side to provide
             // the update operation expected behavior
