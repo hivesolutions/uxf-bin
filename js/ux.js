@@ -3559,6 +3559,18 @@ function onYouTubePlayerReady(id) {
         "Th" : "Th",
         "Fr" : "Fr",
         "Sa" : "Sa",
+        "contains" : "contains",
+        "matches" : "matches",
+        "begins with" : "begins with",
+        "ends with" : "ends with",
+        "equals" : "equals",
+        "greater than" : "greater than",
+        "less than" : "less than",
+        "in" : "in",
+        "after" : "after",
+        "before" : "before",
+        "search" : "search",
+        "undefined" : "undefined",
         "COUNTRIES" : ["Afghanistan", "Albania", "Algeria", "Andorra",
                 "Angola", "Antigua & Deps", "Argentina", "Armenia",
                 "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -3640,6 +3652,18 @@ function onYouTubePlayerReady(id) {
         "Th" : "Qi",
         "Fr" : "Se",
         "Sa" : "Sá",
+        "contains" : "contém",
+        "matches" : "igual a",
+        "begins with" : "começa com",
+        "ends with" : "acaba com",
+        "equals" : "igual",
+        "greater than" : "maior que",
+        "less than" : "menor que",
+        "in" : "em",
+        "after" : "depois",
+        "before" : "antes",
+        "search" : "procurar",
+        "undefined" : "indefinido",
         "COUNTRIES" : ["Afeganistão", "Albania", "Argélia", "Andorra",
                 "Angola", "Antigua e Dependencias", "Argentina", "Arménia",
                 "Austrália", "Austria", "Azerbaijão", "Bahamas", "Bahrein",
@@ -12084,6 +12108,10 @@ function onYouTubePlayerReady(id) {
                     // breaks the switch
                     break;
             }
+
+            // localizes the various items to the currently defined
+            // locale to adapt the experience to the user
+            _items = jQuery.uxlocale(_items);
 
             // updates the various items (operation values) in the
             // operation (data) source
