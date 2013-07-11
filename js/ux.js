@@ -561,6 +561,18 @@
 })(jQuery);
 
 (function(jQuery) {
+    jQuery.uxguid = function() {
+        var s4 = function() {
+            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+        };
+
+        var guid = s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-"
+                + s4() + s4() + s4();
+        return guid;
+    };
+})(jQuery);
+
+(function(jQuery) {
 
     /**
      * The map of symbols associating the value with a map containing all of its
@@ -12762,7 +12774,7 @@ function onYouTubePlayerReady(id) {
                 // so that it does not change, this allows correct reload
                 // handling of the page (improved user experience)
                 var _body = jQuery("body");
-                _body.triggerHandler("data", [data, document.URL, "post", true,
+                _body.triggerHandler("data", [data, document.URL, null, true,
                                 href]);
             };
             request.send(data);
