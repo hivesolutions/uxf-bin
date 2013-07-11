@@ -620,16 +620,18 @@
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.uxresolve = function(url, base_url) {
+    jQuery.uxresolve = function(url, baseUrl) {
         var doc = document;
         var oldBase = doc.getElementsByTagName("base")[0];
-        var oldHref = oldBase && oldBase.href, docHead = doc.head
-                || doc.getElementsByTagName("head")[0];
+        var oldHref = oldBase && oldBase.href;
+        var docHead = doc.head || doc.getElementsByTagName("head")[0];
         var ourBase = oldBase || docHead.appendChild(doc.createElement("base"));
         var resolver = doc.createElement("a")
         var resolvedUrl;
 
-        ourBase.href = base_url;
+        baseUrl = baseUrl || (oldBase && oldBase.href);
+
+        ourBase.href = baseUrl;
         resolver.href = url;
         resolvedUrl = resolver.href;
 
@@ -12755,9 +12757,13 @@ function onYouTubePlayerReady(id) {
 
                 // retrieves the body element and uses it to trigger the data
                 // event indicating that new panel data is available and that
-                // the current layout must be updated (async fashion)
+                // the current layout must be updated (async fashion) note
+                // that the target link is set as the current document's url
+                // so that it does not change, this allows correct reload
+                // handling of the page (improved user experience)
                 var _body = jQuery("body");
-                _body.triggerHandler("data", [data, href, "post", true]);
+                _body.triggerHandler("data", [data, document.URL, "post", true,
+                                href]);
             };
             request.send(data);
         };
