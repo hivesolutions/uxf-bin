@@ -1700,6 +1700,10 @@
     margin: 0px 0px 0px;
 }
 
+.omni-style .list.entity-options-list.full .entity-description {
+    width: 100%;
+}
+
 .omni-style .notification {
     background-color: #ffffff;
     border: 1px solid #eaeaea;
