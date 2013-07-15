@@ -10191,19 +10191,6 @@ function onYouTubePlayerReady(id) {
 
                         // switches over the event key code
                         switch (eventKeyCode) {
-                            // in case it's the enter key
-                            case 13 :
-                                // retrieves the selected list item
-                                var listItemSelected = jQuery(
-                                        ".filter-contents > .selected", filter);
-
-                                // updates the current selection, runs the
-                                // appropriate (default) actions
-                                _select(listItemSelected, filter, options);
-
-                                // breaks the switch
-                                break;
-
                             // in case it's the page up key
                             case 33 :
                                 // in case the shift key is pressed range mode
