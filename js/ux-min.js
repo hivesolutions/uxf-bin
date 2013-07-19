@@ -746,6 +746,29 @@ Md5._md5=function(stringValue){var number=stringValue.length;var state=[17325841
 stringValue=stringValue.substring(index-64);for(var index=0;index<stringValue.length;index++){tail[index>>2]|=stringValue.charCodeAt(index)<<((index%4)<<3);}
 tail[index>>2]|=0x80<<((index%4)<<3);if(index>55){Md5._md5Cycle(state,tail);for(var index=0;index<16;index++){tail[index]=0;}}
 tail[14]=number*8;Md5._md5Cycle(state,tail);return state;}
+var StringBuffer=StringBuffer||{};function StringBuffer(){this.buffer=[];}
+StringBuffer.prototype.clear=function(string){this.buffer=[];return this;}
+StringBuffer.prototype.append=function(string){this.buffer.push(string);return this;}
+StringBuffer.prototype.prepend=function(string){this.buffer=[string].concat(this.buffer);return this;}
+StringBuffer.prototype.replace=function(string){this.clear();this.append(string);return this;}
+StringBuffer.prototype.removeLastAppend=function(){this.buffer[this.buffer.size()-1]="";return this;}
+StringBuffer.prototype.empty=function(){return this.buffer.length==0;}
+StringBuffer.prototype.toString=function(){return this.buffer.join("");}
+var String=String||{};if(typeof(String.prototype.trim)==="undefined"){String.prototype.trim=function(){return String(this).replace(/^\s+|\s+$/g,"");};}
+String.prototype.optionsRegex=new RegExp("\{[a-zA-Z0-9_]*(?=\})","g");String.format=function(stringValue){for(var index=1;index<arguments.length;index++){stringValue=stringValue.replace("{"+(index-1)+"}",arguments[index]);}
+return stringValue;}
+String.prototype.format=function(){var stringValue=this;for(var index=0;index<arguments.length;index++){stringValue=stringValue.replace("{"+index+"}",arguments[index]);}
+return stringValue;}
+String.prototype.formatOptions=function(optionsMap){if(!optionsMap){return this;}
+var stringBuffer=new StringBuffer();var currentIndex=0;while(true){var matchResult=this.optionsRegex.exec(this);if(matchResult==null){break;}
+var optionStartIndex=matchResult.index;var optionEndIndex=this.optionsRegex.lastIndex;var optionValue=matchResult[0].slice(1);var previousPartString=this.slice(currentIndex,optionStartIndex);stringBuffer.append(previousPartString);var realOptionValue=optionsMap[optionValue];var realOptionValueString=String(realOptionValue);stringBuffer.append(realOptionValueString);currentIndex=optionEndIndex+1;}
+var lastPartString=this.slice(currentIndex);stringBuffer.append(lastPartString);var stringValue=stringBuffer.toString();return stringValue;}
+String.prototype.capitalize=function(){return this.replace(/\w+/g,function(a){return a.charAt(0).toUpperCase()+a.substr(1);});}
+String.prototype.decapitalize=function(){return this.replace(/\w+/g,function(a){return a.charAt(0).toLowerCase()+a.substr(1);});}
+String.prototype.encodeUtf=function(){var string=this.replace(/\r\n/g,"\n");var utfString="";for(var index=0;index<string.length;index++){var character=string.charCodeAt(index);if(character<128){utfString+=String.fromCharCode(character);}else if((character>127)&&(character<2048)){utfString+=String.fromCharCode((character>>6)|192);utfString+=String.fromCharCode((character&63)|128);}else{utfString+=String.fromCharCode((character>>12)|224);utfString+=String.fromCharCode(((character>>6)&63)|128);utfString+=String.fromCharCode((character&63)|128);}}
+return utfString;}
+String.prototype.decodeUtf=function(){var string="";var index=0;var character=0;var character1=0;var character2=0;while(index<this.length){character=this.charCodeAt(index);if(character<128){string+=String.fromCharCode(character);index++;}else if((character>191)&&(character<224)){character1=this.charCodeAt(index+1);string+=String.fromCharCode(((character&31)<<6)|(character1&63));index+=2;}else{character1=this.charCodeAt(index+1);character2=this.charCodeAt(index+2);string+=String.fromCharCode(((character&15)<<12)|((character1&63)<<6)|(character2&63));index+=3;}}
+return string;}
 var Template=Template||{};var TEMPLATE_ENGINE_NORMAL=1;var TEMPLATE_ENGINE_DOLLAR=2;var TEMPLATE_ENGINE_OPEN=3;var TEMPLATE_ENGINE_PARAMETERS=4;var TEMPLATE_ENGINE_PARAMETER=5;var TEMPLATE_ENGINE_PARAMETER_VALUE=6;var TEMPLATE_ENGINE_PARAMETER_VALUE_STRING=7;var TEMPLATE_NODE_ROOT=1;var TEMPLATE_NODE_TEXT=2;var TEMPLATE_NODE_SINGLE=3;var TEMPLATE_NODE_OPEN=4;var TEMPLATE_NODE_CLOSE=5;var TEMPLATE_NODE_UNDEFINED=6;var TEMPLATE_PARAMETER_STRING=1;var TEMPLATE_PARAMETER_REFERENCE=2;var TEMPLATE_PARAMETER_INTEGER=3;var TEMPLATE_PARAMETER_FLOAT=4;var DEFAULT_CALLBACKS={textEnd:function(data,start,end){console.info("textEnd :: '"+data+"'");},parameter:function(data,start,end){console.info("parameter :: '"+data+"'");},parameterValue:function(data,start,end){console.info("parameterValue :: '"+data+"'");},tagEnd:function(data,start,end){console.info("tagEnd :: '"+data+"'");}};var TemplateEngine=function(){};TemplateEngine.prototype.getc=function(){var buffer=this.buffer;var position=this.position;if(position==buffer.length){return null;}
 var value=buffer[position];this.position++;return value;};TemplateEngine.prototype.mark=function(value){this.markN(value,0);};TemplateEngine.prototype.markBack=function(value){this.markN(value,1);}
 TemplateEngine.prototype.markN=function(value,offset){this.marks[value]=this.position-offset;};TemplateEngine.prototype.callbackData=function(value){this.callbackDataN(value,0);};TemplateEngine.prototype.callbackDataBack=function(value){this.callbackDataN(value,1);};TemplateEngine.prototype.callbackDataN=function(value,offset){var callback=this.callbacks[value];if(!callback){return;}
