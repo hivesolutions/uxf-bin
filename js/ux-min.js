@@ -724,6 +724,8 @@ Date.prototype.getTimeZoneStructure=function(){var javascriptUtcOffset=this.getT
 for(var index=utcOffsetMinutesStringLength;index<2;index++){utcOffsetMinutesString="0"+utcOffsetMinutesString;}
 if(utcOffset>=0){utcOffsetHoursString="+"+utcOffsetHoursString;}else{utcOffsetHoursString="-"+utcOffsetHoursString;}
 var timeZoneName="GMT"+utcOffsetHoursString+utcOffsetMinutesString;var timeZoneStructure={};timeZoneStructure["utc_offset"]=utcOffset;timeZoneStructure["time_zone_name"]=timeZoneName;return timeZoneStructure;}
+var Array=Array||{};if(typeof(Array.prototype.indexOf)==="undefined"){Array.prototype.indexOf=function(obj,start){for(var i=(start||0),j=this.length;i<j;i++){if(this[i]===obj){return i;}}
+return-1;};}
 var Md5=Md5||{};Md5.HEXADECIMAL_CHARACTERS=["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];Md5.digest=function(stringValue){var digest=Md5._md5(stringValue);var digestHex=Md5.hex(digest);return digestHex;}
 Md5.hex=function(stringList){var hexStringList=[];for(var index=0;index<stringList.length;index++){hexStringList[index]=Md5.rhex(stringList[index]);}
 return hexStringList.join("");}
