@@ -47,8 +47,14 @@
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
-            // retrieves the body
+            // retrieves the global window and body elements to be
+            // able to apply their styles
+            var _window = jQuery(window);
             var _body = jQuery("body");
+
+            // applies the global document plugin so that the base behaviour
+            // of the window is changed accordingly
+            _window.uxdocument();
 
             // retrieves the complete set of template elements and applies
             // the attribute name obfuscation in each of them so that the
@@ -577,6 +583,19 @@
         // returns the resulting copy structure to the
         // caller method
         return copy;
+    };
+})(jQuery);
+
+(function(jQuery) {
+    jQuery.fn.uxdocument = function() {
+        var matchedObject = this;
+        var _body = jQuery("body");
+        matchedObject.resize(function() {
+                    var resizables = jQuery(".resizable:visible");
+                    resizables.hide();
+                    matchedObject.triggerHandler("size");
+                    resizables.show();
+                });
     };
 })(jQuery);
 
@@ -15025,8 +15044,13 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
-            // resizes the overlay in the screen
+            // resizes the overlay in the screen, this is the initial
+            // operation so that it becomes of the correct size, then
+            // adds the resizable class to the current element to identify
+            // the element as an element that is meant to be resizes, this
+            // is imporant to avoid error in the resize operations
             _resizeOverlay(matchedObject, options);
+            matchedObject.addClass("resizable");
         };
 
         /**
@@ -15051,7 +15075,7 @@ function onYouTubePlayerReady(id) {
                     });
 
             // registers the resize in the window
-            _window.resize(function(event) {
+            _window.bind("size", function(event) {
                         // resizes the overlay in the screen
                         _resizeOverlay(matchedObject, options);
                     });
