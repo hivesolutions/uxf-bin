@@ -301,7 +301,7 @@
 
 .ulite-style .button.shipping-method p,
 .ulite-style .button.payment-method p {
-    color: #b0b0b0;
+    color: #8d8d8d;
     font-size: 11px;
     line-height: 16px;
     margin: 3px 0px 0px 0px;
@@ -516,12 +516,12 @@
 }
 
 .ulite-style .label.related-title {
-    color: #999999;
+    color: #8d8d8d;
     margin: 8px 0px 0px 24px;
 }
 
 .ulite-style .label.form-label {
-    color: #b0b0b0;
+    color: #8d8d8d;
     font-size: 11px;
     font-weight: normal;
     line-height: 16px;
@@ -615,7 +615,7 @@
 }
 
 .ulite-style .list.sub-menu-list {
-    color: #7d7d7d;
+    color: #8d8d8d;
     font-size: 10px;
     line-height: 24px;
     list-style: none;
