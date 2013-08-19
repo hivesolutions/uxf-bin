@@ -508,6 +508,10 @@
     color: #619160;
 }
 
+.ulite-style .label.orange {
+    color: #e0933a;
+}
+
 .ulite-style .label.small {
     font-size: 10px;
     line-height: 16px;
@@ -583,6 +587,10 @@
 
 .ulite-style .link.selected {
     color: #e0933a;
+}
+
+.ulite-style .link.medium {
+    font-size: 11px;
 }
 
 .ulite-style .link.small {
@@ -742,7 +750,7 @@
 }
 
 .ulite-style .list.side-menu-list li {
-    margin: 0px 12px 0px 12px;
+    margin: 0px 0px 0px 0px;
 }
 
 .ulite-style .list.product-list {
