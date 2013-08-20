@@ -411,6 +411,13 @@
     color: #aaaaaa;
 }
 
+.ulite-style .check-field-group {
+    display: inline-block;
+    height: 27px;
+    text-align: left;
+    width: 274px;
+}
+
 .ulite-style .drop-tag {
     font-size: 10px;
     text-transform: uppercase;
@@ -542,12 +549,6 @@
 
 .ulite-style .label.form-label.orange {
     color: #e0933a;
-}
-
-.ulite-style .form-label.form-label-left {
-    float: left;
-    margin: 7px 10px 0px 0px;
-    width: 74px;
 }
 
 .ulite-style .label.form-content-label {
@@ -1145,9 +1146,8 @@
     -moz-border-radius: 16px 16px 16px 16px;
     -webkit-border-radius: 16px 16px 16px 16px;
     cursor: pointer;
-    float: left;
     height: 17px;
-    margin: 6px 0px 0px 0px;
+    margin: -3px 0px 0px 0px;
     vertical-align: middle;
     width: 17px;
 }
@@ -1165,8 +1165,7 @@
 }
 
 .ulite-style .radio-field-label {
-    float: left;
-    margin: 0px 12px 0px 6px;
+    margin: 0px 12px 0px 3px;
 }
 
 .ulite-style .scroll-list-container {
