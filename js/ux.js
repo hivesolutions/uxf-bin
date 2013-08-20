@@ -7388,6 +7388,11 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // localizes the various values that are going to be used in the
+            // contruction of the alert window
+            var confirm = jQuery.uxlocale("Confirm");
+            var cancel = jQuery.uxlocale("Cancel");
+
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
             if (window.length == 0) {
@@ -7395,9 +7400,11 @@ function onYouTubePlayerReady(id) {
                         + "<h1></h1>"
                         + "<p class=\"single\"></p>"
                         + "<div class=\"window-buttons\">"
-                        + "<span class=\"button button-cancel\">Cancel</span>"
-                        + "<span class=\"button button-confirm\">Confirm</span>"
-                        + "</div>");
+                        + "<span class=\"button button-cancel\">"
+                        + cancel
+                        + "</span>"
+                        + "<span class=\"button button-confirm\">"
+                        + confirm + "</span>" + "</div>");
                 window.uxwindow();
                 matchedObject.append(window);
             }
@@ -7413,7 +7420,7 @@ function onYouTubePlayerReady(id) {
 
             // sets the window properties and shows
             // button cancel
-            windowHeader.html("Confirm");
+            windowHeader.html(confirm);
             windowContents.html(message);
             windowButtonCancel.show();
 
