@@ -13030,9 +13030,9 @@ function onYouTubePlayerReady(id) {
                     matchedObject.triggerHandler("success");
                 },
                 error : function(request, textStatus, errorThrown) {
-                    // resets the form contents to the original values
+                    // resets the form error contents to the original values
                     // this should remove all the values in it
-                    resetForm(matchedObject, options);
+                    resetErrors(matchedObject, options);
 
                     // parses the request response data as json (default layout for
                     // the response value) and then uses the result to retrieve the
@@ -13070,7 +13070,7 @@ function onYouTubePlayerReady(id) {
             });
         };
 
-        var resetForm = function(matchedObject, options) {
+        var resetErrors = function(matchedObject, options) {
             // retrieves the various fields of the form that contain errors and
             // removes the error state from it (error clear)
             var errorFields = jQuery("[data-error]", matchedObject);
@@ -13091,6 +13091,12 @@ function onYouTubePlayerReady(id) {
             formSuccessItem.remove();
             otherItems.show();
             matchedObject.trigger("layout");
+        };
+
+        var resetForm = function(matchedObject, options) {
+            // restores the error part of the form to the original values so that
+            // they don't appear in the form (original state)
+            resetErrors(matchedObject, options);
 
             // retrieves the complete set of elements from the matched object
             // and runs the reset operation on all of them, this should be able
