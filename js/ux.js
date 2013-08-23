@@ -6566,7 +6566,7 @@ function onYouTubePlayerReady(id) {
 
                         // retrieves the date format defined in the calendar range
                         // and uses it with the current map to retrieve the date string
-                        var format = range.attr("data-format");
+                        var format = range.attr("data-format") || "%Y/%m/%d";
                         var dateString = jQuery.uxformat(current, format);
 
                         // updates both the logical value and the real value
@@ -6600,6 +6600,7 @@ function onYouTubePlayerReady(id) {
         return this;
     };
 })(jQuery);
+
 /**
  * jQuery calendar plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a calendar component.
@@ -20878,7 +20879,7 @@ function onYouTubePlayerReady(id) {
             calendar.bind("current_change", function(event, current) {
                         // retrieves the date format defined in the current element
                         // and uses it with the current map to retrieve the date string
-                        var format = element.attr("data-format");
+                        var format = element.attr("data-format") || "%Y/%m/%d";
                         var dateString = jQuery.uxformat(current, format);
 
                         // updates both the logical value and the real value
