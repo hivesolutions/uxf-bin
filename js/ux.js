@@ -185,7 +185,7 @@
             table.uxtable();
             image.uximage();
             calendar.uxcalendar();
-            calendar.uxcalendarrange();
+            calendarRange.uxcalendarrange();
             menulink.uxmenulink();
             slider.uxslider();
             scrollList.uxscrolllist();
