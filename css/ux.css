@@ -131,6 +131,14 @@ body.wait-load {
     cursor: default;
 }
 
+.calendar-range > .calendar {
+    display: none;
+}
+
+.calendar-range.calendar-visible > .calendar {
+    display: block;
+}
+
 .check-field-label {
     cursor: pointer;
 }

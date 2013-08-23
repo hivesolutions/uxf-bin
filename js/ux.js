@@ -92,6 +92,7 @@
             var table = jQuery(".table", matchedObject).not(".template .table");
             var image = jQuery(".image", matchedObject).not(".template .image");
             var calendar = jQuery(".calendar", matchedObject).not(".template .calendar");
+            var calendarRange = jQuery(".calendar-range", matchedObject).not(".template .calendar-range");
             var menulink = jQuery(".menu-link", matchedObject).not(".template .menu-link");
             var slider = jQuery(".slider", matchedObject).not(".template .slider");
             var scrollList = jQuery(".scroll-list", matchedObject).not(".template .scroll-list");
@@ -184,6 +185,7 @@
             table.uxtable();
             image.uximage();
             calendar.uxcalendar();
+            calendar.uxcalendarrange();
             menulink.uxmenulink();
             slider.uxslider();
             scrollList.uxscrolllist();
@@ -6698,7 +6700,7 @@ function onYouTubePlayerReady(id) {
 
         var _updateHandlers = function(matchedObject, options) {
             // retrieves all the (valid) cells from the matched object
-            var cells = jQuery("tbody td", matchedObject)
+            var cells = jQuery("tbody td", matchedObject);
 
             // registrs for the click event in the cells
             cells.click(function() {
@@ -19985,6 +19987,14 @@ function onYouTubePlayerReady(id) {
             // retrieves the element as the matched object
             var element = matchedObject;
 
+            // verifies if the element is already focused and in
+            // case it's returns immediately avoiding the new
+            // redundant focus event that would do anything
+            var isFocus = element.hasClass("focus");
+            if (isFocus) {
+                return;
+            }
+
             // blurs all the active text fields (avoids bluring
             // the current text field)
             __bluractive(element, options);
@@ -20011,11 +20021,23 @@ function onYouTubePlayerReady(id) {
 
             // sets the element value in the text field
             element.attr("value", elementValue);
+
+            // triggers the composite focus event so that the
+            // listeners "know" about the "real" focus action
+            element.triggerHandler("_focus");
         };
 
         var _blur = function(matchedObject, options) {
             // retrieves the element as the matched object
             var element = matchedObject;
+
+            // verifies if the current element is focused and
+            // in case it's not avoids the blur action as the element
+            // is already considered to be in a blur state
+            var isFocus = element.hasClass("focus");
+            if (!isFocus) {
+                return;
+            }
 
             // retrieves the value of the avoid next flag
             // and updates the state of it to false
@@ -20051,6 +20073,10 @@ function onYouTubePlayerReady(id) {
             // removes the focus class to the text field, signals
             // the blur from it
             element.removeClass("focus");
+
+            // triggers the composite blur event so that the
+            // listeners "know" about the "real" blur action
+            element.triggerHandler("_blur");
         };
 
         var __start = function(matchedObject, options) {
@@ -20398,8 +20424,9 @@ function onYouTubePlayerReady(id) {
                         }
 
                         // creates the date object from the timestamp
+                        // and then uses it to unpack the various date
+                        // values fro it (value decomposition)
                         var date = new Date(timestamp);
-
                         var year = date.getFullYear();
                         var month = date.getMonth() + 1;
                         var day = date.getDate();
