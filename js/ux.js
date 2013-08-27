@@ -5162,6 +5162,10 @@ function onYouTubePlayerReady(id) {
                     var object = _element.attr("data-object");
                     var method = _element["ux" + object]
                     method && method.call(_element, "reset");
+
+                    // triggers the reset event on the current element indicating
+                    // that a reset operation has been performed in it
+                    _element.triggerHandler("_reset");
                 });
     };
 })(jQuery);
