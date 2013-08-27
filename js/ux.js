@@ -10147,7 +10147,7 @@ function onYouTubePlayerReady(id) {
 
                         // triggers the selected event in the drop list with the current selected
                         // element and value as arguments
-                        dropList.trigger("selected", [element, value])
+                        dropList.trigger("selected", [element, value]);
                     });
 
             // iterates over each of the drop list elements that were
