@@ -13642,7 +13642,7 @@ function onYouTubePlayerReady(id) {
 
                     // triggerrs the success event on the matched object, this
                     // should indicate that the form was correctly submited
-                    matchedObject.triggerHandler("success");
+                    matchedObject.triggerHandler("success", [data]);
                 },
                 error : function(request, textStatus, errorThrown) {
                     // resets the form error contents to the original values
