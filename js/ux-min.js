@@ -756,6 +756,15 @@ var value=element.html();var valueFloat=parseFloat(value);if(zerify){valueFloat=
 return valueFloat;}
 Select._normalizeValue=function(value,decimalPlaces,defaultValue){var rounder=decimalPlaces?Math.pow(10,decimalPlaces):0;value=decimalPlaces?(Math.round(value*rounder)/rounder).toFixed(decimalPlaces):value;if(isNaN(value)){value=defaultValue?defaultValue:"N/A";}
 return value;}
+var Base64=Base64||{};Base64._keyString="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";Base64.encode=function(input,encode){var output="";var character1,character2,character3;var encoding1,encoding2,encoding3,encoding4;var index=0;encode=encode?encode:false;input=encode?input.encodeUtf():input;while(index<input.length){character1=input.charCodeAt(index++);character2=input.charCodeAt(index++);character3=input.charCodeAt(index++);encoding1=character1>>2;encoding2=((character1&3)<<4)|(character2>>4);encoding3=((character2&15)<<2)|(character3>>6);encoding4=character3&63;if(isNaN(character2)){encoding3=encoding4=64;}else if(isNaN(character3)){encoding4=64;}
+output=output+Base64._keyString.charAt(encoding1)
++Base64._keyString.charAt(encoding2)
++Base64._keyString.charAt(encoding3)
++Base64._keyString.charAt(encoding4);}
+return output;}
+Base64.decode=function(input,decode){var output="";var character1,character2,character3;var encoding1,encoding2,encoding3,encoding4;var index=0;decode=decode?decode:false;input=input.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(index<input.length){encoding1=Base64._keyString.indexOf(input.charAt(index++));encoding2=Base64._keyString.indexOf(input.charAt(index++));encoding3=Base64._keyString.indexOf(input.charAt(index++));encoding4=Base64._keyString.indexOf(input.charAt(index++));character1=(encoding1<<2)|(encoding2>>4);character2=((encoding2&15)<<4)|(encoding3>>2);character3=((encoding3&3)<<6)|encoding4;output=output+String.fromCharCode(character1);if(encoding3!=64){output=output+String.fromCharCode(character2);}
+if(encoding4!=64){output=output+String.fromCharCode(character3);}}
+output=decode?output.decodeUtf():output;return output;}
 var Date=Date||{};Date.parseUtc=function(dateString){var date=new Date(dateString);var dateTimeZoneStructure=date.getTimeZoneStructure();var timeZoneName=dateTimeZoneStructure["time_zone_name"];var dateString=dateString?dateString+" "+timeZoneName:date;var timestamp=Date.parse(dateString);return timestamp;}
 Date.prototype.getTimeZoneStructure=function(){var javascriptUtcOffset=this.getTimezoneOffset()*-1;var utcOffset=javascriptUtcOffset*60;var absoluteJavascriptUtcOffset=Math.abs(javascriptUtcOffset);var utcOffsetHours=Math.floor(absoluteJavascriptUtcOffset/60);var utcOffsetMinutes=absoluteJavascriptUtcOffset%60;var utcOffsetHoursString=utcOffsetHours.toString();var utcOffsetMinutesString=utcOffsetMinutes.toString();var utcOffsetHoursStringLength=utcOffsetHoursString.length;var utcOffsetMinutesStringLength=utcOffsetMinutesString.length;for(var index=utcOffsetHoursStringLength;index<2;index++){utcOffsetHoursString="0"+utcOffsetHoursString;}
 for(var index=utcOffsetMinutesStringLength;index<2;index++){utcOffsetMinutesString="0"+utcOffsetMinutesString;}
