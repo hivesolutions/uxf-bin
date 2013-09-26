@@ -919,6 +919,27 @@
 })(jQuery);
 
 (function(jQuery) {
+    jQuery.fn.uxobject = function(type) {
+        // retrieves the reference to the object in context
+        // the one that is going to be set with the proper
+        // object type for future reference
+        var matchedObject = this;
+
+        // verifies if a previous type has already been set
+        // in the object, for such cases the function must
+        // return immediately to avoid duplicated type
+        var _type = matchedObject.attr("data-object");
+        if (_type) {
+            return;
+        }
+
+        // sets the object type in the data object attribute
+        // for the currently matched object
+        matchedObject.uxobject(type);
+    };
+})(jQuery);
+
+(function(jQuery) {
     jQuery.uxresolve = function(url, baseUrl) {
         var doc = document;
         var oldBase = doc.getElementsByTagName("base")[0];
@@ -8545,7 +8566,7 @@ function onYouTubePlayerReady(id) {
             // sets the ux global object representation as drop
             // field, this value may be used latter for fast ux
             // object type access (hash based conditions)
-            matchedObject.attr("data-object", "dropfield");
+            matchedObject.uxobject("dropfield");
 
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
@@ -10053,7 +10074,7 @@ function onYouTubePlayerReady(id) {
             // sets the ux global object representation as drop
             // list, this value may be used latter for fast ux
             // object type access (hash based conditions)
-            matchedObject.attr("data-object", "droplist");
+            matchedObject.uxobject("droplist");
 
             // retrieves the reference to the options part of the
             // drop list to be able to change properly
@@ -16561,7 +16582,7 @@ function onYouTubePlayerReady(id) {
         var _appendHtml = function() {
             // sets the data object reference in the selected objects
             // so that they may be used latter
-            matchedObject.attr("data-object", "radiofield");
+            matchedObject.uxobject("radiofield");
 
             // iterates over all the matched objects to update their
             // current internal state values
@@ -19752,7 +19773,7 @@ function onYouTubePlayerReady(id) {
             // sets the ux global object representation as text
             // field, this value may be used latter for fast ux
             // object type access (hash based conditions)
-            matchedObject.attr("data-object", "tagfield");
+            matchedObject.uxobject("tagfield");
 
             // adds the tag field tags to the matched object, this
             // is the container to the tag representations
@@ -20256,7 +20277,7 @@ function onYouTubePlayerReady(id) {
             // sets the ux global object representation as text
             // field, this value may be used latter for fast ux
             // object type access (hash based conditions)
-            matchedObject.attr("data-object", "textfield");
+            matchedObject.uxobject("textfield");
 
             // iterates over all the items in the matched object
             matchedObject.each(function(index, element) {
