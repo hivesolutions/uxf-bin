@@ -3897,6 +3897,9 @@ function onYouTubePlayerReady(id) {
         "before" : "before",
         "search" : "search",
         "undefined" : "undefined",
+        "count" : "count",
+        "sum" : "sum",
+        "average" : "average",
         "COUNTRIES" : ["Afghanistan", "Albania", "Algeria", "Andorra",
                 "Angola", "Antigua & Deps", "Argentina", "Armenia",
                 "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -3993,6 +3996,9 @@ function onYouTubePlayerReady(id) {
         "before" : "antes",
         "search" : "procurar",
         "undefined" : "indefinido",
+        "count" : "contagem",
+        "sum" : "somatório",
+        "average" : "média",
         "COUNTRIES" : ["Afeganistão", "Albania", "Argélia", "Andorra",
                 "Angola", "Antigua e Dependencias", "Argentina", "Arménia",
                 "Austrália", "Austria", "Azerbaijão", "Bahamas", "Bahrein",
@@ -12339,20 +12345,27 @@ function onYouTubePlayerReady(id) {
             var margin = jQuery(".margin");
             var pageOffset = margin.outerHeight(true);
 
-            // tries to retrieve the dom element
+            // tries to retrieve the dom element, as the first
+            // reference to the selected list item
             var _element = selectedListItem.get(0);
 
-            // cheks if the element is visible
+            // cheks if the element is visible using
+            // the appropriate visibility extension
             var isVisible = _element ? jQuery.uxvisible(selectedListItem,
                     pageOffset) : true;
 
-            // scrolls to the reference in case the
-            // element is not visible
+            // scrolls to the reference in case the element
+            // is not visible, this is required so that the
+            // end user is able to interact with the element
             !isVisible && selectedListItem.length == 1
                     && selectedListItem.uxscroll({
                                 offset : pageOffset,
                                 padding : 10
                             });
+
+            // triggers the selected event indicating that the list
+            // of selected items has changed
+            matchedObject.triggerHandler("selected", [selectedListItem]);
         };
 
         var _incrementRange = function(matchedObject, options) {
