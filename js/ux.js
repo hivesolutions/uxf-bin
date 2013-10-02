@@ -15148,6 +15148,28 @@ function onYouTubePlayerReady(id) {
                         event.stopPropagation();
                     });
 
+            // registers for the hide event in the menu so
+            // that if such event is triggerred the menu
+            // is correctly hidden from the environment
+            menu.bind("hide", function() {
+                        // retrieves the current element and sets it as the
+                        // current menu to be used in the function
+                        var element = jQuery(this);
+                        var menu = element;
+
+                        // tries to retrieve the current owner of the menu
+                        // contents and in case it exists removes the active
+                        // class from it
+                        var owner = menu.data("owner");
+                        owner && owner.removeClass("active");
+
+                        // removes the active class from the menu and
+                        // then hides the menu contents
+                        menu.removeClass("active");
+                        menuContents.hide();
+                        menuContents.triggerHandler("hidden");
+                    });
+
             // register for the click event in the body,
             // only in case the registration was not already made
             !isRegistered && _body.click(function(event) {
@@ -15178,7 +15200,7 @@ function onYouTubePlayerReady(id) {
                             var owner = menu.data("owner");
                             owner && owner.removeClass("active");
 
-                            // removes the active class from the manu and
+                            // removes the active class from the menu and
                             // then hides the menu contents
                             menu.removeClass("active");
                             menuContents.hide();
