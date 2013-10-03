@@ -23804,8 +23804,6 @@ var _ = self.Prism = {
         type : function(o) {
             return Object.prototype.toString.call(o).match(/\[object (\w+)\]/)[1];
         },
-
-        // deep clone a language definition (e.g. to extend it)
         clone : function(o) {
             var type = _.util.type(o);
             switch (type) {
@@ -23823,11 +23821,9 @@ var _ = self.Prism = {
                 case "Array" :
                     return o.slice();
             }
-
             return o;
         }
     },
-
     languages : {
         extend : function(id, redef) {
             var lang = _.util.clone(_.languages[id]);
@@ -23838,21 +23834,15 @@ var _ = self.Prism = {
 
             return lang;
         },
-
-        // Insert a token before another token in a language literal
         insertBefore : function(inside, before, insert, root) {
             root = root || _.languages;
             var grammar = root[inside];
             var ret = {};
 
             for (var token in grammar) {
-
                 if (grammar.hasOwnProperty(token)) {
-
                     if (token == before) {
-
                         for (var newToken in insert) {
-
                             if (insert.hasOwnProperty(newToken)) {
                                 ret[newToken] = insert[newToken];
                             }
@@ -23865,8 +23855,6 @@ var _ = self.Prism = {
 
             return root[inside] = ret;
         },
-
-        // traverse a language definition with Depth First Search
         DFS : function(o, callback) {
             for (var i in o) {
                 callback.call(o, i, o[i]);
@@ -23877,7 +23865,6 @@ var _ = self.Prism = {
             }
         }
     },
-
     highlightAll : function(async, callback) {
         var elements = document.querySelectorAll("code[class*=\"language-\"], [class*=\"language-\"] code, code[class*=\"lang-\"], [class*=\"lang-\"] code");
 
@@ -23885,9 +23872,7 @@ var _ = self.Prism = {
             _.highlightElement(element, async === true, callback);
         }
     },
-
     highlightElement : function(element, async, callback) {
-        // Find language
         var language, grammar, parent = element;
 
         while (parent && !lang.test(parent.className)) {
@@ -23903,12 +23888,10 @@ var _ = self.Prism = {
             return;
         }
 
-        // Set language on the element, if not present
         element.className = element.className.replace(lang, "").replace(/\s+/g,
                 " ")
                 + " language-" + language;
 
-        // Set language on the parent, for styling
         parent = element.parentNode;
 
         if (/pre/i.test(parent.nodeName)) {
@@ -23996,12 +23979,10 @@ var _ = self.Prism = {
 
             pattern = pattern.pattern || pattern;
 
-            for (var i = 0; i < strarr.length; i++) { // Don’t cache length as it changes during the loop
-
+            for (var i = 0; i < strarr.length; i++) {
                 var str = strarr[i];
 
                 if (strarr.length > text.length) {
-                    // Something went terribly wrong, ABORT, ABORT!
                     break tokenloop;
                 }
 
@@ -24114,7 +24095,6 @@ Token.stringify = function(o, language, parent) {
 };
 
 if (!self.document) {
-    // In worker
     self.addEventListener("message", function(evt) {
         var message = JSON.parse(evt.data), lang = message.language, code = message.code;
 
@@ -24159,7 +24139,6 @@ Prism.languages.markup = {
     "entity" : /&amp;#?[\da-z]{1,8};/gi
 };
 
-// Plugin to make entity title show the real entity, idea by Roman Komarov
 Prism.hooks.add("wrap", function(env) {
 
             if (env.type === "entity") {
@@ -24291,7 +24270,6 @@ Prism.languages.insertBefore("php", "keyword", {
             }
         });
 
-// must be defined after the function pattern
 Prism.languages.insertBefore("php", "operator", {
             "property" : {
                 pattern : /(->)[\w]+/g,
@@ -24299,11 +24277,8 @@ Prism.languages.insertBefore("php", "operator", {
             }
         });
 
-// adds HTML support of the markup language exists
 if (Prism.languages.markup) {
 
-    // tokenizes all inline PHP blocks that are wrapped in <?php ?>
-    // this allows for easy PHP + markup highlighting
     Prism.hooks.add("before-highlight", function(env) {
                 if (env.language !== "php") {
                     return;
@@ -24320,7 +24295,6 @@ if (Prism.languages.markup) {
                         });
             });
 
-    // re-inserts the tokens after highlighting
     Prism.hooks.add("after-highlight", function(env) {
                 if (env.language !== "php") {
                     return;
@@ -24335,7 +24309,6 @@ if (Prism.languages.markup) {
                 env.element.innerHTML = env.highlightedCode;
             });
 
-    // wraps tokens in classes that are missing them
     Prism.hooks.add("wrap", function(env) {
                 if (env.language === "php" && env.type === "markup") {
                     env.content = env.content.replace(
@@ -24344,7 +24317,6 @@ if (Prism.languages.markup) {
                 }
             });
 
-    // adds the rules before all others
     Prism.languages.insertBefore("php", "comment", {
                 "markup" : {
                     pattern : /(&lt;|<)[^?]\/?(.*?)(>|&gt;)/g,
@@ -24398,7 +24370,6 @@ Prism.languages.insertBefore("scss", "atrule", {
 });
 
 Prism.languages.insertBefore("scss", "property", {
-            // var and interpolated vars
             "variable" : /((\$[-_\w]+)|(#\{\$[-_\w]+\}))/i
         });
 
@@ -24416,10 +24387,8 @@ Prism.languages.bash = Prism.languages.extend("clike", {
         lookbehind : true
     },
     "string" : {
-        // allows multiline string
         pattern : /("|")(\\?[\s\S])*?\1/g,
         inside : {
-            // "property" class reused for bash variables
             "property" : /\$([a-zA-Z0-9_#\?\-\*!@]+|\{[^\}]+\})/g
         }
     },
@@ -24427,12 +24396,10 @@ Prism.languages.bash = Prism.languages.extend("clike", {
 });
 
 Prism.languages.insertBefore("bash", "keyword", {
-            // "property" class reused for bash variables
             "property" : /\$([a-zA-Z0-9_#\?\-\*!@]+|\{[^}]+\})/g
         });
 
 Prism.languages.insertBefore("bash", "comment", {
-            // shebang must be before comment, "important" class from css reused
             "important" : /(^#!\s*\/bin\/bash)|(^#!\s*\/bin\/sh)/g
         });
 
@@ -24442,7 +24409,6 @@ Prism.languages.c = Prism.languages.extend("clike", {
 });
 
 Prism.languages.insertBefore("c", "keyword", {
-            //property class reused for macro statements
             "property" : /#\s*[a-zA-Z]+/g
         });
 
@@ -24521,14 +24487,12 @@ Prism.languages.http = {
     "response-status" : {
         pattern : /^HTTP\/1.[01] [0-9]+.*/g,
         inside : {
-            // Status, e.g. 200 OK
             property : /[0-9]+[A-Z\s-]+$/g
         }
     },
     keyword : /^[\w-]+:(?=.+)/gm
 };
 
-// creates a mapping of Content-Type headers to language definitions
 var httpLanguages = {
     "application/json" : Prism.languages.javascript,
     "application/xml" : Prism.languages.markup,
@@ -24536,8 +24500,6 @@ var httpLanguages = {
     "text/html" : Prism.languages.markup
 };
 
-// inserts each content type parser that has its associated language
-// currently loaded.
 for (var contentType in httpLanguages) {
     if (httpLanguages[contentType]) {
         var options = {};
