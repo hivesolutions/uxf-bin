@@ -139,6 +139,10 @@ body.wait-load {
     display: block;
 }
 
+.code {
+    background-color: transparent;
+}
+
 .check-field-label {
     cursor: pointer;
 }
