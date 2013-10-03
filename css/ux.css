@@ -139,10 +139,6 @@ body.wait-load {
     display: block;
 }
 
-.code {
-    background-color: transparent;
-}
-
 .check-field-label {
     cursor: pointer;
 }
@@ -392,11 +388,6 @@ pre[class*="language-"] {
     padding: 1em;
     margin: .5em 0;
     overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    background: #f5f2f0;
 }
 
 :not(pre) > code[class*="language-"] {
