@@ -5679,13 +5679,10 @@ function onYouTubePlayerReady(id) {
 
             // iterates over all the attributes
             for (var key in attributes) {
-                // retrieves the value of the attribute to be set,
-                // localizing in case the localize flag has been set
-                // this should provide a good localization value
+                // retrieves the value of the attribute to be set
+                // and that it's going to be processed in this
+                // iterateion, required by value
                 var attributeValue = attributes[key];
-                attributeValue = localize
-                        ? jQuery.uxlocale(attributeValue)
-                        : attributeValue;
 
                 // creates the "final" key value from the
                 // base key value
@@ -5723,7 +5720,16 @@ function onYouTubePlayerReady(id) {
                     // creates the regular expression for globar search on the key
                     var keyRegex = new RegExp("%\\[" + key + "\\]", "g");
 
-                    // replaces the template strings in the html
+                    // in case the localize flag is set, tries to localize the
+                    // current attribute value into the current locale, the return
+                    // value should default to the proper value in case of failure
+                    attributeValue = localize
+                            ? jQuery.uxlocale(attributeValue)
+                            : attributeValue;
+
+                    // replaces the template strings in the html with the proper attribute
+                    // values this may be an expesive operation in case it's repeated
+                    // frequently for a lot of times (modify with care)
                     templateContents = templateContents.replace(keyRegex,
                             attributeValue);
                 }
@@ -11799,6 +11805,7 @@ function onYouTubePlayerReady(id) {
                                     var options = {
                                         apply : true,
                                         nullify : true,
+                                        localize : true,
                                         defaultValue : "-"
                                     };
 
