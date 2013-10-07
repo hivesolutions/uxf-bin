@@ -13557,6 +13557,7 @@ function onYouTubePlayerReady(id) {
                             // the default behavior (avoids duplicate
                             // submission) then returns the function
                             event.stopPropagation();
+                            event.stopImmediatePropagation();
                             event.preventDefault();
                             return;
                         }
