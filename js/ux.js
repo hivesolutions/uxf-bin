@@ -49,8 +49,12 @@
         var _appendHtml = function() {
             // retrieves the elements to be able to apply their styles
             // and use them as the base reference for the rest of the
-            // apply operations
+            // apply operation, note that the started flag is used to
+            // controll the ammount of times the body is initialized
             var _body = jQuery("body");
+            var started = _body.data("started");
+            _body.data("started", true);
+            _body = !started ? _body : jQuery([]);
 
             // applies the global document plugin so that the base behaviour
             // of the window is changed accordingly
@@ -23989,9 +23993,7 @@ var _ = self.Prism = {
 
     tokenize : function(text, grammar, language) {
         var Token = _.Token;
-
         var strarr = [text];
-
         var rest = grammar.rest;
 
         if (rest) {
@@ -24133,8 +24135,6 @@ if (!self.document) {
         self.postMessage(JSON.stringify(_.tokenize(code, _.languages[lang])));
         self.close();
     }, false);
-
-    return;
 }
 
 Prism.languages.markup = {
