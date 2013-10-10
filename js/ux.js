@@ -47,6 +47,12 @@
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // validates that there's a valid matched object,
+            // otherwise returns immediately
+            if (matchedObject.length == 0) {
+                return;
+            }
+
             // retrieves the elements to be able to apply their styles
             // and use them as the base reference for the rest of the
             // apply operation, note that the started flag is used to
@@ -252,12 +258,6 @@
             // applies the uploader plugin
             uploader.uxuploader();
 
-            // applies the first focus operation in the focus
-            // enabled elements, this is going to be overriden
-            // by the second focus operation after the body is
-            // correctly and finally shown
-            focus.uxfocus();
-
             // applies the print plugin
             _print.uxprint();
 
@@ -282,13 +282,21 @@
             // applies the focus plugins, this must be done
             // after the visibility is set so that no problem
             // with focus operations occurs (safe operation)
-            focus.uxfocus();
+            setTimeout(function() {
+                        focus.uxfocus();
+                    });
         };
 
         /**
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
+            // validates that there's a valid matched object,
+            // otherwise returns immediately
+            if (matchedObject.length == 0) {
+                return;
+            }
+
             // retrieves the body and verifies if it has
             // already been registered in case it was sets
             // the value and returns immediately
@@ -4166,7 +4174,13 @@ function onYouTubePlayerReady(id) {
                         // retrieves the element reference
                         var _element = jQuery(element);
 
-                        // focus on the element
+                        // removes the trigger focus class from the element
+                        // in case this is required it will be processed latter
+                        // as part of the normal focus processing
+                        _element.removeClass("focus");
+
+                        // focus on the element, this should trigger
+                        // the proper action in the underlying element
                         _element.focus();
 
                         // retrieves the (data) value from the element (from
@@ -20831,16 +20845,18 @@ function onYouTubePlayerReady(id) {
             __bluractive(element, options);
 
             // adds the focus class to the text field, signals
-            // the focus on it
+            // the focus on it and then adds the active class
+            // also indicating the general active behavior
             element.addClass("focus");
-
-            // adds the active class
             element.addClass("active");
 
-            // removes the lower (background) mode class
+            // removes the lower (background) mode class so
+            // that the placeholder value is removed
             element.removeClass("lower");
 
-            // retrieves the (data) type of the element
+            // retrieves the (data) type of the element to be
+            // able to call the proper show method for the type
+            // in case it exists
             var type = element.attr("data-type");
 
             // shows the type specific structures
