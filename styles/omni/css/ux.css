@@ -287,7 +287,7 @@
 }
 
 .omni-style .calendar-content thead tr th {
-    color: #777777;
+    color: #666666;
     font-weight: normal;
     text-align: center;
 }
@@ -676,7 +676,7 @@
     background-position: 0px 0px;
     background-repeat: repeat-x;
     border: 1px solid #bfbfbf;
-    color: #777777;
+    color: #666666;
     display: block;
     font-size: 10px;
     font-weight: normal;
@@ -715,7 +715,7 @@
     border-radius: 6px 6px 6px 6px;
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
-    color: #777777;
+    color: #666666;
     font-size: 13px;
     font-weight: bold;
     line-height: 36px;
@@ -729,7 +729,7 @@
     box-shadow: 0px 0px 4px #cccccc;
     -moz-box-shadow: 0px 0px 4px #cccccc;
     -webkit-box-shadow: 0px 0px 4px #cccccc;
-    color: #777777;
+    color: #666666;
 }
 
 .omni-style .button.button-more.active,
@@ -801,7 +801,7 @@
 }
 
 .omni-style .cross-list h2 {
-    color: #777777;
+    color: #666666;
     font-size: 10px;
     font-weight: normal;
     margin: 0px 0px 6px 0px;
@@ -858,7 +858,7 @@
 }
 
 .omni-style .drop-field.strong > .text-field.lower {
-    color: #777777;
+    color: #666666;
 }
 
 .omni-style .drop-field.strong.disabled > .text-field {
@@ -1044,7 +1044,7 @@
     border-radius: 6px 6px 6px 6px;
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
-    color: #777777;
+    color: #666666;
     cursor: pointer;
     float: left;
     font-size: 10px;
@@ -1281,13 +1281,13 @@
 }
 
 .omni-style .filter.entities-list .entity-details {
-    color: #777777;
+    color: #666666;
     line-height: 16px;
     margin: 10px 0px 0px 0px;
 }
 
 .omni-style .filter.entities-list .entity-information {
-    color: #777777;
+    color: #666666;
     font-size: 11px;
     line-height: 16px;
     margin: 0px 6px 0px 6px;
@@ -1493,7 +1493,7 @@
 }
 
 .omni-style .hovering-box .hovering-box-header p.entity-details {
-    color: #777777;
+    color: #666666;
 }
 
 .omni-style .hovering-box .hovering-box-header div.entity-picture > img {
@@ -1504,7 +1504,7 @@
 }
 
 .omni-style .hovering-box .table tr th {
-    color: #777777;
+    color: #666666;
     font-size: 10px;
 }
 
@@ -1562,12 +1562,12 @@
 }
 
 .omni-style .link.link-grey-light {
-    color: #777777;
+    color: #666666;
 }
 
 .omni-style .link.link-grey-light:hover,
 .omni-style .link.link-grey-light.selected {
-    border-bottom: 1px solid #777777;
+    border-bottom: 1px solid #666666;
 }
 
 .omni-style .link.link-grey-dark {
@@ -1665,7 +1665,7 @@
 }
 
 .omni-style .list.side-entities-list.simplified .entity-details {
-    color: #777777;
+    color: #666666;
     float: right;
     font-size: 10px;
 }
@@ -1708,7 +1708,7 @@
 }
 
 .omni-style .list.entity-options-list .entity-description {
-    color: #777777;
+    color: #666666;
     line-height: 20px;
     margin-bottom: 12px;
     margin-top: 6px;
@@ -1820,7 +1820,7 @@
 }
 
 .omni-style.dark .overlay {
-    background-color: #777777;
+    background-color: #666666;
     opacity: 0.3;
 }
 
@@ -2310,7 +2310,7 @@
     padding: 0px 0px 0px 0px;
 }
 .omni-style .tab-panel .tab-selector {
-    color: #777777;
+    color: #666666;
     float: left;
     font-size: 12px;
     height: 20px;
@@ -2371,9 +2371,9 @@
 }
 
 .omni-style .tag.inset {
-    box-shadow: inset 0px 0px 3px #777777;
-    -moz-box-shadow: inset 0px 0px 3px #777777;
-    -webkit-box-shadow: inset 0px 0px 3px #777777;
+    box-shadow: inset 0px 0px 3px #666666;
+    -moz-box-shadow: inset 0px 0px 3px #666666;
+    -webkit-box-shadow: inset 0px 0px 3px #666666;
 }
 
 .omni-style .tag.lower {
@@ -2401,7 +2401,7 @@
 }
 
 .omni-style .table tr th {
-    color: #777777;
+    color: #666666;
     font-size: 10px;
     font-weight: normal;
     padding-left: 4px;
@@ -2755,7 +2755,7 @@
 }
 
 .omni-style .text-field.strong.lower {
-    color: #777777;
+    color: #666666;
 }
 
 .omni-style .text-field.strong:disabled {
@@ -2769,7 +2769,7 @@
 }
 
 .omni-style .text-area.strong.lower {
-    color: #777777;
+    color: #666666;
 }
 
 .omni-style .text-area.strong:disabled {
