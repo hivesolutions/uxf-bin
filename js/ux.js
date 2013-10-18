@@ -8310,7 +8310,7 @@ function onYouTubePlayerReady(id) {
                 valueAttribute
                         && sourceList.attr("data-value_attribute",
                                 valueAttribute);
-                link_attribute
+                linkAttribute
                         && sourceList.attr("data-link_attribute",
                                 link_attribute);
                 elementName && targetList.attr("name", elementName);
