@@ -8253,9 +8253,16 @@ function onYouTubePlayerReady(id) {
                 var elementName = _element.attr("name");
                 var elementOrder = _element.attr("data-order");
                 var sourceName = _element.attr("data-source");
+                var sourceName = _element.attr("data-source");
                 var targetName = _element.attr("data-target");
                 var numberOptions = _element.attr("data-number_options");
                 var duplicates = _element.attr("data-duplicates") || false;
+                var displayAttribute = matchedObject.attr("data-display_attribute")
+                        || "name";
+                var valueAttribute = matchedObject.attr("data-value_attribute")
+                        || "value";
+                var linkAttribute = matchedObject.attr("data-link_attribute")
+                        || "link";
 
                 // creates the various section elements
                 var sourceSection = jQuery("<div class=\"section source-section\"></div>");
@@ -8297,6 +8304,15 @@ function onYouTubePlayerReady(id) {
                 // list then in case the element name is defined sets it in the target
                 // list to provide correct form submission
                 dataSource.length && sourceList.append(dataSource);
+                displayAttribute
+                        && sourceList.attr("data-display_attribute",
+                                displayAttribute);
+                valueAttribute
+                        && sourceList.attr("data-value_attribute",
+                                valueAttribute);
+                link_attribute
+                        && sourceList.attr("data-link_attribute",
+                                link_attribute);
                 elementName && targetList.attr("name", elementName);
                 elementOrder && targetList.attr("data-order", elementOrder);
 
@@ -8787,10 +8803,14 @@ function onYouTubePlayerReady(id) {
                 // additionally retrieves also the placeholder so that it may
                 // propagated to the lower layers
                 var placeholder = _element.attr("placeholder");
-                var displayAttribute = _element.attr("data-display_attribute");
-                var extraAttribute = _element.attr("data-extra_attribute");
-                var valueAttribute = _element.attr("data-value_attribute");
-                var linkAttribute = _element.attr("data-link_attribute");
+                var displayAttribute = _element.attr("data-display_attribute")
+                        || "name";
+                var extraAttribute = _element.attr("data-extra_attribute")
+                        || "extra";
+                var valueAttribute = _element.attr("data-value_attribute")
+                        || "value";
+                var linkAttribute = _element.attr("data-link_attribute")
+                        || "link";
 
                 // retrieves the filter attributes and converts it
                 // to a list of string from the token separator
@@ -13123,8 +13143,10 @@ function onYouTubePlayerReady(id) {
 
                     // retrieves the display and the value attributes from the
                     // element to the propagated to the value field
-                    var displayAttribute = element.attr("data-sdisplay_attribute");
-                    var valueAttribute = element.attr("data-svalue_attribute");
+                    var displayAttribute = element.attr("data-sdisplay_attribute")
+                            || "name";
+                    var valueAttribute = element.attr("data-svalue_attribute")
+                            || "value";
 
                     // creates the value field as a drop field (reference field),
                     // inserts it after the operation field and initializes it
@@ -18708,9 +18730,12 @@ function onYouTubePlayerReady(id) {
             var value = sourceList.data("value");
 
             // retrieves both the display, value and link attributes
-            var displayAttribute = matchedObject.attr("data-display_attribute");
-            var valueAttribute = matchedObject.attr("data-value_attribute");
-            var linkAttribute = matchedObject.attr("data-link_attribute");
+            var displayAttribute = matchedObject.attr("data-display_attribute")
+                    || "name";
+            var valueAttribute = matchedObject.attr("data-value_attribute")
+                    || "value";
+            var linkAttribute = matchedObject.attr("data-link_attribute")
+                    || "link";
 
             // retrieves the filter attributes
             var filterAttributes = matchedObject.data("filter_attributes");
