@@ -9749,19 +9749,19 @@ function onYouTubePlayerReady(id) {
                             // retrieves both the display and the value
                             // attributes for the current item
                             var currentDisplayAttribute = displayAttribute
-                                    && (typeof currentItem[displayAttribute] == "string" || typeof currentItem[displayAttribute] == "object")
+                                    && ["object", "string", "number"].isIn(typeof currentItem[displayAttribute])
                                     ? currentItem[displayAttribute]
                                     : currentItem;
                             var currentExtraAttribute = extraAttribute
-                                    && (typeof currentItem[extraAttribute] == "string" || typeof currentItem[extraAttribute] == "object")
+                                    && ["object", "string", "number"].isIn(typeof currentItem[extraAttribute])
                                     ? currentItem[extraAttribute]
                                     : null;
                             var currentValueAttribute = valueAttribute
-                                    && (typeof currentItem[valueAttribute] == "string" || typeof currentItem[valueAttribute] == "object")
+                                    && ["object", "string", "number"].isIn(typeof currentItem[valueAttribute])
                                     ? currentItem[valueAttribute]
                                     : currentItem;
                             var currentLinkAttribute = linkAttribute
-                                    && (typeof currentItem[linkAttribute] == "string" || typeof currentItem[linkAttribute] == "object")
+                                    && ["object", "string", "number"].isIn(typeof currentItem[linkAttribute])
                                     ? currentItem[linkAttribute]
                                     : null;
 
@@ -18824,15 +18824,15 @@ function onYouTubePlayerReady(id) {
                             // retrieves both the display and the value
                             // attributes for the current item
                             var currentDisplayAttribute = displayAttribute
-                                    && (typeof currentItem[displayAttribute] == "string" || typeof currentItem[displayAttribute] == "object")
+                                    && ["object", "string", "number"].isIn(typeof currentItem[displayAttribute])
                                     ? currentItem[displayAttribute]
                                     : currentItem;
                             var currentValueAttribute = valueAttribute
-                                    && (typeof currentItem[valueAttribute] == "string" || typeof currentItem[valueAttribute] == "object")
+                                    && ["object", "string", "number"].isIn(typeof currentItem[valueAttribute])
                                     ? currentItem[valueAttribute]
                                     : currentItem;
                             var currentLinkAttribute = linkAttribute
-                                    && (typeof currentItem[linkAttribute] == "string" || typeof currentItem[linkAttribute] == "object")
+                                    && ["object", "string", "number"].isIn(typeof currentItem[linkAttribute])
                                     ? currentItem[linkAttribute]
                                     : null;
 
@@ -23720,6 +23720,12 @@ if (typeof(Array.prototype.indexOfObject) === "undefined") {
         }
 
         return -1;
+    };
+}
+
+if (typeof(Array.prototype.isIn) === "undefined") {
+    Array.prototype.isIn = function(obj) {
+        return this.indexOf(obj) != -1;
     };
 }
 
