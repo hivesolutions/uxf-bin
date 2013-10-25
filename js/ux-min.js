@@ -296,7 +296,9 @@ targetItems.push(item);sourceList.triggerHandler("items_changed");targetList.tri
 sourceList.triggerHandler("items_changed");targetList.triggerHandler("items_changed");});arrowRight.click(function(){var element=jQuery(this);var crossList=element.parents(".cross-list");var duplicates=crossList.attr("data-duplicates")||false;var sourceList=jQuery(".source-section .source-list",crossList);var targetList=jQuery(".target-section .source-list",crossList);var targetSource=jQuery(".target-section .data-source",crossList);var targetItems=targetSource.data("items");var selectedItems=jQuery("li.selected",sourceList);selectedItems.removeClass("selected");for(var index=0;index<selectedItems.length;index++){var selectedItem=selectedItems[index];var _selectedItem=jQuery(selectedItem);var item=_selectedItem.data("item");var exists=targetItems.indexOfObject(item)!=-1;if(!duplicates&&exists){continue;}
 targetItems.push(item);}
 sourceList.triggerHandler("items_changed");targetList.triggerHandler("items_changed");});matchedObject.each(function(index,element){var _element=jQuery(this);var parentForm=_element.parents("form");parentForm.bind("pre_submit",function(){var elementName=_element.attr("name");if(!elementName){return;}
-var targetList=jQuery(".target-section .select-list",_element);targetList.remove("input");var listItems=jQuery("li",targetList);for(var index=0;index<listItems.length;index++){var listItem=jQuery(listItems[index]);var dataValue=listItem.attr("data-value");var htmlValue=listItem.html();dataValue=dataValue?dataValue:htmlValue;targetList.append("<input type=\"hidden\" name=\""
+var targetList=jQuery(".target-section .select-list",_element);targetList.remove("input");var listItems=jQuery("li",targetList);if(listItems.length==0){targetList.append("<input type=\"hidden\" name=\""
++elementName+"\" />");}
+for(var index=0;index<listItems.length;index++){var listItem=jQuery(listItems[index]);var dataValue=listItem.attr("data-value");var htmlValue=listItem.html();dataValue=dataValue?dataValue:htmlValue;targetList.append("<input type=\"hidden\" name=\""
 +elementName
 +"\" value=\""
 +dataValue+"\" />");}});});};switch(method){case"default":initialize();break;}
@@ -580,7 +582,9 @@ switch(action){case"change":var isSelected=element.hasClass("selected");isSelect
 var listItems=jQuery("li.selected",selectList);listItems.removeClass("selected");for(index=baseIndex;index<targetIndex+1;index++){var _element=jQuery(":nth-child("+(index+1)
 +")",selectList);_element.addClass("selected");}
 break;case"normal":var listItems=jQuery("li.selected",selectList);listItems.removeClass("selected");element.addClass("selected");selectList.data("previous",element);break;}});listItems.dblclick(function(event){var element=jQuery(this);var selectList=element.parent(".select-list");element.trigger("selected",[element]);});matchedObject.each(function(index,element){var _element=jQuery(element);var parentForm=_element.parents("form");parentForm.bind("pre_submit",function(){var elementName=_element.attr("name");if(!elementName){return;}
-_element.remove("input");var listItems=jQuery("li",_element);for(var index=0;index<listItems.length;index++){var listItem=jQuery(listItems[index]);var dataValue=listItem.attr("data-value");var htmlValue=listItem.html();dataValue=dataValue?dataValue:htmlValue;_element.append("<input type=\"hidden\" name=\""
+_element.remove("input");var listItems=jQuery("li",_element);if(listItems.length==0){_element.append("<input type=\"hidden\" name=\""
++elementName+"\" />");}
+for(var index=0;index<listItems.length;index++){var listItem=jQuery(listItems[index]);var dataValue=listItem.attr("data-value");var htmlValue=listItem.html();dataValue=dataValue?dataValue:htmlValue;_element.append("<input type=\"hidden\" name=\""
 +elementName
 +"\" value=\""
 +dataValue+"\" />");}});});};var _update=function(matchedObject,options){var _element=matchedObject;var order=_element.attr("data-order");if(!order){var listItems=jQuery("li.order",_element);var orderIcons=jQuery(".order-icon",listItems);listItems.removeClass("order");orderIcons.remove();return;}
