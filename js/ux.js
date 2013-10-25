@@ -1937,7 +1937,7 @@
                         else {
                             // retrieves the element value directly
                             // from the element contents
-                            var elementValue = _element.html();
+                            var elementValue = _element.text();
                         }
 
                         // in case the data structure is a list
@@ -2110,8 +2110,8 @@
                                     // retrieves both the name and the value
                                     // of the current item in iteration
                                     var name = item.attr("data-name")
-                                            || item.html();
-                                    var value = item.html();
+                                            || item.text();
+                                    var value = item.text();
 
                                     // creates the item structure with the name
                                     // and the value set
@@ -2351,7 +2351,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
 
                         // retrieves the url (html) from the element
                         // and then trims it
-                        var url = _element.html();
+                        var url = _element.text();
                         url = url.trim();
 
                         // in case the current url value is not valid
@@ -5419,7 +5419,7 @@ function onYouTubePlayerReady(id) {
                         var enumList = jQuery.parseJSON(_enum);
 
                         // retrieves the (element) value
-                        var value = _element.html();
+                        var value = _element.text();
 
                         // "calculates" the number of (decimal) places
                         // in case none is provided zero decimal places
@@ -5492,7 +5492,7 @@ function onYouTubePlayerReady(id) {
                 var magnitudeSeparator = _element.attr("data-magnitude_separator");
 
                 // retrieves the (element) value
-                var value = _element.html();
+                var value = _element.text();
 
                 // "calculates" the number of (decimal) places
                 // in case none is provided zero decimal places
@@ -5901,7 +5901,7 @@ function onYouTubePlayerReady(id) {
                         // retrieves the current timestamp string
                         // value from the element and converts
                         // it into an integer
-                        var timestampString = _element.html();
+                        var timestampString = _element.text();
                         var timestamp = parseInt(timestampString);
 
                         // in case the timestamp could not be parsed
@@ -8454,9 +8454,9 @@ function onYouTubePlayerReady(id) {
                     var item = jQuery(items[index]);
 
                     // retrieves the data value from the selected item defaulting
-                    // to the html represention in case none is provided
+                    // to the text represention in case none is provided
                     var dataValue = item.attr("data-value");
-                    var htmlValue = item.html();
+                    var htmlValue = item.text();
                     dataValue = dataValue ? dataValue : htmlValue;
 
                     // adds the data value to the target items list
@@ -8494,9 +8494,9 @@ function onYouTubePlayerReady(id) {
                         element.removeClass("selected");
 
                         // retrieves the data value from the element defaulting
-                        // to the html represention in case none is provided
+                        // to the text represention in case none is provided
                         var dataValue = element.attr("data-value");
-                        var htmlValue = element.html();
+                        var htmlValue = element.text();
                         dataValue = dataValue ? dataValue : htmlValue;
 
                         // in case the data value exists in the target items
@@ -8541,9 +8541,9 @@ function onYouTubePlayerReady(id) {
                         element.removeClass("selected");
 
                         // retrieves the data value from the element defaulting
-                        // to the html represention in case none is provided
+                        // to the text represention in case none is provided
                         var dataValue = element.attr("data-value");
-                        var htmlValue = element.html();
+                        var htmlValue = element.text();
                         dataValue = dataValue ? dataValue : htmlValue;
 
                         // retrieves the index of the data value in the
@@ -8591,9 +8591,9 @@ function onYouTubePlayerReady(id) {
                             var _selectedItem = jQuery(selectedItem);
 
                             // retrieves the data value from the selected item defaulting
-                            // to the html represention in case none is provided
+                            // to the text represention in case none is provided
                             var dataValue = _selectedItem.attr("data-value");
-                            var htmlValue = _selectedItem.html();
+                            var htmlValue = _selectedItem.text();
                             dataValue = dataValue ? dataValue : htmlValue;
 
                             // retrieves the index of the data value in the target
