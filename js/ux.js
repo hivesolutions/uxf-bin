@@ -8324,13 +8324,6 @@ function onYouTubePlayerReady(id) {
                 targetSource.uxdatasource();
                 targetList.append(targetSource);
 
-                // retrieves the target set of items in the data
-                // source (local) and sets them as the exclusion
-                // list of items in the source list (avoids duplicated)
-                // exposure of items
-                var targetItems = targetSource.data("items");
-                !duplicates && sourceList.data("exclusion", targetItems);
-
                 // starts the various source list elements
                 sourceList.uxsourcelist();
                 targetList.uxsourcelist();
@@ -8357,9 +8350,12 @@ function onYouTubePlayerReady(id) {
                 _element.append(clear);
 
                 // triggers the items changed event both in the source list
-                // and in the target list
-                sourceList.trigger("items_changed");
-                targetList.trigger("items_changed");
+                // and in the target list, this is set as a delayed operation
+                // so that the proper handlers are triggered
+                setTimeout(function() {
+                            sourceList.triggerHandler("items_changed");
+                            targetList.triggerHandler("items_changed");
+                        });
             });
         };
 
@@ -8374,14 +8370,52 @@ function onYouTubePlayerReady(id) {
             var targetList = jQuery(".target-section .select-list",
                     matchedObject);
 
+            // retrieves the source list value as the source
+            // element to be able to register it for the valide
+            // item event (and filter the ones in the target)
+            var sourceElement = jQuery(".source-section .source-list",
+                    matchedObject);
+
             // retrieves the arrows for the currently matched object
             // these "buttons" control the flow between sections
             var arrowLeft = jQuery(".arrow-left", matchedObject);
             var arrowRight = jQuery(".arrow-right", matchedObject);
 
+            // registers for the item validation event so that the items
+            // that are already included in the target list do not appear
+            // in the source list (in no duplicate situations only)
+            sourceElement.bind("validate_item", function(event, item, value) {
+                        // retrieves the current element (source list) and then uses
+                        // it to retrieve the parent cross list
+                        var _element = jQuery(this);
+                        var crossList = _element.parents(".cross-list");
+
+                        // verifies if the current cross list is registered
+                        // for duplicates if that's the case returns immediately
+                        // with a valid value (no filtering required)
+                        var duplicates = crossList.attr("data-duplicates");
+                        if (duplicates) {
+                            return true;
+                        }
+
+                        // retrieves the target data source and uses it to
+                        // retrieve the associated items for filtering
+                        var targetSource = jQuery(
+                                ".target-section .data-source", crossList);
+                        var targetItems = targetSource.data("items");
+
+                        // verifies if the current item in validation exists in
+                        // the target data source and in case it does returns
+                        // false so that it gets invalidated
+                        var exists = targetItems.indexOf(value) != -1;
+                        return exists ? false : true;
+                    });
+
             // registers for the order changed event in the target
             // list so that the local data source associated is changed
-            // to reflect the new order in the elements
+            // to reflect the new order in the elements, this operation
+            // is only possible assuming that the target data source is
+            // local (store in javascript memory)
             targetList.bind("order_changed", function(event, element) {
                 // retrieves the current element and uses it to retrieve
                 // the associate top cross list element
@@ -8442,9 +8476,11 @@ function onYouTubePlayerReady(id) {
                         // should be avoided (default to false)
                         var duplicates = crossList.attr("data-duplicates") || false;
 
-                        // retrieves the target list associated with the
-                        // cross list (current context)
-                        var targetList = jQuery(".target-section .select-list",
+                        // retrieves the source and target lists associated with the
+                        // current cross list (current context) for usage
+                        var sourceList = jQuery(".source-section .source-list",
+                                crossList);
+                        var targetList = jQuery(".target-section .source-list",
                                 crossList);
 
                         // retrieves the target data source and then
@@ -8453,7 +8489,8 @@ function onYouTubePlayerReady(id) {
                                 ".target-section .data-source", crossList);
                         var targetItems = targetSource.data("items");
 
-                        // removes the selected class from the element
+                        // removes the selected class from the element, it's
+                        // no longer meant to be selected
                         element.removeClass("selected");
 
                         // retrieves the data value from the element defaulting
@@ -8470,15 +8507,12 @@ function onYouTubePlayerReady(id) {
                             return;
                         }
 
-                        // clones the element in case duplicated elements are
-                        // allowed in the current source list
-                        element = duplicates ? element.clone(true) : element;
-
                         // adds the data value to the target items and then
-                        // apends the element to the target list
+                        // triggers the items changed event so that the target
+                        // list is correctly updated in visual terms
                         targetItems.push(dataValue);
-                        targetList.append(element);
-                        targetList.trigger("items_changed");
+                        sourceList.triggerHandler("items_changed");
+                        targetList.triggerHandler("items_changed");
                     });
 
             // registers for the selected event on the source list to
@@ -8489,13 +8523,11 @@ function onYouTubePlayerReady(id) {
                         var _element = jQuery(this);
                         var crossList = _element.parents(".cross-list");
 
-                        // retrieves the flag that controls if duplicates
-                        // should be avoided (default to false)
-                        var duplicates = crossList.attr("data-duplicates") || false;
-
-                        // retrieves the source list associated with the
-                        // cross list (current context)
-                        var sourceList = jQuery(".source-section .select-list",
+                        // retrieves the source and target lists associated with the
+                        // current cross list (current context) for usage
+                        var sourceList = jQuery(".source-section .source-list",
+                                crossList);
+                        var targetList = jQuery(".target-section .source-list",
                                 crossList);
 
                         // retrieves the target data source and then
@@ -8503,6 +8535,10 @@ function onYouTubePlayerReady(id) {
                         var targetSource = jQuery(
                                 ".target-section .data-source", crossList);
                         var targetItems = targetSource.data("items");
+
+                        // removes the selected class from the element, it's
+                        // no longer meant to be selected
+                        element.removeClass("selected");
 
                         // retrieves the data value from the element defaulting
                         // to the html represention in case none is provided
@@ -8516,13 +8552,10 @@ function onYouTubePlayerReady(id) {
                         var index = targetItems.indexOf(dataValue);
                         targetItems.splice(index, 1);
 
-                        // removes the selected class from the element and
-                        // adds it to the source list
-                        element.removeClass("selected");
-                        duplicates
-                                ? element.remove()
-                                : sourceList.append(element)
-                                        && sourceList.trigger("items_changed");
+                        // triggers the items changed event so that the target
+                        // list is correctly updated with the new items
+                        sourceList.triggerHandler("items_changed");
+                        targetList.triggerHandler("items_changed");
                     });
 
             // registers for the click event on the left arrow to be
@@ -8534,15 +8567,11 @@ function onYouTubePlayerReady(id) {
                         var element = jQuery(this);
                         var crossList = element.parents(".cross-list");
 
-                        // retrieves the flag that controls if duplicates
-                        // should be avoided (default to false)
-                        var duplicates = crossList.attr("data-duplicates") || false;
-
-                        // retrieves both the source list and the target list
-                        // to be able to "transfer" the selected items
-                        var sourceList = jQuery(".source-section .select-list",
+                        // retrieves the source and target lists associated with the
+                        // current cross list (current context) for usage
+                        var sourceList = jQuery(".source-section .source-list",
                                 crossList);
-                        var targetList = jQuery(".target-section .select-list",
+                        var targetList = jQuery(".target-section .source-list",
                                 crossList);
 
                         // retrieves the target data source and then
@@ -8574,13 +8603,10 @@ function onYouTubePlayerReady(id) {
                             targetItems.splice(_index, 1);
                         }
 
-                        // removes the selected class from the selected items and then
-                        // appends the various selected items to the source list
-                        selectedItems.removeClass("selected");
-                        duplicates
-                                ? selectedItems.remove()
-                                : sourceList.append(selectedItems)
-                                        && sourceList.trigger("items_changed");
+                        // triggers the items changed event so that the target
+                        // list is correctly updated with the removed items
+                        sourceList.triggerHandler("items_changed");
+                        targetList.triggerHandler("items_changed");
                     });
 
             // registers for the click event on the right arrow to be
@@ -8596,11 +8622,11 @@ function onYouTubePlayerReady(id) {
                         // should be avoided (default to false)
                         var duplicates = crossList.attr("data-duplicates") || false;
 
-                        // retrieves both the source list and the target list
-                        // to be able to "transfer" the selected items
-                        var sourceList = jQuery(".source-section .select-list",
+                        // retrieves the source and target lists associated with the
+                        // current cross list (current context) for usage
+                        var sourceList = jQuery(".source-section .source-list",
                                 crossList);
-                        var targetList = jQuery(".target-section .select-list",
+                        var targetList = jQuery(".target-section .source-list",
                                 crossList);
 
                         // retrieves the target data source and then
@@ -8614,12 +8640,9 @@ function onYouTubePlayerReady(id) {
                         var selectedItems = jQuery("li.selected", sourceList);
                         selectedItems.removeClass("selected");
 
-                        // creates the list that will hold the various items
-                        // considered to be valid (no duplicates)
-                        var validItems = [];
-
                         // iterates over the list of selected items to filter the ones
-                        // that are duplicated values
+                        // that are duplicated values and add the others to the target
+                        // items list so that they get update in the next ui update
                         for (var index = 0; index < selectedItems.length; index++) {
                             // retrieves the current selected item in iteration
                             var selectedItem = selectedItems[index];
@@ -8638,23 +8661,15 @@ function onYouTubePlayerReady(id) {
                                 continue;
                             }
 
-                            // clones the selected item in case duplicated elements are
-                            // allowed in the current source list
-                            selectedItem = duplicates
-                                    ? _selectedItem.clone(true)[0]
-                                    : selectedItem;
-
-                            // adds the selected items to the valid items and adds the data
-                            // value to the list of target items (data source)
-                            validItems.push(selectedItem);
+                            // adds the data value of the item to the list of target items
+                            // so that it's going to be used when adding the values
                             targetItems.push(dataValue);
                         }
 
-                        // convers the list of valid items into an element and adds
-                        // it to the target list (should display the items visually)
-                        var _validItems = jQuery(validItems);
-                        targetList.append(_validItems);
-                        targetList.trigger("items_changed");
+                        // triggers the items changed event so that the target
+                        // list is correctly updated with the new items
+                        sourceList.triggerHandler("items_changed");
+                        targetList.triggerHandler("items_changed");
                     });
 
             // iterates over all the selected values to register for the
@@ -18595,7 +18610,13 @@ function onYouTubePlayerReady(id) {
                         // event (lower propagation)
                         var element = jQuery(this);
                         var selectList = jQuery(".select-list", element);
-                        selectList.trigger("items_changed");
+
+                        // runs the update operation on the current element so
+                        // that the new items are rendered for the data source
+                        // and then triggers the items changed event in the lower
+                        // select list to have them properly handled
+                        _update(element, options, true);
+                        selectList.triggerHandler("items_changed");
 
                         // stops the event propagation to avoid
                         // possible loops in the handling
@@ -18721,7 +18742,7 @@ function onYouTubePlayerReady(id) {
                     });
         };
 
-        var _update = function(matchedObject, options) {
+        var _update = function(matchedObject, options, force) {
             // retrieves the source list elements
             var sourceList = matchedObject;
             var dataSource = jQuery("> .data-source", sourceList);
@@ -18755,7 +18776,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the value did not change (no need to
             // show the contents)
-            if (textFieldValue == value) {
+            if (textFieldValue == value && !force) {
                 // returns immediately
                 return;
             }
@@ -18766,7 +18787,9 @@ function onYouTubePlayerReady(id) {
                     ? parseInt(_numberOptions)
                     : numberOptions;
 
-            // runs the query in the data source
+            // runs the query in the data source to retrieve the new
+            // items and then contruct the list item from the
+            // result provided by the data source
             dataSource.uxdataquery({
                         filterString : textFieldValue,
                         filterAttributes : filterAttributes,
@@ -18779,10 +18802,6 @@ function onYouTubePlayerReady(id) {
                             // returns immediately
                             return;
                         }
-
-                        // retrieves the list of item values to be excluded
-                        // fro the resulting list
-                        var exclusion = sourceList.data("exclusion");
 
                         // empties (clears) the select list
                         selectList.empty()
@@ -18808,6 +18827,16 @@ function onYouTubePlayerReady(id) {
                                     ? currentItem[linkAttribute]
                                     : null;
 
+                            // triggers the event that will handle the validation of
+                            // the item creation and in case the return value of it
+                            // is invalid the current item is not created
+                            var result = sourceList.triggerHandler(
+                                    "validate_item", [currentItem,
+                                            currentValueAttribute]);
+                            if (result == false) {
+                                continue;
+                            }
+
                             // creates the base template item from
                             // the current item
                             var templateItem = jQuery("<li data-display=\""
@@ -18815,15 +18844,6 @@ function onYouTubePlayerReady(id) {
                                     + "\" data-value=\""
                                     + currentValueAttribute + "\">"
                                     + currentDisplayAttribute + "</li>");
-
-                            // checks if the current value is invalid (exists
-                            // in the item exclusion list) in case it does exist
-                            // must continue the loop (ignores element)
-                            var invalid = exclusion
-                                    && exclusion.indexOf(currentValueAttribute) != -1;
-                            if (invalid) {
-                                continue;
-                            }
 
                             // sets the current item in the template item data
                             // so that it can be used for latter template rendering
@@ -18850,7 +18870,7 @@ function onYouTubePlayerReady(id) {
 
                         // triggers the items changed event on the select list
                         // to be used for the update of the layour
-                        selectList.trigger("items_changed");
+                        selectList.triggerHandler("items_changed");
                     });
         };
 
