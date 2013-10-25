@@ -8249,7 +8249,6 @@ function onYouTubePlayerReady(id) {
 
                 // retrieves the various attributes from the element to
                 // be used in propagation and as options
-                var elementName = _element.attr("name");
                 var elementOrder = _element.attr("data-order");
                 var sourceName = _element.attr("data-source");
                 var sourceName = _element.attr("data-source");
@@ -8311,7 +8310,6 @@ function onYouTubePlayerReady(id) {
                                 valueAttribute);
                 linkAttribute
                         && sourceList.attr("data-link_attribute", linkAttribute);
-                elementName && targetList.attr("name", elementName);
                 elementOrder && targetList.attr("data-order", elementOrder);
 
                 // in case the number of options is set propagates the setting to the
@@ -8672,6 +8670,8 @@ function onYouTubePlayerReady(id) {
                 // to retrieve the parent form for pre submit event interception
                 var _element = jQuery(this);
                 var parentForm = _element.parents("form");
+                var targetList = jQuery(".target-section .source-list",
+                        _element);
 
                 // registers for the submit event in the parent form so that it's
                 // possible to create the hidden input values for the form
