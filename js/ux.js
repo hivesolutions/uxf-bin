@@ -15654,7 +15654,7 @@ function onYouTubePlayerReady(id) {
                         element.fadeOut(fadeTimeout, function() {
                                     element.remove();
                                 });
-                    })
+                    });
         };
 
         /**
