@@ -140,6 +140,7 @@
             var timestamp = jQuery(".timestamp", matchedObject).not(".template .timestamp");
             var slideshow = jQuery(".slideshow", matchedObject).not(".template .slideshow");
             var chart = jQuery(".chart", matchedObject).not(".template .chart");
+            var lchart = jQuery(".lchart", matchedObject).not(".template .lchart");
             var video = jQuery(".video", matchedObject).not(".template .video");
             var code = jQuery(".code", matchedObject).not(".template .code");
             var uploader = jQuery(".uploader", matchedObject).not(".template .uploader");
@@ -234,6 +235,7 @@
             timestamp.uxtimestamp();
             slideshow.uxslideshow();
             chart.uxchart();
+            lchart.uxlchart();
             video.uxvideo();
             code.uxcode();
 
@@ -3127,12 +3129,22 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            matchedObject.each(function(index, element) {
+                var _element = jQuery(this);
+                _initialize(_element, options);
+            });
         };
 
         /**
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
+        };
+
+        var _initialize = function(matchedObject, options) {
+            matchedObject.prepend("<canvas></canvas>");
+            var canvas = jQuery("canvas", matchedObject);
+            canvas = canvas[0];
         };
 
         // initializes the plugin
@@ -3142,7 +3154,6 @@ function onYouTubePlayerReady(id) {
         return this;
     };
 })(jQuery);
-
 (function(jQuery) {
     jQuery.uxctrl = function(keycode, callback, arguments) {
         // retrieves the document element
