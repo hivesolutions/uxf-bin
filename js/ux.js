@@ -3154,6 +3154,7 @@ function onYouTubePlayerReady(id) {
         return this;
     };
 })(jQuery);
+
 (function(jQuery) {
     jQuery.uxctrl = function(keycode, callback, arguments) {
         // retrieves the document element
@@ -21337,24 +21338,31 @@ function onYouTubePlayerReady(id) {
             // registers for the submit event in the parent form
             // to create an hidden field that "sends" the converted timestamp
             parentForm.bind("pre_submit", function() {
-                        // retrieves the current value and then uses it to parse
-                        // it as current timestamp
-                        var currentValue = element.attr("value");
-                        var currentTimestamp = utc ? Date.parse(currentValue
-                                + " UTC")
-                                / 1000 : Date.parseUtc(currentValue) / 1000;
+                // in case the no process flag is set the processing
+                // will be avoided and the value set is the one shown
+                var noProcess = element.attr("data-no_process");
 
-                        // retrieves the name attribute from the element
-                        // and then removes it to avoid sending the literal date value
-                        var name = element.attr("name");
-                        element.removeAttr("name");
+                // retrieves the current value and then uses it to parse
+                // it as current timestamp
+                var currentValue = element.attr("value");
+                var currentTimestamp = utc
+                        ? (Date.parse(currentValue + " UTC") / 1000)
+                        : (Date.parseUtc(currentValue) / 1000);
 
-                        // creates the hidden field to submit the timestamp value
-                        // described in the text field
-                        element.after("<input type=\"hidden\" name=\"" + name
-                                + "\" value=\"" + String(currentTimestamp)
-                                + "\" />");
-                    });
+                // retrieves the name attribute from the element
+                // and then removes it to avoid sending the literal date value
+                var name = element.attr("name");
+                element.removeAttr("name");
+
+                // calculates the apropriate value taking into account
+                // if the no process flag is currently set
+                var value = noProcess ? currentValue : String(currentTimestamp);
+
+                // creates the hidden field to submit the timestamp value
+                // described in the text field
+                element.after("<input type=\"hidden\" name=\"" + name
+                        + "\" value=\"" + value + "\" />");
+            });
         };
 
         var __startdate = function(element, options) {
@@ -21528,6 +21536,10 @@ function onYouTubePlayerReady(id) {
             // registers for the submit event in the parent form
             // to create an hidden field that "sends" the converted utc timestamp
             parentForm.bind("pre_submit", function() {
+                // in case the no process flag is set the processing
+                // will be avoided and the value set is the one shown
+                var noProcess = element.attr("data-no_process");
+
                 // retrieves the current value and then uses it to parse
                 // it as current timestamp
                 var currentValue = element.attr("value");
@@ -21538,10 +21550,14 @@ function onYouTubePlayerReady(id) {
                 var name = element.attr("name");
                 element.removeAttr("name");
 
+                // calculates the apropriate value taking into account
+                // if the no process flag is currently set
+                var value = noProcess ? currentValue : String(currentTimestamp);
+
                 // creates the hidden field to submit the timestamp value
                 // described in the text field
                 element.after("<input type=\"hidden\" name=\"" + name
-                        + "\" value=\"" + String(currentTimestamp) + "\" />");
+                        + "\" value=\"" + value + "\" />");
             });
 
             // sets the calendar in the element
