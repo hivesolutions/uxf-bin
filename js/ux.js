@@ -14826,7 +14826,7 @@ function onYouTubePlayerReady(id) {
             // in the window)
             hasChanged && windowImage.hide();
             hasChanged && window.addClass("loading");
-            windowImage.attr("src", path);
+            hasChanged && windowImage.attr("src", path);
             hasChanged && windowImage.hide();
 
             // shows the window (should not show the image immediately,
