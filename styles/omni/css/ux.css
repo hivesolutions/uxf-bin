@@ -502,19 +502,19 @@
     text-shadow: 0px -1px 0px #4a7b38;
 }
 
-.omni-style .button:hover
+.omni-style .button:hover,
 .omni-style .button.button-green:hover {
     background-position: left -36px;
 }
 
 .omni-style .button.active,
-.omni-style .button:active
+.omni-style .button:active,
 .omni-style .button.button-green.active,
 .omni-style .button.button-green:active {
     background-position: left -72px;
 }
 
-.omni-style .button.disabled
+.omni-style .button.disabled,
 .omni-style .button.button-green.disabled {
     background-position: left top;
     opacity: 0.6;
@@ -2697,6 +2697,7 @@
     font-size: 13px;
     height: 32px;
     padding: 2px 6px 2px 6px;
+    width: 270px;
 }
 
 .omni-style .text-field.lower {
