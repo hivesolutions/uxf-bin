@@ -24530,7 +24530,7 @@ if (Prism.languages.markup) {
             inside : {
                 "etag" : {
                     pattern : /(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,
-                    inside : Prism.languages.markup.tag.inside
+                    inside : Prism.languages.markup.etag.inside
                 },
                 rest : Prism.languages.css
             }
@@ -24584,7 +24584,7 @@ if (Prism.languages.markup) {
             inside : {
                 "etag" : {
                     pattern : /(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,
-                    inside : Prism.languages.markup.tag.inside
+                    inside : Prism.languages.markup.etag.inside
                 },
                 rest : Prism.languages.javascript
             }
