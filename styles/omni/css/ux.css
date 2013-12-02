@@ -1889,6 +1889,8 @@
 
 .omni-style .password-meter {
     background-color: #dddddd;
+    margin-top: 2px;
+    width: 284px;
 }
 
 .omni-style .password-meter.list-medium-field {
