@@ -24470,10 +24470,10 @@ Prism.languages.markup = {
     "prolog" : /&lt;\?.+?\?>/,
     "doctype" : /&lt;!DOCTYPE.+?>/,
     "cdata" : /&lt;!\[CDATA\[[\w\W]*?]]>/i,
-    "tag" : {
+    "etag" : {
         pattern : /&lt;\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|\w+))?\s*)*\/?>/gi,
         inside : {
-            "tag" : {
+            "etag" : {
                 pattern : /^&lt;\/?[\w:-]+/i,
                 inside : {
                     "punctuation" : /^&lt;\/?/,
@@ -24524,11 +24524,11 @@ Prism.languages.css = {
 };
 
 if (Prism.languages.markup) {
-    Prism.languages.insertBefore("markup", "tag", {
+    Prism.languages.insertBefore("markup", "etag", {
         "style" : {
             pattern : /(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/ig,
             inside : {
-                "tag" : {
+                "etag" : {
                     pattern : /(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,
                     inside : Prism.languages.markup.tag.inside
                 },
@@ -24578,11 +24578,11 @@ Prism.languages.insertBefore("javascript", "keyword", {
 });
 
 if (Prism.languages.markup) {
-    Prism.languages.insertBefore("markup", "tag", {
+    Prism.languages.insertBefore("markup", "etag", {
         "script" : {
             pattern : /(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/ig,
             inside : {
-                "tag" : {
+                "etag" : {
                     pattern : /(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,
                     inside : Prism.languages.markup.tag.inside
                 },
