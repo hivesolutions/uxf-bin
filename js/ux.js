@@ -13968,10 +13968,13 @@ function onYouTubePlayerReady(id) {
                         matchedObject.append(formSuccessItem);
 
                         // hides the other items in the form as shows the just
-                        // rendered form success item, then triggers a layout event
-                        // to render any changes in the "upper" levels
+                        // rendered form success item, tries to refresh contents
+                        // of the upper levels by raisinn and event indicating
+                        // the intent to refresh contents, and then triggers a
+                        // layout event to render any changes in the "upper" levels
                         otherItems.hide();
                         formSuccessItem.show();
+                        matchedObject.trigger("refresh");
                         matchedObject.trigger("layout");
                     }
 
@@ -14165,7 +14168,7 @@ function onYouTubePlayerReady(id) {
         var _scheduleTemplate = function(matchedObject, options) {
             // retrieves the timeout handler for
             // the matched object
-            var timeoutHandler = matchedObject.data("timeoutHandler");
+            var timeoutHandler = matchedObject.data("timeout_handler");
 
             // in case there is already a
             // timeout handler (schedule pending)
@@ -14181,17 +14184,17 @@ function onYouTubePlayerReady(id) {
                         _showTemplate(matchedObject, options);
 
                         // unsets the timeout handler in the matched object
-                        matchedObject.data("timeoutHandler", null);
+                        matchedObject.data("timeout_handler", null);
                     }, 500);
 
             // sets the timeout handler in the matched object
-            matchedObject.data("timeoutHandler", timeoutHandler);
+            matchedObject.data("timeout_handler", timeoutHandler);
         };
 
         var _cancelTemplate = function(matchedObject, options) {
             // retrieves the timeout handler for
             // the matched object
-            var timeoutHandler = matchedObject.data("timeoutHandler");
+            var timeoutHandler = matchedObject.data("timeout_handler");
 
             // in case there is already a
             // timeout handler (schedule pending)
@@ -14200,7 +14203,7 @@ function onYouTubePlayerReady(id) {
                 clearTimeout(timeoutHandler);
 
                 // unsets the timeout handler in the matched object
-                matchedObject.data("timeoutHandler", null);
+                matchedObject.data("timeout_handler", null);
             }
 
             // hides the template
@@ -21382,7 +21385,8 @@ function onYouTubePlayerReady(id) {
 
                 // tries to retrieve and remove any previously existing
                 // hidden element representing the current value
-                var previous = jQuery("input[type=hidden][name=\"" + name + "\"]");
+                var previous = jQuery("input[type=hidden][name=\"" + name
+                        + "\"]");
                 previous.remove();
 
                 // calculates the apropriate value taking into account
@@ -21584,7 +21588,8 @@ function onYouTubePlayerReady(id) {
 
                 // tries to retrieve and remove any previously existing
                 // hidden element representing the current value
-                var previous = jQuery("input[type=hidden][name=\"" + name + "\"]");
+                var previous = jQuery("input[type=hidden][name=\"" + name
+                        + "\"]");
                 previous.remove();
 
                 // calculates the apropriate value taking into account
@@ -22108,6 +22113,14 @@ function onYouTubePlayerReady(id) {
             var windowMask = jQuery(".window-mask", matchedObject);
             var windowMaskExists = windowMask.length > 0;
 
+            // retrieves the reference for both the close and the accept
+            // button for the window as they are going to be marked as
+            // window buttons for future reference
+            var closeButton = jQuery(".close-button", matchedObject);
+            var acceptButton = jQuery(".accept-button", matchedObject);
+            closeButton.data("window_button", true);
+            acceptButton.data("window_button", true);
+
             // adds the window mask to the window in case it does not exist
             !windowMaskExists
                     && matchedObject.append("<div class=\"window-mask\">"
@@ -22201,6 +22214,16 @@ function onYouTubePlayerReady(id) {
                         _element.bind("layout", function() {
                                     // positions the window in the screen
                                     _positionWindow(_element, options);
+                                });
+
+                        // registers for the refresh event in the current
+                        // element so that the internal structures are updated
+                        // with the new elements added, for instance event
+                        // handling registration is performed
+                        _element.bind("refresh", function() {
+                                    // registers the new element for the window buttons only
+                                    // for the new added elements
+                                    _registerButtons(_element, options);
                                 });
                     });
         };
@@ -22432,6 +22455,74 @@ function onYouTubePlayerReady(id) {
             var _document = jQuery(document);
             var handle = matchedObject.data("key_handler");
             _document.unbind("keydown", handle);
+        };
+
+        var _registerButtons = function(matchedObject, options) {
+            // retrieves the references to both the close and
+            // the accept buttons to be used in the registration
+            var closeButton = jQuery(".close-button", matchedObject);
+            var acceptButton = jQuery(".accept-button", matchedObject);
+
+            // iterates over each of the close button to verify if
+            // they've already been registered and if they've not
+            // registers them for the first time
+            closeButton.each(function(index, element) {
+                        // retrieves the current element in iteration and verifies
+                        // if it has already been registered as a window button,
+                        // returning immediately if it has been
+                        var _element = jQuery(this);
+                        var registered = _element.data("window_button");
+                        if (registered) {
+                            return;
+                        }
+
+                        // registers for the click even in the element
+                        // so that the window is closed on click returning
+                        // false (no success in form submission)
+                        _element.click(function(event) {
+                                    // retrieves the element and uses it
+                                    // to retrieve the parent window
+                                    var element = jQuery(this);
+                                    var window = element.parents(".window");
+
+                                    // hides the window with the success flag
+                                    // set to invalid
+                                    _hide(window, options, false);
+                                });
+                    });
+
+            // iterates over all the accept buttons to try to find out the
+            // ones that have not been registered as window buttons and for
+            // those register the proper click event handler
+            acceptButton.each(function(index, element) {
+                        // retrieves the current element in iteration and verifies
+                        // if it has already been registered as a window button,
+                        // returning immediately if it has been
+                        var _element = jQuery(this);
+                        var registered = _element.data("window_button");
+                        if (registered) {
+                            return;
+                        }
+
+                        // registers for the click even in the element
+                        // so that the window is closed on click returning
+                        // true (correct form submission)
+                        _element.click(function(event) {
+                                    // retrieves the element and uses it
+                                    // to retrieve the parent window
+                                    var element = jQuery(this);
+                                    var window = element.parents(".window");
+
+                                    // hides the window with the success flag
+                                    // set to valid
+                                    _hide(window, options, true);
+                                });
+                    });
+
+            // sets the window button submission flag in the complete set
+            // of window buttons as they all have been registered
+            closeButton.data("window_button", true);
+            acceptButton.data("window_button", true);
         };
 
         var __ensureModal = function(matchedObject, options) {
