@@ -8065,7 +8065,7 @@ function onYouTubePlayerReady(id) {
             windowButtonCancel.show();
 
             // removes all the current event handlers from both the
-            // confirm and the cance buttons, this avoid possible errors
+            // confirm and the cancel buttons, this avoid possible errors
             // with multiple click event handlers
             windowButtonConfirm.unbind("click");
             windowButtonCancel.unbind("click");
@@ -22197,7 +22197,7 @@ function onYouTubePlayerReady(id) {
                                 });
 
                         // registers the changing of contents in
-                        // the itnernal structure of the window
+                        // the internal structure of the window
                         _element.bind("layout", function() {
                                     // positions the window in the screen
                                     _positionWindow(_element, options);
