@@ -17117,8 +17117,6 @@ function onYouTubePlayerReady(id) {
                         var count = _element.attr("data-count");
                         count = count ? parseInt(count) : 0;
 
-                        console.info(count);
-
                         // retrieves the currently set value (default one) and tries
                         // to parse it as an integer value defaulting to zero in case
                         // parsing was not possible (default behaviour)
@@ -17154,7 +17152,7 @@ function onYouTubePlayerReady(id) {
             // that the default value is set instead of the current one
             matchedObject.bind("_reset", function() {
                         var element = jQuery(this);
-                        _value(element, "");
+                        _value(element, 0);
                     });
 
             // register for the mouse over event in the rating elements
