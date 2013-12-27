@@ -20294,13 +20294,19 @@ function onYouTubePlayerReady(id) {
                 // registers for the mouse enter event in the uploader input
                 uploaderInput.mouseenter(function() {
                             // adds the selected class from the element
+                            // and the reposition the element in the position
+                            // where its meant to be set (as defined)
                             _element.addClass("selected");
+                            _updateInputPosition(_element, options);
                         });
 
                 // registers for the mouse enter out in the uploader input
                 uploaderInput.mouseout(function() {
                             // removes the selected class from the element
+                            // and the reposition the element in the position
+                            // where its meant to be set (as defined)
                             _element.removeClass("selected");
+                            _updateInputPosition(_element, options);
                         });
 
                 // registers for the change event in the uploader
@@ -20363,6 +20369,20 @@ function onYouTubePlayerReady(id) {
                 _element.bind("enabled", function() {
                             uploaderInput.show();
                         });
+
+                // registers for the mouse enter event on
+                // the element so that the element is repositioned in the
+                // position it's expected to be (as specified)
+                _element.mouseenter(function() {
+                            _updateInputPosition(_element, options);
+                        });
+
+                // registers for the mouse oute event (leave element) on
+                // the element so that the element is repositioned in the
+                // position it's expected to be (as specified)
+                _element.mouseout(function() {
+                            _updateInputPosition(_element, options);
+                        });
             });
         };
 
@@ -20378,7 +20398,8 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the matched (outer) width, to be used
             // for the positioning of the input element
-            var width = marchedObject.outerWidth();
+            var isVisible = marchedObject.is(":visible");
+            var width = isVisible ? marchedObject.outerWidth() : 0;
 
             // sets the uploader input css attributes according
             // to the matched object attributes
