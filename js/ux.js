@@ -12019,7 +12019,7 @@ function onYouTubePlayerReady(id) {
                                         // the current cache item (layout item reference)
                                         cacheItem = cacheItem.item;
 
-                                        // sets the template item as the curreently cached
+                                        // sets the template item as the currently cached
                                         // item so that no construction occurs then removes
                                         // the selection classes from it (avoiding possible
                                         // layout problems)
@@ -12027,6 +12027,11 @@ function onYouTubePlayerReady(id) {
                                         templateItem.removeClass("selected");
                                         templateItem.removeClass("first");
                                         templateItem.removeClass("last");
+
+                                        // re-runs the apply operation on the cached item so
+                                        // that its configuration is re-loaded as defined in
+                                        // the specification (correct behaviour)
+                                        templateItem.uxapply();
                                     }
                                     // otherwise must re-create the template item by runing
                                     // the template engine again
