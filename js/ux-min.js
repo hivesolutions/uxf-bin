@@ -717,7 +717,7 @@ var previousInputFieldValue=matchedObject.attr("data-value");var inputFieldValue
 +dayString+" "+hoursString+":"+minutesString
 +":"+secondsString;element.attr("data-value",dateString);element.attr("value",dateString);}
 var parentForm=element.parents("form");parentForm.bind("pre_submit",function(){var noProcess=element.attr("data-no_process");var currentValue=element.attr("value");var currentTimestamp=utc?(Date.parse(currentValue+" UTC")/1000):(Date.parseUtc(currentValue)/1000);var currentTimestampS=isNaN(currentTimestamp)?"":String(currentTimestamp);var name=element.attr("name")||element.attr("data-name");element.attr("data-name",name)
-element.removeAttr("name");var previous=jQuery("input[type=hidden][name=\""
+element.removeAttr("name");var previous=element.next("input[type=hidden][name=\""
 +name+"\"]");previous.remove();var value=noProcess?currentValue:currentTimestampS;element.after("<input type=\"hidden\" name=\""+name
 +"\" value=\""+value+"\" />");});};var __startdate=function(element,options){var _window=jQuery(window);var noCalendar=element.hasClass("no-calendar")
 if(noCalendar){var calendar=jQuery();}
@@ -727,7 +727,7 @@ calendar.uxcalendar();calendar.hide();var offset=element.position();var height=e
 +dayString;element.attr("data-value",dateString);element.attr("value",dateString);}
 calendar.bind("current_change",function(event,current){var format=element.attr("data-format")||"%Y/%m/%d";var dateString=jQuery.uxformat(current,format);element.attr("data-value",dateString);element.attr("value",dateString);element.triggerHandler("value_change",[dateString]);});calendar.mousedown(function(){element.data("avoid_next",true);});calendar.mouseup(function(){element.focus();});element.bind("value_change",function(event,inputFieldValue){var timestamp=Date.parse(inputFieldValue);if(isNaN(timestamp)){return;}
 var date=new Date(timestamp);var year=date.getFullYear();var month=date.getMonth()+1;var day=date.getDate();calendar.uxcalendar("set",{current:{year:year,month:month,day:day}});});_window.resize(function(event){var offset=element.position();var height=element.outerHeight(true);var calendarTop=offset["top"]+height;var calendarLeft=offset["left"];calendar.css("top",calendarTop+"px");calendar.css("left",calendarLeft+"px");});var parentForm=element.parents("form");parentForm.bind("pre_submit",function(){var noProcess=element.attr("data-no_process");var currentValue=element.attr("value");var currentTimestamp=Date.parse(currentValue+" UTC")/1000;var name=element.attr("name")||element.attr("data-name");element.attr("data-name",name)
-element.removeAttr("name");var previous=jQuery("input[type=hidden][name=\""+name
+element.removeAttr("name");var previous=element.next("input[type=hidden][name=\""+name
 +"\"]");previous.remove();var value=noProcess?currentValue:String(currentTimestamp);element.after("<input type=\"hidden\" name=\""+name
 +"\" value=\""+value+"\" />");});element.data("calendar",calendar);};var __fvaluefloatp=function(element,value){var decimalPlaces=element.attr("data-decimal_places");decimalPlaces=parseInt(decimalPlaces);if(isNaN(decimalPlaces)){return value;}
 var valueF=parseFloat(value);return valueF.toFixed(decimalPlaces);};var __fvaluefloat=function(element,value){var decimalPlaces=element.attr("data-decimal_places");decimalPlaces=parseInt(decimalPlaces);if(isNaN(decimalPlaces)){return value;}

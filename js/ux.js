@@ -21836,7 +21836,7 @@ function onYouTubePlayerReady(id) {
 
                         // tries to retrieve and remove any previously existing
                         // hidden element representing the current value
-                        var previous = jQuery("input[type=hidden][name=\""
+                        var previous = element.next("input[type=hidden][name=\""
                                 + name + "\"]");
                         previous.remove();
 
@@ -22041,7 +22041,7 @@ function onYouTubePlayerReady(id) {
 
                 // tries to retrieve and remove any previously existing
                 // hidden element representing the current value
-                var previous = jQuery("input[type=hidden][name=\"" + name
+                var previous = element.next("input[type=hidden][name=\"" + name
                         + "\"]");
                 previous.remove();
 
