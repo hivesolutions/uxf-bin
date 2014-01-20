@@ -716,9 +716,9 @@ var previousInputFieldValue=matchedObject.attr("data-value");var inputFieldValue
 +String(seconds);var dateString=yearString+"/"+monthString+"/"
 +dayString+" "+hoursString+":"+minutesString
 +":"+secondsString;element.attr("data-value",dateString);element.attr("value",dateString);}
-var parentForm=element.parents("form");parentForm.bind("pre_submit",function(){var noProcess=element.attr("data-no_process");var currentValue=element.attr("value");var currentTimestamp=utc?(Date.parse(currentValue+" UTC")/1000):(Date.parseUtc(currentValue)/1000);var name=element.attr("name")||element.attr("data-name");element.attr("data-name",name)
-element.removeAttr("name");var previous=jQuery("input[type=hidden][name=\""+name
-+"\"]");previous.remove();var value=noProcess?currentValue:String(currentTimestamp);element.after("<input type=\"hidden\" name=\""+name
+var parentForm=element.parents("form");parentForm.bind("pre_submit",function(){var noProcess=element.attr("data-no_process");var currentValue=element.attr("value");var currentTimestamp=utc?(Date.parse(currentValue+" UTC")/1000):(Date.parseUtc(currentValue)/1000);var currentTimestampS=isNaN(currentTimestamp)?"":String(currentTimestamp);var name=element.attr("name")||element.attr("data-name");element.attr("data-name",name)
+element.removeAttr("name");var previous=jQuery("input[type=hidden][name=\""
++name+"\"]");previous.remove();var value=noProcess?currentValue:currentTimestampS;element.after("<input type=\"hidden\" name=\""+name
 +"\" value=\""+value+"\" />");});};var __startdate=function(element,options){var _window=jQuery(window);var noCalendar=element.hasClass("no-calendar")
 if(noCalendar){var calendar=jQuery();}
 else{var calendar=jQuery("<div class=\"calendar text-field-calendar\"></div>");element.after(calendar);element.attr("autocomplete","off");}
