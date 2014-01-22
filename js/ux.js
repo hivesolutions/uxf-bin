@@ -9786,12 +9786,21 @@ function onYouTubePlayerReady(id) {
             // mode a value is always selected)
             if (!isSelect) {
                 // empties the hidden template and updates the hidden
-                // field value (and value field) to empty and then
-                // removes the drop field lock class from the drop field
+                // field value (and value field) to empty because there's
+                // been a new value selected and so these values must be
+                // invalidated and set back to the original values
                 hiddenTemplate.empty();
                 hiddenField.attr("value", "");
                 valueFields.attr("value", "");
-                dropField.removeClass("drop-field-lock");
+
+                // verifies if the current drop field is lockes and in case
+                // it's removes the lock class and triggers the value unselected
+                // event indicating that the value is no longer selected
+                var isLocked = dropField.hasClass("drop-field-lock");
+                if (isLocked) {
+                    dropField.removeClass("drop-field-lock");
+                    dropField.triggerHandler("value_unselect", []);
+                }
             }
 
             // nullifies the number of options in case it's necessary
@@ -10028,9 +10037,6 @@ function onYouTubePlayerReady(id) {
                                     event.preventDefault();
                                 });
 
-                        // triggers the value unselect event
-                        dropField.triggerHandler("value_unselect", []);
-
                         // retrieves the previous selection (original selection)
                         // using the value from the text field, then tries to guess
                         // the index by comparing the string value agains the
@@ -10050,9 +10056,6 @@ function onYouTubePlayerReady(id) {
                                 preSelectionIndex) : dropField.data(
                                 "selection", 1);
                         dropField.data("value", textFieldValue);
-
-                        // removes the lock class to the drop field
-                        dropField.removeClass("drop-field-lock");
 
                         // shows the drop field contents in case there
                         // are valid items pending to be show otherwise
