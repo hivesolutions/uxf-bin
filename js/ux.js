@@ -17379,6 +17379,12 @@ function onYouTubePlayerReady(id) {
                             var name = _element.attr("data-name");
                             var value = _element.attr("data-value");
 
+                            // in case the name is not defined or the value is unset must
+                            // return immediately in order to avoid any more problems
+                            if (!name) {
+                                return;
+                            }
+
                             // tries to retrieve and remove any previously existing
                             // hidden element representing the current value, this
                             // avoids problems whild using ajax based form submit
@@ -21835,6 +21841,12 @@ function onYouTubePlayerReady(id) {
                         element.attr("data-name", name)
                         element.removeAttr("name");
 
+                        // in case the name is not defined or the value is unset must
+                        // return immediately in order to avoid any more problems
+                        if (!name) {
+                            return;
+                        }
+
                         // tries to retrieve and remove any previously existing
                         // hidden element representing the current value
                         var previous = element.next("input[type=hidden][name=\""
@@ -22039,6 +22051,12 @@ function onYouTubePlayerReady(id) {
                 var name = element.attr("name") || element.attr("data-name");
                 element.attr("data-name", name)
                 element.removeAttr("name");
+
+                // in case the name is not defined or the value is unset must
+                // return immediately in order to avoid any more problems
+                if (!name) {
+                    return;
+                }
 
                 // tries to retrieve and remove any previously existing
                 // hidden element representing the current value
