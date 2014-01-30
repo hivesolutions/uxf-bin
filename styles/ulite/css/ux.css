@@ -1141,6 +1141,11 @@
     width: 120px;
 }
 
+.ulite-style ul.navigation li a {
+    font-size: 10px;
+    line-height: 16px;
+}
+
 .ulite-style .overlay {
     background-color: #dddddd;
     opacity: 0.4;
