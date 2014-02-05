@@ -1708,6 +1708,8 @@
 
 .omni-style .list.side-entities-list.simplified .entity-name {
     float: left;
+    height: 20px;
+    line-height: 20px;
     margin: 0px 0px 0px 0px;
 }
 
@@ -1715,6 +1717,8 @@
     color: #666666;
     float: right;
     font-size: 10px;
+    height: 20px;
+    line-height: 20px;
     margin: 0px 0px 0px 0px;
 }
 
