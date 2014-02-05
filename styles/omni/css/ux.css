@@ -241,7 +241,7 @@
 }
 
 .omni-style .calendar-header {
-    background-color: #f8f8f8;
+    background-color: #f4f4f4;
     border-bottom: 1px solid #dddddd;
     color: #666666;
     height: 40px;
@@ -1715,6 +1715,7 @@
     color: #666666;
     float: right;
     font-size: 10px;
+    margin: 0px 0px 0px 0px;
 }
 
 .omni-style .list.entity-options-list {
