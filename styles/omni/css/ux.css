@@ -980,7 +980,7 @@
 }
 
 .omni-style .filter .filter-no-results p {
-    color: #484848;
+    color: #2d2d2d;
     font-size: 18px;
     margin: 8px 0px 8px 0px;
     margin-bottom: 12px;
@@ -1632,7 +1632,6 @@
 .omni-style .link.link-grey-darker.selected {
     border-bottom: 1px solid #2d2d2d;
 }
-
 
 .omni-style .list.links-list {
     line-height: 20px;
