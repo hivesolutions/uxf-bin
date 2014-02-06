@@ -871,7 +871,7 @@
 }
 
 .omni-style .drop-field.strong.disabled > .text-field {
-    background-color: #f8f8f8;
+    background-color: #f4f4f4;
     color: #888888;
     -webkit-text-fill-color: #888888;
 }
@@ -1194,7 +1194,7 @@
 }
 
 .omni-style .filter.entities-list .filter-contents > li.selected {
-    background-color: #f8f8f8;
+    background-color: #f4f4f4;
     border-bottom: none;
     border-left: 1px solid #d8d8d8;
     border-right: 1px solid #d8d8d8;
