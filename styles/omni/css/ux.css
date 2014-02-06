@@ -53,7 +53,7 @@
 }
 
 .omni-style .content-error .error .title {
-    color: #484848;
+    color: #2d2d2d;
     font-size: 18px;
     margin: 8px 0px 12px 0px;
 }
@@ -65,14 +65,14 @@
 }
 
 .omni-style .content-error .error .traceback-contents {
-    color: #444444;
+    color: #2d2d2d;
     font-family: monospace;
     font-size: 12px;
     margin-bottom: 26px;
 }
 
 .omni-style .content-error .error .description {
-    color: #555555;
+    color: #2d2d2d;
     line-height: 22px;
     margin: 24px 0px 24px 0px;
 }
@@ -115,7 +115,7 @@
     clear: both;
     color: #c9273f;
     font-size: 11px;
-    margin-bottom: 8px;
+    margin: 6px 0px 8px 0px;
     text-align: right;
 }
 
