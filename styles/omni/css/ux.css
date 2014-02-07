@@ -243,7 +243,7 @@
 .omni-style .calendar-header {
     background-color: #f4f4f4;
     border-bottom: 1px solid #dddddd;
-    color: #666666;
+    color: #4d4d4d;
     height: 40px;
     line-height: 42px;
     text-align: center;
@@ -288,14 +288,14 @@
 }
 
 .omni-style .calendar-content thead tr th {
-    color: #666666;
+    color: #4d4d4d;
     font-weight: normal;
     text-align: center;
 }
 
 .omni-style .calendar-content tbody tr td {
     border: 1px solid #f6f6f6;
-    color: #666666;
+    color: #4d4d4d;
     cursor: pointer;
     line-height: 28px;
     margin: 0px 0px 0px 0px;
@@ -2734,7 +2734,7 @@
 }
 
 .omni-style .text-field.lower {
-    color: #888888;
+    color: #777777;
 }
 
 .omni-style .text-field.active {
@@ -2812,7 +2812,7 @@
 }
 
 .omni-style .text-area.lower {
-    color: #888888;
+    color: #777777;
 }
 
 .omni-style .text-area.active {
