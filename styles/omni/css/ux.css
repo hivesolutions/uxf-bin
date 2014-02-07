@@ -1067,14 +1067,14 @@
 }
 
 .omni-style .filter .filter-advanced .filter-sort .filter-sort-option:hover {
-    background-color: #908e8f;
+    background-color: #777777;
     color: #ffffff;
 }
 
 .omni-style .filter .filter-advanced .filter-sort .filter-sort-option.ascending,
 .omni-style .filter .filter-advanced .filter-sort .filter-sort-option.descending,
 .omni-style .filter .filter-advanced .filter-sort .filter-sort-option.equals {
-    background: #908e8f url(../images/filter-input-sorting.png) no-repeat;
+    background: #777777 url(../images/filter-input-sorting.png) no-repeat;
     color: #ffffff;
     padding-right: 19px;
 }
@@ -1896,7 +1896,7 @@
 }
 
 .omni-style .panel-more > .panel-more-action > li.list-more span {
-    background-color: #908e8f;
+    background-color: #777777;
     color: white;
     font-size: 10px;
     letter-spacing: 1px;
@@ -2573,7 +2573,7 @@
 }
 
 .omni-style .table .table-new-line-row > .table-new-line {
-    background-color: #908e8f;
+    background-color: #777777;
     color: #ffffff;
     font-size: 10px;
     letter-spacing: 1px;
