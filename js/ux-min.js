@@ -855,7 +855,7 @@ return o;}},languages:{extend:function(id,redef){var lang=_.util.clone(_.languag
 return lang;},insertBefore:function(inside,before,insert,root){root=root||_.languages;var grammar=root[inside];var ret={};for(var token in grammar){if(grammar.hasOwnProperty(token)){if(token==before){for(var newToken in insert){if(insert.hasOwnProperty(newToken)){ret[newToken]=insert[newToken];}}}
 ret[token]=grammar[token];}}
 return root[inside]=ret;},DFS:function(o,callback){for(var i in o){callback.call(o,i,o[i]);if(_.util.type(o)==="Object"){_.languages.DFS(o[i],callback);}}}},highlightAll:function(async,callback){var elements=document.querySelectorAll("code[class*=\"language-\"], [class*=\"language-\"] code, code[class*=\"lang-\"], [class*=\"lang-\"] code");for(var i=0,element;element=elements[i++];){_.highlightElement(element,async===true,callback);}},highlightElement:function(element,async,callback){var language,grammar,parent=element;while(parent&&!lang.test(parent.className)){parent=parent.parentNode;}
-if(parent){language=(parent.className.match(lang)||[,""])[1];grammar=_.languages[language];}
+if(parent){language=(parent.className.match(lang)||[null,""])[1];grammar=_.languages[language];}
 if(!grammar){return;}
 element.className=element.className.replace(lang,"").replace(/\s+/g," ")
 +" language-"+language;parent=element.parentNode;if(/pre/i.test(parent.nodeName)){parent.className=parent.className.replace(lang,"").replace(/\s+/g," ")
