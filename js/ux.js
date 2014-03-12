@@ -3838,7 +3838,7 @@ function onYouTubePlayerReady(id) {
                         _window.resize(function(event) {
                                     _element.uxcenter(topOffset, leftOffset,
                                             useMargin, avoidTop, avoidLeft,
-                                            keep);
+                                            false);
                                 });
 
                         // registers the scroll in the window
@@ -3846,7 +3846,7 @@ function onYouTubePlayerReady(id) {
                         _window.scroll(function() {
                                     _element.uxcenter(topOffset, leftOffset,
                                             useMargin, avoidTop, avoidLeft,
-                                            keep);
+                                            false);
                                 });
 
                         // registers the changing of contents in
@@ -3854,7 +3854,7 @@ function onYouTubePlayerReady(id) {
                         _element.bind("layout", function() {
                                     _element.uxcenter(topOffset, leftOffset,
                                             useMargin, avoidTop, avoidLeft,
-                                            keep);
+                                            false);
                                 });
                     });
         }
