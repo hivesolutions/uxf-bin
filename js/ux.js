@@ -25919,6 +25919,11 @@ if (typeof(String.prototype.trim) === "undefined") {
     };
 }
 
+String.prototype.strip = function(s) {
+    var regex = new RegExp("^" + s + "+|" + s + "+$", "g");
+    return String(this).replace(regex, "");
+};
+
 /**
  * The compiled options regular expression.
  */

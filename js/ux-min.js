@@ -900,7 +900,7 @@ StringBuffer.prototype.removeLastAppend=function(){this.buffer[this.buffer.size(
 StringBuffer.prototype.empty=function(){return this.buffer.length==0;}
 StringBuffer.prototype.toString=function(){return this.buffer.join("");}
 var String=String||{};if(typeof(String.prototype.trim)==="undefined"){String.prototype.trim=function(){return String(this).replace(/^\s+|\s+$/g,"");};}
-String.prototype.optionsRegex=new RegExp("\{[a-zA-Z0-9_]*(?=\})","g");String.format=function(stringValue){for(var index=1;index<arguments.length;index++){stringValue=stringValue.replace("{"+(index-1)+"}",arguments[index]);}
+String.prototype.strip=function(s){var regex=new RegExp("^"+s+"+|"+s+"+$","g");return String(this).replace(regex,"");};String.prototype.optionsRegex=new RegExp("\{[a-zA-Z0-9_]*(?=\})","g");String.format=function(stringValue){for(var index=1;index<arguments.length;index++){stringValue=stringValue.replace("{"+(index-1)+"}",arguments[index]);}
 return stringValue;}
 String.prototype.format=function(){var stringValue=this;for(var index=0;index<arguments.length;index++){stringValue=stringValue.replace("{"+index+"}",arguments[index]);}
 return stringValue;}
