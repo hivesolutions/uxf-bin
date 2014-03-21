@@ -22965,7 +22965,9 @@ function onYouTubePlayerReady(id) {
                         // should keep the window centered
                         _window.resize(function(event) {
                                     // positions the window in the screen
-                                    // runs it using a delayed approach
+                                    // runs it using a delayed approach just
+                                    // to make sure the size is not modified meanwhile
+                                    _positionWindow(_element, options);
                                     _positionDelay(_element, options);
                                 });
 
