@@ -16569,7 +16569,7 @@ function onYouTubePlayerReady(id) {
             // resizing opertion on the oeverlay element
             _window.bind("size", function(event) {
                         // resizes the overlay in the screen
-                        resizeDelayed(matchedObject, options);
+                        resizeDelay(matchedObject, options);
                     });
 
             // registers for the click event so that
@@ -16616,7 +16616,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.height(documentHeight);
         };
 
-        var resizeDelayed = function(matchedObject, options) {
+        var resizeDelay = function(matchedObject, options) {
             setTimeout(function() {
                         _resizeOverlay(matchedObject, options);
                     });
@@ -22965,7 +22965,8 @@ function onYouTubePlayerReady(id) {
                         // should keep the window centered
                         _window.resize(function(event) {
                                     // positions the window in the screen
-                                    _positionWindow(_element, options);
+                                    // runs it using a delayed approach
+                                    _positionDelay(_element, options);
                                 });
 
                         // registers the scroll in the window
@@ -23105,6 +23106,12 @@ function onYouTubePlayerReady(id) {
         var _positionWindow = function(matchedObject, options) {
             // centers the matched object (window)
             matchedObject.uxcenter();
+        };
+
+        var _positionDelay = function(matchedObject, options) {
+            setTimeout(function() {
+                        _positionWindow(matchedObject, options);
+                    });
         };
 
         var _resizeMask = function(matchedObject, options) {
