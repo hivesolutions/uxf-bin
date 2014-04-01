@@ -14007,6 +14007,12 @@ function onYouTubePlayerReady(id) {
                         // continue or if the form submission should be canceled
                         var result = element.triggerHandler("pre_submit");
                         if (result == false) {
+                            // stops the event propagation and prevents
+                            // the default behavior (avoids duplicate
+                            // submission) then returns the function
+                            event.stopPropagation();
+                            event.stopImmediatePropagation();
+                            event.preventDefault();
                             return;
                         }
 
