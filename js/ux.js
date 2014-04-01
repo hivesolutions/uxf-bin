@@ -13964,7 +13964,7 @@ function onYouTubePlayerReady(id) {
                 // current form contains no associated submit button
                 var noKeyboard = _element.hasClass("no-keyboard");
                 var submitButton = jQuery("input[type=submit]", _element);
-                var hasSubmit = submitButton.length > 1;
+                var hasSubmit = submitButton.length > 0;
                 var requiresSubmit = !noKeyboard && !hasSubmit;
                 requiresSubmit
                         && _element.append("<input type=\"submit\" class=\"submit-button\" />");
