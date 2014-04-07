@@ -180,7 +180,15 @@
             dataPivot.uxdatapivot();
 
             // applies the scan plugin (must have register priority)
+            // after this registration operation any scan mode will
+            // be available from an user point of view
             scan.uxscan();
+
+            // applies the browser plugin, this should change the body
+            // classes reflecting the current environemnt in which the
+            // system is currently running, this may also patch the
+            // jquery environment so that it contains the browser object
+            _body.uxbrowser();
 
             // applies the various component plugins
             overlay.uxoverlay();
@@ -269,11 +277,6 @@
             // applies the print plugin
             _print.uxprint();
 
-            // applies the browser plugin, this should change
-            // the body classes reflecting the current environemnt
-            // in which the system is currently running
-            _body.uxbrowser();
-
             // applies the mobile plugin, this extension is going
             // to change the classes of the body for a mobile browser
             // situation, that way the code may be used conditionaly
@@ -284,7 +287,8 @@
             // this is a dangerous operation
             _eval.uxeval();
 
-            // applies the gateway plugins
+            // applies the gateway plugins, this should allow seamless
+            // integration with some of the native code operatiosn
             gatewayPrint.uxgprint();
 
             // applies the various attribute based plugins (post
@@ -5052,6 +5056,10 @@ function onYouTubePlayerReady(id) {
             matchedObject.addClass(browserName);
             matchedObject.addClass(browserName + "-" + browserVersion);
             matchedObject.addClass(browserOs);
+
+            // applies the patch to the kquery infra-structure so that
+            // the old mode of broewser detection is still possible
+            _applyPatch(browserName, browserOs);
         };
 
         /**
@@ -5088,6 +5096,19 @@ function onYouTubePlayerReady(id) {
 
             return parseFloat(dataString.substring(index
                     + jQuery.fn.uxbrowser.versionSearchString.length + 1));
+        };
+
+        var _applyPatch = function(browserName, browserOs) {
+            // in case the browser structure is defined under the jquery
+            // dictionary there's no need to continue
+            if (jQuery.browser) {
+                return;
+            }
+
+            // creates the browser bject structure and populates
+            // it with the proper browser name index set to valid
+            jQuery.browser = {}
+            jQuery.browser[browserName] = true;
         };
 
         // initializes the plugin
