@@ -9124,8 +9124,8 @@ function onYouTubePlayerReady(id) {
                 if (textField.length == 0) {
                     // retrieves the various attributes from the element
                     // to be propagated to the text field
+                    var value = _element.val();
                     var name = _element.attr("name");
-                    var value = _element.attr("value");
                     var originalValue = _element.attr("data-original_value");
                     var error = _element.attr("data-error");
                     var type = _element.attr("data-type");
@@ -9150,7 +9150,7 @@ function onYouTubePlayerReady(id) {
 
                 // retrieves the text field value and if it's currently
                 // in the "lowered" state
-                var textFieldValue = textField.attr("value");
+                var textFieldValue = textField.val();
                 var textFieldIsLower = textField.hasClass("lower");
 
                 // sets the appropriate text field value taking into account
@@ -9164,10 +9164,10 @@ function onYouTubePlayerReady(id) {
                         && _element.append("<div class=\"drop-field-clear\"></div>")
                         && _element.append("<ul class=\"drop-field-contents\"></ul>");
 
-                // retrieves the hidden field and tries
-                // to retrieve its value
+                // retrieves the hidden field and tries to retrieve its value
+                // using the proper operator for that
                 var hiddenField = jQuery(".hidden-field", _element);
-                var hiddenFieldValue = hiddenField.attr("value");
+                var hiddenFieldValue = hiddenField.val();
 
                 // creates the map that will hold the complete set of
                 // value field associated with the attribute to be set
@@ -9627,7 +9627,7 @@ function onYouTubePlayerReady(id) {
                 // retrieves the current value for the hidden field
                 // this value must represent if the drop field is
                 // currently locked or not
-                var hiddenFieldValue = hiddenField.attr("value");
+                var hiddenFieldValue = hiddenField.val();
 
                 // checks if the drop field to verify that the
                 // drop field is not disabled, in case it is
@@ -9869,7 +9869,7 @@ function onYouTubePlayerReady(id) {
             var autoResize = dropField.attr("data-auto_size");
 
             // retrieves the text field value
-            var textFieldValue = textField.attr("value");
+            var textFieldValue = textField.val();
 
             // checks if the drop field is of type select
             var isSelect = dropField.hasClass("drop-field-select");
@@ -11230,8 +11230,8 @@ function onYouTubePlayerReady(id) {
                 if (textField.length == 0 && !noInput) {
                     // retrieves the various attributes from the element
                     // to be propagated to the text field
+                    var value = _element.val();
                     var name = _element.attr("name");
-                    var value = _element.attr("value");
                     var originalValue = _element.attr("data-original_value");
                     var error = _element.attr("data-error");
 
@@ -17486,7 +17486,7 @@ function onYouTubePlayerReady(id) {
 
         var _update = function(matchedObject, options) {
             // retrives the value and the checked value
-            var value = matchedObject.attr("value");
+            var value = matchedObject.val();
             var checked = matchedObject.attr("data-checked");
 
             // in case the checked value is the same
@@ -19801,7 +19801,7 @@ function onYouTubePlayerReady(id) {
             var filterOptions = matchedObject.data("filter_options");
 
             // retrieves the text field value
-            var textFieldValue = textField.attr("value");
+            var textFieldValue = textField.val();
 
             // in case the value did not change (no need to
             // show the contents)
@@ -21749,7 +21749,7 @@ function onYouTubePlayerReady(id) {
                         var element = jQuery(this);
 
                         // retrieves the attributes
-                        var value = element.attr("value");
+                        var value = element.val();
                         var type = element.attr("data-type");
                         var regexString = element.attr("data-regex");
                         var maximumLength = element.attr("data-maximum_length");
@@ -22181,7 +22181,7 @@ function onYouTubePlayerReady(id) {
 
         var __start = function(matchedObject, options) {
             // retrieves the input value
-            var inputFieldValue = matchedObject.attr("value");
+            var inputFieldValue = matchedObject.val();
 
             // retrieves the element value
             var elementValue = matchedObject.attr("data-value");
@@ -22265,7 +22265,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the input value (real value) that
             // its going to be set in the data attribute
-            var inputFieldValue = matchedObject.attr("value");
+            var inputFieldValue = matchedObject.val();
 
             // sets the data value
             matchedObject.attr("data-value", inputFieldValue);
@@ -22322,7 +22322,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the current (initial) value from the
             // element (text field)
-            var currentValue = element.attr("value");
+            var currentValue = element.val();
             var currentTimestamp = parseInt(currentValue);
 
             // in case the parse of the timestamp was not successful
@@ -22372,7 +22372,7 @@ function onYouTubePlayerReady(id) {
 
                         // retrieves the current value and then uses it to parse
                         // it as current timestamp
-                        var currentValue = element.attr("value");
+                        var currentValue = element.val();
                         var currentTimestamp = utc
                                 ? (Date.parse(currentValue + " UTC") / 1000)
                                 : (Date.parseUtc(currentValue) / 1000);
@@ -22463,7 +22463,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the current (initial) value from the
             // element (text field)
-            var currentValue = element.attr("value");
+            var currentValue = element.val();
             var currentTimestamp = parseInt(currentValue);
 
             // in case the parse of the timestamp was not successful
@@ -22593,7 +22593,7 @@ function onYouTubePlayerReady(id) {
 
                 // retrieves the current value and then uses it to parse
                 // it as current timestamp
-                var currentValue = element.attr("value");
+                var currentValue = element.val();
                 var currentTimestamp = Date.parse(currentValue + " UTC") / 1000;
 
                 // retrieves the name attribute from the element
@@ -22667,7 +22667,7 @@ function onYouTubePlayerReady(id) {
         var __valuedate = function(element, options) {
             // retrieves the current value and then uses it to parse
             // it as current timestamp then returns it
-            var currentValue = element.attr("value");
+            var currentValue = element.val();
             var currentTimestamp = Date.parse(currentValue + " UTC") / 1000;
             return currentTimestamp;
         };
