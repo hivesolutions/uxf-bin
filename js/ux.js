@@ -21525,8 +21525,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the original padding top value to be used to
             // increment the new padding top
-            var textFieldPaddingTop = textField.data("padding_top",
-                    textFieldPaddingTop);
+            var textFieldPaddingTop = textField.data("padding_top");
             paddingTop += textFieldPaddingTop;
 
             // retrieves the margin top of the text field
