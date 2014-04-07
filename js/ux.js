@@ -7646,7 +7646,7 @@ function onYouTubePlayerReady(id) {
 
         var _update = function(matchedObject, options) {
             // retrives the value and the checked value
-            var value = matchedObject.attr("value");
+            var value = matchedObject.val();
             var checked = matchedObject.attr("data-checked");
 
             // in case the checked value is the same
@@ -7781,10 +7781,10 @@ function onYouTubePlayerReady(id) {
                                 return;
                             }
 
-                            // retrieves the value from the selected itm and then
+                            // retrieves the value from the selected item and then
                             // creates the hidden input value and prepend it to the
                             // button group element
-                            var value = selected.attr("value");
+                            var value = selected.val();
                             _element.prepend("<input type=\"hidden\" name=\""
                                     + name + "\" value=\"" + value + "\" />");
                         });
@@ -8699,7 +8699,7 @@ function onYouTubePlayerReady(id) {
                 // section and in case it contains a value the ordering
                 // of the elements is ignored
                 var textField = jQuery(".target-section .text-field", crossList);
-                var textFieldValue = textField.attr("value");
+                var textFieldValue = textField.val();
                 if (textFieldValue) {
                     return;
                 }
@@ -21027,7 +21027,7 @@ function onYouTubePlayerReady(id) {
                             else {
                                 // retrieves the input value and sets it as the
                                 // new "label" in the element
-                                var inputValue = uploaderInput.attr("value")
+                                var inputValue = uploaderInput.val()
                                         || original;
                                 !noText && _element.html(inputValue);
 
@@ -24104,9 +24104,7 @@ function onYouTubePlayerReady(id) {
             // value or html value and compares it to the eval
             // result to check for differences and then checks
             // if the current element has focus
-            var current = isInput
-                    ? matchedObject.attr("value")
-                    : matchedObject.html();
+            var current = isInput ? matchedObject.val() : matchedObject.html();
             var different = evalResult != current;
             var hasFocus = matchedObject.hasClass("focus");
 
@@ -24212,7 +24210,7 @@ function onYouTubePlayerReady(id) {
                 // registers for the form submit
                 form.bind("pre_submit", function() {
                             // retrieves the element value
-                            var value = _element.attr("value");
+                            var value = _element.val();
 
                             // in case the value is not (need
                             // to change the name attribute)
@@ -24604,7 +24602,7 @@ Select._floatValue = function(element, zerify, defaultValue) {
 
     // retrieves the value from the element
     // and parses it as an float
-    var value = element.attr("value");
+    var value = element.val();
     var valueFloat = parseFloat(value);
 
     // in case the float parse was successfull
