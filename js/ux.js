@@ -18666,8 +18666,10 @@ function onYouTubePlayerReady(id) {
             }
             matchedObject.data("visible", true);
             var overlay = _ensureOverlay();
+            var width = matchedObject.outerWidth(true);
             overlay.triggerHandler("resize");
             overlay.fadeIn(350);
+            matchedObject.css("right", (width * -1) + "px");
             matchedObject.show();
             matchedObject.animate({
                         right : 0
@@ -18692,6 +18694,7 @@ function onYouTubePlayerReady(id) {
             __unregisterClick(matchedObject, options);
             __unregisterKey(matchedObject, options);
             overlay.fadeOut(350);
+            matchedObject.css("right", 0 + "px");
             matchedObject.animate({
                         right : width * -1
                     }, {
