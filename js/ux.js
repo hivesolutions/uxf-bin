@@ -14203,6 +14203,14 @@ function onYouTubePlayerReady(id) {
         };
 
         var submit = function(matchedObject, options) {
+            // verifies that the currently matched object is of form type as these
+            // are the only type of object allowed for verified submission of data
+            // in case the object is not of type form returns immediately (no submit
+            var isForm = matchedObject.is("form");
+            if (!isForm) {
+                return;
+            }
+
             // retrieves the reference to the body element that is
             // going to be used in the trigger of events
             var _body = jQuery("body");
@@ -14331,6 +14339,14 @@ function onYouTubePlayerReady(id) {
         };
 
         var submitAjax = function(matchedObject, options) {
+            // verifies that the currently matched object is of form type as these
+            // are the only type of object allowed for verified submission of data
+            // in case the object is not of type form returns immediately (no submit
+            var isForm = matchedObject.is("form");
+            if (!isForm) {
+                return;
+            }
+
             // retrieves the various attributes from the matched
             // object that are going to be used to creates the
             // "simulated" ajax request
