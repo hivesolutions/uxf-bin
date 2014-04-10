@@ -7825,7 +7825,7 @@ function onYouTubePlayerReady(id) {
                             // retrieves the value from the selected item and then
                             // creates the hidden input value and prepend it to the
                             // button group element
-                            var value = selected.val();
+                            var value = selected.attr("value");
                             _element.prepend("<input type=\"hidden\" name=\""
                                     + name + "\" value=\"" + value + "\" />");
                         });
