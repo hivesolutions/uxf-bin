@@ -3,7 +3,7 @@ var _body=jQuery("body");var started=_body.data("started");_body.data("started",
 var _body=jQuery("body");var registered=_body.data("registered");_body.data("registered",true);if(registered){return;}
 try{_alert=alert;_confirm=confirm;alert=function(message,callback){_body.uxalert(message,callback);return null;};confirm=function(message,callback){_body.uxconfirm(message,callback);return null;};}catch(exception){}};initialize();var _body=jQuery("body");_body.triggerHandler("applied",[matchedObject]);return this;};})(jQuery);(function(jQuery){var HOST_REGEX=new RegExp(location.host);jQuery.uxlinkasync=function(href,verify,uuid){var _body=jQuery("body");href=href.href||href;var async=_body.data("async");if(!async){return false;}
 if(!href){return true;}
-var hasHash=href.indexOf("#")!=-1;var isInternal=hasHash&&href.split("#")==document.location;isInternal=isInternal||href[0]=="#";if(isInternal){return false;}
+var hasHash=href.indexOf("#")!=-1;var isInternal=hasHash&&href.split("#")[0]==document.location.href.split("#")[0];isInternal=isInternal||href[0]=="#";if(isInternal&&!verify){return false;}
 href=jQuery.uxresolve(href);var isLocal=HOST_REGEX.test(href)
 if(!isLocal){return false;}
 _body.triggerHandler("async_start");_body.data("async_state",href);var request=jQuery.ajax({url:href,dataType:"html",data:{async:1},success:function(data,status,request){var isRedirect=request.status==280;var hrefR=request.getResponseHeader("Location");if(isRedirect&&hrefR){hrefR=jQuery.uxresolve(hrefR,href);jQuery.uxlocation(hrefR);return;}
