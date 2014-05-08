@@ -3273,7 +3273,9 @@ function onYouTubePlayerReady(id) {
                     // sets the default arguments
                     var arguments = arguments ? arguments : [];
 
-                    // in case the control key is set an
+                    // in case the control key is set and the currently
+                    // pressed key is the one defined for registration
+                    // the event callback is called and the event prevented
                     if (event.ctrlKey && keyValue == keycode) {
                         // calls the callback with the current context
                         // and the arguments
