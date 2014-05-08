@@ -3279,8 +3279,10 @@ function onYouTubePlayerReady(id) {
                         // and the arguments
                         callback.apply(this, arguments);
 
-                        // returns false (avoids event propagation)
-                        return false;
+                        // prevents the current default event and the
+                        // returns immediately, no more logic executed
+                        event.preventDefault();
+                        return;
                     }
                 });
     };
@@ -21899,8 +21901,10 @@ function onYouTubePlayerReady(id) {
                         // in case it's not returns in error (avoids writing)
                         var lengthValid = __testlength(value, maximumLength);
                         if (!lengthValid) {
-                            // returns in error (avoids writing)
-                            return false;
+                            // prevents the current default event and the
+                            // returns immediately, no more logic executed
+                            event.preventDefault();
+                            return;
                         }
 
                         // converts the key value to a string
