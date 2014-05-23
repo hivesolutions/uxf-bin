@@ -19017,7 +19017,7 @@ function onYouTubePlayerReady(id) {
                     ".slider-panel-arrow-previous", matchedObject);
 
             // registers for the click event in the slide panel
-            // arrow next
+            // arrow next so that the next element is displayed
             sliderPanelArrowNext.click(function() {
                         // retrieves the element
                         var element = jQuery(this);
@@ -19042,7 +19042,7 @@ function onYouTubePlayerReady(id) {
                     });
 
             // registers for the click event in the slider panel
-            // arrow previous
+            // arrow previous so that the previous element is displayed
             sliderPanelArrowPrevious.click(function() {
                         // retrieves the element
                         var element = jQuery(this);
@@ -19102,10 +19102,9 @@ function onYouTubePlayerReady(id) {
             // retrieves the overlay element
             var overlay = jQuery(".overlay");
 
-            // shows the overlay
-            overlay.fadeIn(250);
-
-            // shows the matched object
+            // shows the global overlay and the matched
+            // object, this should provide a modal view
+            overlay.fadeIn(250)
             matchedObject.fadeIn(250);
         };
 
@@ -19113,10 +19112,9 @@ function onYouTubePlayerReady(id) {
             // retrieves the overlay element
             var overlay = jQuery(".overlay");
 
-            // hides the overlay
+            // hides the both the overlay and the matched
+            // object (moving out from modal)
             overlay.fadeOut(250);
-
-            // hides the matched object
             matchedObject.fadeOut(250);
         };
 
@@ -19128,20 +19126,21 @@ function onYouTubePlayerReady(id) {
             // checks if the slider is visible
             var sliderVisible = slider.is(":visible");
 
-            // in case the slider is not visible
+            // checks if the slider is visible and in case it's
+            // not returns immediately as there's nothing to be done
+            var sliderVisible = slider.is(":visible");
             if (!sliderVisible) {
-                // returns immediately
                 return;
             }
 
-            // retrieves the slider attributes
+            // retrieves the slider attributes, that are going to be
+            // used through this function
             var lock = slider.data("lock");
             var offsetLeft = slider.data("offsetLeft");
 
-            // in case the lock attribute is set
-            // (animation still pending)
+            // in case the lock attribute is set (animation still
+            // pending) must return immediately
             if (lock) {
-                // returns immediately
                 return;
             }
 
@@ -19191,23 +19190,21 @@ function onYouTubePlayerReady(id) {
             var slider = matchedObject;
             var sliderContents = jQuery(".slider-contents", matchedObject);
 
-            // checks if the slider is visible
+            // checks if the slider is visible and in case it's
+            // not returns immediately as there's nothing to be done
             var sliderVisible = slider.is(":visible");
-
-            // in case the slider is not visible
             if (!sliderVisible) {
-                // returns immediately
                 return;
             }
 
-            // retrieves the slider attributes
+            // retrieves the slider attributes, that are going to be
+            // used through this function
             var lock = slider.data("lock");
             var offsetLeft = slider.data("offsetLeft");
 
-            // in case the lock attribute is set
-            // (animation still pending)
+            // in case the lock attribute is set (animation still
+            // pending) must return immediately
             if (lock) {
-                // returns immediately
                 return;
             }
 
