@@ -14273,10 +14273,14 @@ function onYouTubePlayerReady(id) {
 
             // verifies if the current form processing is a get based one and in
             // case it's encapsulates the parameters in the current request
-            // url and removes the data payload from the request
-            var isGet = method.toLowerCase() == "get"
+            // url and removes the data payload from the request, then "calculated"
+            // the proper url value that is going to be display in the browser
+            // considering that if a get operation was used the async parameter must
+            // be removed from the value (proper url disposition)
+            var isGet = method.toLowerCase() == "get";
             href = isGet ? href + "?" + data : href;
             data = isGet ? "" : data;
+            var url = isGet ? href.slice(0, href.length - 8) : href
 
             // creates the asyncronous object rerence and opens it to the link
             // reference defined in the form than triggers its load and then
@@ -14329,8 +14333,8 @@ function onYouTubePlayerReady(id) {
                 // so that it does not change, this allows correct reload
                 // handling of the page (improved user experience)
                 var _body = jQuery("body");
-                _body.triggerHandler("data", [data, document.URL, null, true,
-                                href]);
+                _body.triggerHandler("data", [data, url || document.URL, null,
+                                true, href]);
             };
             request.readystatechange = function() {
                 // in case the current request state is not headers ready there's
