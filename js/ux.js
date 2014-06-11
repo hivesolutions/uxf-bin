@@ -19394,6 +19394,11 @@ function onYouTubePlayerReady(id) {
  */
 (function(jQuery) {
     jQuery.fn.uxslideshow = function(options) {
+        // the base64 code of an image that may be used to
+        // clear an image based element, this is used to provide
+        // a way to clear the element between image transitions
+        var IMAGE_CLEAR = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+
         // the default values for the data query json
         var defaults = {};
 
@@ -19730,6 +19735,7 @@ function onYouTubePlayerReady(id) {
         var __static = function(image, item) {
             // changes the source of the image directly to the target image
             // value withou any kind of animation taking part
+            image.attr("src", IMAGE_CLEAR);
             image.attr("src", item.image);
         };
 
