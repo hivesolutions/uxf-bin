@@ -14338,7 +14338,7 @@ function onYouTubePlayerReady(id) {
                 // handling of the page (improved user experience)
                 var _body = jQuery("body");
                 _body.triggerHandler("data", [data, url || document.URL, null,
-                                true, href]);
+                                false, href]);
             };
             request.readystatechange = function() {
                 // in case the current request state is not headers ready there's
