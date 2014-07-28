@@ -9663,7 +9663,7 @@ function onYouTubePlayerReady(id) {
 
                     // in case it's the enter key
                     case 13 :
-                        // in case the drop field contents is visible
+                        // in case the drop field contents are visible
                         if (dropFieldContents.is(":visible")) {
                             // stops the event propagation
                             // (avoids extra problems in form)
@@ -9698,12 +9698,17 @@ function onYouTubePlayerReady(id) {
 
                 // retrieves the drop field and the drop field elements
                 var dropField = element.parents(".drop-field");
+                var form = dropField.parents("form");
                 var hiddenField = jQuery(".hidden-field", dropField);
                 var hiddenTemplate = jQuery(".hidden-template", dropField);
                 var textField = jQuery(".text-field", dropField);
                 var dropFieldContents = jQuery(".drop-field-contents",
                         dropField);
                 var template = jQuery(".template", dropField);
+
+                // verifies if the drop field is currently configured to
+                // be submited after the pressing of the action
+                var isSubmit = dropField.attr("data-submit");
 
                 // retrieves the current value for the hidden field
                 // this value must represent if the drop field is
@@ -9786,6 +9791,12 @@ function onYouTubePlayerReady(id) {
                                 // changes the document location to
                                 // the value link value (as expected)
                                 _location(dropField, valueLink);
+                            }
+
+                            // verifies if the current drop field is of type
+                            // submit and if that's the case submits the form
+                            if (isSubmit) {
+                                form.submit();
                             }
 
                             // hides the drop field contents
@@ -10213,9 +10224,10 @@ function onYouTubePlayerReady(id) {
                                     event.preventDefault();
                                 });
 
-                        // registers for the click event in the list items
+                        // registers for the click event in each of the list items
+                        // that have just been constructed
                         listItems.click(function(event) {
-                                    // retrieves the element
+                                    // retrieves the element to be used in click handling
                                     var element = jQuery(this);
 
                                     // retrieves the index associated with the current
@@ -10497,6 +10509,7 @@ function onYouTubePlayerReady(id) {
             // the changing of the index on the drop field, note
             // that the drop field is set as the current object
             var dropField = matchedObject;
+            var form = dropField.parents("form");
             var hiddenField = jQuery(".hidden-field", dropField);
             var textField = jQuery(".text-field", dropField);
             var template = jQuery(".template", dropField);
@@ -10504,6 +10517,10 @@ function onYouTubePlayerReady(id) {
             var dropFieldContents = jQuery(".drop-field-contents", dropField);
             var element = jQuery("> :nth-child(" + (index + 1) + ")",
                     dropFieldContents);
+
+            // verifies if the drop field is currently configured to
+            // be submited after the pressing of the action
+            var isSubmit = dropField.attr("data-submit");
 
             // retrieves the value, the logic value
             // and the value link from the element
@@ -10557,6 +10574,12 @@ function onYouTubePlayerReady(id) {
             // interpreted and ran (switching to new page)
             if (valueLink) {
                 _location(dropField, valueLink);
+            }
+
+            // verifies if the current drop field is of type
+            // submit and if that's the case submits the form
+            if (isSubmit) {
+                form.submit();
             }
 
             // calculates the new selection index from the element
