@@ -5370,7 +5370,8 @@ function onYouTubePlayerReady(id) {
         var MOBILE_REGEX = new RegExp(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i);
 
         // the more permissive table regular expression that is
-        // valited also for the table browsers also
+        // validated also for the table browsers, note that this
+        // expression will also be valid for "simple" mobiles
         var TABLET_REGEX = new RegExp(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino|android|ipad|playbook|silk/i);
 
         // the regular expression to test the base prefix
@@ -5405,8 +5406,8 @@ function onYouTubePlayerReady(id) {
             // verifies if the current user agent represents a mobile browser
             // if that's the case adds the mobile class to the matched object
             // the validation is also done for the tablet user interfaces
-            var isMobile = _isMobile(navigator.userAgent)
-            var isTablet = _isTablet(navigator.userAgent)
+            var isMobile = _isMobile(navigator.userAgent);
+            var isTablet = _isTablet(navigator.userAgent);
             isMobile && matchedObject.addClass("mobile");
             isTablet && matchedObject.addClass("tablet");
         };
@@ -5424,7 +5425,7 @@ function onYouTubePlayerReady(id) {
             var tablet = TABLET_REGEX.test(data);
             var tabletPrefix = MOBILE_PREFIX_REGEX.test(prefix);
             var isTablet = tablet || tabletPrefix ? true : false;
-            return isTablet;
+            return isTablet && !_isMobile(data);
         };
 
         /**
