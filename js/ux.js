@@ -1244,7 +1244,7 @@
             // retrieves the cache structure for the matched object
             // and tries to find the result from the cache in case
             // their found calls the callback immediately with them
-            var cache = matchedObject.data("cache");
+            var cache = matchedObject.data("cache") || {};
             var cacheItem = cache[queryHash];
             if (cacheItem) {
                 callback(cacheItem.validItems, cacheItem.moreItems,
@@ -1341,7 +1341,7 @@
                                 // it with the newly found item, indexing it by the
                                 // (representing) query hash value, note that if the
                                 // cache disable flag is set no value is set in cache
-                                var cache = matchedObject.data("cache");
+                                var cache = matchedObject.data("cache") || {};
                                 cache[queryHash] = cacheD ? null : {
                                     validItems : validItems,
                                     moreItems : moreItems,
@@ -10061,7 +10061,7 @@ function onYouTubePlayerReady(id) {
                         // retrieves the cache map to be used to determine if the
                         // various elements should be contructed from scratch or
                         // if an already existing element should be used instead
-                        var cache = dropField.data("cache");
+                        var cache = dropField.data("cache") || {};
 
                         // iterates over all the valid and filtered items
                         // to adds them to the drop field contents
@@ -12342,7 +12342,7 @@ function onYouTubePlayerReady(id) {
                         // retrieves the cache map to be used to determine if the
                         // various elements should be contructed from scratch or
                         // if an already existing element should be used instead
-                        var cache = filter.data("cache");
+                        var cache = filter.data("cache") || {};
 
                         // retrieves the valid items reference
                         var _validItems = jQuery(validItems);
