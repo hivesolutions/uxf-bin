@@ -2973,13 +2973,19 @@ function onYouTubePlayerReady(id) {
             // object (should trigger the print)
             matchedObject.click(function() {
                         // retrieves the element reference and runs the print
-                        // process on it
+                        // process on it (note that this is a delayed process)
                         var element = jQuery(this);
-                        var callable = function(callback) {
-                            _print(element, options, callback);
-                        };
-                        matchedObject.uxqueue(callable, "print");
+                        _queue(element, options);
                     });
+        };
+
+        var _queue = function(matchedObject, options) {
+            // creates the callable clojure for the printing operation
+            // and then queues the callable for latter execution
+            var callable = function(callback) {
+                _print(element, options, callback);
+            };
+            matchedObject.uxqueue(callable, "print");
         };
 
         var _print = function(matchedObject, options, callback) {
@@ -3085,8 +3091,9 @@ function onYouTubePlayerReady(id) {
         // switches over the method
         switch (method) {
             case "print" :
-                // runs the print process in the matched object
-                _print(matchedObject, options);
+                // runs the print process in the matched object, this is
+                // a delayed process as the execution is queued
+                _queue(matchedObject, options);
 
                 // breaks the switch
                 break;
