@@ -1037,12 +1037,14 @@
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.fn.uxqueue = function(callable) {
+    jQuery.fn.uxqueue = function(callable, qname) {
         // retrieves the reference to the current object for
-        // context and tries to extract the queue from it
+        // context and tries to extract the queue from it using
+        // the provided queue name (qname) or the global one
         var matchedObject = this;
-        var queue = matchedObject.data("queue") || [];
-        matchedObject.data("queue", queue);
+        var qname = qname || "global";
+        var queue = matchedObject.data("queue-" + qname) || [];
+        matchedObject.data("queue-" + qname, queue);
 
         var callback = function() {
             // removes the last item from the queue, as it
@@ -2973,11 +2975,14 @@ function onYouTubePlayerReady(id) {
                         // retrieves the element reference and runs the print
                         // process on it
                         var element = jQuery(this);
-                        _print(element, options);
+                        var callable = function(callback) {
+                            _print(element, options, callback);
+                        };
+                        matchedObject.uxqueue(callable, "print");
                     });
         };
 
-        var _print = function(matchedObject, options) {
+        var _print = function(matchedObject, options, callback) {
             // retrieves the element reference and then
             // uses it to retrieve the url to the binie
             // resource containing the document description
@@ -3019,6 +3024,11 @@ function onYouTubePlayerReady(id) {
                 jQuery.ajax({
                     url : binieUrl,
                     data : data,
+                    complete : function() {
+                        // calls the callback function, marking the end of
+                        // the printing execution (maintains order)
+                        callback();
+                    },
                     success : function(data) {
                         // prints the "just" received data using the
                         // gateway plugin (direct access to driver)
@@ -3038,6 +3048,10 @@ function onYouTubePlayerReady(id) {
             // otherwise the normal printing process must be used
             // in case a fallback url exists
             else {
+                // calls the callback function, marking the end of
+                // the printing execution (maintains order)
+                callback();
+
                 // tries to retrieve the fallback url and the
                 // target for the link
                 var fallbackUrl = element.attr("data-fallback")
