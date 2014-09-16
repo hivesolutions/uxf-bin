@@ -3335,7 +3335,7 @@ function onYouTubePlayerReady(id) {
                     // in case the control key is set and the currently
                     // pressed key is the one defined for registration
                     // the event callback is called and the event prevented
-                    if (event.ctrlKey && keyValue == keycode) {
+                    if ((event.ctrlKey || event.metaKey) && keyValue == keycode) {
                         // calls the callback with the current context
                         // and the arguments
                         callback.apply(this, arguments);
@@ -3421,7 +3421,7 @@ function onYouTubePlayerReady(id) {
                             // in case the ctrl or the alt keys
                             // are pressed no need to handle the event
                             // (default behavior is not desired)
-                            if (event.ctrlKey || event.altKey) {
+                            if (event.ctrlKey || event.metaKey || event.altKey) {
                                 // returns immediately
                                 return;
                             }
@@ -13918,7 +13918,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the control key is set must add new
                 // selection to the selection set
-                if (event.ctrlKey) {
+                if (event.ctrlKey || event.metaKey) {
                     // retrieves the current selection for reference
                     var selection = filter.data("selection");
 
@@ -18387,7 +18387,7 @@ function onYouTubePlayerReady(id) {
                     return;
                 }
 
-                if (event.ctrlKey) {
+                if (event.ctrlKey || event.metaKey) {
                     var action = "change";
                 } else if (event.shiftKey) {
                     var action = "contiguous";
