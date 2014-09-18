@@ -9981,6 +9981,26 @@ function onYouTubePlayerReady(id) {
                         break;
                 }
             });
+
+            // registers for the paste event on the text field so that
+            // any new text "transfered" to the text field is used to
+            // update the current drop field status
+            textField.bind("paste", function() {
+                // retrieves the reference to the current element and
+                // uses it to retrieve the parent dropfield
+                var element = jQuery(this);
+                var dropField = element.parents(".drop-field");
+
+                // schedules a new timeout operation for the next execution
+                // cycle so that the text is properly updated
+                setTimeout(function() {
+                            // checks if the drop field is of type select
+                            // updates the drop field data, only in case
+                            // current drop field is not of type select
+                            var isSelect = dropField.hasClass("drop-field-select");
+                            !isSelect && _update(dropField, options);
+                        });
+            });
         };
 
         var _update = function(matchedObject, options) {
@@ -12062,6 +12082,25 @@ function onYouTubePlayerReady(id) {
 
                         // updates the filter state
                         _update(filter, options);
+                    });
+
+            // registers for the paste event on the filter input
+            // so that if there's a "pasted" value the
+            filterInput.bind("paste", function() {
+                        // retrieves the reference to the target element
+                        // of the paster operation and uses it to retrieve
+                        // the "parent" filter element to be updated
+                        var element = jQuery(this);
+                        var filter = element.parents(".filter");
+
+                        // creates a timeout so that the update operation
+                        // only occurs in the next execution cycle after
+                        // the text field value has been proper updated
+                        setTimeout(function() {
+                                    // runs the update operation in the filter so that
+                                    // new values are retrieved if required
+                                    _update(filter, options);
+                                });
                     });
 
             // registers for the click in the filter input
@@ -22265,6 +22304,19 @@ function onYouTubePlayerReady(id) {
 
                         // resets the error state
                         __resetError(element, options);
+                    });
+
+            // registers for the paste operation so that the
+            // new text field contents are properly updated
+            matchedObject.bind("paste", function() {
+                        // retrieves the reference to the current text element
+                        // and uses it to trigger the update value and the rese
+                        // error operation for the current element
+                        var element = jQuery(this);
+                        setTimeout(function() {
+                                    __updateValue(element, options);
+                                    __resetError(element, options);
+                                });
                     });
 
             // registers for the flush event to update the current
