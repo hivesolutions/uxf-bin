@@ -682,7 +682,7 @@
     background-position: 0px 0px;
     background-repeat: repeat-x;
     border: 1px solid #bfbfbf;
-    color: #666666;
+    color: #2d2d2d;
     display: block;
     font-size: 10px;
     font-weight: normal;
@@ -1052,7 +1052,7 @@
     border-radius: 6px 6px 6px 6px;
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
-    color: #666666;
+    color: #4d4d4d;
     cursor: pointer;
     float: left;
     font-size: 10px;
