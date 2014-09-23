@@ -132,7 +132,7 @@
 }
 
 .omni-style .reason-box .reason-title-description {
-    color: #4d4d4d;
+    color: #2d2d2d;
     margin: 4px 0px 0px 0px;
 }
 
@@ -1271,7 +1271,7 @@
 }
 
 .omni-style .filter.entities-list .entity-name {
-    color: #555555;
+    color: #000000;
     font-size: 14px;
     font-weight: bold;
     line-height: 16px;
@@ -1289,13 +1289,13 @@
 }
 
 .omni-style .filter.entities-list .entity-details {
-    color: #4d4d4d;
+    color: #2d2d2d;
     line-height: 16px;
     margin: 10px 0px 0px 0px;
 }
 
 .omni-style .filter.entities-list .entity-information {
-    color: #4d4d4d;
+    color: #2d2d2d;
     font-size: 11px;
     line-height: 16px;
     margin: 0px 6px 0px 6px;
@@ -1400,7 +1400,7 @@
 }
 
 .omni-style .hightlight-box .hightlight-box-item > h3 {
-    color: #b3b3b3;
+    color: #2d2d2d;
     font-size: 12px;
     font-weight: normal;
     margin: 0px 0px 8px 0px;
@@ -1592,39 +1592,39 @@
 }
 
 .omni-style .link.link-grey {
-    color: #aaaaaa;
+    color: #888888;
 }
 
 .omni-style .link.link-grey:hover,
 .omni-style .link.link-grey.selected {
-    border-bottom: 1px solid #aaaaaa;
+    border-bottom: 1px solid #888888;
 }
 
 .omni-style .link.link-grey-light {
-    color: #666666;
+    color: #4d4d4d;
 }
 
 .omni-style .link.link-grey-light:hover,
 .omni-style .link.link-grey-light.selected {
-    border-bottom: 1px solid #666666;
+    border-bottom: 1px solid #4d4d4d;
 }
 
 .omni-style .link.link-grey-dark {
-    color: #4d4d4d;
+    color: #2d2d2d;
 }
 
 .omni-style .link.link-grey-dark:hover,
 .omni-style .link.link-grey-dark.selected {
-    border-bottom: 1px solid #4d4d4d;
+    border-bottom: 1px solid #2d2d2d;
 }
 
 .omni-style .link.link-grey-darker {
-    color: #2d2d2d;
+    color: #000000;
 }
 
 .omni-style .link.link-grey-darker:hover,
 .omni-style .link.link-grey-darker.selected {
-    border-bottom: 1px solid #2d2d2d;
+    border-bottom: 1px solid #000000;
 }
 
 .omni-style .list.links-list {
@@ -1755,14 +1755,14 @@
 }
 
 .omni-style .list.entity-options-list .entity-name {
-    color: #4d4d4d;
+    color: #2d2d2d;
     font-size: 16px;
     font-weight: bold;
     margin: 0px 0px 0px 0px;
 }
 
 .omni-style .list.entity-options-list .entity-description {
-    color: #4d4d4d;
+    color: #2d2d2d;
     line-height: 20px;
     margin-bottom: 12px;
     margin-top: 6px;
@@ -2346,7 +2346,7 @@
 }
 
 .omni-style .stats-panel h4 {
-    color: #4d4d4d;
+    color: #2d2d2d;
     font-size: 10px;
     font-weight: normal;
     line-height: 14px;
@@ -2390,7 +2390,7 @@
 }
 
 .omni-style .tab-panel .tab-selector {
-    color: #666666;
+    color: #2d2d2d;
     float: left;
     font-size: 12px;
     height: 20px;
@@ -2942,7 +2942,7 @@
     box-shadow: 0px 0px 5px #bbbbbb;
     -moz-box-shadow: 0px 0px 5px #bbbbbb;
     -webkit-box-shadow: 0px 0px 5px #bbbbbb;
-    color: #4d4d4d;
+    color: #2d2d2d;
     padding: 20px 20px 20px 20px;
     width: 420px;
     z-index: 20;
@@ -2955,7 +2955,7 @@
 }
 
 .omni-style .window h1.information {
-    color: #4d4d4d;
+    color: #2d2d2d;
 }
 
 .omni-style .window h1.warning {
