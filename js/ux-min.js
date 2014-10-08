@@ -506,7 +506,7 @@ _items=jQuery.uxlocale(_items);operationSource.data("items",_items);operationSou
 +"<ul class=\"data-source\" data-type=\"local\"></ul>"
 +"</div>");var operationField=jQuery("<div class=\"drop-field drop-field-select small operation-field\""
 +" data-number_options=\"-1\">"
-++"<ul class=\"data-source\" data-type=\"local\"></ul>"
++"<ul class=\"data-source\" data-type=\"local\"></ul>"
 +"</div>");var remove=jQuery("<div class=\"filter-input-remove\"></div>");var add=jQuery("<div class=\"filter-input-add\"></div>");var clear=jQuery("<div class=\"filter-clear\"></div>");var dropSource=jQuery("> .data-source",dropField);var items=[]
 var types=[]
 var names=[]
