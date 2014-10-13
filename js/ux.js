@@ -10112,10 +10112,9 @@ function onYouTubePlayerReady(id) {
                         startRecord : 0,
                         numberRecords : numberOptions
                     }, function(validItems, moreItems) {
-                        // in case the valid items value
-                        // is not valid (error occurred)
+                        // in case the valid items value is not valid (error occurred)
+                        // so items are avaiable for the update (must avoid update)
                         if (!validItems) {
-                            // returns immediately
                             return;
                         }
 
