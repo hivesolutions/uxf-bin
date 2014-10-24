@@ -4653,10 +4653,9 @@ function onYouTubePlayerReady(id) {
     };
 
     jQuery.fn.uxscrollto = function(target, duration, settings) {
-        // in case the target is not defined or in
-        // case it's an empty array
+        // in case the target is not defined or in case it's
+        // an empty array, must return immdiately, nothing to be done
         if (!target || target.length == 0) {
-            // returns immeidately
             return;
         }
 
@@ -4729,7 +4728,13 @@ function onYouTubePlayerReady(id) {
                     }
             }
 
-            jQuery.each(settings.axis.split(""), function(i, axis) {
+            // in case the target is not defined or in case it's
+            // an empty array, must return immdiately, nothing to be done
+            if (!_target || _target.length == 0) {
+                return;
+            }
+
+            jQuery.each(settings.axis.split(""), function(index, axis) {
                 // retrieves the position and converts it to lower case
                 // then retrieves the key to the position, the old
                 // element and the maximum between the axis and the element
@@ -4782,7 +4787,7 @@ function onYouTubePlayerReady(id) {
                 }
 
                 // in case it's queueing axes
-                if (!i && settings.queue) {
+                if (!index && settings.queue) {
                     // avoids wasting time animating, if there's no need
                     if (old != attributes[key]) {
                         // intermediate animation

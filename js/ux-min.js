@@ -165,7 +165,8 @@ settings.offset=both(settings.offset);settings.over=both(settings.over);return t
 var _target=target;var targetOffset;var attributes={}
 var win=_element.is("html, body");switch(typeof _target){case"number":case"string":if(/^([+-]=)?\d+(\.\d+)?(px|%)?$/.test(_target)){_target=both(_target);break;}
 _target=jQuery(_target,this);case"object":if(_target.is||_target.style){targetOffset=(_target=jQuery(_target)).offset();}}
-jQuery.each(settings.axis.split(""),function(i,axis){var position=axis=="x"?"Left":"Top";var positionLower=position.toLowerCase();var key="scroll"+position;var old=element[key];var max=uxscrollto.max(element,axis);if(targetOffset){attributes[key]=targetOffset[positionLower]
+if(!_target||_target.length==0){return;}
+jQuery.each(settings.axis.split(""),function(index,axis){var position=axis=="x"?"Left":"Top";var positionLower=position.toLowerCase();var key="scroll"+position;var old=element[key];var max=uxscrollto.max(element,axis);if(targetOffset){attributes[key]=targetOffset[positionLower]
 +(win?0:old-_element.offset()[positionLower]);if(settings.margin){attributes[key]-=parseInt(_target.css("margin"
 +position))||0;attributes[key]-=parseInt(_target.css("border"
 +position+"Width"))||0;}
@@ -173,7 +174,7 @@ attributes[key]+=settings.offset[positionLower]||0;if(settings.over[positionLowe
 attributes[key]+=_target[axis=="x"?"width":"height"]()*settings.over[positionLower];}
 else{var value=_target[positionLower];attributes[key]=value.slice&&value.slice(-1)=="%"?parseFloat(value)/100*max:value;}
 if(/^\d+$/.test(attributes[key])){attributes[key]=attributes[key]<=0?0:Math.min(attributes[key],max);}
-if(!i&&settings.queue){if(old!=attributes[key]){animate(settings.onAfterFirst);}
+if(!index&&settings.queue){if(old!=attributes[key]){animate(settings.onAfterFirst);}
 delete attributes[key];}});var animate=function(callback){_element.animate(attributes,duration,settings.easing,callback&&function(){callback.call(this,target,settings);});};animate(settings.onAfter);}).end();};uxscrollto.max=function(element,axis){var dimensions=axis=="x"?"Width":"Height";var scroll="scroll"+dimensions;if(!jQuery(element).is("html, body")){return element[scroll]
 -jQuery(element)[dimensions.toLowerCase()]();}
 var size="client"+dimensions;var html=element.ownerDocument.documentElement;var body=element.ownerDocument.body;return Math.max(html[scroll],body[scroll])
