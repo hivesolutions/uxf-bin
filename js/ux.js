@@ -15829,7 +15829,9 @@ function onYouTubePlayerReady(id) {
                                         : offsetInteger
                             }
 
-                            // scrolls to the reference
+                            // updates the hash value in the current location
+                            // and then scrolls to the reference (smooth)
+                            location.hash = href;
                             jQuery.uxscrollto(href, durationInteger, settings);
 
                             // prevents the default event (avoids the
