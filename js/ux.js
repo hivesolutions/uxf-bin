@@ -15814,8 +15814,14 @@ function onYouTubePlayerReady(id) {
                             // retrieves the element
                             var element = jQuery(this);
 
-                            // retrieves the href (link) attribute
+                            // retrieves the href (link) attribute, that
+                            // contains the target location of the link,
+                            // this should be an internal identifier
                             var href = element.attr("href");
+
+                            // retrieves the value of the data hash value
+                            // that if existent enables hash changing
+                            var hash = element.attr("data-hash");
 
                             // retrieves the offset and converts it
                             // into an integer
@@ -15829,9 +15835,15 @@ function onYouTubePlayerReady(id) {
                                         : offsetInteger
                             }
 
-                            // updates the hash value in the current location
-                            // and then scrolls to the reference (smooth)
-                            location.hash = href;
+                            // in case the hash triggering value is defined
+                            // updates the current hash with the href value
+                            // with the provided value appended to it
+                            if (hash) {
+                                location.hash = href + "-" + hash;
+                            }
+
+                            // starts the scrolling operation using the target
+                            // href location using the defined duration
                             jQuery.uxscrollto(href, durationInteger, settings);
 
                             // prevents the default event (avoids the
