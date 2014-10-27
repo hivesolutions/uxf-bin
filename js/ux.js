@@ -3885,7 +3885,7 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.fn.uxcenter = function(topOffset, leftOffset, useMargin, avoidTop, avoidLeft, keep, reference) {
+    jQuery.fn.uxcenter = function(topOffset, leftOffset, useMargin, avoidTop, avoidLeft, keep, reference, position) {
         // sets the jquery matched object that is going to be centered
         // on the currently defined viewport window
         var matchedObject = this;
@@ -3917,6 +3917,8 @@ function onYouTubePlayerReady(id) {
         var _window = jQuery(window);
         var reference = reference ? reference : _window;
 
+        var position = position ? position : "center";
+
         // retrieves the reference element dimensions, that are
         // going to be used in the re-position of the element
         var referenceHeight = reference.height();
@@ -3931,9 +3933,25 @@ function onYouTubePlayerReady(id) {
         var matchedObjectHeight = matchedObject.outerHeight(true);
         var matchedObjectWidth = matchedObject.outerWidth(true);
 
-        // calculates the element positions
-        var topPosition = ((referenceHeight - matchedObjectHeight) / 2);
-        var leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+        // calculates the element positions, taking into account the proper
+        // target position to be used for the positioning, note that it's
+        // not possible to control the horizontal position
+        switch (position) {
+            case "center" :
+                var topPosition = ((referenceHeight - matchedObjectHeight) / 2);
+                var leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                break;
+
+            case "top" :
+                var topPosition = 0;
+                var leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                break;
+
+            case "bottom" :
+                var topPosition = referenceHeight - matchedObjectHeight;
+                var leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                break;
+        }
 
         // recalculates the element positions according to the
         // top and left offsets in percentage
@@ -3973,7 +3991,7 @@ function onYouTubePlayerReady(id) {
                         _window.resize(function(event) {
                                     _element.uxcenter(topOffset, leftOffset,
                                             useMargin, avoidTop, avoidLeft,
-                                            false, reference);
+                                            false, reference, position);
                                 });
 
                         // registers the scroll in the window
@@ -3981,7 +3999,7 @@ function onYouTubePlayerReady(id) {
                         _window.scroll(function() {
                                     _element.uxcenter(topOffset, leftOffset,
                                             useMargin, avoidTop, avoidLeft,
-                                            false, reference);
+                                            false, reference, position);
                                 });
 
                         // registers the changing of contents in
@@ -3989,7 +4007,7 @@ function onYouTubePlayerReady(id) {
                         _element.bind("layout", function() {
                                     _element.uxcenter(topOffset, leftOffset,
                                             useMargin, avoidTop, avoidLeft,
-                                            false, reference);
+                                            false, reference, position);
                                 });
                     });
         }
