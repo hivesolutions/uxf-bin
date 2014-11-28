@@ -216,6 +216,10 @@ body.wait-load {
     display: none;
 }
 
+.window.window-lightbox.loading .button-expand {
+    display: none;
+}
+
 .menu-contents {
     display: none;
 }
