@@ -15496,7 +15496,7 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.fn.uxlightbox = function(path, callback, options) {
+    jQuery.fn.uxlightbox = function(path, callback, largePath, options) {
         // the default values for the alert
         var defaults = {};
 
@@ -15528,6 +15528,7 @@ function onYouTubePlayerReady(id) {
             if (window.length == 0) {
                 window = jQuery("<div class=\"window window-lightbox\">"
                         + "<div class=\"button-confirm\"></div>"
+                        + "<div class=\"button-expand\"></div>"
                         + "<img alt=\"\" />" + "</div>");
                 window.uxwindow();
                 matchedObject.append(window);
@@ -15549,6 +15550,11 @@ function onYouTubePlayerReady(id) {
             hasChanged && window.addClass("loading");
             hasChanged && windowImage.attr("src", path);
             hasChanged && windowImage.hide();
+
+            // updates the window data references so that the path
+            // and large path value may be updated accordingly
+            hasChanged && window.data("path", path);
+            hasChanged && window.data("large_path", largePath);
 
             // shows the window (should not show the image immediately,
             // but must trigger the loading of it)
@@ -15580,6 +15586,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the window (alert window) elements
             var lightbox = jQuery(".window.window-lightbox", matchedObject);
             var buttonConfirm = jQuery(".button-confirm", lightbox);
+            var buttonExpand = jQuery(".button-expand", lightbox);
 
             // registers for the click event on the (lightbox) window
             // so that the window is properly hidden from the current view
@@ -15644,7 +15651,8 @@ function onYouTubePlayerReady(id) {
                         element.uxcenter();
                     });
 
-            // registers for the click event on the button confirm
+            // registers for the click event on the button confirm, this
+            // button is responsible for the cosing of the window
             buttonConfirm.click(function() {
                         // retrieves the element and retrieves the
                         // parent window element from it (to be hidden)
@@ -15655,6 +15663,41 @@ function onYouTubePlayerReady(id) {
                         // callback if defined
                         window.uxwindow("hide");
                         callback && callback(true);
+                    });
+
+            // registers for the click event on the expand button so
+            // that it's possible to toggle between small and large images
+            buttonExpand.click(function(event) {
+                        // retrieves the element and retrieves the parent
+                        // window element from it (to be expanded), then uses that
+                        // window to gather the reference to the contained image
+                        var element = jQuery(this);
+                        var window = element.parents(".window");
+                        var windowImage = jQuery("img", window);
+
+                        // retrieves the string representation of both the
+                        // (base) and the large path values
+                        var path = window.data("path");
+                        var largePath = window.data("large_path");
+
+                        // verifies if the large path variable contains a valid
+                        // value and returns the control flow otherwise
+                        if (!largePath) {
+                            return;
+                        }
+
+                        // retrieves the value for the currently selected
+                        // (image) path and uses it to determine the next
+                        // (target) path for iamge source updating
+                        var currentPath = windowImage.attr("src");
+                        var targetPath = currentPath == path ? largePath : path;
+                        windowImage.attr("src", targetPath);
+
+                        // prevents the click event from propagation up in
+                        // order to avoid unwanted behavior (like closing)
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
+                        event.preventDefault();
                     });
         };
 
