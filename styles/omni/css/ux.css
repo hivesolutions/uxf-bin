@@ -1306,6 +1306,11 @@
 
 .omni-style .filter.entities-list.list-list .entity-name {
     margin: 4px 0px 0px 0px;
+    max-width: 468px;
+}
+
+.omni-style .filter.entities-list.list-list .entity-description {
+    max-width: 468px;
 }
 
 .omni-style .filter.entities-list .entity-small-name {
@@ -1879,6 +1884,11 @@
 
 .omni-style .overlay-panel.overlay-search .drop-field {
     width: 406px;
+}
+
+.omni-style .overlay-panel.overlay-search .drop-field .entity-name,
+.omni-style .overlay-panel.overlay-search .drop-field .entity-name {
+    max-width: 332px;
 }
 
 .omni-style.dark .overlay-panel.overlay-search {
