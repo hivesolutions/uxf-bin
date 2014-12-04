@@ -6676,13 +6676,13 @@ function onYouTubePlayerReady(id) {
             // with the animation process, as this is considered to be a "normal"
             // static image, not requiring any kind of animation process
             if (frameCount == 1) {
-                element.css("background-position-y", "");
+                element.css("background-position", "");
                 return;
             }
 
             // sets the initial position of the background positio as the top
             // element of the sprite (default behavior)
-            element.css("background-position-y", "0px");
+            element.css("background-position", "0px 0px");
 
             // resets the various values of the element so that the
             // animation is set to start from the beginning (orginal values)
@@ -6723,7 +6723,7 @@ function onYouTubePlayerReady(id) {
 
             // updates the element's css position and the frame (index) value
             // of the current animation, to be used in next iteration
-            element.css("background-position-y", offset + "px");
+            element.css("background-position", "0px" + " " + offset + "px");
             element.data("frame", next);
         };
 
