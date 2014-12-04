@@ -970,6 +970,11 @@
     background-image: url(../images/drop-field-select-small.png);
 }
 
+.omni-style .drop-field .entity-name,
+.omni-style .drop-field .entity-details {
+    max-width: 210px;
+}
+
 .omni-style .filter .filter-input {
     height: 30px;
 }
