@@ -220,6 +220,10 @@ body.wait-load {
     display: none;
 }
 
+.window.window-lightbox.loaded.loading .button-expand {
+    display: block;
+}
+
 .menu-contents {
     display: none;
 }
