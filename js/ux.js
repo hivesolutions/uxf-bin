@@ -16654,10 +16654,10 @@ function onYouTubePlayerReady(id) {
             menuLink = menuLink || jQuery(".menu-link", menu);
             var menuContents = jQuery(".menu-contents", menu);
 
-            // in case no menu button/link is defined it's not possible
+            // in case no menu link is defined it's not possible
             // to run the reposition operation, not enought information
             // to archive the objective
-            if (menuButton.length == 0 || menuLink.length == 0) {
+            if (menuLink.length == 0) {
                 return;
             }
 
@@ -16676,7 +16676,9 @@ function onYouTubePlayerReady(id) {
             // it as the button with value in case it exists, this is
             // required so that it's possible to use decimal pixel values
             // for the calculus of the required offset margins
-            var buttonBounding = menuButtonElement.getBoundingClientRect();
+            var buttonBounding = menuButtonElement
+                    ? menuButtonElement.getBoundingClientRect()
+                    : {};
             var buttonWidthF = buttonBounding.width;
             buttonWidth = buttonWidthF ? buttonWidthF : buttonWidth;
 
