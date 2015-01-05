@@ -1,5 +1,5 @@
 // Hive UX Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive UX Framework.
 //
@@ -17,7 +17,7 @@
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = Hive Solutions Confidential Usage License (HSCUL)
 
 (function(jQuery) {
@@ -4042,7 +4042,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -4614,7 +4614,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  * @credits Ariel Flesler <aflesler@gmail.com>
@@ -6854,7 +6854,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -7271,7 +7271,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -7918,7 +7918,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -8025,7 +8025,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -8171,7 +8171,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -8520,7 +8520,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -8838,7 +8838,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -9391,7 +9391,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -11236,7 +11236,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -11594,7 +11594,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -14354,7 +14354,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -15337,7 +15337,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -15416,7 +15416,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -16331,7 +16331,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -16767,7 +16767,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -16922,7 +16922,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -17155,7 +17155,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -17246,7 +17246,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -17383,7 +17383,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -17496,7 +17496,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -17670,7 +17670,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -18095,7 +18095,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -18468,7 +18468,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -18621,7 +18621,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -18777,7 +18777,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -19442,7 +19442,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -19510,7 +19510,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -19952,7 +19952,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -20333,7 +20333,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -20847,7 +20847,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -20941,7 +20941,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -21932,7 +21932,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -22462,7 +22462,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -23687,7 +23687,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -23922,7 +23922,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -24449,7 +24449,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @date March 10, 2010
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2014 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
  *          http://www.hive.pt/licenses/
  */
@@ -25124,7 +25124,7 @@ jQuery(document).ready(function() {
         });
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -25145,7 +25145,7 @@ jQuery(document).ready(function() {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var Select = Select || {};
@@ -25484,7 +25484,7 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -25505,7 +25505,7 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var Base64 = Base64 || {};
@@ -25608,7 +25608,7 @@ Base64.decode = function(input, decode) {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -25629,7 +25629,7 @@ Base64.decode = function(input, decode) {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var Date = Date || {};
@@ -25734,7 +25734,7 @@ Date.prototype.getTimeZoneStructure = function() {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -25755,7 +25755,7 @@ Date.prototype.getTimeZoneStructure = function() {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var Array = Array || {};
@@ -25810,7 +25810,7 @@ if (typeof(Array.prototype.isIn) === "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -25831,7 +25831,7 @@ if (typeof(Array.prototype.isIn) === "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 // __credits__   = Joseph Myers <e_mayilme@hotmail.com>
 
@@ -26851,7 +26851,7 @@ Prism.languages.insertBefore("ruby", "keyword", {
 });
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -26872,7 +26872,7 @@ Prism.languages.insertBefore("ruby", "keyword", {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var StringBuffer = StringBuffer || {};
@@ -26979,7 +26979,7 @@ StringBuffer.prototype.toString = function() {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -27000,7 +27000,7 @@ StringBuffer.prototype.toString = function() {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var String = String || {};
@@ -27250,7 +27250,7 @@ String.prototype.decodeUtf = function() {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -27271,7 +27271,7 @@ String.prototype.decodeUtf = function() {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var Template = Template || {};
@@ -28101,7 +28101,7 @@ TemplateNode.prototype.getParameter = function(name) {
 };
 
 // Hive Colony Framework
-// Copyright (C) 2008-2014 Hive Solutions Lda.
+// Copyright (C) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -28122,7 +28122,7 @@ TemplateNode.prototype.getParameter = function(name) {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 var canvasRenderingContext = window.CanvasRenderingContext2D
@@ -28222,7 +28222,7 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {
 };
 
 // Hive Colony Framework
-// Copyright (c) 2008-2014 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -28243,7 +28243,7 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
 (function(jQuery) {
