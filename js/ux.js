@@ -1168,7 +1168,8 @@
             // retrieves the id part of the url
             var id = query["id"];
 
-            // retrieves the "main" filter string
+            // retrieves the "main" filter string, this is going to be
+            // used for plain text free search with non exact matching
             var filterString = query["filterString"];
 
             // retrieves the sort tuple to be used to sort
@@ -1492,9 +1493,11 @@
             // retrieves the id part of the url
             var id = query["id"];
 
-            // retrieves the "main" filter string and attribute
+            // retrieves the "main" filter string and attribute, that
+            // are going to be used for local matching
             var filterString = query["filterString"];
             var filterAttributes = query["filterAttributes"];
+            var filters = query["filters"] || [];
 
             // retrieves the record count information and validates that
             // the requested number of records is not infinite (minus one)
@@ -1532,11 +1535,13 @@
                     ? filterString.toLowerCase()
                     : filterString;
 
-            // creates a list to hold (the valid) items
+            // creates a list to hold (the valid) items, the ones that
+            // have filled the required filtering values
             var validItems = [];
 
-            // in case the id value is set, there's
-            // a need to filter the items
+            // in case the id value is set, there's a need to filter
+            // the items so that only the ones with the request id
+            // value are going to be present for filtering
             if (id) {
                 // creates the list to hold the valid
                 // items for the id value
@@ -1573,10 +1578,56 @@
             // iterates over all the items to check for a valid
             // prefix (starts with)
             for (var index = 0; index < items.length; index++) {
-                // retrieves the current item
+                // retrieves the current item, that is going to be used as
+                // the basis of the comparision operation
                 var currentItem = items[index];
 
-                // in case the filter attributes are defined
+                // creates the valid flag that is going to be used to control
+                // if the current item is still considered to be valid at the
+                // enf of the filters stage, this is required so that the control
+                // flow is stopped at the end of the filters stage
+                var valid = true;
+
+                // iterates over the complete set of filters to be able to determine
+                // if the current item in iteration is valid
+                for (var findex = 0; findex < filters.length; findex++) {
+                    // retrieves the current filter in iteration and then
+                    // unpacks the complete set of attributes for it according
+                    // to the current filter specification
+                    var filter = filters[findex];
+                    var name = filter[0];
+                    var operator = filter[1];
+                    var value = filter[2];
+
+                    // in case the operator of the filter is not the equals one
+                    // or the current item is not an object, must skip the current
+                    // iteraion (format not compatible with filter to be applied)
+                    if (operator !== "equals" || typeof currentItem != "object") {
+                        continue;
+                    }
+
+                    // extras the calue that is going to be used as the base coparision
+                    // for the current filter and determines if the comparision is
+                    // valid if that's the case continues the loop (still valid)
+                    var _value = currentItem[name];
+                    if (_value === value) {
+                        continue;
+                    }
+
+                    // otherwise unsets the valid flag and breaks the loop as the current
+                    // item is no longer consideted to be valid (must skip the current iteration)
+                    valid = false;
+                    break;
+                }
+
+                // in case the current item is no longer valid must skip the current
+                // iteration cycle and continue to the next one (filtered through filters)
+                if (!valid) {
+                    continue;
+                }
+
+                // in case the filter attributes are defined, must add more
+                // compare strings than the usual for the operation
                 if (filterAttributes) {
                     // starts the compare strings list
                     var compareStrings = [];
@@ -1608,8 +1659,9 @@
                     var compareStrings = [currentItem];
                 }
 
-                // iterates over all the compare string for the filter
-                // string comparison
+                // iterates over all the compare strings for the filter
+                // string comparison so that the prper validations should
+                // be applied to the proper element
                 for (var _index = 0; _index < compareStrings.length; _index++) {
                     // retrieves the current compare string and converts it into
                     // a lowercased string in case the insensitive flag is set
@@ -10451,10 +10503,10 @@ function onYouTubePlayerReady(id) {
                 dropFieldContents.hide();
             }
 
-            // creates the filter string from the text
-            // field value in case the select mode is not
-            // enabled, otherwise an empty value is used
-            var filterString = isSelect ? "" : textFieldValue;
+            // creates the filter string from the text field value in
+            // case the select mode is not enabled and the mode is not
+            // the lower one, otherwise an empty value is used
+            var filterString = isSelect || isLower ? "" : textFieldValue;
 
             // invalidates the "logical" hidden field, may
             // assume the value is in an invalid (transient state)
