@@ -4244,6 +4244,54 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
+    var BUNDLE_EN_ISO = {
+        "COUNTRIES" : ["AFG", "ALB", "DZA", "AND", "AGO", "ATG", "ARG", "ARM",
+                "AUS", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
+                "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
+                "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana",
+                "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi",
+                "Cambodia", "Cameroon", "Canada", "Cape Verde",
+                "Central African Rep", "Chad", "Chile", "China", "Colombia",
+                "Comoros", "Congo", "Congo Democratic Republic", "Costa Rica",
+                "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
+                "Djibouti", "Dominica", "Dominican Republic", "East Timor",
+                "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
+                "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France",
+                "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
+                "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+                "Haiti", "Honduras", "Hungary", "Iceland", "India",
+                "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
+                "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan",
+                "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo",
+                "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho",
+                "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+                "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives",
+                "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
+                "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia",
+                "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
+                "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
+                "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau",
+                "Panama", "Papua New Guinea", "Paraguay", "Peru",
+                "Philippines", "Poland", "Portugal", "Qatar", "Romania",
+                "Russia", "Rwanda", "St Kitts & Nevis", "St Lucia",
+                "Saint Vincent & the Grenadines", "Samoa", "San Marino",
+                "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia",
+                "Seychelles", "Sierra Leone", "Singapore", "Slovakia",
+                "Slovenia", "Solomon Islands", "Somalia", "South Africa",
+                "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland",
+                "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan",
+                "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago",
+                "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
+                "Ukraine", "United Arab Emirates", "United Kingdom",
+                "United States", "Uruguay", "Uzbekistan", "Vanuatu",
+                "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia",
+                "Zimbabwe"]
+    }
+
+    jQuery.uxloadbundle(BUNDLE_EN_ISO, "en-iso")
+})(jQuery);
+
+(function(jQuery) {
     var BUNDLE_EN_US = {
         "Confirm" : "Confirm",
         "Cancel" : "Cancel",
@@ -4408,11 +4456,11 @@ function onYouTubePlayerReady(id) {
         "count" : "contagem",
         "sum" : "somatório",
         "average" : "média",
-        "COUNTRIES" : ["Afeganistão", "África do Sul", "Albania", "Argélia",
-                "Andorra", "Angola", "Antigua e Dependencias", "Argentina",
-                "Arménia", "Austrália", "Austria", "Azerbaijão", "Bahamas",
-                "Bahrein", "Bangladesh", "Barbados", "Bielorrússia", "Bélgica",
-                "Belize", "Benin", "Butão", "Bolívia", "Bósnia e Herzegovina",
+        "COUNTRIES" : ["Afeganistão", "Albania", "Argélia", "Andorra",
+                "Angola", "Antigua e Dependencias", "Argentina", "Arménia",
+                "Austrália", "Austria", "Azerbaijão", "Bahamas", "Bahrein",
+                "Bangladesh", "Barbados", "Bielorrússia", "Bélgica", "Belize",
+                "Benin", "Butão", "Bolívia", "Bósnia e Herzegovina",
                 "Botswana", "Brasil", "Brunei", "Bulgária", "Burkina Faso",
                 "Burundi", "Camboja", "Camarões", "Canadá", "Cabo Verde",
                 "República Centro-Africana", "Chade", "Chile", "China",
@@ -4443,14 +4491,15 @@ function onYouTubePlayerReady(id) {
                 "São Vicente e Granadinas", "Samoa", "San Marino",
                 "São Tomé e Príncipe", "Arábia Saudita", "Senegal", "Sérvia",
                 "Seychelles", "Serra Leoa", "Singapura", "Eslováquia",
-                "Eslovénia", "Ilhas Salomão", "Somália", "Espanha",
-                "Sri Lanka", "Sudão", "Suriname", "Suazilândia", "Suécia",
-                "Suíça", "Síria", "Taiwan", "Tajiquistão", "Tanzânia",
-                "Tailândia", "Togo", "Tonga", "Trinidad e Tobago", "Tunísia",
-                "Turquia", "Turquemenistão", "Tuvalu", "Uganda", "Ucrânia",
-                "Emirados Árabes Unidos", "Reino Unido", "Estados Unidos",
-                "Uruguai", "Uzbequistão", "Vanuatu", "Vaticano", "Venezuela",
-                "Vietname", "Iémen", "Zâmbia", "Zimbabwe"]
+                "Eslovénia", "Ilhas Salomão", "Somália", "África do Sul",
+                "Espanha", "Sri Lanka", "Sudão", "Suriname", "Suazilândia",
+                "Suécia", "Suíça", "Síria", "Taiwan", "Tajiquistão",
+                "Tanzânia", "Tailândia", "Togo", "Tonga", "Trinidad e Tobago",
+                "Tunísia", "Turquia", "Turquemenistão", "Tuvalu", "Uganda",
+                "Ucrânia", "Emirados Árabes Unidos", "Reino Unido",
+                "Estados Unidos", "Uruguai", "Uzbequistão", "Vanuatu",
+                "Vaticano", "Venezuela", "Vietname", "Iémen", "Zâmbia",
+                "Zimbabwe"]
     }
 
     jQuery.uxloadbundle(BUNDLE_PT_PT, "pt-pt")
