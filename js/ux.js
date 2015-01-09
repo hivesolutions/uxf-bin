@@ -1884,7 +1884,7 @@
 
                         // retrieves the iso standard version of the countries
                         // that is going to be used as the logical version
-                        var COUNTRIES = jQuery.uxlocale("COUNTRIES", "en-us");
+                        var COUNTRIES = jQuery.uxlocale("COUNTRIES", "en-iso");
                         COUNTRIES = COUNTRIES.slice();
 
                         // retrieves the list of countries to be used according
@@ -4245,8 +4245,9 @@ function onYouTubePlayerReady(id) {
 
 (function(jQuery) {
     var BUNDLE_EN_ISO = {
-        "COUNTRIES" : ["AFG", "ALB", "DZA", "AND", "AGO", "ATG", "ARG", "ARM",
-                "AUS", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
+        "COUNTRIES" : ["Afghanistan", "Albania", "Algeria", "Andorra",
+                "Angola", "Antigua & Deps", "Argentina", "Armenia",
+                "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
                 "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
                 "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana",
                 "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi",
