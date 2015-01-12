@@ -1525,7 +1525,7 @@
             // insensitive the casing of the letters to be searched
             // must not matter and capital and lower letters should
             // be treated the same way
-            var insensitive = element.attr("data-insensitive")
+            var insensitive = element.attr("data-insensitive");
 
             // converts the provided filter string into a lowercase
             // representation in case the insensitive mode has been
@@ -1970,6 +1970,10 @@
                             }
                             items.push(item);
                         }
+
+                        // sets the current element as case insensitive so that
+                        // the country search is more permissive an intuitive
+                        _element.attr("data-insensitive", "true");
 
                         // updates the items data in the current element
                         // ands runs the initializer of the items data
