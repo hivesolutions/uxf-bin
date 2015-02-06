@@ -2715,6 +2715,10 @@ jQuery.expr[":"].parents = function(a, i, m) {
             width = width ? width : 560;
             height = height ? height : 315;
 
+            // calculates the prefix url, taking into account if the player
+            // support is going to be action script based or html5 based
+            var prefixUrl = useActionScript ? "v" : "embed";
+
             // calculates the hd value
             var hdValue = hd ? "hd=1" : "hd=0";
 
@@ -2731,10 +2735,11 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // that will include a flash object into the code
             matchedObject.html("<embed id=\"youtube-player\" width=\"" + width
                     + "\" height=\"" + height
-                    + "\" src=\"http://www.youtube.com/v/" + videoId + "?"
-                    + hdValue + "&" + infoValue + "&" + controlsValue + "&"
-                    + autoPlayValue + "&playerapiid=youtube-player"
-                    + "&version=3" + "&enablejsapi=1" + "\" frameborder=\"0\""
+                    + "\" src=\"http://www.youtube.com/" + prefixUrl + "/"
+                    + videoId + "?" + hdValue + "&" + infoValue + "&"
+                    + controlsValue + "&" + autoPlayValue
+                    + "&playerapiid=youtube-player" + "&version=3"
+                    + "&enablejsapi=1" + "\" frameborder=\"0\""
                     + " allowfullscreen=\"true\""
                     + " allowscriptaccess=\"always\""
                     + " type=\"application/x-shockwave-flash\"></embed>");
