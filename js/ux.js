@@ -2699,6 +2699,10 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var width = matchedObject.attr("data-width");
             var height = matchedObject.attr("data-height");
 
+            // retrieves the (use) action script value that will
+            // control the usage or not of the as3 vs html5 players
+            var as = matchedObject.attr("data-as");
+
             // retrieves the hd (high definition) value
             var hd = matchedObject.attr("data-hd");
 
@@ -2717,7 +2721,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
 
             // calculates the prefix url, taking into account if the player
             // support is going to be action script based or html5 based
-            var prefixUrl = useActionScript ? "v" : "embed";
+            var prefixUrl = as ? "v" : "embed";
 
             // calculates the hd value
             var hdValue = hd ? "hd=1" : "hd=0";
