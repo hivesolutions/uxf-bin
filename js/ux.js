@@ -14790,10 +14790,14 @@ function onYouTubePlayerReady(id) {
             matchedObject.submit(function(event) {
                         // retrieves the current element, so that access to
                         // the current form is possible, and then retrieves
-                        // the reference to the body element that may be used for some
-                        // of the possible global operations
+                        // the reference to the body element that may be used
+                        // for some of the possible global operations
                         var element = jQuery(this);
                         var _body = jQuery("body");
+
+                        // gathers the reference to the complete set of input
+                        // like elements contained in the current form element
+                        var inputs = jQuery("input", element);
 
                         // verifies if the current form is of type (message) confirm
                         // and if that's the case retrieves the associated message
@@ -14821,6 +14825,10 @@ function onYouTubePlayerReady(id) {
                                         element.data("confirmed", true);
                                         element.submit();
                                     });
+
+                            // removes the focus from any input "like" element that
+                            // are contained in the current form (avoids glitches)
+                            inputs.blur();
 
                             // stops the event propagation so that the current submit
                             // operation is delayed by one tick (until confirmation)
