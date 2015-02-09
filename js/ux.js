@@ -8645,9 +8645,9 @@ function onYouTubePlayerReady(id) {
             // calls the confirm window in the document, because the action
             // must be first validated before any redirection occurs
             isConfirm && _body.uxconfirm(message, function(result) {
-                        // in case the result is cancel,
+                        // in case the result is cancel (false),
                         // avoids execution and returns immediately
-                        if (!result) {
+                        if (result == false) {
                             return;
                         }
 
@@ -14871,7 +14871,7 @@ function onYouTubePlayerReady(id) {
                             _body.uxconfirm(message, function(result) {
                                         // in case the result is cancel, must revert the current
                                         // partial state and then return the control flow
-                                        if (!result) {
+                                        if (result == false) {
                                             // triggers the unlock (elements) events to emulate the
                                             // end of the submission of the form (compatability)
                                             // this should release the elements state to the normal
@@ -16361,9 +16361,9 @@ function onYouTubePlayerReady(id) {
 
             // calls the confirm window in the document
             _body.uxconfirm(message, function(result) {
-                        // in case the result is cancel,
-                        // avoids execution and returns immediately
-                        if (!result) {
+                        // in case the result is cancel avoids the current
+                        // execution and returns immediately
+                        if (result == false) {
                             return;
                         }
 
