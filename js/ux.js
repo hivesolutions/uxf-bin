@@ -14867,7 +14867,7 @@ function onYouTubePlayerReady(id) {
                         // (modal) window should be presented to confirm/cancel the submission
                         if (isConfirm && !confirmed) {
                             // presents the confirm window to the end user so that it's
-                            // possible to cancel/confirm it
+                            // possible to cancel/confirm the current form submission
                             _body.uxconfirm(message, function(result) {
                                         // in case the result is cancel, must revert the current
                                         // partial state and then return the control flow
@@ -14894,8 +14894,8 @@ function onYouTubePlayerReady(id) {
                             // are contained in the current form (avoids glitches)
                             inputs.blur();
 
-                            // unsets the submited flag for the current form as
-                            // so that the form may be submited on confirm (latter)
+                            // unsets the submited flag for the current form, so
+                            // that the form may be submited on confirm (latter)
                             element.data("submited", false);
 
                             // stops the event propagation so that the current submit
