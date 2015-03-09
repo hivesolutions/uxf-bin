@@ -17695,7 +17695,7 @@ function onYouTubePlayerReady(id) {
             // registers the resize in the window, this is a custom
             // event triggered at the correct timing of the window
             // sizing workflow, this will trigger a delayed based
-            // resizing opertion on the oeverlay element
+            // resizing operation on the oeverlay element
             _window.bind("size", function(event) {
                         // resizes the overlay in the screen
                         resizeDelay(matchedObject, options);
