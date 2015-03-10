@@ -645,6 +645,10 @@
     padding-right: 8px;
 }
 
+.ulite-style.violet .link.selected {
+    color: #9678d2;
+}
+
 .ulite-style .list.sub-menu-list {
     color: #8d8d8d;
     font-size: 10px;
