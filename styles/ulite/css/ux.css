@@ -126,6 +126,10 @@
 .ulite-style .button.button-top {
     line-height: 20px;
     text-transform: uppercase;
+    transition: background-color 0.15s linear;
+    -o-transition: background-color 0.15s linear;
+    -moz-transition: background-color 0.15s linear;
+    -webkit-transition: background-color 0.15s linear;
 }
 
 .ulite-style .button.button-top:hover {
@@ -167,7 +171,7 @@
 }
 
 .ulite-style .button.cart-button.no-hover:hover {
-    background-position: right -1px;
+    background-position: left -1px;
 }
 
 .ulite-style .button.orange-button {
@@ -538,7 +542,7 @@
 }
 
 .ulite-style .label.form-label {
-    color: #7d7d7d;
+    color: #4d4d4d;
     font-size: 11px;
     font-weight: normal;
     line-height: 16px;
@@ -563,7 +567,7 @@
 }
 
 .ulite-style .link {
-    color: #6d6d6d;
+    color: #4d4d4d;
     outline: none;
     text-decoration: none;
     text-transform: uppercase;
@@ -582,7 +586,7 @@
 }
 
 .ulite-style .link.link-light {
-    color: #6d6d6d;
+    color: #4d4d4d;
 }
 
 .ulite-style .link.link-dark {
@@ -594,7 +598,7 @@
 }
 
 .ulite-style .link:hover {
-    color: #2d2d2d;
+    color: #000000;
 }
 
 .ulite-style .link.selected {
@@ -610,7 +614,7 @@
 }
 
 .ulite-style .link.small:hover {
-    color: #2d2d2d;
+    color: #000000;
 }
 
 .ulite-style .link.link-orange:hover {
@@ -618,11 +622,11 @@
 }
 
 .ulite-style .link.link-light:hover {
-    color: #2d2d2d;
+    color: #000000;
 }
 
 .ulite-style .link-dark:hover {
-    color: #2d2d2d;
+    color: #000000;
 }
 
 .ulite-style .link-dark-orange:hover {
@@ -670,11 +674,12 @@
 
 .ulite-style .list.menu-list li {
     display: inline;
+    font-weight: 600;
     margin: 0px 14px 0px 14px;
 }
 
 .ulite-style .list.menu-list li.small {
-    margin: 0px 6px 0px 6px;
+    margin: 0px 0px 0px 0px;
 }
 
 .ulite-style .list.featured-list {
@@ -845,7 +850,7 @@
     float: left;
     height: 140px;
     line-height: 0px;
-    margin: 6px 3px 6px 3px;
+    margin: 0px 3px 17px 3px;
     width: 140px;
 }
 
@@ -878,20 +883,23 @@
 
 .ulite-style .list.product-description-list .product-description-item-details .title {
     color: #4d4d4d;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: normal;
+    margin: 14px 0px 0px 0px;
 }
 
 .ulite-style .list.product-description-list .product-description-item-details .description {
     font-size: 10px;
-    height: 80px;
+    font-weight: 600;
+    height: 86px;
     line-height: 16px;
-    margin: 10px 0px 10px 0px;
+    margin: 6px 0px 6px 0px;
 }
 
 .ulite-style .list.product-description-list .product-description-item-details .price {
     color: #4d4d4d;
     font-size: 10px;
+    font-weight: 600;
     line-height: 16px;
     margin: 0px 0px 0px 0px;
     text-align: right;
@@ -988,10 +996,10 @@
 }
 
 .ulite-style .list.basket-list li .product-description h3 {
-    color: #8d8d8d;
+    color: #6d6d6d;
     font-size: 14px;
     font-weight: normal;
-    margin: 26px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 .ulite-style .list.basket-list li .product-description p {
