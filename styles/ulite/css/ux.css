@@ -1427,6 +1427,10 @@
     margin: 0px 0px 0px 0px;
 }
 
+.ulite-style.violet .slideshow  ul.slideshow-alternates li {
+    background-image: url(../images/slideshow-alternates.png);
+}
+
 .ulite-style .subscript {
     font-size: 70%;
 }
