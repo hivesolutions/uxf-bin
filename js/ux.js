@@ -15229,7 +15229,8 @@ function onYouTubePlayerReady(id) {
                 contentType = contentType.split(";")[0];
                 contentType = contentType.strip();
                 if (!location && contentType != "text/html") {
-                    document.location = href;
+                    element.addClass("no-async");
+                    element.submit();
                     request.abort();
                     return;
                 }
@@ -15295,7 +15296,8 @@ function onYouTubePlayerReady(id) {
                 if (location || contentType == "text/html") {
                     return;
                 }
-                document.location = href;
+                element.addClass("no-async");
+                element.submit();
                 request.abort();
             };
             request.send(data);
