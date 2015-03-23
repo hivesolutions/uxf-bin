@@ -15227,7 +15227,7 @@ function onYouTubePlayerReady(id) {
                 // and if that's not the case runs the fallback process (typical
                 // synchronous form submission) and aborts the current request
                 var requestAsync = isAsync(request);
-                if (requestAsync) {
+                if (requestAsync == false) {
                     fallback(matchedObject, options);
                     request.abort();
                     return;
@@ -15283,7 +15283,7 @@ function onYouTubePlayerReady(id) {
                 // and if that's not the case runs the fallback process (typical
                 // synchronous form submission) and aborts the current request
                 var requestAsync = isAsync(request);
-                if (requestAsync) {
+                if (requestAsync == true) {
                     return;
                 }
                 fallback(matchedObject, options);
