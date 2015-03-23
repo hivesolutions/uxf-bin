@@ -15223,19 +15223,11 @@ function onYouTubePlayerReady(id) {
                     return;
                 }
 
-                // gathers the target location (redirection) in case it exists, then
-                // retrieves the content type for the current request and processes
-                // the value retrieving only the basic value for it, then verifies
-                // that the mime type of it is html and in case it's not and there's
-                // no valid user agent redirect defined redirects the user agent to
-                // the target location as the data type is not compatbile with ajax
-                // processing (fallback procedure for binary values, downloading)
-                var location = request.getResponseHeader("Location");
-                var contentType = request.getResponseHeader("Content-Type")
-                        || "";
-                contentType = contentType.split(";")[0];
-                contentType = contentType.strip();
-                if (!location && contentType != "text/html") {
+                // verifies if the current request represents and async request
+                // and if that's not the case runs the fallback process (typical
+                // synchronous form submission) and aborts the current request
+                var requestAsync = isAsync(request);
+                if (requestAsync) {
                     fallback(matchedObject, options);
                     request.abort();
                     return;
@@ -15287,19 +15279,11 @@ function onYouTubePlayerReady(id) {
                     return;
                 }
 
-                // gathers the target location (redirection) in case it exists, then
-                // retrieves the content type for the current request and processes
-                // the value retrieving only the basic value for it, then verifies
-                // that the mime type of it is html and in case it's not and there's
-                // no valid user agent redirect defined redirects the user agent to
-                // the target location as the data type is not compatbile with ajax
-                // processing (fallback procedure for binary values, downloading)
-                var location = request.getResponseHeader("Location");
-                var contentType = request.getResponseHeader("Content-Type")
-                        || "";
-                contentType = contentType.split(";")[0];
-                contentType = contentType.strip();
-                if (location || contentType == "text/html") {
+                // verifies if the current request represents and async request
+                // and if that's not the case runs the fallback process (typical
+                // synchronous form submission) and aborts the current request
+                var requestAsync = isAsync(request);
+                if (requestAsync) {
                     return;
                 }
                 fallback(matchedObject, options);
@@ -15439,8 +15423,8 @@ function onYouTubePlayerReady(id) {
             var _body = jQuery("body");
 
             // triggers the post submit and async end events in the currently
-            // matched object indicating that the current operation has been
-            // aborted and that reversing operations should take place
+            // matched object (and body) indicating that the current operation
+            // has been aborted and that reversing operations should take place
             matchedObject.triggerHandler("post_submit");
             _body.triggerHandler("async_end");
 
@@ -15486,6 +15470,19 @@ function onYouTubePlayerReady(id) {
             // to restore them to their original values
             var elements = matchedObject.uxfields();
             elements.uxreset();
+        };
+
+        var isAsync = function(request) {
+            // gathers the target location (redirection) in case it exists, then
+            // retrieves the content type for the current request and processes
+            // the value retrieving only the basic value for it, then verifies
+            // that the mime type of it is html and in case it's returns valid as
+            // the provided request is considered to be an async request
+            var location = request.getResponseHeader("Location");
+            var contentType = request.getResponseHeader("Content-Type") || "";
+            contentType = contentType.split(";")[0];
+            contentType = contentType.strip();
+            return location || contentType == "text/html";
         };
 
         // initializes the plugin
