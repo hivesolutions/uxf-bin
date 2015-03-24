@@ -15439,6 +15439,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.data("submited", false);
             matchedObject.addClass("no-async");
             matchedObject.submit();
+            matchedObject.data("submited", false);
             matchedObject.removeClass("no-async");
         };
 
