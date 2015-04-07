@@ -10036,8 +10036,9 @@ function onYouTubePlayerReady(id) {
                                     // in case the drop field contents is visible
                                     // (should move the cursor)
                                     if (dropFieldContents.is(":visible")) {
-                                        // hides the drop field contents
-                                        dropFieldContents.hide();
+                                        // hides the drop field contents, so that the
+                                        // options are removed from user's visibility
+                                        _hide(dropField)
                                     }
                                     // otherwise it should show the updated
                                     // drop field contents
@@ -10050,8 +10051,9 @@ function onYouTubePlayerReady(id) {
                                         !updated && _update(dropField, options);
                                         dropField.data("updated", true)
 
-                                        // shows the drop field contents
-                                        dropFieldContents.show();
+                                        // shows the drop field contents, so that the
+                                        // options remain visible to the user
+                                        _show(dropField);
                                     }
 
                                     // stops the event propagation
@@ -10514,7 +10516,7 @@ function onYouTubePlayerReady(id) {
                             // the current drop field contents is not empty
                             !hiddenFieldValue
                                     && !dropFieldContents.is(":empty")
-                                    && dropFieldContents.show();
+                                    && _show(dropField);
                         }
 
                         break;
@@ -10537,7 +10539,7 @@ function onYouTubePlayerReady(id) {
                             // the current drop field contents is not empty
                             !hiddenFieldValue
                                     && !dropFieldContents.is(":empty")
-                                    && dropFieldContents.show();
+                                    && _show(dropField);
                         }
 
                         break;
@@ -10560,7 +10562,7 @@ function onYouTubePlayerReady(id) {
                             // the current drop field contents is not empty
                             !hiddenFieldValue
                                     && !dropFieldContents.is(":empty")
-                                    && dropFieldContents.show();
+                                    && _show(dropField);
                         }
 
                         // breaks the switch
@@ -10584,7 +10586,7 @@ function onYouTubePlayerReady(id) {
                             // the current drop field contents is not empty
                             !hiddenFieldValue
                                     && !dropFieldContents.is(":empty")
-                                    && dropFieldContents.show();
+                                    && _show(dropField);
                         }
 
                         // breaks the switch
@@ -10979,35 +10981,13 @@ function onYouTubePlayerReady(id) {
                         // the text field
                         validItems.length > 0 && textField.hasClass("focus")
                                 && (textFieldValue != "" || isSelect)
-                                ? dropFieldContents.show()
-                                : dropFieldContents.hide();
+                                ? _show(dropField)
+                                : _hide(dropField);
 
                         // in case the auto resize options is set
                         // (must position the drop field contents)
                         if (autoResize != "false") {
-                            // checks if the current drop field contents component
-                            // is visible and in case it's not shows it, as this is
-                            // required in order to retrieve the proper measures
-                            var isVisible = dropFieldContents.is(":visible");
-                            !isVisible && dropFieldContents.show();
-
-                            // calculates the drop field contents width using the text
-                            // field width as reference and calculating the extra width
-                            // to be removed from the dropfield as the extra margin
-                            // (and border) values that it may contain
-                            var textFieldWidth = textField.outerWidth(true);
-                            var dropFieldContentsExtraWidth = dropFieldContents.outerWidth()
-                                    - dropFieldContents.width();
-                            var dropFieldContentsWidth = textFieldWidth
-                                    - dropFieldContentsExtraWidth;
-
-                            // in case the current drop field contents are not visible
-                            // hides them back (original visibility)
-                            !isVisible && dropFieldContents.hide();
-
-                            // sets the drop field contents width with the resulting value
-                            // so that the contents placeholder is properly updated
-                            dropFieldContents.width(dropFieldContentsWidth);
+                            _resize(dropField);
                         }
 
                         // updates the current selection, this operation should change
@@ -11376,6 +11356,75 @@ function onYouTubePlayerReady(id) {
                 // link value, using the proper plugin
                 jQuery.uxlocation(valueLink);
             }
+        };
+
+        var _resize = function(matchedObject, force) {
+            // sets the provided matched object as the drop field
+            // and then uses it to retrieve the various components
+            // that are going to be used in the resize operation
+            var dropField = matchedObject;
+            var textField = jQuery(".text-field", dropField);
+            var dropFieldContents = jQuery(".drop-field-contents", dropField);
+
+            // verifies if the auto resize mode is disabled and if
+            // that's the case and the force flag is not set the
+            // control flow is returned immediately to caller
+            var autoResize = dropField.attr("data-auto_size");
+            if (autoResize == "false" && !force) {
+                return;
+            }
+
+            // checks if the current drop field contents component
+            // is visible and in case it's not shows it, as this is
+            // required in order to retrieve the proper measures
+            var isVisible = dropFieldContents.is(":visible");
+            !isVisible && _show(dropField);
+
+            // calculates the drop field contents width using the text
+            // field width as reference and calculating the extra width
+            // to be removed from the dropfield as the extra margin
+            // (and border) values that it may contain
+            var textFieldWidth = textField.outerWidth(true);
+            var dropFieldContentsExtraWidth = dropFieldContents.outerWidth()
+                    - dropFieldContents.width();
+            var dropFieldContentsWidth = textFieldWidth
+                    - dropFieldContentsExtraWidth;
+
+            // in case the current drop field contents are not visible
+            // hides them back (original visibility)
+            !isVisible && dropFieldContents.hide();
+
+            // sets the drop field contents width with the resulting value
+            // so that the contents placeholder is properly updated
+            dropFieldContents.width(dropFieldContentsWidth);
+        };
+
+        var _show = function(matchedObject) {
+            // sets the provided matched object as the drop field
+            // and then uses it to retrieve the various components
+            // that are going to be used in the show operation
+            var dropField = matchedObject;
+            var dropFieldContents = jQuery(".drop-field-contents", dropField);
+
+            // runs the resize operation in the drop field so that the proper
+            // size is defined for the contents and the other elements
+            _resize(dropField);
+
+            // shows/displays the current drop field contents so that the
+            // proper layout is positioned in the screen
+            dropFieldContents.show();
+        };
+
+        var _hide = function(matchedObject) {
+            // sets the provided matched object as the drop field
+            // and then uses it to retrieve the various components
+            // that are going to be used in the hide operation
+            var dropField = matchedObject;
+            var dropFieldContents = jQuery(".drop-field-contents", dropField);
+
+            // hides/removess the current drop field contents so that the
+            // proper layout is removed from the screen
+            dropFieldContents.hide();
         };
 
         // switches over the method
