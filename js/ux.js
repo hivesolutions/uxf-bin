@@ -5763,9 +5763,11 @@ function onYouTubePlayerReady(id) {
             var isMobile = _isMobile(navigator.userAgent);
             var isTablet = _isTablet(navigator.userAgent);
             var isDevice = isMobile || isTablet;
+            var isDesktop = !isDevice;
             isMobile && matchedObject.addClass("mobile");
             isTablet && matchedObject.addClass("tablet");
             isDevice && matchedObject.addClass("device");
+            isDesktop && matchedObject.addClass("desktop");
         };
 
         var _isMobile = function(data) {
