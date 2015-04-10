@@ -5344,7 +5344,7 @@ function onYouTubePlayerReady(id) {
                     var attribute = _element.attr(attrName);
                     var isLegal = attribute.match(ATTR_REGEX) == null;
                     if (isLegal) {
-                        continue
+                        return;
                     }
                     _element.attr(attrNameTarget, attribute);
                     _element.removeAttr(attrName);
