@@ -5762,8 +5762,10 @@ function onYouTubePlayerReady(id) {
             // the validation is also done for the tablet user interfaces
             var isMobile = _isMobile(navigator.userAgent);
             var isTablet = _isTablet(navigator.userAgent);
+            var isDevice = isMobile || isTablet;
             isMobile && matchedObject.addClass("mobile");
             isTablet && matchedObject.addClass("tablet");
+            isDevice && matchedObject.addClass("device");
         };
 
         var _isMobile = function(data) {
