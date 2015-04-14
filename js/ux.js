@@ -13162,8 +13162,10 @@ function onYouTubePlayerReady(id) {
             // sets the (query) pending flag in the filter
             filter.data("pending", true);
 
-            // adds the loading class so thath the loading information
-            // is presented to the user
+            // adds the loading class so that the loading information
+            // is presented to the user, note that both the button more
+            // and the filter itself have the class added to them
+            filter.addClass("loading");
             filterMore.addClass("loading");
 
             // runs the query in the data source, this is a non blocking
@@ -13176,8 +13178,10 @@ function onYouTubePlayerReady(id) {
                         startRecord : startRecord,
                         numberRecords : numberRecords
                     }, function(validItems, moreItems) {
-                        // removes the loading class from the filter more
-                        // button so that the loading information is hidden
+                        // removes the loading class from the filter (and the
+                        // filter more bytton), so that the loading information
+                        // is hidden and the proper style "notified"
+                        filter.removeClass("loading");
                         filterMore.removeClass("loading");
 
                         // in case the valid items value
