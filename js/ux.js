@@ -9078,7 +9078,7 @@ function onYouTubePlayerReady(id) {
                         // defined, note that the result of the hide
                         // operation is considered to be success
                         window.uxwindow("hide", {
-                                    "result" : "success"
+                                    "reason" : "success"
                                 });
                         callback && callback(true);
                     });
@@ -9094,7 +9094,7 @@ function onYouTubePlayerReady(id) {
                         // if defined, note that the result of the
                         // hide operation is considered to be cancel
                         window.uxwindow("hide", {
-                                    "result" : "cancel"
+                                    "reason" : "cancel"
                                 });
                         callback && callback(false);
                     });
@@ -24903,8 +24903,9 @@ function onYouTubePlayerReady(id) {
             matchedObject.fadeOut(250);
 
             // retrieves the appropriate name for the event to be
-            // triggered indiccating the state the window has closed
-            var name = options["result"] || "cancel";
+            // triggered indicating the state the window has closed,
+            // note that the options map is used for the fallback
+            var name = options["reason"] || "cancel";
             name = success ? "success" : name;
 
             // triggers the hide handler so that any handler
