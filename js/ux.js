@@ -9074,9 +9074,12 @@ function onYouTubePlayerReady(id) {
                         var element = jQuery(this);
                         var window = element.parents(".window");
 
-                        // hides the window and calls the
-                        // callback if defined
-                        window.uxwindow("hide");
+                        // hides the window and calls the callback if
+                        // defined, note that the result of the hide
+                        // operation is considered to be success
+                        window.uxwindow("hide", {
+                                    "result" : "success"
+                                });
                         callback && callback(true);
                     });
 
@@ -9087,9 +9090,12 @@ function onYouTubePlayerReady(id) {
                         var element = jQuery(this);
                         var window = element.parents(".window");
 
-                        // hides the window and calls the
-                        // callback if defined
-                        window.uxwindow("hide");
+                        // hides the window and calls the callback
+                        // if defined, note that the result of the
+                        // hide operation is considered to be cancel
+                        window.uxwindow("hide", {
+                                    "result" : "cancel"
+                                });
                         callback && callback(false);
                     });
 
@@ -24898,7 +24904,8 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the appropriate name for the event to be
             // triggered indiccating the state the window has closed
-            var name = success ? "success" : "cancel";
+            var name = options["result"] || "cancel";
+            name = success ? "success" : name;
 
             // triggers the hide handler so that any handler
             // may be notified about the visibility change
