@@ -5909,7 +5909,8 @@ function onYouTubePlayerReady(id) {
         var slimWidth = matchedObject.attr("data-slim") || "960";
         var tabletWidth = matchedObject.attr("data-tablet") || "768";
         var mobileWidth = matchedObject.attr("data-mobile") || "420";
-        var shortHeight = matchedObject.attr("data-short") || "800";
+        var averageHeight = matchedObject.attr("data-average") || "800";
+        var shortHeight = matchedObject.attr("data-short") || "500";
         slimWidth = parseInt(slimWidth);
         tabletWidth = parseInt(tabletWidth);
         mobileWidth = parseInt(mobileWidth);
@@ -5930,6 +5931,8 @@ function onYouTubePlayerReady(id) {
             matchedObject.removeClass("desktop-s");
             matchedObject.removeClass("fat-s");
             matchedObject.removeClass("tall-s");
+            matchedObject.removeClass("average-s");
+            matchedObject.removeClass("short-s");
 
             // verifies the current window width value and according to
             // that selects the proper class to be applied to the object
@@ -5949,8 +5952,12 @@ function onYouTubePlayerReady(id) {
 
             // verifies the current window height value and according to
             // that selects the proper class to be applied to the object
-            if (windowHeight > shortHeight) {
+            if (windowHeight > averageHeight) {
                 matchedObject.addClass("tall-s");
+            } else if (windowHeight > shortHeight) {
+                matchedObject.addClass("average-s");
+            } else {
+                matchedObject.addClass("short-s");
             }
         };
 
