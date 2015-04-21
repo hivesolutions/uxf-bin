@@ -1255,9 +1255,8 @@
             var data = element.data("data");
             var cacheD = element.data("cache_d");
 
-            // adds the id (part) to the url (in case
-            // it's necessary)
-            url += id ? "/" + id + ".json" : ""
+            // adds the id (part) to the url (in case it's necessary)
+            url += id ? "/" + id + ".json" : "";
 
             // increments the value of the number of records (to provide
             // an extra value for more items verification)
@@ -1300,7 +1299,7 @@
             // matched object this is going to be used later
             // to identify if the request pending is the same
             // or if a new request has come in between
-            matchedObject.data("current", identifier)
+            matchedObject.data("current", identifier);
 
             // retrieves the cache structure for the matched object
             // and tries to find the result from the cache in case
@@ -8674,7 +8673,7 @@ function onYouTubePlayerReady(id) {
                         // checks if the current click is from a middle
                         // button and in such case sets the new window
                         // option to open the link in a new window
-                        var window = event.which == 2
+                        var window = event.which == 2;
                         options["window"] = window;
 
                         // triggers the handling of the click event to
@@ -8701,13 +8700,11 @@ function onYouTubePlayerReady(id) {
                         // creates the mouse up handler function so that
                         // there is a clojure in the element
                         var _mouseUpHandler = function(event) {
-                            // retrieves the body
+                            // retrieves the reference to the body element
+                            // then removes the click class from the element
+                            // and unbinds the element from the mouse up event
                             var _body = jQuery("body");
-
-                            // removes the click class from the element
                             element.removeClass("click");
-
-                            // unbinds the mouse up event from the body
                             _body.unbind("mouseup", _mouseUpHandler);
                         };
 
