@@ -4227,7 +4227,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-replacer.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -4849,7 +4848,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-scrollto.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -7268,7 +7266,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-breadcrumbs.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -7685,7 +7682,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-calendar.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -8332,7 +8328,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-check-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -8439,7 +8434,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-button-group.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -8585,7 +8579,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-button.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -8929,7 +8922,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-check-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -9258,7 +9250,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-cross-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -9806,12 +9797,14 @@ function onYouTubePlayerReady(id) {
 
 /**
  * jQuery drop field plugin, this jQuery plugin provides the base
- * infra-structure for the creation of a drop field component.
+ * infra-structure for the creation of a drop field component. The most
+ * "powerfull" drop based component to be used together with a data source and
+ * provides both the select and the "find" modes of working for active (mouse
+ * only) or passive (kwyboard based) models of interaction.
  *
  * @name jquery-drop-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -11511,9 +11504,23 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+/**
+ * jQuery drop list plugin, this jQuery plugin provides the base infra-structure
+ * for the creation of a drop list component. To be used in graphical operations
+ * where the list of elements to be selected (both text or graphical) should not
+ * allways be viewable and its visibility should be "togglable".
+ *
+ * @name jquery-drop-list.js
+ * @author João Magalhães <joamag@hive.pt>
+ * @version 1.0
+ * @category jQuery plugin
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
+ * @license Hive Solutions Confidential Usage License (HSCUL) -
+ *          http://www.hive.pt/licenses/
+ */
 (function(jQuery) {
     jQuery.fn.uxdroplist = function(method, options) {
-        // the default values for the data source
+        // the default values for the drop list
         var defaults = {};
 
         // sets the default method value
@@ -11718,12 +11725,13 @@ function onYouTubePlayerReady(id) {
 
 /**
  * jQuery drop tag plugin, this jQuery plugin provides the base infra-structure
- * for the creation of a drop tag component.
+ * for the creation of a drop tag component. This component should be used for
+ * situations where a drop list is selected from a list of tag values and then
+ * it may be disabled using the removal icon.
  *
  * @name jquery-drop-tag.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -11731,7 +11739,7 @@ function onYouTubePlayerReady(id) {
  */
 (function(jQuery) {
     jQuery.fn.uxdroptag = function(method, options) {
-        // the default values for the data query json
+        // the default values for the drop tag
         var defaults = {};
 
         // sets the default method value
@@ -12103,7 +12111,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-file-field.js
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -12183,7 +12190,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-filter.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -14967,7 +14973,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-header-notification.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -16081,7 +16086,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-image.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -16160,7 +16164,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-incremental-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -17075,7 +17078,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-menu-link.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -17511,7 +17513,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-notification.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -17666,7 +17667,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-overlay-panel.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -17899,7 +17899,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-overlay-search.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -17990,7 +17989,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-overlay.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -18127,7 +18125,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-select-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -18240,7 +18237,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-panel-stack.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -18414,7 +18410,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-panel.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -18839,7 +18834,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-radio-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -19212,7 +19206,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-scroll-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -19370,7 +19363,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-select-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -19526,7 +19518,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-select-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -20191,7 +20182,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-slider-bar.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -20259,7 +20249,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-slider.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -20701,7 +20690,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-slideshow.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -21082,7 +21070,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-source-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -21596,7 +21583,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-tab-panel.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -21690,7 +21676,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-table.js
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -22681,7 +22666,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-select-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -23246,7 +23230,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-text-field.js
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -24471,7 +24454,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-toggle-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -24706,7 +24688,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-window.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
@@ -25235,7 +25216,6 @@ function onYouTubePlayerReady(id) {
  * @name jquery-wizard.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
- * @date March 10, 2010
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
  * @license Hive Solutions Confidential Usage License (HSCUL) -
