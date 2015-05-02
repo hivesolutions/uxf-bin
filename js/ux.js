@@ -16509,7 +16509,7 @@ function onYouTubePlayerReady(id) {
             // but must trigger the loading of it)
             window.uxwindow("show");
 
-            // runs the initial animation operation for the buttons this,
+            // runs the initial animation operation for the buttons, this
             // should enable the starting of the loading animation, if
             // that's the required behaviour for the current operation
             buttons.uxanimation();
@@ -16534,7 +16534,7 @@ function onYouTubePlayerReady(id) {
                         // notified abou the end of the image loading
                         window.triggerHandler("loaded");
 
-                        // runs the (final) animation operation for the buttons this,
+                        // runs the (final) animation operation for the buttons, this
                         // should enable the new values of the loading animation
                         buttons.uxanimation();
 
