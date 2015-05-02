@@ -16135,6 +16135,7 @@ function onYouTubePlayerReady(id) {
                         // the associated lightbox path
                         var element = jQuery(this);
                         var lightboxPath = element.attr("data-lightbox_path");
+                        var animated = element.hasClass("lightbox-animated");
 
                         // in case the lightbox path is not defined
                         // no need to show the lightbox
@@ -16144,8 +16145,11 @@ function onYouTubePlayerReady(id) {
                         }
 
                         // shows the lightbox on the body element using the
-                        // lightbox path retrieved from the image
-                        _body.uxlightbox(lightboxPath);
+                        // lightbox path retrieved from the image, note that
+                        // the animation flag is controlled by class presence
+                        _body.uxlightbox(lightboxPath, {
+                                    animated : animated
+                                });
                     });
         };
 
@@ -16512,7 +16516,7 @@ function onYouTubePlayerReady(id) {
             // runs the initial animation operation for the buttons, this
             // should enable the starting of the loading animation, if
             // that's the required behaviour for the current operation
-            buttons.uxanimation();
+            options.animated && buttons.uxanimation();
 
             // registers for the end of the image loading, because
             // after that the window must be repositioned in the center
@@ -16536,7 +16540,7 @@ function onYouTubePlayerReady(id) {
 
                         // runs the (final) animation operation for the buttons, this
                         // should enable the new values of the loading animation
-                        buttons.uxanimation();
+                        options.animated && buttons.uxanimation();
 
                         // shows the window image (back to original state)
                         // and then repositions the window in the center
