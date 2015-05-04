@@ -143,6 +143,10 @@ body.wait-load {
     display: none;
 }
 
+.drop-down-container.visible > ul.drop-down {
+    display: block;
+}
+
 .drop-field {
     user-select: none;
     -moz-user-select: -moz-none;
