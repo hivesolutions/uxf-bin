@@ -100,6 +100,7 @@
             var toggleField = jQuery(".toggle-field", matchedObject).not(".template .toggle-field");
             var fileField = jQuery(".file-field", matchedObject).not(".template .file-field");
             var dropList = jQuery(".drop-list", matchedObject).not(".template .drop-list");
+            var dropDown = jQuery(".drop-down", matchedObject).not(".template .drop-down");
             var dropTag = jQuery(".drop-tag", matchedObject).not(".template .drop-tag");
             var table = jQuery(".table", matchedObject).not(".template .table");
             var image = jQuery(".image", matchedObject).not(".template .image");
@@ -208,6 +209,7 @@
             toggleField.uxtogglefield();
             fileField.uxfilefield();
             dropList.uxdroplist();
+            dropDown.uxdropdown();
             dropTag.uxdroptag();
             table.uxtable();
             image.uximage();
@@ -9795,6 +9797,71 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+/**
+ * jQuery drop down plugin, this jQuery plugin provides the base infra-structure
+ * for the creation of a drop down component. Should be used for situations
+ * where a menu should be displayed uppon a button based action.
+ *
+ * @name jquery-drop-down.js
+ * @author João Magalhães <joamag@hive.pt>
+ * @version 1.0
+ * @category jQuery plugin
+ * @copyright Copyright (c) 2008-2015 Hive Solutions Lda.
+ * @license Hive Solutions Confidential Usage License (HSCUL) -
+ *          http://www.hive.pt/licenses/
+ */
+(function(jQuery) {
+    jQuery.fn.uxdropdown = function(method, options) {
+        // the default values for the drop down
+        var defaults = {};
+
+        // sets the default method value
+        var method = method ? method : "default";
+
+        // sets the default options value
+        var options = options ? options : {};
+
+        // constructs the options
+        var options = jQuery.extend(defaults, options);
+
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        /**
+         * Initializer of the plugin, runs the necessary functions to initialize
+         * the structures.
+         */
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
+        };
+
+        /**
+         * Creates the necessary html for the component.
+         */
+        var _appendHtml = function() {
+        };
+
+        /**
+         * Registers the event handlers for the created objects.
+         */
+        var _registerHandlers = function() {
+        };
+
+        // switches over the method
+        switch (method) {
+            case "default" :
+                // initializes the plugin
+                initialize();
+
+                // breaks the switch
+                break;
+        }
+
+        // returns the object
+        return this;
+    };
+})(jQuery);
 
 /**
  * jQuery drop field plugin, this jQuery plugin provides the base
