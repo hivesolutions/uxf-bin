@@ -9853,7 +9853,6 @@ function onYouTubePlayerReady(id) {
             // creates the upper structure for the drop down, this should
             // include the button part so that it's possible to active the
             // drop down contents using the "usual" manner
-            matchedObject.addClass("menu");
             matchedObject.wrap("<div class=\"drop-down-container\"></div>");
             var container = matchedObject.parents(".drop-down-container");
             container.prepend("<div class=\"button button-drop-down\"></div>");
@@ -9871,6 +9870,10 @@ function onYouTubePlayerReady(id) {
                         button.attr("class", buttonClasses + " " + classes);
                         button.removeClass("drop-down");
                     });
+
+            // adds the menu class to the matched object so that it's
+            // possible to manage its visibility as typical menu element
+            matchedObject.addClass("menu");
         };
 
         /**
