@@ -106,6 +106,7 @@
             var image = jQuery(".image", matchedObject).not(".template .image");
             var calendar = jQuery(".calendar", matchedObject).not(".template .calendar");
             var calendarRange = jQuery(".calendar-range", matchedObject).not(".template .calendar-range");
+            var menu = jQuery(".menu", matchedObject).not(".template .menu");
             var menuLink = jQuery(".menu-link", matchedObject).not(".template .menu-link");
             var slider = jQuery(".slider", matchedObject).not(".template .slider");
             var scrollList = jQuery(".scroll-list", matchedObject).not(".template .scroll-list");
@@ -215,6 +216,7 @@
             image.uximage();
             calendar.uxcalendar();
             calendarRange.uxcalendarrange();
+            menu.uxmenu();
             menuLink.uxmenulink();
             slider.uxslider();
             scrollList.uxscrolllist();
@@ -11811,11 +11813,10 @@ function onYouTubePlayerReady(id) {
                                     owner && owner.removeClass("active");
                                 });
 
-                        // removes the active class from the visible menus
-                        // and hides the menu contents
-                        _menu.removeClass("active");
-                        _menuContents.hide();
-                        _menuContents.triggerHandler("hidden");
+                        // triggers the hide event for all the menu and menu contents
+                        // so that their contents are properly disabled/hidden
+                        _menu.triggerHandler("hide");
+                        _menuContents.triggerHandler("hide");
 
                         // verifies the current drop list status to check if it's
                         // currently acive or not in case it's active hides it
@@ -13732,10 +13733,10 @@ function onYouTubePlayerReady(id) {
             var _menu = jQuery(".menu.active");
             var _menuContents = jQuery(".menu-contents:visible");
 
-            // removes the active class from the visible menus
-            // and hides the menu contents
-            _menu.removeClass("active");
-            _menuContents.hide();
+            // triggers the hide event for all the menu and menu contents
+            // so that their contents are properly disabled/hidden
+            _menu.triggerHandler("hide");
+            _menuContents.triggerHandler("hide");
 
             // clones the menu so that a new instance
             // is used for the context
@@ -17418,11 +17419,10 @@ function onYouTubePlayerReady(id) {
                                     owner && owner.removeClass("active");
                                 });
 
-                        // removes the active class from the visible menus
-                        // and hides the menu contents
-                        _menu.removeClass("active");
-                        _menuContents.hide();
-                        _menuContents.triggerHandler("hidden");
+                        // triggers the hide event for all the menu and menu contents
+                        // so that their contents are properly disabled/hidden
+                        _menu.triggerHandler("hide");
+                        _menuContents.triggerHandler("hide");
 
                         // in case the menu already has the active class
                         // (the menu is shown)
@@ -17828,6 +17828,20 @@ function onYouTubePlayerReady(id) {
                         var menu = element.parents(".menu");
                         _hide(menu, options);
                     });
+        };
+
+        var _show = function(matchedObject, options) {
+            var menuContents = jQuery(".menu-contents", matchedObject);
+            matchedObject.addClass("active");
+            menuContents.show();
+            menuContents.triggerHandler("shown");
+        };
+
+        var _show = function(matchedObject, options) {
+            var menuContents = jQuery(".menu-contents", matchedObject);
+            matchedObject.removeClass("active");
+            menuContents.hide();
+            menuContents.triggerHandler("hidden");
         };
 
         // switches over the method, so that the proper execution
