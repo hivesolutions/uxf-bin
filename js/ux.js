@@ -9856,6 +9856,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.wrap("<div class=\"drop-down-container\"></div>");
             var container = matchedObject.parents(".drop-down-container");
             container.prepend("<div class=\"button button-drop-down\"></div>");
+            matchedObject.addClass("menu");
 
             // iterates over the complete set of drop down elements so that
             // it's possible to properly set each button's name
@@ -9975,12 +9976,18 @@ function onYouTubePlayerReady(id) {
         };
 
         var _show = function(matchedObject, options) {
+            var _menu = jQuery(".menu.active");
+            var _menuContents = jQuery(".menu-contents:visible");
             var container = matchedObject.parents(".drop-down-container");
+            _menu.trigger("hide");
+            _menuContents.trigger("hide");
+            matchedObject.addClass("active");
             container.addClass("visible");
         };
 
         var _hide = function(matchedObject, options) {
             var container = matchedObject.parents(".drop-down-container");
+            matchedObject.removeClass("active");
             container.removeClass("visible");
         };
 
@@ -11815,8 +11822,8 @@ function onYouTubePlayerReady(id) {
 
                         // triggers the hide event for all the menu and menu contents
                         // so that their contents are properly disabled/hidden
-                        _menu.triggerHandler("hide");
-                        _menuContents.triggerHandler("hide");
+                        _menu.trigger("hide");
+                        _menuContents.trigger("hide");
 
                         // verifies the current drop list status to check if it's
                         // currently acive or not in case it's active hides it
@@ -13735,8 +13742,8 @@ function onYouTubePlayerReady(id) {
 
             // triggers the hide event for all the menu and menu contents
             // so that their contents are properly disabled/hidden
-            _menu.triggerHandler("hide");
-            _menuContents.triggerHandler("hide");
+            _menu.trigger("hide");
+            _menuContents.trigger("hide");
 
             // clones the menu so that a new instance
             // is used for the context
@@ -17421,8 +17428,8 @@ function onYouTubePlayerReady(id) {
 
                         // triggers the hide event for all the menu and menu contents
                         // so that their contents are properly disabled/hidden
-                        _menu.triggerHandler("hide");
-                        _menuContents.triggerHandler("hide");
+                        _menu.trigger("hide");
+                        _menuContents.trigger("hide");
 
                         // in case the menu already has the active class
                         // (the menu is shown)
