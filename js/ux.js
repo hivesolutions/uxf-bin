@@ -21294,6 +21294,15 @@ function onYouTubePlayerReady(id) {
                         var element = jQuery(this);
                         __previous(element, options);
                     });
+
+            // registers for the event that selects the target of
+            // the slideshow "directly" from the index value of it
+            matchedObject.bind("select", function(event, index) {
+                        // retrieves the reference to the (slideshow) element and then runs
+                        // the select operation on top of for proper index based selection
+                        var element = jQuery(this);
+                        __select(element, options, index);
+                    });
         };
 
         var __next = function(matchedObject, options) {
