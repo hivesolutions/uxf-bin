@@ -6000,8 +6000,8 @@ function onYouTubePlayerReady(id) {
 
             // updates both the width and the height values of the matched
             // object so that easy reference is possible from scripts
-            matchecObject.attr("data-width", String(windowWidth));
-            matchecObject.attr("data-height", String(windowHeight));
+            matchedObject.attr("data-width", String(windowWidth));
+            matchedObject.attr("data-height", String(windowHeight));
         };
 
         // registers for the resize event on the current window so
