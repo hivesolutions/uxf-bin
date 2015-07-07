@@ -1278,8 +1278,8 @@
 }
 
 .ulite-style .overlay {
-    background-color: #dddddd;
-    opacity: 0.4;
+    background-color: #000000;
+    opacity: 0.5;
     z-index: 10;
 }
 
@@ -1625,10 +1625,10 @@
 
 .ulite-style .window {
     background-color: #ffffff;
-    border: 1px solid #bbbbbb;
-    box-shadow: 0px 1px 4px #dddddd;
-    -moz-box-shadow: 0px 1px 4px #dddddd;
-    -webkit-box-shadow: 0px 1px 4px #dddddd;
+    border: 1px solid #5d5d5d;
+    box-shadow: 0px 1px 4px #6d6d6d;
+    -moz-box-shadow: 0px 1px 4px #6d6d6d;
+    -webkit-box-shadow: 0px 1px 4px #6d6d6d;
     min-width: 280px;
     padding: 20px 12px 20px 12px;
     text-align: center;
