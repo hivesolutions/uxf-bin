@@ -6,7 +6,7 @@ if(!href){return true;}
 var hasHash=href.indexOf("#")!=-1;var isInternal=hasHash&&href.split("#")[0]==document.location.href.split("#")[0];isInternal=isInternal||href[0]=="#";if(isInternal&&!verify){return false;}
 href=jQuery.uxresolve(href);var isLocal=HOST_REGEX.test(href)
 if(!isLocal){return false;}
-_body.triggerHandler("async_start");_body.data("async_state",href);var request=jQuery.ajax({url:href,dataType:"html",beforeSend:function(xhr){xhr.setRequestHeader("X-Async","all");},success:function(data,status,request){var isRedirect=request.status==280;var hrefR=request.getResponseHeader("Location");if(isRedirect&&hrefR){hrefR=jQuery.uxresolve(hrefR,href);jQuery.uxlocation(hrefR);return;}
+_body.triggerHandler("async_start");_body.data("async_state",href);var request=jQuery.ajax({url:href,dataType:"html",data:{async:1},beforeSend:function(xhr){xhr.setRequestHeader("X-Async","all");},success:function(data,status,request){var isRedirect=request.status==280;var hrefR=request.getResponseHeader("Location");if(isRedirect&&hrefR){hrefR=jQuery.uxresolve(hrefR,href);jQuery.uxlocation(hrefR);return;}
 var _body=jQuery("body");var state=_body.data("async_state");if(state!=href){return;}
 _body.triggerHandler("async_end");if(verify&&document.location!=href){return;}
 _body.triggerHandler("data",[data,href,uuid,!verify]);},error:function(){document.location=href;}});var reference=jQuery(request);reference.bind("readystatechange",function(){var request=this;if(request.readyState!=2){return;}
