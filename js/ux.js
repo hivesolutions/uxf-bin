@@ -467,8 +467,8 @@
         var request = jQuery.ajax({
                     url : href,
                     dataType : "html",
-                    data : {
-                        async : 1
+                    beforeSend : function(xhr) {
+                        xhr.setRequestHeader("X-Async", "all");
                     },
                     success : function(data, status, request) {
                         // verifies if the current result if of type (async) redirect, this
@@ -15664,11 +15664,6 @@ function onYouTubePlayerReady(id) {
             // going to be used in the trigger of events
             var _body = jQuery("body");
 
-            // adds an extra hidden input value to the form indicating that the
-            // submission is meant to be handled as async, this should provide
-            // additional processing for redirection
-            matchedObject.append("<input type=\"hidden\" name=\"async\" value=\"1\" />")
-
             // retrieves the proper values from the matched object (form)
             // so that the correct strategy is going to be used while submiting
             // the data to the server side
@@ -15721,6 +15716,7 @@ function onYouTubePlayerReady(id) {
             request.open(method, href);
             enctype != "multipart/form-data"
                     && request.setRequestHeader("Content-Type", enctype);
+            request.setRequestHeader("X-Async", "all");
             request.onload = function() {
                 // in case the current state of the request is not final ignores
                 // the update status change (not relevant)
