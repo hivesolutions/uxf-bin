@@ -1,5 +1,5 @@
 // Hive UX Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive UX Framework.
 //
@@ -26373,7 +26373,7 @@ jQuery(document).ready(function() {
         });
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -26733,7 +26733,7 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -26857,7 +26857,7 @@ Base64.decode = function(input, decode) {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -26933,7 +26933,7 @@ if (typeof(Array.prototype.isIn) === "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -27059,7 +27059,7 @@ Date.prototype.getTimeZoneStructure = function() {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -27163,7 +27163,7 @@ Mobile.init = function() {
 Mobile.init();
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -28204,7 +28204,7 @@ Prism.languages.insertBefore("ruby", "keyword", {
 });
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -28332,7 +28332,7 @@ StringBuffer.prototype.toString = function() {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -28603,7 +28603,7 @@ String.prototype.decodeUtf = function() {
 }
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -29454,7 +29454,7 @@ TemplateNode.prototype.getParameter = function(name) {
 };
 
 // Hive Colony Framework
-// Copyright (C) 2008-2015 Hive Solutions Lda.
+// Copyright (c) 2008-2015 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
