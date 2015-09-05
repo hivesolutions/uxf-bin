@@ -19832,10 +19832,13 @@ function onYouTubePlayerReady(id) {
 
             // calculates the complete scroll width to check if the
             // scroll is required in case it's not hides the previous
-            // and next operator buttons
+            // and next operator buttons otherwise shows them
             var scrollWidth = scrollListContainer.width();
             var isScrolled = scrollWidth < width;
-            if (!isScrolled) {
+            if (isScrolled) {
+                scrollPrevious.show();
+                scrollNext.show();
+            } else {
                 scrollPrevious.hide();
                 scrollNext.hide();
             }
@@ -19843,6 +19846,14 @@ function onYouTubePlayerReady(id) {
             // updates the element width with the complete width for its
             // elements (required width)
             matchedObject.width(width);
+
+            // verifiers if the first element is visible and if that's not
+            // the case schedules one more width refresh operation in order
+            // to ensure the proper and correct values are displayed
+            var isVisible = first.is(":visible");
+            !isVisible && setTimeout(function() {
+                        _refreshWidth(matchedObject, options)
+                    });
         };
 
         // initializes the plugin
