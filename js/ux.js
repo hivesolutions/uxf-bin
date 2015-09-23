@@ -9913,6 +9913,11 @@ function onYouTubePlayerReady(id) {
                 return;
             }
 
+            // sets the ux global object representation as drop
+            // down, this value may be used latter for fast ux
+            // object type access (hash based conditions)
+            matchedObject.uxobject("dropdown");
+
             // creates the upper structure for the drop down, this should
             // include the button part so that it's possible to active the
             // drop down contents using the "usual" manner
@@ -16672,7 +16677,7 @@ function onYouTubePlayerReady(id) {
             // sets the ux global object representation as incremental
             // field, this value may be used latter for fast ux
             // object type access (hash based conditions)
-            incrementalField.attr("data-object", "incrementalfield");
+            incrementalField.uxobject("incrementalfield");
 
             // removes the incremental field from the text field base element
             // and then add the text field class and registers it as a text field
@@ -22369,7 +22374,7 @@ function onYouTubePlayerReady(id) {
                 // sets the ux global object representation as table
                 // this value may be used latter for fast ux
                 // object type access (hash based conditions)
-                elementReference.attr("data-object", "table");
+                elementReference.uxobject("table");
 
                 // retrieves the reference to the new line row and updates
                 // its colspan so that it spans all the columns (very large
@@ -25150,7 +25155,7 @@ function onYouTubePlayerReady(id) {
             // sets the ux global object representation as toggle
             // field, this value may be used latter for fast ux
             // object type access (hash based conditions)
-            toggleField.attr("data-object", "togglefield");
+            toggleField.uxobject("togglefield");
 
             // removes the toggle field from the text field base element
             // and then add the text field class and registers it as a text field
