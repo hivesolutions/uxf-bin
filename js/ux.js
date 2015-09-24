@@ -10048,7 +10048,7 @@ function onYouTubePlayerReady(id) {
                         // triggers the value changed operation with the text/visual
                         // value and the logical value, so that listeners may be
                         // properly notified about the changing value
-                        element.triggerHandler("value_change", [text, value]);
+                        dropDown.triggerHandler("value_change", [text, value]);
 
                         // stops the event propagation, avoiding possible issues with
                         // the propagation of the click event on the element
