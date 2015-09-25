@@ -10137,6 +10137,16 @@ function onYouTubePlayerReady(id) {
             });
         };
 
+        var _value = function(matchedObject, options) {
+            // retrieves the parent container of the matched object and
+            // then uses it to retrieve the underlying input and the
+            // logical value from it (as it's expected)
+            var container = matchedObject.parents(".drop-down-container");
+            var input = jQuery("input", container);
+            var value = input.val();
+            return value;
+        };
+
         var _toggle = function(matchedObject, options) {
             // verifies the current visibility of the object and then uses
             // the value to decide the operation to be performed
@@ -10219,6 +10229,12 @@ function onYouTubePlayerReady(id) {
         // switches over the method that is going to be performed
         // for the current operation (as requested)
         switch (method) {
+            case "value" :
+                // retrieves the value from the matched object and
+                // then returns the same value to the caller method
+                var value = _value(matchedObject, options);
+                return value;
+
             case "show" :
                 // runs the show operation on the currently matched
                 // object so that the proper contents are displayed
