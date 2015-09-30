@@ -27424,9 +27424,9 @@ Mobile.init();
 
 var Object = Object || {};
 
-Object.prototype.isEmpty = function() {
-    for (var property in this) {
-        if (this.hasOwnProperty(property)) {
+Object.isEmpty = function(object) {
+    for (var property in object) {
+        if (object.hasOwnProperty(property)) {
             return false;
         }
     }
