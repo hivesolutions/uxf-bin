@@ -899,7 +899,7 @@ var isValid=Mobile.VALID.indexOf(first.target.tagName)==-1;if(Mobile.SAFE&&isVal
 var mouseEvent=document.createEvent("MouseEvent");mouseEvent.initMouseEvent(type,true,true,window,1,first.screenX,first.screenY,first.clientX,first.clientY,false,false,false,false,0,null);first.target.dispatchEvent(mouseEvent);};Mobile.init=function(){if(!document.addEventListener){return;}
 document.addEventListener("touchstart",Mobile.touchHandler,true);document.addEventListener("touchmove",Mobile.touchHandler,true);document.addEventListener("touchend",Mobile.touchHandler,true);document.addEventListener("touchcancel",Mobile.touchHandler,true);};Mobile.init();var Object=Object||{};Object.isEmpty=function(object){for(var property in object){if(object.hasOwnProperty(property)){return false;}}
 return true;};Object.clone=function(object,recursive){if(object==null||typeof(object)!="object"){return object;}
-var cloned=new object.constructor();for(var key in object){var value=object[key];value=recursive?clone(value):value;cloned[key]=value;}
+var cloned=new object.constructor();for(var key in object){var value=object[key];value=recursive?Object.clone(value):value;cloned[key]=value;}
 return cloned;}
 var Md5=Md5||{};Md5.HEXADECIMAL_CHARACTERS=["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];Md5.digest=function(stringValue){var digest=Md5._md5(stringValue);var digestHex=Md5.hex(digest);return digestHex;}
 Md5.hex=function(stringList){var hexStringList=[];for(var index=0;index<stringList.length;index++){hexStringList[index]=Md5.rhex(stringList[index]);}
