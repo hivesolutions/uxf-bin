@@ -18902,7 +18902,9 @@ function onYouTubePlayerReady(id) {
         var _show = function(matchedObject, options) {
             // retrieves the various (sub)-element that are going
             // to be used for the processing of the show operation
-            var panelMoreContents = jQuery(".panel-more-contents", panelMore);
+            var panelMoreContents = jQuery(".panel-more-contents",
+                    matchedObject);
+            var moreButton = jQuery("li.list-more .button", matchedObject);
 
             // retrieves the string that is going to be used to
             // display the less operation
@@ -18911,13 +18913,15 @@ function onYouTubePlayerReady(id) {
             // shows the panel more contents and updates
             // the text value of the more button
             panelMoreContents.show();
-            element.html(lessString);
+            moreButton.html(lessString);
         };
 
         var _hide = function(matchedObject, options) {
             // retrieves the various (sub)-element that are going
             // to be used for the processing of the hide operation
-            var panelMoreContents = jQuery(".panel-more-contents", panelMore);
+            var panelMoreContents = jQuery(".panel-more-contents",
+                    matchedObject);
+            var moreButton = jQuery("li.list-more .button", matchedObject);
 
             // retrieves the string that is going to be used to
             // display the more operation
@@ -18926,13 +18930,14 @@ function onYouTubePlayerReady(id) {
             // hides the panel more contents and updates
             // the text value of the more button
             panelMoreContents.hide();
-            element.html(moreString);
+            moreButton.html(moreString);
         };
 
         var _toggle = function(matchedObject, options) {
             // retrieves the various (sub)-element that are going
             // to be used for the processing of the toggle operation
-            var panelMoreContents = jQuery(".panel-more-contents", panelMore);
+            var panelMoreContents = jQuery(".panel-more-contents",
+                    matchedObject);
 
             // checks if the the panel more contents is currently
             // visible, to toggle the visibility
