@@ -8501,7 +8501,8 @@ function onYouTubePlayerReady(id) {
 
                                     // removes all the input elements contained inside the
                                     // current tag field (avoid duplicated submission)
-                                    _element.remove("input");
+                                    var inputs = jQuery("input", _element)
+                                    inputs.remove("input");
 
                                     // in case the current element is checked no need to
                                     // continue as the
@@ -9872,7 +9873,8 @@ function onYouTubePlayerReady(id) {
 
                             // removes all the input elements contained inside the
                             // current select list (avoid duplicated submission)
-                            targetList.remove("input");
+                            var inputs = jQuery("input", targetList)
+                            inputs.remove("input");
 
                             // retrieves the complete set of elements in the current
                             // target list, this values are going to be used to create
@@ -20518,7 +20520,8 @@ function onYouTubePlayerReady(id) {
 
                             // removes all the input elements contained inside the
                             // current select list (avoid duplicated submission)
-                            _element.remove("input");
+                            var inputs = jQuery("input", _element)
+                            inputs.remove("input");
 
                             // retrieves the complete set of elements in the current
                             // select list, this values are going to be used to create
@@ -23638,7 +23641,8 @@ function onYouTubePlayerReady(id) {
 
                             // removes all the input elements contained inside the
                             // current tag field (avoid duplicated submission)
-                            _element.remove("input");
+                            var inputs = jQuery("input", _element)
+                            inputs.remove("input");
 
                             // retrieves the complete set of tags in the current
                             // tag field this values are going to be used to create
