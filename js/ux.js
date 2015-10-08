@@ -27546,7 +27546,9 @@ Number.DECIMAL_PLACES = {
 };
 
 Number.SEPARATOR = {
-    "EUR" : "."
+    "EUR" : ",",
+    "USD" : ",",
+    "GBP" : ","
 };
 
 Number.THOUSANDS = {
