@@ -9144,13 +9144,17 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // tries to retrieve the window selector from the options
+            // and in case it does not exists uses the default one
+            var windowSelector = options["window"] || ".window.window-alert";
+
             // localizes the various values that are going to be used in the
             // contruction of the alert window
             var confirm = jQuery.uxlocale("Confirm");
             var cancel = jQuery.uxlocale("Cancel");
 
             // retrieves the window (alert window) elements
-            var window = jQuery(".window.window-alert", matchedObject);
+            var window = jQuery(windowSelector, matchedObject);
             if (window.length == 0) {
                 window = jQuery("<div class=\"window window-alert window-hide\">"
                         + "<h1></h1>"
@@ -17319,10 +17323,14 @@ function onYouTubePlayerReady(id) {
             // structure model
             var _body = jQuery("body");
 
-            // retrieves the message from the matched object
+            // retrieves the message and the (target) window from
+            // the matched object to be used in the loading
             var message = matchedObject.attr("data-message");
+            var window = matchedObject.attr("data-window") || null;
 
-            // calls the confirm window in the document
+            // calls the confirm window in the document, note that
+            // in case the window value is set the proper window is
+            // going to be used for the confirmation display
             _body.uxconfirm(message, function(result) {
                         // in case the result is cancel avoids the current
                         // execution and returns immediately
@@ -17334,6 +17342,8 @@ function onYouTubePlayerReady(id) {
                         // sets it in the document
                         var location = matchedObject.attr("href");
                         jQuery.uxlocation(location);
+                    }, {
+                        window : window
                     });
         };
 
