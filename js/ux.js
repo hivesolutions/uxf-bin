@@ -723,6 +723,23 @@
 })(jQuery);
 
 (function(jQuery) {
+    /**
+     * The amount of precision (in decimal places) that is going to be used for
+     * the decimal internal usage.
+     */
+    var FLOAT_PRECISION = 14;
+
+    jQuery.uxdecimal = function(value) {
+        var integer = Math.abs(parseInt(value));
+        var count = integer == 0 ? 1 : parseInt(Math.log10(integer)) + 1;
+        var places = FLOAT_PRECISION - count;
+        var multiplier = Math.pow(10, places);
+        value = Math.round(value * multiplier) / multiplier;
+        return value;
+    };
+})(jQuery);
+
+(function(jQuery) {
     jQuery.fn.uxdocument = function() {
         // retrieves the global elements, both the body and
         // the window to be used for attribute retrieval
@@ -1150,7 +1167,13 @@
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.uxround = function(value, decimalPlaces) {
+    jQuery.uxround = function(value, decimalPlaces, noDecimal) {
+        // verifies if the no decimal flag has been set and
+        // in case it was not set creates a new (precise) decimal
+        // value from the provided value so that a better rounding
+        // operation is possible (according to proper math)
+        value = noDecimal ? value : jQuery.uxdecimal(value);
+
         // rounds the specified value to the
         // specified number of decimal places
         var rounder = Math.pow(10, decimalPlaces);
