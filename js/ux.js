@@ -722,6 +722,18 @@
     };
 })(jQuery);
 
+jQuery.fn.uxcontent = function(value) {
+    var element = jQuery(this);
+    var other = element.clone();
+    var children = other.children().remove();
+    if (typeof value === "string") {
+        other.html(value);
+        element.html(children);
+        element.prepend(value);
+    }
+    return other.html();
+}
+
 (function(jQuery) {
     /**
      * The amount of precision (in decimal places) that is going to be used for
@@ -6423,7 +6435,7 @@ function onYouTubePlayerReady(id) {
                 // sets the new value string in the element and
                 // adds the processed class to it, note that only
                 // the text part of the element is changed
-                _element.text(valueString);
+                _element.content(valueString);
                 _element.addClass("processed");
             });
         };
