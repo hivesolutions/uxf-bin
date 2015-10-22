@@ -6421,8 +6421,9 @@ function onYouTubePlayerReady(id) {
                 }
 
                 // sets the new value string in the element and
-                // adds the processed class to it
-                _element.html(valueString);
+                // adds the processed class to it, note that only
+                // the text part of the element is changed
+                _element.text(valueString);
                 _element.addClass("processed");
             });
         };
