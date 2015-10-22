@@ -725,7 +725,8 @@
 jQuery.fn.uxcontent = function(value) {
     var element = jQuery(this);
     var other = element.clone();
-    var children = other.children().remove();
+    var children = other.children();
+    children.remove();
     if (typeof value === "string") {
         other.html(value);
         element.html(children);
@@ -6435,7 +6436,7 @@ function onYouTubePlayerReady(id) {
                 // sets the new value string in the element and
                 // adds the processed class to it, note that only
                 // the text part of the element is changed
-                _element.content(valueString);
+                _element.text(valueString);
                 _element.addClass("processed");
             });
         };
