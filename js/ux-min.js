@@ -903,6 +903,7 @@ Date.prototype.getTimeZoneStructure=function(){var javascriptUtcOffset=this.getT
 for(var index=utcOffsetMinutesStringLength;index<2;index++){utcOffsetMinutesString="0"+utcOffsetMinutesString;}
 if(utcOffset>=0){utcOffsetHoursString="+"+utcOffsetHoursString;}else{utcOffsetHoursString="-"+utcOffsetHoursString;}
 var timeZoneName="GMT"+utcOffsetHoursString+utcOffsetMinutesString;var timeZoneStructure={};timeZoneStructure["utc_offset"]=utcOffset;timeZoneStructure["time_zone_name"]=timeZoneName;return timeZoneStructure;}
+var Math=Math||{};if(typeof(Math.log10)==="undefined"){Math.log10=function(value){return Math.log(value)/Math.LN10;};}
 var Mobile=Mobile||{};Mobile.SAFE=true;Mobile.VALID=["DIV","IMG","SPAN","CANVAS"];Mobile.touchHandler=function(event){var touches=event.changedTouches;var first=touches[0];var type="";switch(event.type){case"touchstart":type="mousedown";break;case"touchmove":type="mousemove";break;case"touchend":type="mouseup";break;default:return;}
 var isValid=Mobile.VALID.indexOf(first.target.tagName)==-1;if(Mobile.SAFE&&isValid){return;}
 var mouseEvent=document.createEvent("MouseEvent");mouseEvent.initMouseEvent(type,true,true,window,1,first.screenX,first.screenY,first.clientX,first.clientY,false,false,false,false,0,null);first.target.dispatchEvent(mouseEvent);};Mobile.init=function(){if(!document.addEventListener){return;}
