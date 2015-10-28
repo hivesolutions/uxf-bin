@@ -1554,6 +1554,7 @@
 .omni-style .window.window-lightbox {
     cursor: pointer;
     line-height: 0px;
+    overflow: visible;
     padding: 0px 0px 0px 0px;
     width: inherit;
 }
