@@ -10898,6 +10898,10 @@ function onYouTubePlayerReady(id) {
                         // that the current drop field "contains" focus
                         dropField.addClass("focus");
 
+                        // triggers the focus event on the drop field so that
+                        // any listner gets notified abou the new event
+                        dropField.triggerHandler("focus");
+
                         // avoids the propagation of the event otherwise
                         // a loop may be created
                         event.stopPropagation();
@@ -10929,6 +10933,10 @@ function onYouTubePlayerReady(id) {
                         // removes the focus class from the parent drop field
                         // it's not focused anymore
                         dropField.removeClass("focus");
+
+                        // triggers the blur event on the drop field so that
+                        // any listner gets notified abou the new event
+                        dropField.triggerHandler("blur");
 
                         // avoids the propagation of the event otherwise
                         // a loop may be created
