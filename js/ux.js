@@ -5954,7 +5954,7 @@ function onYouTubePlayerReady(id) {
                     // name to be used and uses it to retrieve the the
                     // value for the component
                     var object = _element.attr("data-object");
-                    var method = _element["ux" + object]
+                    var method = _element["ux" + object];
                     method && method.call(_element, "reset");
 
                     // triggers the reset event on the current element indicating
@@ -6149,7 +6149,7 @@ function onYouTubePlayerReady(id) {
         // name to be used and uses it to retrieve the the
         // value for the component
         var object = matchedObject.attr("data-object");
-        var method = matchedObject["ux" + object]
+        var method = matchedObject["ux" + object];
         var value = method
                 ? method.apply(matchedObject, _arguments)
                 : valueF.apply(matchedObject, arguments);
@@ -8595,6 +8595,10 @@ function onYouTubePlayerReady(id) {
             // checks the current matched object by setting
             // the its checked attribute
             matchedObject.attr("checked", _checked);
+
+            // triggers the (value) change event meaning that the value
+            // for the check field has changed (as expected by developer)
+            matchedObject.triggerHandler("change");
         };
 
         var _update = function(matchedObject, options) {
@@ -19833,6 +19837,10 @@ function onYouTubePlayerReady(id) {
             // checks the current matched object by setting
             // the its checked attribute
             matchedObject.attr("checked", true);
+
+            // triggers the (value) change event meaning that the value
+            // for the check field has changed (as expected by developer)
+            matchedObject.triggerHandler("change");
         };
 
         var _update = function(matchedObject, options) {
