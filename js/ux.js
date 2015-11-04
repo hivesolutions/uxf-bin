@@ -10893,8 +10893,7 @@ function onYouTubePlayerReady(id) {
                         // field and propagates the focus event to it
                         var element = jQuery(this);
                         var textField = jQuery(".text-field", element);
-                        var isFocus = textField.is(":focus");
-                        isFocus = isFocus || textField.hasClass("focus");
+                        var isFocus = textField.hasClass("focus");
                         !isFocus && textField.focus();
                     });
 
@@ -10906,8 +10905,7 @@ function onYouTubePlayerReady(id) {
                         // field and propagates the blur event to it
                         var element = jQuery(this);
                         var textField = jQuery(".text-field", element);
-                        var isFocus = textField.is(":focus");
-                        isFocus = isFocus || textField.hasClass("focus");
+                        var isFocus = textField.hasClass("focus");
                         isFocus && textField.blur();
                     });
 
