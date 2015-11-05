@@ -16158,8 +16158,10 @@ function onYouTubePlayerReady(id) {
                 }
 
                 // triggers the post submit event in the current matched object
-                // (form) indicating that the form has been submitted
+                // (form) indicating that the form has been submitted a the
+                // success event meaning that there was success in that submit
                 matchedObject.triggerHandler("post_submit");
+                matchedObject.triggerHandler("success");
 
                 // verifies if the current result if of type (async) redirect, this
                 // is a special case and the redirection must be performed using a
@@ -25814,14 +25816,17 @@ function onYouTubePlayerReady(id) {
                         _hide(window, options, true);
                     });
 
-            // registers for the post submit event triggered when
+            // registers for the success event triggered when
             // an async based form has completed the submission
-            form.bind("post_submit", function() {
+            form.bind("success", function() {
                         // retrieves the reference to the current form element
-                        // and uses it to gather the parent window and hide it
+                        // and uses it to gather the parent window and hides it
+                        // but just in case there's no form success
                         var element = jQuery(this);
+                        var formSuccess = jQuery(".form-success", element);
+                        var shouldHide = formSuccess.length == 0;
                         var window = element.parents(".window");
-                        window.uxwindow("hide");
+                        shouldHide && window.uxwindow("hide");
                     });
 
             // registers for the click event in the matched
