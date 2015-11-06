@@ -16062,7 +16062,7 @@ function onYouTubePlayerReady(id) {
             // proper pre commit operations are performed
             matchedObject.bind("pre_submit", function(event) {
                         var element = jQuery(this);
-                        element.addClass("submitting")
+                        element.addClass("submitting");
                     });
 
             // registers for the post submit operations in the form
@@ -16070,7 +16070,25 @@ function onYouTubePlayerReady(id) {
             // (before the start of the form submission)
             matchedObject.bind("post_submit", function(event) {
                         var element = jQuery(this);
-                        element.removeClass("submitting")
+                        element.removeClass("submitting");
+                    });
+
+            // registers for the success event on the form so that
+            // it's possible to properly decorate it with the correct
+            // classes for proper layout interactions
+            matchedObject.bind("success", function(event) {
+                        var element = jQuery(this);
+                        element.removeClass("error");
+                        element.addClass("success");
+                    });
+
+            // registers for the error event on the form so that
+            // it's possible to properly decorate it with the correct
+            // classes for proper layout interactions
+            matchedObject.bind("error", function(event) {
+                        var element = jQuery(this);
+                        element.removeClass("success");
+                        element.addClass("error");
                     });
         };
 
