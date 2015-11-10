@@ -2045,9 +2045,15 @@
                         // version of the country with the more general iso version
                         var mapper = {};
 
+                        // retrieve the iso value as a string that is going to be used
+                        // for the locagical version of the countries, the default value
+                        // is the plain english version of the iso country names
+                        var iso = _element.attr("data-iso") || "iso";
+                        var locale = "en-" + iso;
+
                         // retrieves the iso standard version of the countries
                         // that is going to be used as the logical version
-                        var COUNTRIES = jQuery.uxlocale("COUNTRIES", "en-iso");
+                        var COUNTRIES = jQuery.uxlocale("COUNTRIES", locale);
                         COUNTRIES = COUNTRIES.slice();
 
                         // retrieves the list of countries to be used according
@@ -4451,6 +4457,62 @@ function onYouTubePlayerReady(id) {
     }
 
     jQuery.uxloadbundle(BUNDLE_EN_ISO, "en-iso")
+})(jQuery);
+
+(function(jQuery) {
+    var BUNDLE_EN_ISO2 = {
+        "COUNTRIES" : ["AF", "AL", "DZ", "AD", "AO", "AG", "AR", "AM", "AU",
+                "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ",
+                "BT", "BO", "BA", "BW", "BR", "BN", "BG", "BF", "BI", "KH",
+                "CM", "CA", "CV", "CF", "TD", "CL", "CN", "CO", "KM", "CG",
+                "CD", "CR", "HR", "CU", "CY", "CZ", "DK", "DJ", "DM", "DO",
+                "TL", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FJ", "FI",
+                "FR", "GA", "GM", "GE", "DE", "GH", "GR", "GD", "GT", "GN",
+                "GW", "GY", "HT", "HN", "HU", "IS", "IN", "ID", "IR", "IQ",
+                "IE", "IL", "IT", "CI", "JM", "JP", "JO", "KZ", "KE", "KI",
+                "KP", "KR", "XZ", "KW", "KG", "LA", "LV", "LB", "LS", "LR",
+                "LY", "LI", "LT", "LU", "MK", "MG", "MW", "MY", "MV", "ML",
+                "MT", "MH", "MR", "MU", "MX", "FM", "MD", "MC", "MN", "ME",
+                "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NZ", "NI", "NE",
+                "NG", "NO", "OM", "PK", "PW", "PA", "PG", "PY", "PE", "PH",
+                "PL", "PT", "QA", "RO", "RU", "RW", "KN", "LC", "VC", "WS",
+                "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SK", "SI",
+                "SB", "SO", "ZA", "ES", "LK", "SD", "SR", "SZ", "SE", "CH",
+                "SY", "TW", "TJ", "TZ", "TH", "TG", "TO", "TT", "TN", "TR",
+                "TM", "TV", "UG", "UA", "AE", "GB", "US", "UY", "UZ", "VU",
+                "VA", "VE", "VN", "YE", "ZM", "ZW"]
+    }
+
+    jQuery.uxloadbundle(BUNDLE_EN_ISO2, "en-iso2")
+})(jQuery);
+
+(function(jQuery) {
+    var BUNDLE_EN_ISO3 = {
+        "COUNTRIES" : ["AFG", "ALB", "DZA", "AND", "AGO", "ATG", "ARG", "ARM",
+                "AUS", "AUT", "AZE", "BHS", "BHR", "BGD", "BRB", "BLR", "BEL",
+                "BLZ", "BEN", "BTN", "BOL", "BIH", "BWA", "BRA", "BRN", "BGR",
+                "BFA", "BDI", "KHM", "CMR", "CAN", "CPV", "CAF", "TCD", "CHL",
+                "CHN", "COL", "COM", "COG", "COD", "CRI", "HRV", "CUB", "CYP",
+                "CZE", "DNK", "DJI", "DMA", "DOM", "TLS", "ECU", "EGY", "SLV",
+                "GNQ", "ERI", "EST", "ETH", "FJI", "FIN", "FRA", "GAB", "GMB",
+                "GEO", "DEU", "GHA", "GRC", "GRD", "GTM", "GIN", "GNB", "GUY",
+                "HTI", "HND", "HUN", "ISL", "IND", "IDN", "IRN", "IRQ", "IRL",
+                "ISR", "ITA", "CIV", "JAM", "JPN", "JOR", "KAZ", "KEN", "KIR",
+                "PRK", "KOR", "UNK", "KWT", "KGZ", "LAO", "LVA", "LBN", "LSO",
+                "LBR", "LBY", "LIE", "LTU", "LUX", "MKD", "MDG", "MWI", "MYS",
+                "MDV", "MLI", "MLT", "MHL", "MRT", "MUS", "MEX", "FSM", "MDA",
+                "MCO", "MNG", "MNE", "MAR", "MOZ", "MMR", "NAM", "NRU", "NPL",
+                "NLD", "NZL", "NIC", "NER", "NGA", "NOR", "OMN", "PAK", "PLW",
+                "PAN", "PNG", "PRY", "PER", "PHL", "POL", "PRT", "QAT", "ROU",
+                "RUS", "RWA", "KNA", "LCA", "VCT", "WSM", "SMR", "STP", "SAU",
+                "SEN", "SRB", "SYC", "SLE", "SGP", "SVK", "SVN", "SLB", "SOM",
+                "ZAF", "ESP", "LKA", "SDN", "SUR", "SWZ", "SWE", "CHE", "SYR",
+                "TWN", "TJK", "TZA", "THA", "TGO", "TON", "TTO", "TUN", "TUR",
+                "TKM", "TUV", "UGA", "UKR", "ARE", "GBR", "USA", "URY", "UZB",
+                "VUT", "VAT", "VEN", "VNM", "YEM", "ZMB", "ZWE",]
+    }
+
+    jQuery.uxloadbundle(BUNDLE_EN_ISO3, "en-iso3")
 })(jQuery);
 
 (function(jQuery) {
