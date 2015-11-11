@@ -10168,8 +10168,8 @@ function onYouTubePlayerReady(id) {
 
                         // retrieves the various attributes that are going to
                         // be applied also to the parent drop down element
-                        var name = _element.attr("data-name");
-                        var input = _element.attr("data-input");
+                        var name = _element.attr("data-name") || "";
+                        var input = _element.attr("data-input") || "";
                         var extra = _element.attr("data-extra") || "";
                         var classes = _element.attr("class") || "";
                         var containerClasses = container.attr("class") || "";
@@ -10493,7 +10493,7 @@ function onYouTubePlayerReady(id) {
             var container = matchedObject.parents(".drop-down-container");
             var button = jQuery(".button-drop-down", container);
             var input = jQuery("input", container);
-            var name = matchedObject.attr("data-name");
+            var name = matchedObject.attr("data-name") || "";
             var extra = matchedObject.attr("data-extra") || "";
             var original = matchedObject.data("original");
             var elements = jQuery("> li", matchedObject);
