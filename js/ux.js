@@ -19122,12 +19122,14 @@ function onYouTubePlayerReady(id) {
             // iterates over the complete set of overlay elements to be
             // able to populate the original opacity value for each of
             // them and then sets the zero based opacity value (initial value)
+            // note that an aditional "display" verification is performed
             matchedObject.each(function(index, element) {
                         var _element = jQuery(this);
+                        var isVisible = _element.css("display") == "block";
                         var target = _element.css("opacity") || "1";
                         var targetF = parseFloat(target);
                         _element.data("original", targetF);
-                        _element.css("opacity", "0");
+                        !isVisible && _element.css("opacity", "0");
                     });
         };
 
