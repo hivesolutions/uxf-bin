@@ -18814,7 +18814,7 @@ function onYouTubePlayerReady(id) {
             // tries to retrieve the global overlay element in case it
             // does not exists creates a new element and then appends it
             // to the current body element (default action)
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             if (overlay.length == 0) {
                 var _body = jQuery("body");
                 overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
@@ -18934,7 +18934,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the overlay element and forces a resize
             // on it to ensure dimensions (ensures proper size)
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             overlay.trigger("resize");
 
             // centers the object in the screen, this is required
@@ -18946,7 +18946,7 @@ function onYouTubePlayerReady(id) {
             // effect is as smoth as possible and then applies the same
             // fadding effect to the overlay panel, as both the panel
             // and the overlay are going to be shown at the same time
-            overlay.fadeIn(100);
+            overlay.triggerHandler("show", [100]);
             matchedObject.fadeIn(100);
 
             // focus in the text field as this is the default behaviour
@@ -18961,11 +18961,11 @@ function onYouTubePlayerReady(id) {
 
         var _hide = function(matchedObject, options) {
             // retrieves the overlay element
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
 
             // hides both the global overlay and the current overlay panel
             // at the same time and using a smoth based effect
-            overlay.fadeOut(200);
+            overlay.triggerHandler("hide", [200]);
             matchedObject.fadeOut(200);
 
             // triggers the hidden event indicating that the overlay panel
@@ -19053,13 +19053,13 @@ function onYouTubePlayerReady(id) {
         };
 
         var _hide = function(matchedObject, options) {
-            // retrieves the overlay element
-            var overlay = jQuery(".overlay");
+            // retrieves the overlay element, notice that
+            // only the first (and major one is selected)
+            var overlay = jQuery(".overlay:first");
 
-            // shows the overlay
-            overlay.fadeOut(200);
-
-            // hidrs the matched object
+            // hides both the overlay and the current
+            // object (as expected by the search overlay)
+            overlay.triggerHandler("hide", [200]);
             matchedObject.fadeOut(200);
         };
 
@@ -21242,7 +21242,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the overlay element and in case it's not present
             // creates a default element adding it to the start of the
             // top level body element (default behaviour)
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             if (overlay.length > 0) {
                 return overlay;
             }
@@ -21262,7 +21262,7 @@ function onYouTubePlayerReady(id) {
             var overlay = _ensureOverlay();
             var width = matchedObject.outerWidth(true);
             overlay.triggerHandler("resize");
-            overlay.fadeIn(350);
+            overlay.triggerHandler("show", [350]);
             matchedObject.css("right", (width * -1) + "px");
             matchedObject.show();
             matchedObject.animate({
@@ -21287,7 +21287,7 @@ function onYouTubePlayerReady(id) {
             var width = matchedObject.outerWidth(true);
             __unregisterClick(matchedObject, options);
             __unregisterKey(matchedObject, options);
-            overlay.fadeOut(350);
+            overlay.triggerHandler("hide", [350]);
             matchedObject.css("right", 0 + "px");
             matchedObject.animate({
                         right : width * -1
@@ -21304,7 +21304,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the overlay element and registers for
             // the click event on it in order to hide the current
             // window then stores it in the data element
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             var handler = function() {
                 matchedObject.triggerHandler("hide");
             };
@@ -21316,7 +21316,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the global overlay and the handle to the
             // callback function then unbinds it from the click
             // even on the overlay
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             var handle = matchedObject.data("click_handler");
             overlay.unbind("click", handle);
         };
@@ -21591,21 +21591,21 @@ function onYouTubePlayerReady(id) {
 
         var _show = function(matchedObject, options) {
             // retrieves the overlay element
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
 
             // shows the global overlay and the matched
             // object, this should provide a modal view
-            overlay.fadeIn(250)
+            overlay.triggerHandler("show", [250]);
             matchedObject.fadeIn(250);
         };
 
         var _hide = function(matchedObject, options) {
             // retrieves the overlay element
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
 
             // hides the both the overlay and the matched
             // object (moving out from modal)
-            overlay.fadeOut(250);
+            overlay.triggerHandler("hide", [250]);
             matchedObject.fadeOut(250);
         };
 
@@ -26068,7 +26068,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the overlay element and in case it's not present
             // creates a default element adding it to the start of the
             // top level body element (default behaviour)
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             if (overlay.length == 0) {
                 var _body = jQuery("body");
                 overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
@@ -26090,7 +26090,7 @@ function onYouTubePlayerReady(id) {
 
             // shows the overlay and shows at the same time the
             // current object (window)
-            overlay.fadeIn(250);
+            overlay.triggerHandler("show", [250]);
             matchedObject.fadeIn(250);
 
             // registers for the click event on the global overlay
@@ -26116,7 +26116,7 @@ function onYouTubePlayerReady(id) {
 
         var _hide = function(matchedObject, options, success) {
             // retrieves the overlay element
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
 
             // unregisters from the click event on the global overlay
             // so that the windows stop respoding from the event
@@ -26128,7 +26128,7 @@ function onYouTubePlayerReady(id) {
 
             // hides the overlay and hides at the same time the
             // current object (window)
-            overlay.fadeOut(250);
+            overlay.triggerHandler("hide", [250]);
             matchedObject.fadeOut(250);
 
             // retrieves the appropriate name for the event to be
@@ -26298,7 +26298,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the overlay element and registers for
             // the click event on it in order to hide the current
             // window then stores it in the data element
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             var handler = function() {
                 var isHiddable = matchedObject.hasClass("window-hide");
                 if (!isHiddable) {
@@ -26314,7 +26314,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the global overlay and the handle to the
             // callback function then unbinds it from the click
             // even on the overlay
-            var overlay = jQuery(".overlay");
+            var overlay = jQuery(".overlay:first");
             var handle = matchedObject.data("click_handler");
             overlay.unbind("click", handle);
         };
