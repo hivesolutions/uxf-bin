@@ -19115,7 +19115,7 @@ function onYouTubePlayerReady(id) {
             // adds the resizable class to the current element to identify
             // the element as an element that is meant to be resizes, this
             // is imporant to avoid error in the resize operations
-            _resizeOverlay(matchedObject, options);
+            _resize(matchedObject, options);
             matchedObject.addClass("resizable");
         };
 
@@ -19130,14 +19130,14 @@ function onYouTubePlayerReady(id) {
             // possible initial resize problem
             _window.ready(function(event) {
                         // resizes the overlay in the screen
-                        _resizeOverlay(matchedObject, options);
+                        _resize(matchedObject, options);
                     });
 
             // registers the laod event in the window, avoids
             // possible initial resize problem
             _window.load(function(event) {
                         // resizes the overlay in the screen
-                        _resizeOverlay(matchedObject, options);
+                        _resize(matchedObject, options);
                     });
 
             // registers the resize in the window, this is a custom
@@ -19184,7 +19184,7 @@ function onYouTubePlayerReady(id) {
                         // retrieves teh current element and uses it
                         // resize the overlay in the screen
                         var element = jQuery(this);
-                        _resizeOverlay(element, options);
+                        _resize(element, options);
                     });
         };
 
@@ -19211,7 +19211,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.fadeOut(timeout || 100);
         };
 
-        var _resizeOverlay = function(matchedObject, options) {
+        var _resize = function(matchedObject, options) {
             // retrieves the document and the window
             // element references
             var _document = jQuery(document);
@@ -19239,7 +19239,7 @@ function onYouTubePlayerReady(id) {
 
         var resizeDelay = function(matchedObject, options) {
             setTimeout(function() {
-                        _resizeOverlay(matchedObject, options);
+                        _resize(matchedObject, options);
                     });
         };
 
