@@ -7318,11 +7318,11 @@ function onYouTubePlayerReady(id) {
             // the css values associated with the element, these values are
             // assumed to be integer defined as seconds of animation
             var cssDuration = element.css("animation-duration");
-            cssDuration = cssDuration
-                    || element.css("-webkit-animation-duration");
-            cssDuration = cssDuration || element.css("-moz-animation-duration");
             cssDuration = cssDuration || element.css("-o-animation-duration");
             cssDuration = cssDuration || element.css("-ms-animation-duration");
+            cssDuration = cssDuration || element.css("-moz-animation-duration");
+            cssDuration = cssDuration
+                    || element.css("-webkit-animation-duration");
             cssDuration = cssDuration
                     || element.css("-khtml-animation-duration");
             if (cssDuration) {
@@ -19225,7 +19225,6 @@ function onYouTubePlayerReady(id) {
             // the element as an element that is meant to be resizes, this
             // is imporant to avoid error in the resize operations
             _resize(matchedObject, options);
-            __transition(matchedObject, options, 0);
             matchedObject.addClass("resizable");
 
             // iterates over the complete set of overlay elements to be
@@ -19334,13 +19333,13 @@ function onYouTubePlayerReady(id) {
             // shows the matched object and then runs
             // the show operation for the overlay element
             _resize(matchedObject, options);
-            __fadeIn(matchedObject, options, timeout || 250, true);
+            __fadeIn(matchedObject, options, timeout || 250);
         };
 
         var _hide = function(matchedObject, options, timeout) {
             // hides the matched object, using the default
             // strategy for such operation (as expected)
-            __fadeOut(matchedObject, options, timeout || 100, true);
+            __fadeOut(matchedObject, options, timeout || 100);
         };
 
         var _reset = function(matchedObject, options) {
@@ -19389,15 +19388,19 @@ function onYouTubePlayerReady(id) {
         };
 
         var __fadeIn = function(matchedObject, options, timeout, useHardware) {
+            var _body = jQuery("body");
+            useHardware = useHardware || _body.data("transition-f");
             matchedObject.data("transition", "fadein");
             if (useHardware) {
                 var original = matchedObject.data("original");
-                __transitionDuration(matchedObject, options, timeout);
+                __transition(matchedObject, options, timeout);
                 matchedObject.show();
                 setTimeout(function() {
                             matchedObject.css("opacity", String(original));
                         });
             } else {
+                matchedObject.css("opacity", "");
+                __transitionUnset(matchedObject, options);
                 matchedObject.fadeIn(timeout, function() {
                             matchedObject.removeData("transition");
                         });
@@ -19405,12 +19408,16 @@ function onYouTubePlayerReady(id) {
         };
 
         var __fadeOut = function(matchedObject, options, timeout, useHardware) {
+            var _body = jQuery("body");
+            useHardware = useHardware || _body.data("transition-f");
             matchedObject.data("transition", "fadeout");
             if (useHardware) {
-                __transitionDuration(matchedObject, options, timeout);
+                __transition(matchedObject, options, timeout);
                 matchedObject.css("opacity", "0");
             } else {
-                matchedObject.fadeIn(timeout, function() {
+                matchedObject.css("opacity", "");
+                __transitionUnset(matchedObject, options);
+                matchedObject.fadeOut(timeout, function() {
                             matchedObject.removeData("transition");
                         });
             }
@@ -19419,19 +19426,18 @@ function onYouTubePlayerReady(id) {
         var __transition = function(matchedObject, options, timeout) {
             var value = "opacity " + String(timeout) + "ms ease-in-out";
             matchedObject.css("transition", value);
-            matchedObject.css("-webkit-transition", value);
-            matchedObject.css("-moz-transition", value);
             matchedObject.css("-o-transition", value);
             matchedObject.css("-ms-transition", value);
+            matchedObject.css("-moz-transition", value);
+            matchedObject.css("-webkit-transition", value);
         };
 
-        var __transitionDuration = function(matchedObject, options, timeout) {
-            var value = String(timeout) + "ms";
-            matchedObject.css("transition-duration", value);
-            matchedObject.css("-webkit-transition-duration", value);
-            matchedObject.css("-moz-transition-duration", value);
-            matchedObject.css("-o-transition-duration", value);
-            matchedObject.css("-ms-transition-duration", value);
+        var __transitionUnset = function(matchedObject, options) {
+            matchedObject.css("transition", "");
+            matchedObject.css("-o-transition", "");
+            matchedObject.css("-ms-transition", "");
+            matchedObject.css("-moz-transition", "");
+            matchedObject.css("-webkit-transition", "");
         };
 
         // initializes the plugin
