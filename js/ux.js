@@ -11745,7 +11745,7 @@ function onYouTubePlayerReady(id) {
                 // adds the new filter tuple to the sequence and invalidates
                 // the filter string so that no base filtering is used
                 filters = filters || [];
-                filters.append([filterName, filterOperation, filterString]);
+                filters.push([filterName, filterOperation, filterString]);
                 filterString = "";
             }
 
