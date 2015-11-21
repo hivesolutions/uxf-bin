@@ -14532,8 +14532,10 @@ function onYouTubePlayerReady(id) {
                                     buttons.removeClass("selected");
                                 });
 
-                        // triggers the update complete event
-                        filter.triggerHandler("update_complete");
+                        // triggers the update complete event, notice that the
+                        // reset flat value is passes so that the listener is
+                        // able to determine if this is a full replace operation
+                        filter.triggerHandler("update_complete", [reset]);
 
                         // updates the filter data
                         filter.data("filter_string", filterInputValue);
