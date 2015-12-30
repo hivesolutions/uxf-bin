@@ -11077,7 +11077,7 @@ function onYouTubePlayerReady(id) {
                         var isSelect = dropField.hasClass("drop-field-select");
 
                         // registers for the click event in the text field
-                        // (select click)
+                        // (select click) so that the proper
                         isSelect && textField.click(function(event) {
                                     // checks if the drop field to verify that the
                                     // drop field is not disabled, in case it is
@@ -11110,11 +11110,16 @@ function onYouTubePlayerReady(id) {
                                         _show(dropField);
                                     }
 
-                                    // stops the event propagation
-                                    // (avoids immediate closing of
-                                    // the drop field contents)
+                                    // stops the event propagation (avoids immediate closing of
+                                    // the drop field contents, from the click)
                                     event.stopPropagation();
-                                    event.preventDefault();
+                                });
+
+                        // registers for the click operation in case the current
+                        // drop field is not of type select, this should only prevent
+                        // a series of default behaviours (would cause issues)
+                        !isSelect && textField.click(function(event) {
+                                    event.stopPropagation();
                                 });
                     });
 
