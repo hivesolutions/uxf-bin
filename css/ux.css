@@ -26,24 +26,6 @@
  __license__   = Hive Solutions Confidential Usage License (HSCUL)
 */
 
-.for-desktop,
-.for-tablet,
-.for-mobile {
-    display: none;
-}
-
-body.desktop-s .for-desktop {
-    display: block;
-}
-
-body.tablet-s .for-tablet {
-    display: block;
-}
-
-body.mobile-s .for-mobile {
-    display: block;
-}
-
 .no-select {
     user-select: none;
     -o-user-select: none;
@@ -70,6 +52,24 @@ body.mobile-s .for-mobile {
 
 .replacer-target {
     display: none;
+}
+
+.for-desktop,
+.for-tablet,
+.for-mobile {
+    display: none;
+}
+
+body.desktop-s .for-desktop {
+    display: block;
+}
+
+body.tablet-s .for-tablet {
+    display: block;
+}
+
+body.mobile-s .for-mobile {
+    display: block;
 }
 
 .number {
@@ -128,6 +128,18 @@ body.mobile-s .for-mobile {
 
 body.wait-load {
     display: none;
+}
+
+body.desktop-s .for-desktop {
+    display: block;
+}
+
+body.tablet-s .for-tablet {
+    display: block;
+}
+
+body.mobile-s .for-mobile {
+    display: block;
 }
 
 .button {
