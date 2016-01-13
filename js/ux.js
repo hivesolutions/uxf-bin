@@ -10568,8 +10568,8 @@ function onYouTubePlayerReady(id) {
             // set a new value in case that's required
             var value = options["value"];
 
-            // determines if the current opetation is a set one and
-            // if that's the case redirect the control flow to the
+            // determines if the current operation is a set one and
+            // if that's the case redirects the control flow to the
             // set operation so that it may be correctly used
             var isSet = value !== undefined;
             if (isSet) {
@@ -12349,6 +12349,7 @@ function onYouTubePlayerReady(id) {
                     });
             dropField.data("value", "");
             dropField.data("selection", 1);
+            dropField.data("updated", false);
 
             // removes the drop field lock class from the drop field
             // no need to retain the lock symbol in the drop field
@@ -16834,51 +16835,6 @@ function onYouTubePlayerReady(id) {
             contentType = contentType.split(";")[0];
             contentType = contentType.strip();
             return location || contentType == "text/html";
-        };
-
-        // initializes the plugin
-        initialize();
-
-        // returns the object
-        return this;
-    };
-})(jQuery);
-
-(function(jQuery) {
-    jQuery.fn.uxhightlightbox = function(options) {
-        // the default values for the data source
-        var defaults = {};
-
-        // sets the default options value
-        var options = options ? options : {};
-
-        // constructs the options
-        var options = jQuery.extend(defaults, options);
-
-        // sets the jquery matched object
-        var matchedObject = this;
-
-        /**
-         * Initializer of the plugin, runs the necessary functions to initialize
-         * the structures.
-         */
-        var initialize = function() {
-            _appendHtml();
-            _registerHandlers();
-        };
-
-        /**
-         * Creates the necessary html for the component.
-         */
-        var _appendHtml = function() {
-            // wraps the matched object in an highlight box container
-            matchedObject.wrap("<div class=\"highlight-box-container\"></div>");
-        };
-
-        /**
-         * Registers the event handlers for the created objects.
-         */
-        var _registerHandlers = function() {
         };
 
         // initializes the plugin
@@ -26679,6 +26635,15 @@ function onYouTubePlayerReady(id) {
         };
 
         var _startForm = function(matchedObject, options) {
+            // retrieves the complete set of forms currently defined
+            // in the window and runs the proper operations for each
+            var forms = jQuery(".form", matchedObject);
+            forms.each(function(index, element) {
+                        var _element = jQuery(this);
+                        _element.triggerHandler("unlock");
+                        _element.triggerHandler("reset");
+                    });
+
             // retrieves the complete set of fields (form fields)
             // for the current window and then retrieves the first
             // of these elements (to be focused)
