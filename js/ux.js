@@ -10326,6 +10326,10 @@ function onYouTubePlayerReady(id) {
                         var containerClasses = container.attr("class") || "";
                         var buttonClasses = button.attr("class") || "";
 
+                        // retrieves the value of the various classes that are
+                        // going to condition the initial state of the element
+                        var isOpen = _element.hasClass("drop-down-open");
+
                         // verifies if the current drop down is considered to
                         // be an empty one (no elements contained in it)
                         var isEmpty = elements.length == 0;
@@ -10402,6 +10406,11 @@ function onYouTubePlayerReady(id) {
                         // initial valid state (include logical value initialization)
                         _element.data("original", original);
                         _original(_element, options);
+
+                        // in case the open (class based) flag is defined for the
+                        // drop down element it is shown with the current options
+                        // defined as the open/shown state is considered initial
+                        isOpen && _show(_element, options);
                     });
 
             // adds the menu class to the matched object so that it's
