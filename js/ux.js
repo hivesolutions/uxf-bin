@@ -23225,7 +23225,14 @@ function onYouTubePlayerReady(id) {
                         // retrieves the link reference and
                         // then uses it to retrieve the target element
                         var href = element.attr("href");
-                        var targetElement = jQuery(href);
+                        var targetElement = jQuery(href, tabPanel);
+
+                        // verifies if the target element is already active and if
+                        // that's the case returns immediately (avoids loop in selection)
+                        var isActive = targetElement.hasClass("active");
+                        if (isActive) {
+                            return true;
+                        }
 
                         // adds the active class to both the
                         // element and the target element
@@ -23235,6 +23242,11 @@ function onYouTubePlayerReady(id) {
                         // triggers the tab slected event on the tab panel
                         // indicating that a new tab has been selected
                         tabPanel.triggerHandler("tab_selected", [targetElement]);
+
+                        // in case the push state function is available for
+                        // the window element it is used for href change
+                        window.history.pushState && href
+                                && window.history.pushState(null, null, href);
 
                         // stops the event propagation
                         // (avoids the normal link behaviour)
@@ -23262,6 +23274,13 @@ function onYouTubePlayerReady(id) {
             // selected returns the control flow immediately
             var targetElement = jQuery(hash, matchedObject);
             if (targetElement.length == 0) {
+                return;
+            }
+
+            // verifies if the target element is already active and if
+            // that's the case returns immediately (avoids loop in selection)
+            var isActive = targetElement.hasClass("active");
+            if (isActive) {
                 return;
             }
 
