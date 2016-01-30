@@ -6162,6 +6162,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.removeClass("tablet-s");
             matchedObject.removeClass("desktop-s");
             matchedObject.removeClass("fat-s");
+            matchedObject.removeClass("slim-s");
             matchedObject.removeClass("tall-s");
             matchedObject.removeClass("average-s");
             matchedObject.removeClass("short-s");
@@ -6187,6 +6188,8 @@ function onYouTubePlayerReady(id) {
             // that selects the proper class to be applied to the object
             if (windowWidth > slimWidth) {
                 matchedObject.addClass("fat-s");
+            } else {
+                matchedObject.addClass("slim-s");
             }
 
             // verifies the current window height value and according to
