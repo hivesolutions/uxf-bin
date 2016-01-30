@@ -6109,6 +6109,7 @@ function onYouTubePlayerReady(id) {
         // border width and height values, these values are going to be
         // used by the watch function to determine the correct classes
         var slimWidth = matchedObject.attr("data-slim") || "960";
+        var uslimWidth = matchedObject.attr("data-uslim") || "860";
         var tabletWidth = matchedObject.attr("data-tablet") || "768";
         var mobileWidth = matchedObject.attr("data-mobile") || "420";
         var averageHeight = matchedObject.attr("data-average") || "800";
@@ -6116,6 +6117,7 @@ function onYouTubePlayerReady(id) {
         var smallHeight = matchedObject.attr("data-small") || "320";
         var minimalHeight = matchedObject.attr("data-minimal") || "200";
         slimWidth = parseInt(slimWidth);
+        uslimWidth = parseInt(uslimWidth);
         tabletWidth = parseInt(tabletWidth);
         mobileWidth = parseInt(mobileWidth);
         shortHeight = parseInt(shortHeight);
@@ -6163,6 +6165,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.removeClass("desktop-s");
             matchedObject.removeClass("fat-s");
             matchedObject.removeClass("slim-s");
+            matchedObject.removeClass("uslim-s");
             matchedObject.removeClass("tall-s");
             matchedObject.removeClass("average-s");
             matchedObject.removeClass("short-s");
@@ -6188,8 +6191,10 @@ function onYouTubePlayerReady(id) {
             // that selects the proper class to be applied to the object
             if (windowWidth > slimWidth) {
                 matchedObject.addClass("fat-s");
-            } else {
+            } else if (windowWidth > uslimWidth) {
                 matchedObject.addClass("slim-s");
+            } else {
+                matchedObject.addClass("uslim-s");
             }
 
             // verifies the current window height value and according to
