@@ -16961,7 +16961,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.each(function(index, element) {
                 var _element = jQuery(this);
                 setTimeout(function() {
-                    _updateState(_element);
+                    updateState(_element);
                 });
             });
         };
@@ -16977,6 +16977,10 @@ function onYouTubePlayerReady(id) {
             if (!matchedObject || matchedObject.length == 0) {
                 return;
             }
+
+            // retrieves the reference to some of the global
+            // elements to be used in the operation
+            var _body = jQuery("body");
 
             // verifies if the current image lazy global
             // operation is already registers and then marks
