@@ -225,6 +225,18 @@
     font-weight: bold;
 }
 
+.omni-style .calendar-range > .range > .range-separator {
+    margin: 0px 12px 0px 12px;
+}
+
+.omni-style .calendar-range > .calendar {
+    display: none;
+}
+
+.omni-style .calendar-range.calendar-visible > .calendar {
+    display: inline-block;
+}
+
 .omni-style .calendar {
     background-color: #ffffff;
     border: 1px solid #dddddd;
@@ -2112,6 +2124,33 @@
 .omni-style .radio-field-label {
     color: #4d4d4d;
     margin: 0px 16px 0px 8px;
+}
+
+.omni-style .rating {
+    height: 24px;
+    padding: 8px 0px 8px 0px;
+    text-align: left;
+}
+
+.omni-style .rating .rating-item {
+    background: transparent url(../images/rating.png) no-repeat left 0px;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    padding-left: 4px;
+    width: 24px;
+}
+
+.omni-style .rating .rating-item.active {
+    background-position: left -24px;
+}
+
+.omni-style .rating .rating-item.inactive {
+    background-position: left 0px;
+}
+
+.omni-style .rating .rating-item.hover {
+    background-position: left -24px;
 }
 
 .omni-style .select-list {
