@@ -2148,6 +2148,32 @@
     background-position: 0 -16px;
 }
 
+.omni-style .side-panel {
+    background-color: #ffffff;
+    border-left: 1px solid #aaaaaa;
+    box-shadow: -2px 0px 3px #cccccc;
+    -moz-box-shadow: -2px 0px 3px #cccccc;
+    -webkit-box-shadow: -2px 0px 3px #cccccc;
+    display: none;
+    min-height: 100%;
+    padding: 0px 24px 0px 24px;
+    position: fixed;
+    right: 0px;
+    text-align: left;
+    top: 0px;
+    width: 360px;
+    z-index: 30;
+}
+
+.omni-style .side-panel.grey {
+    background-color: #f2f2f2;
+}
+
+.omni-style .side-panel h1 {
+    font-weight: normal;
+    text-transform: none;
+}
+
 .omni-style .slider-bar {
     background: #fdfdfd;
     height: 200px;
@@ -2185,6 +2211,38 @@
 .omni-style .slider-bar .slider-bar-label {
     color: #999999;
     font-size: 11px;
+}
+
+.omni-style .slideshow .slideshow-image {
+    cursor: pointer;
+    height: 100px;
+    line-height: 100px;
+}
+
+.omni-style .slideshow .slideshow-image img {
+    vertical-align: middle;
+}
+
+.omni-style .slideshow  ul.slideshow-alternates {
+    display: inline-block;
+    margin: 4px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.omni-style .slideshow  ul.slideshow-alternates li {
+    background: transparent url(../images/slideshow-alternates.png) no-repeat center 0px;
+    float: left;
+    height: 16px;
+    list-style: none;
+    width: 16px;
+}
+
+.omni-style .slideshow  ul.slideshow-alternates li.active {
+    background-position: center -16px;
+}
+
+.omni-style .slideshow  ul.slideshow-alternates li:hover {
+    background-position: center -16px;
 }
 
 .omni-style .slider {
