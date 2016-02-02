@@ -2189,7 +2189,7 @@
 
 .omni-style .slider {
     left: 0px;
-    position: absolute;
+    position: fixed;
     top: 180px;
     width: 100%;
     z-index: 30;
