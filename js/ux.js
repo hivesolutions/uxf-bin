@@ -19126,11 +19126,26 @@ function onYouTubePlayerReady(id) {
                 // registers for the (pre) hide event in the overlay
                 // so that the current element is also hidden
                 overlay.bind("pre_hide", function() {
-                    // checks if the element is visible
+                    // checks if the element is visible and in case
+                    // the element is not visible returns immediately,
+                    // nothing pending to be done
                     var elementVisible = _element.is(":visible");
+                    if (!elementVisible) {
+                        return;
+                    }
 
-                    // in case the element is not visible returns
-                    // immediately, nothing pending to be done
+                    // hides the element, using the proper strategy
+                    // to perform such operation
+                    _hide(_element, options);
+                });
+
+                // registers for the click event on the overlay panel
+                // to hide the current overlay panel
+                overlay.click(function() {
+                    // checks if the element is visible and in case
+                    // the element is not visible returns immediately,
+                    // nothing pending to be done
+                    var elementVisible = _element.is(":visible");
                     if (!elementVisible) {
                         return;
                     }
@@ -19143,6 +19158,14 @@ function onYouTubePlayerReady(id) {
         };
 
         var _show = function(matchedObject, options) {
+            // verifies if the current object is visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", true);
+            if (visible) {
+                return;
+            }
+
             // retrieves the vertical offset and parses it
             // as a float to be used in the center operation
             var offset = matchedObject.attr("data-offset");
@@ -19180,6 +19203,14 @@ function onYouTubePlayerReady(id) {
         };
 
         var _hide = function(matchedObject, options) {
+            // verifies if the current object is not visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", false);
+            if (!visible) {
+                return;
+            }
+
             // retrieves the overlay element
             var overlay = jQuery(".overlay:first");
 
