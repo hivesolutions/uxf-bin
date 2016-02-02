@@ -7726,7 +7726,7 @@ function onYouTubePlayerReady(id) {
             // will be added to the currently matched object latter
             var range = "<div class=\"range\">" +
                 "<input type=\"text\" class=\"text-field start-date\" data-original_value=\"" + startDate +
-                "\" />" + "<span>" + to + "</span>" +
+                "\" />" + "<span class=\"range-separator\">" + to + "</span>" +
                 "<input type=\"text\" class=\"text-field end-date\" data-original_value=\"" + endDate +
                 "\" />" + "</div>";
             var calendar = "<div class=\"calendar no-layout\"></div>";
@@ -8142,10 +8142,11 @@ function onYouTubePlayerReady(id) {
          *            options The map of options to be used.
          */
         var _update = function(matchedObject, options) {
-            // in case the matched object does not contains any
-            // elements (empty matched object)
-            if (matchedObject.length == 0) {
-                // returns immediately (nothing to be done)
+            // in case the matched object is not defined
+            // or in case it's an empty list must return
+            // immediatly update operation is not meant to
+            // be run (corruption may occur)
+            if (!matchedObject || matchedObject.length == 0) {
                 return;
             }
 
@@ -10298,8 +10299,8 @@ function onYouTubePlayerReady(id) {
             var button = jQuery(".button-drop-down", container);
             var elements = jQuery("> li", matchedObject);
 
-            // checks if the drop downk click event is already
-            // registerd in the body and set the variable as
+            // checks if the drop down click event is already
+            // registerd in the body and sets the variable as
             // true to avoid further registrations
             var isRegistered = _body.data("drop_down_click");
             _body.data("drop_down_click", true);
@@ -17343,6 +17344,35 @@ function onYouTubePlayerReady(id) {
             matchedObject.removeClass("incremental-field");
             matchedObject.addClass("text-field");
             matchedObject.uxtextfield();
+
+            // iterates over all the matched objects to be able to start
+            // their modes structure and layout
+            matchedObject.each(function(index, element) {
+                // retrieves the current element and uses it to retrieve
+                // the parent incremental field
+                var _element = jQuery(this);
+                var incrementalField = _element.parents(".incremental-field");
+
+                // verifies if the current element is meant to be
+                // positioned to the left and in case it's meant
+                // adds the proper class to the incremental field
+                var isLeft = _element.hasClass("incremental-left");
+                isLeft && incrementalField.addClass("incremental-left");
+
+                // verifies if the current element is considered
+                // to be small and if that's the case propagates
+                // the value to the upper incremental field
+                var isSmall = _element.hasClass("small");
+                isSmall && incrementalField.addClass("small");
+                isSmall && _element.removeClass("small");
+
+                // verifies if the current element is considered
+                // to be large and if that's the case propagates
+                // the value to the upper incremental field
+                var isLarge = _element.hasClass("large");
+                isLarge && incrementalField.addClass("large");
+                isLarge && _element.removeClass("large");
+            });
         };
 
         /**
@@ -18062,16 +18092,24 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
-            // retrieves the selected links from the matched object
-            var selectedLinks = jQuery("> li > a.selected", matchedObject)
+            // in case the matched object is not defined
+            // or in case it's an empty list must return
+            // immediatly initialization is not meant to
+            // be run (corruption may occur)
+            if (!matchedObject || matchedObject.length == 0) {
+                return;
+            }
 
-            // retrieves the links that represent exapnded sub list
+            // retrieves the selected links from the matched object
+            var selectedLinks = jQuery("> li > a.selected", matchedObject);
+
+            // retrieves the links that represent expanded sub lists
             // for empty sub list verification
             var epandedLinks = jQuery("> li > a > .link-expand:contains(+)",
-                matchedObject)
+                matchedObject);
 
             // opens the menus for all the selected links
-            // of the list
+            // of the list, changes also the expand icon
             selectedLinks.each(function() {
                 // retrieves the element
                 var element = jQuery(this);
@@ -18128,6 +18166,14 @@ function onYouTubePlayerReady(id) {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
+            // in case the matched object is not defined
+            // or in case it's an empty list must return
+            // immediatly initialization is not meant to
+            // be run (corruption may occur)
+            if (!matchedObject || matchedObject.length == 0) {
+                return;
+            }
+
             // retrieves the links from the matched object
             var links = jQuery("> li > a", matchedObject)
 
@@ -19077,24 +19123,49 @@ function onYouTubePlayerReady(id) {
                     _element.uxcenter(offsetFloat);
                 });
 
-                // registers for the click in the overlay
-                overlay.click(function() {
-                    // checks if the element is visible
+                // registers for the (pre) hide event in the overlay
+                // so that the current element is also hidden
+                overlay.bind("pre_hide", function() {
+                    // checks if the element is visible and in case
+                    // the element is not visible returns immediately,
+                    // nothing pending to be done
                     var elementVisible = _element.is(":visible");
-
-                    // in case the element is not visible
                     if (!elementVisible) {
-                        // returns immediately
                         return;
                     }
 
-                    // hides the element
+                    // hides the element, using the proper strategy
+                    // to perform such operation
+                    _hide(_element, options);
+                });
+
+                // registers for the click event on the overlay panel
+                // to hide the current overlay panel
+                overlay.click(function() {
+                    // checks if the element is visible and in case
+                    // the element is not visible returns immediately,
+                    // nothing pending to be done
+                    var elementVisible = _element.is(":visible");
+                    if (!elementVisible) {
+                        return;
+                    }
+
+                    // hides the element, using the proper strategy
+                    // to perform such operation
                     _hide(_element, options);
                 });
             });
         };
 
         var _show = function(matchedObject, options) {
+            // verifies if the current object is visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", true);
+            if (visible) {
+                return;
+            }
+
             // retrieves the vertical offset and parses it
             // as a float to be used in the center operation
             var offset = matchedObject.attr("data-offset");
@@ -19132,6 +19203,14 @@ function onYouTubePlayerReady(id) {
         };
 
         var _hide = function(matchedObject, options) {
+            // verifies if the current object is not visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", false);
+            if (!visible) {
+                return;
+            }
+
             // retrieves the overlay element
             var overlay = jQuery(".overlay:first");
 
@@ -19395,16 +19474,36 @@ function onYouTubePlayerReady(id) {
         };
 
         var _show = function(matchedObject, options, timeout) {
+            // verifies if the current object is visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", true);
+            if (visible) {
+                return;
+            }
+
             // shows the matched object and then runs
             // the show operation for the overlay element
+            matchedObject.triggerHandler("pre_show");
             _resize(matchedObject, options);
             __fadeIn(matchedObject, options, timeout || 250);
+            matchedObject.triggerHandler("post_show");
         };
 
         var _hide = function(matchedObject, options, timeout) {
+            // verifies if the current object is not visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", false);
+            if (!visible) {
+                return;
+            }
+
             // hides the matched object, using the default
             // strategy for such operation (as expected)
+            matchedObject.triggerHandler("pre_hide");
             __fadeOut(matchedObject, options, timeout || 100);
+            matchedObject.triggerHandler("post_hide");
         };
 
         var _reset = function(matchedObject, options) {
@@ -19496,7 +19595,7 @@ function onYouTubePlayerReady(id) {
                 }
                 matchedObject.hide();
                 matchedObject.removeData("transition");
-            }, timeout + EXTRA_GC)
+            }, timeout + EXTRA_GC);
         };
 
         var __transition = function(matchedObject, options, timeout) {
@@ -21771,8 +21870,7 @@ function onYouTubePlayerReady(id) {
             firstSliderPanel.addClass("active");
 
             // sets the initial data attributes
-            matchedObject.data("lock", false);
-            matchedObject.data("offsetLeft", 0);
+            matchedObject.data("offset_left", 0);
 
             // resizes the slider (matched object) dimensions
             _resize(matchedObject, options);
@@ -21785,11 +21883,10 @@ function onYouTubePlayerReady(id) {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
-            // retrieves the document (element)
-            var _document = jQuery(document);
-
-            // retrieves the window
+            // retrieves the reference to some of the top level
+            // elements that are going to be used in registration
             var _window = jQuery(window);
+            var _body = jQuery("body");
 
             // retrieves the slider panel arows
             // from the matched object
@@ -21848,8 +21945,10 @@ function onYouTubePlayerReady(id) {
                 _movePrevious(slider, options);
             });
 
-            // registers for the key press in the document
-            _document.keypress(function(event) {
+            // registers for the key down in the body element
+            // so that it may change the current selection based
+            // on the arrow key pressing
+            _body.keydown(function(event) {
                 // retrieves the key value
                 var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
                     event.which;
@@ -21869,6 +21968,10 @@ function onYouTubePlayerReady(id) {
 
                         // breaks the switch
                         break;
+
+                    case 27:
+                        _hide(matchedObject, options);
+                        break;
                 }
             });
 
@@ -21887,6 +21990,11 @@ function onYouTubePlayerReady(id) {
             // object, this should provide a modal view
             overlay.triggerHandler("show", [250]);
             matchedObject.fadeIn(250);
+
+            // runs the update operation on the slider
+            // to be able to display it correctlty
+            _resize(matchedObject, options);
+            _update(matchedObject, options);
         };
 
         var _hide = function(matchedObject, options) {
@@ -21916,14 +22024,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the slider attributes, that are going to be
             // used through this function
-            var lock = slider.data("lock");
-            var offsetLeft = slider.data("offsetLeft");
-
-            // in case the lock attribute is set (animation still
-            // pending) must return immediately
-            if (lock) {
-                return;
-            }
+            var offsetLeft = slider.data("offset_left");
 
             // retrieves the currently active slider panel
             // and then retrieves its width
@@ -21948,22 +22049,16 @@ function onYouTubePlayerReady(id) {
             // updates the offset left value
             offsetLeft += sliderPanelWidth;
 
-            // animates the slider contents to the new margin left
-            sliderContents.animate({
-                marginLeft: targetMarginLeft
-            }, 500, "linear", function() {
-                slider.data("lock", false);
-            });
+            // changes the margin left of the slider contents to the
+            // new value (new panel to be shown)
+            sliderContents.css("margin-left", targetMarginLeft);
 
             // updates the active classes in the slider panel
             sliderPanel.removeClass("active");
             nextSliderPanel.addClass("active");
 
-            // sets the lock attribute in the slider
-            slider.data("lock", true);
-
             // updates the offset left in the slider data
-            slider.data("offsetLeft", offsetLeft);
+            slider.data("offset_left", offsetLeft);
         };
 
         var _movePrevious = function(matchedObject, options) {
@@ -21980,14 +22075,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the slider attributes, that are going to be
             // used through this function
-            var lock = slider.data("lock");
-            var offsetLeft = slider.data("offsetLeft");
-
-            // in case the lock attribute is set (animation still
-            // pending) must return immediately
-            if (lock) {
-                return;
-            }
+            var offsetLeft = slider.data("offset_left");
 
             // retrieves the currently active slider panel
             // and then retrieves its width
@@ -22012,22 +22100,16 @@ function onYouTubePlayerReady(id) {
             // updates the offset left value
             offsetLeft -= sliderPanelWidth;
 
-            // animates the slider contents to the new margin left
-            sliderContents.animate({
-                marginLeft: targetMarginLeft
-            }, 500, "linear", function() {
-                slider.data("lock", false);
-            });
+            // changes the margin left of the slider contents to the
+            // new value (new panel to be shown)
+            sliderContents.css("margin-left", targetMarginLeft + "px");
 
             // updates the active classes in the slider panel
             sliderPanel.removeClass("active");
             previousSliderPanel.addClass("active");
 
-            // sets the lock attribute in the slider
-            slider.data("lock", true);
-
             // updates the offset left in the slider data
-            slider.data("offsetLeft", offsetLeft);
+            slider.data("offset_left", offsetLeft);
         };
 
         var _update = function(matchedObject, options) {
@@ -22043,7 +22125,7 @@ function onYouTubePlayerReady(id) {
             !sliderVisible && slider.show();
 
             // retrieves the offsert left of the slider
-            var offsetLeft = slider.data("offsetLeft");
+            var offsetLeft = slider.data("offset_left");
 
             // retrieves the window
             var _window = jQuery(window);
@@ -22063,7 +22145,8 @@ function onYouTubePlayerReady(id) {
             // calculates the left position for the slider contents
             var leftPosition = ((windowWidth - firstSliderPanelWidth) / 2) + windowSrollLeft - offsetLeft;
 
-            // sets the (margin) left position in the slider contents
+            // changes the margin left of the slider contents to the
+            // new value (new panel to be shown)
             sliderContents.css("margin-left", leftPosition + "px");
 
             // in case the slider is not visible hides
@@ -26079,7 +26162,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.uxtextfield();
 
             // iterates over all the matched objects to be able to start
-            // their modes structure
+            // their modes structure  and layout
             matchedObject.each(function(index, element) {
                 // retrieves the current element and uses it to retrieve
                 // the parent toggle field
@@ -26091,6 +26174,20 @@ function onYouTubePlayerReady(id) {
                 // adds the proper class to the toggle field
                 var isLeft = _element.hasClass("toggle-left");
                 isLeft && toggleField.addClass("toggle-left");
+
+                // verifies if the current element is considered
+                // to be small and if that's the case propagates
+                // the value to the upper toggle field
+                var isSmall = _element.hasClass("small");
+                isSmall && toggleField.addClass("small");
+                isSmall && _element.removeClass("small");
+
+                // verifies if the current element is considered
+                // to be large and if that's the case propagates
+                // the value to the upper toggle field
+                var isLarge = _element.hasClass("large");
+                isLarge && toggleField.addClass("large");
+                isLarge && _element.removeClass("large");
 
                 // retrieves the value of the attribute that defines
                 // the various modes in case the value is not defined
