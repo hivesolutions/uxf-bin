@@ -21888,6 +21888,17 @@ function onYouTubePlayerReady(id) {
             var _window = jQuery(window);
             var _body = jQuery("body");
 
+            // tries to retrieve the global overlay element in case it
+            // does not exists creates a new element and then appends it
+            // to the current body element (default action)
+            var overlay = jQuery(".overlay:first");
+            if (overlay.length == 0) {
+                var _body = jQuery("body");
+                overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
+                overlay.uxoverlay();
+                _body.prepend(overlay);
+            }
+
             // retrieves the slider panel arows
             // from the matched object
             var sliderPanelArrowNext = jQuery(".slider-panel-arrow-next",
@@ -21907,9 +21918,8 @@ function onYouTubePlayerReady(id) {
                 var isSliderPanelActive = sliderPanel.hasClass("active");
 
                 // in case the current slider panel
-                // is not active
+                // is not active, returns immediately
                 if (!isSliderPanelActive) {
-                    // returns immediately
                     return;
                 }
 
@@ -21945,6 +21955,22 @@ function onYouTubePlayerReady(id) {
                 _movePrevious(slider, options);
             });
 
+            // registers for the (pre) hide event in the overlay
+            // so that the current element is also hidden
+            overlay.bind("pre_hide", function() {
+                // hides the element, using the proper strategy
+                // to perform such operation
+                _hide(matchedObject, options);
+            });
+
+            // registers for the click event on the overlay panel
+            // to hide the current overlay panel
+            overlay.click(function() {
+                // hides the element, using the proper strategy
+                // to perform such operation
+                _hide(matchedObject, options);
+            });
+
             // registers for the key down in the body element
             // so that it may change the current selection based
             // on the arrow key pressing
@@ -21967,10 +21993,6 @@ function onYouTubePlayerReady(id) {
                         _moveNext(matchedObject, options);
 
                         // breaks the switch
-                        break;
-
-                    case 27:
-                        _hide(matchedObject, options);
                         break;
                 }
             });
