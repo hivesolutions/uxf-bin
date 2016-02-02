@@ -10299,8 +10299,8 @@ function onYouTubePlayerReady(id) {
             var button = jQuery(".button-drop-down", container);
             var elements = jQuery("> li", matchedObject);
 
-            // checks if the drop downk click event is already
-            // registerd in the body and set the variable as
+            // checks if the drop down click event is already
+            // registerd in the body and sets the variable as
             // true to avoid further registrations
             var isRegistered = _body.data("drop_down_click");
             _body.data("drop_down_click", true);
@@ -19123,18 +19123,20 @@ function onYouTubePlayerReady(id) {
                     _element.uxcenter(offsetFloat);
                 });
 
-                // registers for the click in the overlay
-                overlay.click(function() {
+                // registers for the (pre) hide event in the overlay
+                // so that the current element is also hidden
+                overlay.bind("pre_hide", function() {
                     // checks if the element is visible
                     var elementVisible = _element.is(":visible");
 
-                    // in case the element is not visible
+                    // in case the element is not visible returns
+                    // immediately, nothing pending to be done
                     if (!elementVisible) {
-                        // returns immediately
                         return;
                     }
 
-                    // hides the element
+                    // hides the element, using the proper strategy
+                    // to perform such operation
                     _hide(_element, options);
                 });
             });
@@ -19441,16 +19443,36 @@ function onYouTubePlayerReady(id) {
         };
 
         var _show = function(matchedObject, options, timeout) {
+            // verifies if the current object is visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", true);
+            if (visible) {
+                return;
+            }
+
             // shows the matched object and then runs
             // the show operation for the overlay element
+            matchedObject.triggerHandler("pre_show");
             _resize(matchedObject, options);
             __fadeIn(matchedObject, options, timeout || 250);
+            matchedObject.triggerHandler("post_show");
         };
 
         var _hide = function(matchedObject, options, timeout) {
+            // verifies if the current object is not visible and if
+            // that's already the case returns immediately
+            var visible = matchedObject.data("visible") || false;
+            matchedObject.data("visible", false);
+            if (!visible) {
+                return;
+            }
+
             // hides the matched object, using the default
             // strategy for such operation (as expected)
+            matchedObject.triggerHandler("pre_hide");
             __fadeOut(matchedObject, options, timeout || 100);
+            matchedObject.triggerHandler("post_hide");
         };
 
         var _reset = function(matchedObject, options) {
@@ -19542,7 +19564,7 @@ function onYouTubePlayerReady(id) {
                 }
                 matchedObject.hide();
                 matchedObject.removeData("transition");
-            }, timeout + EXTRA_GC)
+            }, timeout + EXTRA_GC);
         };
 
         var __transition = function(matchedObject, options, timeout) {
