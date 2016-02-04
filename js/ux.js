@@ -8540,7 +8540,8 @@ function onYouTubePlayerReady(id) {
             // hides the matched object (to provide the cross fadding
             // effect in the changing)
             matchedObject.fadeOut(500, function() {
-                // removes the
+                // removes the current section class value from
+                // the matched object (no longer required)
                 matchedObject.removeClass("section-" + (index + 1));
 
                 // increments the current index value
@@ -9539,7 +9540,7 @@ function onYouTubePlayerReady(id) {
             index == sectionCount ? index = 0 : index = index;
 
             // retrieves the current panel to be shown and
-            // shows it
+            // shows it with the default approach
             var panel = panels.get(index)
             jQuery(panel).show();
 
@@ -19554,6 +19555,7 @@ function onYouTubePlayerReady(id) {
             useHardware = useHardware || _body.data("transition-f");
             matchedObject.data("transition", "fadein");
             if (useHardware) {
+                _reset(matchedObject, options);
                 var original = matchedObject.data("original");
                 __transition(matchedObject, options, timeout);
                 matchedObject.show();
