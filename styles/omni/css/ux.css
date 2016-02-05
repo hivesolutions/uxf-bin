@@ -2582,6 +2582,18 @@
     width: 212px;
 }
 
+.omni-style .stack > .stack-in {
+    transition: left 0.50s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-transition: left 0.50s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-transition: left 0.50s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-transition: left 0.50s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+}
+
+.omni-style .stack .stack-item {
+    font-size: 13px;
+    line-height: 20px;
+}
+
 .omni-style .stats-panel {
     float: left;
     margin: 12px 0px 20px 12px;
