@@ -27849,24 +27849,24 @@ jQuery(document).ready(function() {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Select = Select || {};
 
@@ -28205,24 +28205,24 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Base64 = Base64 || {};
 
@@ -28327,24 +28327,24 @@ Base64.decode = function(input, decode) {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Array = Array || {};
 
@@ -28403,24 +28403,24 @@ if (typeof(Array.prototype.isIn) === "undefined") {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Date = Date || {};
 
@@ -28529,24 +28529,24 @@ Date.prototype.getTimeZoneStructure = function() {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Math = Math || {};
 
@@ -28562,24 +28562,24 @@ if (typeof(Math.log10) === "undefined") {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Mobile = Mobile || {};
 
@@ -28666,24 +28666,24 @@ Mobile.init();
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Number = Number || {};
 
@@ -28785,24 +28785,24 @@ Number._formatCurrency = function(money, currency, useSymbol) {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Object = Object || {};
 
@@ -28834,24 +28834,24 @@ Object.clone = function(object, recursive) {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 // __credits__   = Joseph Myers <e_mayilme@hotmail.com>
 
 var Md5 = Md5 || {};
@@ -29876,24 +29876,24 @@ Prism.languages.insertBefore("ruby", "keyword", {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var StringBuffer = StringBuffer || {};
 
@@ -30004,24 +30004,24 @@ StringBuffer.prototype.toString = function() {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var String = String || {};
 
@@ -30269,24 +30269,24 @@ String.prototype.decodeUtf = function() {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var Template = Template || {};
 
@@ -31117,24 +31117,24 @@ TemplateNode.prototype.getParameter = function(name) {
 // This file is part of Hive Colony Framework.
 //
 // Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
 //
 // Hive Colony Framework is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// Apache License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with Hive Colony Framework. If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
 
 // __author__    = João Magalhães <joamag@hive.pt>
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
-// __license__   = GNU General Public License (GPL), Version 3
+// __license__   = Apache License, Version 2.0
 
 var canvasRenderingContext = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype || {};
 
