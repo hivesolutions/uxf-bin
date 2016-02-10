@@ -4276,8 +4276,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxreplacer = function(options) {
@@ -4956,8 +4955,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  * @credits Ariel Flesler <aflesler@gmail.com>
  */
 (function(jQuery) {
@@ -7530,8 +7528,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxbreadcrumbs = function(method, options) {
@@ -7941,8 +7938,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxcalendar = function(method, options) {
@@ -8584,8 +8580,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxcheckfield = function(options) {
@@ -8744,8 +8739,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxbuttongroup = function(method, options) {
@@ -8895,8 +8889,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxbutton = function(method, options) {
@@ -9238,8 +9231,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxcode = function(options) {
@@ -9567,8 +9559,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxcrosslist = function(method, options) {
@@ -10116,8 +10107,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxdropdown = function(method, options) {
@@ -10723,8 +10713,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxdropfield = function(method, options) {
@@ -12469,8 +12458,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxdroplist = function(method, options) {
@@ -12684,8 +12672,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxdroptag = function(method, options) {
@@ -13059,8 +13046,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxfilefield = function(options) {
@@ -13137,8 +13123,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxfilter = function(options) {
@@ -15913,8 +15898,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxheadernotification = function(options) {
@@ -17213,8 +17197,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uximage = function(method, options) {
@@ -17295,8 +17278,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxincrementalfield = function(method, options) {
@@ -18271,8 +18253,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxmenulink = function(method, options) {
@@ -18698,8 +18679,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxmenu = function(method, options) {
@@ -18829,8 +18809,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxnotification = function(options) {
@@ -18979,8 +18958,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxoverlaypanel = function(options) {
@@ -19244,8 +19222,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxoverlaysearch = function(options) {
@@ -19332,8 +19309,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxoverlay = function(options) {
@@ -19651,8 +19627,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxpanelmore = function(options) {
@@ -19814,8 +19789,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxpanelstack = function(method, options) {
@@ -19986,8 +19960,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxpanel = function(method, options) {
@@ -20404,8 +20377,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxradiofield = function(method, options) {
@@ -20788,8 +20760,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxscrolllist = function(options) {
@@ -20974,8 +20945,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxselectfield = function(method, options) {
@@ -21128,8 +21098,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxselectlist = function(method, options) {
@@ -21780,8 +21749,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxsliderbar = function(method, options) {
@@ -21845,8 +21813,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxslider = function(method, options) {
@@ -22300,8 +22267,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxslideshow = function(options) {
@@ -22687,8 +22653,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxsourcelist = function(method, options) {
@@ -23186,8 +23151,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxstack = function(method, options) {
@@ -23374,8 +23338,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxtabpanel = function(options) {
@@ -23548,8 +23511,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxtable = function(method, options) {
@@ -24535,8 +24497,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxtagfield = function(method, options) {
@@ -25147,8 +25108,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxtextfield = function(method, options) {
@@ -26349,8 +26309,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxtogglefield = function(method, options) {
@@ -26597,8 +26556,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxwindow = function(method, options) {
@@ -27180,8 +27138,7 @@ function onYouTubePlayerReady(id) {
  * @version 1.0
  * @category jQuery plugin
  * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
- * @license Hive Solutions Confidential Usage License (HSCUL) -
- *          http://www.hive.pt/licenses/
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
     jQuery.fn.uxwizard = function(method, options) {
