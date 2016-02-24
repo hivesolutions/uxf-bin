@@ -1,32 +1,32 @@
 @charset "utf-8";
 
 /*
- Hive UX Framework
- Copyright (c) 2008-2016 Hive Solutions Lda.
+Hive UX Framework
+Copyright (c) 2008-2016 Hive Solutions Lda.
 
- This file is part of Hive UX Framework.
+This file is part of Hive UX Framework.
 
- Hive UX Framework is free software: you can redistribute it and/or modify
- it under the terms of the Apache License as published by the Apache
- Foundation, either version 2.0 of the License, or (at your option) any
- later version.
+Hive UX Framework is free software: you can redistribute it and/or modify
+it under the terms of the Apache License as published by the Apache
+Foundation, either version 2.0 of the License, or (at your option) any
+later version.
 
- Hive UX Framework is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- Apache License for more details.
+Hive UX Framework is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+Apache License for more details.
 
- You should have received a copy of the Apache License along with
- Hive UX Framework. If not, see <http://www.apache.org/licenses/>.
+You should have received a copy of the Apache License along with
+Hive UX Framework. If not, see <http://www.apache.org/licenses/>.
 */
 
 /*
- __author__    = João Magalhães <joamag@hive.pt>
- __version__   = 1.0.0
- __revision__  = $LastChangedRevision$
- __date__      = $LastChangedDate$
- __copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
- __license__   = Apache License, Version 2.0
+__author__    = João Magalhães <joamag@hive.pt>
+__version__   = 1.0.0
+__revision__  = $LastChangedRevision$
+__date__      = $LastChangedDate$
+__copyright__ = Copyright (c) 2008-2016 Hive Solutions Lda.
+__license__   = Apache License, Version 2.0
 */
 
 .ulite-style .content-error .error {
@@ -964,7 +964,7 @@
     -webkit-user-select: none;
 }
 
-.ulite-style .list.product-description-list > .product-area  > .item {
+.ulite-style .list.product-description-list > .product-area > .item {
     user-select: all;
     -o-user-select: all;
     -moz-user-select: all;
@@ -972,7 +972,7 @@
     -webkit-user-select: all;
 }
 
-.ulite-style .list.product-description-list > .list-area  > .item {
+.ulite-style .list.product-description-list > .list-area > .item {
     opacity: 0.0;
     transition: opacity 0.50s linear;
     -o-transition: opacity 0.50s linear;
@@ -1473,13 +1473,13 @@
     width: 340px;
 }
 
-.ulite-style .slideshow  ul.slideshow-alternates {
+.ulite-style .slideshow ul.slideshow-alternates {
     display: inline-block;
     margin: 4px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 }
 
-.ulite-style .slideshow  ul.slideshow-alternates li {
+.ulite-style .slideshow ul.slideshow-alternates li {
     background: transparent url(../images/slideshow-alternates.png) no-repeat center 0px;
     float: left;
     height: 16px;
@@ -1487,11 +1487,11 @@
     width: 16px;
 }
 
-.ulite-style .slideshow  ul.slideshow-alternates li.active {
+.ulite-style .slideshow ul.slideshow-alternates li.active {
     background-position: center -16px;
 }
 
-.ulite-style .slideshow  ul.slideshow-alternates li:hover {
+.ulite-style .slideshow ul.slideshow-alternates li:hover {
     background-position: center -16px;
 }
 
@@ -1518,7 +1518,7 @@
     margin: 0px 0px 0px 0px;
 }
 
-.ulite-style.violet .slideshow  ul.slideshow-alternates li {
+.ulite-style.violet .slideshow ul.slideshow-alternates li {
     background-image: url(../images/slideshow-alternates-violet.png);
 }
 
