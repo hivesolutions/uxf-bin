@@ -26730,6 +26730,10 @@ function onYouTubePlayerReady(id) {
         };
 
         var _show = function(matchedObject, options) {
+            // retrieves the reference to the top level body element
+            // that is going to be used for global operations
+            var _body = jQuery("body");
+
             // retrieves the overlay element and in case it's not present
             // creates a default element adding it to the start of the
             // top level body element (default behaviour)
@@ -26752,6 +26756,10 @@ function onYouTubePlayerReady(id) {
             if (pending) {
                 return;
             }
+
+            // triggers the hide modal event that is going to ensure
+            // that no modal windows are present in the screen
+            _body.triggerHandler("hide_modal");
 
             // shows the overlay and shows at the same time the
             // current object (window)
@@ -27091,7 +27099,7 @@ function onYouTubePlayerReady(id) {
                 return false;
             }
 
-            // hdies the current set of windows that are visible and
+            // hides the current set of windows that are visible and
             // at the end of the hide operation shows the window
             visibleWindow.fadeOut(150, function() {
                 matchedObject.uxwindow("show");
