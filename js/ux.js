@@ -11161,12 +11161,20 @@ function onYouTubePlayerReady(id) {
 
                 // retrieves all the visible drop fields contents
                 // contained in the current element context (body)
+                // and the reference to each parents
                 var dropFieldContents = jQuery(
                     ".drop-field .drop-field-contents:visible",
                     element);
+                var dropFields = dropFieldContents.parents(".drop-field");
 
-                // hides the drop field contents
-                dropFieldContents.hide();
+                // iterates over each of the drop fields to hide the
+                // associated contents (using proper manner)
+                dropFields.each(function(index, element) {
+                    // retrieves the reference to the current element
+                    // in iteration and hides the drop field contents
+                    var _element = jQuery(this);
+                    _hide(_element);
+                });
             });
 
             // registers for the key down even on the text field
@@ -11203,7 +11211,7 @@ function onYouTubePlayerReady(id) {
                 // visible must act accordingly
                 if (dropFieldContents.is(":visible")) {
                     // hides the drop field contents
-                    dropFieldContents.hide();
+                    _hide(dropField);
                 }
                 // otherwise the normal behavior applies
                 // must blur from the element
@@ -11273,7 +11281,7 @@ function onYouTubePlayerReady(id) {
                 // control flag is set, prevents the browser from hidding
                 // the drop field contents in case before the click event
                 // is propagated
-                !mouseControl && dropFieldContents.hide();
+                !mouseControl && _hide(dropField);
 
                 // checks if the drop field is of type select
                 var isSelect = dropField.hasClass("drop-field-select");
@@ -11404,7 +11412,7 @@ function onYouTubePlayerReady(id) {
 
                             // hides the drop field contents, so that they
                             // are no longer visible to the end-user
-                            dropFieldContents.hide();
+                            _hide(dropField);
 
                             // stops the event propagation
                             // (avoids extra problems in form)
@@ -11555,7 +11563,7 @@ function onYouTubePlayerReady(id) {
                             }
 
                             // hides the drop field contents
-                            dropFieldContents.hide();
+                            _hide(dropField);
                         }
 
                         // breaks the switch
@@ -11564,7 +11572,7 @@ function onYouTubePlayerReady(id) {
                         // in case it's the escape key
                     case 27:
                         // hides the drop field contents
-                        dropFieldContents.hide();
+                        _hide(dropField);
 
                         // stops the event propagation (to
                         // avoid colateral problem in text field)
@@ -11756,7 +11764,7 @@ function onYouTubePlayerReady(id) {
             // type is not select the drop field contents panel must
             // be hidden (nova valid data to be shown)
             if (textFieldValue == "" && !isSelect) {
-                dropFieldContents.hide();
+                _hide(dropField);
             }
 
             // creates the filter string from the text field value in
@@ -12395,7 +12403,7 @@ function onYouTubePlayerReady(id) {
             _updateSelection(dropField, options);
 
             // hides the drop field contents
-            dropFieldContents.hide();
+            _hide(dropField);
         };
 
         var _location = function(matchedObject, valueLink) {
@@ -12469,7 +12477,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the current drop field contents are not visible
             // hides them back (original visibility)
-            !isVisible && dropFieldContents.hide();
+            !isVisible && _hide(dropField);
 
             // sets the drop field contents width with the resulting value
             // so that the contents placeholder is properly updated
