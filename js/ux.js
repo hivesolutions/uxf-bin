@@ -21815,8 +21815,8 @@ function onYouTubePlayerReady(id) {
             // callback function then unbinds it from the click
             // even on the overlay
             var overlay = jQuery(".overlay:first");
-            var handle = matchedObject.data("click_handler");
-            overlay.unbind("click", handle);
+            var handler = matchedObject.data("click_handler");
+            handler && overlay.unbind("click", handler);
         };
 
         var __registerKey = function(matchedObject, options) {
@@ -21845,8 +21845,8 @@ function onYouTubePlayerReady(id) {
             // element and then unregisters the key down event
             // handler from it (avoid duplicated events)
             var _document = jQuery(document);
-            var handle = matchedObject.data("key_handler");
-            _document.unbind("keydown", handle);
+            var handler = matchedObject.data("key_handler");
+            handler && _document.unbind("keydown", handler);
         };
 
         // initializes the plugin
@@ -27103,8 +27103,8 @@ function onYouTubePlayerReady(id) {
             // callback function then unbinds it from the click
             // even on the overlay
             var overlay = jQuery(".overlay:first");
-            var handle = matchedObject.data("click_handler");
-            overlay.unbind("click", handle);
+            var handler = matchedObject.data("click_handler");
+            handler && overlay.unbind("click", handler);
         };
 
         var __registerKey = function(matchedObject, options) {
@@ -27133,8 +27133,8 @@ function onYouTubePlayerReady(id) {
             // element and then unregisters the key down event
             // handler from it (avoid duplicated events)
             var _document = jQuery(document);
-            var handle = matchedObject.data("key_handler");
-            _document.unbind("keydown", handle);
+            var handler = matchedObject.data("key_handler");
+            handler && _document.unbind("keydown", handler);
         };
 
         var _registerButtons = function(matchedObject, options) {
