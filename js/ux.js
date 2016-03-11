@@ -21713,11 +21713,12 @@ function onYouTubePlayerReady(id) {
          */
         var _appendHtml = function() {
             // iterates over the complete set of element to update their
-            // initial right positions according to their width
+            // initial side positions according to their width
             matchedObject.each(function(index, element) {
                 var _element = jQuery(this);
                 var width = _element.outerWidth(true);
-                _element.css("right", (width * -1) + "px");
+                var side = _element.attr("data-side") || "right";
+                _element.css(side, (width * -1) + "px");
             });
         };
 
@@ -21787,13 +21788,14 @@ function onYouTubePlayerReady(id) {
             matchedObject.data("visible", true);
             var overlay = _ensureOverlay();
             var width = matchedObject.outerWidth(true);
+            var side = matchedObject.attr("data-side") || "right";
             overlay.triggerHandler("resize");
             overlay.triggerHandler("show", [350]);
-            matchedObject.css("right", (width * -1) + "px");
+            var animation = {};
+            animation[side] = 0;
+            matchedObject.css(side, (width * -1) + "px");
             matchedObject.show();
-            matchedObject.animate({
-                right: 0
-            }, {
+            matchedObject.animate(animation, {
                 duration: 350,
                 easing: "swing",
                 complete: function() {
@@ -21811,13 +21813,14 @@ function onYouTubePlayerReady(id) {
             matchedObject.data("visible", false);
             var overlay = _ensureOverlay();
             var width = matchedObject.outerWidth(true);
+            var side = matchedObject.attr("data-side") || "right";
             __unregisterClick(matchedObject, options);
             __unregisterKey(matchedObject, options);
             overlay.triggerHandler("hide", [350]);
-            matchedObject.css("right", 0 + "px");
-            matchedObject.animate({
-                right: width * -1
-            }, {
+            var animation = {};
+            animation[side] = width * -1;
+            matchedObject.css(side, 0 + "px");
+            matchedObject.animate(animation, {
                 duration: 350,
                 easing: "swing",
                 complete: function() {
