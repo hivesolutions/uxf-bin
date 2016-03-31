@@ -2967,7 +2967,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             // updates the matched object html with the video embed object
             // that will include a flash object into the code
             matchedObject.html("<" + tag + " id=\"youtube-player\" width=\"" + width + "\" height=\"" +
-                height + "\" src=\"http://www.youtube.com/" + prefixUrl + "/" + videoId + "?" + hdValue +
+                height + "\" src=\"//www.youtube.com/" + prefixUrl + "/" + videoId + "?" + hdValue +
                 "&" + infoValue + "&" + controlsValue + "&" + autoPlayValue +
                 "&playerapiid=youtube-player" + "&version=3" + "&enablejsapi=1" +
                 "\" frameborder=\"0\"" + " allowfullscreen=\"true\"" + " allowscriptaccess=\"always\"" +
@@ -2996,7 +2996,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var autoPlayValue = autoPlay ? "autoplay=1" : "autoplay=0";
 
             // updates the matched object html with the video iframe
-            matchedObject.html("<iframe src=\"http://player.vimeo.com/video" + resourceReference + "?" +
+            matchedObject.html("<iframe src=\"//player.vimeo.com/video" + resourceReference + "?" +
                 infoValue + "&" + autoPlayValue + "\" width=\"" + width + "\" height=\"" + height +
                 "\" frameborder=\"0\" webkitAllowFullScreen allowFullScreen></iframe>");
         };
@@ -3022,7 +3022,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var autoPlayValue = autoPlay ? "autoplay=1" : "autoplay=0";
 
             // updates the matched object html with the video iframe
-            matchedObject.html("<iframe src=\"http://www.dailymotion.com/embed" + resourceReference + "?" +
+            matchedObject.html("<iframe src=\"//www.dailymotion.com/embed" + resourceReference + "?" +
                 chromelessValue + "&" + autoPlayValue + "\" width=\"" + width + "\" height=\"" + height +
                 "\" frameborder=\"0\" webkitAllowFullScreen allowfullscreen></iframe>");
         };
