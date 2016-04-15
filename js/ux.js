@@ -6408,7 +6408,7 @@ function onYouTubePlayerReady(id) {
         // as some browsers don't trigger the resize event correctly
         !isRegistered && setInterval(function() {
             watch();
-        }, 250);
+        }, 1000);
 
         // measures the current pixel properties of the screen
         // and populates the proper structures
