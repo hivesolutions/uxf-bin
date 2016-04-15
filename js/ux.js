@@ -6244,12 +6244,19 @@ function onYouTubePlayerReady(id) {
         // and the window object, to be used in the resize event
         var matchedObject = this;
         var _window = jQuery(window);
+        var _body = jQuery("body");
 
         // verifies if there's at leat one valid object matched and
         // if that's not the case returns the current context immediately
         if (!matchedObject || matchedObject.length == 0) {
             return this;
         }
+
+        // checks if the responsive global event is already
+        // registerd in the body and sets the variable as
+        // true to avoid further registrations
+        var isRegistered = _body.data("responsive_global");
+        _body.data("responsive_global", true);
 
         // tries to retrieve the complete set of pixel based values for
         // border width and height values, these values are going to be
@@ -6392,9 +6399,16 @@ function onYouTubePlayerReady(id) {
 
         // registers for the resize event on the current window so
         // thtat the proper watch (tick) operation is performed
-        _window.resize(function(event) {
+        !isRegistered && _window.resize(function() {
             watch();
         });
+
+        // registers a new interval that is going to passively wath
+        // the current viewport from time to time, this is required
+        // as some browsers don't trigger the resize event correctly
+        !isRegistered && setInterval(function() {
+            watch();
+        }, 250);
 
         // measures the current pixel properties of the screen
         // and populates the proper structures
