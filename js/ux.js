@@ -52,7 +52,7 @@
         var _appendHtml = function() {
             // validates that there's a valid matched object,
             // otherwise returns immediately
-            if (matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length == 0) {
                 return;
             }
 
@@ -345,7 +345,7 @@
         var _registerHandlers = function() {
             // validates that there's a valid matched object,
             // otherwise returns immediately
-            if (matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length == 0) {
                 return;
             }
 
@@ -5986,7 +5986,7 @@ function onYouTubePlayerReady(id) {
         // retrieves the current matched object and in case the
         // length of it is zero returns immediately in error
         var matchedObject = this;
-        if (matchedObject.length == 0) {
+        if (!matchedObject || matchedObject.length == 0) {
             return false;
         }
 
@@ -6138,7 +6138,7 @@ function onYouTubePlayerReady(id) {
          */
         var _appendHtml = function() {
             // in case the matched object is empty
-            if (matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length == 0) {
                 // returns immediately
                 return;
             }
@@ -27990,7 +27990,7 @@ jQuery(document).ready(function() {
                 delay(element, 25);
                 return;
             }
-            elements.uxapply();
+            element.uxapply();
         }, timeout);
     };
 
