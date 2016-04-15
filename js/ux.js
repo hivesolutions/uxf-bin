@@ -6252,12 +6252,6 @@ function onYouTubePlayerReady(id) {
             return this;
         }
 
-        // checks if the responsive global event is already
-        // registerd in the body and sets the variable as
-        // true to avoid further registrations
-        var isRegistered = _body.data("responsive_global");
-        _body.data("responsive_global", true);
-
         // tries to retrieve the complete set of pixel based values for
         // border width and height values, these values are going to be
         // used by the watch function to determine the correct classes
@@ -6399,14 +6393,14 @@ function onYouTubePlayerReady(id) {
 
         // registers for the resize event on the current window so
         // thtat the proper watch (tick) operation is performed
-        !isRegistered && _window.resize(function() {
+        _window.resize(function() {
             watch();
         });
 
         // registers a new interval that is going to passively wath
         // the current viewport from time to time, this is required
         // as some browsers don't trigger the resize event correctly
-        !isRegistered && setInterval(function() {
+        setInterval(function() {
             watch();
         }, 1000);
 
