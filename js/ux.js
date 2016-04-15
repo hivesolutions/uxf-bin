@@ -38,60 +38,18 @@
         var matchedObject = this;
 
         /**
-         * Initial boot operation that triggers the multiplexing operation for
-         * each of the selected elements.
-         */
-        var boot = function() {
-            matchedObject.each(function(index, element) {
-                var _element = jQuery(this);
-                setup(_element, options);
-            });
-        };
-
-        /**
-         * Setup operation responsible for the (optional) validation of the
-         * provided object and in case it passes the initialization process for
-         * it is enabled.
-         */
-        var setup = function(matchedObject, options) {
-            var safe = matchedObject.hasClass("safe");
-            var valid = !safe || _isValid(matchedObject, options);
-            if (!valid) {
-                var timeout = matchedObject.attr("data-timeout") || 25;
-                timeout = parseInt(timeout);
-                setTimeout(function() {
-                    setup(matchedObject, options);
-                }, timeout);
-                return;
-            }
-
-            // runs the initialization process for the current
-            // (validated object) with the proper options
-            initialize(matchedObject, options);
-
-            // triggers an event indicating that the ux components
-            // have finished the application of the structures, note
-            // that the base of the apply is sent as an argument, this
-            // is not a jquery standard and is used as an exception
-            var _body = jQuery("body");
-            _body.triggerHandler("pre_applied", [matchedObject]);
-            _body.triggerHandler("applied", [matchedObject]);
-            _body.triggerHandler("post_applied", [matchedObject]);
-        };
-
-        /**
          * Initializer of the plugin, runs the necessary functions to initialize
          * the structures.
          */
-        var initialize = function(matchedObject, options) {
-            _appendHtml(matchedObject, options);
-            _registerHandlers(matchedObject, options);
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
         };
 
         /**
          * Creates the necessary html for the component.
          */
-        var _appendHtml = function(matchedObject, options) {
+        var _appendHtml = function() {
             // validates that there's a valid matched object,
             // otherwise returns immediately
             if (!matchedObject || matchedObject.length == 0) {
@@ -345,6 +303,12 @@
             // applies the print plugin
             _print.uxprint();
 
+            // applies the resize plugin, responsible for the "artificial"
+            // emulation of the resize event on the window object using a
+            // pre-defined timeout interval, this way it's possible to overcome
+            // some resize event related limitations on some browsers
+            _body.uxresize();
+
             // applies the mobile plugin, this extension is going
             // to change the classes of the body for a mobile browser
             // situation, that way the code may be used conditionaly
@@ -384,7 +348,7 @@
         /**
          * Registers the event handlers for the created objects.
          */
-        var _registerHandlers = function(matchedObject, options) {
+        var _registerHandlers = function() {
             // validates that there's a valid matched object,
             // otherwise returns immediately
             if (!matchedObject || matchedObject.length == 0) {
@@ -440,20 +404,17 @@
             } catch (exception) {}
         };
 
-        var _isValid = function(matchedObject, options) {
-            if (matchedObject.width() <= 0) {
-                return false;
-            }
-            if (matchedObject.height() <= 0) {
-                return false;
-            }
-            return true
-        };
+        // initializes the plugin
+        initialize();
 
-        // runs the "initial" boot operation that should be
-        // able to apply all the values to a certain set of
-        // target or targets (multiplexing handled)
-        boot();
+        // triggers an event indicating that the ux components
+        // have finished the application of the structures, note
+        // that the base of the apply is sent as an argument, this
+        // is not a jquery standard and is used as an exception
+        var _body = jQuery("body");
+        _body.triggerHandler("pre_applied", [matchedObject]);
+        _body.triggerHandler("applied", [matchedObject]);
+        _body.triggerHandler("post_applied", [matchedObject]);
 
         // returns the object
         return this;
@@ -6239,12 +6200,39 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
+    jQuery.fn.uxresize = function() {
+        // retrieves the references to the current matched object
+        // and the window object, to be used in the resize event
+        var matchedObject = this;
+        var _window = jQuery(window);
+
+        // verifies if there's at leat one valid object matched and
+        // if that's not the case returns the current context immediately
+        if (!matchedObject || matchedObject.length == 0) {
+            return this;
+        }
+
+        // tries to retrieve the defined generate timeout value
+        // from the matched object and in case it's not defined
+        // fallback to a defualt value, then uses this value to
+        // define a timeout for the resize operation
+        var timeout = matchedObject.attr("data-timeout") || 1000;
+        setTimeout(function() {
+            _window.trigger("resize");
+        }, timeout);
+
+        // returns the reference to the current context to
+        // the caller object so that it may be "re-used"
+        return this;
+    };
+})(jQuery);
+
+(function(jQuery) {
     jQuery.fn.uxresponsive = function() {
         // retrieves the references to the current matched object
         // and the window object, to be used in the resize event
         var matchedObject = this;
         var _window = jQuery(window);
-        var _body = jQuery("body");
 
         // verifies if there's at leat one valid object matched and
         // if that's not the case returns the current context immediately
@@ -6396,13 +6384,6 @@ function onYouTubePlayerReady(id) {
         _window.resize(function() {
             watch();
         });
-
-        // registers a new interval that is going to passively wath
-        // the current viewport from time to time, this is required
-        // as some browsers don't trigger the resize event correctly
-        setInterval(function() {
-            watch();
-        }, 1000);
 
         // measures the current pixel properties of the screen
         // and populates the proper structures
