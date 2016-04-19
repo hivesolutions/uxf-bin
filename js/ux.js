@@ -10528,14 +10528,14 @@ function onYouTubePlayerReady(id) {
 
             // registers for the enable operation of the current
             // drop down so that the interaction is enabled
-            matchedObject.bind("enable", function() {
+            matchedObject.bind("enable enabled", function() {
                 var element = jQuery(this);
                 _enable(element, options);
             });
 
             // registers for the disable operation of the current
             // drop down so that the interaction is disabled
-            matchedObject.bind("disable", function() {
+            matchedObject.bind("disable disabled", function() {
                 var element = jQuery(this);
                 _disable(element, options);
             });
@@ -11181,7 +11181,7 @@ function onYouTubePlayerReady(id) {
 
             // binds the drop field do the enabled event
             // so that is possible to propagate the enabling
-            matchedObject.bind("enabled", function() {
+            matchedObject.bind("enable enabled", function() {
                 // retrieves the current element and the associated
                 // text field element
                 var element = jQuery(this);
@@ -11194,7 +11194,7 @@ function onYouTubePlayerReady(id) {
 
             // binds the drop field to the disabled event
             // so that is possible to propagate the disabling
-            matchedObject.bind("disabled", function() {
+            matchedObject.bind("disable disabled", function() {
                 // retrieves the current element and the associated
                 // text field element
                 var element = jQuery(this);
@@ -17608,7 +17608,7 @@ function onYouTubePlayerReady(id) {
 
             // binds the incremental field do the enabled event
             // so that is possible to propagate the enabling
-            incrementalField.bind("enabled", function() {
+            incrementalField.bind("enable enabled", function() {
                 // retrieves the current element and the associated
                 // text field and button elements
                 var element = jQuery(this);
@@ -17623,7 +17623,7 @@ function onYouTubePlayerReady(id) {
 
             // binds the incremental field do the disabled event
             // so that is possible to propagate the disabling
-            incrementalField.bind("disabled", function() {
+            incrementalField.bind("disable disabled", function() {
                 // retrieves the current element and the associated
                 // text field and button elements
                 var element = jQuery(this);
@@ -24645,15 +24645,15 @@ function onYouTubePlayerReady(id) {
                     uploaderInput.trigger("click");
                 });
 
-                // registers for the disavled event in the element
+                // registers for the disabled event in the element
                 // to hide the uploader input from the layout
-                _element.bind("disabled", function() {
+                _element.bind("disable disabled", function() {
                     uploaderInput.hide();
                 });
 
                 // registers for the enabled event in the element
                 // to (re)-show the upload input again the layout
-                _element.bind("enabled", function() {
+                _element.bind("enable enabled", function() {
                     uploaderInput.show();
                 });
 
@@ -26663,7 +26663,7 @@ function onYouTubePlayerReady(id) {
 
             // binds the toggle field do the enabled event
             // so that is possible to propagate the enabling
-            toggleField.bind("enabled", function() {
+            toggleField.bind("enable enabled", function() {
                 // retrieves the current element and the associated
                 // text field and button elements
                 var element = jQuery(this);
@@ -26678,7 +26678,7 @@ function onYouTubePlayerReady(id) {
 
             // binds the toggle field do the disabled event
             // so that is possible to propagate the disabling
-            toggleField.bind("disabled", function() {
+            toggleField.bind("disable disabled", function() {
                 // retrieves the current element and the associated
                 // text field and button elements
                 var element = jQuery(this);
