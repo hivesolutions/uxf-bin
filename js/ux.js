@@ -5799,8 +5799,16 @@ function onYouTubePlayerReady(id) {
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
                 // retrieves the element reference and
-                // adds the disabled class from to it
+                // verifies that it's not currently disabled
+                // if that's the case returns immediately
                 var _element = jQuery(element);
+                var isDisabled = _element.hasClass("disabled") || element.attr(name);
+                if (isDisabled) {
+                    return;
+                }
+
+                // adds the disabled class to the element, marking
+                // it as currently disabled
                 _element.addClass("disabled");
 
                 // checks if the currently element is an input field
@@ -5857,8 +5865,16 @@ function onYouTubePlayerReady(id) {
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
                 // retrieves the element reference and
-                // removes the disabled class from the it
+                // verifies that it is currently disabled
+                // if that's not the case returns immediately
                 var _element = jQuery(element);
+                var isDisabled = _element.hasClass("disabled") || element.attr("disabled");
+                if (!isDisabled) {
+                    return;
+                }
+
+                // removes the disabled class from the element, marking
+                // it as currently enabled
                 _element.removeClass("disabled");
 
                 // checks if the currently matche object is an input field
