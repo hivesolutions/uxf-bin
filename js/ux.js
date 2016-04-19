@@ -5802,7 +5802,7 @@ function onYouTubePlayerReady(id) {
                 // verifies that it's not currently disabled
                 // if that's the case returns immediately
                 var _element = jQuery(element);
-                var isDisabled = _element.hasClass("disabled") || element.attr(name);
+                var isDisabled = _element.hasClass("disabled") || _element.attr(name);
                 if (isDisabled) {
                     return;
                 }
@@ -5868,7 +5868,7 @@ function onYouTubePlayerReady(id) {
                 // verifies that it is currently disabled
                 // if that's not the case returns immediately
                 var _element = jQuery(element);
-                var isDisabled = _element.hasClass("disabled") || element.attr("disabled");
+                var isDisabled = _element.hasClass("disabled") || _element.attr("disabled");
                 if (!isDisabled) {
                     return;
                 }
