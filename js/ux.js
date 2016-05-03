@@ -12674,7 +12674,7 @@ function onYouTubePlayerReady(id) {
 
             case "value":
                 // retrieves the value and returns it to the
-                // caller function for handling
+                // caler function for handling
                 var value = _value(matchedObject, options);
                 return value;
 
@@ -27187,7 +27187,7 @@ function onYouTubePlayerReady(id) {
             var forms = jQuery(".form", matchedObject);
             forms.each(function(index, element) {
                 var _element = jQuery(this);
-                _element.triggerHandler("reset");
+                _element.triggerHandler("original");
             });
 
             // retrieves the complete set of fields (form fields)
