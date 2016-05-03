@@ -6153,6 +6153,40 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
+    jQuery.fn.uxoriginal = function() {
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        // iterates over all the elements that were selected
+        // in order to perform the original operation in each of them
+        matchedObject.each(function(index, element) {
+            // retrieves the reference to the current
+            // element for which the original operation will
+            // be perfomed and the value set to the original
+            var _element = jQuery(this);
+
+            // retrieves the object (type) for the currently
+            // matched object then uses it to construct the method
+            // name to be used and uses it to restore the state of
+            // the object to its original value, note that the reset
+            // operation is unsed in case no original exists
+            var object = _element.attr("data-object");
+            var method = _element["ux" + object];
+            var result = method ? method.call(_element, "original") : false;
+            !result && method && method.call(_element, "reset");
+
+            // triggers the original event on the current element indicating
+            // that a original operation has been performed in it
+            _element.triggerHandler("_original");
+        });
+
+        // returns the reference to the current context to
+        // the caller object so that it may be "re-used"
+        return this;
+    };
+})(jQuery);
+
+(function(jQuery) {
     jQuery.fn.uxprint = function(method, options) {
         // the default values for the enable
         var defaults = {};
@@ -6218,8 +6252,8 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the object (type) for the currently
             // matched object then uses it to construct the method
-            // name to be used and uses it to retrieve the the
-            // value for the component
+            // name to be used and uses it to restore the state of
+            // the object to its empty state
             var object = _element.attr("data-object");
             var method = _element["ux" + object];
             method && method.call(_element, "reset");
@@ -8615,23 +8649,18 @@ function onYouTubePlayerReady(id) {
             case "set":
                 // sets the new current value in the matched object
                 _set(matchedObject, options);
-
-                // breaks the switch
                 break;
 
             case "reset":
                 // resets the matched object to the value
-                // in the current state
+                // in the current state and returns a valid
+                // value, meaning that proper reset was performed
                 _reset(matchedObject, options);
-
-                // breaks the switch
-                break;
+                return true;
 
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
@@ -10886,13 +10915,13 @@ function onYouTubePlayerReady(id) {
                 // runs the original operation on the currently matched
                 // object so that the element is restored to original
                 _original(matchedObject, options);
-                break;
+                return true;
 
             case "reset":
                 // runs the reset operation on the currently matched
                 // object so that the element is restored to empty
                 _reset(matchedObject, options);
-                break;
+                return true;
 
             case "default":
                 // initializes the plugin and then breaks the current
@@ -12630,37 +12659,28 @@ function onYouTubePlayerReady(id) {
             case "set":
                 // sets the value in the drop field value
                 _set(matchedObject, options);
-
-                // breaks the switch
                 break
 
             case "reset":
                 // resets the drop field value
                 _reset(matchedObject, options);
-
-                // breaks the switch
-                break
+                return true;
 
             case "index":
                 // selects the proper index value in the drop
                 // field, usefull for drop field select elements
                 _index(matchedObject, options);
-
-                // breaks the switch
                 break
 
             case "value":
-                // retrieves the value
+                // retrieves the value and returns it to the
+                // caller function for handling
                 var value = _value(matchedObject, options);
-
-                // returns the value
                 return value;
 
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
@@ -16451,6 +16471,16 @@ function onYouTubePlayerReady(id) {
                 }
             });
 
+            // registers for the original event on the matched object
+            // so that the form may perform the original form operation
+            // under such conditions
+            matchedObject.bind("original", function(event, noFull) {
+                // retrieves the current element and runs
+                // the original for operation for it
+                var element = jQuery(this);
+                originalForm(element, options, !noFull);
+            });
+
             // registers for the reset event on the matched object
             // so that the form may perform the reset form operation
             // under such conditions
@@ -16838,6 +16868,18 @@ function onYouTubePlayerReady(id) {
             matchedObject.trigger("layout");
         };
 
+        var originalForm = function(matchedObject, options) {
+            // restores the error part of the form to the original values so that
+            // they don't appear in the form (original state)
+            resetErrors(matchedObject, options);
+
+            // retrieves the complete set of elements from the matched object
+            // and runs the original operation on all of them, this should be able
+            // to restore them to their original values
+            var elements = matchedObject.uxfields();
+            elements.uxoriginal();
+        };
+
         var resetForm = function(matchedObject, options, full) {
             // restores the error part of the form to the original values so that
             // they don't appear in the form (original state)
@@ -16845,7 +16887,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the complete set of elements from the matched object
             // and runs the reset operation on all of them, this should be able
-            // to restore them to their original values
+            // to restore them to their empty values
             var elements = matchedObject.uxfields();
             elements.uxreset();
 
@@ -20717,15 +20759,11 @@ function onYouTubePlayerReady(id) {
             case "reset":
                 // runs the reset method in the current element
                 _reset(matchedObject, options);
-
-                // breaks the switch
-                break;
+                return true;
 
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
@@ -24488,22 +24526,16 @@ function onYouTubePlayerReady(id) {
             case "clear":
                 // clears the table contents
                 _clear(matchedObject, options);
-
-                // breaks the switch
                 break;
 
             case "reset":
                 // clears the table contents
                 _clear(matchedObject, options);
-
-                // breaks the switch
-                break;
+                return true;
 
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
@@ -26495,39 +26527,30 @@ function onYouTubePlayerReady(id) {
         // switches over the method
         switch (method) {
             case "value":
-                // retrieves the value
+                // retrieves the value and returns it to
+                // the caller method for proper handling
                 var value = _value(matchedObject, options);
-
-                // returns the value
                 return value;
 
             case "reset":
                 // resets the current text field value to
                 // its original value
                 _reset(matchedObject, options);
-
-                // breaks the switch
-                break;
+                return true;
 
             case "focus":
                 // focus the matched object
                 _focus(matchedObject, options);
-
-                // breaks the switch
                 break;
 
             case "blur":
                 // blurs the matched object
                 _blur(matchedObject, options);
-
-                // breaks the switch
                 break;
 
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
@@ -26766,15 +26789,11 @@ function onYouTubePlayerReady(id) {
                 // resets the matched object to the value
                 // in the current state
                 _reset(matchedObject, options);
-
-                // breaks the switch
-                break;
+                return true;
 
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
