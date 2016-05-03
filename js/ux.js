@@ -6173,7 +6173,7 @@ function onYouTubePlayerReady(id) {
             var object = _element.attr("data-object");
             var method = _element["ux" + object];
             var result = method ? method.call(_element, "original") : false;
-            !result && method && method.call(_element, "reset");
+            result != true && method && method.call(_element, "reset");
 
             // triggers the original event on the current element indicating
             // that a original operation has been performed in it
@@ -20855,7 +20855,7 @@ function onYouTubePlayerReady(id) {
             // that the default value is set instead of the current one
             matchedObject.bind("_reset", function() {
                 var element = jQuery(this);
-                _value(element, 0);
+                _reset(element, options);
             });
 
             // register for the mouse over event in the rating elements
@@ -20986,7 +20986,7 @@ function onYouTubePlayerReady(id) {
                 var item = jQuery(items[index]);
                 item.addClass("inactive");
             }
-        }
+        };
 
         var _blur = function(matchedObject, options) {
             // sets the passed matched object as the current element
@@ -20998,15 +20998,23 @@ function onYouTubePlayerReady(id) {
             // set of items as none of them is selected (focused) now
             items.removeClass("hover");
             items.removeClass("inactive");
-        }
+        };
+
+        var _reset = function(matchedObject, options) {
+            _value(matchedObject, 0);
+        };
 
         // switches over the method
         switch (method) {
+            case "reset":
+                // runs the reset operation in the current
+                // object and returns a valid operation
+                _reset(matchedObject, options);
+                return true;
+
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
@@ -25802,6 +25810,13 @@ function onYouTubePlayerReady(id) {
             }
         };
 
+        var _original = function(matchedObject, options) {
+            var original = matchedObject.data("original") || ""
+            _value(matchedObject, {
+                value: original
+            });
+        };
+
         var _reset = function(matchedObject, options) {
             _value(matchedObject, {
                 value: ""
@@ -25920,6 +25935,10 @@ function onYouTubePlayerReady(id) {
             // if the autcomplete feature must be forced in non compliant
             // browsers (eg: firefox)
             var forceComplete = matchedObject.attr("data-force_complete");
+
+            // sets the proper original value that is going to be used latter
+            // for the original envent to restore original state
+            matchedObject.data("original", originalValue || elementValue || inputFieldValue);
 
             // in case the element value is not provided
             if (elementValue != null) {
@@ -26532,9 +26551,15 @@ function onYouTubePlayerReady(id) {
                 var value = _value(matchedObject, options);
                 return value;
 
+            case "original":
+                // restores the text field value to the
+                // its original value
+                _original(matchedObject, options);
+                return true;
+
             case "reset":
                 // resets the current text field value to
-                // its original value
+                // its default/empty value
                 _reset(matchedObject, options);
                 return true;
 
@@ -27200,7 +27225,7 @@ function onYouTubePlayerReady(id) {
             // focus the control on the first field of the window
             // form, providing a rapid interaction scheme for
             // the end user (form reset operation)
-            fields.uxreset();
+            fields.uxoriginal();
             first.uxfocus();
         };
 
