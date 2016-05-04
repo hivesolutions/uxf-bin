@@ -18126,14 +18126,12 @@ function onYouTubePlayerReady(id) {
                 // retrieves the element
                 var element = jQuery(this);
 
-                // calls the confirm part
+                // calls the confirm part that will initialize
+                // the process of message based verification
                 _call(element, options);
 
-                // stops the propagation of the event both
-                // ot the next handlers and to the immediate
-                //one and then prevent the default behaviour
-                event.stopPropagation();
-                event.stopImmediatePropagation();
+                // prevents the default behaviour of the element
+                // (link) so that no document redirection occurs
                 event.preventDefault();
             });
         };
@@ -18159,7 +18157,8 @@ function onYouTubePlayerReady(id) {
                 }
 
                 // retrieves the matched object location and
-                // sets it in the document
+                // sets it in the document effectively changing
+                // the location of the current document
                 var location = matchedObject.attr("href");
                 jQuery.uxlocation(location);
             }, {
@@ -18177,7 +18176,7 @@ function onYouTubePlayerReady(id) {
 
 (function(jQuery) {
     jQuery.fn.uxlink = function(options) {
-        // the default values for the link confirm
+        // the default values for the link
         var defaults = {};
 
         // sets the default options value
