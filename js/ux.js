@@ -17223,8 +17223,7 @@ function onYouTubePlayerReady(id) {
                 var isRetina = _body.hasClass("retina-s");
                 var attribute = isRetina ? "data-url_retina" : "data-url";
                 var src = _element.attr("src") || _element.attr(attribute);
-                src = src || _element.attr("data-url");
-                _element.attr("data-url", src);
+                _element.attr(attribute, src);
                 _element.removeAttr("src");
                 setTimeout(function() {
                     updateState(_element);
@@ -17290,8 +17289,11 @@ function onYouTubePlayerReady(id) {
                 return;
             }
 
+            var _body = jQuery("body");
+            var isRetina = _body.hasClass("retina-s");
+            var attribute = isRetina ? "data-url_retina" : "data-url";
             var src = element.attr("src");
-            var dataUrl = element.attr("data-url");
+            var dataUrl = element.attr(attribute);
             if (src || !dataUrl) {
                 return;
             }
