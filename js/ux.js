@@ -148,6 +148,7 @@
             var dateTime = jQuery(".date-time", matchedObject).not(".template .date-time");
             var enumeration = jQuery(".enumeration", matchedObject).not(".template .enumeration");
             var number = jQuery(".number", matchedObject).not(".template .number");
+            var money = jQuery(".money", matchedObject).not(".template .money");
             var timestamp = jQuery(".timestamp", matchedObject).not(".template .timestamp");
             var slideshow = jQuery(".slideshow", matchedObject).not(".template .slideshow");
             var chart = jQuery(".chart", matchedObject).not(".template .chart");
@@ -277,6 +278,7 @@
             dateTime.uxdatetime();
             enumeration.uxenumeration();
             number.uxnumber();
+            number.uxmoney();
             timestamp.uxtimestamp();
             slideshow.uxslideshow();
             chart.uxchart();
@@ -6668,6 +6670,61 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
+    jQuery.fn.uxmoney = function(options) {
+        // the default values for the name change
+        var defaults = {};
+
+        // sets the default options value
+        var options = options ? options : {};
+
+        // constructs the options
+        var options = jQuery.extend(defaults, options);
+
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        /**
+         * Initializer of the plugin, runs the necessary functions to initialize
+         * the structures.
+         */
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
+        };
+
+        /**
+         * Creates the necessary html for the component.
+         */
+        var _appendHtml = function() {
+            // iterates over all the matched objects
+            matchedObject.each(function(index, element) {
+                var _element = jQuery(this);
+                var value = _element.attr("data-value") || _element.text();
+                var currency = _element.attr("data-currency");
+                var valueF = parseFloat(value);
+                if (isNaN(valueF) || !currency) {
+                    return;
+                }
+                var valueS = valueF.formatMoney(null, null, null,
+                    currency, true);
+                _element.text(valueS);
+            });
+        };
+
+        /**
+         * Registers the event handlers for the created objects.
+         */
+        var _registerHandlers = function() {};
+
+        // initializes the plugin
+        initialize();
+
+        // returns the object
+        return this;
+    };
+})(jQuery);
+
+(function(jQuery) {
     jQuery.fn.uxnumber = function(options) {
         // the default values for the name change
         var defaults = {};
@@ -6700,7 +6757,7 @@ function onYouTubePlayerReady(id) {
                 var _element = jQuery(element);
 
                 // retrieves the various attributes of
-                // the element
+                // the element to be used in the format
                 var places = _element.attr("data-places");
                 var separator = _element.attr("data-separator");
                 var magnitudeSeparator = _element.attr("data-magnitude_separator");
