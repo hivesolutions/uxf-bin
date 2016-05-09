@@ -17269,8 +17269,8 @@ function onYouTubePlayerReady(id) {
 
             !isRegistered && _window.scroll(function() {
                 var imagesLazy = jQuery(".image-lazy", _body);
-                imagesLazy = imagesLazy.not(":loading");
-                imagesLazy = imagesLazy.not(":loaded");
+                imagesLazy = imagesLazy.not(".loading");
+                imagesLazy = imagesLazy.not(".loaded");
                 imagesLazy.each(function(index, element) {
                     var _element = jQuery(this);
                     updateState(_element);
@@ -17279,8 +17279,8 @@ function onYouTubePlayerReady(id) {
 
             !isRegistered && _window.resize(function() {
                 var imagesLazy = jQuery(".image-lazy", _body);
-                imagesLazy = imagesLazy.not(":loading");
-                imagesLazy = imagesLazy.not(":loaded");
+                imagesLazy = imagesLazy.not(".loading");
+                imagesLazy = imagesLazy.not(".loaded");
                 imagesLazy.each(function(index, element) {
                     var _element = jQuery(this);
                     updateState(_element);
@@ -17289,8 +17289,8 @@ function onYouTubePlayerReady(id) {
 
             !isRegistered && setInterval(function() {
                 var imagesLazy = jQuery(".image-lazy", _body);
-                imagesLazy = imagesLazy.not(":loading");
-                imagesLazy = imagesLazy.not(":loaded");
+                imagesLazy = imagesLazy.not(".loading");
+                imagesLazy = imagesLazy.not(".loaded");
                 imagesLazy.each(function(index, element) {
                     var _element = jQuery(this);
                     updateState(_element);
