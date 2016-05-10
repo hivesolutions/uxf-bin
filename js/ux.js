@@ -17273,6 +17273,11 @@ function onYouTubePlayerReady(id) {
             // element to be used for global retrieval
             var _body = jQuery("body");
 
+            // adds the initial unloaded class to the complete
+            // set of lazy loaded images, as by default each
+            // image is unloaded on the initial state
+            matchedObject.addClass("unloaded");
+
             // iterates over each of the selected images
             // to start their (initial) state, note that
             // this operation is delayed by timeout
@@ -17316,6 +17321,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.bind("load", function() {
                 var element = jQuery(this);
                 element.removeClass("loading");
+                element.removeClass("unloaded");
                 element.addClass("loaded");
             });
 
