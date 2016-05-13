@@ -6047,6 +6047,11 @@ function onYouTubePlayerReady(id) {
                     isFullscreen = isFullScreen || this.fullscreenElement || this.mozFullScreenElement || this.webkitFullscreenElement ||
                         this.msFullscreenElement;
                     isFullscreen = isFullscreen ? true : false;
+                    if (isFullscreen) {
+                        _body.addClass("full-window");
+                    } else {
+                        _body.removeClass("full-window");
+                    }
                     _body.triggerHandler("fullscreen_change", [isFullscreen]);
                 });
 
@@ -6054,8 +6059,9 @@ function onYouTubePlayerReady(id) {
         // in fullscreen or if it's under a window mode
         var isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement ||
             document.msFullscreenElement;
+        isFullscreen = isFullscreen ? true : false;
 
-        if (isFullscreen) {
+        if (!isFullscreen) {
             _body.addClass("full-window");
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen();
