@@ -232,6 +232,10 @@ body.wait-load {
     cursor: pointer;
 }
 
+.link[data-no_action] {
+    pointer-events: none;
+}
+
 .form > .submit-button {
     border: 0px none;
     height: 0px;
