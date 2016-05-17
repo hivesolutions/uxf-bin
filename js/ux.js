@@ -23753,6 +23753,11 @@ function onYouTubePlayerReady(id) {
                 pop(element);
             });
 
+            matchedObject.bind("pop_all", function() {
+                var element = jQuery(this);
+                popAll(element);
+            });
+
             !isRegistered && _window.bind("size", function() {
                 var stacks = jQuery(".stack", _body);
                 stacks.each(function(index, value) {
@@ -23764,7 +23769,7 @@ function onYouTubePlayerReady(id) {
 
         var push = function(element, target, animated) {
             if (!target || target.length == 0) {
-                return;
+                return false;
             }
 
             var stackIn = jQuery("> .stack-in", element);
@@ -23775,6 +23780,7 @@ function onYouTubePlayerReady(id) {
             target.removeClass("stack-bottom");
             stackIn.append(target);
             _reposition(element);
+            return true;
         };
 
         var pop = function(element) {
@@ -23783,7 +23789,10 @@ function onYouTubePlayerReady(id) {
             var stackItems = jQuery("> .stack-item", stackIn);
             var stackTop = jQuery("> .stack-item.stack-top", stackIn);
             if (stackItems.length == 1) {
-                return;
+                return false;
+            }
+            if (stackTop.length == 0) {
+                return false;
             }
             var stackNext = stackTop.prev();
             var transition = stackIn.css("transition-duration");
@@ -23793,9 +23802,39 @@ function onYouTubePlayerReady(id) {
             stackNext.addClass("stack-top");
             stackNext.removeClass("stack-bottom");
             _reposition(element);
-            setTimeout(function() {
+            var delay = transition * 1000;
+            if (delay) {
+                setTimeout(function() {
+                    _gc(element);
+                }, delay);
+            } else {
                 _gc(element);
-            }, transition * 1000);
+            }
+            return true;
+        };
+
+        var popAll = function(element) {
+            var stackIn = jQuery("> .stack-in", element);
+            stackIn.css("transition-duration", "0s");
+            stackIn.css("-o-transition-duration", "0s");
+            stackIn.css("-ms-transition-duration", "0s");
+            stackIn.css("-moz-transition-duration", "0s");
+            stackIn.css("-khtml-transition-duration", "0s");
+            stackIn.css("-webkit-transition-duration", "0s");
+            while (true) {
+                var result = pop(element);
+                if (!result) {
+                    break;
+                }
+            }
+            setTimeout(function() {
+                stackIn.css("transition-duration", "");
+                stackIn.css("-o-transition-duration", "");
+                stackIn.css("-ms-transition-duration", "");
+                stackIn.css("-moz-transition-duration", "");
+                stackIn.css("-khtml-transition-duration", "");
+                stackIn.css("-webkit-transition-duration", "")
+            });
         };
 
         var _reposition = function(element) {
