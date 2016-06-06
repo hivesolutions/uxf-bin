@@ -31098,14 +31098,14 @@ TemplateEngine.prototype.process = function(template, options) {
         // handling to be made for the current character
         switch (state) {
             case TEMPLATE_ENGINE_NORMAL:
-                if (current == '$') {
+                if (current == "$") {
                     state = TEMPLATE_ENGINE_DOLLAR;
                 }
 
                 break;
 
             case TEMPLATE_ENGINE_DOLLAR:
-                if (current == '{') {
+                if (current == "{") {
                     // marks the tag element and calls the text end and tag
                     // begin callbacks
                     this.mark("tagName");
@@ -31120,7 +31120,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == '/') {
+                    if (ahead == "/") {
                         this.callback("tagCloseBegin");
                         aheadSet = 0;
                     }
@@ -31132,12 +31132,12 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_OPEN:
-                if (current == '/') {
+                if (current == "/") {
                     // reads ahead and sets the ahead set flag
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == '}') {
+                    if (ahead == "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
 
                         // unsets the ahead set flag
@@ -31154,7 +31154,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == '}') {
+                if (current == "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -31166,7 +31166,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current == ' ') {
+                if (current == " ") {
                     // calls the tag name callback
                     this.callbackDataBack("tagName");
 
@@ -31178,11 +31178,11 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETERS:
-                if (current == '/') {
+                if (current == "/") {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == '}') {
+                    if (ahead == "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
                         aheadSet = 0;
 
@@ -31197,7 +31197,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == '}') {
+                if (current == "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -31209,7 +31209,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current != ' ') {
+                if (current != " ") {
                     this.markBack("parameter");
 
                     state = TEMPLATE_ENGINE_PARAMETER;
@@ -31218,11 +31218,11 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETER:
-                if (current == '/') {
+                if (current == "/") {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == '}') {
+                    if (ahead == "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
                         aheadSet = 0;
 
@@ -31237,7 +31237,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == '}') {
+                if (current == "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -31249,7 +31249,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current == '=') {
+                if (current == "=") {
                     // calls the parameter callback and marks the template
                     // engine parameter value
                     this.callbackDataBack("parameter");
@@ -31261,11 +31261,11 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETER_VALUE:
-                if (current == '/') {
+                if (current == "/") {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == '}') {
+                    if (ahead == "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
                         aheadSet = 0;
 
@@ -31279,7 +31279,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == '}') {
+                if (current == "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -31293,9 +31293,9 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current == '\"') {
+                if (current == "\"") {
                     state = TEMPLATE_ENGINE_PARAMETER_VALUE_STRING;
-                } else if (current == ' ') {
+                } else if (current == " ") {
                     // calls the parameter value callback
                     this.callbackDataBack("parameterValue");
 
@@ -31305,7 +31305,7 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETER_VALUE_STRING:
-                if (current == '\"') {
+                if (current == "\"") {
                     // calls the parameter value callback
                     this.callbackData("parameterValue");
 
@@ -31465,7 +31465,7 @@ TemplateHandler.prototype.onTagEnd = function(data, start, end) {
 
     // in case the node does contain the closing
     // symbol at the final part of the tag (assumes single node)
-    if (data[data.length - 2] == '/') {
+    if (data[data.length - 2] == "/") {
         // sets the temporary node type as single
         this.temporaryNode.type = TEMPLATE_NODE_SINGLE;
     }
@@ -31524,7 +31524,7 @@ TemplateHandler.prototype.onParameterValue = function(data, start, end) {
     var first = data[0];
     var code = first.charCodeAt(0);
 
-    if (first == '"') {
+    if (first == "\"") {
         temporaryParameter.value = data.slice(1, data.length - 1);
         temporaryParameter.type = TEMPLATE_PARAMETER_STRING;
     } else if (code > 0x2f && code < 0x58) {
