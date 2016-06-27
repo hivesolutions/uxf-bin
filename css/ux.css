@@ -164,6 +164,18 @@ body.wait-load {
     display: inline-block;
 }
 
+.carousel > .views {
+    font-size: 0px;
+    list-style: none;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+.carousel > .views > li {
+    display: inline-block;
+}
+
 .check-field-label {
     cursor: pointer;
 }
