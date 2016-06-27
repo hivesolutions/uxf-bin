@@ -152,7 +152,15 @@ body.wait-load {
     display: block;
 }
 
+.carousel {
+    overflow: hidden;
+}
+
 .carousel > .items {
+    font-size: 0px;
+}
+
+.carousel > .items > .item {
     display: inline-block;
 }
 
