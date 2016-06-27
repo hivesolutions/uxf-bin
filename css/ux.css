@@ -152,6 +152,10 @@ body.wait-load {
     display: block;
 }
 
+.carousel > .items {
+    display: inline-block;
+}
+
 .check-field-label {
     cursor: pointer;
 }
