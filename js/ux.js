@@ -4398,7 +4398,7 @@ function onYouTubePlayerReady(id) {
  * jQuery replacer plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a replacer component.
  *
- * @name jquery-replacer.js
+ * @name uxf-replacer.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -5077,7 +5077,7 @@ function onYouTubePlayerReady(id) {
  * jQuery scroll to plugin, this jQuery plugin provides the base infra-structure
  * for smooth scrolling in the viewport.
  *
- * @name jquery-scrollto.js
+ * @name uxf-scrollto.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -7868,7 +7868,7 @@ function onYouTubePlayerReady(id) {
  * jQuery breadcrumbs plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a breadcrumbs component.
  *
- * @name jquery-breadcrumbs.js
+ * @name uxf-breadcrumbs.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -8278,7 +8278,7 @@ function onYouTubePlayerReady(id) {
  * jQuery calendar plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a calendar component.
  *
- * @name jquery-calendar.js
+ * @name uxf-calendar.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -8806,6 +8806,75 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+/**
+ * jQuery carousel plugin, this jQuery plugin provides the base infra-structure
+ * for the creation of a carousel component that display various items over a
+ * set of time.
+ *
+ * @name uxf-carousel.js
+ * @author João Magalhães <joamag@hive.pt>
+ * @version 1.0
+ * @category jQuery plugin
+ * @copyright Copyright (c) 2008-2016 Hive Solutions Lda.
+ * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
+ */
+(function(jQuery) {
+    jQuery.fn.uxcarousel = function(method, options) {
+        // the default values for the carousel
+        var defaults = {};
+
+        // sets the default method value
+        var method = method ? method : "default";
+
+        // sets the default options value
+        var options = options ? options : {};
+
+        // constructs the options
+        var options = jQuery.extend(defaults, options);
+
+        // sets the jquery matched object
+        var matchedObject = this;
+
+        /**
+         * Initializer of the plugin, runs the necessary functions to initialize
+         * the structures.
+         */
+        var initialize = function() {
+            _appendHtml();
+            _registerHandlers();
+        };
+
+        /**
+         * Creates the necessary html for the component.
+         */
+        var _appendHtml = function() {};
+
+        /**
+         * Registers the event handlers for the created objects.
+         */
+        var _registerHandlers = function() {};
+
+        // switches over the method
+        switch (method) {
+            case "next":
+                _next(matchedObject, options);
+                return value;
+
+            case "previous":
+                _previous(matchedObject, options);
+                return true;
+
+            case "default":
+                // initializes the plugin
+                initialize();
+                break;
+        }
+
+        // returns the object
+        return this;
+    };
+})(jQuery);
+
 (function(jQuery) {
     jQuery.fn.uxchanger = function(path, callback, options) {
         // the default timeout to be used in the changer
@@ -8915,7 +8984,7 @@ function onYouTubePlayerReady(id) {
  * jQuery check field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a check field component.
  *
- * @name jquery-check-field.js
+ * @name uxf-check-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -9077,7 +9146,7 @@ function onYouTubePlayerReady(id) {
  * jQuery button group plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a button group component.
  *
- * @name jquery-button-group.js
+ * @name uxf-button-group.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -9241,7 +9310,7 @@ function onYouTubePlayerReady(id) {
  * jQuery button plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a button component.
  *
- * @name jquery-button.js
+ * @name uxf-button.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -9596,7 +9665,7 @@ function onYouTubePlayerReady(id) {
  * jQuery code plugin, this jQuery plugin provides the base infra-structure for
  * the creation of a code component.
  *
- * @name jquery-check-field.js
+ * @name uxf-check-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -9924,7 +9993,7 @@ function onYouTubePlayerReady(id) {
  * jQuery cross list plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a cross list component.
  *
- * @name jquery-cross-list.js
+ * @name uxf-cross-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -10472,7 +10541,7 @@ function onYouTubePlayerReady(id) {
  * for the creation of a drop down component. Should be used for situations
  * where a menu should be displayed uppon a button based action.
  *
- * @name jquery-drop-down.js
+ * @name uxf-drop-down.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -11101,7 +11170,7 @@ function onYouTubePlayerReady(id) {
  * provides both the select and the "find" modes of working for active (mouse
  * only) or passive (kwyboard based) models of interaction.
  *
- * @name jquery-drop-field.js
+ * @name uxf-drop-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -12854,7 +12923,7 @@ function onYouTubePlayerReady(id) {
  * where the list of elements to be selected (both text or graphical) should not
  * allways be viewable and its visibility should be "togglable".
  *
- * @name jquery-drop-list.js
+ * @name uxf-drop-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -13068,7 +13137,7 @@ function onYouTubePlayerReady(id) {
  * situations where a drop list is selected from a list of tag values and then
  * it may be disabled using the removal icon.
  *
- * @name jquery-drop-tag.js
+ * @name uxf-drop-tag.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -13442,7 +13511,7 @@ function onYouTubePlayerReady(id) {
  * jQuery file field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a file field component.
  *
- * @name jquery-file-field.js
+ * @name uxf-file-field.js
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -13519,7 +13588,7 @@ function onYouTubePlayerReady(id) {
  * jQuery filter plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a filter component.
  *
- * @name jquery-filter.js
+ * @name uxf-filter.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -16302,7 +16371,7 @@ function onYouTubePlayerReady(id) {
  * jQuery header notification plugin, this jQuery plugin provides the base
  * infra-structure for the creation of an header notification component.
  *
- * @name jquery-header-notification.js
+ * @name uxf-header-notification.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -17659,7 +17728,7 @@ function onYouTubePlayerReady(id) {
  * jQuery image plugin, this jQuery plugin provides the base infra-structure for
  * the creation of a image component.
  *
- * @name jquery-image.js
+ * @name uxf-image.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -17740,7 +17809,7 @@ function onYouTubePlayerReady(id) {
  * jQuery incremental field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a incremental field component.
  *
- * @name jquery-incremental-field.js
+ * @name uxf-incremental-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -18753,7 +18822,7 @@ function onYouTubePlayerReady(id) {
  * jQuery menu link plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a menu link for a menu component.
  *
- * @name jquery-menu-link.js
+ * @name uxf-menu-link.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -19179,7 +19248,7 @@ function onYouTubePlayerReady(id) {
  * the creation of a menu component. This plugin is meant to be used both
  * directly and indirectly as a decorator.
  *
- * @name jquery-menu.js
+ * @name uxf-menu.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -19309,7 +19378,7 @@ function onYouTubePlayerReady(id) {
  * jQuery notification plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a notification component.
  *
- * @name jquery-notification.js
+ * @name uxf-notification.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -19458,7 +19527,7 @@ function onYouTubePlayerReady(id) {
  * jQuery overlay panel plugin, this jQuery plugin provides the base
  * infra-structure for the creation of an overlay panel component.
  *
- * @name jquery-overlay-panel.js
+ * @name uxf-overlay-panel.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -19722,7 +19791,7 @@ function onYouTubePlayerReady(id) {
  * jQuery overlay search plugin, this jQuery plugin provides the base
  * infra-structure for the creation of an overlay search component.
  *
- * @name jquery-overlay-search.js
+ * @name uxf-overlay-search.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -19809,7 +19878,7 @@ function onYouTubePlayerReady(id) {
  * jQuery overlay plugin, this jQuery plugin provides the base infra-structure
  * for the creation of an overlay component.
  *
- * @name jquery-overlay.js
+ * @name uxf-overlay.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -20159,7 +20228,7 @@ function onYouTubePlayerReady(id) {
  * jQuery panel more plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a panel more component.
  *
- * @name jquery-select-list.js
+ * @name uxf-select-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -20321,7 +20390,7 @@ function onYouTubePlayerReady(id) {
  * jQuery panel stack plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a panel stack component.
  *
- * @name jquery-panel-stack.js
+ * @name uxf-panel-stack.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -20492,7 +20561,7 @@ function onYouTubePlayerReady(id) {
  * jQuery panel plugin, this jQuery plugin provides the base infra-structure for
  * the creation of a panel component.
  *
- * @name jquery-panel.js
+ * @name uxf-panel.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -20909,7 +20978,7 @@ function onYouTubePlayerReady(id) {
  * jQuery radio field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a radio field component.
  *
- * @name jquery-radio-field.js
+ * @name uxf-radio-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -21299,7 +21368,7 @@ function onYouTubePlayerReady(id) {
  * jQuery scroll list plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a scroll list component.
  *
- * @name jquery-scroll-list.js
+ * @name uxf-scroll-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -21484,7 +21553,7 @@ function onYouTubePlayerReady(id) {
  * jQuery select field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a select field component.
  *
- * @name jquery-select-field.js
+ * @name uxf-select-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -21637,7 +21706,7 @@ function onYouTubePlayerReady(id) {
  * jQuery select list plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a select list component.
  *
- * @name jquery-select-list.js
+ * @name uxf-select-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -22329,7 +22398,7 @@ function onYouTubePlayerReady(id) {
  * jQuery slider bar plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a slider bar component.
  *
- * @name jquery-slider-bar.js
+ * @name uxf-slider-bar.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -22393,7 +22462,7 @@ function onYouTubePlayerReady(id) {
  * considered to be a top level modal "window like" components that "moves"
  * through panels using either a manual (arrow based) or automated approach.
  *
- * @name jquery-slider.js
+ * @name uxf-slider.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -22847,7 +22916,7 @@ function onYouTubePlayerReady(id) {
  * sequence that is changed using a set of animations. Total control of the
  * component is provided through event triggering.
  *
- * @name jquery-slideshow.js
+ * @name uxf-slideshow.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -23233,7 +23302,7 @@ function onYouTubePlayerReady(id) {
  * jQuery source list plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a source list component.
  *
- * @name jquery-source-list.js
+ * @name uxf-source-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -23737,7 +23806,7 @@ function onYouTubePlayerReady(id) {
  * the creation of a special "stackable" panel that may be used as a navigation
  * controller for contained panels. Basic operations include push and pop.
  *
- * @name jquery-stack.js
+ * @name uxf-stack.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -23963,7 +24032,7 @@ function onYouTubePlayerReady(id) {
  * jQuery tab panel plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a tab panel component.
  *
- * @name jquery-tab-panel.js
+ * @name uxf-tab-panel.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -24136,7 +24205,7 @@ function onYouTubePlayerReady(id) {
  * jQuery table plugin, this jQuery plugin provides the base infra-structure for
  * the creation of a table component.
  *
- * @name jquery-table.js
+ * @name uxf-table.js
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -25116,7 +25185,7 @@ function onYouTubePlayerReady(id) {
  * jQuery tag field plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a tag field component.
  *
- * @name jquery-select-list.js
+ * @name uxf-select-list.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -25727,7 +25796,7 @@ function onYouTubePlayerReady(id) {
  * jQuery text field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a text field component.
  *
- * @name jquery-text-field.js
+ * @name uxf-text-field.js
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -26936,7 +27005,7 @@ function onYouTubePlayerReady(id) {
  * jQuery toggle field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a toggle field component.
  *
- * @name jquery-toggle-field.js
+ * @name uxf-toggle-field.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -27179,7 +27248,7 @@ function onYouTubePlayerReady(id) {
  * jQuery window plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a window component.
  *
- * @name jquery-window.js
+ * @name uxf-window.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
@@ -27795,7 +27864,7 @@ function onYouTubePlayerReady(id) {
  * jQuery wizard plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a wizard component.
  *
- * @name jquery-wizard.js
+ * @name uxf-wizard.js
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
