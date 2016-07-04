@@ -27838,11 +27838,11 @@ function onYouTubePlayerReady(id) {
             // iterates over the dots contents range
             for (index = 0; index < windowMaskDotsContentsLength; index++) {
                 // adds a new dot to the contents
-                windowMaskDotsContents += "."
+                windowMaskDotsContents += ".";
             }
 
             // updates the window mask dots contents
-            windowMaskDots.html(windowMaskDotsContents)
+            windowMaskDots.html(windowMaskDotsContents);
         };
 
         var __registerClick = function(matchedObject, options) {
@@ -27972,7 +27972,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the current visible set of windows (only
             // one should be visible at a certain time)
             var visibleWindow = jQuery(".window:visible");
-            if (visibleWindow.length == 0) {
+            if (visibleWindow.length === 0) {
                 return false;
             }
 
@@ -28572,11 +28572,10 @@ function onYouTubePlayerReady(id) {
         // the default values for the name change
         var defaults = {};
 
-        // sets the default options value
-        var options = options ? options : {};
-
-        // constructs the options
-        var options = jQuery.extend(defaults, options);
+        // sets the default options value and then
+        // runs the proper extension/construction
+        options = options ? options : {};
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
