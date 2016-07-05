@@ -1867,8 +1867,7 @@
 
             // filters "some" valid items (in
             // case the filter options flag is set)
-            var validItems = filter ? validItems.slice(startRecord, startRecord + numberRecords) :
-                validItems;
+            validItems = filter ? validItems.slice(startRecord, startRecord + numberRecords) : validItems;
 
             // calls the callback with the "valid" items
             callback(validItems, moreItems);
@@ -28406,7 +28405,7 @@ function onYouTubePlayerReady(id) {
                 // falling back to the timeout option
                 var timeout = _element.attr("data-timeout");
                 var timeoutInteger = parseInt(timeout);
-                var _timeout = isNaN(timeoutInteger) ? options["timeout"] : timeoutInteger;
+                var _timeout = isNaN(timeoutInteger) ? options.timeout : timeoutInteger;
 
                 // retrieves the value of the continuous attribute
                 // (flag) of the element
