@@ -229,9 +229,17 @@ __license__   = Apache License, Version 2.0
     z-index: 10;
 }
 
+.omni-style.retina-s .banner {
+    background-size: 1px 60px;
+}
+
 .omni-style .banner.information {
     background: #3668c6 url(../images/banner-blue.png) repeat-x center center;
     border-color: #203e76;
+}
+
+.omni-style.retina-s .banner.information {
+    background-image: url(../images/banner-blue-2x.png);
 }
 
 .omni-style .banner.warning {
@@ -239,14 +247,26 @@ __license__   = Apache License, Version 2.0
     border-color: #936621;
 }
 
+.omni-style.retina-s .banner.warning {
+    background-image: url(../images/banner-yellow-2x.png);
+}
+
 .omni-style .banner.success {
     background: #6fad3e url(../images/banner-green.png) repeat-x center center;
     border-color: #426725;
 }
 
+.omni-style.retina-s .banner.success {
+    background-image: url(../images/banner-green-2x.png);
+}
+
 .omni-style .banner.error {
     background: #d54a50 url(../images/banner-red.png) repeat-x center center;
     border-color: #7f2c30;
+}
+
+.omni-style.retina-s .banner.error {
+    background-image: url(../images/banner-red-2x.png);
 }
 
 .omni-style .banner .banner-contents {
@@ -462,6 +482,11 @@ __license__   = Apache License, Version 2.0
     background: transparent url(../images/button-group-button-medium.png) no-repeat left top;
 }
 
+.omni-style.retina-s .button-group .button.medium {
+    background-image: url(../images/button-group-button-medium.png);
+    background-size: 44px 324px;
+}
+
 .omni-style .button-group .button.medium:hover {
     background-position: left 0px;
 }
@@ -521,6 +546,11 @@ __license__   = Apache License, Version 2.0
     height: 30px;
     line-height: 30px;
     width: 30px;
+}
+
+.omni-style.retina-s .button-group .button.small {
+    background-image: url(../images/button-group-button-small-2x.png);
+    background-size: 30px 288px;
 }
 
 .omni-style .button-group .button.small:hover {
@@ -2511,6 +2541,11 @@ __license__   = Apache License, Version 2.0
     width: 16px;
 }
 
+.omni-style.retina-s .slideshow ul.slideshow-alternates li {
+    background-image: url(../images/slideshow-alternates-2x.png);
+    background-size: 16px 32px;
+}
+
 .omni-style .slideshow ul.slideshow-alternates li.active {
     background-position: center -16px;
 }
@@ -2732,12 +2767,27 @@ __license__   = Apache License, Version 2.0
     background-image: url(../images/stat-panel-up.png);
 }
 
+.omni-style.retina-s .stats-panel > .stat-panel.up {
+    background-image: url(../images/stat-panel-up-2x.png);
+    background-size: 5px 5px;
+}
+
 .omni-style .stats-panel > .stat-panel.down {
     background-image: url(../images/stat-panel-down.png);
 }
 
+.omni-style.retina-s .stats-panel > .stat-panel.down {
+    background-image: url(../images/stat-panel-down-2x.png);
+    background-size: 5px 5px;
+}
+
 .omni-style .stats-panel > .stat-panel.equal {
     background-image: url(../images/stat-panel-equal.png);
+}
+
+.omni-style.retina-s .stats-panel > .stat-panel.equal {
+    background-image: url(../images/stat-panel-equal-2x.png);
+    background-size: 5px 5px;
 }
 
 .omni-style .stats-panel > .link-panel {
@@ -3153,6 +3203,11 @@ __license__   = Apache License, Version 2.0
     height: 11px;
     margin: 4px 0px 0px 6px;
     width: 11px;
+}
+
+.omni-style.retina-s .tag-field .tag-field-remove {
+    background-image: url(../images/tag-field-remove-2x.png);
+    background-size: 11px 22px;
 }
 
 .omni-style .tag-field .tag-field-remove:hover {
