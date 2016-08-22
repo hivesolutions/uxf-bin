@@ -331,6 +331,10 @@ __license__   = Apache License, Version 2.0
     width: 6px;
 }
 
+.omni-style.retina-s .calendar-header .calendar-arrow {
+    background-size: 6px 8px;
+}
+
 .omni-style .calendar-header .calendar-arrow:hover {
     opacity: 1;
 }
@@ -340,9 +344,17 @@ __license__   = Apache License, Version 2.0
     float: left;
 }
 
+.omni-style.retina-s .calendar-header .calendar-arrow-left {
+    background-image: url(../images/calendar-arrow-left-2x.png);
+}
+
 .omni-style .calendar-header .calendar-arrow-right {
     background: transparent url(../images/calendar-arrow-right.png) no-repeat center center;
     float: right;
+}
+
+.omni-style.retina-s .calendar-header .calendar-arrow-right {
+    background-image: url(../images/calendar-arrow-right-2x.png);
 }
 
 .omni-style .calendar-content {
@@ -914,6 +926,11 @@ __license__   = Apache License, Version 2.0
     width: 17px;
 }
 
+.omni-style.retina-s .check-field {
+    background-image: url(../images/check-field-2x.png);
+    background-size: 15px 90px;
+}
+
 .omni-style .check-field:hover {
     background-position: 0px -15px;
 }
@@ -996,6 +1013,11 @@ __license__   = Apache License, Version 2.0
     width: 248px;
 }
 
+.omni-style.retina-s .drop-field > .text-field {
+    background-image: url(../images/drop-field-dots-2x.png);
+    background-size: 23px 16px;
+}
+
 .omni-style .drop-field.strong > .text-field {
     color: #000000;
 }
@@ -1020,6 +1042,11 @@ __license__   = Apache License, Version 2.0
     -webkit-user-select: none;
 }
 
+.omni-style.retina-s .drop-field.drop-field-select > .text-field {
+    background-image: url(../images/drop-field-select-2x.png);
+    background-size: 940px 40px;
+}
+
 .omni-style .drop-field.drop-field-select.disabled > .text-field {
     cursor: default;
 }
@@ -1028,8 +1055,18 @@ __license__   = Apache License, Version 2.0
     background-image: url(../images/drop-field-lock.png);
 }
 
+.omni-style.retina-s .drop-field.drop-field-lock > .text-field {
+    background-image: url(../images/drop-field-lock-2x.png);
+    background-size: 20px 16px;
+}
+
 .omni-style .drop-field.drop-field-select.drop-field-lock > .text-field {
     background-image: url(../images/drop-field-select.png);
+}
+
+.omni-style.retina-s .drop-field.drop-field-select.drop-field-lock > .text-field {
+    background-image: url(../images/drop-field-select-2x.png);
+    background-size: 940px 40px;
 }
 
 .omni-style .drop-field.drop-field-select > .text-field.active {
@@ -2266,6 +2303,11 @@ __license__   = Apache License, Version 2.0
     width: 24px;
 }
 
+.omni-style.retina-s .rating .rating-item {
+    background-image: url(../images/rating-2x.png);
+    background-size: 24px 48px;
+}
+
 .omni-style .rating .rating-item.active {
     background-position: left -24px;
 }
@@ -2923,9 +2965,19 @@ __license__   = Apache License, Version 2.0
     margin-left: 6px;
 }
 
+.omni-style.retina-s .table .table-add .inline-add {
+    background-image: url(../images/table-add-2x.png);
+    background-size: 11px 22px;
+}
+
 .omni-style .table .table-remove .inline-remove {
     background-image: url(../images/table-remove.png);
     margin-left: 5px;
+}
+
+.omni-style.retina-s .table .table-remove .inline-remove {
+    background-image: url(../images/table-remove-2x.png);
+    background-size: 11px 22px;
 }
 
 .omni-style .table .table-new-line-row {
@@ -2977,6 +3029,16 @@ __license__   = Apache License, Version 2.0
     background-image: none;
 }
 
+.omni-style.retina-s .table .text-field.date,
+.omni-style.retina-s .table .text-field.natural,
+.omni-style.retina-s .table .text-field.integer,
+.omni-style.retina-s .table .text-field.float,
+.omni-style.retina-s .table .text-field.floatp,
+.omni-style.retina-s .table .text-field.percent,
+.omni-style.retina-s .table .text-field.email {
+    background-image: none;
+}
+
 .omni-style .table .drop-field > .text-field {
     background-image: none;
 }
@@ -2986,8 +3048,18 @@ __license__   = Apache License, Version 2.0
     background-position: right bottom;
 }
 
+.omni-style.retina-s .table .drop-field.drop-field-lock > .text-field {
+    background-image: url(../images/drop-field-lock-small-2x.png);
+    background-size: 7px 7px;
+}
+
 .omni-style .table .drop-field.drop-field-select > .text-field {
     background-image: url(../images/drop-field-select-medium.png);
+}
+
+.omni-style.retina-s .table .drop-field.drop-field-select > .text-field {
+    background-image: url(../images/drop-field-select-medium-2x.png);
+    background-size: 940px 30px;
 }
 
 .omni-style .table .drop-field.drop-field-select > .text-field.active {
