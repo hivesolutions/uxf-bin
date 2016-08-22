@@ -1804,12 +1804,26 @@ __license__   = Apache License, Version 2.0
     width: 30px;
 }
 
+.omni-style.retina-s .window.window-lightbox .button-confirm {
+    background-image: url(../images/lightbox-close-2x.png);
+    background-size: 30px 30px;
+}
+
 .omni-style .window.window-lightbox.loading .button-confirm {
     background-image: url(../images/lightbox-loading.png);
 }
 
+.omni-style.retina-s .window.window-lightbox.loading .button-confirm {
+    background-image: url(../images/lightbox-loading-2x.png);
+    background-size: 30px 330px;
+}
+
 .omni-style .window.window-lightbox.loaded .button-confirm {
     background-image: url(../images/lightbox-close.png);
+}
+
+.omni-style.retina-s .window.window-lightbox.loaded .button-confirm {
+    background-image: url(../images/lightbox-close-2x.png);
 }
 
 .omni-style .window.window-lightbox .button-expand {
@@ -1821,8 +1835,18 @@ __license__   = Apache License, Version 2.0
     width: 30px;
 }
 
+.omni-style.retina-s .window.window-lightbox .button-expand {
+    background-image: url(../images/lightbox-expand-2x.png);
+    background-size: 30px 30px;
+}
+
 .omni-style .window.window-lightbox.loading .button-expand {
     background-image: url(../images/lightbox-loading.png);
+}
+
+.omni-style.retina-s .window.window-lightbox.loading .button-expand {
+    background-image: url(../images/lightbox-loading-2x.png);
+    background-size: 30px 330px;
 }
 
 .omni-style .link {
@@ -2732,6 +2756,11 @@ __license__   = Apache License, Version 2.0
     height: 26px;
     padding-right: 28px;
     width: 212px;
+}
+
+.omni-style.retina-s .source-list .text-field {
+    background-image: url(../images/source-list-dots-2x.png);
+    background-size: 23px 16px;
 }
 
 .omni-style .stack > .stack-in {
