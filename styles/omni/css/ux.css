@@ -1007,6 +1007,10 @@ __license__   = Apache License, Version 2.0
     width: 16px;
 }
 
+.omni-style.retina-s .cross-list .arrow {
+    background-size: 16px 48px;
+}
+
 .omni-style .cross-list .arrow:hover {
     background-position: 0px -16px;
 }
@@ -1015,8 +1019,16 @@ __license__   = Apache License, Version 2.0
     background-image: url(../images/cross-list-arrow-left.png);
 }
 
+.omni-style.retina-s .cross-list .arrow.arrow-left {
+    background-image: url(../images/cross-list-arrow-left-2x.png);
+}
+
 .omni-style .cross-list .arrow.arrow-right {
     background-image: url(../images/cross-list-arrow-right.png);
+}
+
+.omni-style.retina-s .cross-list .arrow.arrow-right {
+    background-image: url(../images/cross-list-arrow-right-2x.png);
 }
 
 .omni-style .cross-list .section {
@@ -2469,6 +2481,11 @@ __license__   = Apache License, Version 2.0
     width: 16px;
 }
 
+.omni-style.retina-s .select-list li .order-icon {
+    background-image: url(../images/select-list-order-2x.png);
+    background-size: 16px 32px;
+}
+
 .omni-style .select-list li .order-icon:hover {
     background-position: 0 -16px;
 }
@@ -2886,6 +2903,11 @@ __license__   = Apache License, Version 2.0
 .omni-style .tab-panel .tab-selector.active {
     background: transparent url(../images/tab-panel-arrow.png) no-repeat center bottom;
     color: #3668c6;
+}
+
+.omni-style.retina-s .tab-panel .tab-selector.active {
+    background-image: url(../images/tab-panel-arrow-2x.png);
+    background-size: 5px 3px;
 }
 
 .omni-style .tab-panel .tab-selector:hover {
