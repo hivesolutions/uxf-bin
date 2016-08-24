@@ -291,6 +291,11 @@ __license__   = Apache License, Version 2.0
     padding-left: 22px;
 }
 
+.omni-style.retina-s .breadcrumbs li {
+    background-image: url(../images/breadcrumbs-arrow-2x.png);
+    background-size: 16px 16px;
+}
+
 .omni-style .breadcrumbs li:first-child {
     background: none;
     padding-left: 0px;
@@ -1240,6 +1245,10 @@ __license__   = Apache License, Version 2.0
     width: 34px;
 }
 
+.omni-style.retina-s .filter .filter-input-button {
+    background-size: 34px 68px;
+}
+
 .omni-style .filter .filter-input-button:hover {
     background-color: #f0f0f0;
     background-position: 0px -34px;
@@ -1249,20 +1258,40 @@ __license__   = Apache License, Version 2.0
     background-image: url(../images/filter-input-list.png);
 }
 
+.omni-style.retina-s .filter .filter-input-list {
+    background-image: url(../images/filter-input-list-2x.png);
+}
+
 .omni-style .filter .filter-input-table {
     background-image: url(../images/filter-input-table.png);
+}
+
+.omni-style.retina-s .filter .filter-input-table {
+    background-image: url(../images/filter-input-table-2x.png);
 }
 
 .omni-style .filter .filter-input-gallery {
     background-image: url(../images/filter-input-gallery.png);
 }
 
+.omni-style.retina-s .filter .filter-input-gallery {
+    background-image: url(../images/filter-input-gallery-2x.png);
+}
+
 .omni-style .filter .filter-input-more {
     background-image: url(../images/filter-input-more.png);
 }
 
+.omni-style.retina-s .filter .filter-input-more {
+    background-image: url(../images/filter-input-more-2x.png);
+}
+
 .omni-style .filter .filter-input-less {
     background-image: url(../images/filter-input-less.png);
+}
+
+.omni-style.retina-s .filter .filter-input-less {
+    background-image: url(../images/filter-input-less-2x.png);
 }
 
 .omni-style .filter .filter-advanced {
@@ -1306,6 +1335,13 @@ __license__   = Apache License, Version 2.0
     background: #777777 url(../images/filter-input-sorting.png) no-repeat;
     color: #ffffff;
     padding-right: 19px;
+}
+
+.omni-style.retina-s .filter .filter-advanced .filter-sort .filter-sort-option.ascending,
+.omni-style.retina-s .filter .filter-advanced .filter-sort .filter-sort-option.descending,
+.omni-style.retina-s .filter .filter-advanced .filter-sort .filter-sort-option.equals {
+    background-image: url(../images/filter-input-sorting-2x.png);
+    background-size: 20px 60px;
 }
 
 .omni-style .filter .filter-advanced .filter-sort .filter-sort-option.ascending {
@@ -1379,6 +1415,11 @@ __license__   = Apache License, Version 2.0
     width: 15px;
 }
 
+.omni-style.retina-s .filter .filter-input-add,
+.omni-style.retina-s .filter .filter-input-remove {
+    background-size: 15px 30px;
+}
+
 .omni-style .filter .filter-input-add:hover,
 .omni-style .filter .filter-input-remove:hover {
     background-position: 0px -15px;
@@ -1388,8 +1429,16 @@ __license__   = Apache License, Version 2.0
     background-image: url(../images/filter-input-add.png);
 }
 
+.omni-style.retina-s .filter .filter-input-add {
+    background-image: url(../images/filter-input-add-2x.png);
+}
+
 .omni-style .filter .filter-input-remove {
     background-image: url(../images/filter-input-remove.png);
+}
+
+.omni-style.retina-s .filter .filter-input-remove {
+    background-image: url(../images/filter-input-remove-2x.png);
 }
 
 .omni-style .filter .filter-input-first {
@@ -2428,6 +2477,11 @@ __license__   = Apache License, Version 2.0
     width: 15px;
 }
 
+.omni-style.retina-s .scroll-list-container > .scroll-previous,
+.omni-style.retina-s .scroll-list-container > .scroll-next {
+    background-size: 15px 72px;
+}
+
 .omni-style .scroll-list-container > .scroll-previous:hover,
 .omni-style .scroll-list-container > .scroll-next:hover {
     background-position: left -24px;
@@ -2438,9 +2492,17 @@ __license__   = Apache License, Version 2.0
     margin-left: -20px;
 }
 
+.omni-style.retina-s .scroll-list-container > .scroll-previous {
+    background-image: url(../images/scroll-list-previous-2x.png);
+}
+
 .omni-style .scroll-list-container > .scroll-next {
     background-image: url(../images/scroll-list-next.png);
     margin-left: 905px;
+}
+
+.omni-style.retina-s .scroll-list-container > .scroll-next {
+    background-image: url(../images/scroll-list-next-2x.png);
 }
 
 .omni-style .select-list {
@@ -2547,6 +2609,11 @@ __license__   = Apache License, Version 2.0
     margin-top: -9px;
     position: absolute;
     width: 12px;
+}
+
+.omni-style.retina-s .slider-bar .slider-bar-cursor {
+    background-image: url(../images/slider-bar-cursor-2x.png);
+    background-size: 12px 52px;
 }
 
 .omni-style .slider-bar .slider-bar-cursor:hover {
