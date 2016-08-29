@@ -4266,7 +4266,7 @@ function onYouTubePlayerReady(id) {
         var useMargin = useMargin ? useMargin : false;
 
         // retrieves the avoid top and avoid left
-        // flags values
+        // flags values, going to be used in decisions
         var avoidTop = avoidTop ? avoidTop : false;
         var avoidLeft = avoidLeft ? avoidLeft : false;
 
@@ -4285,6 +4285,12 @@ function onYouTubePlayerReady(id) {
         // the centering of the element, not that in case no
         // options is provided the default center value is used
         var position = position ? position : "center";
+
+        // retrieves the kind of positioning strategy that is
+        // currently being used for the position of the object
+        // and then verifies if the strategy is a fixed one
+        var positioning = matchedObject.css("position");
+        var isFixed = positioning == "fixed";
 
         // re-sets the initial position of the matched object to
         // the upper left corner of screen so that no measures are
@@ -4334,8 +4340,10 @@ function onYouTubePlayerReady(id) {
 
         // adds the extra scroll position to the top position of
         // the element so that the element is "scroll centered"
-        topPosition += referenceSrollTop;
-        leftPosition += referenceSrollLeft;
+        // this is only required in case the element positioning
+        // is not fixed based
+        topPosition += isFixed ? 0 : referenceSrollTop;
+        leftPosition += isFixed ? 0 : referenceSrollLeft;
 
         // in case the reference attribute to be used for centering
         // the element is the margin

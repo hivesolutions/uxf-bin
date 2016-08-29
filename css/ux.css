@@ -414,7 +414,7 @@ body.wait-load {
 
 .window {
     display: none;
-    position: absolute;
+    position: fixed;
 }
 
 .window .window-mask {
