@@ -26495,7 +26495,7 @@ function onYouTubePlayerReady(id) {
         };
 
         var _original = function(matchedObject, options) {
-            var original = matchedObject.data("original") || ""
+            var original = matchedObject.data("original") || "";
             _value(matchedObject, {
                 value: original
             });
@@ -26621,7 +26621,7 @@ function onYouTubePlayerReady(id) {
             var forceComplete = matchedObject.attr("data-force_complete");
 
             // sets the proper original value that is going to be used latter
-            // for the original envent to restore original state
+            // for the original event to restore original state
             matchedObject.data("original", originalValue || elementValue || inputFieldValue);
 
             // in case the element value is not provided
@@ -26664,16 +26664,15 @@ function onYouTubePlayerReady(id) {
             // retrieves the original value
             var originalValue = matchedObject.attr("data-original_value");
 
-            // in case the original value is not defined
+            // in case the original value is not defined, must
+            // return control flow immediately (nothing to be done)
             if (originalValue == null) {
-                // returns immediately
                 return;
             }
 
             // sets the value attribute to the original value
+            // and adds the lower class to it
             matchedObject.val(originalValue);
-
-            // adds the lower class
             matchedObject.addClass("lower");
         };
 
