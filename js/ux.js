@@ -483,6 +483,10 @@
             return false;
         }
 
+        // tries to determine if the extra query class is set in the body,
+        // if that's not the case the extra query is not going to be applied
+        var hasExtra = _body.hasClass("extra-query");
+
         // calculates the aditional set of values of the base href value
         // so that this request may be "marked" as special avoiding possible
         // errors with cache in the browser/client side
@@ -506,7 +510,7 @@
         // the extra async data parameter sent indicating that this is meant
         // to be handled differently (notably the redirection process)
         var request = jQuery.ajax({
-            url: href + extraQuery,
+            url: href + (hasExtra ? extraQuery : ""),
             dataType: "html",
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("X-Async", "all");
@@ -17069,6 +17073,10 @@ function onYouTubePlayerReady(id) {
             href = isGet ? href + "?" + data : href;
             data = isGet ? "" : data;
 
+            // tries to determine if the extra query class is set in the body,
+            // if that's not the case the extra query is not going to be applied
+            var hasExtra = _body.hasClass("extra-query");
+
             // calculates the aditional set of values of the base href value
             // so that this request may be "marked" as special avoiding possible
             // errors with cache in the browser/client side
@@ -17085,7 +17093,7 @@ function onYouTubePlayerReady(id) {
             // forces the content type header for the requested encoding
             // type in case the form is not of type multipart
             var request = new XMLHttpRequest();
-            request.open(method, href + extraQuery);
+            request.open(method, href + (hasExtra ? extraQuery : ""));
             enctype != "multipart/form-data" && request.setRequestHeader("Content-Type", enctype);
             request.setRequestHeader("X-Async", "all");
             request.setRequestHeader("X-Partial", "all");
