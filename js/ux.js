@@ -17798,13 +17798,32 @@ function onYouTubePlayerReady(id) {
             // to start their (initial) state, note that
             // this operation is delayed by timeout
             matchedObject.each(function(index, element) {
+                // retrieves the reference to the current element
                 var _element = jQuery(this);
+
+                // tries to determine the density of the screen and uses
+                // it to determine the appropriate attribute to be used
+                // to retrieve the url of the image to be loaded
                 var isRetina = _body.hasClass("retina-s");
                 var attribute = isRetina ? "data-url_retina" : "data-url";
                 var src = _element.attr(attribute);
-                src = src || _element.attr("data-url") || _element.attr("src");
+                src = src || _element.attr("data-url");
+
+                // in case no other way of retrieving the target source
+                // image success the src attribute is used as the value
+                // for the lazy retrieval, note that for this strategy
+                // the src attribute is removed (may create size issues)
+                if (!src) {
+                    src = _element.attr("src")
+                    _element.removeAttr("src");
+                }
+
+                // sets the target url of the image in the target attribute
+                // taking into account the density of the screen
                 _element.attr(attribute, src);
-                _element.removeAttr("src");
+
+                // schedules the update state operation on the element for
+                // the next tick operation (tries to load it, if visible)
                 setTimeout(function() {
                     updateState(_element);
                 });
@@ -17836,6 +17855,9 @@ function onYouTubePlayerReady(id) {
 
             matchedObject.bind("load", function() {
                 var element = jQuery(this);
+                if (!isFinal(element)) {
+                    return;
+                }
                 element.removeClass("loading");
                 element.removeClass("unloaded");
                 element.addClass("loaded");
@@ -17843,6 +17865,9 @@ function onYouTubePlayerReady(id) {
 
             matchedObject.bind("error", function() {
                 var element = jQuery(this);
+                if (!isFinal(element)) {
+                    return;
+                }
                 element.removeClass("loading");
                 element.addClass("error");
             });
@@ -17887,9 +17912,10 @@ function onYouTubePlayerReady(id) {
             var _body = jQuery("body");
             var isRetina = _body.hasClass("retina-s");
             var attribute = isRetina ? "data-url_retina" : "data-url";
-            var src = element.attr("src");
             var dataUrl = element.attr(attribute);
-            if (src || !dataUrl) {
+            var imageSet = isSet(element);
+
+            if (imageSet || !dataUrl) {
                 return;
             }
 
@@ -17905,7 +17931,7 @@ function onYouTubePlayerReady(id) {
             return _getOffset(element, "data-footer", ".footer-container");
         };
 
-        var isVisible = function(element, strict) {
+        var isVisible = function(element, relaxed) {
             var _window = jQuery(window);
             var windowTop = _window.scrollTop();
             var windowHeight = _window.height();
@@ -17913,13 +17939,34 @@ function onYouTubePlayerReady(id) {
             var elementHeight = element.outerHeight(true);
             var headerOffset = getHeaderOffset(element);
             var footerOffset = getFooterOffset(element);
-            var strict = strict || element.hasClass("strict");
-            var displayed = strict ? element.is(":visible") : true;
+            var relaxed = relaxed || element.hasClass("relaxed");
+            var displayed = relaxed ? true : element.is(":visible");
 
             var belowTop = elementTop + elementHeight >= windowTop + headerOffset;
             var aboveBottom = elementTop <= windowTop + windowHeight - footerOffset;
             var visible = belowTop && aboveBottom && displayed;
             return visible;
+        };
+
+        var isFinal = function(element) {
+            var _body = jQuery("body");
+            var isRetina = _body.hasClass("retina-s");
+            var attribute = isRetina ? "data-url_retina" : "data-url";
+            var dataUrl = element.attr(attribute);
+            var url = element.attr("src");
+            return dataUrl == url;
+        };
+
+        var isSet = function(element) {
+            var isLoaded = element.hasClass(".loaded");
+            if (isLoaded) {
+                return true;
+            }
+            var isLoading = element.hasClass(".loading");
+            if (isLoading) {
+                return true;
+            }
+            return false;
         };
 
         var _getOffset = function(element, selectorAttribute, defaultSelector) {
