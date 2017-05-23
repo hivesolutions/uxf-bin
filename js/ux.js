@@ -14832,8 +14832,8 @@ function onYouTubePlayerReady(id) {
                 // registers for the destroyed event on the element and
                 // for that runs the unbind operation on the scroll
                 element.bind("destroyed", function() {
-                    var element = jQuery(this);
                     var onScroll = element.data("on_scroll");
+                    element.removeData("on_scroll");
                     _window.unbind("scroll", onScroll);
                 });
             });
