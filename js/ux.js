@@ -17297,7 +17297,7 @@ function onYouTubePlayerReady(id) {
                     // the current browser stat is refreshed
                     var isRefresh = matchedObject.hasClass("form-refresh");
                     if (isRefresh) {
-                        jQuery.uxlocation("");
+                        jQuery.uxlocation(document.location.pathname);
                         return;
                     }
 
