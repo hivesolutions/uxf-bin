@@ -12414,7 +12414,7 @@ function onYouTubePlayerReady(id) {
             // and replaced by a single filter tuple value
             if (filterName) {
                 // runs the defaulting operation in the filters value so that
-                // the provided set of filters is allways an emptty list, then
+                // the provided set of filters is allways an empty list, then
                 // adds the new filter tuple to the sequence and invalidates
                 // the filter string so that no base filtering is used
                 filters = filters || [];
@@ -12926,7 +12926,7 @@ function onYouTubePlayerReady(id) {
             // adds the lock symbol to the drop field
             dropField.addClass("drop-field-lock");
 
-            // in case the bootstrap mode is enabled and extra update
+            // in case the bootstrap mode is enabled an extra update
             // operation is scheduled to update the values of the drop
             // field according to the logic attribute that has been set
             bootstrap
