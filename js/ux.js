@@ -803,7 +803,7 @@
 
     jQuery.uxdecimal = function(value) {
         var integer = Math.abs(parseInt(value));
-        var count = integer == 0 ? 1 : parseInt(Math.log10(integer)) + 1;
+        var count = integer === 0 ? 1 : parseInt(Math.log10(integer)) + 1;
         var places = FLOAT_PRECISION - count;
         var multiplier = Math.pow(10, places);
         value = Math.round(value * multiplier) / multiplier;
@@ -1173,7 +1173,7 @@
             // in case none is found the element is considered to
             // be a top one and the proper attribute is added
             var parents = isElement ? _element.parents("[data-top]") : [];
-            var isTop = parents.length == 0 && isElement;
+            var isTop = parents.length === 0 && isElement;
             isTop && _element.attr("data-top", "1")
 
             // retrieves the complete set of children elements
@@ -1209,7 +1209,7 @@
             // queue is now empty, if that the case the control
             // flow is returned immediately to the caller
             queue.shift();
-            if (queue.length == 0) {
+            if (queue.length === 0) {
                 return;
             }
 
@@ -1274,7 +1274,7 @@
 
     jQuery.uxdelta = function(value) {
         var integer = Math.abs(parseInt(value / 1));
-        var count = integer == 0 ? 1 : parseInt(Math.log10(integer)) + 1;
+        var count = integer === 0 ? 1 : parseInt(Math.log10(integer)) + 1;
         var places = FLOAT_PRECISION - count;
         places = places < 1 ? places = 1 : places;
         var delta = 1 / Math.pow(10, places);
@@ -1861,7 +1861,7 @@
 
                     // checks if the compare string (current item) starts with the
                     // current filter string
-                    if (compareString.indexOf(filterString) == 0) {
+                    if (compareString.indexOf(filterString) === 0) {
                         // adds the current item to the list
                         // of valid items (valid item)
                         validItems.push(currentItem);
@@ -3148,7 +3148,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
 })(jQuery);
 
 function onYoutubeStateChange(state) {
-    if (state == 0) {
+    if (state === 0) {
         var video = jQuery("#youtube-player");
         var parent = video.parents(".video");
         parent.trigger("ended");
@@ -25278,7 +25278,7 @@ function onYouTubePlayerReady(id) {
                     // in iteration and then uses it to retrieve the last column
                     var row = current.parents("tr");
                     var lastColumn = jQuery("td.last", row);
-                    initial = _next(null, "> [data-object]",
+                    initial = _next(null, "> [data-object]:not([disabled], .disabled)",
                         lastColumn, null, true);
 
                     // in case the next initial is an invalid one (not possible to set it)
@@ -25556,7 +25556,7 @@ function onYouTubePlayerReady(id) {
                     // tick will be made on the next column
                     var targets = jQuery(selector, column);
                     if (targets.length > 0) {
-                        return jQuery(targets[0]);
+                        return jQuery(targets.get(0));
                     }
 
                     // retrieves the reference to the next column in the current
