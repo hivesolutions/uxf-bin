@@ -11550,7 +11550,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case there is no text field defined for the
                 // current element one must be created
-                if (textField.length == 0) {
+                if (textField.length === 0) {
                     // retrieves the various attributes from the element
                     // to be propagated to the text field
                     var name = _element.attr("name");
@@ -11589,7 +11589,7 @@ function onYouTubePlayerReady(id) {
 
                 // adds the "extra" html to the matched object,
                 // in case no drop field contents is found
-                dropFieldContents.length == 0 && _element.append(
+                dropFieldContents.length === 0 && _element.append(
                     "<div class=\"drop-field-clear\"></div>") && _element.append(
                     "<ul class=\"drop-field-contents\"></ul>");
 
@@ -12481,7 +12481,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case no valid items were retrieves, must show
                 // the no results element
-                if (validItems.length == 0) {
+                if (validItems.length === 0) {
                     // clones the drop field no results element, to create
                     // an instance to be added, then removes the hidding
                     // class from it
@@ -12966,7 +12966,8 @@ function onYouTubePlayerReady(id) {
                 ]);
 
             // in case the imcimplete mode is enabled an extra operation
-            // is sheduled to update the drop field accordingly
+            // is sheduled to update the drop field accordingly, this is
+            // performed only if the force option is set
             incomplete
                 && options.force && _update(dropField, options, true, [
                     [displayAttribute,
@@ -24861,7 +24862,7 @@ function onYouTubePlayerReady(id) {
                         elementReference);
 
                     // in case there are no rows available
-                    if (rows.length == 0) {
+                    if (rows.length === 0) {
                         // returns immediately (no need to proceed
                         // with the row removal)
                         return;
@@ -24898,7 +24899,7 @@ function onYouTubePlayerReady(id) {
                 // in case the table is of type edit and the table is emtpy
                 // a line must be added to the end of the table in
                 // case the table is empty
-                if (isEdit && rows.length == 0) {
+                if (isEdit && rows.length === 0) {
                     // retrieves the table elements
                     var table = elementReference;
                     var tableBody = jQuery("tbody", table);
@@ -25242,7 +25243,7 @@ function onYouTubePlayerReady(id) {
 
                     // in case there are no columns in the current line, simply
                     // ignores it (no applicability)
-                    if (columns.length == 0) {
+                    if (columns.length === 0) {
                         continue
                     }
 
