@@ -6670,7 +6670,7 @@ function onYouTubePlayerReady(id) {
         var method = matchedObject["ux" + object];
         var value = method ? method.apply(matchedObject, _arguments) : valueF.apply(matchedObject, arguments);
 
-        // returns the just retrived value from the component
+        // returns the just retrieved value from the component
         // to the caller method
         return value;
     };
