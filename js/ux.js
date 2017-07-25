@@ -554,6 +554,8 @@
                     return;
                 }
 
+                uuid = jQuery("body").data("uuid");
+
                 // retrieves the body element and uses it to trigger the data
                 // event indicating that new panel data is available and that
                 // the current layout must be updated (async fashion)
@@ -24584,6 +24586,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the various elements that are going to
             // be used for the registration of handlers
             var _window = jQuery(window);
+            var _body = jQuery("body");
             var tabSelectors = jQuery(".tab-selector", matchedObject);
 
             // registers for the click event in the tab selectors
@@ -24624,9 +24627,22 @@ function onYouTubePlayerReady(id) {
                 // indicating that a new tab has been selected
                 tabPanel.triggerHandler("tab_selected", [targetElement]);
 
+                // tries to retrieve the current uuid from the state
+                // if there's non generates a new one, note that this
+                // is required so that the new state to be pushed properly
+                // represents the visual state of the solution
+                var uuid = _body.attr("uuid") || jQuery.uxguid();
+
+                // creates the new state object taking into account both
+                // the "target" href value and the current state uuid
+                var state = {
+                    uuid: uuid,
+                    href: href
+                };
+
                 // in case the push state function is available for
                 // the window element it is used for href change
-                window.history.pushState && href && window.history.pushState(null, null, href);
+                window.history.pushState && href && window.history.pushState(state, null, href);
 
                 // stops the event propagation
                 // (avoids the normal link behaviour)
