@@ -52,7 +52,7 @@
         var _appendHtml = function() {
             // validates that there's a valid matched object,
             // otherwise returns immediately
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -355,7 +355,7 @@
         var _registerHandlers = function() {
             // validates that there's a valid matched object,
             // otherwise returns immediately
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -464,8 +464,8 @@
         // note that in case the verify flag is set this is ignore as
         // the loading is considered to be forced
         var hasHash = href.indexOf("#") != -1;
-        var isInternal = hasHash && href.split("#")[0] == document.location.href.split("#")[0];
-        isInternal = isInternal || href[0] == "#";
+        var isInternal = hasHash && href.split("#")[0] === document.location.href.split("#")[0];
+        isInternal = isInternal || href[0] === "#";
         if (isInternal && !verify) {
             return false;
         }
@@ -522,7 +522,7 @@
                 // special strateg by retrieving the new location and setting it as
                 // new async contents to be loaded, note that only requests that
                 // contain a valid location header will be used for redirection
-                var isRedirect = request.status == 280;
+                var isRedirect = request.status === 280;
                 var hrefR = request.getResponseHeader("Location");
                 if (isRedirect && hrefR) {
                     hrefR = jQuery.uxresolve(hrefR, href);
@@ -584,7 +584,7 @@
             // and if that's not the case runs the fallback process (user agent
             // document redirection) and aborts the current request
             var requestAsync = isAsync(request);
-            if (requestAsync == true) {
+            if (requestAsync === true) {
                 return;
             }
             document.location = href;
@@ -601,7 +601,7 @@
             var contentType = request.getResponseHeader("Content-Type") || "";
             contentType = contentType.split(";")[0];
             contentType = contentType.strip();
-            return location || contentType == "text/html";
+            return location || contentType === "text/html";
         };
 
         // returns valid as the link execution has been started
@@ -785,7 +785,7 @@
 
         var COUNTRIES_ISO = jQuery.uxlocale("COUNTRIES", localeC);
         var index = COUNTRIES_ISO.indexOf(value);
-        if (index == -1) {
+        if (index === -1) {
             return value;
         }
 
@@ -1131,7 +1131,7 @@
     jQuery.uxlocation = function(location) {
         var body = jQuery("body");
         var result = body.triggerHandler("location", [location]);
-        if (result == false) {
+        if (result === false) {
             return;
         } else {
             document.location = location;
@@ -1223,7 +1223,7 @@
         // to be processed and then in case the queue is now empy
         // runs the callable providing it with the callbacl
         queue.push(callable);
-        if (queue.length == 1) {
+        if (queue.length === 1) {
             callable(callback);
         }
 
@@ -1381,7 +1381,7 @@
             // the requested number of records is not infinite (minus one)
             var startRecord = query["startRecord"] || 0;
             var numberRecords = query["numberRecords"] || MAX_RECORDS;
-            numberRecords = numberRecords == -1 ? MAX_RECORDS : numberRecords
+            numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords
 
             // unpacks the sort value and the sort oder from the
             // sort tuple and uses them to create the "final" sort
@@ -1406,7 +1406,7 @@
 
                 // in case the current value is a sequence must join
                 // all of its values arround the separator token
-                var isSequence = typeof value == "object";
+                var isSequence = typeof value === "object";
                 if (isSequence) {
                     value = value.join(";")
                 }
@@ -1552,7 +1552,7 @@
 
                         // in case the received (items) is not a list
                         // (single retrieval)
-                        if (!(validItems.constructor == Array)) {
+                        if (!(validItems.constructor === Array)) {
                             // tries to retrieve the (private) base
                             // values that will serve as prototype for
                             // the retrieval of the valid items
@@ -1699,7 +1699,7 @@
             // the requested number of records is not infinite (minus one)
             var startRecord = query["startRecord"] || 0;
             var numberRecords = query["numberRecords"] || MAX_RECORDS;
-            numberRecords = numberRecords == -1 ? MAX_RECORDS : numberRecords
+            numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords
 
             // sets the initial filter flag value
             var filter = false;
@@ -1757,7 +1757,7 @@
 
                     // in case the current item
                     // id is the id to be found
-                    if (itemId == id) {
+                    if (itemId === id) {
                         // adds the item to the items
                         // id list
                         itemsId.push(item);
@@ -1839,7 +1839,7 @@
                 }
                 // otherwise in case the current item is a map the
                 // default attribute must be used
-                else if (typeof currentItem == "object") {
+                else if (typeof currentItem === "object") {
                     // retrieves the name attribute from the current
                     // item and sets it in the list of compaare strings
                     var name = currentItem["name"];
@@ -1952,7 +1952,7 @@
             // in case the element type is not valid calls the callback
             // immediately with no results because it was not possible
             // to retrieve any kind of data from an invalid data source
-            if (elementType == null || elementType == undefined) {
+            if (elementType === null || elementType === undefined) {
                 callback([], false);
                 return;
             }
@@ -2238,7 +2238,7 @@
                     // retrieves the current item in iteration and checks
                     // if the type of it is a string, conditional action
                     var item = items[index];
-                    var isString = typeof item == "string";
+                    var isString = typeof item === "string";
 
                     // in case the current item is a string it must be
                     // added directly
@@ -2793,7 +2793,7 @@
             var element = jQuery(this);
             var nameS = element.css("animation-name");
             var names = nameS.split(",")
-            if (name && names.indexOf(name) == -1) {
+            if (name && names.indexOf(name) === -1) {
                 callback.call(this);
                 return;
             }
@@ -2803,7 +2803,7 @@
             var onEnd = function(event) {
                 var element = jQuery(this);
                 var _name = event.originalEvent.animationName;
-                var isValid = name == _name || !name;
+                var isValid = name === _name || !name;
                 if (!isValid) {
                     return;
                 }
@@ -2851,7 +2851,7 @@
             var element = jQuery(this);
             var propertyS = element.css("transition-property");
             var propertys = propertyS.split(",")
-            if (property && propertys.indexOf(property) == -1) {
+            if (property && propertys.indexOf(property) === -1) {
                 callback.call(this);
                 return;
             }
@@ -2861,7 +2861,7 @@
             var onEnd = function(event) {
                 var element = jQuery(this);
                 var _property = event.originalEvent.propertyName;
-                var isValid = property == _property || !property;
+                var isValid = property === _property || !property;
                 if (!isValid) {
                     return;
                 }
@@ -3210,7 +3210,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the name of the current plugin is the
                 // one to being searched
-                if (currentPlugin.name == name) {
+                if (currentPlugin.name === name) {
                     // returns valid the plugin was found
                     return true;
                 }
@@ -3331,7 +3331,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the name of the current plugin is the
                 // one to being searched
-                if (currentPlugin.name == name) {
+                if (currentPlugin.name === name) {
                     // returns valid the plugin was found
                     return true;
                 }
@@ -3528,7 +3528,7 @@ function onYouTubePlayerReady(id) {
             // tries to determine if the queue is empty and if
             // that's the case calls the callback as all the
             // elements in the queue have been processed
-            if (queue.length == 0) {
+            if (queue.length === 0) {
                 callback();
                 return;
             }
@@ -3817,7 +3817,7 @@ function onYouTubePlayerReady(id) {
             // in case the control key is set and the currently
             // pressed key is the one defined for registration
             // the event callback is called and the event prevented
-            if ((event.ctrlKey || event.metaKey) && keyValue == keycode) {
+            if ((event.ctrlKey || event.metaKey) && keyValue === keycode) {
                 // calls the callback with the current context
                 // and the arguments
                 callback.apply(this, arguments);
@@ -4043,7 +4043,7 @@ function onYouTubePlayerReady(id) {
                         if (delta < SCAN_INTERVAL) {
                             // in case the current key is an enter
                             // (time to send the scan error)
-                            if (keyValue == 13) {
+                            if (keyValue === 13) {
                                 // triggers the scan error event
                                 targetObject.trigger("scan_error", [sequence]);
                             }
@@ -4072,7 +4072,7 @@ function onYouTubePlayerReady(id) {
                         if (delta < SCAN_INTERVAL) {
                             // in case the current key is an enter
                             // (time to send the scan error)
-                            if (keyValue == 13) {
+                            if (keyValue === 13) {
                                 // triggers the scan error event
                                 targetObject.trigger("scan_error", [sequence]);
                             }
@@ -4099,7 +4099,7 @@ function onYouTubePlayerReady(id) {
 
                     // in case the current key is an enters, must check if
                     // the sequence can be finished
-                    if (keyValue == 13) {
+                    if (keyValue === 13) {
                         // retrieves the length of the current sequence, defaulting
                         // to zero in case no sequence is present
                         var sequenceLength = sequence ? sequence.length : 0;
@@ -4382,7 +4382,7 @@ function onYouTubePlayerReady(id) {
         // currently being used for the position of the object
         // and then verifies if the strategy is a fixed one
         var positioning = matchedObject.css("position");
-        var isFixed = positioning == "fixed";
+        var isFixed = positioning === "fixed";
 
         // re-sets the initial position of the matched object to
         // the upper left corner of screen so that no measures are
@@ -5002,7 +5002,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -5250,7 +5250,7 @@ function onYouTubePlayerReady(id) {
             // of the current document as the scrolling element/target
             // note that the proper element to be returned is defined
             // using browser detection (webkit is considered special)
-            return jQuery.browser.webkit || _document.compatMode == "BackCompat" ? _document.body :
+            return jQuery.browser.webkit || _document.compatMode === "BackCompat" ? _document.body :
                 _document.documentElement;
         });
     };
@@ -5258,12 +5258,12 @@ function onYouTubePlayerReady(id) {
     jQuery.fn.uxscrollto = function(target, duration, settings) {
         // in case the target is not defined or in case it's
         // an empty array, must return immdiately, nothing to be done
-        if (!target || target.length == 0) {
+        if (!target || target.length === 0) {
             return;
         }
 
         // in case the duration is an object
-        if (typeof duration == "object") {
+        if (typeof duration === "object") {
             settings = duration;
             duration = 0;
         }
@@ -5271,7 +5271,7 @@ function onYouTubePlayerReady(id) {
         // in case the settings is a function, sets it as the
         // callback (on after) function to be called at the
         // the end of the animation
-        if (typeof settings == "function") {
+        if (typeof settings === "function") {
             settings = {
                 onAfter: settings
             };
@@ -5279,7 +5279,7 @@ function onYouTubePlayerReady(id) {
 
         // in case the target is the maximum, the target is
         // set as a really large number (bottom of screen)
-        if (target == "max") {
+        if (target === "max") {
             // set the target to a really big value,
             // so that the scroll target is ensured
             // to be as bottom as possible
@@ -5337,7 +5337,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the target is not defined or in case it's
             // an empty array, must return immdiately, nothing to be done
-            if (!_target || _target.length == 0) {
+            if (!_target || _target.length === 0) {
                 return;
             }
 
@@ -5345,7 +5345,7 @@ function onYouTubePlayerReady(id) {
                 // retrieves the position and converts it to lower case
                 // then retrieves the key to the position, the old
                 // element and the maximum between the axis and the element
-                var position = axis == "x" ? "Left" : "Top";
+                var position = axis === "x" ? "Left" : "Top";
                 var positionLower = position.toLowerCase();
                 var key = "scroll" + position;
                 var old = element[key];
@@ -5367,7 +5367,7 @@ function onYouTubePlayerReady(id) {
 
                     if (settings.over[positionLower])
                         // scrolls to a fraction of its width/height
-                        attributes[key] += _target[axis == "x" ? "width" : "height"]() *
+                        attributes[key] += _target[axis === "x" ? "width" : "height"]() *
                         settings.over[positionLower];
                 }
                 // otherwise no offset should be used
@@ -5376,7 +5376,7 @@ function onYouTubePlayerReady(id) {
                     var value = _target[positionLower];
 
                     // handles the percentage values
-                    attributes[key] = value.slice && value.slice(-1) == "%" ? parseFloat(value) /
+                    attributes[key] = value.slice && value.slice(-1) === "%" ? parseFloat(value) /
                         100 * max : value;
                 }
 
@@ -5434,7 +5434,7 @@ function onYouTubePlayerReady(id) {
     uxscrollto.max = function(element, axis) {
         // retrieves both the dimension and the scroll
         // references
-        var dimensions = axis == "x" ? "Width" : "Height";
+        var dimensions = axis === "x" ? "Width" : "Height";
         var scroll = "scroll" + dimensions;
 
         // in case the element represents an html or
@@ -5467,7 +5467,7 @@ function onYouTubePlayerReady(id) {
      * @return {Map} The map with the top and left key set to the value.
      */
     var both = function(value) {
-        return typeof value == "object" ? value : {
+        return typeof value === "object" ? value : {
             top: value,
             left: value
         };
@@ -5503,12 +5503,12 @@ function onYouTubePlayerReady(id) {
         // if the current parent is the window (avoids problems)
         var viewOffset = _parent.offset();
         var viewOffsetTop = viewOffset ? viewOffset.top : 0;
-        var viewHeight = _parent[0] == window ? _parent.height() : _parent.outerHeight();
+        var viewHeight = _parent[0] === window ? _parent.height() : _parent.outerHeight();
         var viewScrollTop = _parent.scrollTop();
 
         // retrieves the offset top the top of the element taking into
         // account if the current parent in use is the window element
-        var elementOffsetTop = _parent[0] == window ? element.offset().top : element.offset().top +
+        var elementOffsetTop = _parent[0] === window ? element.offset().top : element.offset().top +
             viewScrollTop;
 
         // retrieves the top and bottom positions of the
@@ -5560,7 +5560,7 @@ function onYouTubePlayerReady(id) {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 // returns immediately
                 return;
             }
@@ -5591,10 +5591,10 @@ function onYouTubePlayerReady(id) {
 
             // updates the scroll top value taking into account if the
             // current parent elemeent is the window
-            scrollTop = _parent[0] == window ? scrollTop : _parent.scrollTop();
+            scrollTop = _parent[0] === window ? scrollTop : _parent.scrollTop();
 
             // retrieves the height of the parent element
-            var parentHeight = _parent[0] == window ? _parent.height() : _parent.outerHeight();
+            var parentHeight = _parent[0] === window ? _parent.height() : _parent.outerHeight();
 
             // calculates the top offset value for the parent element
             // to be used for some calculus (in no window mode)
@@ -5789,7 +5789,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (performance issues may be created)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -5846,7 +5846,7 @@ function onYouTubePlayerReady(id) {
             var index = dataString.indexOf(jQuery.fn.uxbrowser.versionSearchString);
 
             // in case the version search string is not found
-            if (index == -1) {
+            if (index === -1) {
                 // returns immediately
                 return;
             }
@@ -6035,7 +6035,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (performance issues may be created)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -6070,7 +6070,7 @@ function onYouTubePlayerReady(id) {
             var s = b.style;
             var p = "transition";
 
-            if (typeof s[p] == "string") {
+            if (typeof s[p] === "string") {
                 return true;
             }
 
@@ -6196,7 +6196,7 @@ function onYouTubePlayerReady(id) {
         // retrieves the current matched object and in case the
         // length of it is zero returns immediately in error
         var matchedObject = this;
-        if (!matchedObject || matchedObject.length == 0) {
+        if (!matchedObject || matchedObject.length === 0) {
             return false;
         }
 
@@ -6383,7 +6383,7 @@ function onYouTubePlayerReady(id) {
         var _appendHtml = function() {
             // in case the matched object is empty, returns immediately
             // as there's nothing pending to be done
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -6456,7 +6456,7 @@ function onYouTubePlayerReady(id) {
 
         // verifies if there's at leat one valid object matched and
         // if that's not the case returns the current context immediately
-        if (!matchedObject || matchedObject.length == 0) {
+        if (!matchedObject || matchedObject.length === 0) {
             return this;
         }
 
@@ -6484,7 +6484,7 @@ function onYouTubePlayerReady(id) {
 
         // verifies if there's at leat one valid object matched and
         // if that's not the case returns the current context immediately
-        if (!matchedObject || matchedObject.length == 0) {
+        if (!matchedObject || matchedObject.length === 0) {
             return this;
         }
 
@@ -7169,7 +7169,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the attribute value is null
                 // (special case)
-                if (attributeValue == null) {
+                if (attributeValue === null) {
                     // sets the appropriate attribute value according
                     // to the nullify value
                     attributeValue = nullify ? defaultValue : "null";
@@ -7181,7 +7181,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the attribute value is
                 // an object
-                if (attributeValueType == "object") {
+                if (attributeValueType === "object") {
                     // re-calculates the (new) base key to be
                     // sued in next iteration
                     var newBaseKey = key + ".";
@@ -7773,7 +7773,7 @@ function onYouTubePlayerReady(id) {
             // in case the number of frames is one there's no need to continue
             // with the animation process, as this is considered to be a "normal"
             // static image, not requiring any kind of animation process
-            if (frameCount == 1) {
+            if (frameCount === 1) {
                 element.css("background-position", "");
                 return;
             }
@@ -7816,7 +7816,7 @@ function onYouTubePlayerReady(id) {
 
             // calculates the "new" or next index value taking the previous
             // one as reference and the re-calculates the offset value
-            var next = index == frameCount - 1 ? 0 : index + 1;
+            var next = index === frameCount - 1 ? 0 : index + 1;
             var offset = height * next * -1;
 
             // updates the element's css position and the frame (index) value
@@ -7919,7 +7919,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
-            if (window.length == 0) {
+            if (window.length === 0) {
                 window = jQuery("<div class=\"window window-alert window-hide\">" + "<h1></h1>" +
                     "<p class=\"single\"></p>" + "<div class=\"window-buttons\">" +
                     "<span class=\"button button-cancel\">" + cancel + "</span>" +
@@ -8052,7 +8052,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the current index overflows the
             // current count of breadcrumbs
-            if (index == breadcrumbsLength - 1) {
+            if (index === breadcrumbsLength - 1) {
                 // returns immediately
                 return;
             }
@@ -8071,7 +8071,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the current index is zero, in case
             // it's, not possible to go to a previous position
-            if (index == 0) {
+            if (index === 0) {
                 // returns immediately
                 return;
             }
@@ -8607,7 +8607,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly update operation is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -8660,7 +8660,7 @@ function onYouTubePlayerReady(id) {
                 var previousDay = finalDayPreviousNumber - (initialDayWeek - index) + 1;
 
                 // in case the (current) previous day is the currently select day
-                if (previousYear == currentDayYear && previousMonth == currentDayMonth && previousDay ==
+                if (previousYear === currentDayYear && previousMonth === currentDayMonth && previousDay ==
                     currentDayNumber) {
                     // adds the day tuple with the active class in it
                     days.push([previousYear, previousMonth, previousDay,
@@ -8682,7 +8682,7 @@ function onYouTubePlayerReady(id) {
                 var day = index + 1;
 
                 // in case the (current) day is the currently select day
-                if (year == currentDayYear && month == currentDayMonth && day == currentDayNumber) {
+                if (year === currentDayYear && month === currentDayMonth && day === currentDayNumber) {
                     // adds the day tuple with the active class in it
                     days.push([year, month, day, "active"]);
                 }
@@ -8703,7 +8703,7 @@ function onYouTubePlayerReady(id) {
                 var nextDay = index - daysLength + 1;
 
                 // in case the (current) next day is the currently select day
-                if (nextYear == currentDayYear && nextMonth == currentDayMonth && nextDay ==
+                if (nextYear === currentDayYear && nextMonth === currentDayMonth && nextDay ==
                     currentDayNumber) {
                     // adds the day tuple with the active class in it
                     days.push([nextYear, nextMonth, nextDay, "faded active"]);
@@ -8725,7 +8725,7 @@ function onYouTubePlayerReady(id) {
             for (var index = 0; index < days.length; index++) {
                 // checks if the current cell is of type
                 // start (line) cell (end/start of week)
-                var isStartCell = index % 7 == 0;
+                var isStartCell = index % 7 === 0;
 
                 // in case the current cell is of type
                 // start cell (end/start of week)
@@ -8801,7 +8801,7 @@ function onYouTubePlayerReady(id) {
             var month = matchedObject.data("month");
 
             // in case the final month is the current month
-            if (month == 12) {
+            if (month === 12) {
                 // increments the year value and sets the
                 // month value as the first month
                 year++;
@@ -8831,7 +8831,7 @@ function onYouTubePlayerReady(id) {
             var month = matchedObject.data("month");
 
             // in case the first month is the current month
-            if (month == 1) {
+            if (month === 1) {
                 // decrements the year value and sets the
                 // month value as the last month
                 year--;
@@ -8966,7 +8966,7 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -8984,7 +8984,7 @@ function onYouTubePlayerReady(id) {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -9092,7 +9092,7 @@ function onYouTubePlayerReady(id) {
         var _schedule = function(matchedObject, options) {
             var timeout = matchedObject.attr("data-timeout") || "5000";
             timeout = parseInt(timeout);
-            if (timeout == -1) {
+            if (timeout === -1) {
                 return;
             }
             var interval = matchedObject.data("interval");
@@ -9134,14 +9134,14 @@ function onYouTubePlayerReady(id) {
         var _next = function(matchedObject, options) {
             var count = matchedObject.data("count");
             var index = matchedObject.data("index");
-            var next = index + 1 == count ? 0 : index + 1;
+            var next = index + 1 === count ? 0 : index + 1;
             _set(matchedObject, options, next);
         };
 
         var _previous = function(matchedObject, options) {
             var count = matchedObject.data("count");
             var index = matchedObject.data("index");
-            var next = index - 1 == -1 ? count - 1 : index - 1;
+            var next = index - 1 === -1 ? count - 1 : index - 1;
             _set(matchedObject, options, next);
         };
 
@@ -9253,7 +9253,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the current value "overflows" the current
                 // section count the index calue is reseted
-                index == sectionCount ? index = 0 : index = index;
+                index === sectionCount ? index = 0 : index = index;
 
                 // adds the new section calss and shows the matched object
                 // with a fade effect
@@ -9418,7 +9418,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the checked value is the same
             // as the value (current option)
-            if (checked == value) {
+            if (checked === value) {
                 // sets the element as checked
                 matchedObject.attr("checked", true);
                 matchedObject.prop && matchedObject.prop("checked", true);
@@ -9510,7 +9510,7 @@ function onYouTubePlayerReady(id) {
                 var buttonGroup = element.parents(".button-group");
                 var continueChange = buttonGroup.triggerHandler(
                     "index_changed", [index, element]);
-                if (continueChange == false) {
+                if (continueChange === false) {
                     return;
                 }
 
@@ -9549,7 +9549,7 @@ function onYouTubePlayerReady(id) {
                     // verifies if there's a selected element and if that's
                     // not the case returns immediately, no value is going
                     // to be submitted (according to specification)
-                    if (selected.length == 0) {
+                    if (selected.length === 0) {
                         return;
                     }
 
@@ -9698,7 +9698,7 @@ function onYouTubePlayerReady(id) {
                 // checks if the current click is from a middle
                 // button and in such case sets the new window
                 // option to open the link in a new window
-                var window = event.which == 2;
+                var window = event.which === 2;
                 options["window"] = window;
 
                 // triggers the handling of the click event to
@@ -9739,7 +9739,7 @@ function onYouTubePlayerReady(id) {
                 // checks if the current click is a middle click
                 // and in such case stops the propagation of the
                 // event avoid the default behavior
-                var isMiddle = event.which == 2;
+                var isMiddle = event.which === 2;
                 if (isMiddle) {
                     event.stopPropagation();
                     event.preventDefault();
@@ -9804,7 +9804,7 @@ function onYouTubePlayerReady(id) {
             isConfirm && _body.uxconfirm(message, function(result) {
                 // in case the result is cancel (false),
                 // avoids execution and returns immediately
-                if (result == false) {
+                if (result === false) {
                     return;
                 }
 
@@ -10066,7 +10066,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the window (alert window) elements
             var window = jQuery(windowSelector, matchedObject);
-            if (window.length == 0) {
+            if (window.length === 0) {
                 window = jQuery("<div class=\"window window-alert window-hide\">" + "<h1></h1>" +
                     "<p class=\"single\"></p>" + "<div class=\"window-buttons\">" +
                     "<span class=\"button button-cancel\">" + cancel + "</span>" +
@@ -10267,7 +10267,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the current value "overflows" the current
             // section count the index calue is reseted
-            index == sectionCount ? index = 0 : index = index;
+            index === sectionCount ? index = 0 : index = index;
 
             // retrieves the current panel to be shown and
             // shows it with the default approach
@@ -10495,7 +10495,7 @@ function onYouTubePlayerReady(id) {
                 // verifies if the current item in validation exists in
                 // the target data source and in case it does returns
                 // false so that it gets invalidated
-                var exists = targetItems.indexOfObject(item) != -1;
+                var exists = targetItems.indexOfObject(item) !== -1;
                 return exists ? false : true;
             });
 
@@ -10588,7 +10588,7 @@ function onYouTubePlayerReady(id) {
                 // in case the item value exists in the target items
                 // must return immediately cannot add duplicates to
                 // the target list
-                var exists = targetItems.indexOfObject(item) != -1;
+                var exists = targetItems.indexOfObject(item) !== -1;
                 if (!duplicates && exists) {
                     return;
                 }
@@ -10737,7 +10737,7 @@ function onYouTubePlayerReady(id) {
 
                     // checks if the data value already exists in the list of target
                     // items in case it does continues the loop (duplicated value)
-                    var exists = targetItems.indexOfObject(item) != -1;
+                    var exists = targetItems.indexOfObject(item) !== -1;
                     if (!duplicates && exists) {
                         continue;
                     }
@@ -10793,7 +10793,7 @@ function onYouTubePlayerReady(id) {
                     // in case the're no valid list items to be sent an empty
                     // value with the same name is posted (so that an empty value
                     // is submitted), required for compliance
-                    if (listItems.length == 0) {
+                    if (listItems.length === 0) {
                         targetList.append("<input type=\"hidden\" name=\"" + elementName +
                             "\" />");
                     }
@@ -10879,7 +10879,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -10923,12 +10923,12 @@ function onYouTubePlayerReady(id) {
 
                 // verifies if the current drop down is considered to
                 // be an empty one (no elements contained in it)
-                var isEmpty = elements.length == 0;
+                var isEmpty = elements.length === 0;
 
                 // verifies if the request for an input like drop
                 // down exists and if that the case created or re-uses
                 // the input associated with the drop down container
-                if (input && inputElement.length == 0) {
+                if (input && inputElement.length === 0) {
                     container.prepend("<input type=\"hidden\" name=\"" + input + "\"/>");
                 } else if (input) {
                     container.prepend(inputElement);
@@ -11016,7 +11016,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -11118,7 +11118,7 @@ function onYouTubePlayerReady(id) {
                 // in case the key that was pressed in not the
                 // escape one there's nothing to be done and so
                 // the control flow is returned immediately
-                if (keyValue != 27) {
+                if (keyValue !== 27) {
                     return;
                 }
 
@@ -11339,7 +11339,7 @@ function onYouTubePlayerReady(id) {
             // in case no element is selected nothing is meant to
             // be performed under the current function, and the
             // control flow must be returned immediately
-            if (element.length == 0) {
+            if (element.length === 0) {
                 return;
             }
 
@@ -11856,7 +11856,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the pressed key is not the escape
                 // key no need to act
-                if (eventKeyCode != 27) {
+                if (eventKeyCode !== 27) {
                     // returns immediately
                     return;
                 }
@@ -12410,14 +12410,14 @@ function onYouTubePlayerReady(id) {
             // (no need to show the contents) returns immediately
             // the control flow to the caller function/method, note
             // that the force flag will override this behavior
-            if ((textFieldValue == value || isLower) && !isSelect && !force) {
+            if ((textFieldValue === value || isLower) && !isSelect && !force) {
                 return;
             }
 
             // in case the text field value is empty and the current
             // type is not select the drop field contents panel must
             // be hidden (nova valid data to be shown)
-            if (textFieldValue == "" && !isSelect) {
+            if (textFieldValue === "" && !isSelect) {
                 _hide(dropField);
             }
 
@@ -12720,12 +12720,12 @@ function onYouTubePlayerReady(id) {
                 // an empty set of items, the drop field contents
                 // are only shown in case there is still focus in
                 // the text field
-                validItems.length > 0 && textField.hasClass("focus") && (textFieldValue != "" ||
+                validItems.length > 0 && textField.hasClass("focus") && (textFieldValue !== "" ||
                     isSelect) ? _show(dropField) : _hide(dropField);
 
                 // in case the auto resize options is set
                 // (must position the drop field contents)
-                if (autoResize != "false") {
+                if (autoResize !== "false") {
                     _resize(dropField);
                 }
 
@@ -12744,7 +12744,7 @@ function onYouTubePlayerReady(id) {
                     // unpacks its data value, checking it agains the currently
                     // set logic value (for proper match value)
                     var _element = jQuery(this);
-                    var isValid = valueLogic == _element.attr("data-value");
+                    var isValid = valueLogic === _element.attr("data-value");
                     if (!isValid) {
                         return;
                     }
@@ -12767,7 +12767,7 @@ function onYouTubePlayerReady(id) {
                     // unpacks its data value, checking it agains the currently
                     // set "display" value (for proper match value)
                     var _element = jQuery(this);
-                    var isValid = value == _element.attr("data-display");
+                    var isValid = value === _element.attr("data-display");
                     if (!isValid) {
                         return;
                     }
@@ -13171,7 +13171,7 @@ function onYouTubePlayerReady(id) {
             // that's the case and the force flag is not set the
             // control flow is returned immediately to caller
             var autoResize = dropField.attr("data-auto_size");
-            if (autoResize == "false" && !force) {
+            if (autoResize === "false" && !force) {
                 return;
             }
 
@@ -13185,7 +13185,7 @@ function onYouTubePlayerReady(id) {
             // sizing, if that the case a different sizing is going to
             // be applied to determine the width of the drop field
             var boxSizing = dropFieldContents.css("box-sizing");
-            var isBorderBox = boxSizing == "border-box";
+            var isBorderBox = boxSizing === "border-box";
 
             // calculates the drop field contents width using the text
             // field width as reference and calculating the extra width
@@ -13553,7 +13553,7 @@ function onYouTubePlayerReady(id) {
                 // and in case it does not exists creates an empty version
                 // of it (default behaviour)
                 var items = jQuery("> .items", _element);
-                if (items.length == 0) {
+                if (items.length === 0) {
                     _element.append("<ul class=\"items\"></ul>");
                 }
 
@@ -14046,7 +14046,7 @@ function onYouTubePlayerReady(id) {
                 // in case there is no text field defined for the
                 // current element one must be created, only in case
                 // the no input flag is not set
-                if (textField.length == 0 && !noInput) {
+                if (textField.length === 0 && !noInput) {
                     // retrieves the various attributes from the element
                     // to be propagated to the text field
                     var name = _element.attr("name");
@@ -14071,7 +14071,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the text field is still not found the extra no input
                 // class is aded to the currently selected filter element
-                textField.length == 0 && _element.addClass("no-input")
+                textField.length === 0 && _element.addClass("no-input")
 
                 // creates the element representing the buttons for the filter
                 // fild (the more oprtions and the view changer) and adds it
@@ -14177,7 +14177,7 @@ function onYouTubePlayerReady(id) {
 
                 // adds the "extra" html to the matched object,
                 // in case no filter contents is found
-                if (filterContents.length == 0) {
+                if (filterContents.length === 0) {
                     // creates the filter contents element and adds it to the
                     // filter according to the filter more status
                     var filterContents = jQuery("<div class=\"filter-contents\"></div>");
@@ -14475,7 +14475,7 @@ function onYouTubePlayerReady(id) {
                 // has just been clicked
                 var selectedOption = jQuery(
                     ".filter-sort-option.selected", filter);
-                var isSame = element[0] == selectedOption[0];
+                var isSame = element[0] === selectedOption[0];
 
                 // retrieves the value for the order attribute of
                 // the element to be used in case new element is selected
@@ -14701,7 +14701,7 @@ function onYouTubePlayerReady(id) {
                 var filterInputValue = element.attr("data-value");
 
                 // in case no string value changes occured
-                if (filterString == filterInputValue) {
+                if (filterString === filterInputValue) {
                     // returns immediately
                     return;
                 }
@@ -14951,7 +14951,7 @@ function onYouTubePlayerReady(id) {
 
             // determines if there are no valid contents currently set in the
             // filter to be able to change the classes of it accordingly
-            var noContents = filterContents.children().length == 0;
+            var noContents = filterContents.children().length === 0;
 
             // sets the initial value for the reset flag
             var reset = false;
@@ -14960,13 +14960,13 @@ function onYouTubePlayerReady(id) {
             // update operation and if that's not the case returns immediately
             // as it's not possible to run the update operation without
             // any valid/enabled data source element
-            if (dataSource.length == 0) {
+            if (dataSource.length === 0) {
                 return
             }
 
             // in case the value in the filter input
             // has changed (reset required)
-            if (filterString != filterInputValue || force) {
+            if (filterString !== filterInputValue || force) {
                 // resets the (current) selection value
                 filter.data("selection", [0]);
                 filter.data("pivot", 0);
@@ -15314,7 +15314,7 @@ function onYouTubePlayerReady(id) {
 
             // in case there's no context menu for the
             // current element no need to continue
-            if (menu.length == 0) {
+            if (menu.length === 0) {
                 // returns immediately no context menu
                 // for the current element
                 return;
@@ -15564,7 +15564,8 @@ function onYouTubePlayerReady(id) {
                         // element to be parsed opens the link in the current
                         // document otherwise creates a new window and opend
                         // the link in it (external opening)
-                        isDocument && index == 0 ? jQuery.uxlocation(link) : window
+                        isDocument && index === 0 ? jQuery.uxlocation(link) :
+                            window
                             .open(link, "_blank");
                     });
 
@@ -15700,7 +15701,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the selection row is the last
             // need to load more elements
-            if (_selection == listItems.length) {
+            if (_selection === listItems.length) {
                 // updates the matched object (runs the loading
                 // of additional values)
                 _update(matchedObject, options);
@@ -15766,7 +15767,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the current index is the first or in case the
                 // current selection is not preceded by a contiguous value
-                if (index == 0 || _previous_selection != _selection - 1) {
+                if (index === 0 || _previous_selection !== _selection - 1) {
                     // adds the first class to the current selected
                     // list item (indicates that it is the first of
                     // a contiguous selection)
@@ -15775,7 +15776,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the current index if the last or in case the
                 // the current selection is not succeeded by a contiguous value
-                if (index == selection.length - 1 || _next_selection != _selection + 1) {
+                if (index === selection.length - 1 || _next_selection !== _selection + 1) {
                     // adds the last class to the current selected
                     // list item (indicates that it is the last of
                     // a contiguous selection)
@@ -15805,7 +15806,7 @@ function onYouTubePlayerReady(id) {
             // scrolls to the reference in case the element
             // is not visible, this is required so that the
             // end user is able to interact with the element
-            !isVisible && selectedListItem.length == 1 && selectedListItem.uxscroll({
+            !isVisible && selectedListItem.length === 1 && selectedListItem.uxscroll({
                 offset: pageOffset,
                 padding: 10
             });
@@ -15827,7 +15828,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the pivot is zero and in case it is consider
             // it to be one (first element)
-            pivot = pivot == 0 ? 1 : pivot;
+            pivot = pivot === 0 ? 1 : pivot;
 
             // retrieves the first and last element from the current
             // selection for reference
@@ -15836,7 +15837,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the current first element is the pivot
             // need to use the last value as reference
-            if (first == pivot) {
+            if (first === pivot) {
                 // increments the last value and sets it as
                 // the proper value
                 var value = last - 1;
@@ -15850,7 +15851,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the current index value is zero
             // it's considered to be invalid, returns immediately
-            if (value == 0) {
+            if (value === 0) {
                 // returns immediately, invalid index
                 return;
             }
@@ -15872,7 +15873,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the current first element is the pivot
             // need to use the last value as reference
-            if (first == pivot) {
+            if (first === pivot) {
                 // retrieves the last item as the reference one
                 var item = jQuery(selectedListItem[selectedListItem.length - 1]);
             }
@@ -15903,7 +15904,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the pivot is zero and in case it is consider
             // it to be one (first element)
-            pivot = pivot == 0 ? 1 : pivot;
+            pivot = pivot === 0 ? 1 : pivot;
 
             // retrieves the first and last element from the current
             // selection for reference
@@ -15912,7 +15913,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the current last element is the pivot
             // need to use the first value as reference
-            if (last == pivot) {
+            if (last === pivot) {
                 // increments the first value and sets it as
                 // the proper value
                 var value = first + 1;
@@ -15953,7 +15954,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the current last element is the pivot
             // need to use the first value as reference
-            if (last == pivot) {
+            if (last === pivot) {
                 // retrieves the first item as the reference one
                 var item = jQuery(selectedListItem[0]);
             }
@@ -16026,7 +16027,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the selection row is the last
             // need to load more elements
-            if (_selection == listItems.length) {
+            if (_selection === listItems.length) {
                 // updates the matched object (runs the loading
                 // of additional values) and returns immediately
                 // to avoid further updates
@@ -16073,12 +16074,12 @@ function onYouTubePlayerReady(id) {
 
             // checks if the pivot is zero and in case it is consider
             // it to be one (first element)
-            pivot = pivot == 0 ? 1 : pivot;
+            pivot = pivot === 0 ? 1 : pivot;
 
             // checks if the current selection is the initial
             // empty selection, in case it's "pops" it from the
             // current selection set (avoids problems in selection)
-            var isInitial = selection.length == 1 && selection[0] == 0;
+            var isInitial = selection.length === 1 && selection[0] === 0;
             isInitial && selection.pop();
 
             // in case the index value is greater than the pivot index
@@ -16659,12 +16660,12 @@ function onYouTubePlayerReady(id) {
                     // checks if the current selection is the initial
                     // empty selection, in case it's "pops" it from the
                     // current selection set (avoids problems in selection)
-                    var isInitial = selection.length == 1 && selection[0] == 0;
+                    var isInitial = selection.length === 1 && selection[0] === 0;
                     isInitial && selection.pop();
 
                     // in case the current selection is empty it's time to update
                     // the pivot value (it's the first element of the selection)
-                    selection.length == 0 && filter.data("pivot", templateItemIndex + 1);
+                    selection.length === 0 && filter.data("pivot", templateItemIndex + 1);
 
                     // retrieves the index of the element in the selection
                     // index, this is going to be used to check if the element
@@ -16673,7 +16674,7 @@ function onYouTubePlayerReady(id) {
 
                     // in case the element index is invalid (it's not present
                     // in the selection set) must be added to set (selection)
-                    if (elementIndex == -1) {
+                    if (elementIndex === -1) {
                         // adds the index to the selection set (selection)
                         selection.push(templateItemIndex + 1);
                     }
@@ -16719,7 +16720,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the element is currently selected
                 // nothing is to be done
-                if (elementIndex != -1) {
+                if (elementIndex !== -1) {
                     // returns immediately, avoids selection
                     return;
                 }
@@ -16956,7 +16957,7 @@ function onYouTubePlayerReady(id) {
                 // that if the form is already confirmed there's no need to
                 // run the pre-validation process one more time
                 var result = confirmed || element.triggerHandler("pre_submit");
-                if (result == false) {
+                if (result === false) {
                     // triggers the unlock (elements) events to emulate the
                     // end of the submission of the form (compatability)
                     // this should release the elements state to the normal
@@ -16986,7 +16987,7 @@ function onYouTubePlayerReady(id) {
                     _body.uxconfirm(message, function(result) {
                         // in case the result is cancel, must revert the current
                         // partial state and then return the control flow
-                        if (result == false) {
+                        if (result === false) {
                             // triggers the unlock (elements) events to emulate the
                             // end of the submission of the form (compatability)
                             // this should release the elements state to the normal
@@ -17055,7 +17056,7 @@ function onYouTubePlayerReady(id) {
                     // from the original value if that's not the case skips
                     // the current iteration as there's nothing to be done
                     value = value.trim();
-                    if (_value == value) {
+                    if (_value === value) {
                         return;
                     }
 
@@ -17073,8 +17074,8 @@ function onYouTubePlayerReady(id) {
                 // is ready to be changed using an async approach
                 var _body = jQuery("body");
                 var async = _body.data("async");
-                async &= element.hasClass("no-async") == false;
-                async &= _body.triggerHandler("async") != false;
+                async &= element.hasClass("no-async") === false;
+                async &= _body.triggerHandler("async") !== false;
 
                 // checks if the current element has the ajax form
                 // class, in such cases must avoid normal submission
@@ -17193,13 +17194,13 @@ function onYouTubePlayerReady(id) {
             // the form is not of type multipart the default serialization
             // process is used instead to create a "query string"
             var form = matchedObject[0];
-            var data = enctype == "multipart/form-data" ? new FormData(form) : matchedObject.serialize();
+            var data = enctype === "multipart/form-data" ? new FormData(form) : matchedObject.serialize();
 
             // verifies if the current form processing is a get based one and in
             // case it's encapsulates the parameters in the current request
             // url and removes the data payload from the request
-            var isGet = method.toLowerCase() == "get";
-            var hasQuery = href.indexOf("?") != -1;
+            var isGet = method.toLowerCase() === "get";
+            var hasQuery = href.indexOf("?") !== -1;
             var token = hasQuery ? "&" : "?";
             href = isGet ? href + token + data : href;
             data = isGet ? "" : data;
@@ -17211,7 +17212,7 @@ function onYouTubePlayerReady(id) {
             // calculates the aditional set of values of the base href value
             // so that this request may be "marked" as special avoiding possible
             // errors with cache in the browser/client side
-            hasQuery = href.indexOf("?") != -1;
+            hasQuery = href.indexOf("?") !== -1;
             token = hasQuery ? "&" : "?";
             var extraParams = "x-async=1&x-partial=1";
             var extraQuery = token + extraParams;
@@ -17226,13 +17227,13 @@ function onYouTubePlayerReady(id) {
             // type in case the form is not of type multipart
             var request = new XMLHttpRequest();
             request.open(method, href + (isGet && hasExtra ? extraQuery : ""));
-            enctype != "multipart/form-data" && request.setRequestHeader("Content-Type", enctype);
+            enctype !== "multipart/form-data" && request.setRequestHeader("Content-Type", enctype);
             request.setRequestHeader("X-Async", "all");
             request.setRequestHeader("X-Partial", "all");
             request.onload = function() {
                 // in case the current state of the request is not final ignores
                 // the update status change (not relevant)
-                if (request.readyState != 4) {
+                if (request.readyState !== 4) {
                     return;
                 }
 
@@ -17240,7 +17241,7 @@ function onYouTubePlayerReady(id) {
                 // and if that's not the case runs the fallback process (typical
                 // synchronous form submission) and aborts the current request
                 var requestAsync = isAsync(request);
-                if (requestAsync == false) {
+                if (requestAsync === false) {
                     fallback(matchedObject, options);
                     request.abort();
                     return;
@@ -17257,7 +17258,7 @@ function onYouTubePlayerReady(id) {
                 // special strategy by retrieving the new location and setting it as
                 // new async contents to be loaded, note that only requests that
                 // contain a valid location header will be used for redirection
-                var isRedirect = request.status == 280;
+                var isRedirect = request.status === 280;
                 var hrefR = request.getResponseHeader("Location");
                 if (isRedirect && hrefR) {
                     hrefR = jQuery.uxresolve(hrefR, href);
@@ -17291,7 +17292,7 @@ function onYouTubePlayerReady(id) {
             request.readystatechange = function() {
                 // in case the current request state is not headers ready there's
                 // no need to continue as we're going to verify the content type
-                if (request.readyState != 2) {
+                if (request.readyState !== 2) {
                     return;
                 }
 
@@ -17299,7 +17300,7 @@ function onYouTubePlayerReady(id) {
                 // and if that's not the case runs the fallback process (typical
                 // synchronous form submission) and aborts the current request
                 var requestAsync = isAsync(request);
-                if (requestAsync == true) {
+                if (requestAsync === true) {
                     return;
                 }
                 fallback(matchedObject, options);
@@ -17594,7 +17595,7 @@ function onYouTubePlayerReady(id) {
             var contentType = request.getResponseHeader("Content-Type") || "";
             contentType = contentType.split(";")[0];
             contentType = contentType.strip();
-            return location || contentType == "text/html";
+            return location || contentType === "text/html";
         };
 
         // initializes the plugin
@@ -17878,7 +17879,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -17935,7 +17936,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -18054,7 +18055,7 @@ function onYouTubePlayerReady(id) {
             var attribute = isRetina ? "data-url_retina" : "data-url";
             var dataUrl = element.attr(attribute);
             var url = element.attr("src");
-            return dataUrl == url;
+            return dataUrl === url;
         };
 
         var isSet = function(element) {
@@ -18077,7 +18078,7 @@ function onYouTubePlayerReady(id) {
             var height = container.outerHeight(true);
 
             var position = container.css("position");
-            if (position != "fixed") {
+            if (position !== "fixed") {
                 return 0.0;
             }
 
@@ -18527,7 +18528,7 @@ function onYouTubePlayerReady(id) {
             // in case the current text field is of data type natural
             // (negative numbers not allowed) and the value is zero or
             // less no changes are done
-            if ((type == "natural" || type == "floatp") && floatvalue <= 0) {
+            if ((type === "natural" || type === "floatp") && floatvalue <= 0) {
                 // returns immediately (avoids changing the value)
                 return;
             }
@@ -18596,7 +18597,7 @@ function onYouTubePlayerReady(id) {
         var _appendHtml = function() {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-info", matchedObject);
-            if (window.length == 0) {
+            if (window.length === 0) {
                 window = jQuery("<div class=\"window window-info window-hide\">" + "<h1></h1>" +
                     "<p class=\"single\"></p>" + "</div>");
                 window.uxwindow();
@@ -18675,7 +18676,7 @@ function onYouTubePlayerReady(id) {
             // tries retrieves the window (lightbox window) elements
             // in case the elements do not exists creates a new element
             var window = jQuery(".window.window-lightbox", matchedObject);
-            if (window.length == 0) {
+            if (window.length === 0) {
                 window = jQuery("<div class=\"window window-lightbox\">" +
                     "<div class=\"button-confirm\"></div>" + "<div class=\"button-expand\"></div>" +
                     "<img alt=\"\" />" + "</div>");
@@ -18695,7 +18696,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the current path from the window image and
             // then checks of it has changed
             var currentPath = windowImage.attr("src");
-            var hasChanged = path != currentPath;
+            var hasChanged = path !== currentPath;
 
             // hides the current window image and sets the image
             // path in the window image (changes the current image
@@ -18813,7 +18814,7 @@ function onYouTubePlayerReady(id) {
                 // verifies if the maximum dimensions for the image have changed
                 // and if that's not the case returns immediately, this return
                 // avoids a loop in the centering process (required)
-                var hasChanged = maxHeight != _maxHeight || maxWidth != _maxWidth;
+                var hasChanged = maxHeight !== _maxHeight || maxWidth !== _maxWidth;
                 if (!hasChanged) {
                     return;
                 }
@@ -18867,7 +18868,7 @@ function onYouTubePlayerReady(id) {
                 // (image) path and uses it to determine the next
                 // (target) path for iamge source updating
                 var currentPath = windowImage.attr("src");
-                var targetPath = currentPath == path ? largePath : path;
+                var targetPath = currentPath === path ? largePath : path;
                 window.addClass("loading");
                 window.triggerHandler("loading");
                 windowImage.attr("src", targetPath);
@@ -18952,7 +18953,7 @@ function onYouTubePlayerReady(id) {
             _body.uxconfirm(message, function(result) {
                 // in case the result is cancel avoids the current
                 // execution and returns immediately
-                if (result == false) {
+                if (result === false) {
                     return;
                 }
 
@@ -19148,7 +19149,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -19222,7 +19223,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -19247,7 +19248,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case there's no (child) list in the list
                 // element (no child elements present)
-                if (list.length == 0) {
+                if (list.length === 0) {
                     return;
                 }
 
@@ -19361,7 +19362,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -19529,7 +19530,7 @@ function onYouTubePlayerReady(id) {
                 // in case the key that was pressed in not the
                 // escape one there's nothing to be done and so
                 // the control flow is returned immediately
-                if (keyValue != 27) {
+                if (keyValue !== 27) {
                     return;
                 }
 
@@ -19646,7 +19647,7 @@ function onYouTubePlayerReady(id) {
             // in case no menu link is defined it's not possible
             // to run the reposition operation, not enought information
             // to archive the objective
-            if (menuLink.length == 0) {
+            if (menuLink.length === 0) {
                 return;
             }
 
@@ -19787,7 +19788,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -20081,7 +20082,7 @@ function onYouTubePlayerReady(id) {
             // does not exists creates a new element and then appends it
             // to the current body element (default action)
             var overlay = jQuery(".overlay:first");
-            if (overlay.length == 0) {
+            if (overlay.length === 0) {
                 var _body = jQuery("body");
                 overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
                 overlay.uxoverlay();
@@ -20341,7 +20342,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the escape key is pressed
                 // need to hide the overlay search
-                if (keyValue == 27) {
+                if (keyValue === 27) {
                     // hides the overlay search
                     _hide(overlaySearch, options);
                 }
@@ -20411,7 +20412,7 @@ function onYouTubePlayerReady(id) {
         var _appendHtml = function() {
             // verifies if there's at leat on matched object and if that's
             // not the case returns immediately (avoiding possible issues)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -20440,7 +20441,7 @@ function onYouTubePlayerReady(id) {
         var _registerHandlers = function() {
             // verifies if there's at leat on matched object and if that's
             // not the case returns immediately (avoiding possible issues)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -20529,7 +20530,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.bind("transitionend", function(event) {
                 var element = jQuery(this);
                 var transition = element.data("transition");
-                if (transition != "fadeout") {
+                if (transition !== "fadeout") {
                     return;
                 }
                 element.hide();
@@ -20590,7 +20591,7 @@ function onYouTubePlayerReady(id) {
             // considered the original value (to be restored latter)
             // then and in case the element is invisible sets the
             // opacity to the default zero value (for animation)
-            var isVisible = matchedObject.css("display") == "block";
+            var isVisible = matchedObject.css("display") === "block";
             matchedObject.css("opacity", "");
             var target = matchedObject.css("opacity") || "1";
             var targetF = parseFloat(target);
@@ -20682,7 +20683,7 @@ function onYouTubePlayerReady(id) {
             // displayed in the dom as a "invisible" overlay
             setTimeout(function() {
                 var transition = matchedObject.data("transition");
-                if (transition != "fadeout") {
+                if (transition !== "fadeout") {
                     return;
                 }
                 matchedObject.hide();
@@ -20949,7 +20950,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the current index overflows the
             // current count of panels
-            if (index == panelsLength - 1) {
+            if (index === panelsLength - 1) {
                 // returns immediately
                 return;
             }
@@ -20968,7 +20969,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the current index is zero, in case
             // it's, not possible to go to a previous position
-            if (index == 0) {
+            if (index === 0) {
                 // returns immediately
                 return;
             }
@@ -21569,7 +21570,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the checked value is the same
             // as the value (current option)
-            if (checked == value) {
+            if (checked === value) {
                 // sets the element as checked
                 matchedObject.attr("checked", true);
                 matchedObject.prop && matchedObject.prop("checked", true);
@@ -22126,7 +22127,7 @@ function onYouTubePlayerReady(id) {
                     }, function(validItems, moreItems) {
                         // in case there are no valid items
                         // returns immediately nothing to be done
-                        if (validItems.length == 0) {
+                        if (validItems.length === 0) {
                             // returns immediately
                             return;
                         }
@@ -22407,7 +22408,7 @@ function onYouTubePlayerReady(id) {
                     // in case the're no valid list items to be sent an empty
                     // value with the same name is posted (so that an empty value
                     // is submitted), required for compliance
-                    if (listItems.length == 0) {
+                    if (listItems.length === 0) {
                         _element.append("<input type=\"hidden\" name=\"" + elementName +
                             "\" />");
                     }
@@ -22577,11 +22578,11 @@ function onYouTubePlayerReady(id) {
                     // valid (new position) taking into account
                     // the direction of the movement then in case
                     // it's valid executes the position change
-                    var isValid = offsetY > previousOffsetY ? _index + 1 != element.index() :
-                        _index + 2 != element.index();
-                    isValid && listElement[0] != element[0] && listElement.after(element) &&
+                    var isValid = offsetY > previousOffsetY ? _index + 1 !== element.index() :
+                        _index + 2 !== element.index();
+                    isValid && listElement[0] !== element[0] && listElement.after(element) &&
                         selectList.trigger("order_changed");
-                    offsetY == 0 && listElement[0] != element[0] && cloned.after(element) &&
+                    offsetY === 0 && listElement[0] !== element[0] && cloned.after(element) &&
                         selectList.trigger("order_changed");
 
                     // updates the top position of the cloned element
@@ -22675,7 +22676,7 @@ function onYouTubePlayerReady(id) {
         var _appendHtml = function() {
             // verifies that at leat one object is selected and if that's
             // not the case returns the control flow immediately
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -22696,7 +22697,7 @@ function onYouTubePlayerReady(id) {
         var _registerHandlers = function() {
             // verifies that at leat one object is selected and if that's
             // not the case returns the control flow immediately
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -23025,7 +23026,7 @@ function onYouTubePlayerReady(id) {
             // does not exists creates a new element and then appends it
             // to the current body element (default action)
             var overlay = jQuery(".overlay:first");
-            if (overlay.length == 0) {
+            if (overlay.length === 0) {
                 var _body = jQuery("body");
                 overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
                 overlay.uxoverlay();
@@ -23201,7 +23202,7 @@ function onYouTubePlayerReady(id) {
 
             // in case there are no more items to the
             // "right" index is maximum
-            if (nextSliderPanel.length == 0) {
+            if (nextSliderPanel.length === 0) {
                 // returns immediately
                 return;
             }
@@ -23252,7 +23253,7 @@ function onYouTubePlayerReady(id) {
 
             // in case there are no more items to the
             // "right" index is zero
-            if (previousSliderPanel.length == 0) {
+            if (previousSliderPanel.length === 0) {
                 // returns immediately
                 return;
             }
@@ -23552,7 +23553,7 @@ function onYouTubePlayerReady(id) {
                 var url = slideshow.data("url");
                 var open = slideshow.attr("data-window");
                 if (url) {
-                    var _window = event.which == 2
+                    var _window = event.which === 2
                     _window || open ? window.open(url) : jQuery.uxlocation(url);
                 }
             });
@@ -23571,7 +23572,7 @@ function onYouTubePlayerReady(id) {
                 var url = slideshow.data("url");
                 var open = slideshow.attr("data-window");
                 if (url) {
-                    var _window = event.which == 2
+                    var _window = event.which === 2
                     _window || open ? window.open(url) : jQuery.uxlocation(url);
                 }
             });
@@ -23682,7 +23683,7 @@ function onYouTubePlayerReady(id) {
             // in case the index value is not set selects the next
             // value (takes care of overflow) otherwise defaults to
             // the request index (from parameter)
-            index = index == null ? current + 1 < items.length ? current + 1 : 0 : index;
+            index = index === null ? current + 1 < items.length ? current + 1 : 0 : index;
 
             // in case the current index is the same as the (target)
             // index, no need to select it (returns immediately)
@@ -24068,7 +24069,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the value did not change (no need to
             // show the contents)
-            if (textFieldValue == value && !force) {
+            if (textFieldValue === value && !force) {
                 // returns immediately
                 return;
             }
@@ -24124,7 +24125,7 @@ function onYouTubePlayerReady(id) {
                         "validate_item", [currentItem,
                             currentValueAttribute
                         ]);
-                    if (result == false) {
+                    if (result === false) {
                         continue;
                     }
 
@@ -24340,7 +24341,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -24357,7 +24358,7 @@ function onYouTubePlayerReady(id) {
                 var stackItems = jQuery("> .stack-item", _element);
                 var stackTop = jQuery("> .stack-item.stack-top",
                     _element);
-                stackTop = stackTop.length == 0 ? jQuery(
+                stackTop = stackTop.length === 0 ? jQuery(
                     "> .stack-item:first", _element) : stackTop;
                 stackOut.append(stackItems);
                 push(_element, stackTop, false);
@@ -24372,7 +24373,7 @@ function onYouTubePlayerReady(id) {
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -24418,7 +24419,7 @@ function onYouTubePlayerReady(id) {
         };
 
         var push = function(element, target, animated) {
-            if (!target || target.length == 0) {
+            if (!target || target.length === 0) {
                 return false;
             }
 
@@ -24438,10 +24439,10 @@ function onYouTubePlayerReady(id) {
             var stackOut = jQuery("> .stack-out", element);
             var stackItems = jQuery("> .stack-item", stackIn);
             var stackTop = jQuery("> .stack-item.stack-top", stackIn);
-            if (stackItems.length == 1) {
+            if (stackItems.length === 1) {
                 return false;
             }
-            if (stackTop.length == 0) {
+            if (stackTop.length === 0) {
                 return false;
             }
             var stackNext = stackTop.prev();
@@ -25473,7 +25474,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the index of the current row to check
             // it it's the last row
             var index = templateItem.index();
-            var isLastRow = index == rowCount
+            var isLastRow = index === rowCount
 
             // in case the current row is the last one the last
             // classes must be updated to reflect that
@@ -26333,7 +26334,7 @@ function onYouTubePlayerReady(id) {
             // happens when the current tag container is not visible, must
             // delay the update operation until the next tick, note that
             // this is only possible when the element is contained (in dom)
-            if (tagsContainerHeight == 0 && tags.length > 0) {
+            if (tagsContainerHeight === 0 && tags.length > 0) {
                 isContained && setTimeout(function() {
                     _update(matchedObject, options, noWidth);
                 }, 100);
@@ -26347,7 +26348,7 @@ function onYouTubePlayerReady(id) {
 
             // verifies if the text field is currently handled using a border
             // box based strategy as this will employ different calculus
-            var isBorderBox = textField.css("box-sizing") == "border-box";
+            var isBorderBox = textField.css("box-sizing") === "border-box";
 
             // tries to retrieve the "original" height value for the text field
             // and updates the register to this same value (only one retrieval)
@@ -26375,7 +26376,7 @@ function onYouTubePlayerReady(id) {
                 // in case the current reference to the top is not
                 // the same the tag is not in the last line, need
                 // to break the loop
-                if (_referenceTop != referenceTop) {
+                if (_referenceTop !== referenceTop) {
                     break;
                 }
 
@@ -26669,7 +26670,7 @@ function onYouTubePlayerReady(id) {
                 // in case the pressed key is a backspace,
                 // cursor, enter or any other movement key
                 // the default behavior must be prevented
-                if (keyCode == 8 || keyCode == 13 || keyCode > 8 && keyCode <= 46 && which == 0) {
+                if (keyCode === 8 || keyCode === 13 || keyCode > 8 && keyCode <= 46 && which === 0) {
                     // returns since the key press is valid
                     return true;
                 }
@@ -26780,7 +26781,7 @@ function onYouTubePlayerReady(id) {
 
                 // in case the escape key is pressed
                 // need to blur the text field
-                if (keyValue == 27) {
+                if (keyValue === 27) {
                     // blurs the text field
                     element.blur();
                 }
@@ -26981,7 +26982,7 @@ function onYouTubePlayerReady(id) {
                 var valueMethodName = "__fvalue" + type;
                 var hasMethod = __hasMethod(valueMethodName, matchedObject,
                     options);
-                var value = hasMethod && value != "" ? __callMethod(
+                var value = hasMethod && value !== "" ? __callMethod(
                     valueMethodName, matchedObject, value) : value;
 
                 // sets the value in the attributes
@@ -27129,7 +27130,7 @@ function onYouTubePlayerReady(id) {
             matchedObject.data("original", originalValue || elementValue || inputFieldValue);
 
             // in case the element value is not provided
-            if (elementValue != null) {
+            if (elementValue !== null) {
                 // returns immediately
                 return;
             }
@@ -27146,7 +27147,7 @@ function onYouTubePlayerReady(id) {
             // in case the autocomplete has been already disabled
             // there is no need to do this because the problem
             // is not observed
-            forceComplete && inputFieldValue == originalValue && matchedObject.val("");
+            forceComplete && inputFieldValue === originalValue && matchedObject.val("");
 
             // runs the initial update operations for both the error
             // and the value, the updating of the value is
@@ -27160,7 +27161,7 @@ function onYouTubePlayerReady(id) {
             var elementValue = matchedObject.attr("data-value");
 
             // in case the element value is not empty
-            if (elementValue != "") {
+            if (elementValue !== "") {
                 // returns immediately
                 return;
             }
@@ -27170,7 +27171,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the original value is not defined, must
             // return control flow immediately (nothing to be done)
-            if (originalValue == null) {
+            if (originalValue === null) {
                 return;
             }
 
@@ -27204,7 +27205,7 @@ function onYouTubePlayerReady(id) {
 
             // triggers the value change event in case the previous
             // input field value is different from the current
-            inputFieldValue != previousInputFieldValue && matchedObject.triggerHandler("value_change", [
+            inputFieldValue !== previousInputFieldValue && matchedObject.triggerHandler("value_change", [
                 inputFieldValue
             ]);
         };
@@ -27234,7 +27235,7 @@ function onYouTubePlayerReady(id) {
 
         var __callMethod = function(methodName, element, options) {
             // creates the string to be eavluated and then evaluates it
-            var evalString = "if(typeof " + methodName + " != \"undefined\") { var result = " + methodName +
+            var evalString = "if(typeof " + methodName + " !== \"undefined\") { var result = " + methodName +
                 "(element, options)} else { var result = null; }";
             eval(evalString);
             return result;
@@ -27242,7 +27243,7 @@ function onYouTubePlayerReady(id) {
 
         var __hasMethod = function(methodName, element, options) {
             // creates the string to be eavluated and then evaluates it
-            var evalString = "var result = typeof " + methodName + " != \"undefined\";";
+            var evalString = "var result = typeof " + methodName + " !== \"undefined\";";
             eval(evalString);
             return result;
         };
@@ -27686,7 +27687,8 @@ function onYouTubePlayerReady(id) {
             // then using it checks if the float number is still
             // valid (decimal places within range)
             var separatorIndex = stringValue.indexOf(".");
-            var valid = separatorIndex >= stringValue.length - decimalPlacesInteger || separatorIndex == -1;
+            var valid = separatorIndex >= stringValue.length - decimalPlacesInteger || separatorIndex === -
+                1;
 
             // in case the places validation is valid according
             // to decimal separator validation, no need to run
@@ -27719,7 +27721,7 @@ function onYouTubePlayerReady(id) {
                 // dom element is the same as the matched
                 // object (top level reference) in such
                 // case the object cannot be blured
-                if (_element.get(0) == matchedObject.get(0)) {
+                if (_element.get(0) === matchedObject.get(0)) {
                     // returns immediately, avoids blur
                     return;
                 }
@@ -27912,7 +27914,7 @@ function onYouTubePlayerReady(id) {
                 // the (parent) toggle field, note that the text field
                 // is focused while the operation is done this ensures
                 // total text field "emulation"
-                var _index = index == modes.length - 1 ? 0 : index + 1;
+                var _index = index === modes.length - 1 ? 0 : index + 1;
                 textField.focus();
                 _setMode(toggleField, options, _index);
                 textField.blur();
@@ -28131,7 +28133,7 @@ function onYouTubePlayerReady(id) {
                 // but just in case there's no form success
                 var element = jQuery(this);
                 var formSuccess = jQuery(".form-success", element);
-                var shouldHide = formSuccess.length == 0;
+                var shouldHide = formSuccess.length === 0;
                 var window = element.parents(".window");
                 shouldHide && window.uxwindow("hide");
             });
@@ -28210,7 +28212,7 @@ function onYouTubePlayerReady(id) {
             // creates a default element adding it to the start of the
             // top level body element (default behaviour)
             var overlay = jQuery(".overlay:first");
-            if (overlay.length == 0) {
+            if (overlay.length === 0) {
                 var _body = jQuery("body");
                 overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
                 overlay.uxoverlay();
@@ -28373,7 +28375,7 @@ function onYouTubePlayerReady(id) {
             // sized using content box and if that's the case reduces
             // the available dimensions with the extra (margin) value
             var boxSizing = matchedObject.css("box-sizing");
-            var isContentBox = boxSizing == "content-box";
+            var isContentBox = boxSizing === "content-box";
             var maxWidth = isContentBox ? windowWidth - extraWidth : windowWidth;
             var maxHeight = isContentBox ? windowHeight - extraHeight : windowHeight;
 
@@ -28433,7 +28435,7 @@ function onYouTubePlayerReady(id) {
             windowMaskDotsContentsLength = windowMaskDotsContents.length;
 
             // in case the dots contents length overflows
-            if (windowMaskDotsContentsLength == 3) {
+            if (windowMaskDotsContentsLength === 3) {
                 // resets the dots contents length
                 windowMaskDotsContentsLength = 0;
             }
@@ -28747,7 +28749,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the current index overflows the
             // current count of panels (greater than last index)
-            if (index == lastIndex) {
+            if (index === lastIndex) {
                 // returns immediately
                 return;
             }
@@ -28770,7 +28772,7 @@ function onYouTubePlayerReady(id) {
 
             // checks if the current index is the first, in such case
             // it's not possible to go to a previous position
-            if (index == firstIndex) {
+            if (index === firstIndex) {
                 // returns immediately
                 return;
             }
@@ -28830,7 +28832,7 @@ function onYouTubePlayerReady(id) {
 
             // in case this is the last index in the wizard
             // the finish button must be displayed
-            if (index == lastIndex) {
+            if (index === lastIndex) {
                 // in case the button finish is present and
                 // defined (must be shown)
                 if (buttonFinish.length > 0) {
@@ -28870,7 +28872,7 @@ function onYouTubePlayerReady(id) {
             // in case this is the first index in the wizard
             // the previous button must be shown as disabled
             // no more steps back
-            if (index == firstIndex) {
+            if (index === firstIndex) {
                 // disables the previous button, removing
                 // the action from it
                 buttonPrevious.uxdisable();
