@@ -29,6 +29,70 @@ __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 __license__   = Apache License, Version 2.0
 */
 
+@-webkit-keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-webkit-keyframes move-into {
+    from { -webkit-transform: translateY(15px); }
+    to { -webkit-transform: translateY(0px); }
+}
+
+@keyframes move-into {
+    from { transform: translateY(15px); }
+    to { transform: translateY(0px); }
+}
+
+@-webkit-keyframes fade-into-drop {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0px);
+    }
+}
+
+@keyframes fade-into-drop {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@-webkit-keyframes fade-into-rise {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0px);
+    }
+}
+
+@keyframes fade-into-rise {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
 .omni-style .content-error {
     border: 1px solid #eeeeee;
     margin: 100px auto 100px auto;
@@ -1121,6 +1185,11 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .drop-field .drop-field-contents {
+    animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -khtml-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     box-shadow: 0px 1px 4px #eeeeee;
     -moz-box-shadow: 0px 1px 4px #eeeeee;
     -webkit-box-shadow: 0px 1px 4px #eeeeee;
@@ -3360,6 +3429,10 @@ __license__   = Apache License, Version 2.0
     font-size: 13px;
     height: 32px;
     padding: 2px 6px 2px 6px;
+    transition: border-color 0.10s ease-in;
+    -o-transition: border-color 0.10s ease-in;
+    -moz-transition: border-color 0.10s ease-in;
+    -webkit-transition: border-color 0.10s ease-in;
     width: 270px;
 }
 
@@ -3469,6 +3542,10 @@ __license__   = Apache License, Version 2.0
     height: 100px;
     padding: 2px 6px 2px 6px;
     resize: none;
+    transition: border-color 0.10s ease-in;
+    -o-transition: border-color 0.10s ease-in;
+    -moz-transition: border-color 0.10s ease-in;
+    -webkit-transition: border-color 0.10s ease-in;
     width: 270px;
 }
 
@@ -3521,6 +3598,11 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .text-field-calendar {
+    animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -khtml-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     position: absolute;
     z-index: 10;
 }
