@@ -5765,7 +5765,7 @@ function onYouTubePlayerReady(id) {
         // name of the browser with the minimum version from
         // which the browser is considered not legacy (or current)
         var BROWSER_LEGACY = {
-            "chrome": 60,
+            "chrome": 40,
             "firefox": 30,
             "explorer": 10
         };
@@ -5825,6 +5825,7 @@ function onYouTubePlayerReady(id) {
             // the case in case there's a valid version legacy value and the
             // current browser version is lower than that one
             var isLegacy = versionLegacy && browserVersion < versionLegacy;
+            isLegacy = Boolean(isLegacy);
 
             // adds the browser classes to the body item, so that
             // they may be used for declarative conditionals
