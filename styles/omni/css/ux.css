@@ -279,12 +279,15 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .replacer {
-    animation: fade-grow 0.25s cubic-bezier(0.645,0.045,0.355,1.0);
-    -o-animation: fade-grow 0.25s cubic-bezier(0.645,0.045,0.355,1.0);
-    -moz-animation: fade-grow 0.25s cubic-bezier(0.645,0.045,0.355,1.0);
-    -khtml-animation: fade-grow 0.25s cubic-bezier(0.645,0.045,0.355,1.0);
-    -webkit-animation: fade-grow 0.25s cubic-bezier(0.645,0.045,0.355,1.0);
     cursor: pointer;
+}
+
+.omni-style.animations .replacer {
+    animation: fade-grow 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-animation: fade-grow 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-animation: fade-grow 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -khtml-animation: fade-grow 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-animation: fade-grow 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
 }
 
 .omni-style .message-box {
@@ -1212,11 +1215,6 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .drop-field .drop-field-contents {
-    animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -o-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -moz-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -khtml-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -webkit-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     box-shadow: 0px 1px 4px #eeeeee;
     -moz-box-shadow: 0px 1px 4px #eeeeee;
     -webkit-box-shadow: 0px 1px 4px #eeeeee;
@@ -1224,6 +1222,14 @@ __license__   = Apache License, Version 2.0
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     z-index: 1;
+}
+
+.omni-style.animations .drop-field .drop-field-contents {
+    animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -khtml-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
 }
 
 .omni-style .drop-field .drop-field-contents li {
@@ -1303,7 +1309,7 @@ __license__   = Apache License, Version 2.0
     height: 30px;
 }
 
-.omni-style .filter .filter-contents {
+.omni-style.animations .filter .filter-contents {
     animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -1312,13 +1318,16 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .filter .filter-no-results {
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+}
+
+.omni-style.animations .filter .filter-no-results {
     animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-in 0.2s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    padding: 20px 20px 20px 20px;
-    text-align: center;
 }
 
 .omni-style .filter .filter-no-results p {
@@ -1404,15 +1413,18 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .filter .filter-advanced {
+    border-bottom: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    display: none;
+}
+
+.omni-style.animations .filter .filter-advanced {
     animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    border-bottom: 1px solid #dddddd;
-    border-left: 1px solid #dddddd;
-    border-right: 1px solid #dddddd;
-    display: none;
 }
 
 .omni-style .filter .filter-advanced .filter-sort {
@@ -2328,7 +2340,7 @@ __license__   = Apache License, Version 2.0
     border-color: #000000;
 }
 
-.omni-style .overlay-panel {
+.omni-style.animations .overlay-panel {
     animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -3654,13 +3666,16 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .text-field-calendar {
+    position: absolute;
+    z-index: 10;
+}
+
+.omni-style.animations .text-field-calendar {
     animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-into-drop 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    position: absolute;
-    z-index: 10;
 }
 
 .omni-style.opensans .text-field,
@@ -3749,11 +3764,6 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .window {
-    animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -o-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -moz-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -khtml-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
-    -webkit-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     background-color: #ffffff;
     border: 1px solid #666666;
     box-shadow: 0px 0px 5px #777777;
@@ -3764,6 +3774,14 @@ __license__   = Apache License, Version 2.0
     padding: 20px 20px 20px 20px;
     width: 420px;
     z-index: 30;
+}
+
+.omni-style.animations .window {
+    animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -khtml-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-animation: fade-grow 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
 }
 
 .omni-style .window h1 {
