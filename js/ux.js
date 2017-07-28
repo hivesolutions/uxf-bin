@@ -1424,7 +1424,6 @@
             // of records is set
             if (startRecord !== null && startRecord !== undefined && numberRecords !== null &&
                 numberRecords !== undefined) {
-                // sets the filter flag
                 filter = true;
             }
 
@@ -15001,7 +15000,7 @@ function onYouTubePlayerReady(id) {
             // determines if the provided filter value (parameter) is defined
             // (diferent from undefined) if that's the case updates the filter
             // value data state for the filter
-            var setValue = filterValue !== undefined;
+            var setValue = filterValue !== null && filterValue !== undefined;
             setValue && filter.data("filter_value", filterValue || "");
 
             // retrieves the filter input value, defaulting to empty
@@ -23744,7 +23743,8 @@ function onYouTubePlayerReady(id) {
             // in case the index value is not set selects the next
             // value (takes care of overflow) otherwise defaults to
             // the request index (from parameter)
-            index = index === null ? current + 1 < items.length ? current + 1 : 0 : index;
+            index = index === null || index === undefined ? current + 1 < items.length ? current + 1 : 0 :
+                index;
 
             // in case the current index is the same as the (target)
             // index, no need to select it (returns immediately)
@@ -32027,10 +32027,9 @@ TemplateEngine.prototype.process = function(template, options) {
             current = this.getc();
         }
 
-        // in case the end of file has been found, or
-        // the file size is zero (breaks)
+        // in case the end of file has been found, or the file
+        // size is zero, breaks the cycle (end of parsing)
         if (current === null || current === undefined) {
-            // breaks the cycle (end of parsing)
             break;
         }
 
