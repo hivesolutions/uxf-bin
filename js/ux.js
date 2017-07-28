@@ -463,7 +463,7 @@
         // sequential async loading procedures may also be created,
         // note that in case the verify flag is set this is ignore as
         // the loading is considered to be forced
-        var hasHash = href.indexOf("#") != -1;
+        var hasHash = href.indexOf("#") !== -1;
         var isInternal = hasHash && href.split("#")[0] === document.location.href.split("#")[0];
         isInternal = isInternal || href[0] === "#";
         if (isInternal && !verify) {
@@ -490,7 +490,7 @@
         // calculates the aditional set of values of the base href value
         // so that this request may be "marked" as special avoiding possible
         // errors with cache in the browser/client side
-        var hasQuery = href.indexOf("?") != -1;
+        var hasQuery = href.indexOf("?") !== -1;
         var extraParams = "x-async=1&x-partial=1";
         var extraQuery = hasQuery ? "&" + extraParams : "?" + extraParams;
 
@@ -538,7 +538,7 @@
                 // it's not the same as the current link returns immediately as the
                 // current process has been canceled "by a newer one"
                 var state = _body.data("async_state");
-                if (state != href) {
+                if (state !== href) {
                     return;
                 }
 
@@ -550,7 +550,7 @@
                 // may pile up and so we must verify if the document location
                 // in the current document is the same as the document we're
                 // trying to retrieve, if it's not return immediately (ignore)
-                if (verify && document.location != href) {
+                if (verify && document.location !== href) {
                     return;
                 }
 
@@ -576,7 +576,7 @@
 
             // in case the current request state is not headers ready there's
             // no need to continue as we're going to verify the content type
-            if (request.readyState != 2) {
+            if (request.readyState !== 2) {
                 return;
             }
 
@@ -1422,7 +1422,8 @@
 
             // in case the start record and the number
             // of records is set
-            if (startRecord != null && numberRecords != null) {
+            if (startRecord !== null && startRecord !== undefined && numberRecords !== null &&
+                numberRecords !== undefined) {
                 // sets the filter flag
                 filter = true;
             }
@@ -1501,7 +1502,7 @@
                 // the same (the current request is not the
                 // latest no need to perform it)
                 var current = matchedObject.data("current");
-                if (current != identifier) {
+                if (current !== identifier) {
                     // returns immediately not going to perform
                     // the request (not required)
                     return;
@@ -1527,7 +1528,7 @@
                         // the same (the current response is not the
                         // latest no need to parse it)
                         var current = matchedObject.data("current");
-                        if (current != identifier) {
+                        if (current !== identifier) {
                             // returns immediately not going to parse
                             // the response (not required)
                             return;
@@ -1593,7 +1594,7 @@
                         // the same (the current response is not the
                         // latest no call the callback for it)
                         var current = matchedObject.data("current");
-                        if (current != identifier) {
+                        if (current !== identifier) {
                             // returns immediately not going to send
                             // the response (not required)
                             return;
@@ -1708,7 +1709,8 @@
             // of records is set the filtering mosde should
             // be enabled so that only a slice of the results
             // is returned at the end of the query process
-            if (startRecord != null && numberRecords != null) {
+            if (startRecord !== null && startRecord !== undefined && numberRecords !== null &&
+                numberRecords !== undefined) {
                 filter = true;
             }
 
@@ -1796,7 +1798,7 @@
                     // in case the operator of the filter is not the equals one
                     // or the current item is not an object, must skip the current
                     // iteraion (format not compatible with filter to be applied)
-                    if (operator !== "equals" || typeof currentItem != "object") {
+                    if (operator !== "equals" || typeof currentItem !== "object") {
                         continue;
                     }
 
@@ -4186,7 +4188,7 @@ function onYouTubePlayerReady(id) {
 
             // in case the key is not an enter no need to do any
             // extra verification
-            if (keyValue != 13) {
+            if (keyValue !== 13) {
                 // returns immediately (no extra verification required)
                 return;
             }
@@ -5232,7 +5234,7 @@ function onYouTubePlayerReady(id) {
             // series of pre-defined values
             var isWindow = !element.nodeName || jQuery.inArray(element.nodeName.toLowerCase(), [
                 "iframe", "#document", "html", "body"
-            ]) != -1;
+            ]) !== -1;
 
             // in case the element is not a window it's immediately
             // considered scrollable and so it's returned to the
@@ -5390,7 +5392,7 @@ function onYouTubePlayerReady(id) {
                 // in case it's queueing axes
                 if (!index && settings.queue) {
                     // avoids wasting time animating, if there's no need
-                    if (old != attributes[key]) {
+                    if (old !== attributes[key]) {
                         // intermediate animation
                         animate(settings.onAfterFirst);
                     }
@@ -5660,7 +5662,7 @@ function onYouTubePlayerReady(id) {
             // note that the attribute value is first verified for
             // possible illegal values and skipped if it's illegal
             var attribute = _element.attr(attrName);
-            var isIlegal = attribute.match(ATTR_REGEX) != null;
+            var isIlegal = attribute.match(ATTR_REGEX) !== null;
             if (isIlegal) {
                 return;
             }
@@ -5869,7 +5871,7 @@ function onYouTubePlayerReady(id) {
                 var dataProp = data[index].prop;
                 jQuery.fn.uxbrowser.versionSearchString = data[index].versionSearch || data[index].identity;
                 if (dataString) {
-                    if (dataString.indexOf(data[index].subString) != -1) {
+                    if (dataString.indexOf(data[index].subString) !== -1) {
                         return data[index].identity;
                     }
                 } else if (dataProp) {
@@ -6400,7 +6402,7 @@ function onYouTubePlayerReady(id) {
             var object = _element.attr("data-object");
             var method = _element["ux" + object];
             var result = method ? method.call(_element, "original") : false;
-            result != true && method && method.call(_element, "reset");
+            result !== true && method && method.call(_element, "reset");
 
             // triggers the original event on the current element indicating
             // that a original operation has been performed in it
@@ -6664,7 +6666,7 @@ function onYouTubePlayerReady(id) {
 
             // determines if the device has changed from the previous step
             // if that's the case a new event should be raised
-            var deviceChanged = device != nextDevice;
+            var deviceChanged = device !== nextDevice;
 
             // updates both the width, height and device values of the matched
             // object so that easy reference is possible from scripts
@@ -7273,7 +7275,7 @@ function onYouTubePlayerReady(id) {
                         if (flags === null) {
                             return attributeLocale;
                         }
-                        var isRaw = flags.indexOf("r") != -1;
+                        var isRaw = flags.indexOf("r") !== -1;
                         return isRaw ? attributeValue : attributeLocale;
                     };
 
@@ -29182,7 +29184,7 @@ function onYouTubePlayerReady(id) {
             // result to check for differences and then checks
             // if the current element has focus
             var current = isInput ? matchedObject.val() : matchedObject.html();
-            var different = evalResult != current;
+            var different = evalResult !== current;
             var hasFocus = matchedObject.hasClass("focus");
 
             // in case the value is not different or in case there's
@@ -29673,7 +29675,7 @@ Select.divides = function(selector, decimalPlaces, defaultValue) {
 Select._floatValue = function(element, zerify, defaultValue) {
     // in case the element is itself already
     // a value no need to process it
-    if (element.length == 1 && !isNaN(element[0])) {
+    if (element.length === 1 && !isNaN(element[0])) {
         // returns the element
         // as the float value (it's a number)
         return element[0];
@@ -29835,11 +29837,11 @@ Base64.decode = function(input, decode) {
 
         output = output + String.fromCharCode(character1);
 
-        if (encoding3 != 64) {
+        if (encoding3 !== 64) {
             output = output + String.fromCharCode(character2);
         }
 
-        if (encoding4 != 64) {
+        if (encoding4 !== 64) {
             output = output + String.fromCharCode(character3);
         }
     }
@@ -29891,7 +29893,7 @@ if (typeof(Array.prototype.indexOf) === "undefined") {
 
 if (typeof(Array.prototype.indexOfObject) === "undefined") {
     Array.prototype.indexOfObject = function(obj) {
-        var isObject = typeof obj == "object";
+        var isObject = typeof obj === "object";
         if (!isObject) {
             return this.indexOf(obj);
         }
@@ -29903,7 +29905,7 @@ if (typeof(Array.prototype.indexOfObject) === "undefined") {
             for (var key in obj) {
                 var value = obj[key];
                 var _value = _obj[key];
-                if (value == _value) {
+                if (value === _value) {
                     continue;
                 }
                 valid = false;
@@ -29923,7 +29925,7 @@ if (typeof(Array.prototype.indexOfObject) === "undefined") {
 
 if (typeof(Array.prototype.isIn) === "undefined") {
     Array.prototype.isIn = function(obj) {
-        return this.indexOf(obj) != -1;
+        return this.indexOf(obj) !== -1;
     };
 }
 
@@ -30154,7 +30156,7 @@ Mobile.touchHandler = function(event) {
     // verifies if the current event is considered to be valid,
     // this occurs if the target of the type of the target is
     // considered to be valid according to the current rules
-    var isValid = Mobile.VALID.indexOf(first.target.tagName) == -1;
+    var isValid = Mobile.VALID.indexOf(first.target.tagName) === -1;
     if (Mobile.SAFE && isValid) {
         return;
     }
@@ -30286,8 +30288,8 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     defaultSeparator = defaultSeparator === undefined ? "." : defaultSeparator;
     defaultThousands = defaultThousands === undefined ? "," : defaultThousands;
     places = isNaN(parseInt(places)) ? defaultPlaces : places;
-    separator = separator == undefined ? defaultSeparator : separator;
-    thousands = thousands == undefined ? defaultThousands : thousands;
+    separator = separator === null || separator === undefined ? defaultSeparator : separator;
+    thousands = thousands === null || thousands === undefined ? defaultThousands : thousands;
     var signal = number < 0 ? "-" : "";
     var integer = parseInt(n = Math.abs(+number || 0).toFixed(places)) + "";
     var remaining = (remaining = integer.length) > 3 ? remaining % 3 : 0;
@@ -30305,7 +30307,7 @@ Number._formatCurrency = function(money, currency, useSymbol) {
     symbol = symbol || [currency, 1];
     var position = symbol[1];
     var symbol = symbol[0];
-    money = position == 1 ? money + " " + symbol : symbol + " " + money;
+    money = position === 1 ? money + " " + symbol : symbol + " " + money;
     return money;
 };
 
@@ -30346,7 +30348,7 @@ Object.isEmpty = function(object) {
 };
 
 Object.clone = function(object, recursive) {
-    if (object == null || typeof(object) != "object") {
+    if (object === null || object === undefined || typeof(object) !== "object") {
         return object;
     }
     var cloned = new object.constructor();
@@ -30711,7 +30713,7 @@ var _ = self.Prism = {
 
             for (var token in grammar) {
                 if (grammar.hasOwnProperty(token)) {
-                    if (token == before) {
+                    if (token === before) {
                         for (var newToken in insert) {
                             if (insert.hasOwnProperty(newToken)) {
                                 ret[newToken] = insert[newToken];
@@ -30931,11 +30933,11 @@ var Token = _.Token = function(type, content) {
 };
 
 Token.stringify = function(o, language, parent) {
-    if (typeof o == "string") {
+    if (typeof o === "string") {
         return o;
     }
 
-    if (Object.prototype.toString.call(o) == "[object Array]") {
+    if (Object.prototype.toString.call(o) === "[object Array]") {
         return o.map(function(element) {
             return Token.stringify(element, language, o);
         }).join("");
@@ -30951,7 +30953,7 @@ Token.stringify = function(o, language, parent) {
         parent: parent
     };
 
-    if (env.type == "comment") {
+    if (env.type === "comment") {
         env.attributes["spellcheck"] = "true";
     }
 
@@ -31333,7 +31335,7 @@ Prism.hooks.add("wrap", function(env) {
     if (env.language === "groovy" && env.type === "string") {
         var delimiter = env.content[0];
 
-        if (delimiter != "'") {
+        if (delimiter !== "'") {
             env.content = Prism.highlight(env.content, {
                 "expression": {
                     pattern: /([^\\])(\$(\{.*?\}|[\w\.]*))/,
@@ -31514,7 +31516,7 @@ StringBuffer.prototype.removeLastAppend = function() {
  * @return {Boolean} If the string buffer is empty.
  */
 StringBuffer.prototype.empty = function() {
-    return this.buffer.length == 0;
+    return this.buffer.length === 0;
 }
 
 /**
@@ -31647,7 +31649,7 @@ String.prototype.formatOptions = function(optionsMap) {
         // retrieving the match result and in case the result
         // is not valid breaks the current loop
         var matchResult = this.optionsRegex.exec(this);
-        if (matchResult == null) {
+        if (matchResult === null) {
             break;
         }
 
@@ -31939,7 +31941,7 @@ TemplateEngine.prototype.getc = function() {
     var buffer = this.buffer;
     var position = this.position;
 
-    if (position == buffer.length) {
+    if (position === buffer.length) {
         return null;
     }
 
@@ -32027,7 +32029,7 @@ TemplateEngine.prototype.process = function(template, options) {
 
         // in case the end of file has been found, or
         // the file size is zero (breaks)
-        if (current == null) {
+        if (current === null || current === undefined) {
             // breaks the cycle (end of parsing)
             break;
         }
@@ -32036,14 +32038,14 @@ TemplateEngine.prototype.process = function(template, options) {
         // handling to be made for the current character
         switch (state) {
             case TEMPLATE_ENGINE_NORMAL:
-                if (current == "$") {
+                if (current === "$") {
                     state = TEMPLATE_ENGINE_DOLLAR;
                 }
 
                 break;
 
             case TEMPLATE_ENGINE_DOLLAR:
-                if (current == "{") {
+                if (current === "{") {
                     // marks the tag element and calls the text end and tag
                     // begin callbacks
                     this.mark("tagName");
@@ -32058,7 +32060,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == "/") {
+                    if (ahead === "/") {
                         this.callback("tagCloseBegin");
                         aheadSet = 0;
                     }
@@ -32070,12 +32072,12 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_OPEN:
-                if (current == "/") {
+                if (current === "/") {
                     // reads ahead and sets the ahead set flag
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == "}") {
+                    if (ahead === "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
 
                         // unsets the ahead set flag
@@ -32092,7 +32094,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == "}") {
+                if (current === "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -32104,7 +32106,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current == " ") {
+                if (current === " ") {
                     // calls the tag name callback
                     this.callbackDataBack("tagName");
 
@@ -32116,11 +32118,11 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETERS:
-                if (current == "/") {
+                if (current === "/") {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == "}") {
+                    if (ahead === "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
                         aheadSet = 0;
 
@@ -32135,7 +32137,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == "}") {
+                if (current === "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -32147,7 +32149,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current != " ") {
+                if (current !== " ") {
                     this.markBack("parameter");
 
                     state = TEMPLATE_ENGINE_PARAMETER;
@@ -32156,11 +32158,11 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETER:
-                if (current == "/") {
+                if (current === "/") {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == "}") {
+                    if (ahead === "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
                         aheadSet = 0;
 
@@ -32175,7 +32177,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == "}") {
+                if (current === "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -32187,7 +32189,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current == "=") {
+                if (current === "=") {
                     // calls the parameter callback and marks the template
                     // engine parameter value
                     this.callbackDataBack("parameter");
@@ -32199,11 +32201,11 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETER_VALUE:
-                if (current == "/") {
+                if (current === "/") {
                     ahead = this.getc();
                     aheadSet = 1;
 
-                    if (ahead == "}") {
+                    if (ahead === "}") {
                         state = TEMPLATE_ENGINE_NORMAL;
                         aheadSet = 0;
 
@@ -32217,7 +32219,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     }
                 }
 
-                if (current == "}") {
+                if (current === "}") {
                     state = TEMPLATE_ENGINE_NORMAL;
 
                     this.mark("textEnd");
@@ -32231,9 +32233,9 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current == "\"") {
+                if (current === "\"") {
                     state = TEMPLATE_ENGINE_PARAMETER_VALUE_STRING;
-                } else if (current == " ") {
+                } else if (current === " ") {
                     // calls the parameter value callback
                     this.callbackDataBack("parameterValue");
 
@@ -32243,7 +32245,7 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETER_VALUE_STRING:
-                if (current == "\"") {
+                if (current === "\"") {
                     // calls the parameter value callback
                     this.callbackData("parameterValue");
 
@@ -32256,7 +32258,7 @@ TemplateEngine.prototype.process = function(template, options) {
 
     // in case the current state is engine
     // normal (there must be text to be flushed)
-    if (state == TEMPLATE_ENGINE_NORMAL) {
+    if (state === TEMPLATE_ENGINE_NORMAL) {
         // calls the text end callback
         this.callbackData("textEnd");
     }
@@ -32403,7 +32405,7 @@ TemplateHandler.prototype.onTagEnd = function(data, start, end) {
 
     // in case the node does contain the closing
     // symbol at the final part of the tag (assumes single node)
-    if (data[data.length - 2] == "/") {
+    if (data[data.length - 2] === "/") {
         // sets the temporary node type as single
         this.temporaryNode.type = TEMPLATE_NODE_SINGLE;
     }
@@ -32427,7 +32429,7 @@ TemplateHandler.prototype.onTagEnd = function(data, start, end) {
 
     // in case the temporary node is of type close, no need
     // to process it (returns immediately)
-    if (this.temporaryNode.type == TEMPLATE_NODE_CLOSE) {
+    if (this.temporaryNode.type === TEMPLATE_NODE_CLOSE) {
         return;
     }
 
@@ -32462,7 +32464,7 @@ TemplateHandler.prototype.onParameterValue = function(data, start, end) {
     var first = data[0];
     var code = first.charCodeAt(0);
 
-    if (first == "\"") {
+    if (first === "\"") {
         temporaryParameter.value = data.slice(1, data.length - 1);
         temporaryParameter.type = TEMPLATE_PARAMETER_STRING;
     } else if (code > 0x2f && code < 0x58) {
@@ -32832,7 +32834,7 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {};
                         // tries to parse the received data as json information
                         // in case it fails raises a message indicating that the
                         // unpacking operation did not succeed
-                        data = typeof data == "object" ? data : jQuery.parseJSON(data);
+                        data = typeof data === "object" ? data : jQuery.parseJSON(data);
                     } catch (exception) {
                         throw "No valid json data received";
                     }
@@ -32841,7 +32843,7 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {};
                     // and notifies the success handler in case the result
                     // was success
                     var result = data["result"];
-                    if (result == "success") {
+                    if (result === "success") {
                         options.success(data);
                     }
                     // in case the result value from the message is not succes
@@ -32940,7 +32942,7 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {};
             // or in case it's an empty list must return
             // immediatly initialization is not meant to
             // be run (corruption may occur)
-            if (!matchedObject || matchedObject.length == 0) {
+            if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
@@ -33154,7 +33156,7 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {};
                     // is currently disconnected tries to connect it again
                     // otherwise runs the "normal" update command to obtain new
                     // data fro the service source
-                    var method = status == DISCONNECTED_STATUS ? _connect : _update;
+                    var method = status === DISCONNECTED_STATUS ? _connect : _update;
 
                     // sets the timeout for connection, and
                     // retrieves the timeout handler
@@ -33215,7 +33217,7 @@ canvasRenderingContext.extra = function(x, y, width, height, radius) {};
 
             // in case the "new" status is the same
             // as the current status
-            if (currentStatus == status) {
+            if (currentStatus === status) {
                 // returns immediately
                 return;
             }
