@@ -28301,11 +28301,16 @@ function onYouTubePlayerReady(id) {
             // that no modal windows are present in the screen
             _body.triggerHandler("hide_modal");
 
-            // shows the overlay and shows at the same time the
-            // current object (window)
-            overlay.triggerHandler("show", [250]);
-            matchedObject.removeClass("hidden");
+            // toggles the multiple classes of the object so that
+            // it may become visible (as expected)
+            matchedObject.removeClass("invisible");
             matchedObject.addClass("visible");
+
+            // tries to retrieve the total duration of the animation
+            // for the matched window (may be zero), and uses the value
+            // in the hide operation of the overlay
+            var duration = __duration(matchedObject);
+            overlay.triggerHandler("show", [duration]);
 
             // registers for the click event on the global overlay
             // so that the window hides in such case
@@ -28348,11 +28353,15 @@ function onYouTubePlayerReady(id) {
             // of the window on the key press
             __unregisterKey(matchedObject, options);
 
-            // hides the overlay and hides at the same time the
-            // current object (window)
-            overlay.triggerHandler("hide", [250]);
+            // toggles the multiple classes of the object so that
             matchedObject.removeClass("visible");
-            matchedObject.addClass("hidden");
+            matchedObject.addClass("invisible");
+
+            // tries to retrieve the total duration of the animation
+            // for the matched window (may be zero), and uses the value
+            // in the hide operation of the overlay
+            var duration = __duration(matchedObject);
+            overlay.triggerHandler("hide", [duration]);
 
             // retrieves the appropriate name for the event to be
             // triggered indicating the state the window has closed,
@@ -28660,13 +28669,11 @@ function onYouTubePlayerReady(id) {
             // hides the current set of windows that are visible and
             // at the end of the hide operation shows the window
             visibleWindow.removeClass("visible");
-            visibleWindow.addClass("hidden");
+            visibleWindow.addClass("invisible");
 
             // tries to retrieve the total duration of the animation
             // for the visible windows (may be zero)
-            var duration = visibleWindow.css("animation-duration");
-            duration = duration ? parseFloat(duration) : 0;
-            duration = duration * 1000;
+            var duration = __duration(visibleWindow);
 
             // schedules the show of the real window for after the
             // animation of the window has been completed (as expected)
@@ -28674,6 +28681,15 @@ function onYouTubePlayerReady(id) {
                 matchedObject.uxwindow("show");
             }, duration);
             return true;
+        };
+
+        var __duration = function(element) {
+            // computes the duration in milliseconds extracting it
+            // from the associated css property
+            var duration = element.css("animation-duration");
+            duration = duration ? parseFloat(duration) : 0;
+            duration = duration * 1000;
+            return duration;
         };
 
         // switches over the method
