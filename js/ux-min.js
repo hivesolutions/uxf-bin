@@ -105,8 +105,7 @@ else{callback();var fallbackUrl=element.attr("data-fallback")||options["fallback
 if(target){window.open(fallbackUrl,target);}
 else{jQuery.uxlocation(fallbackUrl);}}};var _printQueue=function(queue,data,gateway,callback){if(queue.length===0){callback();return;}
 var binieUrl=queue.pop();if(!binieUrl){_printQueue(queue,data,gateway,callback);return;}
-jQuery.ajax({url:binieUrl,data:data,complete:function(){_printQueue(queue,data,gateway,callback);},success:function(data){gateway.print(false,data);},error:function(){var _body=jQuery("body");_body.uxinfo("There was an error retrieving remote print data.<br />"
-+"Please try again latter or contact the support team.","Error","warning");}});};switch(method){case"print":_queue(matchedObject,options);break;case"default":initialize();break;}
+jQuery.ajax({url:binieUrl,data:data,complete:function(){_printQueue(queue,data,gateway,callback);},success:function(data){gateway.print(false,data);},error:function(){var _body=jQuery("body");_body.uxinfo("There was an error retrieving remote print data.<br />"+"Please try again latter or contact the support team.","Error","warning");}});};switch(method){case"print":_queue(matchedObject,options);break;case"default":initialize();break;}
 return this;};})(jQuery);(function(jQuery){jQuery.fn.uxgprintpdf=function(gateway,data){var devices=gateway.pdevices();var defaultDevice=null;for(var index=0;index<devices.length;index++){var device=devices[index];if(!device.isDefault){continue;}
 defaultDevice=device;break;}
 if(!defaultDevice){return;}
