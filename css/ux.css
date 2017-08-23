@@ -29,6 +29,50 @@ __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 __license__   = Apache License, Version 2.0
 */
 
+@-webkit-keyframes fade-in-visibility {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes fade-in-visibility {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@-webkit-keyframes fade-out-visibility {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fade-out-visibility {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 .no-select {
     user-select: none;
     -o-user-select: none;
@@ -413,8 +457,27 @@ body.wait-load {
 }
 
 .window {
-    display: none;
+    animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -khtml-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    display: block;
     position: fixed;
+    visibility: hidden;
+}
+
+.window.visible {
+    visibility: visible;
+}
+
+.window.hidden {
+    animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -o-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -moz-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -khtml-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -webkit-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    display: block;
 }
 
 .window .window-mask {
