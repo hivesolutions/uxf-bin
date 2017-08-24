@@ -1539,7 +1539,7 @@
                         // shows an info window about the problem retrieving
                         // the data from the remote data source
                         _body.uxinfo(
-                            "There was an error retrieving json data",
+                            "There was an error retrieving JSON data",
                             "Warning", "warning");
 
                         // calls the callback with the failure values
@@ -4772,6 +4772,7 @@ function onYouTubePlayerReady(id) {
         "count": "count",
         "sum": "sum",
         "average": "average",
+        "There was an error retrieving JSON data": "There was an error retrieving JSON data",
         "COUNTRIES": ["Afghanistan", "Albania", "Algeria", "Andorra",
             "Angola", "Antigua & Deps", "Argentina", "Armenia",
             "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -4880,6 +4881,7 @@ function onYouTubePlayerReady(id) {
         "count": "contagem",
         "sum": "somatório",
         "average": "média",
+        "There was an error retrieving JSON data": "Occoreu um erro a obter a informação em JSON",
         "COUNTRIES": ["Afeganistão", "Albania", "Argélia", "Andorra",
             "Angola", "Antigua e Dependencias", "Argentina", "Arménia",
             "Austrália", "Austria", "Azerbaijão", "Bahamas", "Bahrein",
