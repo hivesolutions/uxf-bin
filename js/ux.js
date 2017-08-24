@@ -4885,7 +4885,7 @@ function onYouTubePlayerReady(id) {
         "count": "contagem",
         "sum": "somatório",
         "average": "média",
-        "There was an error retrieving JSON data": "Occoreu um erro a obter a informação em JSON",
+        "There was an error retrieving JSON data": "Occoreu um erro a obter dados em JSON",
         "COUNTRIES": ["Afeganistão", "Albania", "Argélia", "Andorra",
             "Angola", "Antigua e Dependencias", "Argentina", "Arménia",
             "Austrália", "Austria", "Azerbaijão", "Bahamas", "Bahrein",
@@ -20303,6 +20303,10 @@ function onYouTubePlayerReady(id) {
         };
 
         var _show = function(matchedObject, options) {
+            // retrieves the reference to the top level body element
+            // that is going to be used for global operations
+            var _body = jQuery("body");
+
             // verifies if the current window is already visible and
             // if that's the case returns immediately, as there's nothing
             // pending to be performed (as expected)
@@ -20310,6 +20314,10 @@ function onYouTubePlayerReady(id) {
             if (isVisible) {
                 return;
             }
+
+            // triggers the hide modal event that is going to ensure
+            // that no modal windows are present in the screen
+            _body.triggerHandler("hide_modal");
 
             // retrieves the vertical offset and parses it
             // as a float to be used in the center operation
