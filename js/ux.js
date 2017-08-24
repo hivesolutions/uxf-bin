@@ -28524,16 +28524,18 @@ function onYouTubePlayerReady(id) {
             // retrieves the window mask
             var mask = jQuery(".window-mask", matchedObject);
 
-            // resizes the mask
-            _resizeMask(matchedObject, options);
-
             // sets the interval for dot update
             var intervalHandler = setInterval(function() {
                 __updateDots(matchedObject, options);
             }, 500);
 
-            // shows the window mask
-            mask.fadeIn(250);
+            // adds the main masked class from the window
+            matchedObject.addClass("masked");
+
+            // updates the visual classes so that the mask becomes
+            // visible one more time (as expected)
+            mask.removeClass("invisible");
+            mask.addClass("visible");
 
             // sets the interval handler in the mask
             mask.data("interval_handler", intervalHandler)
@@ -28547,8 +28549,13 @@ function onYouTubePlayerReady(id) {
             var intervalHandler = mask.data("interval_handler");
             window.clearInterval(intervalHandler);
 
-            // hides the window mask
-            mask.fadeOut(250);
+            // removes the main masked class from the window
+            matchedObject.removeClass("masked");
+
+            // updates the visual classes so that the mask becomes
+            // invisible one more time (as expected)
+            mask.removeClass("visible");
+            mask.addClass("invisible");
         };
 
         var _collect = function(matchedObject, options) {
@@ -28624,19 +28631,6 @@ function onYouTubePlayerReady(id) {
             // available space from the containing window
             matchedObject.css("max-width", maxWidth + "px");
             matchedObject.css("max-height", maxHeight + "px");
-        };
-
-        var _resizeMask = function(matchedObject, options) {
-            // retrieves the window mask
-            var mask = jQuery(".window-mask", matchedObject);
-
-            // retrieves the matched object dimensions
-            var matchedObjectWidth = matchedObject.width();
-            var matchedObjectHeight = matchedObject.height();
-
-            // sets the mask dimensions
-            mask.width(matchedObjectWidth);
-            mask.height(matchedObjectHeight);
         };
 
         var _startForm = function(matchedObject, options) {
