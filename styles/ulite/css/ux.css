@@ -139,7 +139,9 @@ __license__   = Apache License, Version 2.0
     text-transform: uppercase;
     transition: background-color 0.15s linear;
     -o-transition: background-color 0.15s linear;
+    -ms-transition: background-color 0.15s linear;
     -moz-transition: background-color 0.15s linear;
+    -khtml-transition: background-color 0.15s linear;
     -webkit-transition: background-color 0.15s linear;
 }
 
@@ -348,12 +350,16 @@ __license__   = Apache License, Version 2.0
     background-color: #ffffff;
     border: 1px solid #dddddd;
     box-shadow: 0px 1px 4px #eeeeee;
+    -o-box-shadow: 0px 1px 4px #eeeeee;
+    -ms-box-shadow: 0px 1px 4px #eeeeee;
     -moz-box-shadow: 0px 1px 4px #eeeeee;
+    -khtml-box-shadow: 0px 1px 4px #eeeeee;
     -webkit-box-shadow: 0px 1px 4px #eeeeee;
     display: inline-block;
     font-size: 12px;
     user-select: none;
     -o-user-select: none;
+    -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -378,12 +384,22 @@ __license__   = Apache License, Version 2.0
     cursor: pointer;
     height: 8px;
     opacity: 0.6;
+    -o-opacity: 0.6;
+    -ms-opacity: 0.6;
+    -moz-opacity: 0.6;
+    -khtml-opacity: 0.6;
+    -webkit-opacity: 0.6;
     padding: 14px 14px 14px 14px;
     width: 6px;
 }
 
 .ulite-style .calendar-header .calendar-arrow:hover {
     opacity: 1;
+    -o-opacity: 1;
+    -ms-opacity: 1;
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    -webkit-opacity: 1;
 }
 
 .ulite-style .calendar-header .calendar-arrow-left {
@@ -607,6 +623,7 @@ __license__   = Apache License, Version 2.0
 .ulite-style .window.window-lightbox .button-expand {
     animation-duration: 0.5s;
     -o-animation-duration: 0.5s;
+    -ms-animation-duration: 0.5s;
     -moz-animation-duration: 0.5s;
     -khtml-animation-duration: 0.5s;
     -webkit-animation-duration: 0.5s;
@@ -649,6 +666,11 @@ __license__   = Apache License, Version 2.0
 .ulite-style .link {
     color: #4d4d4d;
     outline: none;
+    -o-outline: none;
+    -ms-outline: none;
+    -moz-outline: none;
+    -khtml-outline: none;
+    -webkit-outline: none;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -959,6 +981,7 @@ __license__   = Apache License, Version 2.0
     padding: 0px 0px 0px 0px;
     user-select: none;
     -o-user-select: none;
+    -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -967,6 +990,7 @@ __license__   = Apache License, Version 2.0
 .ulite-style .list.product-description-list > .product-area > .item {
     user-select: all;
     -o-user-select: all;
+    -ms-user-select: all;
     -moz-user-select: all;
     -khtml-user-select: all;
     -webkit-user-select: all;
@@ -974,9 +998,16 @@ __license__   = Apache License, Version 2.0
 
 .ulite-style .list.product-description-list > .list-area > .item {
     opacity: 0.0;
+    -o-opacity: 0.0;
+    -ms-opacity: 0.0;
+    -moz-opacity: 0.0;
+    -khtml-opacity: 0.0;
+    -webkit-opacity: 0.0;
     transition: opacity 0.50s linear;
     -o-transition: opacity 0.50s linear;
+    -ms-transition: opacity 0.50s linear;
     -moz-transition: opacity 0.50s linear;
+    -khtml-transition: opacity 0.50s linear;
     -webkit-transition: opacity 0.50s linear;
 }
 
@@ -1046,7 +1077,10 @@ __license__   = Apache License, Version 2.0
     background-color: #ffffff;
     border: 1px solid #d9d9d9;
     box-shadow: 0px 1px 2px #d4d4d4;
+    -o-box-shadow: 0px 1px 2px #d4d4d4;
+    -ms-box-shadow: 0px 1px 2px #d4d4d4;
     -moz-box-shadow: 0px 1px 2px #d4d4d4;
+    -khtml-box-shadow: 0px 1px 2px #d4d4d4;
     -webkit-box-shadow: 0px 1px 2px #d4d4d4;
     margin-left: -28px;
     margin-top: -1px;
@@ -1306,15 +1340,28 @@ __license__   = Apache License, Version 2.0
 .ulite-style .overlay {
     background-color: #000000;
     opacity: 0.5;
+    -o-opacity: 0.5;
+    -ms-opacity: 0.5;
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    -webkit-opacity: 0.5;
     z-index: 10;
 }
 
 .ulite-style .radio-field {
+    appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    -khtml-appearance: none;
     -webkit-appearance: none;
     background: white url(../images/radio-field.png) no-repeat 0px 0px;
     border: 1px solid #bbbbbb;
     border-radius: 16px 16px 16px 16px;
+    -o-border-radius: 16px 16px 16px 16px;
+    -ms-border-radius: 16px 16px 16px 16px;
     -moz-border-radius: 16px 16px 16px 16px;
+    -khtml-border-radius: 16px 16px 16px 16px;
     -webkit-border-radius: 16px 16px 16px 16px;
     cursor: pointer;
     height: 17px;
@@ -1337,6 +1384,11 @@ __license__   = Apache License, Version 2.0
 
 .ulite-style .radio-field:focus {
     outline: none;
+    -o-outline: none;
+    -ms-outline: none;
+    -moz-outline: none;
+    -khtml-outline: none;
+    -webkit-outline: none;
 }
 
 .ulite-style .radio-field-label {
@@ -1348,6 +1400,7 @@ __license__   = Apache License, Version 2.0
     overflow: hidden;
     user-select: none;
     -o-user-select: none;
+    -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -1411,6 +1464,11 @@ __license__   = Apache License, Version 2.0
 
 .ulite-style .tag.lower {
     opacity: 0.75;
+    -o-opacity: 0.75;
+    -ms-opacity: 0.75;
+    -moz-opacity: 0.75;
+    -khtml-opacity: 0.75;
+    -webkit-opacity: 0.75;
 }
 
 .ulite-style .separator > .separator-contents {
@@ -1604,6 +1662,11 @@ __license__   = Apache License, Version 2.0
 .ulite-style .text-field.active {
     border-color: #efc698;
     outline: none;
+    -o-outline: none;
+    -ms-outline: none;
+    -moz-outline: none;
+    -khtml-outline: none;
+    -webkit-outline: none;
 }
 
 .ulite-style .text-field.invalid {
@@ -1658,7 +1721,10 @@ __license__   = Apache License, Version 2.0
     background-color: #ffffff;
     border: 1px solid #4d4d4d;
     box-shadow: 0px 1px 4px #5d5d5d;
+    -o-box-shadow: 0px 1px 4px #5d5d5d;
+    -ms-box-shadow: 0px 1px 4px #5d5d5d;
     -moz-box-shadow: 0px 1px 4px #5d5d5d;
+    -khtml-box-shadow: 0px 1px 4px #5d5d5d;
     -webkit-box-shadow: 0px 1px 4px #5d5d5d;
     min-width: 280px;
     overflow: auto;

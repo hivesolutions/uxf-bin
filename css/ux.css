@@ -32,10 +32,20 @@ __license__   = Apache License, Version 2.0
 @-webkit-keyframes fade-in-visibility {
     from {
         opacity: 0;
+        -o-opacity: 0;
+        -ms-opacity: 0;
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        -webkit-opacity: 0;
         visibility: hidden;
     }
     to {
         opacity: 1;
+        -o-opacity: 1;
+        -ms-opacity: 1;
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        -webkit-opacity: 1;
         visibility: visible;
     }
 }
@@ -43,10 +53,20 @@ __license__   = Apache License, Version 2.0
 @keyframes fade-in-visibility {
     from {
         opacity: 0;
+        -o-opacity: 0;
+        -ms-opacity: 0;
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        -webkit-opacity: 0;
         visibility: hidden;
     }
     to {
         opacity: 1;
+        -o-opacity: 1;
+        -ms-opacity: 1;
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        -webkit-opacity: 1;
         visibility: visible;
     }
 }
@@ -54,10 +74,20 @@ __license__   = Apache License, Version 2.0
 @-webkit-keyframes fade-out-visibility {
     from {
         opacity: 1;
+        -o-opacity: 1;
+        -ms-opacity: 1;
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        -webkit-opacity: 1;
         visibility: visible;
     }
     to {
         opacity: 0;
+        -o-opacity: 0;
+        -ms-opacity: 0;
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        -webkit-opacity: 0;
         visibility: hidden;
     }
 }
@@ -65,10 +95,20 @@ __license__   = Apache License, Version 2.0
 @keyframes fade-out-visibility {
     from {
         opacity: 1;
+        -o-opacity: 1;
+        -ms-opacity: 1;
+        -moz-opacity: 1;
+        -khtml-opacity: 1;
+        -webkit-opacity: 1;
         visibility: visible;
     }
     to {
         opacity: 0;
+        -o-opacity: 0;
+        -ms-opacity: 0;
+        -moz-opacity: 0;
+        -khtml-opacity: 0;
+        -webkit-opacity: 0;
         visibility: hidden;
     }
 }
@@ -76,6 +116,7 @@ __license__   = Apache License, Version 2.0
 .no-select {
     user-select: none;
     -o-user-select: none;
+    -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -140,19 +181,39 @@ body.mobile-s .for-mobile {
 }
 
 .transform-container {
+    perspective: 1000;
+    -o-perspective: 1000;
+    -ms-perspective: 1000;
+    -moz-perspective: 1000;
+    -khtml-perspective: 1000;
     -webkit-perspective: 1000;
 }
 
 .transform-flip {
+    transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -khtml-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
 }
 
 .transform-face {
+    backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -khtml-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     position: absolute;
 }
 
 .transform-face-relative {
+    backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -khtml-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     position: relative;
 }
@@ -162,10 +223,20 @@ body.mobile-s .for-mobile {
 }
 
 .transform-face-back {
+    transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -khtml-transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
 }
 
 .transform-flip.flip {
+    transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -khtml-transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
 }
 
@@ -181,7 +252,10 @@ body.wait-load {
     cursor: pointer;
     user-select: none;
     -o-user-select: none;
+    -ms-user-select: none;
     -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
 
 .button.disabled {
@@ -240,7 +314,10 @@ body.wait-load {
 .drop-field {
     user-select: none;
     -o-user-select: none;
+    -ms-user-select: none;
     -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
 }
 
 .drop-field > .drop-field-no-results {
@@ -347,6 +424,7 @@ body.wait-load {
 .overlay-panel {
     animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -ms-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-in-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -361,6 +439,7 @@ body.wait-load {
 .overlay-panel.invisible {
     animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -ms-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-out-visibility 0.15s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -452,22 +531,43 @@ body.wait-load {
 }
 
 .omni-style .text-field {
+    appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    -khtml-appearance: none;
     -webkit-appearance: none;
     border-radius: 0px 0px 0px 0px;
+    -o-border-radius: 0px 0px 0px 0px;
+    -ms-border-radius: 0px 0px 0px 0px;
     -moz-border-radius: 0px 0px 0px 0px;
+    -khtml-border-radius: 0px 0px 0px 0px;
     -webkit-border-radius: 0px 0px 0px 0px;
 }
 
 .omni-style .text-area {
+    appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    -khtml-appearance: none;
     -webkit-appearance: none;
     border-radius: 0px 0px 0px 0px;
+    -o-border-radius: 0px 0px 0px 0px;
+    -ms-border-radius: 0px 0px 0px 0px;
     -moz-border-radius: 0px 0px 0px 0px;
+    -khtml-border-radius: 0px 0px 0px 0px;
     -webkit-border-radius: 0px 0px 0px 0px;
 }
 
 .uploader-input {
     cursor: pointer;
     opacity: 0.0;
+    -o-opacity: 0.0;
+    -ms-opacity: 0.0;
+    -moz-opacity: 0.0;
+    -khtml-opacity: 0.0;
+    -webkit-opacity: 0.0;
 }
 
 .top-bar {
@@ -479,6 +579,7 @@ body.wait-load {
 .window {
     animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -ms-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -494,6 +595,7 @@ body.wait-load {
 .window.invisible {
     animation: fade-out-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-out-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -ms-animation: fade-out-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-out-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-out-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-out-visibility 0.25s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -514,6 +616,7 @@ body.wait-load {
 .window .window-mask.visible {
     animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -ms-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-in-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -524,6 +627,7 @@ body.wait-load {
 .window .window-mask.invisible {
     animation: fade-out-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -o-animation: fade-out-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
+    -ms-animation: fade-out-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -moz-animation: fade-out-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -khtml-animation: fade-out-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
     -webkit-animation: fade-out-visibility 0.35s cubic-bezier(0.645, 0.045, 0.355, 1.0);
@@ -541,12 +645,17 @@ pre[class*="language-"] {
     direction: ltr;
     font-family: Consolas, Monaco, "Andale Mono", monospace;
     hyphens: none;
+    -o-hyphens: none;
     -ms-hyphens: none;
     -moz-hyphens: none;
+    -khtml-hyphens: none;
     -webkit-hyphens: none;
     tab-size: 4;
     -o-tab-size: 4;
+    -ms-tab-size: 4;
     -moz-tab-size: 4;
+    -khtml-tab-size: 4;
+    -webkit-tab-size: 4;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
@@ -556,12 +665,22 @@ pre[class*="language-"]::-moz-selection,
 code[class*="language-"]::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
+    -o-text-shadow: none;
+    -ms-text-shadow: none;
+    -moz-text-shadow: none;
+    -khtml-text-shadow: none;
+    -webkit-text-shadow: none;
 }
 
 pre[class*="language-"]::selection,
 code[class*="language-"]::selection {
     background: #b3d4fc;
     text-shadow: none;
+    -o-text-shadow: none;
+    -ms-text-shadow: none;
+    -moz-text-shadow: none;
+    -khtml-text-shadow: none;
+    -webkit-text-shadow: none;
 }
 
 pre[class*="language-"] {
@@ -572,6 +691,11 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"] {
     border-radius: 0.3em 0.3em 0.3em 0.3em;
+    -o-border-radius: 0.3em 0.3em 0.3em 0.3em;
+    -ms-border-radius: 0.3em 0.3em 0.3em 0.3em;
+    -moz-border-radius: 0.3em 0.3em 0.3em 0.3em;
+    -khtml-border-radius: 0.3em 0.3em 0.3em 0.3em;
+    -webkit-border-radius: 0.3em 0.3em 0.3em 0.3em;
     padding: 0.1em 0.1em 0.1em 0.1em;
 }
 
@@ -592,6 +716,11 @@ pre[class*="language-"] {
 
 .namespace {
     opacity: 0.7;
+    -o-opacity: 0.7;
+    -ms-opacity: 0.7;
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+    -webkit-opacity: 0.7;
 }
 
 .token.property,
