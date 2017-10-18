@@ -484,6 +484,7 @@ __license__   = Apache License, Version 2.0
     font-family: monospace;
     font-size: 12px;
     margin-bottom: 26px;
+    word-break: break-word;
 }
 
 .omni-style .content-error .error .description {
