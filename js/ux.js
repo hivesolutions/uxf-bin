@@ -29624,7 +29624,7 @@ jQuery(document).ready(function() {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Select = Select || {};
+Select = typeof Select === "undefined" ? {} : Select;
 
 Select.map = function(list, _function) {
     // starts the result list as an
@@ -29955,6 +29955,12 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
     return value;
 }
 
+if (typeof module !== "undefined") {
+    module.exports = {
+        Select: Select
+    };
+}
+
 // Hive Colony Framework
 // Copyright (c) 2008-2017 Hive Solutions Lda.
 //
@@ -29980,7 +29986,7 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Base64 = Base64 || {};
+Base64 = typeof Base64 === "undefined" ? {} : Base64;
 
 /**
  * The key string to be used in base64.
@@ -30077,6 +30083,12 @@ Base64.decode = function(input, decode) {
     return output;
 }
 
+if (typeof module !== "undefined") {
+    module.exports = {
+        Base64: Base64
+    };
+}
+
 // Hive Colony Framework
 // Copyright (c) 2008-2017 Hive Solutions Lda.
 //
@@ -30102,7 +30114,7 @@ Base64.decode = function(input, decode) {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Array = Array || {};
+Array = typeof Array === "undefined" ? {} : Array;
 
 if (typeof(Array.prototype.indexOf) === "undefined") {
     Array.prototype.indexOf = function(obj, start) {
@@ -30153,6 +30165,12 @@ if (typeof(Array.prototype.isIn) === "undefined") {
     };
 }
 
+if (typeof module !== "undefined") {
+    module.exports = {
+        Array: Array
+    };
+}
+
 // Hive Colony Framework
 // Copyright (c) 2008-2017 Hive Solutions Lda.
 //
@@ -30178,7 +30196,7 @@ if (typeof(Array.prototype.isIn) === "undefined") {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Date = Date || {};
+Date = typeof Date === "undefined" ? {} : Date;
 
 /**
  * Parses the given date string (without utc offset) retrieving an utc timestamp
@@ -30304,7 +30322,7 @@ Date.prototype.getTimeZoneStructure = function() {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Math = Math || {};
+Math = typeof Math === "undefined" ? {} : Math;
 
 if (typeof(Math.log10) === "undefined") {
     Math.log10 = function(value) {
@@ -30337,7 +30355,7 @@ if (typeof(Math.log10) === "undefined") {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Mobile = Mobile || {};
+Mobile = typeof Mobile === "undefined" ? {} : Mobile;
 
 /**
  * If the mobile touch event propragation structure should performed only under
@@ -30441,7 +30459,7 @@ Mobile.init();
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Number = Number || {};
+Number = typeof Number === "undefined" ? {} : Number;
 
 Number.SYMBOLS = {
     "EUR": ["€", 1],
@@ -30533,7 +30551,7 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     money += remaining ? integer.substr(0, remaining) + thousands : "";
     money += integer.substr(remaining).replace(/(\d{3})(?=\d)/g,
         "$1" + thousands);
-    money += places ? separator + Math.abs(number - integer).toFixed(places).slice(2) : "";
+    money += places ? separator + Math.abs(Math.abs(number) - integer).toFixed(places).slice(2) : "";
     money = currency ? Number._formatCurrency(money, currency, useSymbol) : money;
     return money;
 };
@@ -30546,6 +30564,12 @@ Number._formatCurrency = function(money, currency, useSymbol) {
     money = position === 1 ? money + " " + symbol : symbol + " " + money;
     return money;
 };
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        Number: Number
+    };
+}
 
 // Hive Colony Framework
 // Copyright (c) 2008-2017 Hive Solutions Lda.
@@ -30572,7 +30596,7 @@ Number._formatCurrency = function(money, currency, useSymbol) {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Object = Object || {};
+Object = typeof Object === "undefined" ? {} : Object;
 
 Object.isEmpty = function(object) {
     for (var property in object) {
@@ -30622,7 +30646,7 @@ Object.clone = function(object, recursive) {
 // __license__   = Apache License, Version 2.0
 // __credits__   = Joseph Myers <e_mayilme@hotmail.com>
 
-var Md5 = Md5 || {};
+Md5 = typeof Md5 === "undefined" ? {} : Md5;
 
 /**
  * The list of hexadecimal characters available and indexed by position in the
@@ -31663,7 +31687,7 @@ Prism.languages.insertBefore("ruby", "keyword", {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var StringBuffer = StringBuffer || {};
+StringBuffer = typeof StringBuffer === "undefined" ? {} : StringBuffer;
 
 /**
  * Constructor of the class.
@@ -31791,7 +31815,7 @@ StringBuffer.prototype.toString = function() {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var String = String || {};
+String = typeof String === "undefined" ? {} : String;
 
 if (typeof(String.prototype.trim) === "undefined") {
     String.prototype.trim = function() {
@@ -32063,7 +32087,7 @@ String.prototype.decodeUtf = function() {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Template = Template || {};
+Template = typeof Template === "undefined" ? {} : Template;
 
 /**
  * Normal state for the template engin where it is trying to find new tags.
@@ -32910,7 +32934,7 @@ TemplateNode.prototype.getParameter = function(name) {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var canvasRenderingContext = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype || {};
+Template = typeof window === "undefined" ? {} : window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype || {};
 
 canvasRenderingContext.line = function(x1, y1, x2, y2) {
     this.save();
