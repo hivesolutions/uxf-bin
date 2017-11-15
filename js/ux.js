@@ -6017,16 +6017,7 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.fn.uxenable = function(method, options) {
-        // the default values for the enable
-        var defaults = {};
-
-        // sets the default options value
-        var options = options ? options : {};
-
-        // constructs the options
-        var options = jQuery.extend(defaults, options);
-
+    jQuery.fn.uxenable = function(readonly) {
         // sets the jquery matched object
         var matchedObject = this;
 
@@ -6043,13 +6034,18 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
+            // calculates the proper name for the enable attribute
+            // taking into account the provided argument value for
+            // the current disable extension
+            var name = readonly ? "readonly" : "disabled";
+
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
                 // retrieves the element reference and
                 // verifies that it is currently disabled
                 // if that's not the case returns immediately
                 var _element = jQuery(element);
-                var isDisabled = _element.hasClass("disabled") || _element.attr("disabled");
+                var isDisabled = _element.hasClass("disabled") || _element.attr(name);
                 if (!isDisabled) {
                     return;
                 }
@@ -6059,9 +6055,9 @@ function onYouTubePlayerReady(id) {
                 _element.removeClass("disabled");
 
                 // checks if the currently matche object is an input field
-                // in case it is removes the disabled attribute
+                // in case it is removes the disabled or readonly attributes
                 var isInput = _element.is("input, textarea");
-                isInput && _element.removeAttr("disabled");
+                isInput && _element.removeAttr(name);
 
                 // triggers the enabled event on the element
                 // to indicate that it has been enabled
@@ -29624,7 +29620,8 @@ jQuery(document).ready(function() {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Select = typeof Select === "undefined" ? {} : Select;
+var _global = typeof global === "undefined" ? window : global;
+var Select = Select || _global.Select || {};
 
 Select.map = function(list, _function) {
     // starts the result list as an
@@ -29648,7 +29645,7 @@ Select.map = function(list, _function) {
 
     // returns the list of mapped items
     return result;
-}
+};
 
 Select.reduce = function(list, _function) {
     // starts the accumulator with the first
@@ -29669,7 +29666,7 @@ Select.reduce = function(list, _function) {
 
     // returns the (final) accumulator
     return accumulator;
-}
+};
 
 Select.floatValue = function(selector, zerify, defaultValue) {
     // retrieves the element using the
@@ -29681,7 +29678,7 @@ Select.floatValue = function(selector, zerify, defaultValue) {
 
     // returns the value as float
     return valueFloat;
-}
+};
 
 Select.floatValues = function(selector, zerify, defaultValue) {
     // retrieves the element using the
@@ -29708,7 +29705,7 @@ Select.floatValues = function(selector, zerify, defaultValue) {
 
     // returns the values as floats
     return valueFloats;
-}
+};
 
 Select.sum = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
@@ -29721,7 +29718,7 @@ Select.sum = function(firstSelector, secondSelector, decimalPlaces, defaultValue
 
     // returns the calculated value
     return value;
-}
+};
 
 /**
  * Sums the various float values resulting from the given selector string. The
@@ -29757,7 +29754,7 @@ Select.sums = function(selector, decimalPlaces, defaultValue) {
 
     // returns the (reduced) value
     return value;
-}
+};
 
 Select.subtract = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
@@ -29770,7 +29767,7 @@ Select.subtract = function(firstSelector, secondSelector, decimalPlaces, default
 
     // returns the calculated value
     return value;
-}
+};
 
 /**
  * Subtracts the various float values resulting from the given selector string.
@@ -29806,7 +29803,7 @@ Select.subtracts = function(selector, decimalPlaces, defaultValue) {
 
     // returns the (reduced) value
     return value;
-}
+};
 
 Select.multiply = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
@@ -29819,7 +29816,7 @@ Select.multiply = function(firstSelector, secondSelector, decimalPlaces, default
 
     // returns the calculated value
     return value;
-}
+};
 
 Select.multiplys = function(selector, decimalPlaces, defaultValue) {
     // retrieves the multiplication value by multiplying
@@ -29841,7 +29838,7 @@ Select.multiplys = function(selector, decimalPlaces, defaultValue) {
 
     // returns the (reduced) value
     return value;
-}
+};
 
 Select.divide = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
@@ -29854,7 +29851,7 @@ Select.divide = function(firstSelector, secondSelector, decimalPlaces, defaultVa
 
     // returns the calculated value
     return value;
-}
+};
 
 Select.divides = function(selector, decimalPlaces, defaultValue) {
     // retrieves the division value by dividing
@@ -29876,7 +29873,7 @@ Select.divides = function(selector, decimalPlaces, defaultValue) {
 
     // returns the (reduced) value
     return value;
-}
+};
 
 /**
  * Retrieves a valid float value for the given element. A simple heurisitc is
@@ -29919,8 +29916,8 @@ Select._floatValue = function(element, zerify, defaultValue) {
 
     // retrieves the value from the element
     // and parses it as an float
-    var value = element.html();
-    var valueFloat = parseFloat(value);
+    value = element.html();
+    valueFloat = parseFloat(value);
 
     // in case the zerify flag is set, the number
     // must be checked to be a valid number to be
@@ -29933,7 +29930,7 @@ Select._floatValue = function(element, zerify, defaultValue) {
 
     // returns the float value
     return valueFloat;
-}
+};
 
 Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
     // calculates the rounder value from the number of decimal places
@@ -29948,12 +29945,12 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
     // sets the default value
     if (isNaN(value)) {
         // sets the default value in the value in case it's defined
-        value = defaultValue ? defaultValue : "N/A";
+        value = defaultValue || "N/A";
     }
 
     // returns the (normalized) value
     return value;
-}
+};
 
 if (typeof module !== "undefined") {
     module.exports = {
@@ -29986,7 +29983,8 @@ if (typeof module !== "undefined") {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Base64 = typeof Base64 === "undefined" ? {} : Base64;
+var _global = typeof global === "undefined" ? window : global;
+var Base64 = Base64 || _global.Base64 || {};
 
 /**
  * The key string to be used in base64.
@@ -30003,7 +30001,7 @@ Base64.encode = function(input, encode) {
     var index = 0;
 
     // retrieves the encode value
-    encode = encode ? encode : false;
+    encode = encode || false;
 
     // encodes the input into utf
     input = encode ? input.encodeUtf() : input;
@@ -30035,7 +30033,7 @@ Base64.encode = function(input, encode) {
 
     // returns the output
     return output;
-}
+};
 
 Base64.decode = function(input, decode) {
     // initializes all the variables that will be used
@@ -30047,7 +30045,7 @@ Base64.decode = function(input, decode) {
 
     // retrieves the decode value, defaulting to false
     // in case the attribute is not provided
-    decode = decode ? decode : false;
+    decode = decode || false;
 
     // removes all the invalid values from the input
     input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
@@ -30081,7 +30079,7 @@ Base64.decode = function(input, decode) {
 
     // returns the output
     return output;
-}
+};
 
 if (typeof module !== "undefined") {
     module.exports = {
@@ -30114,9 +30112,10 @@ if (typeof module !== "undefined") {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Array = typeof Array === "undefined" ? {} : Array;
+var _global = typeof global === "undefined" ? window : global;
+var Array = Array || _global.Array || {};
 
-if (typeof(Array.prototype.indexOf) === "undefined") {
+if (typeof Array.prototype.indexOf === "undefined") {
     Array.prototype.indexOf = function(obj, start) {
         for (var i = (start || 0), j = this.length; i < j; i++) {
             if (this[i] === obj) {
@@ -30127,7 +30126,7 @@ if (typeof(Array.prototype.indexOf) === "undefined") {
     };
 }
 
-if (typeof(Array.prototype.indexOfObject) === "undefined") {
+if (typeof Array.prototype.indexOfObject === "undefined") {
     Array.prototype.indexOfObject = function(obj) {
         var isObject = typeof obj === "object";
         if (!isObject) {
@@ -30159,7 +30158,7 @@ if (typeof(Array.prototype.indexOfObject) === "undefined") {
     };
 }
 
-if (typeof(Array.prototype.isIn) === "undefined") {
+if (typeof Array.prototype.isIn === "undefined") {
     Array.prototype.isIn = function(obj) {
         return this.indexOf(obj) !== -1;
     };
@@ -30196,7 +30195,8 @@ if (typeof module !== "undefined") {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Date = typeof Date === "undefined" ? {} : Date;
+var _global = typeof global === "undefined" ? window : global;
+var Date = Date || _global.Date || {};
 
 /**
  * Parses the given date string (without utc offset) retrieving an utc timestamp
@@ -30217,7 +30217,7 @@ Date.parseUtc = function(dateString) {
 
     // creates the date string from the date string and the time zone name
     // or it uses the new date
-    var dateString = dateString ? dateString + " " + timeZoneName : date;
+    dateString = dateString ? dateString + " " + timeZoneName : date;
 
     // parses the date string retrieving the timestamp
     // (in miliseconds) in utc
@@ -30225,7 +30225,7 @@ Date.parseUtc = function(dateString) {
 
     // returns the timestamp (in utc)
     return timestamp;
-}
+};
 
 /**
  * Retrieves the time zone structure for the current default time zone.
@@ -30233,6 +30233,10 @@ Date.parseUtc = function(dateString) {
  * @return {Map} The time zone structure for the current default time zone.
  */
 Date.prototype.getTimeZoneStructure = function() {
+    // creates the index variable that is going to be used
+    // in the internal function iteration cycles
+    var index = 0;
+
     // retrieves the javascript utc offset
     var javascriptUtcOffset = this.getTimezoneOffset() * -1;
 
@@ -30261,13 +30265,13 @@ Date.prototype.getTimeZoneStructure = function() {
     var utcOffsetMinutesStringLength = utcOffsetMinutesString.length;
 
     // iterates over the remaining digits (while less than two)
-    for (var index = utcOffsetHoursStringLength; index < 2; index++) {
+    for (index = utcOffsetHoursStringLength; index < 2; index++) {
         // prepends a zero to the utc offset in hours string
         utcOffsetHoursString = "0" + utcOffsetHoursString;
     }
 
     // iterates over the remaining digits (while less than two)
-    for (var index = utcOffsetMinutesStringLength; index < 2; index++) {
+    for (index = utcOffsetMinutesStringLength; index < 2; index++) {
         // prepends a zero to the utc offset in minutes string
         utcOffsetMinutesString = "0" + utcOffsetMinutesString;
     }
@@ -30295,38 +30299,11 @@ Date.prototype.getTimeZoneStructure = function() {
 
     // returns the time zone structure
     return timeZoneStructure;
-}
+};
 
-// Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
-//
-// This file is part of Hive Colony Framework.
-//
-// Hive Colony Framework is free software: you can redistribute it and/or modify
-// it under the terms of the Apache License as published by the Apache
-// Foundation, either version 2.0 of the License, or (at your option) any
-// later version.
-//
-// Hive Colony Framework is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// Apache License for more details.
-//
-// You should have received a copy of the Apache License along with
-// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
-
-// __author__    = João Magalhães <joamag@hive.pt>
-// __version__   = 1.0.0
-// __revision__  = $LastChangedRevision$
-// __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
-// __license__   = Apache License, Version 2.0
-
-Math = typeof Math === "undefined" ? {} : Math;
-
-if (typeof(Math.log10) === "undefined") {
-    Math.log10 = function(value) {
-        return Math.log(value) / Math.LN10;
+if (typeof module !== "undefined") {
+    module.exports = {
+        Date: Date
     };
 }
 
@@ -30355,10 +30332,52 @@ if (typeof(Math.log10) === "undefined") {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Mobile = typeof Mobile === "undefined" ? {} : Mobile;
+var _global = typeof global === "undefined" ? window : global;
+var Math = Math || _global.Math || {};
+
+if (typeof Math.log10 === "undefined") {
+    Math.log10 = function(value) {
+        return Math.log(value) / Math.LN10;
+    };
+}
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        Math: Math
+    };
+}
+
+// Hive Colony Framework
+// Copyright (c) 2008-2017 Hive Solutions Lda.
+//
+// This file is part of Hive Colony Framework.
+//
+// Hive Colony Framework is free software: you can redistribute it and/or modify
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
+//
+// Hive Colony Framework is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// Apache License for more details.
+//
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
+
+// __author__    = João Magalhães <joamag@hive.pt>
+// __version__   = 1.0.0
+// __revision__  = $LastChangedRevision$
+// __date__      = $LastChangedDate$
+// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __license__   = Apache License, Version 2.0
+
+var _global = typeof global === "undefined" ? window : global;
+var Mobile = Mobile || _global.Mobile || {};
+var document = document || _global.document || {};
 
 /**
- * If the mobile touch event propragation structure should performed only under
+ * If the mobile touch event propagation structure should performed only under
  * a previous validation of tag naming.
  */
 Mobile.SAFE = true;
@@ -30434,6 +30453,12 @@ Mobile.init = function() {
 
 Mobile.init();
 
+if (typeof module !== "undefined") {
+    module.exports = {
+        Mobile: Mobile
+    };
+}
+
 // Hive Colony Framework
 // Copyright (c) 2008-2017 Hive Solutions Lda.
 //
@@ -30459,7 +30484,8 @@ Mobile.init();
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Number = typeof Number === "undefined" ? {} : Number;
+var _global = typeof global === "undefined" ? window : global;
+var Number = Number || _global.Number || {};
 
 Number.SYMBOLS = {
     "EUR": ["€", 1],
@@ -30560,7 +30586,7 @@ Number._formatCurrency = function(money, currency, useSymbol) {
     var symbol = useSymbol ? Number.SYMBOLS[currency] : null;
     symbol = symbol || [currency, 1];
     var position = symbol[1];
-    var symbol = symbol[0];
+    symbol = symbol[0];
     money = position === 1 ? money + " " + symbol : symbol + " " + money;
     return money;
 };
@@ -30596,7 +30622,8 @@ if (typeof module !== "undefined") {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Object = typeof Object === "undefined" ? {} : Object;
+var _global = typeof global === "undefined" ? window : global;
+var Object = Object || _global.Object || {};
 
 Object.isEmpty = function(object) {
     for (var property in object) {
@@ -30608,7 +30635,7 @@ Object.isEmpty = function(object) {
 };
 
 Object.clone = function(object, recursive) {
-    if (object === null || object === undefined || typeof(object) !== "object") {
+    if (object === null || object === undefined || typeof object !== "object") {
         return object;
     }
     var cloned = new object.constructor();
@@ -30618,6 +30645,12 @@ Object.clone = function(object, recursive) {
         cloned[key] = value;
     }
     return cloned;
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        Object: Object
+    };
 }
 
 // Hive Colony Framework
@@ -30646,7 +30679,8 @@ Object.clone = function(object, recursive) {
 // __license__   = Apache License, Version 2.0
 // __credits__   = Joseph Myers <e_mayilme@hotmail.com>
 
-Md5 = typeof Md5 === "undefined" ? {} : Md5;
+var _global = typeof global === "undefined" ? window : global;
+var Md5 = Md5 || _global.Md5 || {};
 
 /**
  * The list of hexadecimal characters available and indexed by position in the
@@ -30676,7 +30710,7 @@ Md5.digest = function(stringValue) {
 
     // returns the digest in hexadecimal
     return digestHex;
-}
+};
 
 /**
  * Converts the given string list (list 32 bit values) and converts it into an
@@ -30702,7 +30736,7 @@ Md5.hex = function(stringList) {
     // returns the joininig of the hex
     // string list (creating the string value)
     return hexStringList.join("");
-}
+};
 
 /**
  * Converts a number into an hexadecimal string value. The conversion method is
@@ -30726,7 +30760,7 @@ Md5.rhex = function(number) {
 
     // returns the string value
     return stringValue;
-}
+};
 
 /**
  * Adds two values and returns a 32 bit number representing the sum.
@@ -30739,7 +30773,7 @@ Md5.rhex = function(number) {
  */
 Md5.add32 = function(a, b) {
     return (a + b) & 0xffffffff;
-}
+};
 
 /**
  * Converts the given string value into a list of (32 bit) integer values. This
@@ -30763,7 +30797,7 @@ Md5.md5Block = function(stringValue) {
 
     // returns the md5 blocks
     return md5Blocks;
-}
+};
 
 Md5._md5Cycle = function(x, k) {
     var a = x[0];
@@ -30843,30 +30877,34 @@ Md5._md5Cycle = function(x, k) {
     x[1] = Md5.add32(b, x[1]);
     x[2] = Md5.add32(c, x[2]);
     x[3] = Md5.add32(d, x[3]);
-}
+};
 
 Md5._cmn = function(q, a, b, x, s, t) {
     a = Md5.add32(Md5.add32(a, q), Md5.add32(x, t));
     return Md5.add32((a << s) | (a >>> (32 - s)), b);
-}
+};
 
 Md5._ff = function(a, b, c, d, x, s, t) {
     return Md5._cmn((b & c) | ((~b) & d), a, b, x, s, t);
-}
+};
 
 Md5._gg = function(a, b, c, d, x, s, t) {
     return Md5._cmn((b & d) | (c & (~d)), a, b, x, s, t);
-}
+};
 
 Md5._hh = function(a, b, c, d, x, s, t) {
     return Md5._cmn(b ^ c ^ d, a, b, x, s, t);
-}
+};
 
 Md5._ii = function(a, b, c, d, x, s, t) {
     return Md5._cmn(c ^ (b | (~d)), a, b, x, s, t);
-}
+};
 
 Md5._md5 = function(stringValue) {
+    // initializes the index variable that is going
+    // to be used for some of the iterations
+    var index = null;
+
     // retrieves the string value lenght as
     // the "number"
     var number = stringValue.length;
@@ -30878,7 +30916,7 @@ Md5._md5 = function(stringValue) {
 
     // iterates over the "past-initial" string values to run
     // the intermediate md5 cycles
-    for (var index = 64; index <= stringValue.length; index += 64) {
+    for (index = 64; index <= stringValue.length; index += 64) {
         // runs the intermediate md5 cycle
         Md5._md5Cycle(state, Md5.md5Block(stringValue.substring(index - 64,
             index)));
@@ -30889,7 +30927,7 @@ Md5._md5 = function(stringValue) {
 
     // runs over the string value length to "calculate" the
     // various tail values
-    for (var index = 0; index < stringValue.length; index++) {
+    for (index = 0; index < stringValue.length; index++) {
         // calculates the current tail value
         tail[index >> 2] |= stringValue.charCodeAt(index) << ((index % 4) << 3);
     }
@@ -30905,7 +30943,7 @@ Md5._md5 = function(stringValue) {
 
         // iterates over all the tail values
         // to reset the tail list
-        for (var index = 0; index < 16; index++) {
+        for (index = 0; index < 16; index++) {
             // resets the tail element
             tail[index] = 0;
         }
@@ -30920,6 +30958,12 @@ Md5._md5 = function(stringValue) {
 
     // returns the state
     return state;
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        Md5: Md5
+    };
 }
 
 /**
@@ -31687,15 +31731,13 @@ Prism.languages.insertBefore("ruby", "keyword", {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-StringBuffer = typeof StringBuffer === "undefined" ? {} : StringBuffer;
-
 /**
  * Constructor of the class.
  */
 function StringBuffer() {
     // creates the buffer to hold the (partial) strings
     this.buffer = [];
-}
+};
 
 /**
  * Clears the current string buffer
@@ -31708,7 +31750,7 @@ StringBuffer.prototype.clear = function(string) {
 
     // returns the context
     return this;
-}
+};
 
 /**
  * Adds a string to the string buffer.
@@ -31723,7 +31765,7 @@ StringBuffer.prototype.append = function(string) {
 
     // returns the context
     return this;
-}
+};
 
 /**
  * Adds a string to the string buffer (in the first place).
@@ -31738,7 +31780,7 @@ StringBuffer.prototype.prepend = function(string) {
 
     // returns the context
     return this;
-}
+};
 
 /**
  * Updates the buffer to a "new" buffer with the given value.
@@ -31756,7 +31798,7 @@ StringBuffer.prototype.replace = function(string) {
 
     // returns the context
     return this;
-}
+};
 
 /**
  * Removes the last added string.
@@ -31768,7 +31810,7 @@ StringBuffer.prototype.removeLastAppend = function() {
     // and returns the current (self) context
     this.buffer[this.buffer.size() - 1] = "";
     return this;
-}
+};
 
 /**
  * Tests if the string buffer is empty.
@@ -31777,7 +31819,7 @@ StringBuffer.prototype.removeLastAppend = function() {
  */
 StringBuffer.prototype.empty = function() {
     return this.buffer.length === 0;
-}
+};
 
 /**
  * Converts the internal string buffer to a string.
@@ -31788,6 +31830,12 @@ StringBuffer.prototype.toString = function() {
     // returns the joined value of the strings
     // in the buffer
     return this.buffer.join("");
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        StringBuffer: StringBuffer
+    };
 }
 
 // Hive Colony Framework
@@ -31815,15 +31863,16 @@ StringBuffer.prototype.toString = function() {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-String = typeof String === "undefined" ? {} : String;
+var _global = typeof global === "undefined" ? window : global;
+var String = String || _global.String || {};
 
-if (typeof(String.prototype.trim) === "undefined") {
+if (typeof String.prototype.trim === "undefined") {
     String.prototype.trim = function() {
         return String(this).replace(/^\s+|\s+$/g, "");
     };
 }
 
-if (typeof(String.prototype.startsWith) === "undefined") {
+if (typeof String.prototype.startsWith === "undefined") {
     String.prototype.startsWith = function(searchString, position) {
         position = position || 0;
         return this.substr(position, searchString.length) === searchString;
@@ -31858,7 +31907,7 @@ String.format = function(stringValue) {
 
     // returns the string value
     return stringValue;
-}
+};
 
 /**
  * Formats the given string according to the arguments. This method used the
@@ -31880,7 +31929,7 @@ String.prototype.format = function() {
 
     // returns the string value
     return stringValue;
-}
+};
 
 /**
  * Formats the string with the given options.
@@ -31949,7 +31998,7 @@ String.prototype.formatOptions = function(optionsMap) {
     // returns it as the result for the current method
     var stringValue = stringBuffer.toString();
     return stringValue;
-}
+};
 
 /**
  * Formats the current string according to the c language standard template
@@ -31974,7 +32023,7 @@ String.prototype.formatC = function() {
     // returns the now replaced string value to the
     // caller method to be used as formatted
     return stringValue;
-}
+};
 
 /**
  * Capitalizes the string value.
@@ -31987,7 +32036,7 @@ String.prototype.capitalize = function(local) {
     };
 
     return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
-}
+};
 
 /**
  * Decapitalizes the string value.
@@ -32000,7 +32049,7 @@ String.prototype.decapitalize = function(local) {
     };
 
     return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
-}
+};
 
 /**
  * Encodes the string into utf.
@@ -32027,7 +32076,7 @@ String.prototype.encodeUtf = function() {
     }
 
     return utfString;
-}
+};
 
 /**
  * Decodes the string from utf.
@@ -32060,6 +32109,12 @@ String.prototype.decodeUtf = function() {
     }
 
     return string;
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        String: String
+    };
 }
 
 // Hive Colony Framework
@@ -32087,7 +32142,8 @@ String.prototype.decodeUtf = function() {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-Template = typeof Template === "undefined" ? {} : Template;
+var _global = typeof global === "undefined" ? window : global;
+var Template = Template || _global.Template || {};
 
 /**
  * Normal state for the template engin where it is trying to find new tags.
@@ -32216,7 +32272,7 @@ TemplateEngine.prototype.mark = function(value) {
 
 TemplateEngine.prototype.markBack = function(value) {
     this.markN(value, 1);
-}
+};
 
 TemplateEngine.prototype.markN = function(value, offset) {
     this.marks[value] = this.position - offset;
@@ -32255,7 +32311,7 @@ TemplateEngine.prototype.callback = function(value) {
 TemplateEngine.prototype.process = function(template, options) {
     // default the options value to an empty structrue
     // to avoid undefined references
-    options = options || {}
+    options = options || {};
 
     this.buffer = template;
     this.position = 0;
@@ -32273,15 +32329,13 @@ TemplateEngine.prototype.process = function(template, options) {
     while (true) {
         // in case the look ahead mode is set, should
         // read from the look ahead instead of the normal
-        // file reading
+        // file reading, otherwise it must be a normal reading
         if (aheadSet) {
             // sets the current read character as the look
             // ahead character and unsets the ahead set flag
             current = ahead;
             aheadSet = 0;
-        }
-        // otherwise it must be a normal reading
-        else {
+        } else {
             // retrieves the current character
             // from the file stream
             current = this.getc();
@@ -32524,7 +32578,7 @@ TemplateEngine.prototype.process = function(template, options) {
 };
 
 var TemplateHandler = function() {
-    this.names = {}
+    this.names = {};
 };
 
 TemplateHandler.prototype.getValue = function() {
@@ -32710,7 +32764,7 @@ TemplateHandler.prototype.onParameter = function(data, start, end) {
         name: data,
         value: null,
         type: null
-    }
+    };
 
     this.temporaryNode.temporaryParameter = parameter;
     this.temporaryNode.parameters.push(parameter);
@@ -32801,6 +32855,9 @@ TemplateHandler.prototype.traverse_out = function(node) {
 };
 
 TemplateHandler.prototype.traverse_foreach = function(node) {
+    // starts the index variable to its original value
+    var index = null;
+
     // retrieves the various parameters to be used
     // for the processing of the foreach operation
     var item = node.getParameter("item");
@@ -32832,7 +32889,7 @@ TemplateHandler.prototype.traverse_if = function(node) {
     // evaluates the item and th value using the
     // provided operator and updates the if result
     // context value with it
-    var result = this.eval(_item, _value, operator)
+    var result = this.eval(_item, _value, operator);
     this.assign("if_result", result);
 
     for (var index = 0; index < node.children.length; index++) {
@@ -32888,7 +32945,7 @@ TemplateHandler.prototype.traverse_elif = function(node) {
     // evaluates the item and th value using the
     // provided operator and updates the if result
     // context value with it
-    var result = this.eval(_item, _value, operator)
+    var result = this.eval(_item, _value, operator);
     this.assign("if_result", result);
 };
 
@@ -32902,12 +32959,20 @@ var TemplateNode = function(type) {
     this.type = type;
     this.children = [];
     this.parameters = [];
-    this.parametersMap = {}
+    this.parametersMap = {};
 };
 
 TemplateNode.prototype.getParameter = function(name) {
     return this.parametersMap[name];
 };
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        TemplateEngine: TemplateEngine,
+        TemplateHandler: TemplateHandler,
+        TemplateNode: TemplateNode
+    };
+}
 
 // Hive Colony Framework
 // Copyright (c) 2008-2017 Hive Solutions Lda.
@@ -32934,8 +32999,8 @@ TemplateNode.prototype.getParameter = function(name) {
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-canvasRenderingContext = typeof window === "undefined" ? {} : window.CanvasRenderingContext2D &&
-    CanvasRenderingContext2D.prototype || {};
+var _global = typeof global === "undefined" ? window : global;
+var canvasRenderingContext = (_global.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype) || {};
 
 canvasRenderingContext.line = function(x1, y1, x2, y2) {
     this.save();
@@ -32985,7 +33050,7 @@ canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
 
     // start the current x position that is going to be used
     // at the initial part of the draw loop
-    currentX = 0;
+    var currentX = 0;
 
     // iterates while the current x is smaller
     // than the lenght
@@ -33028,6 +33093,12 @@ canvasRenderingContext.roundRectangle = function(x, y, width, height, radius) {
 };
 
 canvasRenderingContext.extra = function(x, y, width, height, radius) {};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        canvasRenderingContext: canvasRenderingContext
+    };
+}
 
 // Hive Colony Framework
 // Copyright (c) 2008-2017 Hive Solutions Lda.
