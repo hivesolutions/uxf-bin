@@ -5993,9 +5993,12 @@ function onYouTubePlayerReady(id) {
                 _element.addClass("disabled");
 
                 // checks if the currently element is an input field
-                // in case it is sets the disabled attribute
+                // in case it is sets the disabled or readonly attribute
+                // and then sets the tab index attribute to an invalid
+                // value so that no focus is possible in the input
                 var isInput = _element.is("input, textarea");
                 isInput && _element.attr(name, "1");
+                isInput && _element.attr("tabindex", "-1");
 
                 // triggers the disabled event on the element
                 // to indicate that it has been disabled
@@ -6056,8 +6059,10 @@ function onYouTubePlayerReady(id) {
 
                 // checks if the currently matche object is an input field
                 // in case it is removes the disabled or readonly attributes
+                // and also the tab index attribute for focus
                 var isInput = _element.is("input, textarea");
                 isInput && _element.removeAttr(name);
+                isInput && _element.removeAttr("tabindex");
 
                 // triggers the enabled event on the element
                 // to indicate that it has been enabled
