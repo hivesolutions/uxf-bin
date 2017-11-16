@@ -142,6 +142,10 @@ __license__   = Apache License, Version 2.0
     display: none;
 }
 
+.disabled[readonly] {
+    pointer-events: none;
+}
+
 .for-desktop,
 .for-tablet,
 .for-mobile {
