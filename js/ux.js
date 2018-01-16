@@ -1,5 +1,5 @@
 // Hive UX Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive UX Framework.
 //
@@ -20,7 +20,7 @@
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 (function(jQuery) {
@@ -4505,7 +4505,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -5190,7 +5190,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  * @credits Ariel Flesler <aflesler@gmail.com>
  */
@@ -8076,7 +8076,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -8486,7 +8486,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -9019,7 +9019,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -9371,7 +9371,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -9533,7 +9533,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -9697,7 +9697,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -10052,7 +10052,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -10380,7 +10380,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -10928,7 +10928,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -11561,7 +11561,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -13380,7 +13380,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -13594,7 +13594,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -13968,7 +13968,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -14045,7 +14045,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -16854,7 +16854,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -18314,7 +18314,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -18395,7 +18395,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -19408,7 +19408,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -19834,7 +19834,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -19964,7 +19964,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -20113,7 +20113,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -20466,7 +20466,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -20553,7 +20553,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -20904,7 +20904,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -21066,7 +21066,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -21237,7 +21237,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -21654,7 +21654,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -22044,7 +22044,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -22229,7 +22229,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -22382,7 +22382,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -23074,7 +23074,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -23138,7 +23138,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -23592,7 +23592,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -23979,7 +23979,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -24483,7 +24483,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -24709,7 +24709,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -24899,7 +24899,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -26128,7 +26128,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -26741,7 +26741,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt> & Luís Martinho <lmartinho@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -27964,7 +27964,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -28207,7 +28207,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -28938,7 +28938,7 @@ function onYouTubePlayerReady(id) {
  * @author João Magalhães <joamag@hive.pt>
  * @version 1.0
  * @category jQuery plugin
- * @copyright Copyright (c) 2008-2017 Hive Solutions Lda.
+ * @copyright Copyright (c) 2008-2018 Hive Solutions Lda.
  * @license Apache License, Version 2.0 - http://www.apache.org/licenses/
  */
 (function(jQuery) {
@@ -29601,7 +29601,7 @@ jQuery(document).ready(function() {
 });
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -29622,7 +29622,7 @@ jQuery(document).ready(function() {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -29964,7 +29964,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -29985,7 +29985,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -30093,7 +30093,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -30114,7 +30114,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -30176,7 +30176,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -30197,7 +30197,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -30313,7 +30313,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -30334,7 +30334,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -30353,7 +30353,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -30374,7 +30374,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -30465,7 +30465,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -30486,7 +30486,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -30603,7 +30603,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -30624,7 +30624,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -30659,7 +30659,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -30680,7 +30680,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 // __credits__   = Joseph Myers <e_mayilme@hotmail.com>
 
@@ -31712,7 +31712,7 @@ Prism.languages.insertBefore("ruby", "keyword", {
 });
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -31733,7 +31733,7 @@ Prism.languages.insertBefore("ruby", "keyword", {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 /**
@@ -31844,7 +31844,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -31865,7 +31865,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -32123,7 +32123,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -32144,7 +32144,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -32980,7 +32980,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -33001,7 +33001,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
@@ -33106,7 +33106,7 @@ if (typeof module !== "undefined") {
 }
 
 // Hive Colony Framework
-// Copyright (c) 2008-2017 Hive Solutions Lda.
+// Copyright (c) 2008-2018 Hive Solutions Lda.
 //
 // This file is part of Hive Colony Framework.
 //
@@ -33127,7 +33127,7 @@ if (typeof module !== "undefined") {
 // __version__   = 1.0.0
 // __revision__  = $LastChangedRevision$
 // __date__      = $LastChangedDate$
-// __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
+// __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
 (function(jQuery) {
