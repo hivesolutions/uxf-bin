@@ -5257,8 +5257,15 @@ function onYouTubePlayerReady(id) {
             // verifies if the current chrome version a recent one and
             // if that's the case returns the standard document element
             // value (as the default webkit behaviour is ignored)
-            if (jQuery.browser.chrome && parseInt(jQuery.browser.version) > 60) {
+            if (jQuery.browser.chrome && parseInt(jQuery.browser._version || jQuery.browser.version) >
+                60) {
                 return _document.documentElement;
+            }
+
+            // in case the browser is still the chrome one but a more legacy
+            // version then the document body is returned instead
+            if (jQuery.browser.chrome) {
+                return _document.body;
             }
 
             // in case the current browser is a webkit one returns the specific
@@ -5268,7 +5275,7 @@ function onYouTubePlayerReady(id) {
             }
 
             // returns the default value as the document element as expected by
-            // most of the browser (default value)
+            // most of the browsers (default value)
             return _document.documentElement;
         });
     };
@@ -5868,9 +5875,9 @@ function onYouTubePlayerReady(id) {
             // is considered to be a legacy one
             isLegacy && matchedObject.attr("data-browser_legacy", "1")
 
-            // applies the patch to the kquery infra-structure so that
+            // applies the patch to the jquery infra-structure so that
             // the old mode of broewser detection is still possible
-            _applyPatch(browserName, browserOs);
+            _applyPatch(browserName, browserVersion, browserOs, true);
 
             // remove the classes that are not legacy compliant if the
             // current browser is considered to be a legacy one
@@ -5911,17 +5918,20 @@ function onYouTubePlayerReady(id) {
                 1));
         };
 
-        var _applyPatch = function(browserName, browserOs) {
+        var _applyPatch = function(browserName, browserVersion, browserOs, force) {
             // in case the browser structure is defined under the jquery
-            // dictionary there's no need to continue
-            if (jQuery.browser) {
+            // dictionary and the force flag is not set there's no need
+            // to continue with the patch apply
+            if (!force && jQuery.browser) {
                 return;
             }
 
-            // creates the browser bject structure and populates
+            // creates the browser object structure and populates
             // it with the proper browser name index set to valid
-            jQuery.browser = {}
+            jQuery.browser = jQuery.browser || {};
             jQuery.browser[browserName] = true;
+            jQuery.browser.version = jQuery.browser.version || String(browserVersion);
+            jQuery.browser._version = String(browserVersion);
         };
 
         var _removeLegacy = function(matchedObject, isLegacy) {
