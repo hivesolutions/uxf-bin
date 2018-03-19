@@ -470,8 +470,8 @@
             return false;
         }
 
-        // resolves the provided link so that were able to find out the
-        // absolute url out of it and set it as the location to be retrieved
+        // resolves the provided link so that we're able to find out the
+        // absolute URL out of it and set it as the location to be retrieved
         // using an asynchronous approach (ajax)
         href = jQuery.uxresolve(href);
 
@@ -1427,13 +1427,13 @@
                 filter = true;
             }
 
-            // retrieves the elements url and data values to be used
+            // retrieves the elements URL and data values to be used
             // for the processing of the "remote" query
             var url = element.data("url");
             var data = element.data("data");
             var cacheD = element.data("cache_d");
 
-            // adds the id (part) to the url (in case it's necessary)
+            // adds the id (part) to the URL (in case it's necessary)
             url += id ? "/" + id + ".json" : "";
 
             // increments the value of the number of records (to provide
@@ -2940,23 +2940,23 @@ jQuery.expr[":"].parents = function(a, i, m) {
                 // retrieves the element reference
                 var _element = jQuery(element);
 
-                // retrieves the url (html) from the element
+                // retrieves the URL (HTML) from the element
                 // and then trims it
                 var url = _element.text();
                 url = url.trim();
 
-                // in case the current url value is not valid
+                // in case the current URL value is not valid
                 // must return immediately because it's not possible
                 // to go any furhter with the current processing
                 if (!url) {
                     return;
                 }
 
-                // parses the url retrieving the
-                // url information
+                // parses the URL retrieving the
+                // URL information
                 var urlInformation = parseUrl(url);
 
-                // retrieves the base name from the url information
+                // retrieves the base name from the URL information
                 var baseName = urlInformation["baseName"];
 
                 // in case the video is of type youtube
@@ -3077,13 +3077,13 @@ jQuery.expr[":"].parents = function(a, i, m) {
         };
 
         var parseUrl = function(url) {
-            // creates the url regex (for url validation)
+            // creates the URL regex (for URL validation)
             var urlRegex = /(\w+\:\/\/)?([^\:\/\?#]+)(\:\d+)?((\/[^\?#]+)*)\/?(\?(([^#])*))?(#(.*))?/g;
 
-            // executes the url regex against the url
+            // executes the URL regex against the URL
             var match = urlRegex.exec(url);
 
-            // retrieves and parses the various url component from
+            // retrieves and parses the various URL component from
             // the (url) match
             var protocol = match[1] ? match[1].slice(0, -3) : null;
             var baseName = match[2] ? match[2] : null;
@@ -3126,8 +3126,8 @@ jQuery.expr[":"].parents = function(a, i, m) {
                 optionsMap[optionName] = optionValue;
             }
 
-            // creates the url information map, from the
-            // various url components
+            // creates the URL information map, from the
+            // various URL components
             var urlInformation = {
                 protocol: protocol,
                 baseName: baseName,
@@ -3138,7 +3138,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
                 optionsMap: optionsMap
             }
 
-            // returns the url information map
+            // returns the URL information map
             return urlInformation;
         };
 
@@ -3406,7 +3406,7 @@ function onYouTubePlayerReady(id) {
 
         var _print = function(matchedObject, options, callback) {
             // retrieves the element reference and then
-            // uses it to retrieve the url to the binie
+            // uses it to retrieve the URL to the binie
             // resource containing the document description
             var element = matchedObject;
             var binieUrl = element.attr("data-binie") || options["binie"];
@@ -3491,18 +3491,18 @@ function onYouTubePlayerReady(id) {
                 _printQueue(binieUrls, data, gateway, callback)
             }
             // otherwise the normal printing process must be used
-            // in case a fallback url exists
+            // in case a fallback URL exists
             else {
                 // calls the callback function, marking the end of
                 // the printing execution (maintains order)
                 callback();
 
-                // tries to retrieve the fallback url and the
+                // tries to retrieve the fallback URL and the
                 // target for the link
                 var fallbackUrl = element.attr("data-fallback") || options["fallback"];
                 var target = element.attr("data-target") || options["target"];
 
-                // in case no fallback url is defined, must return
+                // in case no fallback URL is defined, must return
                 // immediately (nothing is done)
                 if (!fallbackUrl) {
                     // returns immediately, nothing can
@@ -3536,10 +3536,10 @@ function onYouTubePlayerReady(id) {
             }
 
             // removes one element from the queue and considers
-            // it to be the binie url of the printing document
+            // it to be the binie URL of the printing document
             var binieUrl = queue.pop();
 
-            // verifies if the current binie url is valid and
+            // verifies if the current binie URL is valid and
             // not empty and if that's not the case skips the
             // current loop iteration (nothing to be done)
             if (!binieUrl) {
@@ -3891,7 +3891,7 @@ function onYouTubePlayerReady(id) {
                 var targetObject = global ? jQuery(document) : _element;
 
                 // creates the handler function with a clojure in the current
-                // enviroment that will change the location to the url defined
+                // enviroment that will change the location to the URL defined
                 // in the key element
                 var handler = function(event) {
                     // retrieves the key value
@@ -5091,18 +5091,18 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
-            // retrieves the next url element from the
+            // retrieves the next URL element from the
             // matched object and then retrieves the (textual) value
             var nextUrl = jQuery(".next-url", matchedObject);
             var nextUrlValue = nextUrl.text();
 
-            // trims the next url value
+            // trims the next URL value
             nextUrlValue = nextUrlValue.trim();
 
-            // in case the next url value is not valid
+            // in case the next URL value is not valid
             if (!nextUrlValue) {
                 // returns immediately
-                // (no url change)
+                // (no URL change)
                 return;
             }
 
@@ -5150,18 +5150,18 @@ function onYouTubePlayerReady(id) {
          * Creates the necessary html for the component.
          */
         var _appendHtml = function() {
-            // retrieves the previous url element from the
+            // retrieves the previous URL element from the
             // matched object and then retrieves the (textual) value
             var previousUrl = jQuery(".previous-url", matchedObject);
             var previousUrlValue = previousUrl.text();
 
-            // trims the previous url value
+            // trims the previous URL value
             previousUrlValue = previousUrlValue.trim();
 
-            // in case the previous url value is not valid
+            // in case the previous URL value is not valid
             if (!previousUrlValue) {
                 // returns immediately
-                // (no url change)
+                // (no URL change)
                 return;
             }
 
@@ -5927,7 +5927,7 @@ function onYouTubePlayerReady(id) {
             }
 
             // creates the browser object structure (if required) and
-            // then populatesit with the proper browser values so that
+            // then populates it with the proper browser values so that
             // they can be used later on for conditional execution
             jQuery.browser = jQuery.browser || {};
             jQuery.browser[browserName] = true;
@@ -7829,13 +7829,13 @@ function onYouTubePlayerReady(id) {
             var duration = _duration(element, options);
 
             // retrieves the background image reference and removes the
-            // proper url prefix from it, so that only the correct url
+            // proper URL prefix from it, so that only the correct url
             // is used for the processing of the image value
             var imageUrl = element.css("background-image");
             imageUrl = imageUrl.match(/^url\("?(.+?)"?\)$/);
             imageUrl = imageUrl ? imageUrl[1] : imageUrl;
 
-            // verifies if the image url that was retrieved is valid and
+            // verifies if the image URL that was retrieved is valid and
             // if that's no the case returns immediately
             if (!imageUrl) {
                 return;
@@ -7853,7 +7853,7 @@ function onYouTubePlayerReady(id) {
                 _init(element, options, height, spriteHeight, duration);
             });
 
-            // updates the image url for the image element, this operation
+            // updates the image URL for the image element, this operation
             // should trigger the loading of the image
             image.src = imageUrl;
         };
@@ -16490,7 +16490,7 @@ function onYouTubePlayerReady(id) {
                     // action is possible
                     disabled = true
 
-                    // retrieves the url and the type (data source) from
+                    // retrieves the URL and the type (data source) from
                     // the associated element
                     var url = element.attr("data-surl");
                     var _type = element.attr("data-stype");
@@ -16507,7 +16507,7 @@ function onYouTubePlayerReady(id) {
                         "<ul class=\"data-source\"></ul>" + "</div>");
 
                     // retrieves the data source associated with the value
-                    // field an then updates the url and the type of the
+                    // field an then updates the URL and the type of the
                     // data source to point to the "reference" elements
                     var valueSource = jQuery("> .data-source", valueField);
                     valueSource.attr("data-url", url);
@@ -17276,8 +17276,8 @@ function onYouTubePlayerReady(id) {
             var method = matchedObject.attr("method") || "get";
             var action = matchedObject.attr("action");
 
-            // resolves the provided link so that were able to find out the
-            // absolute url out of it and set it as the location to be retrieved
+            // resolves the provided link so that we're able to find out the
+            // absolute URL out of it and set it as the location to be retrieved
             // using an asynchronous approach (ajax)
             var href = jQuery.uxresolve(action);
 
@@ -17301,7 +17301,7 @@ function onYouTubePlayerReady(id) {
 
             // verifies if the current form processing is a get based one and in
             // case it's encapsulates the parameters in the current request
-            // url and removes the data payload from the request
+            // URL and removes the data payload from the request
             var isGet = method.toLowerCase() === "get";
             var hasQuery = href.indexOf("?") !== -1;
             var token = hasQuery ? "&" : "?";
@@ -17320,7 +17320,7 @@ function onYouTubePlayerReady(id) {
             var extraParams = "x-async=1&x-partial=1";
             var extraQuery = token + extraParams;
 
-            // defines the url of the operation (final redirection) as the current
+            // defines the URL of the operation (final redirection) as the current
             // href value, resolved from the process action and get parameters
             var url = href;
 
@@ -18004,7 +18004,7 @@ function onYouTubePlayerReady(id) {
 
                 // tries to determine the density of the screen and uses
                 // it to determine the appropriate attribute to be used
-                // to retrieve the url of the image to be loaded
+                // to retrieve the URL of the image to be loaded
                 var isRetina = _body.hasClass("retina-s");
                 var attribute = isRetina ? "data-url_retina" : "data-url";
                 var src = _element.attr(attribute);
@@ -18019,7 +18019,7 @@ function onYouTubePlayerReady(id) {
                     _element.removeAttr("src");
                 }
 
-                // sets the target url of the image in the target attribute
+                // sets the target URL of the image in the target attribute
                 // taking into account the density of the screen
                 _element.attr(attribute, src);
 
@@ -18573,7 +18573,7 @@ function onYouTubePlayerReady(id) {
             var textField = jQuery(".text-field", incrementalField);
             var floatvalue = textField.uxfloat();
 
-            // tries to retrive a possibly existing increment url value
+            // tries to retrive a possibly existing increment URL value
             // to be used for location change
             var incrementUrl = textField.attr("data-increment_url");
 
@@ -18585,7 +18585,7 @@ function onYouTubePlayerReady(id) {
                 return;
             }
 
-            // verifies if the increment url is defined and if that's the
+            // verifies if the increment URL is defined and if that's the
             // cases runs the location plugin to change the current browser's
             // location to the one defined in the increment url
             if (incrementUrl) {
@@ -18612,7 +18612,7 @@ function onYouTubePlayerReady(id) {
             var textField = jQuery(".text-field", incrementalField);
             var floatvalue = textField.uxfloat();
 
-            // tries to retrive a possibly existing decrement url value
+            // tries to retrive a possibly existing decrement URL value
             // to be used for location change
             var decrementUrl = textField.attr("data-decrement_url");
 
@@ -18636,7 +18636,7 @@ function onYouTubePlayerReady(id) {
                 return;
             }
 
-            // verifies if the decrement url is defined and if that's the
+            // verifies if the decrement URL is defined and if that's the
             // cases runs the location plugin to change the current browser's
             // location to the one defined in the decrement url
             if (decrementUrl) {
@@ -23733,14 +23733,14 @@ function onYouTubePlayerReady(id) {
             var alternates = jQuery(".slideshow-alternates > li", matchedObject);
 
             // registers for the click event on the image to trigger
-            // the url resolution and document change
+            // the URL resolution and document change
             image.click(function(event) {
                 // retrieves the current element and the parent
                 // slideshow
                 var element = jQuery(this);
                 var slideshow = element.parents(".slideshow");
 
-                // retrieves the url information from the slideshow
+                // retrieves the URL information from the slideshow
                 // data and opens the respective url, note that if
                 // the window flag is set a new window is always open
                 var url = slideshow.data("url");
@@ -23752,14 +23752,14 @@ function onYouTubePlayerReady(id) {
             });
 
             // registers for the click event on the details to trigger
-            // the url resolution and document change
+            // the URL resolution and document change
             details.click(function() {
                 // retrieves the current element and the parent
                 // slideshow
                 var element = jQuery(this);
                 var slideshow = element.parents(".slideshow");
 
-                // retrieves the url information from the slideshow
+                // retrieves the URL information from the slideshow
                 // data and opens the respective url, note that if
                 // the window flag is set a new window is always open
                 var url = slideshow.data("url");
@@ -23942,7 +23942,7 @@ function onYouTubePlayerReady(id) {
                 _element.html(item[name]);
             });
 
-            // updates the url with the (current) item url and the
+            // updates the URL with the (current) item URL and the
             // index value with the target index
             matchedObject.data("url", item.url);
             matchedObject.data("index", index);
@@ -23964,7 +23964,7 @@ function onYouTubePlayerReady(id) {
 
         var __static = function(image, item) {
             // changes the source of the image directly to the target image
-            // value withou any kind of animation taking part
+            // value without any kind of animation taking part
             image.attr("src", IMAGE_CLEAR);
             image.attr("src", item.image);
         };
