@@ -11256,6 +11256,11 @@ function onYouTubePlayerReady(id) {
                 var dropDown = jQuery(".drop-down", container);
                 _hide(dropDown, options);
             });
+
+            // marks the complete set of elements as registered this is going to
+            // be used in the update event to determine the elements that already
+            // have the event handler registered and the one that don't
+            elements.data("registered", true)
         };
 
         var _set = function(matchedObject, options) {
@@ -11297,6 +11302,41 @@ function onYouTubePlayerReady(id) {
             var input = jQuery("input", container);
             var value = input.val();
             return value;
+        };
+
+        var _update = function(matchedObject, options) {
+            // retrieves the complete set of elements for the current object
+            // and then filters the ones that are already registered (to avoid
+            // a double registration operation)
+            var elements = jQuery("> li", matchedObject);
+            elements = elements.filter((function(index) {
+                var _element = jQuery(this);
+                var isRegistered = _element.data("registered") || false;
+                return isRegistered === false;
+            }));
+
+            // registers the "new" elements for the click operation so
+            // that the state of the drop down gets updated
+            elements.click(function(event) {
+                // retrieves the reference to the "clicked" element and
+                // the associated parent and child elements that are
+                // going to be used in the selection change operation
+                var element = jQuery(this);
+                var container = element.parents(".drop-down-container");
+                var dropDown = jQuery(".drop-down", container);
+
+                // runs the select operation on the target element as
+                // "requested" by the click operation in it
+                _select(dropDown, options, __element);
+
+                // stops the event propagation, avoiding possible issues with
+                // the propagation of the click event on the element
+                event.stopPropagation();
+            });
+
+            // marks the new elements as registered so that further calls
+            // to this method do not register new event handlers
+            elements.data("registered", true)
         };
 
         var _toggle = function(matchedObject, options) {
@@ -11505,6 +11545,7 @@ function onYouTubePlayerReady(id) {
         // switches over the method that is going to be performed
         // for the current operation (as requested)
         switch (method) {
+
             case "set":
                 // sets the value in the drop down according to
                 // the requested value (provided by options)
@@ -11516,6 +11557,19 @@ function onYouTubePlayerReady(id) {
                 // then returns the same value to the caller method
                 var value = _value(matchedObject, options);
                 return value;
+
+            case "update":
+                // updates the component internal structures
+                // to reflect the layout changes
+                _update(matchedObject, options);
+                break
+
+            case "toggle":
+                // runs the tpggçe operation on the currently matched
+                // object so that the proper contents are shown or hidden
+                // according to their current state
+                _toggle(matchedObject, options);
+                break;
 
             case "show":
                 // runs the show operation on the currently matched
@@ -13863,23 +13917,17 @@ function onYouTubePlayerReady(id) {
                 // updates the component internal structures
                 // to reflect the layout changes
                 update();
-
-                // breaks the switch
                 break;
 
             case "release":
                 // updates the component internal structures
                 // to reflect the layout changes
                 release();
-
-                // breaks the switch
                 break;
 
             case "default":
                 // initializes the plugin
                 initialize();
-
-                // breaks the switch
                 break;
         }
 
@@ -31883,6 +31931,11 @@ if (typeof module !== "undefined") {
 // __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
+if (typeof require !== "undefined") {
+    var stringBuffer = require("./string_buffer");
+    var StringBuffer = stringBuffer.StringBuffer;
+}
+
 var _global = typeof global === "undefined" ? window : global;
 var String = String || _global.String || {};
 
@@ -31899,6 +31952,38 @@ if (typeof String.prototype.startsWith === "undefined") {
     };
 }
 
+if (typeof String.prototype.padStart === "undefined") {
+    String.prototype.padStart = function padStart(targetLength, padString) {
+        targetLength = targetLength >> 0;
+        padString = String((typeof padString !== "undefined" ? padString : " "));
+        if (this.length > targetLength) {
+            return String(this);
+        } else {
+            targetLength = targetLength - this.length;
+            if (targetLength > padString.length) {
+                padString += padString.repeat(targetLength / padString.length);
+            }
+            return padString.slice(0, targetLength) + String(this);
+        }
+    };
+}
+
+if (typeof String.prototype.padEnd === "undefined") {
+    String.prototype.padEnd = function padEnd(targetLength, padString) {
+        targetLength = targetLength >> 0;
+        padString = String((typeof padString !== "undefined" ? padString : " "));
+        if (this.length > targetLength) {
+            return String(this);
+        } else {
+            targetLength = targetLength - this.length;
+            if (targetLength > padString.length) {
+                padString += padString.repeat(targetLength / padString.length);
+            }
+            return String(this) + padString.slice(0, targetLength);
+        }
+    };
+}
+
 String.prototype.strip = function(s) {
     var regex = new RegExp("^" + s + "+|" + s + "+$", "g");
     return String(this).replace(regex, "");
@@ -31907,7 +31992,7 @@ String.prototype.strip = function(s) {
 /**
  * The compiled options regular expression.
  */
-String.prototype.optionsRegex = new RegExp("\{[a-zA-Z0-9_]*(?=\})", "g");
+String.prototype.optionsRegex = new RegExp("{[a-zA-Z0-9_]*(?=})", "g");
 
 /**
  * Formats the given string according to the arguments.
@@ -31917,16 +32002,23 @@ String.prototype.optionsRegex = new RegExp("\{[a-zA-Z0-9_]*(?=\})", "g");
  * @return {String} The formatted value.
  */
 String.format = function(stringValue) {
-    // iterates over all the arguments length for
-    // string replacement
-    for (var index = 1; index < arguments.length; index++) {
-        // replaces the string value for the template value
-        stringValue = stringValue.replace("{" + (index - 1) + "}",
-            arguments[index]);
-    }
+    return stringValue.format.apply(
+        stringValue,
+        Array.prototype.slice.call(arguments, 1)
+    );
+};
 
-    // returns the string value
-    return stringValue;
+/**
+ * Formats the string with the given options.
+ *
+ * @param {String}
+ *            stringValue The string to format.
+ * @param {Map}
+ *            optionsMap The map with the formatting options.
+ * @return {String} The formatted value.
+ */
+String.formatOptions = function(stringValue, optionsMap) {
+    return stringValue.formatOptions(optionsMap);
 };
 
 /**
@@ -31940,10 +32032,9 @@ String.prototype.format = function() {
     // instance value
     var stringValue = this;
 
-    // iterates over all the arguments length for
-    // string replacement
+    // iterates over all the arguments length to execute
+    // the string replacement operation
     for (var index = 0; index < arguments.length; index++) {
-        // replaces the string value for the template value
         stringValue = stringValue.replace("{" + index + "}", arguments[index]);
     }
 
@@ -31982,16 +32073,15 @@ String.prototype.formatOptions = function(optionsMap) {
             break;
         }
 
-        // retrieves the option start index
+        // retrieves both the option start and end index values
+        // to be useed in the slicing
         var optionStartIndex = matchResult.index;
-
-        // retrieves the option end index
         var optionEndIndex = this.optionsRegex.lastIndex;
 
         // retrieves the option value from the match result
         var optionValue = matchResult[0].slice(1);
 
-        //retrieves the previous part string
+        // retrieves the previous part string
         var previousPartString = this.slice(currentIndex, optionStartIndex);
 
         // appends the previous part string to the string buffer
