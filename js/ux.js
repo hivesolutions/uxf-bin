@@ -30085,7 +30085,7 @@ Base64.encode = function(input, encode) {
     // retrieves the encode value
     encode = encode || false;
 
-    // encodes the input into utf
+    // encodes the input into UTF
     input = encode ? input.encodeUtf() : input;
 
     // iterates over the input length
@@ -30156,7 +30156,7 @@ Base64.decode = function(input, decode) {
         }
     }
 
-    // decodes the output from utf
+    // decodes the output from UTF
     output = decode ? output.decodeUtf() : output;
 
     // returns the output
@@ -32176,7 +32176,7 @@ String.prototype.decapitalize = function(local) {
 };
 
 /**
- * Encodes the string into utf.
+ * Encodes the string into UTF.
  *
  * @return {String} The encoded string.
  */
@@ -32203,7 +32203,7 @@ String.prototype.encodeUtf = function() {
 };
 
 /**
- * Decodes the string from utf.
+ * Decodes the string from UTF.
  *
  * @return {String} The decoded string.
  */
