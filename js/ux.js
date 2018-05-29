@@ -3804,7 +3804,7 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.uxctrl = function(keycode, callback, arguments) {
+    jQuery.uxctrl = function(keycode, callback, parameters) {
         // retrieves the document element
         var _document = jQuery(document);
 
@@ -3813,8 +3813,8 @@ function onYouTubePlayerReady(id) {
             // retrieves the key value
             var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode : event.which;
 
-            // sets the default arguments
-            var arguments = arguments ? arguments : [];
+            // sets the default parameters
+            parameters = parameters || [];
 
             // in case the control key is set and the currently
             // pressed key is the one defined for registration
@@ -10952,13 +10952,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -11091,6 +11091,7 @@ function onYouTubePlayerReady(id) {
                 // verifies if the drop down is empty and for that case
                 // the container is hidden (not going to be displayed)
                 isEmpty && container.hide();
+                _element.data("empty", true);
 
                 // updates the original (logical) value of the drop down
                 // and then runs the original operation to restore it to the
@@ -11218,7 +11219,7 @@ function onYouTubePlayerReady(id) {
             // drop down so that the element is restored to empty state
             matchedObject.bind("reset", function() {
                 var element = jQuery(this);
-                _reset(element, options)
+                _reset(element, options);
             });
 
             // register for the key down event in the body,
@@ -11275,7 +11276,7 @@ function onYouTubePlayerReady(id) {
             // marks the complete set of elements as registered this is going to
             // be used in the update event to determine the elements that already
             // have the event handler registered and the one that don't
-            elements.data("registered", true)
+            elements.data("registered", true);
         };
 
         var _set = function(matchedObject, options) {
@@ -11320,15 +11321,24 @@ function onYouTubePlayerReady(id) {
         };
 
         var _update = function(matchedObject, options) {
+            // saves the state value that determins if the current drop down
+            // for update was empty before the update
+            var wasEmpty = matchedObject.data("empty") || false;
+
+            // retrieves the reference to the parent container of the element
+            // to be used for the container level operations
+            var container = matchedObject.parents(".drop-down-container");
+
             // retrieves the complete set of elements for the current object
             // and then filters the ones that are already registered (to avoid
             // a double registration operation)
             var elements = jQuery("> li", matchedObject);
-            elements = elements.filter((function(index) {
+            var isEmpty = elements.length === 0;
+            elements = elements.filter(function(index) {
                 var _element = jQuery(this);
                 var isRegistered = _element.data("registered") || false;
                 return isRegistered === false;
-            }));
+            });
 
             // registers the "new" elements for the click operation so
             // that the state of the drop down gets updated
@@ -11351,7 +11361,15 @@ function onYouTubePlayerReady(id) {
 
             // marks the new elements as registered so that further calls
             // to this method do not register new event handlers
-            elements.data("registered", true)
+            elements.data("registered", true);
+
+            // verifies if the drop down is empty and if that's not
+            // the case and the drop down was previously empty
+            // then shows it re-displaying it again
+            if (!isEmpty && wasEmpty) {
+                container.show();
+                matchedObject.data("empty", false);
+            }
         };
 
         var _toggle = function(matchedObject, options) {
@@ -11564,7 +11582,7 @@ function onYouTubePlayerReady(id) {
                 // sets the value in the drop down according to
                 // the requested value (provided by options)
                 _set(matchedObject, options);
-                break
+                break;
 
             case "value":
                 // retrieves the value from the matched object and
@@ -11576,7 +11594,7 @@ function onYouTubePlayerReady(id) {
                 // updates the component internal structures
                 // to reflect the layout changes
                 _update(matchedObject, options);
-                break
+                break;
 
             case "toggle":
                 // runs the tpggçe operation on the currently matched
@@ -33253,7 +33271,7 @@ if (typeof module !== "undefined") {
     jQuery.fn.message = function(options) {
         // creates the "final" options map by extending the
         // provided options with the default ones
-        var options = jQuery.extend({
+        options = jQuery.extend({
             delay: 1000
         }, options);
 
@@ -33282,7 +33300,7 @@ if (typeof module !== "undefined") {
                     // in case no valid data is received notifies the client
                     // about the error and returns the control immediately
                     if (!data) {
-                        throw "Empty message received";
+                        throw Error("Empty message received");
                     }
 
                     try {
@@ -33291,7 +33309,7 @@ if (typeof module !== "undefined") {
                         // unpacking operation did not succeed
                         data = typeof data === "object" ? data : jQuery.parseJSON(data);
                     } catch (exception) {
-                        throw "No valid json data received";
+                        throw Error("No valid JSON data received");
                     }
 
                     // retrieves the result string value from the (json) data
@@ -33315,13 +33333,17 @@ if (typeof module !== "undefined") {
                 }
             },
             error: function(request, textStatus, errorThrown) {
+                // sets the default data value as invalid, this is
+                // going to be set latter
+                var data = null;
+
                 try {
                     // tries to parse the text status as json information
                     // in case it fails or no data is received an invalid
                     // data structure is used instead
-                    var data = textStatus ? jQuery.parseJSON(textStatus) : null;
+                    data = textStatus ? jQuery.parseJSON(textStatus) : null;
                 } catch (exception) {
-                    var data = null;
+                    data = null;
                 }
 
                 // in case a valid data is going to be used the error is
@@ -33364,13 +33386,13 @@ if (typeof module !== "undefined") {
         };
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -33442,7 +33464,7 @@ if (typeof module !== "undefined") {
 
             // creates the channels string by joining the various
             // channel names using the comma separator
-            var channelsS = channels.join(",")
+            var channelsS = channels.join(",");
 
             // runs the remote call to the server side to provide
             // the connect operation expected behavior
@@ -33656,7 +33678,7 @@ if (typeof module !== "undefined") {
 
             // sets the default data callback functions, defaulting
             // to an empty list in case their not provided
-            callbacks = callbacks ? callbacks : [];
+            callbacks = callbacks || [];
 
             // iterates over all the data callback functions and calls
             // each of them with the received data
