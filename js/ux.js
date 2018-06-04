@@ -478,7 +478,7 @@
         // runs the regular expression that will verify if the current link
         // is local and in case it's not returns immediately with the error
         // flag set indicating that no processing has been done
-        var isLocal = HOST_REGEX.test(href)
+        var isLocal = HOST_REGEX.test(href);
         if (!isLocal) {
             return false;
         }
@@ -620,10 +620,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -674,10 +674,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -892,7 +892,7 @@
             // the current element (key reference)
             valueF = first[element];
             valueS = second[element];
-            type = typeof(valueF);
+            type = typeof valueF;
 
             // by default the comparision of the elements is
             // considered to be valid
@@ -933,7 +933,7 @@
     jQuery.uxruntimeerror = function(message) {
         return {
             message: message
-        }
+        };
     };
 })(jQuery);
 
@@ -941,7 +941,7 @@
     jQuery.uxexception = function(message) {
         return {
             message: message
-        }
+        };
     };
 })(jQuery);
 
@@ -986,7 +986,7 @@
          */
         var _getStringValue = function(value, valueLength, padding) {
             // retrieves the padding value
-            var padding = padding ? padding : "0";
+            padding = padding || "0";
 
             // converts the value to a string and retrives
             // the length of it
@@ -1133,9 +1133,8 @@
         var result = body.triggerHandler("location", [location]);
         if (result === false) {
             return;
-        } else {
-            document.location = location;
         }
+        document.location = location;
     };
 })(jQuery);
 
@@ -1174,7 +1173,7 @@
             // be a top one and the proper attribute is added
             var parents = isElement ? _element.parents("[data-top]") : [];
             var isTop = parents.length === 0 && isElement;
-            isTop && _element.attr("data-top", "1")
+            isTop && _element.attr("data-top", "1");
 
             // retrieves the complete set of children elements
             // marked as top and removes such association, as
@@ -1199,7 +1198,7 @@
         // context and tries to extract the queue from it using
         // the provided queue name (qname) or the global one
         var matchedObject = this;
-        var qname = qname || "global";
+        qname = qname || "global";
         var queue = matchedObject.data("queue-" + qname) || [];
         matchedObject.data("queue-" + qname, queue);
 
@@ -1240,7 +1239,7 @@
         var oldHref = oldBase && oldBase.href;
         var docHead = doc.head || doc.getElementsByTagName("head")[0];
         var ourBase = oldBase || docHead.appendChild(doc.createElement("base"));
-        var resolver = doc.createElement("a")
+        var resolver = doc.createElement("a");
         var resolvedUrl;
 
         baseUrl = baseUrl || (oldBase && oldBase.href) || "";
@@ -1319,10 +1318,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -1381,7 +1380,7 @@
             // the requested number of records is not infinite (minus one)
             var startRecord = query["startRecord"] || 0;
             var numberRecords = query["numberRecords"] || MAX_RECORDS;
-            numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords
+            numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords;
 
             // unpacks the sort value and the sort oder from the
             // sort tuple and uses them to create the "final" sort
@@ -1408,7 +1407,7 @@
                 // all of its values arround the separator token
                 var isSequence = typeof value === "object";
                 if (isSequence) {
-                    value = value.join(";")
+                    value = value.join(";");
                 }
 
                 // creates the serialized filter string and adds it
@@ -1464,7 +1463,7 @@
                 filters: _filters,
                 start_record: startRecord,
                 number_records: numberRecords
-            }
+            };
             var queryHash = _queryHash(query);
 
             // retrieves the current timestamp as the identifier
@@ -1648,10 +1647,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -1699,7 +1698,7 @@
             // the requested number of records is not infinite (minus one)
             var startRecord = query["startRecord"] || 0;
             var numberRecords = query["numberRecords"] || MAX_RECORDS;
-            numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords
+            numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords;
 
             // sets the initial filter flag value
             var filter = false;
@@ -1907,10 +1906,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -1977,10 +1976,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -7991,10 +7990,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -8100,13 +8099,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options | {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -10135,10 +10134,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -10271,10 +10270,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -10341,7 +10340,7 @@ function onYouTubePlayerReady(id) {
                     // (this is considered to be the default behavior)
                     setInterval(function() {
                         // updates the changer value to show the
-                        //"next" section
+                        // "next" section
                         _update(_element, options);
                     }, timeout);
                 }
@@ -10368,11 +10367,11 @@ function onYouTubePlayerReady(id) {
 
             // in case the current value "overflows" the current
             // section count the index calue is reseted
-            index === sectionCount ? index = 0 : index = index;
+            index = index === sectionCount ? 0 : index;
 
             // retrieves the current panel to be shown and
             // shows it with the default approach
-            var panel = panels.get(index)
+            var panel = panels.get(index);
             jQuery(panel).show();
 
             // updates the index value data in the matched object
@@ -10404,13 +10403,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method ? method : "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options ? options : {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -10438,7 +10437,7 @@ function onYouTubePlayerReady(id) {
 
                 // retrieves both the list that contains the various items
                 // to populate the target list and the items themselves
-                var items = jQuery(".items", _element)
+                var items = jQuery(".items", _element);
                 var itemsList = jQuery("li", items) || jQuery();
 
                 // retrieves the various attributes from the element to
@@ -10597,7 +10596,7 @@ function onYouTubePlayerReady(id) {
                 // the target data source and in case it does returns
                 // false so that it gets invalidated
                 var exists = targetItems.indexOfObject(item) !== -1;
-                return exists ? false : true;
+                return !exists;
             });
 
             // registers for the order changed event in the target
@@ -10633,7 +10632,7 @@ function onYouTubePlayerReady(id) {
 
                 // clears the target element list from all the element
                 // inserted (going to reconstruct it)
-                targetItems.splice(0, targetItems.length)
+                targetItems.splice(0, targetItems.length);
 
                 // iterates over all the items currently in the target
                 // list to insert their value in the target items list
@@ -10646,7 +10645,7 @@ function onYouTubePlayerReady(id) {
                     // to the text represention in case none is provided
                     var dataValue = item.attr("data-value");
                     var htmlValue = item.text();
-                    dataValue = dataValue ? dataValue : htmlValue;
+                    dataValue = dataValue || htmlValue;
 
                     // adds the data value to the target items list
                     targetItems.push(dataValue);
@@ -10861,8 +10860,6 @@ function onYouTubePlayerReady(id) {
                 // to retrieve the parent form for pre submit event interception
                 var _element = jQuery(this);
                 var parentForm = _element.parents("form");
-                var targetList = jQuery(".target-section .source-list",
-                    _element);
 
                 // registers for the submit event in the parent form so that it's
                 // possible to create the hidden input values for the form
@@ -10883,7 +10880,7 @@ function onYouTubePlayerReady(id) {
 
                     // removes all the input elements contained inside the
                     // current select list (avoid duplicated submission)
-                    var inputs = jQuery("input", targetList)
+                    var inputs = jQuery("input", targetList);
                     inputs.remove("input");
 
                     // retrieves the complete set of elements in the current
@@ -10908,7 +10905,7 @@ function onYouTubePlayerReady(id) {
                         var listItem = jQuery(listItems[index]);
                         var dataValue = listItem.attr("data-value");
                         var htmlValue = listItem.html();
-                        dataValue = dataValue ? dataValue : htmlValue;
+                        dataValue = dataValue || htmlValue;
 
                         // adds the input element representing the list item
                         // to the target list itself
@@ -11316,7 +11313,7 @@ function onYouTubePlayerReady(id) {
             // logical value from it (as it's expected)
             var container = matchedObject.parents(".drop-down-container");
             var input = jQuery("input", container);
-            var value = input.val();
+            value = input.val();
             return value;
         };
 
@@ -30671,7 +30668,7 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     separator = separator === null || separator === undefined ? defaultSeparator : separator;
     thousands = thousands === null || thousands === undefined ? defaultThousands : thousands;
     var signal = number < 0 ? "-" : "";
-    var integer = parseInt(n = Math.abs(+number || 0).toFixed(places)) + "";
+    var integer = parseInt(Math.abs(+number || 0).toFixed(places)) + "";
     var remaining = (remaining = integer.length) > 3 ? remaining % 3 : 0;
     var money = signal;
     money += remaining ? integer.substr(0, remaining) + thousands : "";
@@ -33632,7 +33629,7 @@ if (typeof module !== "undefined") {
                     // according to the current status, in case the connection
                     // is currently disconnected tries to connect it again
                     // otherwise runs the "normal" update command to obtain new
-                    // data fro the service source
+                    // data for the service source
                     var method = status === DISCONNECTED_STATUS ? _connect : _update;
 
                     // sets the timeout for connection, and
