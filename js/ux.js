@@ -2803,6 +2803,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxerror = function(method, options) {
         // the regex for string character regex,
@@ -2813,10 +2817,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2860,32 +2864,34 @@ if (typeof require !== "undefined") {
 
                 // retrieves the parent form to retrieve
                 // the error box to be shown
-                var form = _element.parents("form");
                 var errorBox = jQuery(".error-box");
                 errorBox.show();
 
                 // replaces the string character in the error
                 // message list
-                var error = error.replace(STRING_CHARACTER_REGEX, "\"");
+                error = error.replace(STRING_CHARACTER_REGEX, "\"");
 
                 // replaces the list joining character in order
                 // to virtually "join" multiple lists
                 var listJoinCharacter = new RegExp("\\]\\[", "g");
-                var error = error.replace(listJoinCharacter, ", ");
+                error = error.replace(listJoinCharacter, ", ");
+
+                // sets the initial value of the error structure
+                var errorStructure = null;
 
                 try {
                     // parses the error structure
-                    var errorStructure = jQuery.parseJSON(error);
+                    errorStructure = jQuery.parseJSON(error);
                 } catch (exception) {
                     // sets the error structure with no error enabled
                     // from the provided error (must be a simmple
                     // error string element)
-                    var errorStructure = []
+                    errorStructure = [];
                 }
 
                 // iterates over all the error messages in the
                 // error structure (errors list)
-                for (var index = 0; index < errorStructure.length; index++) {
+                for (index = 0; index < errorStructure.length; index++) {
                     // retrieves the current error message
                     var errorMessage = errorStructure[index];
 
@@ -2896,7 +2902,7 @@ if (typeof require !== "undefined") {
                     // creates the error description element and adds it
                     // after the element
                     var errorDescription = jQuery(errorDescriptionHtml);
-                    jQuery(errorDescriptionHtml).insertAfter(_element);
+                    errorDescription.insertAfter(_element);
                 }
             });
         };
@@ -3040,6 +3046,10 @@ jQuery.expr[":"].parents = function(a, i, m) {
     return jQuery(a).parents(m[3]).length > 0;
 };
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxvideo = function(options) {
         // the map for the youtube
@@ -3067,10 +3077,10 @@ jQuery.expr[":"].parents = function(a, i, m) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -3150,8 +3160,8 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var autoPlay = matchedObject.attr("data-auto_play");
 
             // calculates the default width and height values
-            width = width ? width : 560;
-            height = height ? height : 315;
+            width = width || 560;
+            height = height || 315;
 
             // calculates the various technology dependent values, taking
             // into account if the player support is going to be action
@@ -3189,8 +3199,8 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var autoPlay = matchedObject.attr("data-auto_play");
 
             // calculates the default width and height values
-            width = width ? width : 560;
-            height = height ? height : 315;
+            width = width || 560;
+            height = height || 315;
 
             // calculates the info value
             var infoValue = autoPlay ? "title=1&byline=1&portrait=1" : "title=0&byline=0&portrait=0";
@@ -3216,8 +3226,8 @@ jQuery.expr[":"].parents = function(a, i, m) {
             var autoPlay = matchedObject.attr("data-auto_play");
 
             // calculates the default width and height values
-            width = width ? width : 560;
-            height = height ? height : 315;
+            width = width || 560;
+            height = height || 315;
 
             // calculates the the various parameters that are going to be
             // set for the inclusion of the video player
@@ -3290,7 +3300,7 @@ jQuery.expr[":"].parents = function(a, i, m) {
                 options: options,
                 location: location,
                 optionsMap: optionsMap
-            }
+            };
 
             // returns the URL information map
             return urlInformation;
@@ -3323,6 +3333,10 @@ function onYouTubePlayerReady(id) {
     videoElement.addEventListener("onStateChange", "onYoutubeStateChange");
 }
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxg = function(strict) {
         // the name of the gateway plugin, should not
@@ -3330,7 +3344,7 @@ function onYouTubePlayerReady(id) {
         var GATEWAY_PLUGIN_NAME = "Colony Gateway Plugin";
 
         // retrieves the values for the strict option
-        strict = strict ? strict : false;
+        strict = strict || false;
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -3400,6 +3414,10 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxgateway = function(options) {
         // the name of the gateway plugin, should not
@@ -3410,10 +3428,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -3448,7 +3466,7 @@ function onYouTubePlayerReady(id) {
             hasPlugin
                 && matchedObject.append(
                     "<object id=\"colony-gateway\" type=\"application/x-colony-gateway\" width=\"0\" height=\"0\"></object>"
-                )
+                );
         };
 
         /**
@@ -3504,19 +3522,23 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxgprint = function(method, options) {
         // the default values for the print
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -3611,7 +3633,7 @@ function onYouTubePlayerReady(id) {
                             }
                         });
                     }
-                }
+                };
             }
 
             // in case the gateway was successfully retrieved
@@ -3642,7 +3664,7 @@ function onYouTubePlayerReady(id) {
                 // that the callback should be called only after the
                 // complete set of queue elements have been processed
                 binieUrls = binieUrls.reverse();
-                _printQueue(binieUrls, data, gateway, callback)
+                _printQueue(binieUrls, data, gateway, callback);
             }
             // otherwise the normal printing process must be used
             // in case a fallback URL exists
@@ -3786,16 +3808,20 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxchart = function(query, callback, options) {
         // the default values for the data query json
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -3909,6 +3935,10 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxlchart = function(query, callback, options) {
         // the default values for the data query json
@@ -3961,6 +3991,10 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxctrl = function(keycode, callback, parameters) {
         // retrieves the document element
@@ -3986,11 +4020,14 @@ function onYouTubePlayerReady(id) {
                 // returns immediately, no more logic executed
                 event.preventDefault();
                 event.stopPropagation();
-                return;
             }
         });
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxkey = function(element, options) {
@@ -4100,6 +4137,10 @@ function onYouTubePlayerReady(id) {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxscan = function(element, options) {
@@ -4280,7 +4321,7 @@ function onYouTubePlayerReady(id) {
                         // in case the sequence is considered to be valid
                         // the scan event is triggered
                         isValid
-                            && targetObject.trigger("scan", [sequence])
+                            && targetObject.trigger("scan", [sequence]);
 
                         // resets the various data values in the
                         // the target object to reflect the default values
@@ -4370,7 +4411,7 @@ function onYouTubePlayerReady(id) {
             // to stop the event propagation
             if (!isValid) {
                 // returns immediately (avoids event propagation)
-                return
+                return;
             }
 
             // the sequence is considered valid and so the event must
@@ -4387,6 +4428,10 @@ function onYouTubePlayerReady(id) {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxshortcuts = function(element, options) {
