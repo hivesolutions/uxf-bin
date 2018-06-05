@@ -9712,10 +9712,10 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 if (typeof require !== "undefined") {
-    var jQuery = null;
     var jsdom = require("jsdom");
-    const dom = new jsdom.JSDOM("");
-    jQuery = require("jquery")(dom.window);
+    var jquery = require("jquery");
+    var dom = new jsdom.JSDOM("");
+    var jQuery = jquery.jQuery(dom.window);
 }
 
 /**
