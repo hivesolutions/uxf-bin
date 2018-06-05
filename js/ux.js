@@ -425,6 +425,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     /**
      * The regular expression that is going to be used for the verification of
@@ -610,6 +614,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatapivot = function(query, callback, options) {
         // the value to be used as the maximum (overflow) value
@@ -668,6 +676,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatawidth = function(query, callback, options) {
         // the default values for the data query json
@@ -723,6 +735,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxclone = function(value) {
         // in case the provided value is not valid or
@@ -756,6 +772,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxcontent = function(value) {
         var element = jQuery(this);
@@ -772,6 +792,10 @@
         return other.html();
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.uxcountry = function(value, format, locale) {
@@ -794,6 +818,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     /**
      * The amount of precision (in decimal places) that is going to be used for
@@ -810,6 +838,10 @@
         return value;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxdocument = function() {
@@ -843,6 +875,10 @@
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.uxequals = function(first, second) {
@@ -929,6 +965,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxruntimeerror = function(message) {
         return {
@@ -937,6 +977,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxexception = function(message) {
         return {
@@ -944,6 +988,10 @@
         };
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     // the various regex values for the time
@@ -1077,6 +1125,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxguid = function() {
         var s4 = function() {
@@ -1088,8 +1140,11 @@
     };
 })(jQuery);
 
-(function(jQuery) {
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
+(function(jQuery) {
     /**
      * The map of symbols associating the value with a map containing all of its
      * localized values.
@@ -1137,6 +1192,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxlocation = function(location) {
         var body = jQuery("body");
@@ -1147,6 +1206,10 @@
         document.location = location;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxobject = function(type, transparent, force) {
@@ -1202,6 +1265,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxqueue = function(callable, qname) {
         // retrieves the reference to the current object for
@@ -1242,6 +1309,10 @@
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxresolve = function(url, baseUrl) {
         var doc = document;
@@ -1267,6 +1338,10 @@
         return resolvedUrl;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     /**
@@ -9712,16 +9787,7 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 if (typeof require !== "undefined") {
-    var jquery = require("jquery");
-    var jQuery = null;
-    if (typeof __webpack_require__ !== "function") { // eslint-disable-line camelcase
-        var jsdom = require("jsdom");
-        global.dom = global.dom || new jsdom.JSDOM("");
-        global.jQuery = global.jQuery || jquery(global.dom.window);
-        jQuery = global.jQuery;
-    } else {
-        jQuery = jquery;
-    }
+    var jQuery = require("../_compat").jQuery;
 }
 
 /**
@@ -10953,16 +11019,7 @@ if (typeof require !== "undefined") {
 })(jQuery);
 
 if (typeof require !== "undefined") {
-    var jquery = require("jquery");
-    var jQuery = null;
-    if (typeof __webpack_require__ !== "function") { // eslint-disable-line camelcase
-        var jsdom = require("jsdom");
-        global.dom = global.dom || new jsdom.JSDOM("");
-        global.jQuery = global.jQuery || jquery(global.dom.window);
-        jQuery = global.jQuery;
-    } else {
-        jQuery = jquery;
-    }
+    var jQuery = require("../_compat").jQuery;
 }
 
 /**
