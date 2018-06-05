@@ -427,6 +427,7 @@
 
 if (typeof require !== "undefined") {
     var jQuery = require("../_compat").jQuery;
+    var location = require("../_compat").window.location;
 }
 
 (function(jQuery) {
@@ -1388,6 +1389,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdataqueryjson = function(query, callback, options) {
         // the default timeout to be used in the request
@@ -1721,6 +1726,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdataquerylocal = function(query, callback, options) {
         // the default value to be used when no number of
@@ -1985,6 +1994,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdataquery = function(query, callback, options) {
         // the default values for the data query
@@ -2055,6 +2068,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatasourcecountries = function(options) {
         // the default values for the data source local
@@ -2114,6 +2131,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatasourcegenders = function(options) {
         // the set of genders to be used
@@ -2170,6 +2191,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatasourceisocountries = function(options) {
         // the default values for the data source local
@@ -2201,6 +2226,11 @@ if (typeof require !== "undefined") {
             matchedObject.each(function(index, element) {
                 // retrieves the element reference
                 var _element = jQuery(element);
+
+                // starts the somne of variables that are going to be used
+                // multiple times under this context
+                var country = null;
+                var countryL = null;
 
                 // creates the list that is going to be used as the basis
                 // for the storage of the complete set of countries, this
@@ -2236,21 +2266,21 @@ if (typeof require !== "undefined") {
                 // iterates over the ordered countries to create the proper
                 // mapper dictionary that will map the localized version of
                 // the country with the "more" locale one for usage
-                for (var index = 0; index < COUNTRIES.length; index++) {
-                    var country = COUNTRIES[index];
-                    var countryL = COUNTRIES_L[index];
+                for (index = 0; index < COUNTRIES.length; index++) {
+                    country = COUNTRIES[index];
+                    countryL = COUNTRIES_L[index];
                     mapper[countryL] = country;
                 }
 
                 // iterates over the range of the countries list to create
                 // the various items that are part of the data source
-                for (var index = 0; index < COUNTRIES.length; index++) {
-                    var countryL = COUNTRIES_LS[index];
-                    var country = mapper[countryL];
+                for (index = 0; index < COUNTRIES.length; index++) {
+                    countryL = COUNTRIES_LS[index];
+                    country = mapper[countryL];
                     var item = {
                         name: countryL,
                         value: country
-                    }
+                    };
                     items.push(item);
                 }
 
@@ -2278,6 +2308,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxdatasourceitems = function(options) {
@@ -2319,7 +2353,7 @@ if (typeof require !== "undefined") {
                 // and adds the item elements into it, then runs the
                 // initializer of the local data source extension
                 _element.attr("data-type", "local");
-                for (var index = 0; index < items.length; index++) {
+                for (index = 0; index < items.length; index++) {
                     // retrieves the current item in iteration and checks
                     // if the type of it is a string, conditional action
                     var item = items[index];
@@ -2368,16 +2402,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatasourcejson = function(options) {
         // the default values for the data source json
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2413,8 +2451,8 @@ if (typeof require !== "undefined") {
         var _updateQueryElement = function(element, options) {
             // retrieves the various attributes that are
             // going to be used for configuration
-            var url = element.attr("data-url")
-            var cacheDisabled = element.attr("data-cache_disabled")
+            var url = element.attr("data-url");
+            var cacheDisabled = element.attr("data-cache_disabled");
 
             // updates the element data
             element.data("type", "json");
@@ -2432,16 +2470,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatasourcelocal = function(options) {
         // the default values for the data source local
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2509,10 +2551,14 @@ if (typeof require !== "undefined") {
                 var children = _element.children();
                 var containsChildren = children.length > 0;
 
+                // starts the element value to the default value
+                // to be populated by the condition expression
+                var elementValue = null;
+
                 // in case the element contains children
                 if (containsChildren) {
                     // retrieves the "composite" element value
-                    var elementValue = _getElements(_element);
+                    elementValue = _getElements(_element);
                 }
                 // otherwise there are no children and
                 // the ement contents must be directly
@@ -2520,7 +2566,7 @@ if (typeof require !== "undefined") {
                 else {
                     // retrieves the element value directly
                     // from the element contents
-                    var elementValue = _element.text();
+                    elementValue = _element.text();
                 }
 
                 // in case the data structure is a list
@@ -2568,16 +2614,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdatasource = function(options) {
         // the default values for the data source
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2639,6 +2689,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxsource = function(query, callback, options) {
@@ -2860,6 +2914,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxanimend = function(name, callback) {
         // retrieves the currently defined context as the matched
@@ -2877,7 +2935,7 @@ if (typeof require !== "undefined") {
             // name the callback is called immediately
             var element = jQuery(this);
             var nameS = element.css("animation-name");
-            var names = nameS.split(",")
+            var names = nameS.split(",");
             if (name && names.indexOf(name) === -1) {
                 callback.call(this);
                 return;
@@ -2894,7 +2952,7 @@ if (typeof require !== "undefined") {
                 }
                 callback.call(this);
                 element.unbind("animationend", onEnd);
-            }
+            };
 
             // registers for the animation end event note that
             // the callback is only called in case the name based
@@ -2908,15 +2966,23 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.event.special.destroyed = {
         remove: function(object) {
             if (object.handler) {
-                object.handler()
+                object.handler();
             }
         }
-    }
+    };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxtransend = function(property, callback) {
@@ -2935,7 +3001,7 @@ if (typeof require !== "undefined") {
             // property the callback is called immediately
             var element = jQuery(this);
             var propertyS = element.css("transition-property");
-            var propertys = propertyS.split(",")
+            var propertys = propertyS.split(",");
             if (property && propertys.indexOf(property) === -1) {
                 callback.call(this);
                 return;
@@ -2965,6 +3031,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 jQuery.expr[":"].parents = function(a, i, m) {
     return jQuery(a).parents(m[3]).length > 0;
