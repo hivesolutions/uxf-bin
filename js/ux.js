@@ -1003,26 +1003,36 @@
             return stringValue;
         };
 
+        // sets the default values for the multiple time units that
+        // are going to be used in the date format
+        var year = null;
+        var month = null;
+        var day = null;
+        var hours = null;
+        var minutes = null;
+        var seconds = null;
+        var dateString = null;
+
         // verifies if the provided object is of type date in case
         // it's not must create a date object that represent it
         var isDate = date.getDate !== undefined;
         if (!isDate) {
-            var year = date["year"];
-            var month = date["month"] || 1;
-            var day = date["day"] || 1;
-            var hours = date["hours"] || 0;
-            var minutes = date["minutes"] || 0;
-            var seconds = date["seconds"] || 0;
+            year = date["year"];
+            month = date["month"] || 1;
+            day = date["day"] || 1;
+            hours = date["hours"] || 0;
+            minutes = date["minutes"] || 0;
+            seconds = date["seconds"] || 0;
             date = new Date(year, month - 1, day, hours, minutes, seconds);
         }
 
         // retrieves the various components of the date
-        var year = utc ? date.getUTCFullYear() : date.getFullYear();
-        var month = utc ? date.getUTCMonth() + 1 : date.getMonth() + 1;
-        var day = utc ? date.getUTCDate() : date.getDate();
-        var hours = utc ? date.getUTCHours() : date.getHours();
-        var minutes = utc ? date.getUTCMinutes() : date.getMinutes();
-        var seconds = utc ? date.getUTCSeconds() : date.getSeconds();
+        year = utc ? date.getUTCFullYear() : date.getFullYear();
+        month = utc ? date.getUTCMonth() + 1 : date.getMonth() + 1;
+        day = utc ? date.getUTCDate() : date.getDate();
+        hours = utc ? date.getUTCHours() : date.getHours();
+        minutes = utc ? date.getUTCMinutes() : date.getMinutes();
+        seconds = utc ? date.getUTCSeconds() : date.getSeconds();
 
         // retrieves the full and abbreviated month values and then
         // localizes them into the proper locale representation
@@ -1049,16 +1059,16 @@
                 abbreviatedMonth);
 
             // sets the date string as the final format
-            var dateString = format;
+            dateString = format;
         }
         // otherwise the default date format is to be used, this is defined
         // in accordance with the iso standards
         else {
             // creates the date string with the default
             // (complete) format in accordance with standard
-            var dateString = year + "-" + _getStringValue(month, 2) + "-" + _getStringValue(day, 2) + " " +
+            dateString = year + "-" + _getStringValue(month, 2) + "-" + _getStringValue(day, 2) + " " +
                 _getStringValue(hours, 2) + ":" + _getStringValue(minutes, 2) + ":" + _getStringValue(seconds,
-                    2)
+                    2);
         }
 
         // returns the processed date string to the caller method
@@ -1150,7 +1160,7 @@
         // the top level element entrypoints, relevant to
         // determined the correct entry hierarchy levels
         // for each of the graphical components/elements
-        var isElement = transparent ? false : true;
+        var isElement = !transparent;
 
         // iterates over the complete set of selected elements
         // in order to change their internal structure
@@ -2038,10 +2048,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2091,10 +2101,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2145,7 +2155,7 @@
 
                 // creates the final locale sorted version that is going to
                 // be used as the main driver in items creation
-                COUNTRIES_LS = COUNTRIES_L.slice();
+                var COUNTRIES_LS = COUNTRIES_L.slice();
                 COUNTRIES_LS.sort();
 
                 // iterates over the ordered countries to create the proper
@@ -2200,10 +2210,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2252,7 +2262,7 @@
                         // iterates over all the keys in the item to
                         // create the various span elements representing
                         // the various attributes
-                        for (key in item) {
+                        for (var key in item) {
                             // retrieves the value associated the current key
                             // and appends the span associated with the key
                             var value = item[key];
@@ -2561,10 +2571,10 @@
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -2611,7 +2621,7 @@
 
                     // creates the item structure with the name
                     // and the value set
-                    _item = {
+                    var _item = {
                         "name": name,
                         "value": value
                     };
@@ -3681,24 +3691,28 @@ function onYouTubePlayerReady(id) {
                 // in a linear manner (linear scale)
                 var linear = _element.attr("data-linear");
 
+                // starts the ratio variable with the default value,
+                // this is going to be updated further in the method
+                var ratio = null;
+
                 // in case the linear flag is set the ratio is
                 // meant to be the percentage itself
                 if (linear) {
                     // sets the percentage as the ratio to be used
                     // in the bar
-                    var ratio = percentage;
+                    ratio = percentage;
                 }
                 // otherwise the ratio must be controlled using a
                 // logarithmic approach
                 else {
                     // calculates the ratio for the current bar, takes
                     // into account the cases where the value is invalid
-                    var ratio = (Math.log(percentage + 1) / Math.log(101.0)) * 100.0;
+                    ratio = (Math.log(percentage + 1) / Math.log(101.0)) * 100.0;
                     ratio = percentage > 0 ? ratio : 0.0;
                 }
 
                 // converts the ratio into a fixed sized string
-                var ratio = ratio.toFixed(0);
+                ratio = ratio.toFixed(0);
 
                 // sets the ratio as the element width
                 _element.width(ratio + "%");
@@ -3756,10 +3770,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -3839,10 +3853,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -3966,10 +3980,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -4133,7 +4147,7 @@ function onYouTubePlayerReady(id) {
                         // to stop the event propagation
                         if (!isValid) {
                             // returns immediately (avoids event propagation)
-                            return
+                            return;
                         }
 
                         // the sequence is considered valid and so the event must
@@ -4235,10 +4249,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -4318,7 +4332,7 @@ function onYouTubePlayerReady(id) {
                             // breaks the switch
                             break;
                     }
-                }
+                };
 
                 // registers for the key up in the target
                 // object element and then sets the element
@@ -4936,15 +4950,15 @@ function onYouTubePlayerReady(id) {
 })(jQuery);
 
 (function(jQuery) {
-    jQuery.fn.uxcursor = function(position) {
+    jQuery.fn.uxcursor = function(position, options) {
         // the default values for the next
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object and retrieves
         // the first element from it
@@ -4984,10 +4998,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -6103,10 +6117,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -6136,7 +6150,7 @@ function onYouTubePlayerReady(id) {
             // features with the proper test function/method
             var features = {
                 transition: __transition
-            }
+            };
 
             // iterates over the complete set of features to be
             // validated and runs the validation for each of them
@@ -6159,7 +6173,7 @@ function onYouTubePlayerReady(id) {
         var _registerHandlers = function() {};
 
         var __transition = function() {
-            var b = document.body || document.documentElement
+            var b = document.body || document.documentElement;
             var s = b.style;
             var p = "transition";
 
@@ -6178,7 +6192,7 @@ function onYouTubePlayerReady(id) {
             }
 
             return false;
-        }
+        };
 
         // initializes the plugin
         initialize();
@@ -6758,7 +6772,7 @@ function onYouTubePlayerReady(id) {
         // verifies if the provided first argument is an object
         // and if that's the case uses it as the options that
         // are going to be passed as part of the arguments
-        options = typeof(arguments[0]) === "object" ? arguments[0] : options;
+        options = typeof arguments[0] === "object" ? arguments[0] : options;
         var _arguments = ["value", options];
 
         // retrieves the correct fallback method to be used to
@@ -6785,10 +6799,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -6874,10 +6888,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -6901,12 +6915,12 @@ function onYouTubePlayerReady(id) {
                 var _element = jQuery(element);
 
                 // retrieves the enum attribute, for latter
-                // json parsing
+                // JSON parsing
                 var _enum = _element.attr("data-enum");
 
                 // replaces the string character in the error
-                // message list and then parses it as json
-                var _enum = _enum.replace(STRING_CHARACTER_REGEX, "\"");
+                // message list and then parses it as JSON
+                _enum = _enum.replace(STRING_CHARACTER_REGEX, "\"");
                 var enumList = jQuery.parseJSON(_enum);
 
                 // retrieves the (element) value
@@ -6949,10 +6963,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -7012,10 +7026,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -7077,7 +7091,7 @@ function onYouTubePlayerReady(id) {
                 // the value string into integer and decimal part
                 if (magnitudeSeparator) {
                     // retrieves the value for the separator
-                    separator = separator ? separator : ".";
+                    separator = separator || ".";
 
                     // splits the value string and then retrives
                     // the integer part of the value
@@ -7152,17 +7166,17 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default attributes value
-        var attributes = attributes ? attributes : {};
+        attributes = attributes || {};
 
         // sets the default options value
-        var options = options ? options : {
+        options = options || {
             apply: true,
             nullify: true,
             defaultValue: ""
         };
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -7220,7 +7234,7 @@ function onYouTubePlayerReady(id) {
 
             // returns the template element (cloned element)
             return templateElement;
-        }
+        };
 
         /**
          * Applies the given attributes to the given template contents string.
@@ -7250,11 +7264,8 @@ function onYouTubePlayerReady(id) {
         var _applyAttributes = function(templateContents, attributes, nullify, localize, defaultValue, baseKey) {
             // retrieves the various default value to be used
             // in the template rendering
-            var defaultValue = defaultValue ? defaultValue : "";
-            var baseKey = baseKey ? baseKey : "";
-
-            // converts the attribute to (jquery) element
-            var attributesElement = jQuery(attributes);
+            defaultValue = defaultValue || "";
+            baseKey = baseKey || "";
 
             // iterates over all the attributes
             for (var key in attributes) {
@@ -7432,13 +7443,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -7579,7 +7590,7 @@ function onYouTubePlayerReady(id) {
          */
         var _getStringValue = function(value, valueLength, padding) {
             // retrieves the padding value
-            var padding = padding ? padding : "0";
+            padding = padding || "0";
 
             // converts the value to a string and retrives
             // the length of it
@@ -7628,13 +7639,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
-
-        // sets the jquery matched object
-        var matchedObject = this;
+        options = jQuery.extend(defaults, options);
 
         // creates the various regular expressions for substitution
         var newlineRegex = RegExp("\\\\n", "g");
@@ -7664,9 +7672,9 @@ function onYouTubePlayerReady(id) {
 
         var _process = function(message) {
             // replaces the various message items
-            var message = message.replace(newlineRegex, "<br/>");
-            var message = message.replace(boldStartRegex, "<b>");
-            var message = message.replace(boldEndRegex, "</b>");
+            message = message.replace(newlineRegex, "<br/>");
+            message = message.replace(boldStartRegex, "<b>");
+            message = message.replace(boldEndRegex, "</b>");
 
             // returns the (processed) message
             return message;
@@ -7676,7 +7684,7 @@ function onYouTubePlayerReady(id) {
         initialize();
 
         // processes the message
-        var message = _process(message);
+        message = _process(message);
 
         // returns the (processed) message
         return message;
@@ -8521,13 +8529,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -8562,7 +8570,7 @@ function onYouTubePlayerReady(id) {
             }
 
             // finishes the week days string
-            weekDaysString += "</tr>"
+            weekDaysString += "</tr>";
 
             // adds the calendar header component to the matched object
             matchedObject.append("<div class=\"calendar-header\">" +
@@ -8650,7 +8658,7 @@ function onYouTubePlayerReady(id) {
 
             // unpacks the current value into year and month
             var year = current["year"];
-            var month = current["month"]
+            var month = current["month"];
 
             // updates the year and month values
             // in the matched object
@@ -8681,7 +8689,7 @@ function onYouTubePlayerReady(id) {
 
             // unpacks the current value into year and month
             var year = current["year"];
-            var month = current["month"]
+            var month = current["month"];
 
             // updates the year and month values
             // in the matched object
@@ -8751,7 +8759,7 @@ function onYouTubePlayerReady(id) {
             var nextMonth = intialDayNext.getMonth();
 
             // creates the initial list of days
-            var days = []
+            var days = [];
 
             // iterates over all the final days of the previous month
             for (var index = 0; index < initialDayWeek; index++) {
@@ -8834,7 +8842,7 @@ function onYouTubePlayerReady(id) {
                     if (lineOpen) {
                         // adds the close line tag to the
                         // html code
-                        htmlCode += "</tr>"
+                        htmlCode += "</tr>";
                     }
                     // otherwise it must be the first line
                     else {
@@ -9394,10 +9402,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -9469,7 +9477,7 @@ function onYouTubePlayerReady(id) {
 
                     // removes all the input elements contained inside the
                     // current tag field (avoid duplicated submission)
-                    var inputs = jQuery("input", _element)
+                    var inputs = jQuery("input", _element);
                     inputs.remove("input");
 
                     // in case the current element is checked no need to
@@ -9499,7 +9507,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the current checked state from the matched
             // object and "invert" it to toggle the state
             var checked = matchedObject.is(":checked");
-            var _checked = checked ? false : true;
+            var _checked = !checked;
 
             // checks the current matched object by setting
             // the its checked attribute
@@ -9556,13 +9564,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -9703,6 +9711,13 @@ function onYouTubePlayerReady(id) {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = null;
+    var jsdom = require("jsdom");
+    const dom = new jsdom.JSDOM("");
+    jQuery = require("jquery")(dom.window);
+}
+
 /**
  * jQuery button plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a button component.
@@ -9720,13 +9735,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -10075,10 +10090,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -11668,16 +11683,16 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {
+        options = options || {
             numberOptions: 6,
             filterOptions: true
         };
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -11735,7 +11750,7 @@ function onYouTubePlayerReady(id) {
                 var linkAttribute = _element.attr("data-link_attribute") || "link";
 
                 // retrieves any possible filter information, both the name
-                //and the operation, these values may be used to change the
+                // and the operation, these values may be used to change the
                 // default behavior of the query so that a "composite" filter
                 // is used instead giveing more flexibility to the query
                 var filterName = _element.attr("data-filter_name") || null;
@@ -11763,7 +11778,7 @@ function onYouTubePlayerReady(id) {
 
                     // creates the text field element and sets the various
                     // attributes in it (attribute propagation)
-                    var textField = jQuery("<input type=\"text\" class=\"text-field\" />");
+                    textField = jQuery("<input type=\"text\" class=\"text-field\" />");
                     textField.val(value);
                     textField.attr("name", name);
                     textField.attr("placeholder", placeholder);
@@ -11918,7 +11933,7 @@ function onYouTubePlayerReady(id) {
                     if (dropFieldContents.is(":visible")) {
                         // hides the drop field contents, so that the
                         // options are removed from user's visibility
-                        _hide(dropField)
+                        _hide(dropField);
                     }
                     // otherwise it should show the updated
                     // drop field contents
@@ -12678,7 +12693,7 @@ function onYouTubePlayerReady(id) {
                 }
 
                 // empties (clears) the drop field contents
-                dropFieldContents.empty()
+                dropFieldContents.empty();
 
                 // in case no valid items were retrieves, must show
                 // the no results element
@@ -13296,7 +13311,7 @@ function onYouTubePlayerReady(id) {
             // index and updates the data attribute of the drop
             // field accordingly, then runs the update selection
             // to update the graphics
-            var selectionIndex = element.index() + 1
+            var selectionIndex = element.index() + 1;
             dropField.data("selection", selectionIndex);
             _updateSelection(dropField, options);
 
@@ -13331,7 +13346,7 @@ function onYouTubePlayerReady(id) {
                 // note that the value gets defaulted to zero
                 var settings = {
                     offset: isNaN(offsetInteger) ? 0 : offsetInteger
-                }
+                };
 
                 // scrolls to the reference using the proper
                 // plugin operation (performing smooth effect)
@@ -13438,7 +13453,7 @@ function onYouTubePlayerReady(id) {
             case "set":
                 // sets the value in the drop field value
                 _set(matchedObject, options);
-                break
+                break;
 
             case "reset":
                 // resets the drop field value
@@ -13449,7 +13464,7 @@ function onYouTubePlayerReady(id) {
                 // selects the proper index value in the drop
                 // field, usefull for drop field select elements
                 _index(matchedObject, options);
-                break
+                break;
 
             case "value":
                 // retrieves the value and returns it to the
@@ -13971,10 +13986,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -14005,7 +14020,7 @@ function onYouTubePlayerReady(id) {
                 event.preventDefault();
 
                 // triggers the file enter event
-                matchedObject.triggerHandler("file_enter", [])
+                matchedObject.triggerHandler("file_enter", []);
             });
 
             // registers the matched object for the drag leave event
@@ -14016,7 +14031,7 @@ function onYouTubePlayerReady(id) {
                 event.preventDefault();
 
                 // triggers the file leave event
-                matchedObject.triggerHandler("file_leave", [])
+                matchedObject.triggerHandler("file_leave", []);
             });
 
             // registers the matched object for the drag over event
@@ -14040,7 +14055,7 @@ function onYouTubePlayerReady(id) {
                 var files = dataTransfer.files;
 
                 // triggers the file drop event
-                matchedObject.triggerHandler("file_drop", [files])
+                matchedObject.triggerHandler("file_drop", [files]);
             });
         };
 
@@ -14069,10 +14084,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -18034,10 +18049,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -18092,7 +18107,7 @@ function onYouTubePlayerReady(id) {
                 // for the lazy retrieval, note that for this strategy
                 // the src attribute is removed (may create size issues)
                 if (!src) {
-                    src = _element.attr("src")
+                    src = _element.attr("src");
                     _element.removeAttr("src");
                 }
 
@@ -18213,6 +18228,8 @@ function onYouTubePlayerReady(id) {
         };
 
         var isVisible = function(element, relaxed) {
+            relaxed = relaxed || element.hasClass("relaxed");
+
             var _window = jQuery(window);
             var windowTop = _window.scrollTop();
             var windowHeight = _window.height();
@@ -18220,7 +18237,6 @@ function onYouTubePlayerReady(id) {
             var elementHeight = element.outerHeight(true);
             var headerOffset = getHeaderOffset(element);
             var footerOffset = getFooterOffset(element);
-            var relaxed = relaxed || element.hasClass("relaxed");
             var displayed = relaxed ? true : element.is(":visible");
 
             var belowTop = elementTop + elementHeight >= windowTop + headerOffset;
@@ -18253,7 +18269,7 @@ function onYouTubePlayerReady(id) {
         var _getOffset = function(element, selectorAttribute, defaultSelector) {
             var _body = jQuery("body");
             var selector = element.attr(selectorAttribute);
-            selector = selector ? selector : defaultSelector;
+            selector = selector || defaultSelector;
             var container = jQuery(selector, _body);
             var height = container.outerHeight(true);
 
@@ -18304,10 +18320,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -22145,10 +22161,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -22301,7 +22317,7 @@ function onYouTubePlayerReady(id) {
             // to ensure the proper and correct values are displayed
             var isVisible = first.is(":visible");
             !isVisible && setTimeout(function() {
-                _refreshWidth(matchedObject, options)
+                _refreshWidth(matchedObject, options);
             });
         };
 
@@ -22330,13 +22346,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -22359,9 +22375,8 @@ function onYouTubePlayerReady(id) {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
-            // retrieves the text field and the data source
+            // retrieves the reference to the text field
             var textField = jQuery(".text-field", matchedObject);
-            var dataSource = jQuery("> .data-source", matchedObject);
 
             // registers for the change in the text field
             // (select) this occurs when a new option is selected
@@ -22446,7 +22461,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the current set of elements present
             // in the select field and removes them, then adds
             // the new item (template item) to the select field
-            var element = jQuery(".element", selectField);
+            element = jQuery(".element", selectField);
             element.remove();
             selectField.append(templateItem);
         };
@@ -23175,16 +23190,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
-
-        // sets the jquery matched object
-        var matchedObject = this;
+        options = jQuery.extend(defaults, options);
 
         /**
          * Initializer of the plugin, runs the necessary functions to initialize
@@ -23239,13 +23251,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -23297,7 +23309,7 @@ function onYouTubePlayerReady(id) {
             // to the current body element (default action)
             var overlay = jQuery(".overlay:first");
             if (overlay.length === 0) {
-                var _body = jQuery("body");
+                _body = jQuery("body");
                 overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
                 overlay.uxoverlay();
                 _body.prepend(overlay);
@@ -23448,9 +23460,6 @@ function onYouTubePlayerReady(id) {
             var slider = matchedObject;
             var sliderContents = jQuery(".slider-contents", matchedObject);
 
-            // checks if the slider is visible
-            var sliderVisible = slider.is(":visible");
-
             // checks if the slider is visible and in case it's
             // not returns immediately as there's nothing to be done
             var sliderVisible = slider.is(":visible");
@@ -23567,7 +23576,6 @@ function onYouTubePlayerReady(id) {
             var _window = jQuery(window);
 
             // retrieves the window dimensions
-            var windowHeight = _window.height();
             var windowWidth = _window.width();
 
             // retrieves the windows scroll left
@@ -24080,16 +24088,16 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {
+        options = options || {
             numberOptions: null,
             filterOptions: true
         };
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -24194,10 +24202,6 @@ function onYouTubePlayerReady(id) {
                 // retrieves th current element
                 var element = jQuery(this);
                 var sourceList = element.parent(".source-list");
-                var selectList = jQuery(".select-list", sourceList);
-
-                // retrieves the event key code
-                var eventKeyCode = event.keyCode ? event.keyCode : event.which;
 
                 // retrieves the event key code
                 var eventKeyCode = event.keyCode ? event.keyCode : event.which;
@@ -26006,10 +26010,10 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -28312,13 +28316,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -28518,7 +28522,7 @@ function onYouTubePlayerReady(id) {
             // top level body element (default behaviour)
             var overlay = jQuery(".overlay:first");
             if (overlay.length === 0) {
-                var _body = jQuery("body");
+                _body = jQuery("body");
                 overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
                 overlay.uxoverlay();
                 _body.prepend(overlay);
@@ -28651,7 +28655,7 @@ function onYouTubePlayerReady(id) {
             mask.addClass("visible");
 
             // sets the interval handler in the mask
-            mask.data("interval_handler", intervalHandler)
+            mask.data("interval_handler", intervalHandler);
         };
 
         var _hideMask = function(matchedObject, options) {
@@ -28758,7 +28762,7 @@ function onYouTubePlayerReady(id) {
             // retrieves the complete set of fields (form fields)
             // for the current window and then retrieves the first
             // of these elements (to be focused)
-            var fields = matchedObject.uxfields()
+            var fields = matchedObject.uxfields();
             var first = jQuery(fields[0]);
 
             // resets the complete set of form fields and then
@@ -28775,7 +28779,7 @@ function onYouTubePlayerReady(id) {
 
             // retrieves the window mask dots contents and length
             var windowMaskDotsContents = windowMaskDots.html();
-            windowMaskDotsContentsLength = windowMaskDotsContents.length;
+            var windowMaskDotsContentsLength = windowMaskDotsContents.length;
 
             // in case the dots contents length overflows
             if (windowMaskDotsContentsLength === 3) {
@@ -28789,10 +28793,10 @@ function onYouTubePlayerReady(id) {
             }
 
             // starts the "new" window mask dots contentes
-            var windowMaskDotsContents = "";
+            windowMaskDotsContents = "";
 
             // iterates over the dots contents range
-            for (index = 0; index < windowMaskDotsContentsLength; index++) {
+            for (var index = 0; index < windowMaskDotsContentsLength; index++) {
                 // adds a new dot to the contents
                 windowMaskDotsContents += ".";
             }
@@ -29039,13 +29043,13 @@ function onYouTubePlayerReady(id) {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -29119,7 +29123,6 @@ function onYouTubePlayerReady(id) {
             // current wizard and then counts them obtain
             // the length of the panels
             var panels = jQuery(".panel-stack > .panel", matchedObject);
-            var panelsLength = panels.length;
 
             // retrieves the last index of the panel either from
             // the attribute in the object or from the default value
@@ -29339,10 +29342,10 @@ function onYouTubePlayerReady(id) {
         var method = method ? method : "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -29421,7 +29424,7 @@ function onYouTubePlayerReady(id) {
                 // retrieves the selector using a fall back
                 // to the body element selector then uses the
                 // selector to retrieve the trigger element
-                selector = selector ? selector : "body";
+                selector = selector || "body";
                 var triggerElement = jQuery(selector);
 
                 // retrieves the various event handlers from the element
@@ -29543,8 +29546,8 @@ function onYouTubePlayerReady(id) {
                 // evaluates the matched object
                 _eval(matchedObject, options);
 
-                // returns the value
-                return value;
+                // breaks the switch
+                break;
 
             case "default":
                 // initializes the plugin
@@ -29569,7 +29572,7 @@ function onYouTubePlayerReady(id) {
 
         // sets the default options value and then
         // runs the proper extension/construction
-        options = options ? options : {};
+        options = options || {};
         options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
@@ -29611,7 +29614,7 @@ function onYouTubePlayerReady(id) {
                     if (!value) {
                         // retrieves the "original" name of the element
                         // to create a backup value
-                        var name = _element.attr("name", nameEmpty);
+                        var name = _element.attr("name");
 
                         // retrieves the name empty value to change the
                         // attribute name in the element
