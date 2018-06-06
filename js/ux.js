@@ -4374,13 +4374,7 @@ if (typeof require !== "undefined") {
             // retrieves the various data attribute from the target
             // object for the scanning
             var sequence = targetObject.data("sequence") || "";
-            var previousTime = targetObject.data("previous_time") || currentTime;
             var initialTime = targetObject.data("initial_time") || currentTime;
-            var ignoring = targetObject.data("ignoring") || false;
-
-            // calculates the delta (difference) value between the
-            // current time and the previous time
-            var delta = currentTime - previousTime;
 
             // retrieves the key value for the current event
             var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode : event.which;
@@ -4545,6 +4539,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxcenter = function(topOffset, leftOffset, useMargin, avoidTop, avoidLeft, keep, reference, position) {
         // sets the jquery matched object that is going to be centered
@@ -4700,6 +4698,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery replacer plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a replacer component.
@@ -4717,10 +4719,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -4789,7 +4791,7 @@ if (typeof require !== "undefined") {
             // text area in case it's not the target for focus
             // should be a sub element that is a text field (or area)
             var isTextField = target.hasClass("text-field") || target.hasClass("text-area");
-            focusTarget = isTextField ? target : jQuery(
+            var focusTarget = isTextField ? target : jQuery(
                 ".text-field, .text-area", target);
 
             // hides the matched object and then shows (and focus)
@@ -4806,6 +4808,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     var BUNDLE_EN_ISO = {
@@ -4853,10 +4859,14 @@ if (typeof require !== "undefined") {
             "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia",
             "Zimbabwe"
         ]
-    }
+    };
 
-    jQuery.uxloadbundle(BUNDLE_EN_ISO, "en-iso")
+    jQuery.uxloadbundle(BUNDLE_EN_ISO, "en-iso");
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     var BUNDLE_EN_ISO2 = {
@@ -4881,10 +4891,14 @@ if (typeof require !== "undefined") {
             "TN", "TR", "TM", "TV", "UG", "UA", "AE", "GB", "US", "UY",
             "UZ", "VU", "VA", "VE", "VN", "YE", "ZM", "ZW"
         ]
-    }
+    };
 
-    jQuery.uxloadbundle(BUNDLE_EN_ISO2, "en-iso2")
+    jQuery.uxloadbundle(BUNDLE_EN_ISO2, "en-iso2");
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     var BUNDLE_EN_ISO3 = {
@@ -4911,10 +4925,14 @@ if (typeof require !== "undefined") {
             "TUN", "TUR", "TKM", "TUV", "UGA", "UKR", "ARE", "GBR", "USA",
             "URY", "UZB", "VUT", "VAT", "VEN", "VNM", "YEM", "ZMB", "ZWE"
         ]
-    }
+    };
 
-    jQuery.uxloadbundle(BUNDLE_EN_ISO3, "en-iso3")
+    jQuery.uxloadbundle(BUNDLE_EN_ISO3, "en-iso3");
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     var BUNDLE_EN_US = {
@@ -5022,10 +5040,14 @@ if (typeof require !== "undefined") {
             "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia",
             "Zimbabwe"
         ]
-    }
+    };
 
-    jQuery.uxloadbundle(BUNDLE_EN_US, "en-us")
+    jQuery.uxloadbundle(BUNDLE_EN_US, "en-us");
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     var BUNDLE_PT_PT = {
@@ -5134,10 +5156,14 @@ if (typeof require !== "undefined") {
             "Vaticano", "Venezuela", "Vietname", "Iémen", "Zâmbia",
             "Zimbabwe"
         ]
-    }
+    };
 
-    jQuery.uxloadbundle(BUNDLE_PT_PT, "pt-pt")
+    jQuery.uxloadbundle(BUNDLE_PT_PT, "pt-pt");
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxcursor = function(position, options) {
@@ -5181,6 +5207,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxfocus = function(options) {
@@ -5267,16 +5297,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxnext = function(options) {
         // the default values for the next
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -5326,16 +5360,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxprevious = function(options) {
         // the default values for the previous
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -5384,6 +5422,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 /**
  * jQuery scroll to plugin, this jQuery plugin provides the base infra-structure
@@ -5436,7 +5478,7 @@ if (typeof require !== "undefined") {
         return this.map(function() {
             // retrieves the reference to the current element/context
             // that is going to be tested for scrollability
-            var element = this
+            var element = this;
 
             // checks if the current element is in fact
             // a window, by checking it's value against a
@@ -5536,10 +5578,10 @@ if (typeof require !== "undefined") {
             // it retrieves the jquery element, target
             // target offset, attributes and window
             var element = this;
-            var _element = jQuery(element)
+            var _element = jQuery(element);
             var _target = target;
             var targetOffset;
-            var attributes = {}
+            var attributes = {};
             var win = _element.is("html, body");
 
             // switches over the target data type, so that the proper
@@ -5553,8 +5595,10 @@ if (typeof require !== "undefined") {
                         _target = both(_target);
                         break;
                     }
+
                     // relative selector, avoids break
                     _target = jQuery(_target, this);
+
                 case "object":
                     // in case it's a dom element or jquery element
                     if (_target.is || _target.style) {
@@ -5703,29 +5747,30 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.uxvisible = function(element, offset, delta, parent) {
         // retreives the offset value, talking into
         // acccount the default value
-        offset = offset ? offset : 0;
+        offset = offset || 0;
 
         // retrieves the delta value that can be used to
         // control the poistion of the element to be teste
         // for visibility (margin delta)
-        delta = delta ? delta : 0;
+        delta = delta || 0;
 
         // retrieves the parent element for which the check
         // for visibility will be made, in case none is provided
         // the check is considered global (window)
-        parent = parent ? parent : window;
+        parent = parent || window;
 
         // retrieves the window and the "proper"
         // element reference
         var _parent = jQuery(parent);
-        var element = jQuery(element);
-
-        // retrieves the element height (for overflow calculation)
-        var elementHeight = element.outerHeight();
+        element = jQuery(element);
 
         // retrieves the offset values for the parent element (view)
         // and calculates the height of that view taking into account
@@ -5756,6 +5801,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxscroll = function(options) {
         // the default values for the scrill
@@ -5766,10 +5815,10 @@ if (typeof require !== "undefined") {
         };
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -5807,7 +5856,6 @@ if (typeof require !== "undefined") {
 
             // retrieves the top elements and then uses them
             // to retrieve the current offset to top in the viewport
-            var topElements = jQuery("html, body");
             var htmlElement = jQuery("html");
             var _body = jQuery("body");
             var htmlScrollTop = htmlElement.scrollTop();
@@ -5840,8 +5888,8 @@ if (typeof require !== "undefined") {
             // into account if the element is below the viewport or
             // abover, this calculus also takes into account the offset
             // and padding values
-            var scrollTop = isBelow ? offsetTop - parentOffsetTop - parentHeight + height + padding :
-                offsetTop - parentOffsetTop - offset - padding;
+            scrollTop = isBelow ? offsetTop - parentOffsetTop - parentHeight + height + padding : offsetTop -
+                parentOffsetTop - offset - padding;
 
             // changes the scroll top value in the parent element,
             // this should make visible the matched object
@@ -5860,6 +5908,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     /**
@@ -5902,6 +5954,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxbrowser = function(options) {
@@ -6003,10 +6059,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -6070,13 +6126,13 @@ if (typeof require !== "undefined") {
             // updates a series of attributes in the body so that
             // it's possible to access browser and operative system
             // information from the matched object
-            matchedObject.attr("data-browser", browserName)
-            matchedObject.attr("data-browser_version", browserVersion)
-            matchedObject.attr("data-os", browserOs)
+            matchedObject.attr("data-browser", browserName);
+            matchedObject.attr("data-browser_version", browserVersion);
+            matchedObject.attr("data-os", browserOs);
 
             // adds the extra legacy attribute in the current browser
             // is considered to be a legacy one
-            isLegacy && matchedObject.attr("data-browser_legacy", "1")
+            isLegacy && matchedObject.attr("data-browser_legacy", "1");
 
             // applies the patch to the jquery infra-structure so that
             // the old mode of broewser detection is still possible
@@ -6172,6 +6228,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxdisable = function(readonly) {
         // sets the jquery matched object
@@ -6237,6 +6297,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxenable = function(readonly) {
         // sets the jquery matched object
@@ -6300,6 +6364,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxfeature = function(options) {
@@ -6392,6 +6460,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxfields = function(nested) {
         // returns the complete set of fields (valid fields)
@@ -6403,6 +6475,10 @@ if (typeof require !== "undefined") {
         return fields;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxfloat = function() {
@@ -6422,6 +6498,10 @@ if (typeof require !== "undefined") {
         return valueF;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.uxfullscreen = function(leave) {
@@ -6444,7 +6524,7 @@ if (typeof require !== "undefined") {
                     var isFullscreen = this.fullScreen || this.mozFullScreen || this.webkitIsFullScreen;
                     isFullscreen = isFullscreen || this.fullscreenElement || this.mozFullScreenElement || this.webkitFullscreenElement ||
                         this.msFullscreenElement;
-                    isFullscreen = isFullscreen ? true : false;
+                    isFullscreen = Boolean(isFullscreen);
                     if (isFullscreen) {
                         _body.addClass("full-window");
                     } else {
@@ -6458,7 +6538,7 @@ if (typeof require !== "undefined") {
         var isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement ||
             document.msFullscreenElement;
         isFullscreen = isFullscreen || leave;
-        isFullscreen = isFullscreen ? true : false;
+        isFullscreen = Boolean(isFullscreen);
 
         if (!isFullscreen) {
             _body.addClass("full-window");
@@ -6488,6 +6568,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxindom = function() {
         // retrieves the current matched object and in case the
@@ -6505,6 +6589,10 @@ if (typeof require !== "undefined") {
         return inDom;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxint = function() {
@@ -6524,6 +6612,10 @@ if (typeof require !== "undefined") {
         return valueI;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxmobile = function(options) {
@@ -6550,10 +6642,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -6592,7 +6684,7 @@ if (typeof require !== "undefined") {
             var prefix = data.substr(0, 4);
             var mobile = MOBILE_REGEX.test(data);
             var mobilePrefix = MOBILE_PREFIX_REGEX.test(prefix);
-            var isMobile = mobile || mobilePrefix ? true : false;
+            var isMobile = mobile || Boolean(mobilePrefix);
             return isMobile;
         };
 
@@ -6600,7 +6692,7 @@ if (typeof require !== "undefined") {
             var prefix = data.substr(0, 4);
             var tablet = TABLET_REGEX.test(data);
             var tabletPrefix = MOBILE_PREFIX_REGEX.test(prefix);
-            var isTablet = tablet || tabletPrefix ? true : false;
+            var isTablet = tablet || Boolean(tabletPrefix);
             return isTablet && !_isMobile(data);
         };
 
@@ -6616,6 +6708,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxoriginal = function() {
@@ -6651,16 +6747,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxprint = function(method, options) {
         // the default values for the enable
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -6712,6 +6812,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxreset = function() {
         // sets the jquery matched object
@@ -6744,6 +6848,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxresize = function() {
         // retrieves the references to the current matched object
@@ -6771,6 +6879,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxresponsive = function() {
@@ -6946,6 +7058,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxvalue = function() {
