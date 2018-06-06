@@ -7900,9 +7900,9 @@ if (typeof require !== "undefined") {
             else {
                 // creates the date string with the default
                 // (complete) format
-                dateString = year + "-" + _getStringValue(month, 2) + "-" + _getStringValue(day, 2) +
-                    " " + _getStringValue(hours, 2) + ":" + _getStringValue(minutes, 2) + ":" +
-                    _getStringValue(seconds, 2);
+                dateString = year + "-" + _getStringValue(month, 2) + "-" + _getStringValue(day, 2) + " " +
+                    _getStringValue(hours, 2) + ":" + _getStringValue(minutes, 2) + ":" + _getStringValue(
+                        seconds, 2);
             }
 
             // returns the processed date string
@@ -8033,16 +8033,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxtransformflip = function(element, options) {
         // the default values for the transform flip
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -8095,19 +8099,23 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxanimation = function(method, options) {
         // the default values for the animation
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -8432,6 +8440,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery breadcrumbs plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a breadcrumbs component.
@@ -8601,16 +8613,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxcalendarrange = function(options) {
         // the default values for the data source
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -8800,7 +8816,7 @@ if (typeof require !== "undefined") {
             calendar.bind("current_change", function(event, current) {
                 // retrieves the current element and uses it to retrieve the
                 // calendar range associated and then the focused text field
-                var element = jQuery(this)
+                var element = jQuery(this);
                 var range = element.parents(".calendar-range");
                 var focused = jQuery(".focus", range);
 
@@ -8825,7 +8841,7 @@ if (typeof require !== "undefined") {
                 // retrieves the current element and uses it to retrieve
                 // the associated calendar range and then uses it to retrieve
                 /// the focused text field in order to avoid the next blur
-                var element = jQuery(this)
+                var element = jQuery(this);
                 var range = element.parents(".calendar-range");
                 var focused = jQuery(".focus", range);
 
@@ -8841,6 +8857,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 /**
  * jQuery calendar plugin, this jQuery plugin provides the base infra-structure
@@ -9110,7 +9130,7 @@ if (typeof require !== "undefined") {
                 var previousDay = finalDayPreviousNumber - (initialDayWeek - index) + 1;
 
                 // in case the (current) previous day is the currently select day
-                if (previousYear === currentDayYear && previousMonth === currentDayMonth && previousDay ==
+                if (previousYear === currentDayYear && previousMonth === currentDayMonth && previousDay ===
                     currentDayNumber) {
                     // adds the day tuple with the active class in it
                     days.push([previousYear, previousMonth, previousDay,
@@ -9153,7 +9173,7 @@ if (typeof require !== "undefined") {
                 var nextDay = index - daysLength + 1;
 
                 // in case the (current) next day is the currently select day
-                if (nextYear === currentDayYear && nextMonth === currentDayMonth && nextDay ==
+                if (nextYear === currentDayYear && nextMonth === currentDayMonth && nextDay ===
                     currentDayNumber) {
                     // adds the day tuple with the active class in it
                     days.push([nextYear, nextMonth, nextDay, "faded active"]);
@@ -9374,6 +9394,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery carousel plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a carousel component that display various items over a
@@ -9392,13 +9416,13 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -9605,7 +9629,7 @@ if (typeof require !== "undefined") {
         switch (method) {
             case "next":
                 _next(matchedObject, options);
-                return value;
+                break;
 
             case "previous":
                 _previous(matchedObject, options);
@@ -9622,6 +9646,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxchanger = function(path, callback, options) {
         // the default timeout to be used in the changer
@@ -9634,10 +9662,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -9678,7 +9706,7 @@ if (typeof require !== "undefined") {
                 setInterval(function() {
                     // updates the changer value to show the "next" section
                     _update(_element, options);
-                }, timeout)
+                }, timeout);
             });
         };
 
@@ -9703,7 +9731,7 @@ if (typeof require !== "undefined") {
 
                 // in case the current value "overflows" the current
                 // section count the index calue is reseted
-                index === sectionCount ? index = 0 : index = index;
+                index = index === sectionCount ? 0 : index;
 
                 // adds the new section calss and shows the matched object
                 // with a fade effect
@@ -9726,6 +9754,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 /**
  * jQuery check field plugin, this jQuery plugin provides the base
@@ -9888,6 +9920,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 /**
  * jQuery button group plugin, this jQuery plugin provides the base
@@ -10412,6 +10448,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery code plugin, this jQuery plugin provides the base infra-structure for
  * the creation of a code component.
@@ -10481,6 +10521,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxconfirm = function(message, callback, options) {
@@ -10615,6 +10659,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxcontentchanger = function(path, callback, options) {
         // the default timeout to be used in the changer
@@ -10740,6 +10788,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery cross list plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a cross list component.
@@ -10757,10 +10809,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default method value
-        method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        options = options ? options : {};
+        options = options || {};
 
         // constructs the options
         options = jQuery.extend(defaults, options);
@@ -10798,10 +10850,8 @@ if (typeof require !== "undefined") {
                 // be used in propagation and as options
                 var elementOrder = _element.attr("data-order");
                 var sourceName = _element.attr("data-source");
-                var sourceName = _element.attr("data-source");
                 var targetName = _element.attr("data-target");
                 var numberOptions = _element.attr("data-number_options");
-                var duplicates = _element.attr("data-duplicates") || false;
                 var displayAttribute = matchedObject.attr("data-display_attribute") || "name";
                 var valueAttribute = matchedObject.attr("data-value_attribute") || "value";
                 var linkAttribute = matchedObject.attr("data-link_attribute") || "link";
@@ -12011,6 +12061,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery drop field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a drop field component. The most
@@ -12566,7 +12620,6 @@ if (typeof require !== "undefined") {
                             // and the value link from the selected list item
                             var value = listItemSelected.attr("data-display");
                             var valueLogic = listItemSelected.attr("data-value");
-                            var valueLink = listItemSelected.attr("data-link");
 
                             // retrieves the complete set of value fields from the drop
                             // field to apply the item values into them
@@ -13123,13 +13176,13 @@ if (typeof require !== "undefined") {
                     // retrieves the default values for the display
                     // and values taking into account the type of
                     // the retrieved values (in case it's map resolves again)
-                    currentDisplayAttribute = currentDisplayAttribute && typeof currentDisplayAttribute ==
+                    currentDisplayAttribute = currentDisplayAttribute && typeof currentDisplayAttribute ===
                         "object" ? currentDisplayAttribute["name"] : currentDisplayAttribute;
-                    currentExtraAttribute = currentExtraAttribute && typeof currentExtraAttribute ==
+                    currentExtraAttribute = currentExtraAttribute && typeof currentExtraAttribute ===
                         "object" ? currentExtraAttribute["extra"] : currentExtraAttribute;
-                    currentValueAttribute = currentValueAttribute && typeof currentValueAttribute ==
+                    currentValueAttribute = currentValueAttribute && typeof currentValueAttribute ===
                         "object" ? currentValueAttribute["value"] : currentValueAttribute;
-                    currentLinkAttribute = currentLinkAttribute && typeof currentLinkAttribute ==
+                    currentLinkAttribute = currentLinkAttribute && typeof currentLinkAttribute ===
                         "object" ? currentLinkAttribute["link"] : currentLinkAttribute;
 
                     // in case the template is defined
@@ -13190,7 +13243,7 @@ if (typeof require !== "undefined") {
                         cache[uniqueId] = {
                             item: templateItem,
                             data: currentItem
-                        }
+                        };
                     }
 
                     // adds the template item item to the
@@ -13831,6 +13884,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery drop list plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a drop list component. To be used in graphical operations
@@ -13850,13 +13907,13 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -14045,6 +14102,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery drop tag plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a drop tag component. This component should be used for
@@ -14064,13 +14125,13 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -14202,7 +14263,7 @@ if (typeof require !== "undefined") {
 
                 // triggers the item unselected event the event is
                 // triggered without any arguments
-                dropTag.triggerHandler("item_unselected", [])
+                dropTag.triggerHandler("item_unselected", []);
             });
 
             // registers for the click event on the various list items
@@ -14228,7 +14289,7 @@ if (typeof require !== "undefined") {
 
                 // triggers the item selected event using the element
                 // as the argument for the event handler
-                dropTag.triggerHandler("item_selected", [element])
+                dropTag.triggerHandler("item_selected", [element]);
             });
 
             // registers for the click event on the body element
@@ -14269,7 +14330,7 @@ if (typeof require !== "undefined") {
 
                 // triggers the item selected event using the element
                 // as the argument for the event handler
-                dropTag.triggerHandler("item_selected", [element])
+                dropTag.triggerHandler("item_selected", [element]);
             });
         };
 
@@ -14300,7 +14361,7 @@ if (typeof require !== "undefined") {
 
             // triggers the item unselected event the event is
             // triggered without any arguments
-            dropTag.triggerHandler("item_unselected", [])
+            dropTag.triggerHandler("item_unselected", []);
         };
 
         // switches over the method
@@ -14327,6 +14388,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uxfiledrop = function(options) {
@@ -14415,6 +14480,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery file field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a file field component.
@@ -14492,6 +14561,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery filter plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a filter component.
@@ -14511,10 +14584,10 @@ if (typeof require !== "undefined") {
         };
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -14612,7 +14685,7 @@ if (typeof require !== "undefined") {
 
                 // in case the text field is still not found the extra no input
                 // class is aded to the currently selected filter element
-                textField.length === 0 && _element.addClass("no-input")
+                textField.length === 0 && _element.addClass("no-input");
 
                 // creates the element representing the buttons for the filter
                 // fild (the more oprtions and the view changer) and adds it
@@ -14694,7 +14767,7 @@ if (typeof require !== "undefined") {
 
                 // checks if the filtering is enabled and valid for the
                 // current context of execution
-                var hasFiltering = filterFiltering.length > 0 ? true : false;
+                var hasFiltering = Boolean(filterFiltering.length > 0);
 
                 // in case the advanced mode is active adds the initial filter
                 // line to the filters area, but only in case there are valid
@@ -14836,7 +14909,7 @@ if (typeof require !== "undefined") {
                     cache[uniqueId] = {
                         item: templateItem,
                         data: element
-                    }
+                    };
                 }
 
                 // sets the object identifier information in the template
@@ -15211,7 +15284,7 @@ if (typeof require !== "undefined") {
 
                 // creates the list for the elements to be selected
                 // to be part of the selection
-                var selection = []
+                var selection = [];
 
                 // iterates over the number of elements to insert the
                 // index into the selection list
@@ -15502,7 +15575,7 @@ if (typeof require !== "undefined") {
             // as it's not possible to run the update operation without
             // any valid/enabled data source element
             if (dataSource.length === 0) {
-                return
+                return;
             }
 
             // in case the value in the filter input
@@ -15741,7 +15814,7 @@ if (typeof require !== "undefined") {
                             cache[uniqueId] = {
                                 item: templateItem,
                                 data: element
-                            }
+                            };
                         }
                     }
 
@@ -15849,9 +15922,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the reference to the window, document,
             // body and the reference to the current context menu
-            var _window = jQuery(window);
-            var _document = jQuery(document);
-            var _body = jQuery("body")
+            var _body = jQuery("body");
             var contextMenus = jQuery("> .context-menu", _body);
             var menu = jQuery(".context-menu", element);
             var menuContents = jQuery(".context-menu .menu-contents", element);
@@ -15910,7 +15981,7 @@ if (typeof require !== "undefined") {
 
             // updates the menu contents attributes to reflect
             // the proper attributes (position)
-            menuContents.css("position", "fixed")
+            menuContents.css("position", "fixed");
             menuContents.css("margin-left", 0 + "px");
             menuContents.css("margin-top", 0 + "px");
             menuContents.css("top", event.pageY - scrollY + "px");
@@ -16141,7 +16212,7 @@ if (typeof require !== "undefined") {
                             }
 
                             // adds the identifier to the identifiers list
-                            identifiersList += objectId
+                            identifiersList += objectId;
                         });
 
                         // updates the current documents location to the bulk
@@ -16644,7 +16715,7 @@ if (typeof require !== "undefined") {
 
             // creates a new list to hold the new selection values resulting
             // from the range selection
-            var _selection = []
+            var _selection = [];
 
             // iterates over the range values to add the selected indexes to
             // the selection list
@@ -16702,7 +16773,7 @@ if (typeof require !== "undefined") {
                         // creates the settings map based on the offset
                         var settings = {
                             offset: isNaN(offsetInteger) ? 0 : offsetInteger
-                        }
+                        };
 
                         // scrolls to the reference
                         jQuery.uxscrollto(valueLink, durationInteger, settings);
@@ -16770,7 +16841,7 @@ if (typeof require !== "undefined") {
             // sets the proper postion attributes for the
             // submenu so that it's positioned to the right
             // of the action element
-            subMenu.css("position", "fixed")
+            subMenu.css("position", "fixed");
             subMenu.css("margin-left", marginLeft + "px");
             subMenu.css("margin-top", 0 + "px");
             subMenu.css("top", (top - scrollY) + "px");
@@ -16928,7 +16999,7 @@ if (typeof require !== "undefined") {
 
                     // sets the disabled flag so that no operation changing
                     // action is possible
-                    disabled = true
+                    disabled = true;
 
                     // retrieves the URL and the type (data source) from
                     // the associated element
@@ -17077,10 +17148,10 @@ if (typeof require !== "undefined") {
 
             // creates the initial list to hold the items, types and names associated
             // with them, the index should be associative between them
-            var items = []
-            var types = []
-            var names = []
-            var elements = []
+            var items = [];
+            var types = [];
+            var names = [];
+            var elements = [];
 
             // iterates over each of the data filtering elements to
             // be able to "parse" the items and insert them into the
@@ -17301,6 +17372,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery header notification plugin, this jQuery plugin provides the base
  * infra-structure for the creation of an header notification component.
@@ -17318,10 +17393,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -17359,9 +17434,6 @@ if (typeof require !== "undefined") {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
-            // retrieves the window
-            var _window = jQuery(window);
-
             // retrieves the close links for the notification and the
             // set of header notitications that are meant to be closable
             var linkClose = jQuery("> .link-close", matchedObject);
@@ -17396,16 +17468,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxform = function(options) {
         // the default values for the form
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -17510,7 +17586,7 @@ if (typeof require !== "undefined") {
 
                     // updates the submited flag to the original invalid value
                     // so that the form may be re-submited latter on
-                    element.data("submited", false)
+                    element.data("submited", false);
 
                     // stops the event propagation and prevents
                     // the default behavior (avoids duplicate
@@ -17574,7 +17650,7 @@ if (typeof require !== "undefined") {
                     // and the value associated, then verifies if
                     // the data type from it is string an in case it's not
                     // ignores the current value
-                    var _element = jQuery(this)
+                    var _element = jQuery(this);
                     var value = _element.uxvalue();
                     if (typeof value !== "string") {
                         return;
@@ -17615,7 +17691,6 @@ if (typeof require !== "undefined") {
                 // the server side should be performed using an async strategy then
                 // runs an extra validation to check if the current layout
                 // is ready to be changed using an async approach
-                var _body = jQuery("body");
                 var async = _body.data("async");
                 async &= element.hasClass("no-async") === false;
                 async &= _body.triggerHandler("async") !== false;
@@ -17827,7 +17902,6 @@ if (typeof require !== "undefined") {
                 // that the target link is set as the current document's url
                 // so that it does not change, this allows correct reload
                 // handling of the page (improved user experience)
-                var _body = jQuery("body");
                 _body.triggerHandler("data", [data, url || document.URL, null,
                     isGet, href
                 ]);
@@ -17932,7 +18006,7 @@ if (typeof require !== "undefined") {
                         // using as base the form success template provided then
                         // adds the result to the matched object
                         var formSuccessItem = formSuccess.uxtemplate(data);
-                        formSuccessItem.addClass("item")
+                        formSuccessItem.addClass("item");
                         matchedObject.append(formSuccessItem);
 
                         // hides the other items in the form as shows the just
@@ -17990,7 +18064,7 @@ if (typeof require !== "undefined") {
                         // invalid class to it also (error state adding)
                         var selector = "[name=" + name + "], [data-name=" + name + "]";
                         var field = jQuery(selector, matchedObject);
-                        parents = field.parents("[data-top]");
+                        var parents = field.parents("[data-top]");
                         field = field.filter("[data-top]");
                         field = field.add(parents);
                         field.attr("data-error", _errorsString);
@@ -18149,16 +18223,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxhightlightbox = function(options) {
         // the default values for the data source
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -18193,16 +18271,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxhoveringbox = function(options) {
         // the default values for the hovering box
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -18249,20 +18331,18 @@ if (typeof require !== "undefined") {
             // the matched object
             var timeoutHandler = matchedObject.data("timeout_handler");
 
-            // in case there is already a
-            // timeout handler (schedule pending)
+            // in case there is already a timeout handler (schedule pending)
+            // returns the control flow immediately
             if (timeoutHandler) {
-                // returns immediately
                 return;
             }
 
             // sets the timeout for the showing of the
             // hovering box template
-            var timeoutHandler = setTimeout(function() {
-                // showes the template for the given options
-                _showTemplate(matchedObject, options);
-
+            timeoutHandler = setTimeout(function() {
+                // showes the template for the given options and then
                 // unsets the timeout handler in the matched object
+                _showTemplate(matchedObject, options);
                 matchedObject.data("timeout_handler", null);
             }, 500);
 
@@ -18306,11 +18386,10 @@ if (typeof require !== "undefined") {
             // box (template) to be used
             var hoveringBoxId = matchedObject.attr("data-hovering-box-id");
 
-            // retrieves the data source id
+            // retrieves the data source id and then
+            // converts the data source id into an integer
             var dataSourceId = matchedObject.attr("data-data-source-id");
-
-            // converts the data source id to integer
-            var dataSourceId = parseInt(dataSourceId)
+            dataSourceId = parseInt(dataSourceId);
 
             // retrieves the hovering box template and the data
             // source (elements)
@@ -18347,7 +18426,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves both the matched object width
                 // and the template item width
-                var matchedObjectWidth = matchedObject.outerWidth()
+                var matchedObjectWidth = matchedObject.outerWidth();
                 var templateItemWidth = templateItem.width();
 
                 // calculates the template item margin left
@@ -18390,6 +18469,10 @@ if (typeof require !== "undefined") {
         return this;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
 
 (function(jQuery) {
     jQuery.fn.uximagelazy = function(element, options) {
@@ -18662,6 +18745,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uximageupload = function(element, options) {
         // the default values for the image upload
@@ -18762,6 +18849,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery image plugin, this jQuery plugin provides the base infra-structure for
  * the creation of a image component.
@@ -18779,10 +18870,10 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -18843,6 +18934,10 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 /**
  * jQuery incremental field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a incremental field component.
@@ -18860,13 +18955,13 @@ if (typeof require !== "undefined") {
         var defaults = {};
 
         // sets the default method value
-        var method = method ? method : "default";
+        method = method || "default";
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -19112,16 +19207,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxinfo = function(message, title, type, callback, options) {
         // the default values for the alert
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -19190,16 +19289,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxlightbox = function(path, callback, largePath, options) {
         // the default values for the alert
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -19273,10 +19376,6 @@ if (typeof require !== "undefined") {
             // registers for the end of the image loading, because
             // after that the window must be repositioned in the center
             windowImage.load(function() {
-                // retrieves the current element it should reflect the
-                // selcted image (the one that has finished the loading)
-                var element = jQuery(this);
-
                 // adds the loaded class meaning that at least the first
                 // image has already been loaded, more images of larger
                 // size may be loaded latter
@@ -19433,16 +19532,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxlinkconfirm = function(message, options) {
         // the default values for the link confirm
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -19519,16 +19622,20 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxlink = function(options) {
         // the default values for the link
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -19634,7 +19741,7 @@ if (typeof require !== "undefined") {
                     // is going to be passed to the scroll extension
                     var settings = {
                         offset: isNaN(offsetInteger) ? 0 : offsetInteger
-                    }
+                    };
 
                     // in case the hash triggering value is defined
                     // updates the current hash with the href value
