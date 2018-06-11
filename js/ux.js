@@ -3195,7 +3195,6 @@ if (typeof require !== "undefined") {
             // change the way the video is going to be embedded
             var width = matchedObject.attr("data-width");
             var height = matchedObject.attr("data-height");
-            var info = matchedObject.attr("data-info");
             var autoPlay = matchedObject.attr("data-auto_play");
 
             // calculates the default width and height values
@@ -3271,19 +3270,24 @@ if (typeof require !== "undefined") {
                 // splits the option arround the separator
                 var optionSplit = option.split("=");
 
+                // starts the value for the option varialbes
+                // that are going to store characteristics
+                var optionName = null;
+                var optionValue = null;
+
                 // in case there are at least two
                 // values in the option split
                 if (optionSplit.length > 1) {
                     // retrieves the name and the value
                     // from the option split
-                    var optionName = optionSplit[0];
-                    var optionValue = optionSplit[1];
+                    optionName = optionSplit[0];
+                    optionValue = optionSplit[1];
                 } else {
                     // retrieves the name from the
                     // option split and sets the value
                     // to null
-                    var optionName = optionSplit[0];
-                    var optionValue = null;
+                    optionName = optionSplit[0];
+                    optionValue = null;
                 }
 
                 // sets the option in the options map
@@ -3319,7 +3323,7 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
-function onYoutubeStateChange(state) {
+function onYoutubeStateChange(state) { // eslint-disable-line no-unused-vars
     if (state === 0) {
         var video = jQuery("#youtube-player");
         var parent = video.parents(".video");
@@ -3327,7 +3331,7 @@ function onYoutubeStateChange(state) {
     }
 }
 
-function onYouTubePlayerReady(id) {
+function onYouTubePlayerReady(id) { // eslint-disable-line no-unused-vars
     var video = jQuery("#youtube-player");
     var videoElement = video[0];
     videoElement.addEventListener("onStateChange", "onYoutubeStateChange");
@@ -3979,8 +3983,6 @@ if (typeof require !== "undefined") {
 
         var _initialize = function(matchedObject, options) {
             matchedObject.prepend("<canvas></canvas>");
-            var canvas = jQuery("canvas", matchedObject);
-            canvas = canvas[0];
         };
 
         // initializes the plugin
@@ -5599,12 +5601,20 @@ if (typeof require !== "undefined") {
                     // relative selector, avoids break
                     _target = jQuery(_target, this);
 
-                case "object":
-                    // in case it's a dom element or jquery element
                     if (_target.is || _target.style) {
                         // retrieves the real position of the target
                         targetOffset = (_target = jQuery(_target)).offset();
                     }
+
+                    break;
+
+                case "object":
+                    // in case it's a DOM element or jQuery element
+                    if (_target.is || _target.style) {
+                        // retrieves the real position of the target
+                        targetOffset = (_target = jQuery(_target)).offset();
+                    }
+                    break;
             }
 
             // in case the target is not defined or in case it's
@@ -8656,17 +8666,17 @@ if (typeof require !== "undefined") {
 
             // creates both the range and the calendar elements that
             // will be added to the currently matched object latter
-            var range = "<div class=\"range\">" +
+            var rangeHtml = "<div class=\"range\">" +
                 "<input type=\"text\" class=\"text-field start-date\" data-original_value=\"" + startDate +
                 "\" />" + "<span class=\"range-separator\">" + to + "</span>" +
                 "<input type=\"text\" class=\"text-field end-date\" data-original_value=\"" + endDate +
                 "\" />" + "</div>";
-            var calendar = "<div class=\"calendar no-layout\"></div>";
+            var calendarHtml = "<div class=\"calendar no-layout\"></div>";
 
             // adds both the range and the calendar part of the
             // component to the inner part of it
-            matchedObject.append(range);
-            matchedObject.append(calendar);
+            matchedObject.append(rangeHtml);
+            matchedObject.append(calendarHtml);
 
             // retrieves the various text field element contained
             // in the range part of the component
@@ -9127,8 +9137,12 @@ if (typeof require !== "undefined") {
             // creates the initial list of days
             var days = [];
 
+            // starts the index variable to its default value, as it's
+            // going to be used multiple times
+            var index = null;
+
             // iterates over all the final days of the previous month
-            for (var index = 0; index < initialDayWeek; index++) {
+            for (index = 0; index < initialDayWeek; index++) {
                 // calculates the (current) previous day from the final day
                 // of the previous month, the initial week day and the index
                 var previousDay = finalDayPreviousNumber - (initialDayWeek - index) + 1;
@@ -9151,7 +9165,7 @@ if (typeof require !== "undefined") {
             }
 
             // iterates over all the days of the current month
-            for (var index = 0; index < finalDayNumber; index++) {
+            for (index = 0; index < finalDayNumber; index++) {
                 // calculates the (current) day
                 var day = index + 1;
 
@@ -9171,7 +9185,7 @@ if (typeof require !== "undefined") {
             // of the days list for "extra" days calculus
             var daysLength = days.length;
 
-            for (var index = daysLength; index < NUMBER_DAYS; index++) {
+            for (index = daysLength; index < NUMBER_DAYS; index++) {
                 // calculates the (current) next day from the days length
                 // and the current index
                 var nextDay = index - daysLength + 1;
@@ -9196,7 +9210,7 @@ if (typeof require !== "undefined") {
             var lineOpen = false;
 
             // iterates over all the days created in the days list
-            for (var index = 0; index < days.length; index++) {
+            for (index = 0; index < days.length; index++) {
                 // checks if the current cell is of type
                 // start (line) cell (end/start of week)
                 var isStartCell = index % 7 === 0;
@@ -13189,11 +13203,15 @@ if (typeof require !== "undefined") {
                     currentLinkAttribute = currentLinkAttribute && typeof currentLinkAttribute ===
                         "object" ? currentLinkAttribute["link"] : currentLinkAttribute;
 
+                    // initializes the template item value to its original
+                    // value, to be populated under the conditional
+                    var templateItem = null;
+
                     // in case the template is defined
                     if (template.length > 0) {
                         // applies the template to the template (item)
                         // retrieving the resulting template item
-                        var templateItem = template.uxtemplate(currentItem);
+                        templateItem = template.uxtemplate(currentItem);
 
                         // sets the data display and data value
                         // attributes in the template item
@@ -13211,7 +13229,7 @@ if (typeof require !== "undefined") {
                     else {
                         // creates the base template item from
                         // the current item
-                        var templateItem = jQuery("<li data-display=\"" + currentDisplayAttribute +
+                        templateItem = jQuery("<li data-display=\"" + currentDisplayAttribute +
                             "\" data-value=\"" + currentValueAttribute + "\">" +
                             currentDisplayAttribute + "</li>");
 
@@ -27720,6 +27738,10 @@ if (typeof require !== "undefined") {
                     // to chose between send a hidden field or a normal field
                     var isLower = elementReference.hasClass("lower");
 
+                    // starts some of the variables that are going to be shared
+                    // ammong multiple conditions
+                    var elementValue = null;
+
                     // in case the current text field is lowered, must create
                     // an empty field to represent it
                     if (isLower) {
@@ -27736,7 +27758,7 @@ if (typeof require !== "undefined") {
 
                         // retrieves the element value, to update the hidden
                         // field accordingly
-                        var elementValue = elementReference.attr("data-value");
+                        elementValue = elementReference.attr("data-value");
 
                         // sets the element value in the cloned element and then
                         // adds the cloned element after the text field
@@ -27751,7 +27773,7 @@ if (typeof require !== "undefined") {
                         // be used in the proper value to be set, this trick avoids
                         // problems leading with "lowered" values
                         __updateValue(elementReference, options);
-                        var elementValue = elementReference.attr("data-value");
+                        elementValue = elementReference.attr("data-value");
 
                         // sets the element value in the input field
                         elementReference.val(elementValue);
@@ -27817,7 +27839,7 @@ if (typeof require !== "undefined") {
                 var valueMethodName = "__value" + type;
                 var hasMethod = __hasMethod(valueMethodName, matchedObject,
                     options);
-                var elementValue = hasMethod ? __callMethod(valueMethodName,
+                elementValue = hasMethod ? __callMethod(valueMethodName,
                     matchedObject, options) : elementValue;
 
                 // returns the retrieved value
@@ -28106,7 +28128,7 @@ if (typeof require !== "undefined") {
             return result;
         };
 
-        var __startdatetime = function(element, options) {
+        var __startdatetime = function(element, options) { // eslint-disable-line no-unused-vars
             // retrieves the value of the utc offset flag
             // (if the utc flag is set the date is set to work
             // in the utc zone)
@@ -28196,7 +28218,7 @@ if (typeof require !== "undefined") {
             });
         };
 
-        var __startdate = function(element, options) {
+        var __startdate = function(element, options) { // eslint-disable-line no-unused-vars
             // retrieves the reference to the top level
             // window element
             var _window = jQuery(window);
@@ -28204,18 +28226,22 @@ if (typeof require !== "undefined") {
             // checks if the no calendar class (flag) is set
             var noCalendar = element.hasClass("no-calendar");
 
+            // starts the calendar variable that is going to be
+            // used by both parts of the conditin
+            var calendar = null;
+
             // in case the no calendar flag is set
             // no need to create the text field calendar
             if (noCalendar) {
                 // creates the empty element representing
                 // the calendar
-                var calendar = jQuery();
+                calendar = jQuery();
             }
             // otherwise the calendar element must be created
             else {
                 // creates the calendar component from the
                 // html code and inserts it after the element
-                var calendar = jQuery("<div class=\"calendar text-field-calendar\"></div>");
+                calendar = jQuery("<div class=\"calendar text-field-calendar\"></div>");
                 element.after(calendar);
 
                 // unsets the autocomplete feature in the text field
@@ -28410,7 +28436,7 @@ if (typeof require !== "undefined") {
             element.data("calendar", calendar);
         };
 
-        var __fvaluefloatp = function(element, value) {
+        var __fvaluefloatp = function(element, value) { // eslint-disable-line no-unused-vars
             // retrieves the decimal places number and tries to
             // parse it as an integer, incase it fails returns
             // immediately the number without processing
@@ -28428,7 +28454,7 @@ if (typeof require !== "undefined") {
             return valueF.toFixed(decimalPlaces);
         };
 
-        var __fvaluefloat = function(element, value) {
+        var __fvaluefloat = function(element, value) { // eslint-disable-line no-unused-vars
             // retrieves the decimal places number and tries to
             // parse it as an integer, incase it fails returns
             // immediately the number without processing
@@ -28446,7 +28472,7 @@ if (typeof require !== "undefined") {
             return valueF.toFixed(decimalPlaces);
         };
 
-        var __valuedate = function(element, options) {
+        var __valuedate = function(element, options) { // eslint-disable-line no-unused-vars
             // retrieves the current value and then uses it to parse
             // it as current timestamp then returns it
             var currentValue = element.val();
@@ -28454,7 +28480,7 @@ if (typeof require !== "undefined") {
             return currentTimestamp;
         };
 
-        var __showdate = function(element, options) {
+        var __showdate = function(element, options) { // eslint-disable-line no-unused-vars
             // tries to retrieve the calendar from the element
             var calendar = element.data("calendar");
 
@@ -28494,7 +28520,7 @@ if (typeof require !== "undefined") {
             calendar.show();
         };
 
-        var __hidedate = function(element, options) {
+        var __hidedate = function(element, options) { // eslint-disable-line no-unused-vars
             // tries to retrieve the associated
             // calendar and hides it if necessary
             var calendar = element.data("calendar");
@@ -30086,7 +30112,7 @@ if (typeof require !== "undefined") {
 
             // "evals" the eval string retrieving
             // the (eval) result
-            var evalResult = eval(evalString);
+            var evalResult = eval(evalString); // eslint-disable-line no-eval
 
             // checks if the matched object is of type input
             // (attribute value oriented) and if it's a text
@@ -33580,6 +33606,8 @@ TemplateHandler.prototype.traverse_out = function(node) {
     var value = node.getParameter("value");
     var _value = value.value;
 
+    var valueS = null;
+
     switch (value.type) {
         case TEMPLATE_PARAMETER_STRING:
             this.stringBuffer.push(_value);
@@ -33587,13 +33615,13 @@ TemplateHandler.prototype.traverse_out = function(node) {
 
         case TEMPLATE_PARAMETER_REFERENCE:
             _value = this._get(_value);
-            var valueS = String(_value);
+            valueS = String(_value);
             this.stringBuffer.push(valueS);
             break;
 
         case TEMPLATE_PARAMETER_INTEGER:
         case TEMPLATE_PARAMETER_FLOAT:
-            var valueS = String(_value);
+            valueS = String(_value);
             this.stringBuffer.push(valueS);
             break;
     }
