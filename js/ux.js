@@ -1506,16 +1506,6 @@ if (typeof require !== "undefined") {
                 _filters.push(_filter);
             }
 
-            // sets the initial filter flag value
-            var filter = false;
-
-            // in case the start record and the number
-            // of records is set
-            if (startRecord !== null && startRecord !== undefined && numberRecords !== null &&
-                numberRecords !== undefined) {
-                filter = true;
-            }
-
             // retrieves the elements URL and data values to be used
             // for the processing of the "remote" query
             var url = element.data("url");
@@ -1546,7 +1536,7 @@ if (typeof require !== "undefined") {
             // query to be sent to the data source, then creates
             // the corresponding hash value to be used as the
             // (unique) identifier of the query
-            var query = {
+            query = {
                 filter_string: filterString,
                 insensitive: insensitive,
                 sort: sortString,
@@ -1714,7 +1704,7 @@ if (typeof require !== "undefined") {
             // of the query and creates the digest for it returning it to
             // the caller function
             var queryString = filterString + sort + _filters + String(startRecord) + String(numberRecords);
-            var hash = Md5.digest(queryString);
+            var hash = Md5.digest(queryString); // eslint-disable-line no-undef
             return hash;
         };
 
@@ -1779,6 +1769,13 @@ if (typeof require !== "undefined") {
         };
 
         var _getResults = function(element, query, callback) {
+            // starts some of the variables that are going to be
+            // re-used over the function execution
+            var index = null;
+            var _index = null;
+            var compareString = null;
+            var compareStrings = null;
+
             // retrieves the id part of the url
             var id = query["id"];
 
@@ -1836,7 +1833,7 @@ if (typeof require !== "undefined") {
                 var itemsId = [];
 
                 // iterates over the range of items (indexes)
-                for (var index = 0; index < items.length; index++) {
+                for (index = 0; index < items.length; index++) {
                     // retrieves the current item, and
                     // then retrieves and casts the item id
                     var item = items[index];
@@ -1865,7 +1862,7 @@ if (typeof require !== "undefined") {
 
             // iterates over all the items to check for a valid
             // prefix (starts with)
-            for (var index = 0; index < items.length; index++) {
+            for (index = 0; index < items.length; index++) {
                 // retrieves the current item, that is going to be used as
                 // the basis of the comparision operation
                 var currentItem = items[index];
@@ -1882,10 +1879,10 @@ if (typeof require !== "undefined") {
                     // retrieves the current filter in iteration and then
                     // unpacks the complete set of attributes for it according
                     // to the current filter specification
-                    var filter = filters[findex];
-                    var name = filter[0];
-                    var operator = filter[1];
-                    var value = filter[2];
+                    var _filter = filters[findex];
+                    var name = _filter[0];
+                    var operator = _filter[1];
+                    var value = _filter[2];
 
                     // in case the operator of the filter is not the equals one
                     // or the current item is not an object, must skip the current
@@ -1918,16 +1915,16 @@ if (typeof require !== "undefined") {
                 // compare strings than the usual for the operation
                 if (filterAttributes) {
                     // starts the compare strings list
-                    var compareStrings = [];
+                    compareStrings = [];
 
                     // iterates over all the filter attributes
-                    for (var _index = 0; _index < filterAttributes.length; _index++) {
+                    for (_index = 0; _index < filterAttributes.length; _index++) {
                         // retrieves the current filter attribute
                         var filterAttribute = filterAttributes[_index];
 
                         // retrieves the compare string and adds it
                         // to the compare strings list
-                        var compareString = currentItem[filterAttribute];
+                        compareString = currentItem[filterAttribute];
                         compareStrings.push(compareString);
                     }
                 }
@@ -1936,24 +1933,23 @@ if (typeof require !== "undefined") {
                 else if (typeof currentItem === "object") {
                     // retrieves the name attribute from the current
                     // item and sets it in the list of compaare strings
-                    var name = currentItem["name"];
-                    var compareStrings = [name];
+                    compareStrings = [currentItem["name"]];
                 }
                 // otherwise the current item must be a string
                 // and so it's used directly as the compare strings
                 else {
                     // sets the current item as the only
                     // compare string
-                    var compareStrings = [currentItem];
+                    compareStrings = [currentItem];
                 }
 
                 // iterates over all the compare strings for the filter
                 // string comparison so that the prper validations should
                 // be applied to the proper element
-                for (var _index = 0; _index < compareStrings.length; _index++) {
+                for (_index = 0; _index < compareStrings.length; _index++) {
                     // retrieves the current compare string and converts it into
                     // a lowercased string in case the insensitive flag is set
-                    var compareString = compareStrings[_index];
+                    compareString = compareStrings[_index];
                     compareString = insensitive ? compareString.toLowerCase() : compareString;
 
                     // checks if the compare string (current item) starts with the
@@ -4553,35 +4549,35 @@ if (typeof require !== "undefined") {
 
         // triggers the centering event meaning that the object that has
         // been selected is going to start the centering process
-        matchedObject.triggerHandler("centering")
+        matchedObject.triggerHandler("centering");
 
         // retrieves the top and left offsets
-        var topOffset = topOffset ? topOffset : 0;
-        var leftOffset = leftOffset ? leftOffset : 0;
+        topOffset = topOffset || 0;
+        leftOffset = leftOffset || 0;
 
         // retrieves the use margin flag
-        var useMargin = useMargin ? useMargin : false;
+        useMargin = useMargin || false;
 
         // retrieves the avoid top and avoid left
         // flags values, going to be used in decisions
-        var avoidTop = avoidTop ? avoidTop : false;
-        var avoidLeft = avoidLeft ? avoidLeft : false;
+        avoidTop = avoidTop || false;
+        avoidLeft = avoidLeft || false;
 
         // if the centering operation should be performed
         // as a persistent operation (global resizing trigger
         // a new center operation)
-        var keep = keep ? keep : false;
+        keep = keep || false;
 
         // retrieves the window, taking into account if other
         // reference exists, if that's the case the reference
         // element is used instead of the base (global window)
         var _window = jQuery(window);
-        var reference = reference ? reference : _window;
+        reference = reference || _window;
 
         // retrieves the proper reference position to be used in
         // the centering of the element, not that in case no
         // options is provided the default center value is used
-        var position = position ? position : "center";
+        position = position || "center";
 
         // retrieves the kind of positioning strategy that is
         // currently being used for the position of the object
@@ -4610,23 +4606,28 @@ if (typeof require !== "undefined") {
         var matchedObjectHeight = matchedObject.outerHeight(true);
         var matchedObjectWidth = matchedObject.outerWidth(true);
 
+        // starts some of the variables that are going to be populated
+        // under the next conditional statement
+        var topPosition = null;
+        var leftPosition = null;
+
         // calculates the element positions, taking into account the proper
         // target position to be used for the positioning, note that it's
         // not possible to control the horizontal position
         switch (position) {
             case "center":
-                var topPosition = ((referenceHeight - matchedObjectHeight) / 2);
-                var leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                topPosition = ((referenceHeight - matchedObjectHeight) / 2);
+                leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
                 break;
 
             case "top":
-                var topPosition = 0;
-                var leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                topPosition = 0;
+                leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
                 break;
 
             case "bottom":
-                var topPosition = referenceHeight - matchedObjectHeight;
-                var leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                topPosition = referenceHeight - matchedObjectHeight;
+                leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
                 break;
         }
 
@@ -4693,7 +4694,7 @@ if (typeof require !== "undefined") {
 
         // triggers the centered event meaning that the window has just
         // finished the centering operation and the layout has been updated
-        matchedObject.triggerHandler("centered")
+        matchedObject.triggerHandler("centered");
 
         // returns the object
         return this;
@@ -10522,7 +10523,7 @@ if (typeof require !== "undefined") {
                 // the highlight operation in it setting the run
                 // flag in it afterwards
                 var domElement = _element[0];
-                Prism.highlightElement(domElement);
+                Prism.highlightElement(domElement); // eslint-disable-line no-undef
                 _element.data("highlighted", true);
             });
         };
@@ -14692,7 +14693,7 @@ if (typeof require !== "undefined") {
 
                     // creates the text field element and sets the various
                     // attributes in it
-                    var textField = jQuery(
+                    textField = jQuery(
                         "<input type=\"text\" class=\"text-field filter-input\" />");
                     textField.val(value);
                     textField.attr("name", name);
@@ -14816,8 +14817,8 @@ if (typeof require !== "undefined") {
                 if (filterContents.length === 0) {
                     // creates the filter contents element and adds it to the
                     // filter according to the filter more status
-                    var filterContents = jQuery("<div class=\"filter-contents\"></div>");
-                    var filterClear = jQuery("<div class=\"filter-clear\"></div>");
+                    filterContents = jQuery("<div class=\"filter-contents\"></div>");
+                    filterClear = jQuery("<div class=\"filter-clear\"></div>");
                     filterMoreLength > 0 ? filterContents.insertBefore(filterMore) && filterClear.insertBefore(
                         filterMore) : _element.append(filterContents);
                 }
@@ -15647,6 +15648,10 @@ if (typeof require !== "undefined") {
             // various filter tuples and then add them to the base filters
             // list that will be used for the query in the data source
             filters.each(function() {
+                // starts some of the values that are going to be re-used
+                // over the function execution
+                var value = null;
+
                 // retrieves the current element in iteration
                 var element = jQuery(this);
 
@@ -15671,11 +15676,11 @@ if (typeof require !== "undefined") {
                     // field and uses its value as the value
                     var hiddenField = jQuery(".hidden-field",
                         valueField);
-                    var value = hiddenField.val();
+                    value = hiddenField.val();
                 } else {
                     // retrieves the value of the value field using the text
                     // field based approach
-                    var value = valueField.uxtextfield("value");
+                    value = valueField.uxtextfield("value");
                 }
 
                 // in case no value is present this filter is ignored
@@ -15947,7 +15952,6 @@ if (typeof require !== "undefined") {
             var _body = jQuery("body");
             var contextMenus = jQuery("> .context-menu", _body);
             var menu = jQuery(".context-menu", element);
-            var menuContents = jQuery(".context-menu .menu-contents", element);
 
             // in case there's no context menu for the
             // current element no need to continue
@@ -16391,8 +16395,8 @@ if (typeof require !== "undefined") {
                 // retrieves the current the previous and the next
                 // selections (for processing)
                 var _selection = selection[index];
-                var _previous_selection = selection[index - 1];
-                var _next_selection = selection[index + 1];
+                var _previousSelection = selection[index - 1];
+                var _nextSelection = selection[index + 1];
 
                 // retrieves the list item to be selected
                 var _selectedListItem = jQuery(".filter-contents > :nth-child(" + _selection + ")",
@@ -16403,7 +16407,7 @@ if (typeof require !== "undefined") {
 
                 // in case the current index is the first or in case the
                 // current selection is not preceded by a contiguous value
-                if (index === 0 || _previous_selection !== _selection - 1) {
+                if (index === 0 || _previousSelection !== _selection - 1) {
                     // adds the first class to the current selected
                     // list item (indicates that it is the first of
                     // a contiguous selection)
@@ -16412,7 +16416,7 @@ if (typeof require !== "undefined") {
 
                 // in case the current index if the last or in case the
                 // the current selection is not succeeded by a contiguous value
-                if (index === selection.length - 1 || _next_selection !== _selection + 1) {
+                if (index === selection.length - 1 || _nextSelection !== _selection + 1) {
                     // adds the last class to the current selected
                     // list item (indicates that it is the last of
                     // a contiguous selection)
@@ -16471,18 +16475,22 @@ if (typeof require !== "undefined") {
             var first = selection[0];
             var last = selection[selection.length - 1];
 
+            // initializes the variable ahead of the conditional as
+            // it is going to be used by both results
+            var value = null;
+
             // in case the current first element is the pivot
             // need to use the last value as reference
             if (first === pivot) {
                 // increments the last value and sets it as
                 // the proper value
-                var value = last - 1;
+                value = last - 1;
             }
             // otherwise uses the first value as reference
             else {
                 // decrement the first value and sets it as
                 // the proper value
-                var value = first - 1;
+                value = first - 1;
             }
 
             // in case the current index value is zero
@@ -16507,16 +16515,18 @@ if (typeof require !== "undefined") {
             var margin = jQuery(".margin");
             var pageOffset = margin.outerHeight(true);
 
+            var item = null;
+
             // in case the current first element is the pivot
             // need to use the last value as reference
             if (first === pivot) {
                 // retrieves the last item as the reference one
-                var item = jQuery(selectedListItem[selectedListItem.length - 1]);
+                item = jQuery(selectedListItem[selectedListItem.length - 1]);
             }
             // otherwise must use the first one
             else {
                 // retrieves the first item as the reference one
-                var item = jQuery(selectedListItem[0]);
+                item = jQuery(selectedListItem[0]);
             }
 
             // checks if the item is visible and in case it's
@@ -16614,11 +16624,6 @@ if (typeof require !== "undefined") {
             // for further usage
             var filter = matchedObject;
 
-            // retrieves the pivot value and the current selection
-            // for the filter reference
-            var pivot = filter.data("pivot");
-            var selection = filter.data("selection");
-
             // runs the range selection process for the currently
             // selected value and then updates the selection
             _rangeSelection(1, filter, options);
@@ -16654,7 +16659,6 @@ if (typeof require !== "undefined") {
             // retrieves the pivot value and the current selection
             // for the filter reference, then retrieves the current
             // selection reference element
-            var pivot = filter.data("pivot");
             var selection = filter.data("selection");
             var _selection = selection[selection.length - 1];
 
@@ -16771,7 +16775,7 @@ if (typeof require !== "undefined") {
                 // selected list item, then uses it to retrieve
                 // its hyperlink reference (in case it's necessary)
                 var linkElement = jQuery("a", _listItem);
-                var valueLink = valueLink ? valueLink : linkElement.attr("href");
+                valueLink = valueLink || linkElement.attr("href");
 
                 // in case the value link is set
                 if (valueLink) {
@@ -16940,6 +16944,11 @@ if (typeof require !== "undefined") {
             // be set in)
             valueField.remove();
 
+            // defaults some of the internal values to be set during the
+            // switch conditional execution
+            var _items = [];
+            var _operations = [];
+
             // switched over the type of the value that was selected
             // (different type will have different operation and different
             // value fields)
@@ -16947,14 +16956,14 @@ if (typeof require !== "undefined") {
                 case "string":
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    var _items = ["contains", "matches", "begins with",
+                    _items = ["contains", "matches", "begins with",
                         "ends with"
                     ];
-                    var _operations = ["like", "equals", "rlike", "llike"];
+                    _operations = ["like", "equals", "rlike", "llike"];
 
                     // creates the value field as a text field, inserts it
                     // after the operation field and initializes it
-                    var valueField = jQuery(
+                    valueField = jQuery(
                         "<input type=\"text\" class=\"text-field small value-field\" />");
                     valueField.insertAfter(operationField);
                     valueField.uxtextfield();
@@ -16965,12 +16974,12 @@ if (typeof require !== "undefined") {
                 case "number":
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    var _items = ["equals", "greater than", "less than"];
-                    var _operations = ["equals", "greater", "lesser"];
+                    _items = ["equals", "greater than", "less than"];
+                    _operations = ["equals", "greater", "lesser"];
 
                     // creates the value field as a text field, inserts it
                     // after the operation field and initializes it
-                    var valueField = jQuery(
+                    valueField = jQuery(
                         "<input type=\"text\" class=\"text-field small value-field\" data-type=\"integer\" />"
                     );
                     valueField.insertAfter(operationField);
@@ -16982,12 +16991,12 @@ if (typeof require !== "undefined") {
                 case "float":
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    var _items = ["equals", "greater than", "less than"];
-                    var _operations = ["equals", "greater", "lesser"];
+                    _items = ["equals", "greater than", "less than"];
+                    _operations = ["equals", "greater", "lesser"];
 
                     // creates the value field as a text field, inserts it
                     // after the operation field and initializes it
-                    var valueField = jQuery(
+                    valueField = jQuery(
                         "<input type=\"text\" class=\"text-field small value-field\" data-type=\"float\" />"
                     );
                     valueField.insertAfter(operationField);
@@ -16999,12 +17008,12 @@ if (typeof require !== "undefined") {
                 case "date":
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    var _items = ["in", "after", "before"];
-                    var _operations = ["in_day", "greater", "lesser"];
+                    _items = ["in", "after", "before"];
+                    _operations = ["in_day", "greater", "lesser"];
 
                     // creates the value field as a text field (calendar field),
                     // inserts it after the operation field and initializes it
-                    var valueField = jQuery(
+                    valueField = jQuery(
                         "<input type=\"text\" class=\"text-field small value-field\" data-type=\"date\" data-original_value=\"yyyy/mm/dd\" />"
                     );
                     valueField.insertAfter(operationField);
@@ -17016,8 +17025,8 @@ if (typeof require !== "undefined") {
                 case "reference":
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    var _items = ["search"];
-                    var _operations = ["equals"];
+                    _items = ["search"];
+                    _operations = ["equals"];
 
                     // sets the disabled flag so that no operation changing
                     // action is possible
@@ -17035,7 +17044,7 @@ if (typeof require !== "undefined") {
 
                     // creates the value field as a drop field (reference field),
                     // inserts it after the operation field and initializes it
-                    var valueField = jQuery("<div class=\"drop-field small value-field\">" +
+                    valueField = jQuery("<div class=\"drop-field small value-field\">" +
                         "<input type=\"hidden\" class=\"hidden-field\" />" +
                         "<ul class=\"data-source\"></ul>" + "</div>");
 
@@ -17061,8 +17070,8 @@ if (typeof require !== "undefined") {
                 default:
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    var _items = ["undefined"];
-                    var _operations = [""];
+                    _items = ["undefined"];
+                    _operations = [""];
 
                     // breaks the switch
                     break;
@@ -23113,6 +23122,11 @@ if (typeof require !== "undefined") {
             // registers for the click event on the list items
             // to change their selection states
             listItems.click(function(event) {
+                // starts some of the global values to be used through
+                // the current function execution
+                var index = null;
+                var listItems = null;
+
                 // retrieves the current element reference and uses
                 // it to retrive the current select list
                 var element = jQuery(this);
@@ -23125,12 +23139,14 @@ if (typeof require !== "undefined") {
                     return;
                 }
 
+                var action = null;
+
                 if (event.ctrlKey || event.metaKey) {
-                    var action = "change";
+                    action = "change";
                 } else if (event.shiftKey) {
-                    var action = "contiguous";
+                    action = "contiguous";
                 } else {
-                    var action = "normal";
+                    action = "normal";
                 }
 
                 // switches over the action to be performed
@@ -23172,7 +23188,7 @@ if (typeof require !== "undefined") {
                         }
 
                         // retrieves the currently selected list items
-                        var listItems = jQuery("li.selected", selectList);
+                        listItems = jQuery("li.selected", selectList);
                         listItems.removeClass("selected");
 
                         // iterates over the range of index values (base and target)
@@ -23189,7 +23205,7 @@ if (typeof require !== "undefined") {
 
                     case "normal":
                         // retrieves the currently selected list items
-                        var listItems = jQuery("li.selected", selectList);
+                        listItems = jQuery("li.selected", selectList);
 
                         // removes the selected class from all the list items
                         // and then adds then selects the current element
@@ -23214,7 +23230,7 @@ if (typeof require !== "undefined") {
                 var selectList = element.parent(".select-list");
 
                 // triggers the select event in the element
-                element.trigger("selected", [element]);
+                selectList.trigger("selected", [element]);
             });
 
             // iterates over each of the matched objects
@@ -23276,6 +23292,11 @@ if (typeof require !== "undefined") {
         };
 
         var _update = function(matchedObject, options) {
+            // starts some of the global variables that are going
+            // to be re-used over the function execution
+            var listItems = null;
+            var orderIcons = null;
+
             // retrieves the current element in iteration
             // to be used to add the order element
             var _element = matchedObject;
@@ -23287,8 +23308,8 @@ if (typeof require !== "undefined") {
                 // retrieves the complete set of list items that
                 // are considered part of a order structure then
                 // retrieves it order icons
-                var listItems = jQuery("li.order", _element);
-                var orderIcons = jQuery(".order-icon", listItems);
+                listItems = jQuery("li.order", _element);
+                orderIcons = jQuery(".order-icon", listItems);
 
                 // removes the order class from the list items and
                 // removes the order icons elements
@@ -23305,7 +23326,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the set of list items in the select
             // list and adds the order icon to them
-            var listItems = jQuery("li:not(.order)", _element);
+            listItems = jQuery("li:not(.order)", _element);
             listItems.prepend(orderIcon);
 
             // adds the order class to the list items to "notify"
@@ -23314,7 +23335,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the complete set of order icons currently
             // listed under the list items
-            var orderIcons = jQuery(".order-icon", listItems);
+            orderIcons = jQuery(".order-icon", listItems);
 
             // registers for the mouse down event in the order icons
             // to be used for the sorting of the elements
@@ -26111,6 +26132,10 @@ if (typeof require !== "undefined") {
             // registers for the paste operation so that it's possible
             // to correctly parse it as a dynamic value
             textField.bind("paste", function(event) {
+                // starts some of the more "global" values thata are going
+                // to be used through the function
+                var index = null;
+
                 // retrieves the reference to the current element (text field)
                 // that is going to be used in the processing operation
                 var element = jQuery(this);
@@ -26156,7 +26181,7 @@ if (typeof require !== "undefined") {
 
                 // iterates over the complete set of possible (line) endings trying to
                 // find the one that best fits the current text data scenario
-                for (var index = 0; index < ENDINGS.length; index++) {
+                for (index = 0; index < ENDINGS.length; index++) {
                     var _ending = ENDINGS[index];
                     var exists = textData.indexOf(_ending) !== -1;
                     if (!exists) {
@@ -26183,7 +26208,7 @@ if (typeof require !== "undefined") {
 
                 // iterates over the miltiple lines contained in the text to populate
                 // the associated lines in the table
-                for (var index = 0; index < lines.length; index++) {
+                for (index = 0; index < lines.length; index++) {
                     // retrieves the current line and splits arrount its columns
                     var line = lines[index];
                     var columns = line.split("\t");
@@ -26211,8 +26236,8 @@ if (typeof require !== "undefined") {
                         // retrieves the current column in iteration (value) and uses
                         // it to populate the current element using the normal value
                         // setting operation (as expected)
-                        var column = columns[_index];
-                        current.uxvalue(column);
+                        var columnValue = columns[_index];
+                        current.uxvalue(columnValue);
                         current.uxfocus();
                     }
 
@@ -26328,8 +26353,8 @@ if (typeof require !== "undefined") {
             // retrieves all the rows from the element reference
             // so that it's possible to check id the current element
             // is the last in the list
-            var rows = jQuery("tbody > tr:not(.template)", matchedObject);
-            var rowCount = rows.length;
+            rows = jQuery("tbody > tr:not(.template)", matchedObject);
+            rowCount = rows.length;
 
             // retrieves the index of the current row to check
             // it it's the last row
@@ -26497,6 +26522,10 @@ if (typeof require !== "undefined") {
         };
 
         var _next = function(element, selector, column, row, force, noNext) {
+            // starts some of the global variable to be re-used through
+            // the function execution
+            var columns = null;
+
             // tries to retrieve the reference column and row using
             // either the provided ones or the current element context
             column = column || element.parents("td");
@@ -26545,8 +26574,8 @@ if (typeof require !== "undefined") {
 
                 // retieves the next row and the column in set as the first one
                 // so that its possible to continue the loop
-                var row = row.next();
-                var columns = jQuery("> td", row);
+                row = row.next();
+                columns = jQuery("> td", row);
                 column = jQuery(columns.get(0));
             }
 
@@ -26556,7 +26585,7 @@ if (typeof require !== "undefined") {
                 var table = row.parents(".table");
                 var tableBody = jQuery("tbody", table);
                 row = _newLine(table, tableBody);
-                var columns = jQuery("> td", row);
+                columns = jQuery("> td", row);
                 column = jQuery(columns.get(0));
                 return _next(element, selector, column, row, false, true);
             }
@@ -27822,8 +27851,14 @@ if (typeof require !== "undefined") {
             // tries to retrieve the value from options
             var value = options.value;
 
-            // in case it's a "normal" get operation
-            // (no value defined)
+            // starts a series of values that are going to be populated
+            // by both sides of the condition
+            var type = null;
+            var valueMethodName = null;
+            var hasMethod = null;
+
+            // in case it's a "normal" get operation (no value defined),
+            // the current internal logic value should be returned
             if (value === undefined) {
                 // updates the current value base on the current status
                 // and then retrieves the data based value (logical value)
@@ -27835,9 +27870,9 @@ if (typeof require !== "undefined") {
                 // and uses it to create the (possible) value type
                 // retrieval method then calls it in case it exists
                 // otherwise uses the normal element value
-                var type = matchedObject.attr("data-type");
-                var valueMethodName = "__value" + type;
-                var hasMethod = __hasMethod(valueMethodName, matchedObject,
+                type = matchedObject.attr("data-type");
+                valueMethodName = "__value" + type;
+                hasMethod = __hasMethod(valueMethodName, matchedObject,
                     options);
                 elementValue = hasMethod ? __callMethod(valueMethodName,
                     matchedObject, options) : elementValue;
@@ -27845,8 +27880,8 @@ if (typeof require !== "undefined") {
                 // returns the retrieved value
                 return elementValue;
             }
-            // otherwise the "target" value is valid
-            // it's a set operation
+            // otherwise the "target" value is valid and the operations is
+            // considered to be a set one (instead of get/read)
             else {
                 // retrieves the data type for the matached object
                 // and uses it to create the (possible) format value
@@ -27854,11 +27889,11 @@ if (typeof require !== "undefined") {
                 // otherwise uses the normal value, note that the method
                 // is not called in case the value is empty (nothing will
                 // be formatted for such case)
-                var type = matchedObject.attr("data-type");
-                var valueMethodName = "__fvalue" + type;
-                var hasMethod = __hasMethod(valueMethodName, matchedObject,
+                type = matchedObject.attr("data-type");
+                valueMethodName = "__fvalue" + type;
+                hasMethod = __hasMethod(valueMethodName, matchedObject,
                     options);
-                var value = hasMethod && value !== "" ? __callMethod(
+                value = hasMethod && value !== "" ? __callMethod(
                     valueMethodName, matchedObject, value) : value;
 
                 // sets the value in the attributes
@@ -28116,15 +28151,15 @@ if (typeof require !== "undefined") {
         var __callMethod = function(methodName, element, options) {
             // creates the string to be eavluated and then evaluates it
             var evalString = "if(typeof " + methodName + " !== \"undefined\") { var result = " + methodName +
-                "(element, options)} else { var result = null; }";
-            eval(evalString);
+                "(element, options)} else { var result = null; } result;";
+            var result = eval(evalString); // eslint-disable-line no-eval
             return result;
         };
 
         var __hasMethod = function(methodName, element, options) {
             // creates the string to be eavluated and then evaluates it
-            var evalString = "var result = typeof " + methodName + " !== \"undefined\";";
-            eval(evalString);
+            var evalString = "var result = typeof " + methodName + " !== \"undefined\"; result;";
+            var result = eval(evalString); // eslint-disable-line no-eval
             return result;
         };
 
