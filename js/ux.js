@@ -14905,6 +14905,11 @@ if (typeof require !== "undefined") {
                 var filterContents = jQuery(".filter-contents", filter);
                 var template = jQuery(".template", filter);
 
+                // retrieves the cache map to be used to determine if the
+                // various elements should be contructed from scratch or
+                // if an already existing element should be used instead
+                var cache = filter.data("cache") || {};
+
                 // creates the map with the options for the
                 // rendering of the template to changed the
                 // default value to be used
@@ -14981,9 +14986,6 @@ if (typeof require !== "undefined") {
 
             // registers for the key down event in the text field
             textField.keydown(function(event) {
-                // retrieves the element
-                var element = jQuery(this);
-
                 // retrieves the event key code
                 var eventKeyCode = event.keyCode ? event.keyCode : event.which;
 
@@ -15800,6 +15802,10 @@ if (typeof require !== "undefined") {
                     // current item to be used as the cache key
                     var uniqueId = element["unique_id"] || element["uid"];
 
+                    // starts the template item to an invalid value, the
+                    // concrete value is going to be set after condition
+                    var templateItem = null;
+
                     // retrieves the cache map from the filter and
                     // tries to find the cache item for the unique identifier
                     // validates it so that the data contained in it matches
@@ -15818,7 +15824,7 @@ if (typeof require !== "undefined") {
                         // item so that no construction occurs then removes
                         // the selection classes from it (avoiding possible
                         // layout problems)
-                        var templateItem = cacheItem;
+                        templateItem = cacheItem;
                         templateItem.removeClass("selected");
                         templateItem.removeClass("first");
                         templateItem.removeClass("last");
@@ -15835,7 +15841,7 @@ if (typeof require !== "undefined") {
                         // retrieving the resulting template item and
                         // setting it the cache map for the unique id
                         // only in case the unique id is valid (set)
-                        var templateItem = template.uxtemplate(
+                        templateItem = template.uxtemplate(
                             element, options);
                         if (uniqueId) {
                             cache[uniqueId] = {
@@ -16539,6 +16545,11 @@ if (typeof require !== "undefined") {
         };
 
         var _decrementRange = function(matchedObject, options) {
+            // creates some variables that are going to be re-used
+            // through the function execution
+            var value = null;
+            var item = null;
+
             // sets the matched object as the filter reference
             // for further usage
             var filter = matchedObject;
@@ -16562,13 +16573,13 @@ if (typeof require !== "undefined") {
             if (last === pivot) {
                 // increments the first value and sets it as
                 // the proper value
-                var value = first + 1;
+                value = first + 1;
             }
             // otherwise uses the last value as reference
             else {
                 // increments the last value and sets it as
                 // the proper value
-                var value = last + 1;
+                value = last + 1;
             }
 
             // retrieves the "current" list items
@@ -16602,12 +16613,12 @@ if (typeof require !== "undefined") {
             // need to use the first value as reference
             if (last === pivot) {
                 // retrieves the first item as the reference one
-                var item = jQuery(selectedListItem[0]);
+                item = jQuery(selectedListItem[0]);
             }
             // otherwise must use the last one
             else {
                 // retrieves the last item as the reference one
-                var item = jQuery(selectedListItem[selectedListItem.length - 1]);
+                item = jQuery(selectedListItem[selectedListItem.length - 1]);
             }
 
             // checks if the item is visible and in case it's
@@ -16703,6 +16714,11 @@ if (typeof require !== "undefined") {
         };
 
         var _rangeSelection = function(index, matchedObject, options) {
+            // starts some more global variables that are going
+            // to be re-used through the function
+            var _initial = null;
+            var _final = null;
+
             // sets the matched object as the filter reference
             // for further usage
             var filter = matchedObject;
@@ -16727,16 +16743,16 @@ if (typeof require !== "undefined") {
             if (index >= pivot) {
                 // sets the proper initial and final values
                 // for the "down" range
-                var _initial = pivot;
-                var _final = index + 1;
+                _initial = pivot;
+                _final = index + 1;
             }
             // otherwise in case the index value is lesser than the pivot
             // index it's a range for the up
             else if (index <= pivot) {
                 // sets the proper initial and final values
                 // for the "upper" range
-                var _initial = index;
-                var _final = pivot + 1;
+                _initial = index;
+                _final = pivot + 1;
             }
 
             // creates a new list to hold the new selection values resulting
@@ -16745,9 +16761,9 @@ if (typeof require !== "undefined") {
 
             // iterates over the range values to add the selected indexes to
             // the selection list
-            for (var index = _initial; index < _final; index++) {
+            for (var _index = _initial; _index < _final; _index++) {
                 // adds the index to the list of the selections
-                _selection.push(index);
+                _selection.push(_index);
             }
 
             // updates the selection list in the filter
@@ -23230,7 +23246,7 @@ if (typeof require !== "undefined") {
                 var selectList = element.parent(".select-list");
 
                 // triggers the select event in the element
-                selectList.trigger("selected", [element]);
+                selectList.triggerHandler("selected", [element]);
             });
 
             // iterates over each of the matched objects
