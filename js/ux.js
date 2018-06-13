@@ -23,16 +23,20 @@
 // __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
+if (typeof require !== "undefined") {
+    var jQuery = require("./_compat").jQuery;
+}
+
 (function(jQuery) {
     jQuery.fn.uxapply = function(options) {
         // the default values for the apply
         var defaults = {};
 
         // sets the default options value
-        var options = options ? options : {};
+        options = options || {};
 
         // constructs the options
-        var options = jQuery.extend(defaults, options);
+        options = jQuery.extend(defaults, options);
 
         // sets the jquery matched object
         var matchedObject = this;
@@ -374,12 +378,14 @@
                 // functions under some more obscure global
                 // variables so that they may be used latter
                 // if that's required by the developer
-                _alert = alert;
-                _confirm = confirm;
+                var _alert = alert;
+                var _confirm = confirm;
+                _body.data("_alert", _alert);
+                _body.data("_alert", _confirm);
 
                 // overrides the current alert function
                 // with the ux alert method
-                alert = function(message, callback) {
+                alert = function(message, callback) { // eslint-disable-line no-global-assign
                     // shows the alert window
                     _body.uxalert(message, callback);
 
@@ -390,7 +396,7 @@
 
                 // overrides the current confirm function
                 // with the ux confirm method
-                confirm = function(message, callback) {
+                confirm = function(message, callback) { // eslint-disable-line no-global-assign
                     // shows the confirm window
                     _body.uxconfirm(message, callback);
 
@@ -30368,6 +30374,10 @@ if (typeof require !== "undefined") {
         return width;
     };
 })(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("./_compat").jQuery;
+}
 
 // registers for the ready event in
 // the body element
