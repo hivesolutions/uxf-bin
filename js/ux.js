@@ -32347,7 +32347,7 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Date = (global.Date = _global.Date || {});
+var Date = (_global.Date = _global.Date || {});
 
 /**
  * Parses the given date string (without utc offset) retrieving an utc timestamp
@@ -32484,7 +32484,7 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Math = (global.Math = _global.Math || {});
+var Math = (_global.Math = _global.Math || {});
 
 if (typeof Math.log10 === "undefined") {
     Math.log10 = function(value) {
@@ -32524,8 +32524,8 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Mobile = (global.Mobile = _global.Mobile || {});
-var document = (global.document = _global.document || {});
+var Mobile = (_global.Mobile = _global.Mobile || {});
+var document = (_global.document = _global.document || {});
 
 /**
  * If the mobile touch event propagation structure should performed only under
