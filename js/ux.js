@@ -89,7 +89,9 @@ if (typeof require !== "undefined") {
             // values (attribute based selection)
             var dataWidth = jQuery("[data-width]", matchedObject).not(".template [data-width]");
             var dataPivot = jQuery("[data-pivot]", matchedObject).not(".template [data-pivot]");
-            var dataDisabled = jQuery("[data-disabled]", matchedObject).not(".template [data-disabled]");
+            var dataDisabled = jQuery("[data-disabled]", matchedObject).not(
+                ".template [data-disabled]"
+            );
 
             // retrieves the various elements
             var overlay = jQuery(".overlay", matchedObject).not(".template .overlay");
@@ -104,7 +106,8 @@ if (typeof require !== "undefined") {
             var radioField = jQuery(".radio-field", matchedObject).not(".template .radio-field");
             var tagField = jQuery(".tag-field", matchedObject).not(".template .tag-field");
             var incrementalField = jQuery(".incremental-field", matchedObject).not(
-                ".template .incremental-field");
+                ".template .incremental-field"
+            );
             var toggleField = jQuery(".toggle-field", matchedObject).not(".template .toggle-field");
             var fileField = jQuery(".file-field", matchedObject).not(".template .file-field");
             var dropList = jQuery(".drop-list", matchedObject).not(".template .drop-list");
@@ -113,13 +116,19 @@ if (typeof require !== "undefined") {
             var table = jQuery(".table", matchedObject).not(".template .table");
             var image = jQuery(".image", matchedObject).not(".template .image");
             var calendar = jQuery(".calendar", matchedObject).not(".template .calendar");
-            var calendarRange = jQuery(".calendar-range", matchedObject).not(".template .calendar-range");
+            var calendarRange = jQuery(".calendar-range", matchedObject).not(
+                ".template .calendar-range"
+            );
             var menu = jQuery(".menu", matchedObject).not(".template .menu");
             var menuLink = jQuery(".menu-link", matchedObject).not(".template .menu-link");
             var slider = jQuery(".slider", matchedObject).not(".template .slider");
             var scrollList = jQuery(".scroll-list", matchedObject).not(".template .scroll-list");
-            var overlayPanel = jQuery(".overlay-panel", matchedObject).not(".template .overaly-panel");
-            var overlaySearch = jQuery(".overlay-search", matchedObject).not(".template .overaly-search");
+            var overlayPanel = jQuery(".overlay-panel", matchedObject).not(
+                ".template .overaly-panel"
+            );
+            var overlaySearch = jQuery(".overlay-search", matchedObject).not(
+                ".template .overaly-search"
+            );
             var window = jQuery(".window", matchedObject).not(".template .window");
             var wizard = jQuery(".wizard", matchedObject).not(".template .wizard");
             var panel = jQuery(".panel", matchedObject).not(".template .panel");
@@ -129,13 +138,16 @@ if (typeof require !== "undefined") {
             var panelStack = jQuery(".panel-stack", matchedObject).not(".template .panel-stack");
             var stack = jQuery(".stack", matchedObject).not(".template .stack");
             var breadcrumbs = jQuery(".breadcrumbs", matchedObject).not(".template .breadcrumbs");
-            var hightlightBox = jQuery(".hightlight-box", matchedObject).not(".template .hightlight-box");
+            var hightlightBox = jQuery(".hightlight-box", matchedObject).not(
+                ".template .hightlight-box"
+            );
             var replacer = jQuery(".replacer", matchedObject).not(".template .replacer");
             var dataSource = jQuery(".data-source", matchedObject).not(".template .data-source");
             var filter = jQuery(".filter", matchedObject).not(".template .filter");
             var hoveringbox = jQuery(".hovering-box", matchedObject).not(".template .hovering-box");
-            var headerNotification = jQuery(".header-notification",
-                matchedObject).not(".template .header-notification");
+            var headerNotification = jQuery(".header-notification", matchedObject).not(
+                ".template .header-notification"
+            );
             var link = jQuery(".link", matchedObject).not(".template .link");
             var linkConfirm = jQuery(".link-confirm", matchedObject).not(".template .link-confirm");
             var imageLazy = jQuery(".image-lazy", matchedObject).not(".template .image-lazy");
@@ -145,10 +157,14 @@ if (typeof require !== "undefined") {
             var crossList = jQuery(".cross-list", matchedObject).not(".template .cross-list");
             var option = jQuery(".option", matchedObject).not(".template .option");
             var progressBar = jQuery(".progress-bar", matchedObject).not(".template .progress-bar");
-            var passwordMeter = jQuery(".password-meter", matchedObject).not(".template .password-meter");
+            var passwordMeter = jQuery(".password-meter", matchedObject).not(
+                ".template .password-meter"
+            );
             var rating = jQuery(".rating", matchedObject).not(".template .rating");
             var changer = jQuery(".changer", matchedObject).not(".template .changer");
-            var contentChanger = jQuery(".content-changer", matchedObject).not(".template .content-changer");
+            var contentChanger = jQuery(".content-changer", matchedObject).not(
+                ".template .content-changer"
+            );
             var dateTime = jQuery(".date-time", matchedObject).not(".template .date-time");
             var enumeration = jQuery(".enumeration", matchedObject).not(".template .enumeration");
             var number = jQuery(".number", matchedObject).not(".template .number");
@@ -162,7 +178,9 @@ if (typeof require !== "undefined") {
             var code = jQuery(".code", matchedObject).not(".template .code");
             var uploader = jQuery(".uploader", matchedObject).not(".template .uploader");
             var animation = jQuery(".animation", matchedObject).not(".template .animation");
-            var transformFlip = jQuery(".transform-flip", matchedObject).not(".template .transform-flip");
+            var transformFlip = jQuery(".transform-flip", matchedObject).not(
+                ".template .transform-flip"
+            );
             var fileDrop = jQuery(".file-drop", matchedObject).not(".template .file-drop");
             var imageUpload = jQuery(".image-upload", matchedObject).not(".template .image-upload");
             var shortcuts = jQuery(".shortcuts", matchedObject).not(".template .shortcuts");
@@ -173,7 +191,9 @@ if (typeof require !== "undefined") {
             var _eval = jQuery(".eval", matchedObject).not(".template .eval");
 
             // retrieves the various gateway elements
-            var gatewayPrint = jQuery(".gateway-print", matchedObject).not(".template .gateway-print");
+            var gatewayPrint = jQuery(".gateway-print", matchedObject).not(
+                ".template .gateway-print"
+            );
 
             // checks if the body element is meant to have the gateway plugin
             // loaded on it (for external symbol access)
@@ -385,7 +405,8 @@ if (typeof require !== "undefined") {
 
                 // overrides the current alert function
                 // with the ux alert method
-                alert = function(message, callback) { // eslint-disable-line no-global-assign
+                // eslint-disable-next-line no-global-assign
+                alert = function(message, callback) {
                     // shows the alert window
                     _body.uxalert(message, callback);
 
@@ -396,7 +417,8 @@ if (typeof require !== "undefined") {
 
                 // overrides the current confirm function
                 // with the ux confirm method
-                confirm = function(message, callback) { // eslint-disable-line no-global-assign
+                // eslint-disable-next-line no-global-assign
+                confirm = function(message, callback) {
                     // shows the confirm window
                     _body.uxconfirm(message, callback);
 
@@ -1014,11 +1036,33 @@ if (typeof require !== "undefined") {
 
     // the lists for the month string values both in full
     // name mode and in abreviated mode
-    var FULL_MONTHS = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+    var FULL_MONTHS = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
     ];
-    var ABBREVIATED_MONTHS = ["JanS", "FebS", "MarS", "AprS", "MayS", "JunS",
-        "JulS", "AugS", "SepS", "OctS", "NovS", "DecS"
+    var ABBREVIATED_MONTHS = [
+        "JanS",
+        "FebS",
+        "MarS",
+        "AprS",
+        "MayS",
+        "JunS",
+        "JulS",
+        "AugS",
+        "SepS",
+        "OctS",
+        "NovS",
+        "DecS"
     ];
 
     jQuery.uxformat = function(date, format, utc) {
@@ -1105,13 +1149,10 @@ if (typeof require !== "undefined") {
             format = format.replace(MONTH_CHARACTER, _getStringValue(month, 2));
             format = format.replace(DAY_CHARACTER, _getStringValue(day, 2));
             format = format.replace(HOUR_CHARACTER, _getStringValue(hours, 2));
-            format = format.replace(MINUTE_CHARACTER, _getStringValue(minutes,
-                2));
-            format = format.replace(SECOND_CHARACTER, _getStringValue(seconds,
-                2));
+            format = format.replace(MINUTE_CHARACTER, _getStringValue(minutes, 2));
+            format = format.replace(SECOND_CHARACTER, _getStringValue(seconds, 2));
             format = format.replace(FULL_MONTH_CHARACTER, fullMonth);
-            format = format.replace(ABBREVIATED_MONTH_CHARACTER,
-                abbreviatedMonth);
+            format = format.replace(ABBREVIATED_MONTH_CHARACTER, abbreviatedMonth);
 
             // sets the date string as the final format
             dateString = format;
@@ -1142,7 +1183,9 @@ if (typeof require !== "undefined") {
 (function(jQuery) {
     jQuery.uxguid = function() {
         var s4 = function() {
-            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
         };
 
         var guid = s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
@@ -1370,7 +1413,7 @@ if (typeof require !== "undefined") {
         var integer = Math.abs(parseInt(value / 1));
         var count = integer === 0 ? 1 : parseInt(Math.log10(integer)) + 1;
         var places = FLOAT_PRECISION - count;
-        places = places < 1 ? places = 1 : places;
+        places = places < 1 ? (places = 1) : places;
         var delta = 1 / Math.pow(10, places);
         return delta;
     };
@@ -1573,8 +1616,7 @@ if (typeof require !== "undefined") {
             var cacheItem = cache[queryHash];
             if (cacheItem) {
                 setTimeout(function() {
-                    callback(cacheItem.validItems, cacheItem.moreItems,
-                        cacheItem.extraItems);
+                    callback(cacheItem.validItems, cacheItem.moreItems, cacheItem.extraItems);
                 });
                 return;
             }
@@ -1628,7 +1670,9 @@ if (typeof require !== "undefined") {
                         // the data from the remote data source
                         _body.uxinfo(
                             "There was an error retrieving JSON data",
-                            "Warning", "warning");
+                            "Warning",
+                            "warning"
+                        );
 
                         // calls the callback with the failure values
                         callback(null, null);
@@ -1648,9 +1692,7 @@ if (typeof require !== "undefined") {
 
                             // constructs a list of valid items
                             // from the single valid item
-                            validItems = baseValue ? validItems[baseValue] : [
-                                validItems
-                            ];
+                            validItems = baseValue ? validItems[baseValue] : [validItems];
                         }
 
                         // retrieves the valid items length to check if there
@@ -1669,11 +1711,13 @@ if (typeof require !== "undefined") {
                         // (representing) query hash value, note that if the
                         // cache disable flag is set no value is set in cache
                         var cache = matchedObject.data("cache") || {};
-                        cache[queryHash] = cacheD ? null : {
-                            validItems: validItems,
-                            moreItems: moreItems,
-                            extraItems: extraItems
-                        };
+                        cache[queryHash] = cacheD
+                            ? null
+                            : {
+                                  validItems: validItems,
+                                  moreItems: moreItems,
+                                  extraItems: extraItems
+                              };
 
                         // retrieves the current identifier from the
                         // matched object and checks it against the
@@ -1712,8 +1756,10 @@ if (typeof require !== "undefined") {
             // creates the final query string from the various components
             // of the query and creates the digest for it returning it to
             // the caller function
-            var queryString = filterString + sort + _filters + String(startRecord) + String(numberRecords);
-            var hash = Md5.digest(queryString); // eslint-disable-line no-undef
+            var queryString =
+                filterString + sort + _filters + String(startRecord) + String(numberRecords);
+            // eslint-disable-next-line no-undef
+            var hash = Md5.digest(queryString);
             return hash;
         };
 
@@ -1807,8 +1853,12 @@ if (typeof require !== "undefined") {
             // of records is set the filtering mosde should
             // be enabled so that only a slice of the results
             // is returned at the end of the query process
-            if (startRecord !== null && startRecord !== undefined && numberRecords !== null &&
-                numberRecords !== undefined) {
+            if (
+                startRecord !== null &&
+                startRecord !== undefined &&
+                numberRecords !== null &&
+                numberRecords !== undefined
+            ) {
                 filter = true;
             }
 
@@ -1981,7 +2031,9 @@ if (typeof require !== "undefined") {
 
             // filters "some" valid items (in
             // case the filter options flag is set)
-            validItems = filter ? validItems.slice(startRecord, startRecord + numberRecords) : validItems;
+            validItems = filter
+                ? validItems.slice(startRecord, startRecord + numberRecords)
+                : validItems;
 
             // schedules the calling of the callback with the "valid" items
             // for the next event loop "tick", this better simulates the
@@ -2380,7 +2432,7 @@ if (typeof require !== "undefined") {
                             // retrieves the value associated the current key
                             // and appends the span associated with the key
                             var value = item[key];
-                            _string += "<span name=\"" + key + "\">" + value + "</span>";
+                            _string += '<span name="' + key + '">' + value + "</span>";
                         }
 
                         // adds the final list reference to the string and then
@@ -2756,8 +2808,8 @@ if (typeof require !== "undefined") {
                     // creates the item structure with the name
                     // and the value set
                     var _item = {
-                        "name": name,
-                        "value": value
+                        name: name,
+                        value: value
                     };
 
                     // adds the item to the "logical" list
@@ -2874,7 +2926,7 @@ if (typeof require !== "undefined") {
 
                 // replaces the string character in the error
                 // message list
-                error = error.replace(STRING_CHARACTER_REGEX, "\"");
+                error = error.replace(STRING_CHARACTER_REGEX, '"');
 
                 // replaces the list joining character in order
                 // to virtually "join" multiple lists
@@ -2901,8 +2953,8 @@ if (typeof require !== "undefined") {
                     var errorMessage = errorStructure[index];
 
                     // creates the error description html
-                    var errorDescriptionHtml = "<div class=\"error-description\">" + errorMessage +
-                        "</div>";
+                    var errorDescriptionHtml =
+                        '<div class="error-description">' + errorMessage + "</div>";
 
                     // creates the error description element and adds it
                     // after the element
@@ -3184,12 +3236,37 @@ if (typeof require !== "undefined") {
 
             // updates the matched object html with the video embed object
             // that will include a flash object into the code
-            matchedObject.html("<" + tag + " id=\"youtube-player\" width=\"" + width + "\" height=\"" +
-                height + "\" src=\"//www.youtube.com/" + prefixUrl + "/" + videoId + "?" + hdValue +
-                "&" + infoValue + "&" + controlsValue + "&" + autoPlayValue +
-                "&playerapiid=youtube-player" + "&version=3" + "&enablejsapi=1" +
-                "\" frameborder=\"0\"" + " allowfullscreen=\"true\"" + " allowscriptaccess=\"always\"" +
-                " type=\"" + type + "\"></" + tag + ">");
+            matchedObject.html(
+                "<" +
+                    tag +
+                    ' id="youtube-player" width="' +
+                    width +
+                    '" height="' +
+                    height +
+                    '" src="//www.youtube.com/' +
+                    prefixUrl +
+                    "/" +
+                    videoId +
+                    "?" +
+                    hdValue +
+                    "&" +
+                    infoValue +
+                    "&" +
+                    controlsValue +
+                    "&" +
+                    autoPlayValue +
+                    "&playerapiid=youtube-player" +
+                    "&version=3" +
+                    "&enablejsapi=1" +
+                    '" frameborder="0"' +
+                    ' allowfullscreen="true"' +
+                    ' allowscriptaccess="always"' +
+                    ' type="' +
+                    type +
+                    '"></' +
+                    tag +
+                    ">"
+            );
         };
 
         var updateVimeo = function(matchedObject, options, urlInformation) {
@@ -3207,15 +3284,27 @@ if (typeof require !== "undefined") {
             height = height || 315;
 
             // calculates the info value
-            var infoValue = autoPlay ? "title=1&byline=1&portrait=1" : "title=0&byline=0&portrait=0";
+            var infoValue = autoPlay
+                ? "title=1&byline=1&portrait=1"
+                : "title=0&byline=0&portrait=0";
 
             // calculates the auto play value
             var autoPlayValue = autoPlay ? "autoplay=1" : "autoplay=0";
 
             // updates the matched object html with the video iframe
-            matchedObject.html("<iframe src=\"//player.vimeo.com/video" + resourceReference + "?" +
-                infoValue + "&" + autoPlayValue + "\" width=\"" + width + "\" height=\"" + height +
-                "\" frameborder=\"0\" webkitAllowFullScreen allowFullScreen></iframe>");
+            matchedObject.html(
+                '<iframe src="//player.vimeo.com/video' +
+                    resourceReference +
+                    "?" +
+                    infoValue +
+                    "&" +
+                    autoPlayValue +
+                    '" width="' +
+                    width +
+                    '" height="' +
+                    height +
+                    '" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>'
+            );
         };
 
         var updateDailyMotion = function(matchedObject, options, urlInformation) {
@@ -3239,9 +3328,19 @@ if (typeof require !== "undefined") {
             var autoPlayValue = autoPlay ? "autoplay=1" : "autoplay=0";
 
             // updates the matched object html with the video iframe
-            matchedObject.html("<iframe src=\"//www.dailymotion.com/embed" + resourceReference + "?" +
-                chromelessValue + "&" + autoPlayValue + "\" width=\"" + width + "\" height=\"" + height +
-                "\" frameborder=\"0\" webkitAllowFullScreen allowfullscreen></iframe>");
+            matchedObject.html(
+                '<iframe src="//www.dailymotion.com/embed' +
+                    resourceReference +
+                    "?" +
+                    chromelessValue +
+                    "&" +
+                    autoPlayValue +
+                    '" width="' +
+                    width +
+                    '" height="' +
+                    height +
+                    '" frameborder="0" webkitAllowFullScreen allowfullscreen></iframe>'
+            );
         };
 
         var parseUrl = function(url) {
@@ -3328,7 +3427,8 @@ if (typeof require !== "undefined") {
     };
 })(jQuery);
 
-function onYoutubeStateChange(state) { // eslint-disable-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
+function onYoutubeStateChange(state) {
     if (state === 0) {
         var video = jQuery("#youtube-player");
         var parent = video.parents(".video");
@@ -3336,7 +3436,8 @@ function onYoutubeStateChange(state) { // eslint-disable-line no-unused-vars
     }
 }
 
-function onYouTubePlayerReady(id) { // eslint-disable-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
+function onYouTubePlayerReady(id) {
     var video = jQuery("#youtube-player");
     var videoElement = video[0];
     videoElement.addEventListener("onStateChange", "onYoutubeStateChange");
@@ -3472,9 +3573,9 @@ if (typeof require !== "undefined") {
 
             // adds the colony gateway code to the current matched object
             // only in case the plugin exists in the current environment
-            hasPlugin
-                && matchedObject.append(
-                    "<object id=\"colony-gateway\" type=\"application/x-colony-gateway\" width=\"0\" height=\"0\"></object>"
+            hasPlugin &&
+                matchedObject.append(
+                    '<object id="colony-gateway" type="application/x-colony-gateway" width="0" height="0"></object>'
                 );
         };
 
@@ -3610,10 +3711,14 @@ if (typeof require !== "undefined") {
             // tries to retrieve the complete set of element for the
             // colony cloud print action, in case they are defined
             // they will take priority for usage of print infra-structure
-            var printUrl = window.localStorage && localStorage.getItem("uxf:gateway:base_url") || "";
-            var printKey = window.localStorage && window.localStorage.getItem("uxf:gateway:key") || "";
-            var printNode = window.localStorage && window.localStorage.getItem("uxf:gateway:node:id") || "";
-            var printPrinter = window.localStorage && window.localStorage.getItem("uxf:gateway:printer:id") ||
+            var printUrl =
+                (window.localStorage && localStorage.getItem("uxf:gateway:base_url")) || "";
+            var printKey =
+                (window.localStorage && window.localStorage.getItem("uxf:gateway:key")) || "";
+            var printNode =
+                (window.localStorage && window.localStorage.getItem("uxf:gateway:node:id")) || "";
+            var printPrinter =
+                (window.localStorage && window.localStorage.getItem("uxf:gateway:printer:id")) ||
                 "";
 
             // in case the complete set of required colony print field
@@ -3637,8 +3742,7 @@ if (typeof require !== "undefined") {
                                 skey: printKey
                             },
                             beforeSend: function(xhr) {
-                                xhr.setRequestHeader("X-Secret-Key",
-                                    printKey);
+                                xhr.setRequestHeader("X-Secret-Key", printKey);
                             }
                         });
                     }
@@ -3756,8 +3860,10 @@ if (typeof require !== "undefined") {
                     var _body = jQuery("body");
                     _body.uxinfo(
                         "There was an error retrieving remote print data.<br />" +
-                        "Please try again latter or contact the support team.",
-                        "Error", "warning");
+                            "Please try again latter or contact the support team.",
+                        "Error",
+                        "warning"
+                    );
                 }
             });
         };
@@ -3854,7 +3960,7 @@ if (typeof require !== "undefined") {
 
             // wraps the bars into the bar container, this
             // should include the proper visuals
-            bars.wrap("<div class=\"bar-container\"></div>");
+            bars.wrap('<div class="bar-container"></div>');
 
             // iterates over all the bars of the matched object for
             // width calculation
@@ -3923,7 +4029,7 @@ if (typeof require !== "undefined") {
 
                 // creates a new transparent bar to hold the external label and
                 // adds it to the dom after the element
-                var transparentBar = jQuery("<div class=\"bar bar-transparent\"></div>");
+                var transparentBar = jQuery('<div class="bar bar-transparent"></div>');
                 _element.after(transparentBar);
 
                 // moves the contents to the transparent bar (external label)
@@ -4010,7 +4116,11 @@ if (typeof require !== "undefined") {
         // registers for the key down press in the document
         _document.keydown(function(event) {
             // retrieves the key value
-            var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode : event.which;
+            var keyValue = event.keyCode
+                ? event.keyCode
+                : event.charCode
+                    ? event.charCode
+                    : event.which;
 
             // sets the default parameters
             parameters = parameters || [];
@@ -4097,8 +4207,11 @@ if (typeof require !== "undefined") {
                 // in the key element
                 var handler = function(event) {
                     // retrieves the key value
-                    var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                        event.which;
+                    var keyValue = event.keyCode
+                        ? event.keyCode
+                        : event.charCode
+                            ? event.charCode
+                            : event.which;
 
                     // in case the ctrl or the alt keys
                     // are pressed no need to handle the event
@@ -4118,7 +4231,7 @@ if (typeof require !== "undefined") {
                             // breaks the switch
                             break;
 
-                            // in case it's default
+                        // in case it's default
                         default:
                             // breaks the switch
                             break;
@@ -4240,8 +4353,11 @@ if (typeof require !== "undefined") {
                     var delta = currentTime - previousTime;
 
                     // retrieves the key value for the current event
-                    var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                        event.which;
+                    var keyValue = event.keyCode
+                        ? event.keyCode
+                        : event.charCode
+                            ? event.charCode
+                            : event.which;
 
                     // in case the ignoring mode is set need
                     // to check if we can get out of it
@@ -4258,8 +4374,7 @@ if (typeof require !== "undefined") {
 
                             // updates the previous time data in the target
                             // object and returns the control
-                            targetObject.data("previous_time",
-                                currentTime);
+                            targetObject.data("previous_time", currentTime);
                             return;
                         }
                         // otherwise the scan interval time has passed and
@@ -4288,8 +4403,7 @@ if (typeof require !== "undefined") {
                             // updates the target object data to reflect
                             // the ignore mode entrance and returns the control
                             targetObject.data("sequence", null);
-                            targetObject.data("previous_time",
-                                currentTime);
+                            targetObject.data("previous_time", currentTime);
                             targetObject.data("initial_time", null);
                             targetObject.data("ignoring", true);
                             return;
@@ -4315,20 +4429,17 @@ if (typeof require !== "undefined") {
                         // calculates the delta value to the total time and them
                         // verifies if it is valid
                         var deltaTotal = currentTime - initialTime;
-                        var deltaValid = deltaTotal < sequenceLength * WORD_RATIO *
-                            LETTER_INTERVAL;
+                        var deltaValid = deltaTotal < sequenceLength * WORD_RATIO * LETTER_INTERVAL;
 
                         // checks if the current sequence is valid, it is
                         // considered to be valid in case it's not empty
                         // the length respect the minimum size and the delta
                         // time for the word is valid
-                        var isValid = sequence && sequence.length >= MINIMUM_LENGTH &&
-                            deltaValid;
+                        var isValid = sequence && sequence.length >= MINIMUM_LENGTH && deltaValid;
 
                         // in case the sequence is considered to be valid
                         // the scan event is triggered
-                        isValid
-                            && targetObject.trigger("scan", [sequence]);
+                        isValid && targetObject.trigger("scan", [sequence]);
 
                         // resets the various data values in the
                         // the target object to reflect the default values
@@ -4384,7 +4495,11 @@ if (typeof require !== "undefined") {
             var initialTime = targetObject.data("initial_time") || currentTime;
 
             // retrieves the key value for the current event
-            var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode : event.which;
+            var keyValue = event.keyCode
+                ? event.keyCode
+                : event.charCode
+                    ? event.charCode
+                    : event.which;
 
             // in case the key is not an enter no need to do any
             // extra verification
@@ -4495,8 +4610,11 @@ if (typeof require !== "undefined") {
                 // enviroment that will increment and decrement the current page
                 var handler = function(event) {
                     // retrieves the key value
-                    var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                        event.which;
+                    var keyValue = event.keyCode
+                        ? event.keyCode
+                        : event.charCode
+                            ? event.charCode
+                            : event.which;
 
                     // switches over the key value
                     switch (keyValue) {
@@ -4509,7 +4627,7 @@ if (typeof require !== "undefined") {
                             // breaks the switch
                             break;
 
-                            // in case it's a k key
+                        // in case it's a k key
                         case 75:
                             // sends the current element to the
                             // previous "element"
@@ -4518,7 +4636,7 @@ if (typeof require !== "undefined") {
                             // breaks the switch
                             break;
 
-                            // in case it's default
+                        // in case it's default
                         default:
                             // breaks the switch
                             break;
@@ -4551,7 +4669,16 @@ if (typeof require !== "undefined") {
 }
 
 (function(jQuery) {
-    jQuery.fn.uxcenter = function(topOffset, leftOffset, useMargin, avoidTop, avoidLeft, keep, reference, position) {
+    jQuery.fn.uxcenter = function(
+        topOffset,
+        leftOffset,
+        useMargin,
+        avoidTop,
+        avoidLeft,
+        keep,
+        reference,
+        position
+    ) {
         // sets the jquery matched object that is going to be centered
         // on the currently defined viewport window
         var matchedObject = this;
@@ -4625,18 +4752,18 @@ if (typeof require !== "undefined") {
         // not possible to control the horizontal position
         switch (position) {
             case "center":
-                topPosition = ((referenceHeight - matchedObjectHeight) / 2);
-                leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                topPosition = (referenceHeight - matchedObjectHeight) / 2;
+                leftPosition = (referenceWidth - matchedObjectWidth) / 2;
                 break;
 
             case "top":
                 topPosition = 0;
-                leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                leftPosition = (referenceWidth - matchedObjectWidth) / 2;
                 break;
 
             case "bottom":
                 topPosition = referenceHeight - matchedObjectHeight;
-                leftPosition = ((referenceWidth - matchedObjectWidth) / 2);
+                leftPosition = (referenceWidth - matchedObjectWidth) / 2;
                 break;
         }
 
@@ -4678,25 +4805,46 @@ if (typeof require !== "undefined") {
                 // registers the resize in the window
                 // should keep the window centered
                 _window.resize(function(event) {
-                    _element.uxcenter(topOffset, leftOffset,
-                        useMargin, avoidTop, avoidLeft,
-                        false, reference, position);
+                    _element.uxcenter(
+                        topOffset,
+                        leftOffset,
+                        useMargin,
+                        avoidTop,
+                        avoidLeft,
+                        false,
+                        reference,
+                        position
+                    );
                 });
 
                 // registers the scroll in the window
                 // should keep the window centered
                 _window.scroll(function() {
-                    _element.uxcenter(topOffset, leftOffset,
-                        useMargin, avoidTop, avoidLeft,
-                        false, reference, position);
+                    _element.uxcenter(
+                        topOffset,
+                        leftOffset,
+                        useMargin,
+                        avoidTop,
+                        avoidLeft,
+                        false,
+                        reference,
+                        position
+                    );
                 });
 
                 // registers the changing of contents in
                 // the itnernal structure of the window
                 _element.bind("layout", function() {
-                    _element.uxcenter(topOffset, leftOffset,
-                        useMargin, avoidTop, avoidLeft,
-                        false, reference, position);
+                    _element.uxcenter(
+                        topOffset,
+                        leftOffset,
+                        useMargin,
+                        avoidTop,
+                        avoidLeft,
+                        false,
+                        reference,
+                        position
+                    );
                 });
             });
         }
@@ -4803,8 +4951,7 @@ if (typeof require !== "undefined") {
             // text area in case it's not the target for focus
             // should be a sub element that is a text field (or area)
             var isTextField = target.hasClass("text-field") || target.hasClass("text-area");
-            var focusTarget = isTextField ? target : jQuery(
-                ".text-field, .text-area", target);
+            var focusTarget = isTextField ? target : jQuery(".text-field, .text-area", target);
 
             // hides the matched object and then shows (and focus)
             // the target (element)
@@ -4827,48 +4974,203 @@ if (typeof require !== "undefined") {
 
 (function(jQuery) {
     var BUNDLE_EN_ISO = {
-        "COUNTRIES": ["Afghanistan", "Albania", "Algeria", "Andorra",
-            "Angola", "Antigua & Deps", "Argentina", "Armenia",
-            "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
-            "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
-            "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana",
-            "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi",
-            "Cambodia", "Cameroon", "Canada", "Cape Verde",
-            "Central African Rep", "Chad", "Chile", "China", "Colombia",
-            "Comoros", "Congo", "Congo Democratic Republic", "Costa Rica",
-            "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
-            "Djibouti", "Dominica", "Dominican Republic", "East Timor",
-            "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
-            "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France",
-            "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
-            "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-            "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland",
-            "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel",
-            "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan",
-            "Kazakhstan", "Kenya", "Kiribati", "Korea North",
-            "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
-            "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya",
-            "Liechtenstein", "Lithuania", "Luxembourg", "Macao",
-            "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives",
-            "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
-            "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia",
-            "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
-            "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
-            "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau",
-            "Panama", "Papua New Guinea", "Paraguay", "Peru",
-            "Philippines", "Poland", "Portugal", "Qatar", "Romania",
-            "Russia", "Rwanda", "St Kitts & Nevis", "St Lucia",
-            "Saint Vincent & the Grenadines", "Samoa", "San Marino",
-            "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia",
-            "Seychelles", "Sierra Leone", "Singapore", "Slovakia",
-            "Slovenia", "Solomon Islands", "Somalia", "South Africa",
-            "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland",
-            "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan",
-            "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago",
-            "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
-            "Ukraine", "United Arab Emirates", "United Kingdom",
-            "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-            "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia",
+        COUNTRIES: [
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "Andorra",
+            "Angola",
+            "Antigua & Deps",
+            "Argentina",
+            "Armenia",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Belarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bhutan",
+            "Bolivia",
+            "Bosnia Herzegovina",
+            "Botswana",
+            "Brazil",
+            "Brunei",
+            "Bulgaria",
+            "Burkina",
+            "Burundi",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Cape Verde",
+            "Central African Rep",
+            "Chad",
+            "Chile",
+            "China",
+            "Colombia",
+            "Comoros",
+            "Congo",
+            "Congo Democratic Republic",
+            "Costa Rica",
+            "Croatia",
+            "Cuba",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "East Timor",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estonia",
+            "Ethiopia",
+            "Fiji",
+            "Finland",
+            "France",
+            "Gabon",
+            "Gambia",
+            "Georgia",
+            "Germany",
+            "Ghana",
+            "Greece",
+            "Grenada",
+            "Guatemala",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Honduras",
+            "Hong Kong",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Israel",
+            "Italy",
+            "Ivory Coast",
+            "Jamaica",
+            "Japan",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Korea North",
+            "Korea South",
+            "Kosovo",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lebanon",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Macao",
+            "Macedonia",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Mauritania",
+            "Mauritius",
+            "Mexico",
+            "Micronesia",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Morocco",
+            "Mozambique",
+            "Myanmar",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Poland",
+            "Portugal",
+            "Qatar",
+            "Romania",
+            "Russia",
+            "Rwanda",
+            "St Kitts & Nevis",
+            "St Lucia",
+            "Saint Vincent & the Grenadines",
+            "Samoa",
+            "San Marino",
+            "Sao Tome & Principe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Slovakia",
+            "Slovenia",
+            "Solomon Islands",
+            "Somalia",
+            "South Africa",
+            "Spain",
+            "Sri Lanka",
+            "Sudan",
+            "Suriname",
+            "Swaziland",
+            "Sweden",
+            "Switzerland",
+            "Syria",
+            "Taiwan",
+            "Tajikistan",
+            "Tanzania",
+            "Thailand",
+            "Togo",
+            "Tonga",
+            "Trinidad & Tobago",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Tuvalu",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United States",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Vatican City",
+            "Venezuela",
+            "Vietnam",
+            "Yemen",
+            "Zambia",
             "Zimbabwe"
         ]
     };
@@ -4882,26 +5184,204 @@ if (typeof require !== "undefined") {
 
 (function(jQuery) {
     var BUNDLE_EN_ISO2 = {
-        "COUNTRIES": ["AF", "AL", "DZ", "AD", "AO", "AG", "AR", "AM", "AU",
-            "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ",
-            "BT", "BO", "BA", "BW", "BR", "BN", "BG", "BF", "BI", "KH",
-            "CM", "CA", "CV", "CF", "TD", "CL", "CN", "CO", "KM", "CG",
-            "CD", "CR", "HR", "CU", "CY", "CZ", "DK", "DJ", "DM", "DO",
-            "TL", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FJ", "FI",
-            "FR", "GA", "GM", "GE", "DE", "GH", "GR", "GD", "GT", "GN",
-            "GW", "GY", "HT", "HN", "HK", "HU", "IS", "IN", "ID", "IR",
-            "IQ", "IE", "IL", "IT", "CI", "JM", "JP", "JO", "KZ", "KE",
-            "KI", "KP", "KR", "XZ", "KW", "KG", "LA", "LV", "LB", "LS",
-            "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY",
-            "MV", "ML", "MT", "MH", "MR", "MU", "MX", "FM", "MD", "MC",
-            "MN", "ME", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NZ",
-            "NI", "NE", "NG", "NO", "OM", "PK", "PW", "PA", "PG", "PY",
-            "PE", "PH", "PL", "PT", "QA", "RO", "RU", "RW", "KN", "LC",
-            "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG",
-            "SK", "SI", "SB", "SO", "ZA", "ES", "LK", "SD", "SR", "SZ",
-            "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TG", "TO", "TT",
-            "TN", "TR", "TM", "TV", "UG", "UA", "AE", "GB", "US", "UY",
-            "UZ", "VU", "VA", "VE", "VN", "YE", "ZM", "ZW"
+        COUNTRIES: [
+            "AF",
+            "AL",
+            "DZ",
+            "AD",
+            "AO",
+            "AG",
+            "AR",
+            "AM",
+            "AU",
+            "AT",
+            "AZ",
+            "BS",
+            "BH",
+            "BD",
+            "BB",
+            "BY",
+            "BE",
+            "BZ",
+            "BJ",
+            "BT",
+            "BO",
+            "BA",
+            "BW",
+            "BR",
+            "BN",
+            "BG",
+            "BF",
+            "BI",
+            "KH",
+            "CM",
+            "CA",
+            "CV",
+            "CF",
+            "TD",
+            "CL",
+            "CN",
+            "CO",
+            "KM",
+            "CG",
+            "CD",
+            "CR",
+            "HR",
+            "CU",
+            "CY",
+            "CZ",
+            "DK",
+            "DJ",
+            "DM",
+            "DO",
+            "TL",
+            "EC",
+            "EG",
+            "SV",
+            "GQ",
+            "ER",
+            "EE",
+            "ET",
+            "FJ",
+            "FI",
+            "FR",
+            "GA",
+            "GM",
+            "GE",
+            "DE",
+            "GH",
+            "GR",
+            "GD",
+            "GT",
+            "GN",
+            "GW",
+            "GY",
+            "HT",
+            "HN",
+            "HK",
+            "HU",
+            "IS",
+            "IN",
+            "ID",
+            "IR",
+            "IQ",
+            "IE",
+            "IL",
+            "IT",
+            "CI",
+            "JM",
+            "JP",
+            "JO",
+            "KZ",
+            "KE",
+            "KI",
+            "KP",
+            "KR",
+            "XZ",
+            "KW",
+            "KG",
+            "LA",
+            "LV",
+            "LB",
+            "LS",
+            "LR",
+            "LY",
+            "LI",
+            "LT",
+            "LU",
+            "MO",
+            "MK",
+            "MG",
+            "MW",
+            "MY",
+            "MV",
+            "ML",
+            "MT",
+            "MH",
+            "MR",
+            "MU",
+            "MX",
+            "FM",
+            "MD",
+            "MC",
+            "MN",
+            "ME",
+            "MA",
+            "MZ",
+            "MM",
+            "NA",
+            "NR",
+            "NP",
+            "NL",
+            "NZ",
+            "NI",
+            "NE",
+            "NG",
+            "NO",
+            "OM",
+            "PK",
+            "PW",
+            "PA",
+            "PG",
+            "PY",
+            "PE",
+            "PH",
+            "PL",
+            "PT",
+            "QA",
+            "RO",
+            "RU",
+            "RW",
+            "KN",
+            "LC",
+            "VC",
+            "WS",
+            "SM",
+            "ST",
+            "SA",
+            "SN",
+            "RS",
+            "SC",
+            "SL",
+            "SG",
+            "SK",
+            "SI",
+            "SB",
+            "SO",
+            "ZA",
+            "ES",
+            "LK",
+            "SD",
+            "SR",
+            "SZ",
+            "SE",
+            "CH",
+            "SY",
+            "TW",
+            "TJ",
+            "TZ",
+            "TH",
+            "TG",
+            "TO",
+            "TT",
+            "TN",
+            "TR",
+            "TM",
+            "TV",
+            "UG",
+            "UA",
+            "AE",
+            "GB",
+            "US",
+            "UY",
+            "UZ",
+            "VU",
+            "VA",
+            "VE",
+            "VN",
+            "YE",
+            "ZM",
+            "ZW"
         ]
     };
 
@@ -4914,28 +5394,204 @@ if (typeof require !== "undefined") {
 
 (function(jQuery) {
     var BUNDLE_EN_ISO3 = {
-        "COUNTRIES": ["AFG", "ALB", "DZA", "AND", "AGO", "ATG", "ARG", "ARM",
-            "AUS", "AUT", "AZE", "BHS", "BHR", "BGD", "BRB", "BLR", "BEL",
-            "BLZ", "BEN", "BTN", "BOL", "BIH", "BWA", "BRA", "BRN", "BGR",
-            "BFA", "BDI", "KHM", "CMR", "CAN", "CPV", "CAF", "TCD", "CHL",
-            "CHN", "COL", "COM", "COG", "COD", "CRI", "HRV", "CUB", "CYP",
-            "CZE", "DNK", "DJI", "DMA", "DOM", "TLS", "ECU", "EGY", "SLV",
-            "GNQ", "ERI", "EST", "ETH", "FJI", "FIN", "FRA", "GAB", "GMB",
-            "GEO", "DEU", "GHA", "GRC", "GRD", "GTM", "GIN", "GNB", "GUY",
-            "HTI", "HND", "HKG", "HUN", "ISL", "IND", "IDN", "IRN", "IRQ",
-            "IRL", "ISR", "ITA", "CIV", "JAM", "JPN", "JOR", "KAZ", "KEN",
-            "KIR", "PRK", "KOR", "UNK", "KWT", "KGZ", "LAO", "LVA", "LBN",
-            "LSO", "LBR", "LBY", "LIE", "LTU", "LUX", "MAC", "MKD", "MDG",
-            "MWI", "MYS", "MDV", "MLI", "MLT", "MHL", "MRT", "MUS", "MEX",
-            "FSM", "MDA", "MCO", "MNG", "MNE", "MAR", "MOZ", "MMR", "NAM",
-            "NRU", "NPL", "NLD", "NZL", "NIC", "NER", "NGA", "NOR", "OMN",
-            "PAK", "PLW", "PAN", "PNG", "PRY", "PER", "PHL", "POL", "PRT",
-            "QAT", "ROU", "RUS", "RWA", "KNA", "LCA", "VCT", "WSM", "SMR",
-            "STP", "SAU", "SEN", "SRB", "SYC", "SLE", "SGP", "SVK", "SVN",
-            "SLB", "SOM", "ZAF", "ESP", "LKA", "SDN", "SUR", "SWZ", "SWE",
-            "CHE", "SYR", "TWN", "TJK", "TZA", "THA", "TGO", "TON", "TTO",
-            "TUN", "TUR", "TKM", "TUV", "UGA", "UKR", "ARE", "GBR", "USA",
-            "URY", "UZB", "VUT", "VAT", "VEN", "VNM", "YEM", "ZMB", "ZWE"
+        COUNTRIES: [
+            "AFG",
+            "ALB",
+            "DZA",
+            "AND",
+            "AGO",
+            "ATG",
+            "ARG",
+            "ARM",
+            "AUS",
+            "AUT",
+            "AZE",
+            "BHS",
+            "BHR",
+            "BGD",
+            "BRB",
+            "BLR",
+            "BEL",
+            "BLZ",
+            "BEN",
+            "BTN",
+            "BOL",
+            "BIH",
+            "BWA",
+            "BRA",
+            "BRN",
+            "BGR",
+            "BFA",
+            "BDI",
+            "KHM",
+            "CMR",
+            "CAN",
+            "CPV",
+            "CAF",
+            "TCD",
+            "CHL",
+            "CHN",
+            "COL",
+            "COM",
+            "COG",
+            "COD",
+            "CRI",
+            "HRV",
+            "CUB",
+            "CYP",
+            "CZE",
+            "DNK",
+            "DJI",
+            "DMA",
+            "DOM",
+            "TLS",
+            "ECU",
+            "EGY",
+            "SLV",
+            "GNQ",
+            "ERI",
+            "EST",
+            "ETH",
+            "FJI",
+            "FIN",
+            "FRA",
+            "GAB",
+            "GMB",
+            "GEO",
+            "DEU",
+            "GHA",
+            "GRC",
+            "GRD",
+            "GTM",
+            "GIN",
+            "GNB",
+            "GUY",
+            "HTI",
+            "HND",
+            "HKG",
+            "HUN",
+            "ISL",
+            "IND",
+            "IDN",
+            "IRN",
+            "IRQ",
+            "IRL",
+            "ISR",
+            "ITA",
+            "CIV",
+            "JAM",
+            "JPN",
+            "JOR",
+            "KAZ",
+            "KEN",
+            "KIR",
+            "PRK",
+            "KOR",
+            "UNK",
+            "KWT",
+            "KGZ",
+            "LAO",
+            "LVA",
+            "LBN",
+            "LSO",
+            "LBR",
+            "LBY",
+            "LIE",
+            "LTU",
+            "LUX",
+            "MAC",
+            "MKD",
+            "MDG",
+            "MWI",
+            "MYS",
+            "MDV",
+            "MLI",
+            "MLT",
+            "MHL",
+            "MRT",
+            "MUS",
+            "MEX",
+            "FSM",
+            "MDA",
+            "MCO",
+            "MNG",
+            "MNE",
+            "MAR",
+            "MOZ",
+            "MMR",
+            "NAM",
+            "NRU",
+            "NPL",
+            "NLD",
+            "NZL",
+            "NIC",
+            "NER",
+            "NGA",
+            "NOR",
+            "OMN",
+            "PAK",
+            "PLW",
+            "PAN",
+            "PNG",
+            "PRY",
+            "PER",
+            "PHL",
+            "POL",
+            "PRT",
+            "QAT",
+            "ROU",
+            "RUS",
+            "RWA",
+            "KNA",
+            "LCA",
+            "VCT",
+            "WSM",
+            "SMR",
+            "STP",
+            "SAU",
+            "SEN",
+            "SRB",
+            "SYC",
+            "SLE",
+            "SGP",
+            "SVK",
+            "SVN",
+            "SLB",
+            "SOM",
+            "ZAF",
+            "ESP",
+            "LKA",
+            "SDN",
+            "SUR",
+            "SWZ",
+            "SWE",
+            "CHE",
+            "SYR",
+            "TWN",
+            "TJK",
+            "TZA",
+            "THA",
+            "TGO",
+            "TON",
+            "TTO",
+            "TUN",
+            "TUR",
+            "TKM",
+            "TUV",
+            "UGA",
+            "UKR",
+            "ARE",
+            "GBR",
+            "USA",
+            "URY",
+            "UZB",
+            "VUT",
+            "VAT",
+            "VEN",
+            "VNM",
+            "YEM",
+            "ZMB",
+            "ZWE"
         ]
     };
 
@@ -4948,108 +5604,263 @@ if (typeof require !== "undefined") {
 
 (function(jQuery) {
     var BUNDLE_EN_US = {
-        "Confirm": "Confirm",
-        "Cancel": "Cancel",
-        "Information": "Information",
-        "Warning": "Warning",
-        "Error": "Error",
-        "Loading": "Loading",
-        "January": "January",
-        "February": "February",
-        "March": "March",
-        "April": "April",
-        "May": "May",
-        "June": "June",
-        "July": "July",
-        "August": "August",
-        "September": "September",
-        "October": "October",
-        "November": "November",
-        "December": "December",
-        "JanS": "Jan",
-        "FebS": "Feb",
-        "MarS": "Mar",
-        "AprS": "Apr",
-        "MayS": "May",
-        "JunS": "Jun",
-        "JulS": "Jul",
-        "AugS": "Aug",
-        "SepS": "Sep",
-        "OctS": "Oct",
-        "NovS": "Nov",
-        "DecS": "Dec",
-        "Su": "Su",
-        "Mo": "Mo",
-        "Tu": "Tu",
-        "We": "We",
-        "Th": "Th",
-        "Fr": "Fr",
-        "Sa": "Sa",
-        "SunS": "Sun",
-        "MonS": "Mon",
-        "TueS": "Tue",
-        "WedS": "Wed",
-        "ThuS": "Thu",
-        "FriS": "Fri",
-        "SatS": "Sat",
-        "contains": "contains",
-        "matches": "matches",
+        Confirm: "Confirm",
+        Cancel: "Cancel",
+        Information: "Information",
+        Warning: "Warning",
+        Error: "Error",
+        Loading: "Loading",
+        January: "January",
+        February: "February",
+        March: "March",
+        April: "April",
+        May: "May",
+        June: "June",
+        July: "July",
+        August: "August",
+        September: "September",
+        October: "October",
+        November: "November",
+        December: "December",
+        JanS: "Jan",
+        FebS: "Feb",
+        MarS: "Mar",
+        AprS: "Apr",
+        MayS: "May",
+        JunS: "Jun",
+        JulS: "Jul",
+        AugS: "Aug",
+        SepS: "Sep",
+        OctS: "Oct",
+        NovS: "Nov",
+        DecS: "Dec",
+        Su: "Su",
+        Mo: "Mo",
+        Tu: "Tu",
+        We: "We",
+        Th: "Th",
+        Fr: "Fr",
+        Sa: "Sa",
+        SunS: "Sun",
+        MonS: "Mon",
+        TueS: "Tue",
+        WedS: "Wed",
+        ThuS: "Thu",
+        FriS: "Fri",
+        SatS: "Sat",
+        contains: "contains",
+        matches: "matches",
         "begins with": "begins with",
         "ends with": "ends with",
-        "equals": "equals",
+        equals: "equals",
         "greater than": "greater than",
         "less than": "less than",
-        "in": "in",
-        "after": "after",
-        "before": "before",
-        "search": "search",
-        "undefined": "undefined",
-        "count": "count",
-        "sum": "sum",
-        "average": "average",
+        in: "in",
+        after: "after",
+        before: "before",
+        search: "search",
+        undefined: "undefined",
+        count: "count",
+        sum: "sum",
+        average: "average",
         "There was an error retrieving JSON data": "There was an error retrieving JSON data",
-        "COUNTRIES": ["Afghanistan", "Albania", "Algeria", "Andorra",
-            "Angola", "Antigua & Deps", "Argentina", "Armenia",
-            "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
-            "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
-            "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana",
-            "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi",
-            "Cambodia", "Cameroon", "Canada", "Cape Verde",
-            "Central African Rep", "Chad", "Chile", "China", "Colombia",
-            "Comoros", "Congo", "Congo Democratic Republic", "Costa Rica",
-            "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
-            "Djibouti", "Dominica", "Dominican Republic", "East Timor",
-            "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea",
-            "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France",
-            "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece",
-            "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-            "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland",
-            "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel",
-            "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan",
-            "Kazakhstan", "Kenya", "Kiribati", "Korea North",
-            "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
-            "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya",
-            "Liechtenstein", "Lithuania", "Luxembourg", "Macao",
-            "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives",
-            "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
-            "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia",
-            "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
-            "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua",
-            "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau",
-            "Panama", "Papua New Guinea", "Paraguay", "Peru",
-            "Philippines", "Poland", "Portugal", "Qatar", "Romania",
-            "Russia", "Rwanda", "St Kitts & Nevis", "St Lucia",
-            "Saint Vincent & the Grenadines", "Samoa", "San Marino",
-            "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia",
-            "Seychelles", "Sierra Leone", "Singapore", "Slovakia",
-            "Slovenia", "Solomon Islands", "Somalia", "South Africa",
-            "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland",
-            "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan",
-            "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago",
-            "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
-            "Ukraine", "United Arab Emirates", "United Kingdom",
-            "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-            "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia",
+        COUNTRIES: [
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "Andorra",
+            "Angola",
+            "Antigua & Deps",
+            "Argentina",
+            "Armenia",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Belarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bhutan",
+            "Bolivia",
+            "Bosnia Herzegovina",
+            "Botswana",
+            "Brazil",
+            "Brunei",
+            "Bulgaria",
+            "Burkina",
+            "Burundi",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Cape Verde",
+            "Central African Rep",
+            "Chad",
+            "Chile",
+            "China",
+            "Colombia",
+            "Comoros",
+            "Congo",
+            "Congo Democratic Republic",
+            "Costa Rica",
+            "Croatia",
+            "Cuba",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "East Timor",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estonia",
+            "Ethiopia",
+            "Fiji",
+            "Finland",
+            "France",
+            "Gabon",
+            "Gambia",
+            "Georgia",
+            "Germany",
+            "Ghana",
+            "Greece",
+            "Grenada",
+            "Guatemala",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Honduras",
+            "Hong Kong",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Israel",
+            "Italy",
+            "Ivory Coast",
+            "Jamaica",
+            "Japan",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Korea North",
+            "Korea South",
+            "Kosovo",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lebanon",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Macao",
+            "Macedonia",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Mauritania",
+            "Mauritius",
+            "Mexico",
+            "Micronesia",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Morocco",
+            "Mozambique",
+            "Myanmar",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Poland",
+            "Portugal",
+            "Qatar",
+            "Romania",
+            "Russia",
+            "Rwanda",
+            "St Kitts & Nevis",
+            "St Lucia",
+            "Saint Vincent & the Grenadines",
+            "Samoa",
+            "San Marino",
+            "Sao Tome & Principe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Slovakia",
+            "Slovenia",
+            "Solomon Islands",
+            "Somalia",
+            "South Africa",
+            "Spain",
+            "Sri Lanka",
+            "Sudan",
+            "Suriname",
+            "Swaziland",
+            "Sweden",
+            "Switzerland",
+            "Syria",
+            "Taiwan",
+            "Tajikistan",
+            "Tanzania",
+            "Thailand",
+            "Togo",
+            "Tonga",
+            "Trinidad & Tobago",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Tuvalu",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United States",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Vatican City",
+            "Venezuela",
+            "Vietnam",
+            "Yemen",
+            "Zambia",
             "Zimbabwe"
         ]
     };
@@ -5063,109 +5874,263 @@ if (typeof require !== "undefined") {
 
 (function(jQuery) {
     var BUNDLE_PT_PT = {
-        "Confirm": "Confirmar",
-        "Cancel": "Cancelar",
-        "Information": "Informação",
-        "Warning": "Alerta",
-        "Error": "Erro",
-        "Loading": "Carregando",
-        "January": "Janeiro",
-        "February": "Fevereiro",
-        "March": "Março",
-        "April": "Abril",
-        "May": "Maio",
-        "June": "Junho",
-        "July": "Julho",
-        "August": "Agosto",
-        "September": "Setembro",
-        "October": "Outubro",
-        "November": "Novembro",
-        "December": "Dezembro",
-        "JanS": "Jan",
-        "FebS": "Fev",
-        "MarS": "Mar",
-        "AprS": "Abr",
-        "MayS": "Mai",
-        "JunS": "Jun",
-        "JulS": "Jul",
-        "AugS": "Ago",
-        "SepS": "Set",
-        "OctS": "Out",
-        "NovS": "Nov",
-        "DecS": "Dez",
-        "Su": "Do",
-        "Mo": "Se",
-        "Tu": "Te",
-        "We": "Qa",
-        "Th": "Qi",
-        "Fr": "Se",
-        "Sa": "Sá",
-        "SunS": "Dom",
-        "MonS": "Seg",
-        "TueS": "Ter",
-        "WedS": "Qua",
-        "ThuS": "Qui",
-        "FriS": "Sex",
-        "SatS": "Sáb",
-        "contains": "contém",
-        "matches": "igual a",
+        Confirm: "Confirmar",
+        Cancel: "Cancelar",
+        Information: "Informação",
+        Warning: "Alerta",
+        Error: "Erro",
+        Loading: "Carregando",
+        January: "Janeiro",
+        February: "Fevereiro",
+        March: "Março",
+        April: "Abril",
+        May: "Maio",
+        June: "Junho",
+        July: "Julho",
+        August: "Agosto",
+        September: "Setembro",
+        October: "Outubro",
+        November: "Novembro",
+        December: "Dezembro",
+        JanS: "Jan",
+        FebS: "Fev",
+        MarS: "Mar",
+        AprS: "Abr",
+        MayS: "Mai",
+        JunS: "Jun",
+        JulS: "Jul",
+        AugS: "Ago",
+        SepS: "Set",
+        OctS: "Out",
+        NovS: "Nov",
+        DecS: "Dez",
+        Su: "Do",
+        Mo: "Se",
+        Tu: "Te",
+        We: "Qa",
+        Th: "Qi",
+        Fr: "Se",
+        Sa: "Sá",
+        SunS: "Dom",
+        MonS: "Seg",
+        TueS: "Ter",
+        WedS: "Qua",
+        ThuS: "Qui",
+        FriS: "Sex",
+        SatS: "Sáb",
+        contains: "contém",
+        matches: "igual a",
         "begins with": "começa com",
         "ends with": "acaba com",
-        "equals": "igual",
+        equals: "igual",
         "greater than": "maior que",
         "less than": "menor que",
-        "in": "em",
-        "after": "depois",
-        "before": "antes",
-        "search": "procurar",
-        "undefined": "indefinido",
-        "count": "contagem",
-        "sum": "somatório",
-        "average": "média",
+        in: "em",
+        after: "depois",
+        before: "antes",
+        search: "procurar",
+        undefined: "indefinido",
+        count: "contagem",
+        sum: "somatório",
+        average: "média",
         "There was an error retrieving JSON data": "Occoreu um erro a obter dados em JSON",
-        "COUNTRIES": ["Afeganistão", "Albania", "Argélia", "Andorra",
-            "Angola", "Antigua e Dependencias", "Argentina", "Arménia",
-            "Austrália", "Austria", "Azerbaijão", "Bahamas", "Bahrein",
-            "Bangladesh", "Barbados", "Bielorrússia", "Bélgica", "Belize",
-            "Benin", "Butão", "Bolívia", "Bósnia e Herzegovina",
-            "Botswana", "Brasil", "Brunei", "Bulgária", "Burkina Faso",
-            "Burundi", "Camboja", "Camarões", "Canadá", "Cabo Verde",
-            "República Centro-Africana", "Chade", "Chile", "China",
-            "Colômbia", "Comoros", "Congo",
-            "República Democrática do Congo", "Costa Rica", "Croácia",
-            "Cuba", "Chipre", "República Checa", "Dinamarca", "Djibouti",
-            "Dominica", "República Dominicana", "Timor-Leste", "Equador",
-            "Egito", "El Salvador", "Guiné Equatorial", "Eritrea",
-            "Estónia", "Etiópia", "Fiji", "Finlândia", "França", "Gabão",
-            "Gâmbia", "Geórgia", "Alemanha", "Gana", "Grécia", "Granada",
-            "Guatemala", "Guiné", "Guiné-Bissau", "Guiana", "Haiti",
-            "Honduras", "Hong Kong", "Hungria", "Islândia", "Índia",
-            "Indonésia", "Irão", "Iraque", "Irlanda", "Israel", "Itália",
-            "Costa do Marfim", "Jamaica", "Japão", "Jordânia",
-            "Cazaquistão", "Quénia", "Kiribati", "Coreia do Norte",
-            "Coreia do Sul", "Kosovo", "Kuwait", "Quirguistão", "Laos",
-            "Letónia", "Líbano", "Lesoto", "Libéria", "Líbia",
-            "Liechtenstein", "Lituânia", "Luxemburgo", "Macau",
-            "Macedónia", "Madagáscar", "Malawi", "Malásia", "Maldivas",
-            "Mali", "Malta", "Ilhas Marshall", "Mauritânia", "Maurícia",
-            "México", "Micronésia", "Moldávia", "Mónaco", "Mongólia",
-            "Montenegro", "Marrocos", "Moçambique", "Myanmar", "Namíbia",
-            "Nauru", "Nepal", "Países Baixos", "Nova Zelândia",
-            "Nicarágua", "Níger", "Nigéria", "Noruega", "Omã", "Paquistão",
-            "Palau", "Panamá", "Papua-Nova Guiné", "Paraguai", "Peru",
-            "Filipinas", "Polónia", "Portugal", "Catar", "Roménia",
-            "Rússia", "Ruanda", "São Cristóvão e Nevis", "Santa Lúcia",
-            "São Vicente e Granadinas", "Samoa", "San Marino",
-            "São Tomé e Príncipe", "Arábia Saudita", "Senegal", "Sérvia",
-            "Seychelles", "Serra Leoa", "Singapura", "Eslováquia",
-            "Eslovénia", "Ilhas Salomão", "Somália", "África do Sul",
-            "Espanha", "Sri Lanka", "Sudão", "Suriname", "Suazilândia",
-            "Suécia", "Suíça", "Síria", "Taiwan", "Tajiquistão",
-            "Tanzânia", "Tailândia", "Togo", "Tonga", "Trinidad e Tobago",
-            "Tunísia", "Turquia", "Turquemenistão", "Tuvalu", "Uganda",
-            "Ucrânia", "Emirados Árabes Unidos", "Reino Unido",
-            "Estados Unidos", "Uruguai", "Uzbequistão", "Vanuatu",
-            "Vaticano", "Venezuela", "Vietname", "Iémen", "Zâmbia",
+        COUNTRIES: [
+            "Afeganistão",
+            "Albania",
+            "Argélia",
+            "Andorra",
+            "Angola",
+            "Antigua e Dependencias",
+            "Argentina",
+            "Arménia",
+            "Austrália",
+            "Austria",
+            "Azerbaijão",
+            "Bahamas",
+            "Bahrein",
+            "Bangladesh",
+            "Barbados",
+            "Bielorrússia",
+            "Bélgica",
+            "Belize",
+            "Benin",
+            "Butão",
+            "Bolívia",
+            "Bósnia e Herzegovina",
+            "Botswana",
+            "Brasil",
+            "Brunei",
+            "Bulgária",
+            "Burkina Faso",
+            "Burundi",
+            "Camboja",
+            "Camarões",
+            "Canadá",
+            "Cabo Verde",
+            "República Centro-Africana",
+            "Chade",
+            "Chile",
+            "China",
+            "Colômbia",
+            "Comoros",
+            "Congo",
+            "República Democrática do Congo",
+            "Costa Rica",
+            "Croácia",
+            "Cuba",
+            "Chipre",
+            "República Checa",
+            "Dinamarca",
+            "Djibouti",
+            "Dominica",
+            "República Dominicana",
+            "Timor-Leste",
+            "Equador",
+            "Egito",
+            "El Salvador",
+            "Guiné Equatorial",
+            "Eritrea",
+            "Estónia",
+            "Etiópia",
+            "Fiji",
+            "Finlândia",
+            "França",
+            "Gabão",
+            "Gâmbia",
+            "Geórgia",
+            "Alemanha",
+            "Gana",
+            "Grécia",
+            "Granada",
+            "Guatemala",
+            "Guiné",
+            "Guiné-Bissau",
+            "Guiana",
+            "Haiti",
+            "Honduras",
+            "Hong Kong",
+            "Hungria",
+            "Islândia",
+            "Índia",
+            "Indonésia",
+            "Irão",
+            "Iraque",
+            "Irlanda",
+            "Israel",
+            "Itália",
+            "Costa do Marfim",
+            "Jamaica",
+            "Japão",
+            "Jordânia",
+            "Cazaquistão",
+            "Quénia",
+            "Kiribati",
+            "Coreia do Norte",
+            "Coreia do Sul",
+            "Kosovo",
+            "Kuwait",
+            "Quirguistão",
+            "Laos",
+            "Letónia",
+            "Líbano",
+            "Lesoto",
+            "Libéria",
+            "Líbia",
+            "Liechtenstein",
+            "Lituânia",
+            "Luxemburgo",
+            "Macau",
+            "Macedónia",
+            "Madagáscar",
+            "Malawi",
+            "Malásia",
+            "Maldivas",
+            "Mali",
+            "Malta",
+            "Ilhas Marshall",
+            "Mauritânia",
+            "Maurícia",
+            "México",
+            "Micronésia",
+            "Moldávia",
+            "Mónaco",
+            "Mongólia",
+            "Montenegro",
+            "Marrocos",
+            "Moçambique",
+            "Myanmar",
+            "Namíbia",
+            "Nauru",
+            "Nepal",
+            "Países Baixos",
+            "Nova Zelândia",
+            "Nicarágua",
+            "Níger",
+            "Nigéria",
+            "Noruega",
+            "Omã",
+            "Paquistão",
+            "Palau",
+            "Panamá",
+            "Papua-Nova Guiné",
+            "Paraguai",
+            "Peru",
+            "Filipinas",
+            "Polónia",
+            "Portugal",
+            "Catar",
+            "Roménia",
+            "Rússia",
+            "Ruanda",
+            "São Cristóvão e Nevis",
+            "Santa Lúcia",
+            "São Vicente e Granadinas",
+            "Samoa",
+            "San Marino",
+            "São Tomé e Príncipe",
+            "Arábia Saudita",
+            "Senegal",
+            "Sérvia",
+            "Seychelles",
+            "Serra Leoa",
+            "Singapura",
+            "Eslováquia",
+            "Eslovénia",
+            "Ilhas Salomão",
+            "Somália",
+            "África do Sul",
+            "Espanha",
+            "Sri Lanka",
+            "Sudão",
+            "Suriname",
+            "Suazilândia",
+            "Suécia",
+            "Suíça",
+            "Síria",
+            "Taiwan",
+            "Tajiquistão",
+            "Tanzânia",
+            "Tailândia",
+            "Togo",
+            "Tonga",
+            "Trinidad e Tobago",
+            "Tunísia",
+            "Turquia",
+            "Turquemenistão",
+            "Tuvalu",
+            "Uganda",
+            "Ucrânia",
+            "Emirados Árabes Unidos",
+            "Reino Unido",
+            "Estados Unidos",
+            "Uruguai",
+            "Uzbequistão",
+            "Vanuatu",
+            "Vaticano",
+            "Venezuela",
+            "Vietname",
+            "Iémen",
+            "Zâmbia",
             "Zimbabwe"
         ]
     };
@@ -5454,10 +6419,10 @@ if (typeof require !== "undefined") {
 (function(jQuery) {
     // sets the scroll to to be the global function
     // scrolling the window
-    var uxscrollto = jQuery.uxscrollto = function(target, duration, settings) {
+    var uxscrollto = (jQuery.uxscrollto = function(target, duration, settings) {
         var _window = jQuery(window);
         _window.uxscrollto(target, duration, settings);
-    };
+    });
 
     // creates the map of scroll default values, note that the
     // creation takes into account the current jquery version
@@ -5495,9 +6460,14 @@ if (typeof require !== "undefined") {
             // checks if the current element is in fact
             // a window, by checking it's value against a
             // series of pre-defined values
-            var isWindow = !element.nodeName || jQuery.inArray(element.nodeName.toLowerCase(), [
-                "iframe", "#document", "html", "body"
-            ]) !== -1;
+            var isWindow =
+                !element.nodeName ||
+                jQuery.inArray(element.nodeName.toLowerCase(), [
+                    "iframe",
+                    "#document",
+                    "html",
+                    "body"
+                ]) !== -1;
 
             // in case the element is not a window it's immediately
             // considered scrollable and so it's returned to the
@@ -5508,14 +6478,16 @@ if (typeof require !== "undefined") {
 
             // retrieves the document from the window taking into account
             // the element's possible owner value (for legacy support)
-            var _document = (element.contentWindow || element).document || element.ownerDocument ||
-                element;
+            var _document =
+                (element.contentWindow || element).document || element.ownerDocument || element;
 
             // verifies if the current chrome version a recent one and
             // if that's the case returns the standard document element
             // value (as the default webkit behaviour is ignored)
-            if (jQuery.browser.chrome && parseInt(jQuery.browser._version || jQuery.browser.version) >
-                60) {
+            if (
+                jQuery.browser.chrome &&
+                parseInt(jQuery.browser._version || jQuery.browser.version) > 60
+            ) {
                 return _document.documentElement;
             }
 
@@ -5585,133 +6557,143 @@ if (typeof require !== "undefined") {
         settings.offset = both(settings.offset);
         settings.over = both(settings.over);
 
-        return this._scrollable().each(function() {
-            // retrieves the element and then based on
-            // it retrieves the jquery element, target
-            // target offset, attributes and window
-            var element = this;
-            var _element = jQuery(element);
-            var _target = target;
-            var targetOffset;
-            var attributes = {};
-            var win = _element.is("html, body");
+        return this._scrollable()
+            .each(function() {
+                // retrieves the element and then based on
+                // it retrieves the jquery element, target
+                // target offset, attributes and window
+                var element = this;
+                var _element = jQuery(element);
+                var _target = target;
+                var targetOffset;
+                var attributes = {};
+                var win = _element.is("html, body");
 
-            // switches over the target data type, so that the proper
-            // target manipulation is performed (target normalized)
-            switch (typeof _target) {
-                // in case it's a number or string
-                // will pass the regex
-                case "number":
-                case "string":
-                    if (/^([+-]=)?\d+(\.\d+)?(px|%)?$/.test(_target)) {
-                        _target = both(_target);
+                // switches over the target data type, so that the proper
+                // target manipulation is performed (target normalized)
+                switch (typeof _target) {
+                    // in case it's a number or string
+                    // will pass the regex
+                    case "number":
+                    case "string":
+                        if (/^([+-]=)?\d+(\.\d+)?(px|%)?$/.test(_target)) {
+                            _target = both(_target);
+                            break;
+                        }
+
+                        // relative selector, avoids break
+                        _target = jQuery(_target, this);
+
+                        if (_target.is || _target.style) {
+                            // retrieves the real position of the target
+                            targetOffset = (_target = jQuery(_target)).offset();
+                        }
+
                         break;
-                    }
 
-                    // relative selector, avoids break
-                    _target = jQuery(_target, this);
-
-                    if (_target.is || _target.style) {
-                        // retrieves the real position of the target
-                        targetOffset = (_target = jQuery(_target)).offset();
-                    }
-
-                    break;
-
-                case "object":
-                    // in case it's a DOM element or jQuery element
-                    if (_target.is || _target.style) {
-                        // retrieves the real position of the target
-                        targetOffset = (_target = jQuery(_target)).offset();
-                    }
-                    break;
-            }
-
-            // in case the target is not defined or in case it's
-            // an empty array, must return immdiately, nothing to be done
-            if (!_target || _target.length === 0) {
-                return;
-            }
-
-            jQuery.each(settings.axis.split(""), function(index, axis) {
-                // retrieves the position and converts it to lower case
-                // then retrieves the key to the position, the old
-                // element and the maximum between the axis and the element
-                var position = axis === "x" ? "Left" : "Top";
-                var positionLower = position.toLowerCase();
-                var key = "scroll" + position;
-                var old = element[key];
-                var max = uxscrollto.max(element, axis);
-
-                // in case there is a target offset defined
-                if (targetOffset) {
-                    attributes[key] = targetOffset[positionLower] + (win ? 0 : old - _element.offset()[
-                        positionLower]);
-
-                    // in case it's a dom element, reduces the margin
-                    if (settings.margin) {
-                        attributes[key] -= parseInt(_target.css("margin" + position)) || 0;
-                        attributes[key] -= parseInt(_target.css("border" + position + "Width")) ||
-                            0;
-                    }
-
-                    attributes[key] += settings.offset[positionLower] || 0;
-
-                    if (settings.over[positionLower]) {
-                        // scrolls to a fraction of its width/height
-                        attributes[key] += _target[axis === "x" ? "width" : "height"]() *
-                            settings.over[positionLower];
-                    }
-                }
-                // otherwise no offset should be used
-                else {
-                    // sets the value as the target position
-                    var value = _target[positionLower];
-
-                    // handles the percentage values
-                    attributes[key] = value.slice && value.slice(-1) === "%" ? parseFloat(value) /
-                        100 * max : value;
+                    case "object":
+                        // in case it's a DOM element or jQuery element
+                        if (_target.is || _target.style) {
+                            // retrieves the real position of the target
+                            targetOffset = (_target = jQuery(_target)).offset();
+                        }
+                        break;
                 }
 
-                // in case it's umber or "number"
-                if (/^\d+$/.test(attributes[key])) {
-                    // checks the limits
-                    attributes[key] = attributes[key] <= 0 ? 0 : Math.min(
-                        attributes[key], max);
+                // in case the target is not defined or in case it's
+                // an empty array, must return immdiately, nothing to be done
+                if (!_target || _target.length === 0) {
+                    return;
                 }
 
-                // in case it's queueing axes
-                if (!index && settings.queue) {
-                    // avoids wasting time animating, if there's no need
-                    if (old !== attributes[key]) {
-                        // intermediate animation
-                        animate(settings.onAfterFirst);
+                jQuery.each(settings.axis.split(""), function(index, axis) {
+                    // retrieves the position and converts it to lower case
+                    // then retrieves the key to the position, the old
+                    // element and the maximum between the axis and the element
+                    var position = axis === "x" ? "Left" : "Top";
+                    var positionLower = position.toLowerCase();
+                    var key = "scroll" + position;
+                    var old = element[key];
+                    var max = uxscrollto.max(element, axis);
+
+                    // in case there is a target offset defined
+                    if (targetOffset) {
+                        attributes[key] =
+                            targetOffset[positionLower] +
+                            (win ? 0 : old - _element.offset()[positionLower]);
+
+                        // in case it's a dom element, reduces the margin
+                        if (settings.margin) {
+                            attributes[key] -= parseInt(_target.css("margin" + position)) || 0;
+                            attributes[key] -=
+                                parseInt(_target.css("border" + position + "Width")) || 0;
+                        }
+
+                        attributes[key] += settings.offset[positionLower] || 0;
+
+                        if (settings.over[positionLower]) {
+                            // scrolls to a fraction of its width/height
+                            attributes[key] +=
+                                _target[axis === "x" ? "width" : "height"]() *
+                                settings.over[positionLower];
+                        }
+                    }
+                    // otherwise no offset should be used
+                    else {
+                        // sets the value as the target position
+                        var value = _target[positionLower];
+
+                        // handles the percentage values
+                        attributes[key] =
+                            value.slice && value.slice(-1) === "%"
+                                ? (parseFloat(value) / 100) * max
+                                : value;
                     }
 
-                    // avoids animating this axis again in the next iteration
-                    delete attributes[key];
-                }
-            });
+                    // in case it's umber or "number"
+                    if (/^\d+$/.test(attributes[key])) {
+                        // checks the limits
+                        attributes[key] = attributes[key] <= 0 ? 0 : Math.min(attributes[key], max);
+                    }
 
-            /**
-             * Animate function that run the animation and calls the given
-             * callback at the end of the animation.
-             *
-             * @param {Function}
-             *            callback The callback to be called at the end of the
-             *            animation.
-             */
-            var animate = function(callback) {
-                _element.animate(attributes, duration, settings.easing,
-                    callback && function() {
-                        callback.call(this, target, settings);
-                    });
-            };
+                    // in case it's queueing axes
+                    if (!index && settings.queue) {
+                        // avoids wasting time animating, if there's no need
+                        if (old !== attributes[key]) {
+                            // intermediate animation
+                            animate(settings.onAfterFirst);
+                        }
 
-            // runs the animation and calls
-            // the on after callback at the end
-            animate(settings.onAfter);
-        }).end();
+                        // avoids animating this axis again in the next iteration
+                        delete attributes[key];
+                    }
+                });
+
+                /**
+                 * Animate function that run the animation and calls the given
+                 * callback at the end of the animation.
+                 *
+                 * @param {Function}
+                 *            callback The callback to be called at the end of the
+                 *            animation.
+                 */
+                var animate = function(callback) {
+                    _element.animate(
+                        attributes,
+                        duration,
+                        settings.easing,
+                        callback &&
+                            function() {
+                                callback.call(this, target, settings);
+                            }
+                    );
+                };
+
+                // runs the animation and calls
+                // the on after callback at the end
+                animate(settings.onAfter);
+            })
+            .end();
     };
 
     /**
@@ -5760,10 +6742,12 @@ if (typeof require !== "undefined") {
      * @return {Map} The map with the top and left key set to the value.
      */
     var both = function(value) {
-        return typeof value === "object" ? value : {
-            top: value,
-            left: value
-        };
+        return typeof value === "object"
+            ? value
+            : {
+                  top: value,
+                  left: value
+              };
     };
 })(jQuery);
 
@@ -5802,8 +6786,8 @@ if (typeof require !== "undefined") {
 
         // retrieves the offset top the top of the element taking into
         // account if the current parent in use is the window element
-        var elementOffsetTop = _parent[0] === window ? element.offset().top : element.offset().top +
-            viewScrollTop;
+        var elementOffsetTop =
+            _parent[0] === window ? element.offset().top : element.offset().top + viewScrollTop;
 
         // retrieves the top and bottom positions of the
         // view(port) element
@@ -5816,8 +6800,12 @@ if (typeof require !== "undefined") {
 
         // runs the intersection test on the element against
         // the view(port) values
-        return ((elementBottom >= viewTop) && (elementTop <= viewBottom) && (elementBottom <= viewBottom) && (
-            elementTop >= viewTop));
+        return (
+            elementBottom >= viewTop &&
+            elementTop <= viewBottom &&
+            elementBottom <= viewBottom &&
+            elementTop >= viewTop
+        );
     };
 })(jQuery);
 
@@ -5908,8 +6896,9 @@ if (typeof require !== "undefined") {
             // into account if the element is below the viewport or
             // abover, this calculus also takes into account the offset
             // and padding values
-            scrollTop = isBelow ? offsetTop - parentOffsetTop - parentHeight + height + padding : offsetTop -
-                parentOffsetTop - offset - padding;
+            scrollTop = isBelow
+                ? offsetTop - parentOffsetTop - parentHeight + height + padding
+                : offsetTop - parentOffsetTop - offset - padding;
 
             // changes the scroll top value in the parent element,
             // this should make visible the matched object
@@ -5982,97 +6971,117 @@ if (typeof require !== "undefined") {
 (function(jQuery) {
     jQuery.fn.uxbrowser = function(options) {
         // the data browser values
-        var DATA_BROWSER = [{
-            string: navigator.userAgent,
-            subString: "Edge",
-            identity: "Edge",
-            versionSearch: "Edge"
-        }, {
-            string: navigator.userAgent,
-            subString: "Chrome",
-            identity: "Chrome"
-        }, {
-            string: navigator.userAgent,
-            subString: "OmniWeb",
-            versionSearch: "OmniWeb/",
-            identity: "OmniWeb"
-        }, {
-            string: navigator.vendor,
-            subString: "Apple",
-            identity: "Safari",
-            versionSearch: "Version"
-        }, {
-            prop: window.opera,
-            identity: "Opera"
-        }, {
-            string: navigator.vendor,
-            subString: "iCab",
-            identity: "iCab"
-        }, {
-            string: navigator.vendor,
-            subString: "KDE",
-            identity: "Konqueror"
-        }, {
-            string: navigator.userAgent,
-            subString: "Firefox",
-            identity: "Firefox"
-        }, {
-            string: navigator.vendor,
-            subString: "Camino",
-            identity: "Camino"
-        }, {
-            string: navigator.userAgent,
-            subString: "Netscape",
-            identity: "Netscape"
-        }, {
-            string: navigator.userAgent,
-            subString: "MSIE",
-            identity: "Explorer",
-            versionSearch: "MSIE"
-        }, {
-            string: navigator.userAgent,
-            subString: "Trident",
-            identity: "Explorer",
-            versionSearch: "rv"
-        }, {
-            string: navigator.userAgent,
-            subString: "Gecko",
-            identity: "Mozilla",
-            versionSearch: "rv"
-        }, {
-            string: navigator.userAgent,
-            subString: "Mozilla",
-            identity: "Netscape",
-            versionSearch: "Mozilla"
-        }];
+        var DATA_BROWSER = [
+            {
+                string: navigator.userAgent,
+                subString: "Edge",
+                identity: "Edge",
+                versionSearch: "Edge"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Chrome",
+                identity: "Chrome"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "OmniWeb",
+                versionSearch: "OmniWeb/",
+                identity: "OmniWeb"
+            },
+            {
+                string: navigator.vendor,
+                subString: "Apple",
+                identity: "Safari",
+                versionSearch: "Version"
+            },
+            {
+                prop: window.opera,
+                identity: "Opera"
+            },
+            {
+                string: navigator.vendor,
+                subString: "iCab",
+                identity: "iCab"
+            },
+            {
+                string: navigator.vendor,
+                subString: "KDE",
+                identity: "Konqueror"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Firefox",
+                identity: "Firefox"
+            },
+            {
+                string: navigator.vendor,
+                subString: "Camino",
+                identity: "Camino"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Netscape",
+                identity: "Netscape"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "MSIE",
+                identity: "Explorer",
+                versionSearch: "MSIE"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Trident",
+                identity: "Explorer",
+                versionSearch: "rv"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Gecko",
+                identity: "Mozilla",
+                versionSearch: "rv"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "Mozilla",
+                identity: "Netscape",
+                versionSearch: "Mozilla"
+            }
+        ];
 
         // the data os values, to be used for proper
         // indeitification of the operative systems
-        var DATA_OS = [{
-            string: navigator.platform,
-            subString: "Win",
-            identity: "Windows"
-        }, {
-            string: navigator.platform,
-            subString: "Mac",
-            identity: "Mac"
-        }, {
-            string: navigator.userAgent,
-            subString: "iPhone",
-            identity: "iPhone/iPod"
-        }, {
-            string: navigator.platform,
-            subString: "Linux",
-            identity: "Linux"
-        }];
+        var DATA_OS = [
+            {
+                string: navigator.platform,
+                subString: "Win",
+                identity: "Windows"
+            },
+            {
+                string: navigator.platform,
+                subString: "Mac",
+                identity: "Mac"
+            },
+            {
+                string: navigator.userAgent,
+                subString: "iPhone",
+                identity: "iPhone/iPod"
+            },
+            {
+                string: navigator.platform,
+                subString: "Linux",
+                identity: "Linux"
+            }
+        ];
 
         // the legacy dictionary that is going to map the
         // name of the browser with the minimum version from
         // which the browser is considered not legacy (or current)
         var BROWSER_LEGACY = {
-            "chrome": 40,
-            "firefox": 30,
-            "explorer": 10
+            chrome: 40,
+            firefox: 30,
+            explorer: 10
         };
 
         // the default values for the browser
@@ -6110,7 +7119,9 @@ if (typeof require !== "undefined") {
 
             // retrieves the browser information
             var browserName = _searchString(DATA_BROWSER) || "Unknown browser";
-            var browserVersion = _searchVersion(navigator.userAgent) || _searchVersion(navigator.appVersion) ||
+            var browserVersion =
+                _searchVersion(navigator.userAgent) ||
+                _searchVersion(navigator.appVersion) ||
                 "Unknown version";
             var browserOs = _searchString(DATA_OS) || "Unknown OS";
 
@@ -6122,8 +7133,9 @@ if (typeof require !== "undefined") {
             // tries to retrieve the minimum version version from which the
             // browser is considered to be a current one (not legacy) either
             // from the current element or the static definitions
-            var versionLegacy = matchedObject.attr("data-" + browserName + "_legacy") || BROWSER_LEGACY[
-                browserName];
+            var versionLegacy =
+                matchedObject.attr("data-" + browserName + "_legacy") ||
+                BROWSER_LEGACY[browserName];
             versionLegacy = parseInt(versionLegacy);
 
             // tries to determine if the current browser is a legacy one, that
@@ -6172,7 +7184,8 @@ if (typeof require !== "undefined") {
             for (var index = 0; index < data.length; index++) {
                 var dataString = data[index].string;
                 var dataProp = data[index].prop;
-                jQuery.fn.uxbrowser.versionSearchString = data[index].versionSearch || data[index].identity;
+                jQuery.fn.uxbrowser.versionSearchString =
+                    data[index].versionSearch || data[index].identity;
                 if (dataString) {
                     if (dataString.indexOf(data[index].subString) !== -1) {
                         return data[index].identity;
@@ -6193,8 +7206,9 @@ if (typeof require !== "undefined") {
                 return;
             }
 
-            return parseFloat(dataString.substring(index + jQuery.fn.uxbrowser.versionSearchString.length +
-                1));
+            return parseFloat(
+                dataString.substring(index + jQuery.fn.uxbrowser.versionSearchString.length + 1)
+            );
         };
 
         var _applyPatch = function(browserName, browserVersion, browserOs, force) {
@@ -6537,12 +7551,17 @@ if (typeof require !== "undefined") {
 
         // in case the plugin is not yet registered for the fullscreen
         // change event registers for such operation
-        !isRegistered
-            && _document.bind(
+        !isRegistered &&
+            _document.bind(
                 "fullscreenchange webkitfullscreenchange mozfullscreenchange",
                 function() {
-                    var isFullscreen = this.fullScreen || this.mozFullScreen || this.webkitIsFullScreen;
-                    isFullscreen = isFullscreen || this.fullscreenElement || this.mozFullScreenElement || this.webkitFullscreenElement ||
+                    var isFullscreen =
+                        this.fullScreen || this.mozFullScreen || this.webkitIsFullScreen;
+                    isFullscreen =
+                        isFullscreen ||
+                        this.fullscreenElement ||
+                        this.mozFullScreenElement ||
+                        this.webkitFullscreenElement ||
                         this.msFullscreenElement;
                     isFullscreen = Boolean(isFullscreen);
                     if (isFullscreen) {
@@ -6551,11 +7570,15 @@ if (typeof require !== "undefined") {
                         _body.removeClass("full-window");
                     }
                     _body.triggerHandler("fullscreen_change", [isFullscreen]);
-                });
+                }
+            );
 
         // tries to determine if the current screen is being displayed
         // in fullscreen or if it's under a window mode
-        var isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement ||
+        var isFullscreen =
+            document.fullscreenElement ||
+            document.mozFullScreenElement ||
+            document.webkitFullscreenElement ||
             document.msFullscreenElement;
         isFullscreen = isFullscreen || leave;
         isFullscreen = Boolean(isFullscreen);
@@ -7044,8 +8067,7 @@ if (typeof require !== "undefined") {
 
             // in case the device has changed a device change event is raised
             // so thtat any listner is notified about such changed
-            deviceChanged
-                && matchedObject.triggerHandler("device_change", [nextDevice]);
+            deviceChanged && matchedObject.triggerHandler("device_change", [nextDevice]);
         };
 
         var watchDelayed = function() {
@@ -7091,9 +8113,12 @@ if (typeof require !== "undefined") {
         // tries to retrieve the complete set of arguments
         // for the value operation (in case an argument is
         // provided this is a set operation)
-        var options = arguments.length > 0 ? {
-            value: arguments[0]
-        } : {};
+        var options =
+            arguments.length > 0
+                ? {
+                      value: arguments[0]
+                  }
+                : {};
 
         // verifies if the provided first argument is an object
         // and if that's the case uses it as the options that
@@ -7111,7 +8136,9 @@ if (typeof require !== "undefined") {
         // value for the component
         var object = matchedObject.attr("data-object");
         var method = matchedObject["ux" + object];
-        var value = method ? method.apply(matchedObject, _arguments) : valueF.apply(matchedObject, arguments);
+        var value = method
+            ? method.apply(matchedObject, _arguments)
+            : valueF.apply(matchedObject, arguments);
 
         // returns the just retrieved value from the component
         // to the caller method
@@ -7178,8 +8205,9 @@ if (typeof require !== "undefined") {
 
                     // retrieves the current value and then uses it to parse
                     // it as current timestamp
-                    var currentTimestamp = utc ? (Date.parse(dateString + " UTC") / 1000) :
-                        Date.parseUtc(dateString) / 1000;
+                    var currentTimestamp = utc
+                        ? Date.parse(dateString + " UTC") / 1000
+                        : Date.parseUtc(dateString) / 1000;
 
                     // retrieves the name attribute from the date element
                     // and then removes it to avoid sending the literal date value
@@ -7189,8 +8217,13 @@ if (typeof require !== "undefined") {
 
                     // creates the hidden field to submit the timestamp value
                     // described in the text field
-                    time.after("<input type=\"hidden\" name=\"" + name + "\" value=\"" +
-                        String(currentTimestamp) + "\" />");
+                    time.after(
+                        '<input type="hidden" name="' +
+                            name +
+                            '" value="' +
+                            String(currentTimestamp) +
+                            '" />'
+                    );
                 });
             });
         };
@@ -7254,7 +8287,7 @@ if (typeof require !== "undefined") {
 
                 // replaces the string character in the error
                 // message list and then parses it as JSON
-                _enum = _enum.replace(STRING_CHARACTER_REGEX, "\"");
+                _enum = _enum.replace(STRING_CHARACTER_REGEX, '"');
                 var enumList = jQuery.parseJSON(_enum);
 
                 // retrieves the (element) value
@@ -7339,8 +8372,7 @@ if (typeof require !== "undefined") {
                     var power = Math.pow(10, places);
                     valueF = Math[strategy](valueF * power) / power;
                 }
-                var valueS = valueF.formatMoney(places, null, null,
-                    currency, true);
+                var valueS = valueF.formatMoney(places, null, null, currency, true);
                 _element.text(valueS);
             });
         };
@@ -7611,7 +8643,14 @@ if (typeof require !== "undefined") {
          *            baseKey The base key value to be used in all of the keys.
          * @return {String} The resulting template contents (after apply).
          */
-        var _applyAttributes = function(templateContents, attributes, nullify, localize, defaultValue, baseKey) {
+        var _applyAttributes = function(
+            templateContents,
+            attributes,
+            nullify,
+            localize,
+            defaultValue,
+            baseKey
+        ) {
             // retrieves the various default value to be used
             // in the template rendering
             defaultValue = defaultValue || "";
@@ -7650,9 +8689,14 @@ if (typeof require !== "undefined") {
                     // applies the attributes to the template contens
                     // based in the current attribute value and with
                     // the new base key value
-                    templateContents = _applyAttributes(templateContents,
-                        attributeValue, nullify, localize, defaultValue,
-                        newBaseKey);
+                    templateContents = _applyAttributes(
+                        templateContents,
+                        attributeValue,
+                        nullify,
+                        localize,
+                        defaultValue,
+                        newBaseKey
+                    );
                 }
                 // otherwise the attribute value must be a simple basic type
                 // and the normal replace strategy is applied
@@ -7664,7 +8708,9 @@ if (typeof require !== "undefined") {
                     // in case the localize flag is set, tries to localize the
                     // current attribute value into the current locale, the return
                     // value should default to the proper value in case of failure
-                    var attributeLocale = localize ? jQuery.uxlocale(attributeValue) : attributeValue;
+                    var attributeLocale = localize
+                        ? jQuery.uxlocale(attributeValue)
+                        : attributeValue;
 
                     // creates the replacer function that is going to be used by
                     // the replace operation to determine if the raw string should
@@ -7682,8 +8728,7 @@ if (typeof require !== "undefined") {
                     // replaces the template strings in the html with the proper attribute
                     // values this may be an expesive operation in case it's repeated
                     // frequently for a lot of times (modify with care)
-                    templateContents = templateContents.replace(keyRegex,
-                        replacer);
+                    templateContents = templateContents.replace(keyRegex, replacer);
                 }
             }
 
@@ -7701,7 +8746,8 @@ if (typeof require !== "undefined") {
 
             // retrirves the for each elments for the current template element
             var foreachElements = jQuery(".template-foreach", templateElement).not(
-                ".template-foreach .template-foreach");
+                ".template-foreach .template-foreach"
+            );
 
             // iterates over all the for each elements
             foreachElements.each(function(index, element) {
@@ -7728,13 +8774,12 @@ if (typeof require !== "undefined") {
                     var _templateElement = _element.clone();
 
                     // applies the template to the current element
-                    var forEachTemplateElement = __applyTemplate(
-                        _templateElement, variableItem);
+                    var forEachTemplateElement = __applyTemplate(_templateElement, variableItem);
 
                     // adds the new element to the for each
                     // buffer string value
-                    forEachBuffer += "<" + target + ">" + forEachTemplateElement + "</" + target +
-                        ">";
+                    forEachBuffer +=
+                        "<" + target + ">" + forEachTemplateElement + "</" + target + ">";
                 }
 
                 // replaces the element value with the value
@@ -7747,9 +8792,9 @@ if (typeof require !== "undefined") {
 
             // applies the attributes to the template contents
             // in case the template contents is correctly set
-            templateContents = templateContents ? _applyAttributes(
-                templateContents, attributes, nullify, localize,
-                defaultValue) : templateContents;
+            templateContents = templateContents
+                ? _applyAttributes(templateContents, attributes, nullify, localize, defaultValue)
+                : templateContents;
 
             // returns the template contents
             return templateContents;
@@ -7785,12 +8830,33 @@ if (typeof require !== "undefined") {
         var ABBREVIATED_MONTH_CHARACTER = new RegExp("%b", "g");
 
         // the lists for the month string values
-        var FULL_MONTHS = ["January", "February", "March", "April", "May",
-            "June", "July", "August", "September", "October", "November",
+        var FULL_MONTHS = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
             "December"
         ];
-        var ABBREVIATED_MONTHS = ["JanS", "FebS", "MarS", "AprS", "MayS",
-            "JunS", "JulS", "AugS", "SepS", "OctS", "NovS", "DecS"
+        var ABBREVIATED_MONTHS = [
+            "JanS",
+            "FebS",
+            "MarS",
+            "AprS",
+            "MayS",
+            "JunS",
+            "JulS",
+            "AugS",
+            "SepS",
+            "OctS",
+            "NovS",
+            "DecS"
         ];
 
         // the default values for the timestamp
@@ -7900,18 +8966,13 @@ if (typeof require !== "undefined") {
                 // replaces all the format values wit the proper
                 // date values in the format string
                 format = format.replace(YEAR_CHARACTER, year);
-                format = format.replace(MONTH_CHARACTER, _getStringValue(month,
-                    2));
+                format = format.replace(MONTH_CHARACTER, _getStringValue(month, 2));
                 format = format.replace(DAY_CHARACTER, _getStringValue(day, 2));
-                format = format.replace(HOUR_CHARACTER, _getStringValue(hours,
-                    2));
-                format = format.replace(MINUTE_CHARACTER, _getStringValue(
-                    minutes, 2));
-                format = format.replace(SECOND_CHARACTER, _getStringValue(
-                    seconds, 2));
+                format = format.replace(HOUR_CHARACTER, _getStringValue(hours, 2));
+                format = format.replace(MINUTE_CHARACTER, _getStringValue(minutes, 2));
+                format = format.replace(SECOND_CHARACTER, _getStringValue(seconds, 2));
                 format = format.replace(FULL_MONTH_CHARACTER, fullMonth);
-                format = format.replace(ABBREVIATED_MONTH_CHARACTER,
-                    abbreviatedMonth);
+                format = format.replace(ABBREVIATED_MONTH_CHARACTER, abbreviatedMonth);
 
                 // sets the date string as the final format
                 dateString = format;
@@ -8026,9 +9087,7 @@ if (typeof require !== "undefined") {
         /**
          * Creates the necessary html for the component.
          */
-        var _appendHtml = function() {
-
-        };
+        var _appendHtml = function() {};
 
         /**
          * Registers the event handlers for the created objects.
@@ -8096,22 +9155,23 @@ if (typeof require !== "undefined") {
             var noClick = matchedObject.hasClass("no-click");
 
             // registers for the click event
-            !noClick && matchedObject.click(function() {
-                // retrieves the element
-                var element = jQuery(this);
+            !noClick &&
+                matchedObject.click(function() {
+                    // retrieves the element
+                    var element = jQuery(this);
 
-                // checks if the element contains
-                // the flip class for removal
-                if (element.hasClass("flip")) {
-                    // removes the flip class
-                    element.removeClass("flip");
-                }
-                // otherwise it should be added
-                else {
-                    // add the flip class
-                    element.addClass("flip");
-                }
-            });
+                    // checks if the element contains
+                    // the flip class for removal
+                    if (element.hasClass("flip")) {
+                        // removes the flip class
+                        element.removeClass("flip");
+                    }
+                    // otherwise it should be added
+                    else {
+                        // add the flip class
+                        element.addClass("flip");
+                    }
+                });
         };
 
         // initializes the plugin
@@ -8405,10 +9465,19 @@ if (typeof require !== "undefined") {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-alert", matchedObject);
             if (window.length === 0) {
-                window = jQuery("<div class=\"window window-alert window-hide\">" + "<h1></h1>" +
-                    "<p class=\"single\"></p>" + "<div class=\"window-buttons\">" +
-                    "<span class=\"button button-cancel\">" + cancel + "</span>" +
-                    "<span class=\"button button-confirm\">" + confirm + "</span>" + "</div>");
+                window = jQuery(
+                    '<div class="window window-alert window-hide">' +
+                        "<h1></h1>" +
+                        '<p class="single"></p>' +
+                        '<div class="window-buttons">' +
+                        '<span class="button button-cancel">' +
+                        cancel +
+                        "</span>" +
+                        '<span class="button button-confirm">' +
+                        confirm +
+                        "</span>" +
+                        "</div>"
+                );
                 window.uxwindow();
                 matchedObject.append(window);
             }
@@ -8599,8 +9668,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the current breadcrumb in the breadcrumbs
             // and selects it in the current context
-            var currebtBreadcrumb = jQuery("> li:nth(" + index + ")",
-                matchedObject);
+            var currebtBreadcrumb = jQuery("> li:nth(" + index + ")", matchedObject);
             currebtBreadcrumb.addClass("selected");
         };
 
@@ -8679,12 +9747,19 @@ if (typeof require !== "undefined") {
 
             // creates both the range and the calendar elements that
             // will be added to the currently matched object latter
-            var rangeHtml = "<div class=\"range\">" +
-                "<input type=\"text\" class=\"text-field start-date\" data-original_value=\"" + startDate +
-                "\" />" + "<span class=\"range-separator\">" + to + "</span>" +
-                "<input type=\"text\" class=\"text-field end-date\" data-original_value=\"" + endDate +
-                "\" />" + "</div>";
-            var calendarHtml = "<div class=\"calendar no-layout\"></div>";
+            var rangeHtml =
+                '<div class="range">' +
+                '<input type="text" class="text-field start-date" data-original_value="' +
+                startDate +
+                '" />' +
+                '<span class="range-separator">' +
+                to +
+                "</span>" +
+                '<input type="text" class="text-field end-date" data-original_value="' +
+                endDate +
+                '" />' +
+                "</div>";
+            var calendarHtml = '<div class="calendar no-layout"></div>';
 
             // adds both the range and the calendar part of the
             // component to the inner part of it
@@ -8906,8 +9981,18 @@ if (typeof require !== "undefined") {
         var WEEK_DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
         // the list of year month in english language
-        var YEAR_MONTHS = ["January", "February", "March", "April", "May",
-            "June", "July", "August", "September", "October", "November",
+        var YEAR_MONTHS = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
             "December"
         ];
 
@@ -8962,14 +10047,23 @@ if (typeof require !== "undefined") {
             weekDaysString += "</tr>";
 
             // adds the calendar header component to the matched object
-            matchedObject.append("<div class=\"calendar-header\">" +
-                "<a class=\"calendar-arrow calendar-arrow-left\"></a>" +
-                "<span class=\"calendar-title\"></span>" +
-                "<a class=\"calendar-arrow calendar-arrow-right\"></a>" + "</div>");
+            matchedObject.append(
+                '<div class="calendar-header">' +
+                    '<a class="calendar-arrow calendar-arrow-left"></a>' +
+                    '<span class="calendar-title"></span>' +
+                    '<a class="calendar-arrow calendar-arrow-right"></a>' +
+                    "</div>"
+            );
 
             // adds the calendar content component to the matched object
-            matchedObject.append("<table class=\"calendar-content\">" + "<thead>" + weekDaysString +
-                "</thead>" + "<tbody></tbody>" + "</table>");
+            matchedObject.append(
+                '<table class="calendar-content">' +
+                    "<thead>" +
+                    weekDaysString +
+                    "</thead>" +
+                    "<tbody></tbody>" +
+                    "</table>"
+            );
 
             // creates a new date object to retrieve
             // the current year, month and day
@@ -9161,19 +10255,18 @@ if (typeof require !== "undefined") {
                 var previousDay = finalDayPreviousNumber - (initialDayWeek - index) + 1;
 
                 // in case the (current) previous day is the currently select day
-                if (previousYear === currentDayYear && previousMonth === currentDayMonth && previousDay ===
-                    currentDayNumber) {
+                if (
+                    previousYear === currentDayYear &&
+                    previousMonth === currentDayMonth &&
+                    previousDay === currentDayNumber
+                ) {
                     // adds the day tuple with the active class in it
-                    days.push([previousYear, previousMonth, previousDay,
-                        "faded active"
-                    ]);
+                    days.push([previousYear, previousMonth, previousDay, "faded active"]);
                 }
                 // otherwise it's just a "normal" day
                 else {
                     // adds the day tuple
-                    days.push([previousYear, previousMonth, previousDay,
-                        "faded"
-                    ]);
+                    days.push([previousYear, previousMonth, previousDay, "faded"]);
                 }
             }
 
@@ -9183,7 +10276,11 @@ if (typeof require !== "undefined") {
                 var day = index + 1;
 
                 // in case the (current) day is the currently select day
-                if (year === currentDayYear && month === currentDayMonth && day === currentDayNumber) {
+                if (
+                    year === currentDayYear &&
+                    month === currentDayMonth &&
+                    day === currentDayNumber
+                ) {
                     // adds the day tuple with the active class in it
                     days.push([year, month, day, "active"]);
                 }
@@ -9204,8 +10301,11 @@ if (typeof require !== "undefined") {
                 var nextDay = index - daysLength + 1;
 
                 // in case the (current) next day is the currently select day
-                if (nextYear === currentDayYear && nextMonth === currentDayMonth && nextDay ===
-                    currentDayNumber) {
+                if (
+                    nextYear === currentDayYear &&
+                    nextMonth === currentDayMonth &&
+                    nextDay === currentDayNumber
+                ) {
                     // adds the day tuple with the active class in it
                     days.push([nextYear, nextMonth, nextDay, "faded active"]);
                 }
@@ -9260,8 +10360,18 @@ if (typeof require !== "undefined") {
                 var dayClass = dayTuple[3];
 
                 // adds the cell code to the html code string
-                htmlCode += "<td class=\"" + dayClass + "\" data-year=\"" + _year + "\" data-month=\"" +
-                    _month + "\" data-day=\"" + _day + "\" >" + _day + "</td>";
+                htmlCode +=
+                    '<td class="' +
+                    dayClass +
+                    '" data-year="' +
+                    _year +
+                    '" data-month="' +
+                    _month +
+                    '" data-day="' +
+                    _day +
+                    '" >' +
+                    _day +
+                    "</td>";
             }
 
             // in case there is a line (still) open
@@ -9553,35 +10663,40 @@ if (typeof require !== "undefined") {
 
             // registers for the key down operation on the body
             // so that the carousel may move accordingly
-            !isRegistered && _body.keydown(function(event) {
-                var element = jQuery(this);
-                var carousel = jQuery(".carousel", element);
+            !isRegistered &&
+                _body.keydown(function(event) {
+                    var element = jQuery(this);
+                    var carousel = jQuery(".carousel", element);
 
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                    var keyValue = event.keyCode
+                        ? event.keyCode
+                        : event.charCode
+                            ? event.charCode
+                            : event.which;
 
-                switch (keyValue) {
-                    case 37:
-                        _previous(carousel, options);
-                        _schedule(carousel, options);
-                        break;
+                    switch (keyValue) {
+                        case 37:
+                            _previous(carousel, options);
+                            _schedule(carousel, options);
+                            break;
 
-                    case 39:
-                        _next(carousel, options);
-                        _schedule(carousel, options);
-                        break;
-                }
-            });
+                        case 39:
+                            _next(carousel, options);
+                            _schedule(carousel, options);
+                            break;
+                    }
+                });
 
             // registers for the resize event on the window
             // so that the current width and position are updated
-            !isRegistered && _window.resize(function() {
-                var carousel = jQuery(".carousel", _body);
-                carousel.each(function(index, element) {
-                    var _element = jQuery(this);
-                    _update(_element, options);
+            !isRegistered &&
+                _window.resize(function() {
+                    var carousel = jQuery(".carousel", _body);
+                    carousel.each(function(index, element) {
+                        var _element = jQuery(this);
+                        _update(_element, options);
+                    });
                 });
-            });
         };
 
         var _init = function(matchedObject, options) {
@@ -9629,8 +10744,7 @@ if (typeof require !== "undefined") {
             var viewItems = jQuery("> li", views);
             var width = matchedObject.outerWidth();
             var index = matchedObject.data("index");
-            var activeItem = jQuery(
-                "> li:nth-child(" + String(index + 1) + ")", views);
+            var activeItem = jQuery("> li:nth-child(" + String(index + 1) + ")", views);
             viewItems.removeClass("active");
             activeItem.addClass("active");
             items.css("margin-left", String(width * index * -1) + "px");
@@ -9729,8 +10843,9 @@ if (typeof require !== "undefined") {
 
                 // retrieves the timeout value from the element
                 // defaulting to the default timeout (constant) value
-                var timeout = _element.attr("data-timeout") ? parseInt(_element.attr("data-timeout")) :
-                    DEFAULT_TIMEOUT;
+                var timeout = _element.attr("data-timeout")
+                    ? parseInt(_element.attr("data-timeout"))
+                    : DEFAULT_TIMEOUT;
 
                 // sets the interval handler using the "just" retrieved
                 // timeout value
@@ -9744,8 +10859,9 @@ if (typeof require !== "undefined") {
         var _update = function(matchedObject, options) {
             // retrieves the number of sections in the matched object
             // defaulting to the default section count
-            var sectionCount = matchedObject.attr("data-section_count") ? parseInt(matchedObject.attr(
-                "data-section_count")) : DEFAULT_SECTION_COUNT;
+            var sectionCount = matchedObject.attr("data-section_count")
+                ? parseInt(matchedObject.attr("data-section_count"))
+                : DEFAULT_SECTION_COUNT;
 
             // retrieves the current index from the matched object
             var index = matchedObject.data("index");
@@ -9894,8 +11010,7 @@ if (typeof require !== "undefined") {
 
                     // adds the input element representing the unset
                     // check field value to the proper element
-                    _element.append("<input type=\"hidden\" name=\"" + elementName +
-                        "\" value=\"\" />");
+                    _element.append('<input type="hidden" name="' + elementName + '" value="" />');
                 });
             });
         };
@@ -10025,8 +11140,7 @@ if (typeof require !== "undefined") {
                 // for this event must defines if the event should be
                 // completely handled (click enabling)
                 var buttonGroup = element.parents(".button-group");
-                var continueChange = buttonGroup.triggerHandler(
-                    "index_changed", [index, element]);
+                var continueChange = buttonGroup.triggerHandler("index_changed", [index, element]);
                 if (continueChange === false) {
                     return;
                 }
@@ -10041,9 +11155,7 @@ if (typeof require !== "undefined") {
 
                 // triggers the index selected event, so that any listener is
                 // notified about the selection changing (after change)
-                buttonGroup.triggerHandler("index_selected", [index,
-                    element
-                ]);
+                buttonGroup.triggerHandler("index_selected", [index, element]);
             });
 
             // registers for the pre submit event on the associated parent
@@ -10081,8 +11193,9 @@ if (typeof require !== "undefined") {
                     // creates the hidden input value and prepend it to the
                     // button group element
                     var value = selected.attr("data-value") || selected.attr("value");
-                    _element.prepend("<input type=\"hidden\" name=\"" + name +
-                        "\" value=\"" + value + "\" />");
+                    _element.prepend(
+                        '<input type="hidden" name="' + name + '" value="' + value + '" />'
+                    );
                 });
             });
 
@@ -10322,17 +11435,18 @@ if (typeof require !== "undefined") {
 
             // calls the confirm window in the document, because the action
             // must be first validated before any redirection occurs
-            isConfirm && _body.uxconfirm(message, function(result) {
-                // in case the result is cancel (false),
-                // avoids execution and returns immediately
-                if (result === false) {
-                    return;
-                }
+            isConfirm &&
+                _body.uxconfirm(message, function(result) {
+                    // in case the result is cancel (false),
+                    // avoids execution and returns immediately
+                    if (result === false) {
+                        return;
+                    }
 
-                // executes the "punching" of the button this should trigger
-                // the proper behavior to be executed
-                __punch(matchedObject, options);
-            });
+                    // executes the "punching" of the button this should trigger
+                    // the proper behavior to be executed
+                    __punch(matchedObject, options);
+                });
 
             // in case the is confirm flag is set the control flow must
             // return immediately to the caller function to avoid any
@@ -10535,7 +11649,8 @@ if (typeof require !== "undefined") {
                 // the highlight operation in it setting the run
                 // flag in it afterwards
                 var domElement = _element[0];
-                Prism.highlightElement(domElement); // eslint-disable-line no-undef
+                // eslint-disable-next-line no-undef
+                Prism.highlightElement(domElement);
                 _element.data("highlighted", true);
             });
         };
@@ -10596,10 +11711,19 @@ if (typeof require !== "undefined") {
             // retrieves the window (alert window) elements
             var window = jQuery(windowSelector, matchedObject);
             if (window.length === 0) {
-                window = jQuery("<div class=\"window window-alert window-hide\">" + "<h1></h1>" +
-                    "<p class=\"single\"></p>" + "<div class=\"window-buttons\">" +
-                    "<span class=\"button button-cancel\">" + cancel + "</span>" +
-                    "<span class=\"button button-confirm\">" + confirm + "</span>" + "</div>");
+                window = jQuery(
+                    '<div class="window window-alert window-hide">' +
+                        "<h1></h1>" +
+                        '<p class="single"></p>' +
+                        '<div class="window-buttons">' +
+                        '<span class="button button-cancel">' +
+                        cancel +
+                        "</span>" +
+                        '<span class="button button-confirm">' +
+                        confirm +
+                        "</span>" +
+                        "</div>"
+                );
                 window.uxwindow();
                 matchedObject.append(window);
             }
@@ -10653,7 +11777,7 @@ if (typeof require !== "undefined") {
                 // defined, note that the result of the hide
                 // operation is considered to be success
                 window.uxwindow("hide", {
-                    "reason": "success"
+                    reason: "success"
                 });
                 callback && callback(true);
             });
@@ -10669,7 +11793,7 @@ if (typeof require !== "undefined") {
                 // if defined, note that the result of the
                 // hide operation is considered to be cancel
                 window.uxwindow("hide", {
-                    "reason": "cancel"
+                    reason: "cancel"
                 });
                 callback && callback(false);
             });
@@ -10751,8 +11875,9 @@ if (typeof require !== "undefined") {
                 // retrieves the timeout of the element, to be
                 // used in case the timeout mode is enabled, defaults
                 // to the default timeout
-                var timeout = _element.attr("data-timeout") ? parseInt(_element.attr("data-timeout")) :
-                    DEFAULT_TIMEOUT;
+                var timeout = _element.attr("data-timeout")
+                    ? parseInt(_element.attr("data-timeout"))
+                    : DEFAULT_TIMEOUT;
 
                 // in case the trigger mode is enable must bind the
                 // element to the change event
@@ -10888,31 +12013,31 @@ if (typeof require !== "undefined") {
                 var linkAttribute = matchedObject.attr("data-link_attribute") || "link";
 
                 // creates the various section elements
-                var sourceSection = jQuery("<div class=\"section source-section\"></div>");
-                var crossSection = jQuery("<div class=\"section cross-section\"></div>");
-                var targetSection = jQuery("<div class=\"section target-section\"></div>");
+                var sourceSection = jQuery('<div class="section source-section"></div>');
+                var crossSection = jQuery('<div class="section cross-section"></div>');
+                var targetSection = jQuery('<div class="section target-section"></div>');
 
                 // creates the various title elements
                 var sourceTitle = jQuery("<h2>" + sourceName + "</h2>");
                 var targetTitle = jQuery("<h2>" + targetName + "</h2>");
 
                 // creates the various source elements
-                var sourceList = jQuery("<div class=\"source-list\"></div>");
-                var targetList = jQuery("<div class=\"source-list\"></div>");
+                var sourceList = jQuery('<div class="source-list"></div>');
+                var targetList = jQuery('<div class="source-list"></div>');
 
                 // creates the (local) data source to be used in the target
                 // section, this data source is going to be constantly manpulated
                 // throught the internal items list
-                var targetSource = jQuery("<ul class=\"data-source\" data-type=\"local\"></ul>");
+                var targetSource = jQuery('<ul class="data-source" data-type="local"></ul>');
 
                 // creates the various arrow elements to be used to "cross" the
                 // elements from one side to the other
-                var arrowRight = jQuery("<div class=\"arrow arrow-right\"></div>");
-                var arrowLeft = jQuery("<div class=\"arrow arrow-left\"></div>");
+                var arrowRight = jQuery('<div class="arrow arrow-right"></div>');
+                var arrowLeft = jQuery('<div class="arrow arrow-left"></div>');
 
                 // creates the clear element to be used to clear the ui after the
                 // creation of the various "floating" sections
-                var clear = jQuery("<div class=\"clear\"></div>");
+                var clear = jQuery('<div class="clear"></div>');
 
                 // iterates over each of the items in the list of predefined items
                 // to add them to the local (and target) data souce, initial setting
@@ -10927,20 +12052,14 @@ if (typeof require !== "undefined") {
                 // list then in case the element name is defined sets it in the target
                 // list to provide correct form submission
                 dataSource.length && sourceList.append(dataSource);
-                displayAttribute
-                    && sourceList.attr("data-display_attribute",
-                        displayAttribute);
-                valueAttribute
-                    && sourceList.attr("data-value_attribute",
-                        valueAttribute);
-                linkAttribute
-                    && sourceList.attr("data-link_attribute", linkAttribute);
+                displayAttribute && sourceList.attr("data-display_attribute", displayAttribute);
+                valueAttribute && sourceList.attr("data-value_attribute", valueAttribute);
+                linkAttribute && sourceList.attr("data-link_attribute", linkAttribute);
                 elementOrder && targetList.attr("data-order", elementOrder);
 
                 // in case the number of options is set propagates the setting to the
                 // source list so that the number of options is limited
-                numberOptions
-                    && sourceList.attr("data-number_options", numberOptions);
+                numberOptions && sourceList.attr("data-number_options", numberOptions);
 
                 // starts the target data source and then adds it to the target list
                 // this data source is going to be manipulated through the items
@@ -10988,16 +12107,13 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // retrieves both the target and the source list
             // for the currently selected object
-            var sourceList = jQuery(".source-section .select-list",
-                matchedObject);
-            var targetList = jQuery(".target-section .select-list",
-                matchedObject);
+            var sourceList = jQuery(".source-section .select-list", matchedObject);
+            var targetList = jQuery(".target-section .select-list", matchedObject);
 
             // retrieves the source list value as the source
             // element to be able to register it for the valide
             // item event (and filter the ones in the target)
-            var sourceElement = jQuery(".source-section .source-list",
-                matchedObject);
+            var sourceElement = jQuery(".source-section .source-list", matchedObject);
 
             // retrieves the arrows for the currently matched object
             // these "buttons" control the flow between sections
@@ -11023,8 +12139,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves the target data source and uses it to
                 // retrieve the associated items for filtering
-                var targetSource = jQuery(
-                    ".target-section .data-source", crossList);
+                var targetSource = jQuery(".target-section .data-source", crossList);
                 var targetItems = targetSource.data("items");
 
                 // verifies if the current item in validation exists in
@@ -11057,8 +12172,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves the target data source and then
                 // uses it to retrieve the items from its data
-                var targetSource = jQuery(".target-section .data-source",
-                    crossList);
+                var targetSource = jQuery(".target-section .data-source", crossList);
                 var targetItems = targetSource.data("items");
 
                 // retrieves the complete set of items in the select
@@ -11101,15 +12215,12 @@ if (typeof require !== "undefined") {
 
                 // retrieves the source and target lists associated with the
                 // current cross list (current context) for usage
-                var sourceList = jQuery(".source-section .source-list",
-                    crossList);
-                var targetList = jQuery(".target-section .source-list",
-                    crossList);
+                var sourceList = jQuery(".source-section .source-list", crossList);
+                var targetList = jQuery(".target-section .source-list", crossList);
 
                 // retrieves the target data source and then
                 // uses it to retrieve the items from its data
-                var targetSource = jQuery(
-                    ".target-section .data-source", crossList);
+                var targetSource = jQuery(".target-section .data-source", crossList);
                 var targetItems = targetSource.data("items");
 
                 // removes the selected class from the element, it's
@@ -11146,15 +12257,12 @@ if (typeof require !== "undefined") {
 
                 // retrieves the source and target lists associated with the
                 // current cross list (current context) for usage
-                var sourceList = jQuery(".source-section .source-list",
-                    crossList);
-                var targetList = jQuery(".target-section .source-list",
-                    crossList);
+                var sourceList = jQuery(".source-section .source-list", crossList);
+                var targetList = jQuery(".target-section .source-list", crossList);
 
                 // retrieves the target data source and then
                 // uses it to retrieve the items from its data
-                var targetSource = jQuery(
-                    ".target-section .data-source", crossList);
+                var targetSource = jQuery(".target-section .data-source", crossList);
                 var targetItems = targetSource.data("items");
 
                 // removes the selected class from the element, it's
@@ -11188,15 +12296,12 @@ if (typeof require !== "undefined") {
 
                 // retrieves the source and target lists associated with the
                 // current cross list (current context) for usage
-                var sourceList = jQuery(".source-section .source-list",
-                    crossList);
-                var targetList = jQuery(".target-section .source-list",
-                    crossList);
+                var sourceList = jQuery(".source-section .source-list", crossList);
+                var targetList = jQuery(".target-section .source-list", crossList);
 
                 // retrieves the target data source and then
                 // uses it to retrieve the items from its data
-                var targetSource = jQuery(
-                    ".target-section .data-source", crossList);
+                var targetSource = jQuery(".target-section .data-source", crossList);
                 var targetItems = targetSource.data("items");
 
                 // retrieves the list of selected items in the target list
@@ -11242,15 +12347,12 @@ if (typeof require !== "undefined") {
 
                 // retrieves the source and target lists associated with the
                 // current cross list (current context) for usage
-                var sourceList = jQuery(".source-section .source-list",
-                    crossList);
-                var targetList = jQuery(".target-section .source-list",
-                    crossList);
+                var sourceList = jQuery(".source-section .source-list", crossList);
+                var targetList = jQuery(".target-section .source-list", crossList);
 
                 // retrieves the target data source and then
                 // uses it to retrieve the items from its data
-                var targetSource = jQuery(
-                    ".target-section .data-source", crossList);
+                var targetSource = jQuery(".target-section .data-source", crossList);
                 var targetItems = targetSource.data("items");
 
                 // retrieves the list of selected items in the source list
@@ -11310,8 +12412,7 @@ if (typeof require !== "undefined") {
 
                     // retrieves the reference to the target select list that
                     // is going to be used in the retrieval of the list item
-                    var targetList = jQuery(
-                        ".target-section .select-list", _element);
+                    var targetList = jQuery(".target-section .select-list", _element);
 
                     // removes all the input elements contained inside the
                     // current select list (avoid duplicated submission)
@@ -11327,8 +12428,7 @@ if (typeof require !== "undefined") {
                     // value with the same name is posted (so that an empty value
                     // is submitted), required for compliance
                     if (listItems.length === 0) {
-                        targetList.append("<input type=\"hidden\" name=\"" + elementName +
-                            "\" />");
+                        targetList.append('<input type="hidden" name="' + elementName + '" />');
                     }
 
                     // iterates over all the elements in the list items to
@@ -11344,8 +12444,13 @@ if (typeof require !== "undefined") {
 
                         // adds the input element representing the list item
                         // to the target list itself
-                        targetList.append("<input type=\"hidden\" name=\"" + elementName +
-                            "\" value=\"" + dataValue + "\" />");
+                        targetList.append(
+                            '<input type="hidden" name="' +
+                                elementName +
+                                '" value="' +
+                                dataValue +
+                                '" />'
+                        );
                     }
                 });
             });
@@ -11428,9 +12533,9 @@ if (typeof require !== "undefined") {
             // creates the upper structure for the drop down, this should
             // include the button part so that it's possible to active the
             // drop down contents using the "usual" manner
-            matchedObject.wrap("<div class=\"drop-down-container\"></div>");
+            matchedObject.wrap('<div class="drop-down-container"></div>');
             var container = matchedObject.parents(".drop-down-container");
-            container.prepend("<div class=\"button button-drop-down\"></div>");
+            container.prepend('<div class="button button-drop-down"></div>');
 
             // iterates over the complete set of drop down elements so that
             // it's possible to properly set each button's name
@@ -11466,7 +12571,7 @@ if (typeof require !== "undefined") {
                 // down exists and if that the case created or re-uses
                 // the input associated with the drop down container
                 if (input && inputElement.length === 0) {
-                    container.prepend("<input type=\"hidden\" name=\"" + input + "\"/>");
+                    container.prepend('<input type="hidden" name="' + input + '"/>');
                 } else if (input) {
                     container.prepend(inputElement);
                 }
@@ -11510,8 +12615,7 @@ if (typeof require !== "undefined") {
 
                 // in case there's a valid extra (note) name to be added to
                 // the drop down button it's added at the end of the button
-                extra
-                    && button.append("<span class=\"extra\">" + extra + "</span>");
+                extra && button.append('<span class="extra">' + extra + "</span>");
 
                 // updates the drop down classes with the parent values
                 // of classes according to the specification
@@ -11660,54 +12764,60 @@ if (typeof require !== "undefined") {
 
             // register for the key down event in the body,
             // only in case the registration was not already made
-            !isRegistered && _body.keydown(function(event) {
-                // retrieves the element
-                var element = jQuery(this);
+            !isRegistered &&
+                _body.keydown(function(event) {
+                    // retrieves the element
+                    var element = jQuery(this);
 
-                // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                    // retrieves the key value
+                    var keyValue = event.keyCode
+                        ? event.keyCode
+                        : event.charCode
+                            ? event.charCode
+                            : event.which;
 
-                // in case the key that was pressed in not the
-                // escape one there's nothing to be done and so
-                // the control flow is returned immediately
-                if (keyValue !== 27) {
-                    return;
-                }
+                    // in case the key that was pressed in not the
+                    // escape one there's nothing to be done and so
+                    // the control flow is returned immediately
+                    if (keyValue !== 27) {
+                        return;
+                    }
 
-                // retrieves the reference to the complete set of drop down
-                // conatainers that are visible for the current body and then
-                // runs the hide operation for the associated drop down
-                var container = jQuery(".drop-down-container.visible", element);
-                var dropDown = jQuery(".drop-down", container);
-                _hide(dropDown, options);
-            });
+                    // retrieves the reference to the complete set of drop down
+                    // conatainers that are visible for the current body and then
+                    // runs the hide operation for the associated drop down
+                    var container = jQuery(".drop-down-container.visible", element);
+                    var dropDown = jQuery(".drop-down", container);
+                    _hide(dropDown, options);
+                });
 
-            !isRegistered && _body.click(function(event) {
-                // retrieves the reference to the current element, this should
-                // be a top level body element (from dom structure)
-                var element = jQuery(this);
+            !isRegistered &&
+                _body.click(function(event) {
+                    // retrieves the reference to the current element, this should
+                    // be a top level body element (from dom structure)
+                    var element = jQuery(this);
 
-                // retrieves the reference to the complete set of drop down
-                // conatainers that are visible for the current body and then
-                // runs the hide operation for the associated drop down
-                var container = jQuery(".drop-down-container.visible", element);
-                var dropDown = jQuery(".drop-down", container);
-                _hide(dropDown, options);
-            });
+                    // retrieves the reference to the complete set of drop down
+                    // conatainers that are visible for the current body and then
+                    // runs the hide operation for the associated drop down
+                    var container = jQuery(".drop-down-container.visible", element);
+                    var dropDown = jQuery(".drop-down", container);
+                    _hide(dropDown, options);
+                });
 
-            !isRegistered && _window.click(function(event) {
-                // retrieves the reference to the body element, this should
-                // be a top level body element (from dom structure)
-                var element = jQuery("body");
+            !isRegistered &&
+                _window.click(function(event) {
+                    // retrieves the reference to the body element, this should
+                    // be a top level body element (from dom structure)
+                    var element = jQuery("body");
 
-                // retrieves the reference to the complete set of drop down
-                // conatainers that are visible for the current body and then
-                // runs the hide operation for the associated drop down
-                var container = jQuery(".drop-down-container.visible", element);
-                var dropDown = jQuery(".drop-down", container);
-                _hide(dropDown, options);
-            });
+                    // retrieves the reference to the complete set of drop down
+                    // conatainers that are visible for the current body and then
+                    // runs the hide operation for the associated drop down
+                    var container = jQuery(".drop-down-container.visible", element);
+                    var dropDown = jQuery(".drop-down", container);
+                    _hide(dropDown, options);
+                });
 
             // marks the complete set of elements as registered this is going to
             // be used in the update event to determine the elements that already
@@ -11726,7 +12836,7 @@ if (typeof require !== "undefined") {
             // provided drop down (matched object) and then filters
             // the one that contains the target value
             var elements = jQuery("> li", matchedObject);
-            var element = elements.filter("[data-value=\"" + value + "\"]");
+            var element = elements.filter('[data-value="' + value + '"]');
 
             // runs the select operation on the target element as
             // "requested" by the click operation in it
@@ -11900,7 +13010,7 @@ if (typeof require !== "undefined") {
             var extra = matchedObject.attr("data-extra") || "";
             var original = matchedObject.data("original");
             var elements = jQuery("> li", matchedObject);
-            var originalElement = elements.filter("[data-value=\"" + original + "\"]");
+            var originalElement = elements.filter('[data-value="' + original + '"]');
 
             // starts some of the values that are going to be latter populated
             // by following code execution
@@ -11941,8 +13051,7 @@ if (typeof require !== "undefined") {
 
             // in case there's a valid extra (note) name to be added to
             // the drop down button it's added at the end of the button
-            originalExtra
-                && button.append("<span class=\"extra\">" + originalExtra + "</span>");
+            originalExtra && button.append('<span class="extra">' + originalExtra + "</span>");
         };
 
         var _reset = function(matchedObject, options) {
@@ -12215,7 +13324,7 @@ if (typeof require !== "undefined") {
 
                     // creates the text field element and sets the various
                     // attributes in it (attribute propagation)
-                    textField = jQuery("<input type=\"text\" class=\"text-field\" />");
+                    textField = jQuery('<input type="text" class="text-field" />');
                     textField.val(value);
                     textField.attr("name", name);
                     textField.attr("placeholder", placeholder);
@@ -12242,9 +13351,9 @@ if (typeof require !== "undefined") {
 
                 // adds the "extra" html to the matched object,
                 // in case no drop field contents is found
-                dropFieldContents.length === 0 && _element.append(
-                    "<div class=\"drop-field-clear\"></div>") && _element.append(
-                    "<ul class=\"drop-field-contents\"></ul>");
+                dropFieldContents.length === 0 &&
+                    _element.append('<div class="drop-field-clear"></div>') &&
+                    _element.append('<ul class="drop-field-contents"></ul>');
 
                 // retrieves the hidden field and tries to retrieve its value
                 // using the proper operator for that
@@ -12311,13 +13420,12 @@ if (typeof require !== "undefined") {
                 // considered a "self bootstrap" operation  and should be used
                 // carrefully in order to avoid extra server side calls
                 var bootstrap = !textFieldValue && hiddenFieldValue;
-                bootstrap && setTimeout(function() {
-                    _update(_element, options, true, [
-                        [valueAttribute,
-                            "equals", hiddenFieldValue
-                        ]
-                    ]);
-                });
+                bootstrap &&
+                    setTimeout(function() {
+                        _update(_element, options, true, [
+                            [valueAttribute, "equals", hiddenFieldValue]
+                        ]);
+                    });
             });
         };
 
@@ -12329,8 +13437,7 @@ if (typeof require !== "undefined") {
             var _body = jQuery("body");
 
             // retrieves the matched object elements
-            var dropFieldContents = jQuery(".drop-field-contents",
-                matchedObject);
+            var dropFieldContents = jQuery(".drop-field-contents", matchedObject);
             var textField = jQuery(".text-field", matchedObject);
 
             // checks if the drop field click event is already
@@ -12348,49 +13455,50 @@ if (typeof require !== "undefined") {
                 // retrieves the drop field and the drop field elements
                 var dropField = _element;
                 var textField = jQuery(".text-field", dropField);
-                var dropFieldContents = jQuery(".drop-field-contents",
-                    dropField);
+                var dropFieldContents = jQuery(".drop-field-contents", dropField);
 
                 // checks if the drop field is of type select
                 var isSelect = dropField.hasClass("drop-field-select");
 
                 // registers for the click event in the text field
                 // (select click) so that the proper
-                isSelect && textField.click(function(event) {
-                    // checks if the drop field to verify that the
-                    // drop field is not disabled, in case it is
-                    // no action is done
-                    var isDisabled = dropField.hasClass("disabled");
-                    if (isDisabled) {
-                        return;
-                    }
+                isSelect &&
+                    textField.click(function(event) {
+                        // checks if the drop field to verify that the
+                        // drop field is not disabled, in case it is
+                        // no action is done
+                        var isDisabled = dropField.hasClass("disabled");
+                        if (isDisabled) {
+                            return;
+                        }
 
-                    // in case the drop field contents is visible
-                    // (should move the cursor)
-                    if (dropFieldContents.is(":visible")) {
-                        // hides the drop field contents, so that the
-                        // options are removed from user's visibility
-                        _hide(dropField);
-                    }
-                    // otherwise it should show the updated
-                    // drop field contents
-                    else {
-                        // shows the drop field contents, so that the
-                        // options remain visible to the user
-                        _show(dropField);
-                    }
+                        // in case the drop field contents is visible
+                        // (should move the cursor)
+                        if (dropFieldContents.is(":visible")) {
+                            // hides the drop field contents, so that the
+                            // options are removed from user's visibility
+                            _hide(dropField);
+                        }
+                        // otherwise it should show the updated
+                        // drop field contents
+                        else {
+                            // shows the drop field contents, so that the
+                            // options remain visible to the user
+                            _show(dropField);
+                        }
 
-                    // stops the event propagation (avoids immediate closing of
-                    // the drop field contents, from the click)
-                    event.stopPropagation();
-                });
+                        // stops the event propagation (avoids immediate closing of
+                        // the drop field contents, from the click)
+                        event.stopPropagation();
+                    });
 
                 // registers for the click operation in case the current
                 // drop field is not of type select, this should only prevent
                 // a series of default behaviours (would cause issues)
-                !isSelect && textField.click(function(event) {
-                    event.stopPropagation();
-                });
+                !isSelect &&
+                    textField.click(function(event) {
+                        event.stopPropagation();
+                    });
             });
 
             // binds the drop field do the enabled event
@@ -12445,27 +13553,29 @@ if (typeof require !== "undefined") {
             });
 
             // registers for the click event in the body
-            !isRegistered && _body.click(function() {
-                // retrieves the element
-                var element = jQuery(this);
+            !isRegistered &&
+                _body.click(function() {
+                    // retrieves the element
+                    var element = jQuery(this);
 
-                // retrieves all the visible drop fields contents
-                // contained in the current element context (body)
-                // and the reference to each parents
-                var dropFieldContents = jQuery(
-                    ".drop-field .drop-field-contents:visible",
-                    element);
-                var dropFields = dropFieldContents.parents(".drop-field");
+                    // retrieves all the visible drop fields contents
+                    // contained in the current element context (body)
+                    // and the reference to each parents
+                    var dropFieldContents = jQuery(
+                        ".drop-field .drop-field-contents:visible",
+                        element
+                    );
+                    var dropFields = dropFieldContents.parents(".drop-field");
 
-                // iterates over each of the drop fields to hide the
-                // associated contents (using proper manner)
-                dropFields.each(function(index, element) {
-                    // retrieves the reference to the current element
-                    // in iteration and hides the drop field contents
-                    var _element = jQuery(this);
-                    _hide(_element);
+                    // iterates over each of the drop fields to hide the
+                    // associated contents (using proper manner)
+                    dropFields.each(function(index, element) {
+                        // retrieves the reference to the current element
+                        // in iteration and hides the drop field contents
+                        var _element = jQuery(this);
+                        _hide(_element);
+                    });
                 });
-            });
 
             // registers for the key down even on the text field
             textField.keydown(function(event) {
@@ -12476,8 +13586,7 @@ if (typeof require !== "undefined") {
                 // current element (text field) and then retrieves
                 // its contents
                 var dropField = element.parents(".drop-field");
-                var dropFieldContents = jQuery(".drop-field-contents",
-                    dropField);
+                var dropFieldContents = jQuery(".drop-field-contents", dropField);
 
                 // checks if the drop field to verify that the
                 // drop field is not disabled, in case it is
@@ -12625,8 +13734,7 @@ if (typeof require !== "undefined") {
                 var hiddenField = jQuery(".hidden-field", dropField);
                 var hiddenTemplate = jQuery(".hidden-template", dropField);
                 var textField = jQuery(".text-field", dropField);
-                var dropFieldContents = jQuery(".drop-field-contents",
-                    dropField);
+                var dropFieldContents = jQuery(".drop-field-contents", dropField);
                 var template = jQuery(".template", dropField);
 
                 // checks if the drop field to verify that the
@@ -12649,7 +13757,8 @@ if (typeof require !== "undefined") {
                             // retrieves the selected list item
                             var listItemSelected = jQuery(
                                 ".drop-field-contents > .selected",
-                                dropField);
+                                dropField
+                            );
 
                             // retrieves the value, the logic value
                             // and the value link from the selected list item
@@ -12691,13 +13800,12 @@ if (typeof require !== "undefined") {
                             // adds the lock class to the drop field
                             // in case the hidden field is present
                             // and there is a logic field "selected"
-                            hiddenField.length > 0 && valueLogic && dropField.addClass(
-                                "drop-field-lock");
+                            hiddenField.length > 0 &&
+                                valueLogic &&
+                                dropField.addClass("drop-field-lock");
 
                             // triggers the value select event
-                            dropField.triggerHandler("value_select", [value,
-                                valueLogic, item
-                            ]);
+                            dropField.triggerHandler("value_select", [value, valueLogic, item]);
 
                             // hides the drop field contents, so that they
                             // are no longer visible to the end-user
@@ -12712,7 +13820,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the enter key
+                    // in case it's the enter key
                     case 13:
                         // in case the drop field contents are visible
                         if (dropFieldContents.is(":visible")) {
@@ -12725,9 +13833,9 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the page up, the
-                        // page down, the up or the
-                        // down keys
+                    // in case it's the page up, the
+                    // page down, the up or the
+                    // down keys
                     case 33:
                     case 34:
                     case 38:
@@ -12753,8 +13861,7 @@ if (typeof require !== "undefined") {
                 var hiddenField = jQuery(".hidden-field", dropField);
                 var hiddenTemplate = jQuery(".hidden-template", dropField);
                 var textField = jQuery(".text-field", dropField);
-                var dropFieldContents = jQuery(".drop-field-contents",
-                    dropField);
+                var dropFieldContents = jQuery(".drop-field-contents", dropField);
                 var template = jQuery(".template", dropField);
 
                 // verifies if the drop field is currently configured to
@@ -12786,7 +13893,8 @@ if (typeof require !== "undefined") {
                             // retrieves the selected list item
                             var listItemSelected = jQuery(
                                 ".drop-field-contents > .selected",
-                                dropField);
+                                dropField
+                            );
 
                             // retrieves the value, the logic value
                             // and the value link from the selected list item
@@ -12829,13 +13937,12 @@ if (typeof require !== "undefined") {
                             // adds the lock class to the drop field
                             // in case the hidden field is present
                             // and there is a logic field "selected"
-                            hiddenField.length > 0 && valueLogic && dropField.addClass(
-                                "drop-field-lock");
+                            hiddenField.length > 0 &&
+                                valueLogic &&
+                                dropField.addClass("drop-field-lock");
 
                             // triggers the value select event
-                            dropField.triggerHandler("value_select", [value,
-                                valueLogic, item
-                            ]);
+                            dropField.triggerHandler("value_select", [value, valueLogic, item]);
 
                             // in case the value link is set it must be used
                             // so that the current context gets switched
@@ -12858,7 +13965,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the escape key
+                    // in case it's the escape key
                     case 27:
                         // hides the drop field contents
                         _hide(dropField);
@@ -12870,7 +13977,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the page up key
+                    // in case it's the page up key
                     case 33:
                         // in case the drop field contents is visible
                         // (should move the cursor)
@@ -12886,13 +13993,14 @@ if (typeof require !== "undefined") {
 
                             // shows the drop field contents, only in case
                             // the current drop field contents is not empty
-                            !hiddenFieldValue
-                                && !dropFieldContents.is(":empty") && _show(dropField);
+                            !hiddenFieldValue &&
+                                !dropFieldContents.is(":empty") &&
+                                _show(dropField);
                         }
 
                         break;
 
-                        // in case it's the page down key
+                    // in case it's the page down key
                     case 34:
                         // in case the drop field contents is visible
                         // (should move the cursor)
@@ -12908,13 +14016,14 @@ if (typeof require !== "undefined") {
 
                             // shows the drop field contents, only in case
                             // the current drop field contents is not empty
-                            !hiddenFieldValue
-                                && !dropFieldContents.is(":empty") && _show(dropField);
+                            !hiddenFieldValue &&
+                                !dropFieldContents.is(":empty") &&
+                                _show(dropField);
                         }
 
                         break;
 
-                        // in case it's the up key
+                    // in case it's the up key
                     case 38:
                         // in case the drop field contents is visible
                         // (should move the cursor)
@@ -12930,14 +14039,15 @@ if (typeof require !== "undefined") {
 
                             // shows the drop field contents, only in case
                             // the current drop field contents is not empty
-                            !hiddenFieldValue
-                                && !dropFieldContents.is(":empty") && _show(dropField);
+                            !hiddenFieldValue &&
+                                !dropFieldContents.is(":empty") &&
+                                _show(dropField);
                         }
 
                         // breaks the switch
                         break;
 
-                        // in case it's the down key
+                    // in case it's the down key
                     case 40:
                         // in case the drop field contents is visible
                         // (should move the cursor)
@@ -12953,14 +14063,15 @@ if (typeof require !== "undefined") {
 
                             // shows the drop field contents, only in case
                             // the current drop field contents is not empty
-                            !hiddenFieldValue
-                                && !dropFieldContents.is(":empty") && _show(dropField);
+                            !hiddenFieldValue &&
+                                !dropFieldContents.is(":empty") &&
+                                _show(dropField);
                         }
 
                         // breaks the switch
                         break;
 
-                        // in case it's any other key
+                    // in case it's any other key
                     default:
                         // checks if the drop field is of type select
                         var isSelect = dropField.hasClass("drop-field-select");
@@ -13103,313 +14214,349 @@ if (typeof require !== "undefined") {
 
             // runs the query in the data source, this should be
             // redirected to the proper data source handler
-            dataSource.uxdataquery({
-                filterString: filterString,
-                filterAttributes: filterAttributes,
-                filters: filters,
-                startRecord: 0,
-                numberRecords: numberOptions
-            }, function(validItems, moreItems) {
-                // in case the valid items value is not valid (error occurred)
-                // so items are avaiable for the update (must avoid update)
-                if (!validItems) {
-                    return;
-                }
+            dataSource.uxdataquery(
+                {
+                    filterString: filterString,
+                    filterAttributes: filterAttributes,
+                    filters: filters,
+                    startRecord: 0,
+                    numberRecords: numberOptions
+                },
+                function(validItems, moreItems) {
+                    // in case the valid items value is not valid (error occurred)
+                    // so items are avaiable for the update (must avoid update)
+                    if (!validItems) {
+                        return;
+                    }
 
-                // in case the drop field is locked or the containing
-                // text field does not contains focus there is no need
-                // to process the results (something occured in betweed
-                // the request and the response) must return immediately,
-                // note that this immediate return operation may be skipped
-                // in case the force flag is set (avoids skipping)
-                var isInvalid = (!isSelect && dropField.hasClass("drop-field-lock")) || !textField.hasClass(
-                    "focus");
-                if (isInvalid && !force) {
-                    return;
-                }
+                    // in case the drop field is locked or the containing
+                    // text field does not contains focus there is no need
+                    // to process the results (something occured in betweed
+                    // the request and the response) must return immediately,
+                    // note that this immediate return operation may be skipped
+                    // in case the force flag is set (avoids skipping)
+                    var isInvalid =
+                        (!isSelect && dropField.hasClass("drop-field-lock")) ||
+                        !textField.hasClass("focus");
+                    if (isInvalid && !force) {
+                        return;
+                    }
 
-                // empties (clears) the drop field contents
-                dropFieldContents.empty();
+                    // empties (clears) the drop field contents
+                    dropFieldContents.empty();
 
-                // in case no valid items were retrieves, must show
-                // the no results element
-                if (validItems.length === 0) {
-                    // clones the drop field no results element, to create
-                    // an instance to be added, then removes the hidding
-                    // class from it
-                    var _dropFieldNoResults = dropFieldNoResults.clone();
-                    _dropFieldNoResults.removeClass("drop-field-no-results");
+                    // in case no valid items were retrieves, must show
+                    // the no results element
+                    if (validItems.length === 0) {
+                        // clones the drop field no results element, to create
+                        // an instance to be added, then removes the hidding
+                        // class from it
+                        var _dropFieldNoResults = dropFieldNoResults.clone();
+                        _dropFieldNoResults.removeClass("drop-field-no-results");
 
-                    // adds the filter no results element to the
-                    // drop field contents
-                    dropFieldContents.append(_dropFieldNoResults);
-                }
+                        // adds the filter no results element to the
+                        // drop field contents
+                        dropFieldContents.append(_dropFieldNoResults);
+                    }
 
-                // retrieves the cache map to be used to determine if the
-                // various elements should be contructed from scratch or
-                // if an already existing element should be used instead
-                var cache = dropField.data("cache") || {};
+                    // retrieves the cache map to be used to determine if the
+                    // various elements should be contructed from scratch or
+                    // if an already existing element should be used instead
+                    var cache = dropField.data("cache") || {};
 
-                // iterates over all the valid and filtered items
-                // to adds them to the drop field contents
-                for (var index = 0; index < validItems.length; index++) {
-                    // retrieves the current item (from the valid items)
-                    var currentItem = validItems[index];
+                    // iterates over all the valid and filtered items
+                    // to adds them to the drop field contents
+                    for (var index = 0; index < validItems.length; index++) {
+                        // retrieves the current item (from the valid items)
+                        var currentItem = validItems[index];
 
-                    // triggers the (new) item event so that the
-                    // current item may be (changed)
-                    dropField.triggerHandler("item", [currentItem]);
+                        // triggers the (new) item event so that the
+                        // current item may be (changed)
+                        dropField.triggerHandler("item", [currentItem]);
 
-                    // tries to retrieve the unique identifier from the
-                    // current item to be used as the cache key
-                    var uniqueId = currentItem["unique_id"] || currentItem["uid"];
+                        // tries to retrieve the unique identifier from the
+                        // current item to be used as the cache key
+                        var uniqueId = currentItem["unique_id"] || currentItem["uid"];
 
-                    // retrieves the cache map from the drop field and
-                    // tries to find the cache item for the unique identifier
-                    // in case it's found validates it so that the data contained
-                    // in it matches the one cached in such case (valid case)
-                    // adds the item to the drop field contents and continues
-                    // the loop immediately (no layout rendering)
-                    var cacheItem = cache[uniqueId];
-                    var cachedData = cacheItem ? cacheItem.data : null;
-                    var cacheValid = cachedData ? jQuery.uxequals(
-                        cachedData, currentItem) : false;
-                    if (cacheItem && cacheValid) {
-                        // sets the cache item as the inner item contained
-                        // in the cache item (layout element)
-                        cacheItem = cacheItem.item;
+                        // retrieves the cache map from the drop field and
+                        // tries to find the cache item for the unique identifier
+                        // in case it's found validates it so that the data contained
+                        // in it matches the one cached in such case (valid case)
+                        // adds the item to the drop field contents and continues
+                        // the loop immediately (no layout rendering)
+                        var cacheItem = cache[uniqueId];
+                        var cachedData = cacheItem ? cacheItem.data : null;
+                        var cacheValid = cachedData
+                            ? jQuery.uxequals(cachedData, currentItem)
+                            : false;
+                        if (cacheItem && cacheValid) {
+                            // sets the cache item as the inner item contained
+                            // in the cache item (layout element)
+                            cacheItem = cacheItem.item;
 
-                        // sets the current item in the cache item data
-                        // so that it can be used for latter template rendering
-                        cacheItem.data("item", currentItem);
+                            // sets the current item in the cache item data
+                            // so that it can be used for latter template rendering
+                            cacheItem.data("item", currentItem);
+
+                            // adds the template item item to the
+                            // drop field contents
+                            dropFieldContents.append(cacheItem);
+                            continue;
+                        }
+
+                        // retrieves both the display and the value
+                        // attributes for the current item
+                        var currentDisplayAttribute =
+                            displayAttribute &&
+                            VALID_TYPES.isIn(typeof currentItem[displayAttribute])
+                                ? currentItem[displayAttribute]
+                                : currentItem;
+                        var currentExtraAttribute =
+                            extraAttribute && VALID_TYPES.isIn(typeof currentItem[extraAttribute])
+                                ? currentItem[extraAttribute]
+                                : null;
+                        var currentValueAttribute =
+                            valueAttribute && VALID_TYPES.isIn(typeof currentItem[valueAttribute])
+                                ? currentItem[valueAttribute]
+                                : currentItem;
+                        var currentLinkAttribute =
+                            linkAttribute && VALID_TYPES.isIn(typeof currentItem[linkAttribute])
+                                ? currentItem[linkAttribute]
+                                : null;
+
+                        // retrieves the default values for the display
+                        // and values taking into account the type of
+                        // the retrieved values (in case it's map resolves again)
+                        currentDisplayAttribute =
+                            currentDisplayAttribute && typeof currentDisplayAttribute === "object"
+                                ? currentDisplayAttribute["name"]
+                                : currentDisplayAttribute;
+                        currentExtraAttribute =
+                            currentExtraAttribute && typeof currentExtraAttribute === "object"
+                                ? currentExtraAttribute["extra"]
+                                : currentExtraAttribute;
+                        currentValueAttribute =
+                            currentValueAttribute && typeof currentValueAttribute === "object"
+                                ? currentValueAttribute["value"]
+                                : currentValueAttribute;
+                        currentLinkAttribute =
+                            currentLinkAttribute && typeof currentLinkAttribute === "object"
+                                ? currentLinkAttribute["link"]
+                                : currentLinkAttribute;
+
+                        // initializes the template item value to its original
+                        // value, to be populated under the conditional
+                        var templateItem = null;
+
+                        // in case the template is defined
+                        if (template.length > 0) {
+                            // applies the template to the template (item)
+                            // retrieving the resulting template item
+                            templateItem = template.uxtemplate(currentItem);
+
+                            // sets the data display and data value
+                            // attributes in the template item
+                            templateItem.attr("data-display", currentDisplayAttribute);
+                            templateItem.attr("data-value", currentValueAttribute);
+
+                            // sets the current item in the template item data
+                            // so that it can be used for latter template rendering
+                            templateItem.data("item", currentItem);
+                        }
+                        // otherwise the template is not defined and
+                        // it must be constructed from base
+                        else {
+                            // creates the base template item from
+                            // the current item
+                            templateItem = jQuery(
+                                '<li data-display="' +
+                                    currentDisplayAttribute +
+                                    '" data-value="' +
+                                    currentValueAttribute +
+                                    '">' +
+                                    currentDisplayAttribute +
+                                    "</li>"
+                            );
+
+                            // in case the extra attribute value is defined the
+                            // subscript section should also be added to
+                            // the generated template item
+                            currentExtraAttribute &&
+                                templateItem.append(
+                                    '<span class="subscript-extra">' +
+                                        currentExtraAttribute +
+                                        "</span>"
+                                );
+
+                            // sets the current item in the template item data
+                            // so that it can be used for latter template rendering
+                            templateItem.data("item", currentItem);
+                        }
+
+                        // retrieves the first link element available in the
+                        // template item, then uses it to retrieve
+                        // its hyperlink reference (in case it's necessary)
+                        var linkElement = jQuery("a", templateItem);
+                        currentLinkAttribute = linkElement.length
+                            ? linkElement.attr("href")
+                            : currentLinkAttribute;
+
+                        // sets the data link attribute in the
+                        // template item in case it's valid
+                        currentLinkAttribute &&
+                            templateItem.attr("data-link", currentLinkAttribute);
+
+                        // sets the template item in the cache map
+                        // to provide cache for the visual element
+                        // only in case the unique id is valid (set)
+                        if (uniqueId) {
+                            cache[uniqueId] = {
+                                item: templateItem,
+                                data: currentItem
+                            };
+                        }
 
                         // adds the template item item to the
                         // drop field contents
-                        dropFieldContents.append(cacheItem);
-                        continue;
+                        dropFieldContents.append(templateItem);
                     }
 
-                    // retrieves both the display and the value
-                    // attributes for the current item
-                    var currentDisplayAttribute = displayAttribute && VALID_TYPES.isIn(typeof currentItem[
-                        displayAttribute]) ? currentItem[displayAttribute] : currentItem;
-                    var currentExtraAttribute = extraAttribute && VALID_TYPES.isIn(typeof currentItem[
-                        extraAttribute]) ? currentItem[extraAttribute] : null;
-                    var currentValueAttribute = valueAttribute && VALID_TYPES.isIn(typeof currentItem[
-                        valueAttribute]) ? currentItem[valueAttribute] : currentItem;
-                    var currentLinkAttribute = linkAttribute && VALID_TYPES.isIn(typeof currentItem[
-                        linkAttribute]) ? currentItem[linkAttribute] : null;
+                    // retrieves the "current" list items
+                    var listItems = jQuery(".drop-field-contents > *", dropField);
 
-                    // retrieves the default values for the display
-                    // and values taking into account the type of
-                    // the retrieved values (in case it's map resolves again)
-                    currentDisplayAttribute = currentDisplayAttribute && typeof currentDisplayAttribute ===
-                        "object" ? currentDisplayAttribute["name"] : currentDisplayAttribute;
-                    currentExtraAttribute = currentExtraAttribute && typeof currentExtraAttribute ===
-                        "object" ? currentExtraAttribute["extra"] : currentExtraAttribute;
-                    currentValueAttribute = currentValueAttribute && typeof currentValueAttribute ===
-                        "object" ? currentValueAttribute["value"] : currentValueAttribute;
-                    currentLinkAttribute = currentLinkAttribute && typeof currentLinkAttribute ===
-                        "object" ? currentLinkAttribute["link"] : currentLinkAttribute;
+                    // registers for the mouse down event in the list items
+                    listItems.mousedown(function(event) {
+                        // avoids event propagation this way the focus
+                        // is not lost when clicking on a list item
+                        // (this is the desired behavior)
+                        event.stopPropagation();
+                        event.preventDefault();
+                    });
 
-                    // initializes the template item value to its original
-                    // value, to be populated under the conditional
-                    var templateItem = null;
+                    // registers for the mouse over event in the list items
+                    // on order to prevent propagation of such events
+                    listItems.mouseover(function() {
+                        // removes the propagation and prevents the default operations
+                        // to be performed for the current event
+                        event.stopPropagation();
+                        event.preventDefault();
+                    });
 
-                    // in case the template is defined
-                    if (template.length > 0) {
-                        // applies the template to the template (item)
-                        // retrieving the resulting template item
-                        templateItem = template.uxtemplate(currentItem);
+                    // registers for the click event in each of the list items
+                    // that have just been constructed
+                    listItems.click(function(event) {
+                        // retrieves the element to be used in click handling
+                        // this should be the list item (element) reference
+                        var element = jQuery(this);
 
-                        // sets the data display and data value
-                        // attributes in the template item
-                        templateItem.attr("data-display",
-                            currentDisplayAttribute);
-                        templateItem.attr("data-value",
-                            currentValueAttribute);
+                        // retrieves the index associated with the current
+                        // selected element and updates the options map with
+                        // this value to condition the index change call
+                        var index = element.index();
+                        options["index"] = index;
 
-                        // sets the current item in the template item data
-                        // so that it can be used for latter template rendering
-                        templateItem.data("item", currentItem);
-                    }
-                    // otherwise the template is not defined and
-                    // it must be constructed from base
-                    else {
-                        // creates the base template item from
-                        // the current item
-                        templateItem = jQuery("<li data-display=\"" + currentDisplayAttribute +
-                            "\" data-value=\"" + currentValueAttribute + "\">" +
-                            currentDisplayAttribute + "</li>");
+                        // changes the index of the current drop field to match
+                        // the one "required" in the provided options map
+                        _index(dropField, options);
 
-                        // in case the extra attribute value is defined the
-                        // subscript section should also be added to
-                        // the generated template item
-                        currentExtraAttribute
-                            && templateItem.append("<span class=\"subscript-extra\">" +
-                                currentExtraAttribute + "</span>");
+                        // avoids event propagation this way the focus
+                        // is not lost when clicking on a list item
+                        // (this is the desired behavior)
+                        event.stopPropagation();
+                        event.preventDefault();
+                    });
 
-                        // sets the current item in the template item data
-                        // so that it can be used for latter template rendering
-                        templateItem.data("item", currentItem);
-                    }
+                    // retrieves the previous selection (original selection)
+                    // using the value from the text field, then tries to guess
+                    // the index by comparing the string value agains the
+                    // display value of the list item (this is usefull for the
+                    // select type drop fields)
+                    var preSelection = jQuery(
+                        "li[data-display='" + textFieldValue + "']",
+                        dropFieldContents
+                    );
+                    var preSelectionIndex = preSelection.length > 0 ? preSelection.index() + 1 : 0;
 
-                    // retrieves the first link element available in the
-                    // template item, then uses it to retrieve
-                    // its hyperlink reference (in case it's necessary)
-                    var linkElement = jQuery("a", templateItem);
-                    currentLinkAttribute = linkElement.length ? linkElement.attr("href") :
-                        currentLinkAttribute;
+                    // updates the drop field state, note that the index is updated
+                    // differenty in case it's a select drop field (uses the pre select
+                    // index value)
+                    isSelect
+                        ? dropField.data("selection", preSelectionIndex)
+                        : dropField.data("selection", 1);
+                    dropField.data("value", textFieldValue);
 
-                    // sets the data link attribute in the
-                    // template item in case it's valid
-                    currentLinkAttribute
-                        && templateItem.attr("data-link",
-                            currentLinkAttribute);
+                    // shows the drop field contents in case there
+                    // are valid items pending to be show otherwise
+                    // hides the drop field contents (no need to show)
+                    // an empty set of items, the drop field contents
+                    // are only shown in case there is still focus in
+                    // the text field
+                    validItems.length > 0 &&
+                    textField.hasClass("focus") &&
+                    (textFieldValue !== "" || isSelect)
+                        ? _show(dropField)
+                        : _hide(dropField);
 
-                    // sets the template item in the cache map
-                    // to provide cache for the visual element
-                    // only in case the unique id is valid (set)
-                    if (uniqueId) {
-                        cache[uniqueId] = {
-                            item: templateItem,
-                            data: currentItem
-                        };
+                    // in case the auto resize options is set
+                    // (must position the drop field contents)
+                    if (autoResize !== "false") {
+                        _resize(dropField);
                     }
 
-                    // adds the template item item to the
-                    // drop field contents
-                    dropFieldContents.append(templateItem);
+                    // updates the current selection, this operation should change
+                    // the "focus" to the currently selected list item
+                    _updateSelection(dropField, options);
+
+                    // verifies if the current loading of values should be considered
+                    // bootstrap ones, if that's the case an extra iteration should
+                    // be performed on the complete set of list items trying to find
+                    // the one that matched the current logic value and then uses it
+                    // to update the "visual" drop field value
+                    var bootstrap = !value && valueLogic;
+                    bootstrap &&
+                        listItems.each(function(index, element) {
+                            // retrieves the current list item (element) in iteration and
+                            // unpacks its data value, checking it agains the currently
+                            // set logic value (for proper match value)
+                            var _element = jQuery(this);
+                            var isValid = valueLogic === _element.attr("data-value");
+                            if (!isValid) {
+                                return;
+                            }
+
+                            // if this logic is reached there was a match with the list
+                            // item value and the proper index change should be triggered
+                            index = _element.index();
+                            options["index"] = index;
+                            _index(dropField, options);
+                        });
+
+                    // verifies if the current loading of values should be considered
+                    // incomplete ones, if that's the case an extra iteration should
+                    // be performed on the complete set of list items trying to find
+                    // the one that matched the current (display) value and then uses it
+                    // to update the "logic" drop field value
+                    var incomplete = value && !valueLogic;
+                    incomplete &&
+                        options.force &&
+                        listItems.each(function(index, element) {
+                            // retrieves the current list item (element) in iteration and
+                            // unpacks its data value, checking it agains the currently
+                            // set "display" value (for proper match value)
+                            var _element = jQuery(this);
+                            var isValid = value === _element.attr("data-display");
+                            if (!isValid) {
+                                return;
+                            }
+
+                            // if this logic is reached there was a match with the list
+                            // item value and the proper index change should be triggered
+                            index = _element.index();
+                            options["index"] = index;
+                            _index(dropField, options);
+                        });
                 }
-
-                // retrieves the "current" list items
-                var listItems = jQuery(".drop-field-contents > *",
-                    dropField);
-
-                // registers for the mouse down event in the list items
-                listItems.mousedown(function(event) {
-                    // avoids event propagation this way the focus
-                    // is not lost when clicking on a list item
-                    // (this is the desired behavior)
-                    event.stopPropagation();
-                    event.preventDefault();
-                });
-
-                // registers for the mouse over event in the list items
-                // on order to prevent propagation of such events
-                listItems.mouseover(function() {
-                    // removes the propagation and prevents the default operations
-                    // to be performed for the current event
-                    event.stopPropagation();
-                    event.preventDefault();
-                });
-
-                // registers for the click event in each of the list items
-                // that have just been constructed
-                listItems.click(function(event) {
-                    // retrieves the element to be used in click handling
-                    // this should be the list item (element) reference
-                    var element = jQuery(this);
-
-                    // retrieves the index associated with the current
-                    // selected element and updates the options map with
-                    // this value to condition the index change call
-                    var index = element.index();
-                    options["index"] = index;
-
-                    // changes the index of the current drop field to match
-                    // the one "required" in the provided options map
-                    _index(dropField, options);
-
-                    // avoids event propagation this way the focus
-                    // is not lost when clicking on a list item
-                    // (this is the desired behavior)
-                    event.stopPropagation();
-                    event.preventDefault();
-                });
-
-                // retrieves the previous selection (original selection)
-                // using the value from the text field, then tries to guess
-                // the index by comparing the string value agains the
-                // display value of the list item (this is usefull for the
-                // select type drop fields)
-                var preSelection = jQuery("li[data-display='" + textFieldValue + "']",
-                    dropFieldContents);
-                var preSelectionIndex = preSelection.length > 0 ? preSelection.index() + 1 : 0;
-
-                // updates the drop field state, note that the index is updated
-                // differenty in case it's a select drop field (uses the pre select
-                // index value)
-                isSelect ? dropField.data("selection",
-                    preSelectionIndex) : dropField.data(
-                    "selection", 1);
-                dropField.data("value", textFieldValue);
-
-                // shows the drop field contents in case there
-                // are valid items pending to be show otherwise
-                // hides the drop field contents (no need to show)
-                // an empty set of items, the drop field contents
-                // are only shown in case there is still focus in
-                // the text field
-                validItems.length > 0 && textField.hasClass("focus") && (textFieldValue !== "" ||
-                    isSelect) ? _show(dropField) : _hide(dropField);
-
-                // in case the auto resize options is set
-                // (must position the drop field contents)
-                if (autoResize !== "false") {
-                    _resize(dropField);
-                }
-
-                // updates the current selection, this operation should change
-                // the "focus" to the currently selected list item
-                _updateSelection(dropField, options);
-
-                // verifies if the current loading of values should be considered
-                // bootstrap ones, if that's the case an extra iteration should
-                // be performed on the complete set of list items trying to find
-                // the one that matched the current logic value and then uses it
-                // to update the "visual" drop field value
-                var bootstrap = !value && valueLogic;
-                bootstrap && listItems.each(function(index, element) {
-                    // retrieves the current list item (element) in iteration and
-                    // unpacks its data value, checking it agains the currently
-                    // set logic value (for proper match value)
-                    var _element = jQuery(this);
-                    var isValid = valueLogic === _element.attr("data-value");
-                    if (!isValid) {
-                        return;
-                    }
-
-                    // if this logic is reached there was a match with the list
-                    // item value and the proper index change should be triggered
-                    index = _element.index();
-                    options["index"] = index;
-                    _index(dropField, options);
-                });
-
-                // verifies if the current loading of values should be considered
-                // incomplete ones, if that's the case an extra iteration should
-                // be performed on the complete set of list items trying to find
-                // the one that matched the current (display) value and then uses it
-                // to update the "logic" drop field value
-                var incomplete = value && !valueLogic;
-                incomplete && options.force && listItems.each(function(index, element) {
-                    // retrieves the current list item (element) in iteration and
-                    // unpacks its data value, checking it agains the currently
-                    // set "display" value (for proper match value)
-                    var _element = jQuery(this);
-                    var isValid = value === _element.attr("data-display");
-                    if (!isValid) {
-                        return;
-                    }
-
-                    // if this logic is reached there was a match with the list
-                    // item value and the proper index change should be triggered
-                    index = _element.index();
-                    options["index"] = index;
-                    _index(dropField, options);
-                });
-            });
+            );
         };
 
         var _value = function(matchedObject, options) {
@@ -13533,8 +14680,10 @@ if (typeof require !== "undefined") {
             listItems.removeClass("selected");
 
             // retrieves the list item to be selected
-            var selectedListItem = jQuery(".drop-field-contents > :nth-child(" + selection + ")",
-                matchedObject);
+            var selectedListItem = jQuery(
+                ".drop-field-contents > :nth-child(" + selection + ")",
+                matchedObject
+            );
 
             // adds the selected class to the selected list item
             selectedListItem.addClass("selected");
@@ -13611,20 +14760,13 @@ if (typeof require !== "undefined") {
             // in case the bootstrap mode is enabled an extra update
             // operation is scheduled to update the values of the drop
             // field according to the logic attribute that has been set
-            bootstrap && _update(dropField, options, true, [
-                [valueAttribute,
-                    "equals", valueLogic
-                ]
-            ]);
+            bootstrap &&
+                _update(dropField, options, true, [[valueAttribute, "equals", valueLogic]]);
 
             // in case the incomplete mode is enabled an extra operation
             // is scheduled to update the drop field accordingly, this is
             // performed only if the force option is set
-            force && _update(dropField, options, true, [
-                [displayAttribute,
-                    "equals", value
-                ]
-            ]);
+            force && _update(dropField, options, true, [[displayAttribute, "equals", value]]);
         };
 
         var _reset = function(matchedObject, options) {
@@ -13676,8 +14818,7 @@ if (typeof require !== "undefined") {
             var template = jQuery(".template", dropField);
             var hiddenTemplate = jQuery(".hidden-template", dropField);
             var dropFieldContents = jQuery(".drop-field-contents", dropField);
-            var element = jQuery("> :nth-child(" + (index + 1) + ")",
-                dropFieldContents);
+            var element = jQuery("> :nth-child(" + (index + 1) + ")", dropFieldContents);
 
             // verifies if the drop field is currently configured to
             // be submited after the pressing of the action
@@ -13826,9 +14967,11 @@ if (typeof require !== "undefined") {
             // to be removed from the dropfield as the extra margin
             // (and border) values that it may contain
             var textFieldWidth = textField.outerWidth(true);
-            var dropFieldContentsExtraWidth = dropFieldContents.outerWidth() - dropFieldContents.width();
-            var dropFieldContentsWidth = isBorderBox ? textFieldWidth : textFieldWidth -
-                dropFieldContentsExtraWidth;
+            var dropFieldContentsExtraWidth =
+                dropFieldContents.outerWidth() - dropFieldContents.width();
+            var dropFieldContentsWidth = isBorderBox
+                ? textFieldWidth
+                : textFieldWidth - dropFieldContentsExtraWidth;
 
             // in case the current drop field contents are not visible
             // hides them back (original visibility)
@@ -14100,8 +15243,9 @@ if (typeof require !== "undefined") {
 
                     // creates the hidden input field representing the selected item
                     // and prepends it to the current drop list element
-                    _element.prepend("<input type=\"hidden\" name=\"" + name +
-                        "\" value=\"" + value + "\" />");
+                    _element.prepend(
+                        '<input type="hidden" name="' + name + '" value="' + value + '" />'
+                    );
                 });
             });
         };
@@ -14196,14 +15340,20 @@ if (typeof require !== "undefined") {
                 // of it (default behaviour)
                 var items = jQuery("> .items", _element);
                 if (items.length === 0) {
-                    _element.append("<ul class=\"items\"></ul>");
+                    _element.append('<ul class="items"></ul>');
                 }
 
                 // adds the drop tag header and tag element to the
                 // drop tag taking into account the title
-                _element.prepend("<div class=\"drop-tag-header\">" + title + "</div>" +
-                    "<div class=\"drop-tag-tag\">" + "<span class=\"drop-tag-text\"></span>" +
-                    "<span class=\"drop-tag-close\"></span>" + "</div>");
+                _element.prepend(
+                    '<div class="drop-tag-header">' +
+                        title +
+                        "</div>" +
+                        '<div class="drop-tag-tag">' +
+                        '<span class="drop-tag-text"></span>' +
+                        '<span class="drop-tag-close"></span>' +
+                        "</div>"
+                );
             });
         };
 
@@ -14704,8 +15854,7 @@ if (typeof require !== "undefined") {
 
                     // creates the text field element and sets the various
                     // attributes in it
-                    textField = jQuery(
-                        "<input type=\"text\" class=\"text-field filter-input\" />");
+                    textField = jQuery('<input type="text" class="text-field filter-input" />');
                     textField.val(value);
                     textField.attr("name", name);
                     textField.attr("data-original_value", originalValue);
@@ -14724,22 +15873,31 @@ if (typeof require !== "undefined") {
                 // creates the element representing the buttons for the filter
                 // fild (the more oprtions and the view changer) and adds it
                 // to the filter in case the advanced flag is set
-                var filterButtons = jQuery("<div class=\"filter-input-buttons\">" +
-                    "<div class=\"button filter-input-button filter-input-toggle-advanced filter-input-more\"></div>" +
-                    "<div class=\"button filter-input-button filter-input-toggle-views\"></div>" +
-                    "<div class=\"clear\"></div>" + "</div>");
+                var filterButtons = jQuery(
+                    '<div class="filter-input-buttons">' +
+                        '<div class="button filter-input-button filter-input-toggle-advanced filter-input-more"></div>' +
+                        '<div class="button filter-input-button filter-input-toggle-views"></div>' +
+                        '<div class="clear"></div>' +
+                        "</div>"
+                );
                 advanced && filterButtons.insertAfter(textField);
 
                 // creates the advanced part of the filter (more options) and adds
                 // it to the filter in case the advanced flag is set
-                var filterAdvanced = jQuery("<div class=\"filter-advanced\">" +
-                    "<div class=\"filter-input-add filter-input-first\"></div>" +
-                    "<div class=\"filter-sort\">" + "<div class=\"filter-clear\"></div>" +
-                    "</div>" + "<div class=\"filter-advanced-filters\"></div>" +
-                    "<div class=\"filter-advanced-buttons\">" +
-                    "<div class=\"button small button-grey filter-advanced-select\">Select All</div>" +
-                    "<div class=\"button small button-grey disabled filter-advanced-save\">Save</div>" +
-                    "<div class=\"filter-clear\"></div>" + "</div>" + "</div>");
+                var filterAdvanced = jQuery(
+                    '<div class="filter-advanced">' +
+                        '<div class="filter-input-add filter-input-first"></div>' +
+                        '<div class="filter-sort">' +
+                        '<div class="filter-clear"></div>' +
+                        "</div>" +
+                        '<div class="filter-advanced-filters"></div>' +
+                        '<div class="filter-advanced-buttons">' +
+                        '<div class="button small button-grey filter-advanced-select">Select All</div>' +
+                        '<div class="button small button-grey disabled filter-advanced-save">Save</div>' +
+                        '<div class="filter-clear"></div>' +
+                        "</div>" +
+                        "</div>"
+                );
                 advanced && filterAdvanced.insertAfter(filterButtons);
 
                 // checks for the presence of the proper list class from
@@ -14786,8 +15944,9 @@ if (typeof require !== "undefined") {
                     var valueHtml = _element.html();
                     var valueName = _element.attr("data-name");
                     var valueOrder = _element.attr("data-order") || "descending";
-                    var filterOption = jQuery("<div class=\"filter-sort-option\">" +
-                        valueHtml + "</div>");
+                    var filterOption = jQuery(
+                        '<div class="filter-sort-option">' + valueHtml + "</div>"
+                    );
                     filterOption.attr("data-name", valueName);
                     filterOption.attr("data-order", valueOrder);
                     filterOption.insertBefore(filterClear);
@@ -14796,7 +15955,7 @@ if (typeof require !== "undefined") {
                 // adds the devault sort option to the filter, this value exists for
                 // every search and indicates that no sort will occur (default is used)
                 filterSort.prepend(
-                    "<div class=\"filter-sort-option selected equals\" data-order=\"equals\">default</div>"
+                    '<div class="filter-sort-option selected equals" data-order="equals">default</div>'
                 );
 
                 // checks if the filtering is enabled and valid for the
@@ -14817,8 +15976,9 @@ if (typeof require !== "undefined") {
                 // then adds it in conjuction to the spinner to the
                 // filter more component, as the new filter more contents
                 var filterMoreText = filterMore.html();
-                filterMore.html("<div class=\"text\">" + filterMoreText + "</div>" +
-                    "<div class=\"spinner\"></div>");
+                filterMore.html(
+                    '<div class="text">' + filterMoreText + "</div>" + '<div class="spinner"></div>'
+                );
 
                 // retrieves the filter more length
                 var filterMoreLength = filterMore.length;
@@ -14828,10 +15988,12 @@ if (typeof require !== "undefined") {
                 if (filterContents.length === 0) {
                     // creates the filter contents element and adds it to the
                     // filter according to the filter more status
-                    filterContents = jQuery("<div class=\"filter-contents\"></div>");
-                    filterClear = jQuery("<div class=\"filter-clear\"></div>");
-                    filterMoreLength > 0 ? filterContents.insertBefore(filterMore) && filterClear.insertBefore(
-                        filterMore) : _element.append(filterContents);
+                    filterContents = jQuery('<div class="filter-contents"></div>');
+                    filterClear = jQuery('<div class="filter-clear"></div>');
+                    filterMoreLength > 0
+                        ? filterContents.insertBefore(filterMore) &&
+                          filterClear.insertBefore(filterMore)
+                        : _element.append(filterContents);
                 }
 
                 // updates the element's number of records with
@@ -14876,15 +16038,12 @@ if (typeof require !== "undefined") {
 
             // retrieves both the toggle advanced and the
             // toggle views buttons
-            var toggleAdvanced = jQuery(".filter-input-toggle-advanced",
-                matchedObject);
-            var toggleViews = jQuery(".filter-input-toggle-views",
-                matchedObject);
+            var toggleAdvanced = jQuery(".filter-input-toggle-advanced", matchedObject);
+            var toggleViews = jQuery(".filter-input-toggle-views", matchedObject);
 
             // retrieves the filter add button to be used to add
             // a new line of filtering to the filter advanced panel
-            var filterAdd = jQuery(".filter-advanced > .filter-input-add",
-                matchedObject);
+            var filterAdd = jQuery(".filter-advanced > .filter-input-add", matchedObject);
 
             // retrieves the filter select (all) button used
             // to select the complete set of items in the filter
@@ -14981,8 +16140,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves the filter buttons part of the filter
                 // and adds the lower class to them
-                var filterButtons = jQuery(".filter-input-buttons",
-                    filter);
+                var filterButtons = jQuery(".filter-input-buttons", filter);
                 filterButtons.addClass("lower");
             });
 
@@ -14996,8 +16154,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves the filter buttons part of the filter
                 // and removes the lower class from them
-                var filterButtons = jQuery(".filter-input-buttons",
-                    filter);
+                var filterButtons = jQuery(".filter-input-buttons", filter);
                 filterButtons.removeClass("lower");
             });
 
@@ -15055,7 +16212,7 @@ if (typeof require !== "undefined") {
 
                         break;
 
-                        // in case it's the page down key
+                    // in case it's the page down key
                     case 34:
                         // in case the shift key is pressed range mode
                         // must be "activated"
@@ -15072,7 +16229,7 @@ if (typeof require !== "undefined") {
 
                         break;
 
-                        // in case it's the up key
+                    // in case it's the up key
                     case 38:
                         // in case the shift key is pressed range mode
                         // must be "activated"
@@ -15094,7 +16251,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the down key
+                    // in case it's the down key
                     case 40:
                         // in case the shift key is pressed range mode
                         // must be "activated"
@@ -15129,8 +16286,7 @@ if (typeof require !== "undefined") {
                 // retrieves the currently selected sort option
                 // to check if it's the sames as the one that
                 // has just been clicked
-                var selectedOption = jQuery(
-                    ".filter-sort-option.selected", filter);
+                var selectedOption = jQuery(".filter-sort-option.selected", filter);
                 var isSame = element[0] === selectedOption[0];
 
                 // retrieves the value for the order attribute of
@@ -15152,11 +16308,11 @@ if (typeof require !== "undefined") {
                     // changes the sort order accordingly
                     var isDescending = selectedOption.hasClass("descending");
                     isDescending
-                        ? selectedOption.removeClass("descending") : selectedOption.removeClass(
-                            "ascending");
+                        ? selectedOption.removeClass("descending")
+                        : selectedOption.removeClass("ascending");
                     isDescending
-                        ? selectedOption.addClass("ascending") : selectedOption.addClass(
-                            "descending");
+                        ? selectedOption.addClass("ascending")
+                        : selectedOption.addClass("descending");
                 }
                 // otherwise the the element is not the same and the
                 // previous element must be unselected and the new one
@@ -15250,10 +16406,9 @@ if (typeof require !== "undefined") {
                     // adds the appropriate classes based on the
                     // existence of the table view
                     hasTableView
-                        ? element.addClass("filter-input-table") : element.addClass(
-                            "filter-input-gallery");
-                    hasTableView
-                        ? filter.addClass("table-list") : filter.addClass("gallery-list");
+                        ? element.addClass("filter-input-table")
+                        : element.addClass("filter-input-gallery");
+                    hasTableView ? filter.addClass("table-list") : filter.addClass("gallery-list");
                 } else if (isTable) {
                     // in case there is no gallery and list views
                     // it's not possible to move "forward", returns
@@ -15270,10 +16425,9 @@ if (typeof require !== "undefined") {
                     // adds the appropriate classes based on the
                     // existence of the gallery view
                     hasGalleryView
-                        ? element.addClass("filter-input-gallery") : element.addClass(
-                            "filter-input-list");
-                    hasGalleryView
-                        ? filter.addClass("gallery-list") : filter.addClass("list-list");
+                        ? element.addClass("filter-input-gallery")
+                        : element.addClass("filter-input-list");
+                    hasGalleryView ? filter.addClass("gallery-list") : filter.addClass("list-list");
                 } else {
                     // in case there is no list and table views
                     // it's not possible to move "forward", returns
@@ -15290,10 +16444,9 @@ if (typeof require !== "undefined") {
                     // adds the appropriate classes based on the
                     // existence of the list view
                     hasListView
-                        ? element.addClass("filter-input-list") : element.addClass(
-                            "filter-input-table");
-                    hasListView
-                        ? filter.addClass("list-list") : filter.addClass("table-list");
+                        ? element.addClass("filter-input-list")
+                        : element.addClass("filter-input-table");
+                    hasListView ? filter.addClass("list-list") : filter.addClass("table-list");
                 }
             });
 
@@ -15401,107 +16554,122 @@ if (typeof require !== "undefined") {
             // element in case the matched object is valid and then
             // sets the on destroy handler to avoid duplicated
             // handlers in a multiple filter environment
-            matchedObject.length > 0 && _document.keydown(onKeyDown = function(event) {
-                // sets the filter as the matched object
-                var filter = matchedObject;
+            matchedObject.length > 0 &&
+                _document.keydown(
+                    (onKeyDown = function(event) {
+                        // sets the filter as the matched object
+                        var filter = matchedObject;
 
-                // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                        // retrieves the key value
+                        var keyValue = event.keyCode
+                            ? event.keyCode
+                            : event.charCode
+                                ? event.charCode
+                                : event.which;
 
-                // switches over the key value
-                switch (keyValue) {
-                    // in case it's the enter key
-                    case 13:
-                        // retrieves the selected list item
-                        var listItemSelected = jQuery(
-                            ".filter-contents > .selected", filter);
+                        // switches over the key value
+                        switch (keyValue) {
+                            // in case it's the enter key
+                            case 13:
+                                // retrieves the selected list item
+                                var listItemSelected = jQuery(
+                                    ".filter-contents > .selected",
+                                    filter
+                                );
 
-                        // updates the current selection, runs the
-                        // appropriate (default) actions
-                        _select(listItemSelected, filter, options);
+                                // updates the current selection, runs the
+                                // appropriate (default) actions
+                                _select(listItemSelected, filter, options);
 
-                        // breaks the switch
-                        break;
+                                // breaks the switch
+                                break;
 
-                        // in case it's the j key
-                    case 74:
-                        // in case the shift key is pressed range mode
-                        // must be "activated"
-                        if (event.shiftKey) {
-                            // decrements the "current" range (selection)
-                            _decrementRange(filter, options);
+                            // in case it's the j key
+                            case 74:
+                                // in case the shift key is pressed range mode
+                                // must be "activated"
+                                if (event.shiftKey) {
+                                    // decrements the "current" range (selection)
+                                    _decrementRange(filter, options);
+                                }
+                                // otherwise the "normal" decrementing operation
+                                // must be used
+                                else {
+                                    // decrements the "current" selection
+                                    _decrementSelection(filter, options);
+                                }
+
+                                // breaks the switch
+                                break;
+
+                            // in case it's the k key
+                            case 75:
+                                // in case the shift key is pressed range mode
+                                // must be "activated"
+                                if (event.shiftKey) {
+                                    // increments the "current" range (selection)
+                                    _incrementRange(filter, options);
+                                }
+                                // otherwise the "normal" incrementing operation
+                                // must be used
+                                else {
+                                    // increments the "current" selection
+                                    _incrementSelection(filter, options);
+                                }
+
+                                // breaks the switch
+                                break;
+
+                            // in case it's default
+                            default:
+                                // breaks the switch
+                                break;
                         }
-                        // otherwise the "normal" decrementing operation
-                        // must be used
-                        else {
-                            // decrements the "current" selection
-                            _decrementSelection(filter, options);
-                        }
-
-                        // breaks the switch
-                        break;
-
-                        // in case it's the k key
-                    case 75:
-                        // in case the shift key is pressed range mode
-                        // must be "activated"
-                        if (event.shiftKey) {
-                            // increments the "current" range (selection)
-                            _incrementRange(filter, options);
-                        }
-                        // otherwise the "normal" incrementing operation
-                        // must be used
-                        else {
-                            // increments the "current" selection
-                            _incrementSelection(filter, options);
-                        }
-
-                        // breaks the switch
-                        break;
-
-                        // in case it's default
-                    default:
-                        // breaks the switch
-                        break;
-                }
-            });
+                    })
+                );
             matchedObject.bind("destroyed", function() {
                 _document.unbind("keydown", onKeyDown);
             });
 
             // registers for the click event in order
             // to avoid problems with deselection
-            matchedObject.length > 0 && matchedObject.click(function(event) {
-                // sets the avoid next flag to avoid deselection
-                matchedObject.data("avoid_next", true);
-            });
+            matchedObject.length > 0 &&
+                matchedObject.click(function(event) {
+                    // sets the avoid next flag to avoid deselection
+                    matchedObject.data("avoid_next", true);
+                });
 
             // registers for the click event in the body element
             // to deselect the element only in case no previous
             // registration was made (avoids duplicates)
-            matchedObject.length > 0 && !isRegistered && _body.click(onClick = function(event) {
-                // retrieves the value of the avoid next flag and
-                // then unsets the avoid next flag
-                var avoidNext = matchedObject.data("avoid_next");
-                matchedObject.data("avoid_next", false);
+            matchedObject.length > 0 &&
+                !isRegistered &&
+                _body.click(
+                    (onClick = function(event) {
+                        // retrieves the value of the avoid next flag and
+                        // then unsets the avoid next flag
+                        var avoidNext = matchedObject.data("avoid_next");
+                        matchedObject.data("avoid_next", false);
 
-                // in case the avoid next flag is set
-                // returns the control flow immediately
-                if (avoidNext) {
-                    return;
-                }
+                        // in case the avoid next flag is set
+                        // returns the control flow immediately
+                        if (avoidNext) {
+                            return;
+                        }
 
-                // resets both the selection and the pivot values
-                matchedObject.data("selection", [0]);
-                matchedObject.data("pivot", 0);
+                        // resets both the selection and the pivot values
+                        matchedObject.data("selection", [0]);
+                        matchedObject.data("pivot", 0);
 
-                // updates the current selection
-                _updateSelection(matchedObject, options);
-            });
-            matchedObject.length > 0 && !isRegistered && matchedObject.bind("destroyed", function() {
-                _body.unbind("click", onClick);
-            });
+                        // updates the current selection
+                        _updateSelection(matchedObject, options);
+                    })
+                );
+            matchedObject.length > 0 &&
+                !isRegistered &&
+                matchedObject.bind("destroyed", function() {
+                    _body.unbind("click", onClick);
+                });
 
             // iterates over the complete set of objects to run the context
             // enabled registration of event handlers
@@ -15521,29 +16689,31 @@ if (typeof require !== "undefined") {
 
                 // registers for the scroll event in the window in case
                 // the infinite scroll support is enabled
-                _window.scroll(onScroll = function() {
-                    // sets the filter as the matched object, this
-                    // considered to be a global singleton handler
-                    var filter = element;
+                _window.scroll(
+                    (onScroll = function() {
+                        // sets the filter as the matched object, this
+                        // considered to be a global singleton handler
+                        var filter = element;
 
-                    // retrieves the top offset of the page, using
-                    // the margin element (from the margin top)
-                    var margin = jQuery(".margin");
-                    var pageOffset = margin.outerHeight(true);
+                        // retrieves the top offset of the page, using
+                        // the margin element (from the margin top)
+                        var margin = jQuery(".margin");
+                        var pageOffset = margin.outerHeight(true);
 
-                    // retrieves the filter more element height as the
-                    // delta value for the visibility testing this way
-                    // the visibility test is done agains the top
-                    var delta = filterMore.outerHeight() * -1;
+                        // retrieves the filter more element height as the
+                        // delta value for the visibility testing this way
+                        // the visibility test is done agains the top
+                        var delta = filterMore.outerHeight() * -1;
 
-                    // checks if the element is currentyl visible
-                    var isVisible = filterMore.length ? jQuery.uxvisible(filterMore,
-                        pageOffset,
-                        delta) : false;
+                        // checks if the element is currentyl visible
+                        var isVisible = filterMore.length
+                            ? jQuery.uxvisible(filterMore, pageOffset, delta)
+                            : false;
 
-                    // updates the filter state
-                    isVisible && _update(filter, options);
-                });
+                        // updates the filter state
+                        isVisible && _update(filter, options);
+                    })
+                );
 
                 // stores the on scroll event handler in the current context
                 // so thtat it may be used altter on for unregistration
@@ -15603,7 +16773,8 @@ if (typeof require !== "undefined") {
             // string in case no valid value is retrieved, notice that
             // the provided filter value is used as the latest fallback
             // for the filter value (as expected)
-            var filterInputValue = filterInput.attr("data-value") || filter.data("filter_value") || "";
+            var filterInputValue =
+                filterInput.attr("data-value") || filter.data("filter_value") || "";
 
             // determines if there are no valid contents currently set in the
             // filter to be able to change the classes of it accordingly
@@ -15676,16 +16847,13 @@ if (typeof require !== "undefined") {
 
                 // retrieves the various components of the filter line
                 // (drop field, operation field and value field)
-                var dropField = jQuery(
-                    "> .drop-field:not(.operation-field)", element);
-                var operationField = jQuery("> .operation-field",
-                    element);
+                var dropField = jQuery("> .drop-field:not(.operation-field)", element);
+                var operationField = jQuery("> .operation-field", element);
                 var valueField = jQuery("> .value-field", element);
 
                 // retrieves the data source of the operation field to be
                 // used for the retrieval of the items and operations lists
-                var operationSource = jQuery("> .data-source",
-                    operationField);
+                var operationSource = jQuery("> .data-source", operationField);
 
                 // checks if the current value field is of type drop field
                 // and retrieves the value accordingly
@@ -15693,8 +16861,7 @@ if (typeof require !== "undefined") {
                 if (isDropField) {
                     // retrieves the hidden field associated with the value
                     // field and uses its value as the value
-                    var hiddenField = jQuery(".hidden-field",
-                        valueField);
+                    var hiddenField = jQuery(".hidden-field", valueField);
                     value = hiddenField.val();
                 } else {
                     // retrieves the value of the value field using the text
@@ -15749,221 +16916,216 @@ if (typeof require !== "undefined") {
             // runs the query in the data source, this is a non blocking
             // operation that may take some time to be executed the proper
             // callback will be called at the end of the execution
-            dataSource.uxdataquery({
-                filterString: filterInputValue,
-                sort: sort,
-                filters: _filters,
-                startRecord: startRecord,
-                numberRecords: numberRecords
-            }, function(validItems, moreItems) {
-                // removes the loading class from the filter (and the
-                // filter more bytton), so that the loading information
-                // is hidden and the proper style "notified"
-                filter.removeClass("loading");
-                filterMore.removeClass("loading");
-                filter.removeClass("no-contents");
-                filterMore.removeClass("no-contents");
+            dataSource.uxdataquery(
+                {
+                    filterString: filterInputValue,
+                    sort: sort,
+                    filters: _filters,
+                    startRecord: startRecord,
+                    numberRecords: numberRecords
+                },
+                function(validItems, moreItems) {
+                    // removes the loading class from the filter (and the
+                    // filter more bytton), so that the loading information
+                    // is hidden and the proper style "notified"
+                    filter.removeClass("loading");
+                    filterMore.removeClass("loading");
+                    filter.removeClass("no-contents");
+                    filterMore.removeClass("no-contents");
 
-                // in case the valid items value
-                // is not valid (error occurred)
-                if (!validItems) {
-                    // unsets the (query) pending flag in the filter, and then
-                    // returns immediately, nothing more to be done
-                    filter.data("pending", false);
-                    return;
-                }
-
-                // in case the reset flag is set, all of the currently defined
-                // filter element should be removed from structure
-                if (reset) {
-                    // retrieves the current filter elements to remove
-                    // them (refresh of the list)
-                    var filterElements = jQuery(".filter-element",
-                        filter);
-                    filterElements.remove();
-                }
-
-                // retrieves the cache map to be used to determine if the
-                // various elements should be contructed from scratch or
-                // if an already existing element should be used instead
-                var cache = filter.data("cache") || {};
-
-                // retrieves the valid items reference
-                var _validItems = jQuery(validItems);
-
-                // retrieves the valid items length
-                var validItemsLength = validItems.length;
-
-                // creates the list that will hold the complete set of elements
-                // resulting from the apply of the template
-                var templateItems = [];
-
-                // iterates over all the valid items to create
-                // proper visual/layout elements
-                _validItems.each(function(index, element) {
-                    // creates the map with the options for the
-                    // rendering of the template to changed the
-                    // default value to be used
-                    var options = {
-                        apply: true,
-                        nullify: true,
-                        localize: true,
-                        defaultValue: "-"
-                    };
-
-                    // tries to retrieve the object identifier from the
-                    // current item to be used as identifier of the element
-                    var objectId = element["object_id"] || element["oid"];
-
-                    // tries to retrieve the unique identifier from the
-                    // current item to be used as the cache key
-                    var uniqueId = element["unique_id"] || element["uid"];
-
-                    // starts the template item to an invalid value, the
-                    // concrete value is going to be set after condition
-                    var templateItem = null;
-
-                    // retrieves the cache map from the filter and
-                    // tries to find the cache item for the unique identifier
-                    // validates it so that the data contained in it matches
-                    // the one cached in such case sets the template item as
-                    // the cached item (cache match usage)
-                    var cacheItem = cache[uniqueId];
-                    var cachedData = cacheItem ? cacheItem.data : null;
-                    var cacheValid = cachedData ? jQuery.uxequals(cachedData,
-                        element) : false;
-                    if (cacheItem && cacheValid) {
-                        // sets the item contained in the cache item as
-                        // the current cache item (layout item reference)
-                        cacheItem = cacheItem.item;
-
-                        // sets the template item as the currently cached
-                        // item so that no construction occurs then removes
-                        // the selection classes from it (avoiding possible
-                        // layout problems)
-                        templateItem = cacheItem;
-                        templateItem.removeClass("selected");
-                        templateItem.removeClass("first");
-                        templateItem.removeClass("last");
-
-                        // re-runs the apply operation on the cached item so
-                        // that its configuration is re-loaded as defined in
-                        // the specification (correct behaviour)
-                        templateItem.uxapply();
+                    // in case the valid items value
+                    // is not valid (error occurred)
+                    if (!validItems) {
+                        // unsets the (query) pending flag in the filter, and then
+                        // returns immediately, nothing more to be done
+                        filter.data("pending", false);
+                        return;
                     }
-                    // otherwise must re-create the template item by runing
-                    // the template engine again
-                    else {
-                        // applies the template to the template (item)
-                        // retrieving the resulting template item and
-                        // setting it the cache map for the unique id
-                        // only in case the unique id is valid (set)
-                        templateItem = template.uxtemplate(
-                            element, options);
-                        if (uniqueId) {
-                            cache[uniqueId] = {
-                                item: templateItem,
-                                data: element
-                            };
+
+                    // in case the reset flag is set, all of the currently defined
+                    // filter element should be removed from structure
+                    if (reset) {
+                        // retrieves the current filter elements to remove
+                        // them (refresh of the list)
+                        var filterElements = jQuery(".filter-element", filter);
+                        filterElements.remove();
+                    }
+
+                    // retrieves the cache map to be used to determine if the
+                    // various elements should be contructed from scratch or
+                    // if an already existing element should be used instead
+                    var cache = filter.data("cache") || {};
+
+                    // retrieves the valid items reference
+                    var _validItems = jQuery(validItems);
+
+                    // retrieves the valid items length
+                    var validItemsLength = validItems.length;
+
+                    // creates the list that will hold the complete set of elements
+                    // resulting from the apply of the template
+                    var templateItems = [];
+
+                    // iterates over all the valid items to create
+                    // proper visual/layout elements
+                    _validItems.each(function(index, element) {
+                        // creates the map with the options for the
+                        // rendering of the template to changed the
+                        // default value to be used
+                        var options = {
+                            apply: true,
+                            nullify: true,
+                            localize: true,
+                            defaultValue: "-"
+                        };
+
+                        // tries to retrieve the object identifier from the
+                        // current item to be used as identifier of the element
+                        var objectId = element["object_id"] || element["oid"];
+
+                        // tries to retrieve the unique identifier from the
+                        // current item to be used as the cache key
+                        var uniqueId = element["unique_id"] || element["uid"];
+
+                        // starts the template item to an invalid value, the
+                        // concrete value is going to be set after condition
+                        var templateItem = null;
+
+                        // retrieves the cache map from the filter and
+                        // tries to find the cache item for the unique identifier
+                        // validates it so that the data contained in it matches
+                        // the one cached in such case sets the template item as
+                        // the cached item (cache match usage)
+                        var cacheItem = cache[uniqueId];
+                        var cachedData = cacheItem ? cacheItem.data : null;
+                        var cacheValid = cachedData ? jQuery.uxequals(cachedData, element) : false;
+                        if (cacheItem && cacheValid) {
+                            // sets the item contained in the cache item as
+                            // the current cache item (layout item reference)
+                            cacheItem = cacheItem.item;
+
+                            // sets the template item as the currently cached
+                            // item so that no construction occurs then removes
+                            // the selection classes from it (avoiding possible
+                            // layout problems)
+                            templateItem = cacheItem;
+                            templateItem.removeClass("selected");
+                            templateItem.removeClass("first");
+                            templateItem.removeClass("last");
+
+                            // re-runs the apply operation on the cached item so
+                            // that its configuration is re-loaded as defined in
+                            // the specification (correct behaviour)
+                            templateItem.uxapply();
                         }
+                        // otherwise must re-create the template item by runing
+                        // the template engine again
+                        else {
+                            // applies the template to the template (item)
+                            // retrieving the resulting template item and
+                            // setting it the cache map for the unique id
+                            // only in case the unique id is valid (set)
+                            templateItem = template.uxtemplate(element, options);
+                            if (uniqueId) {
+                                cache[uniqueId] = {
+                                    item: templateItem,
+                                    data: element
+                                };
+                            }
+                        }
+
+                        // sets the object identifier information in the template
+                        // item (considered the main identifier for it)
+                        templateItem.data("object_id", objectId);
+
+                        // removes the filter element class from the template item,
+                        // then adds it to the filter contents, then initializes its
+                        // structures (event handling registration)
+                        templateItem.addClass("filter-element");
+                        templateItems.push(templateItem[0]);
+                        _initTemplateItem(filter, templateItem);
+                    });
+
+                    // adds the complete set of generated template items to the
+                    // contents of the current filter
+                    filterContents.append(templateItems);
+
+                    // in case there are no items to be shown
+                    if (validItemsLength > 0) {
+                        // hides the filter no results panel and
+                        // removes the no results class from tghe
+                        // currently defined filter element
+                        filterNoResults.hide();
+                        filter.removeClass("no-results");
+                    }
+                    // otherwise there are no item to be shown
+                    else {
+                        // shows the filter no results panel
+                        // and adds the no results class to
+                        // the main filter element (as expected)
+                        filterNoResults.show();
+                        filter.addClass("no-results");
                     }
 
-                    // sets the object identifier information in the template
-                    // item (considered the main identifier for it)
-                    templateItem.data("object_id", objectId);
+                    // in case there are more items available
+                    // to be retrieved
+                    if (moreItems) {
+                        // shows the filter more item
+                        filterMore.show();
+                    }
+                    // otherwise the are no more items to be shown
+                    else {
+                        // hides the filter more item
+                        filterMore.hide();
+                    }
 
-                    // removes the filter element class from the template item,
-                    // then adds it to the filter contents, then initializes its
-                    // structures (event handling registration)
-                    templateItem.addClass("filter-element");
-                    templateItems.push(templateItem[0]);
-                    _initTemplateItem(filter, templateItem);
-                });
+                    // retrieves the current list items
+                    var listItems = jQuery(".filter-contents > *", matchedObject);
 
-                // adds the complete set of generated template items to the
-                // contents of the current filter
-                filterContents.append(templateItems);
+                    // unregisters from the right click in the list
+                    // items (avoids duplicates) and then registers
+                    // the handler for the context menu
+                    listItems.unbind("contextmenu rightclick", _handleContext);
+                    listItems.bind("contextmenu rightclick", _handleContext);
 
-                // in case there are no items to be shown
-                if (validItemsLength > 0) {
-                    // hides the filter no results panel and
-                    // removes the no results class from tghe
-                    // currently defined filter element
-                    filterNoResults.hide();
-                    filter.removeClass("no-results");
+                    // retrieves the complete set of menus from the
+                    // list items and then initializes them with the
+                    // the current filter
+                    var menus = jQuery(".menu", listItems);
+                    menus.each(function(index, element) {
+                        // retrieves the element reference
+                        // and initializes it as a menu
+                        var _element = jQuery(element);
+                        _initMenu(_element, filter, true);
+                    });
+
+                    // registers for the show event in the various menus
+                    // to update the visual in such case
+                    menus.bind("show", function() {
+                        // retrieves the reference to the current element
+                        // (menu) in iteration
+                        var _element = jQuery(this);
+
+                        // retrieves ther complete set of buttons currently present
+                        // in the menu and removes the selected class from them
+                        // (avoiding any possible visual problems)
+                        var buttons = jQuery(".button:not(.menu-link)", _element);
+                        buttons.removeClass("selected");
+                    });
+
+                    // triggers the update complete event, notice that the
+                    // reset flat value is passed so that the listener is
+                    // able to determine if this is a full replace operation
+                    filter.triggerHandler("update_complete", [reset, templateItems]);
+
+                    // updates the filter data, so that the it's possible
+                    // to determine the "internal" and logical state of it
+                    filter.data("filter_string", filterInputValue);
+                    filter.data("start_record", startRecord + numberRecords);
+                    filter.data("complete", !moreItems);
+                    filter.data("pending", false);
                 }
-                // otherwise there are no item to be shown
-                else {
-                    // shows the filter no results panel
-                    // and adds the no results class to
-                    // the main filter element (as expected)
-                    filterNoResults.show();
-                    filter.addClass("no-results");
-                }
-
-                // in case there are more items available
-                // to be retrieved
-                if (moreItems) {
-                    // shows the filter more item
-                    filterMore.show();
-                }
-                // otherwise the are no more items to be shown
-                else {
-                    // hides the filter more item
-                    filterMore.hide();
-                }
-
-                // retrieves the current list items
-                var listItems = jQuery(".filter-contents > *",
-                    matchedObject);
-
-                // unregisters from the right click in the list
-                // items (avoids duplicates) and then registers
-                // the handler for the context menu
-                listItems.unbind("contextmenu rightclick",
-                    _handleContext);
-                listItems.bind("contextmenu rightclick", _handleContext);
-
-                // retrieves the complete set of menus from the
-                // list items and then initializes them with the
-                // the current filter
-                var menus = jQuery(".menu", listItems);
-                menus.each(function(index, element) {
-                    // retrieves the element reference
-                    // and initializes it as a menu
-                    var _element = jQuery(element);
-                    _initMenu(_element, filter, true);
-                });
-
-                // registers for the show event in the various menus
-                // to update the visual in such case
-                menus.bind("show", function() {
-                    // retrieves the reference to the current element
-                    // (menu) in iteration
-                    var _element = jQuery(this);
-
-                    // retrieves ther complete set of buttons currently present
-                    // in the menu and removes the selected class from them
-                    // (avoiding any possible visual problems)
-                    var buttons = jQuery(
-                        ".button:not(.menu-link)", _element);
-                    buttons.removeClass("selected");
-                });
-
-                // triggers the update complete event, notice that the
-                // reset flat value is passed so that the listener is
-                // able to determine if this is a full replace operation
-                filter.triggerHandler("update_complete", [reset,
-                    templateItems
-                ]);
-
-                // updates the filter data, so that the it's possible
-                // to determine the "internal" and logical state of it
-                filter.data("filter_string", filterInputValue);
-                filter.data("start_record", startRecord + numberRecords);
-                filter.data("complete", !moreItems);
-                filter.data("pending", false);
-            });
+            );
         };
 
         var _handleContext = function(event) {
@@ -16070,8 +17232,7 @@ if (typeof require !== "undefined") {
             // target buttons (these button need to be registered for the
             // varios mouse event to control the sub menu behavior)
             var targetButtons = jQuery(".button[data-target]", menu);
-            var nonTargetButtons = jQuery(
-                ":not(.sub-menu) .button:not([data-target])", menu);
+            var nonTargetButtons = jQuery(":not(.sub-menu) .button:not([data-target])", menu);
 
             // registers for the mouse enter event so that the
             // menu may be shown
@@ -16124,8 +17285,7 @@ if (typeof require !== "undefined") {
                 setTimeout(function() {
                     // retrieves the complete set of visible sub menus
                     // to be hidden in case of validation passing
-                    var subMenu = jQuery(".sub-menu:visible",
-                        menu);
+                    var subMenu = jQuery(".sub-menu:visible", menu);
 
                     // checks if the current element (button)
                     // is still in the ohover state in case it's
@@ -16176,8 +17336,7 @@ if (typeof require !== "undefined") {
 
                     // retrieves the complete set of selected list items
                     // to apply the global characteristics to them
-                    var selectedListItem = jQuery(
-                        ".filter-contents > .selected", filter);
+                    var selectedListItem = jQuery(".filter-contents > .selected", filter);
 
                     // retrieves the menu contents associated with the
                     // current element and then retrieves the identifier
@@ -16205,9 +17364,12 @@ if (typeof require !== "undefined") {
                         // button in its context menu
                         var button = jQuery(
                             ".context-menu > .menu-contents[data-menu_id=" +
-                            menuId + "] > :nth-child(" + String(elementIndex +
-                                1) + ")",
-                            __element);
+                                menuId +
+                                "] > :nth-child(" +
+                                String(elementIndex + 1) +
+                                ")",
+                            __element
+                        );
 
                         // checks if the button is of type document
                         // (open in same window) and then retrieves the
@@ -16228,8 +17390,9 @@ if (typeof require !== "undefined") {
                         // element to be parsed opens the link in the current
                         // document otherwise creates a new window and opend
                         // the link in it (external opening)
-                        isDocument && index === 0 ? jQuery.uxlocation(link) :
-                            window.open(link, "_blank");
+                        isDocument && index === 0
+                            ? jQuery.uxlocation(link)
+                            : window.open(link, "_blank");
                     });
 
                     // tries to retrieve the bulk (to many link)
@@ -16422,8 +17585,10 @@ if (typeof require !== "undefined") {
                 var _nextSelection = selection[index + 1];
 
                 // retrieves the list item to be selected
-                var _selectedListItem = jQuery(".filter-contents > :nth-child(" + _selection + ")",
-                    matchedObject);
+                var _selectedListItem = jQuery(
+                    ".filter-contents > :nth-child(" + _selection + ")",
+                    matchedObject
+                );
 
                 // adds the selected class to the selected list item
                 _selectedListItem.addClass("selected");
@@ -16449,8 +17614,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the complete set of selected list items
             // to apply the global characteristics to them
-            var selectedListItem = jQuery(".filter-contents > .selected",
-                matchedObject);
+            var selectedListItem = jQuery(".filter-contents > .selected", matchedObject);
 
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
@@ -16463,16 +17627,17 @@ if (typeof require !== "undefined") {
 
             // cheks if the element is visible using
             // the appropriate visibility extension
-            var isVisible = _element ? jQuery.uxvisible(selectedListItem,
-                pageOffset) : true;
+            var isVisible = _element ? jQuery.uxvisible(selectedListItem, pageOffset) : true;
 
             // scrolls to the reference in case the element
             // is not visible, this is required so that the
             // end user is able to interact with the element
-            !isVisible && selectedListItem.length === 1 && selectedListItem.uxscroll({
-                offset: pageOffset,
-                padding: 10
-            });
+            !isVisible &&
+                selectedListItem.length === 1 &&
+                selectedListItem.uxscroll({
+                    offset: pageOffset,
+                    padding: 10
+                });
 
             // triggers the selected event indicating that the list
             // of selected items has changed
@@ -16530,8 +17695,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the complete set of selected list items
             // to apply the global characteristics to them
-            var selectedListItem = jQuery(".filter-contents > .selected",
-                matchedObject);
+            var selectedListItem = jQuery(".filter-contents > .selected", matchedObject);
 
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
@@ -16555,10 +17719,11 @@ if (typeof require !== "undefined") {
             // checks if the item is visible and in case it's
             // not scroll the current viewport into the item
             var isVisible = item ? jQuery.uxvisible(item, pageOffset) : true;
-            !isVisible && item.uxscroll({
-                offset: pageOffset,
-                padding: 10
-            });
+            !isVisible &&
+                item.uxscroll({
+                    offset: pageOffset,
+                    padding: 10
+                });
         };
 
         var _decrementRange = function(matchedObject, options) {
@@ -16618,8 +17783,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the complete set of selected list items
             // to apply the global characteristics to them
-            var selectedListItem = jQuery(".filter-contents > .selected",
-                matchedObject);
+            var selectedListItem = jQuery(".filter-contents > .selected", matchedObject);
 
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
@@ -16641,10 +17805,11 @@ if (typeof require !== "undefined") {
             // checks if the item is visible and in case it's
             // not scroll the current viewport into the item
             var isVisible = item ? jQuery.uxvisible(item, pageOffset) : true;
-            !isVisible && item.uxscroll({
-                offset: pageOffset,
-                padding: 10
-            });
+            !isVisible &&
+                item.uxscroll({
+                    offset: pageOffset,
+                    padding: 10
+                });
         };
 
         var _upRange = function(matchedObject, options) {
@@ -16659,8 +17824,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the complete set of selected list items
             // to apply the global characteristics to them
-            var selectedListItem = jQuery(".filter-contents > .selected",
-                matchedObject);
+            var selectedListItem = jQuery(".filter-contents > .selected", matchedObject);
 
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
@@ -16673,10 +17837,11 @@ if (typeof require !== "undefined") {
             // checks if the item is visible and in case it's
             // not scroll the current viewport into the item
             var isVisible = item ? jQuery.uxvisible(item, pageOffset) : true;
-            !isVisible && item.uxscroll({
-                offset: pageOffset,
-                padding: 10
-            });
+            !isVisible &&
+                item.uxscroll({
+                    offset: pageOffset,
+                    padding: 10
+                });
         };
 
         var _downRange = function(matchedObject, options) {
@@ -16710,8 +17875,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the complete set of selected list items
             // to apply the global characteristics to them
-            var selectedListItem = jQuery(".filter-contents > .selected",
-                matchedObject);
+            var selectedListItem = jQuery(".filter-contents > .selected", matchedObject);
 
             // retrieves the top offset of the page, using
             // the margin element (from the margin top)
@@ -16724,10 +17888,11 @@ if (typeof require !== "undefined") {
             // checks if the item is visible and in case it's
             // not scroll the current viewport into the item
             var isVisible = item ? jQuery.uxvisible(item, pageOffset) : true;
-            !isVisible && item.uxscroll({
-                offset: pageOffset,
-                padding: 10
-            });
+            !isVisible &&
+                item.uxscroll({
+                    offset: pageOffset,
+                    padding: 10
+                });
         };
 
         var _rangeSelection = function(index, matchedObject, options) {
@@ -16844,8 +18009,9 @@ if (typeof require !== "undefined") {
                         // (only one element present) changes the current
                         // document location, otherwise opens a new window
                         // with the value link location (popup)
-                        listItem.length <= 1 ? jQuery.uxlocation(valueLink) : window.open(valueLink,
-                            "_blank");
+                        listItem.length <= 1
+                            ? jQuery.uxlocation(valueLink)
+                            : window.open(valueLink, "_blank");
                     }
                 }
             });
@@ -16903,8 +18069,8 @@ if (typeof require !== "undefined") {
             subMenu.css("position", "fixed");
             subMenu.css("margin-left", marginLeft + "px");
             subMenu.css("margin-top", 0 + "px");
-            subMenu.css("top", (top - scrollY) + "px");
-            subMenu.css("left", (left - scrollX) + "px");
+            subMenu.css("top", top - scrollY + "px");
+            subMenu.css("left", left - scrollX + "px");
 
             // adds the selected class to the element (button)
             // so that it's highlighted
@@ -16915,9 +18081,11 @@ if (typeof require !== "undefined") {
             // registers a new function for the handling and sets it in
             // the data for the sub buttons
             var mouseenter = subButtons.data("mouseenter");
-            mouseenter = mouseenter || subButtons.mouseenter(function() {
-                element.addClass("selected");
-            });
+            mouseenter =
+                mouseenter ||
+                subButtons.mouseenter(function() {
+                    element.addClass("selected");
+                });
             subButtons.data("mouseenter", mouseenter);
 
             // shows the sub menu with a fade effect
@@ -16989,15 +18157,14 @@ if (typeof require !== "undefined") {
                 case "string":
                     // creates the list of items and then creates the list
                     // of equivalent operations (index based association)
-                    _items = ["contains", "matches", "begins with",
-                        "ends with"
-                    ];
+                    _items = ["contains", "matches", "begins with", "ends with"];
                     _operations = ["like", "equals", "rlike", "llike"];
 
                     // creates the value field as a text field, inserts it
                     // after the operation field and initializes it
                     valueField = jQuery(
-                        "<input type=\"text\" class=\"text-field small value-field\" />");
+                        '<input type="text" class="text-field small value-field" />'
+                    );
                     valueField.insertAfter(operationField);
                     valueField.uxtextfield();
 
@@ -17013,7 +18180,7 @@ if (typeof require !== "undefined") {
                     // creates the value field as a text field, inserts it
                     // after the operation field and initializes it
                     valueField = jQuery(
-                        "<input type=\"text\" class=\"text-field small value-field\" data-type=\"integer\" />"
+                        '<input type="text" class="text-field small value-field" data-type="integer" />'
                     );
                     valueField.insertAfter(operationField);
                     valueField.uxtextfield();
@@ -17030,7 +18197,7 @@ if (typeof require !== "undefined") {
                     // creates the value field as a text field, inserts it
                     // after the operation field and initializes it
                     valueField = jQuery(
-                        "<input type=\"text\" class=\"text-field small value-field\" data-type=\"float\" />"
+                        '<input type="text" class="text-field small value-field" data-type="float" />'
                     );
                     valueField.insertAfter(operationField);
                     valueField.uxtextfield();
@@ -17047,7 +18214,7 @@ if (typeof require !== "undefined") {
                     // creates the value field as a text field (calendar field),
                     // inserts it after the operation field and initializes it
                     valueField = jQuery(
-                        "<input type=\"text\" class=\"text-field small value-field\" data-type=\"date\" data-original_value=\"yyyy/mm/dd\" />"
+                        '<input type="text" class="text-field small value-field" data-type="date" data-original_value="yyyy/mm/dd" />'
                     );
                     valueField.insertAfter(operationField);
                     valueField.uxtextfield();
@@ -17077,9 +18244,12 @@ if (typeof require !== "undefined") {
 
                     // creates the value field as a drop field (reference field),
                     // inserts it after the operation field and initializes it
-                    valueField = jQuery("<div class=\"drop-field small value-field\">" +
-                        "<input type=\"hidden\" class=\"hidden-field\" />" +
-                        "<ul class=\"data-source\"></ul>" + "</div>");
+                    valueField = jQuery(
+                        '<div class="drop-field small value-field">' +
+                            '<input type="hidden" class="hidden-field" />' +
+                            '<ul class="data-source"></ul>' +
+                            "</div>"
+                    );
 
                     // retrieves the data source associated with the value
                     // field an then updates the URL and the type of the
@@ -17128,9 +18298,10 @@ if (typeof require !== "undefined") {
 
             // in case the select flag is set a value must be set in
             // the (field) drop field set the value as that field
-            select && dropField.uxdropfield("set", {
-                value: value
-            });
+            select &&
+                dropField.uxdropfield("set", {
+                    value: value
+                });
 
             // updates the operation field to be set to the
             // first item in the items sequence
@@ -17144,30 +18315,27 @@ if (typeof require !== "undefined") {
 
             // registers for the value select event in the
             // operation field to update the filter results
-            operationField.bind("value_select",
-                function(event, value, valueLogic, item) {
-                    // updates the current filter to reflect the
-                    // changes in the operation field
-                    _update(_filter, options, true);
-                });
+            operationField.bind("value_select", function(event, value, valueLogic, item) {
+                // updates the current filter to reflect the
+                // changes in the operation field
+                _update(_filter, options, true);
+            });
 
             // registers for the value change event in the
             // value field to update the filter results
-            valueField.bind("value_change",
-                function(event, value, valueLogic, item) {
-                    // updates the current filter to reflect the
-                    // changes in the value field
-                    _update(_filter, options, true);
-                });
+            valueField.bind("value_change", function(event, value, valueLogic, item) {
+                // updates the current filter to reflect the
+                // changes in the value field
+                _update(_filter, options, true);
+            });
 
             // registers for the value select event in the
             // value field to update the filter results
-            valueField.bind("value_select",
-                function(event, value, valueLogic, item) {
-                    // updates the current filter to reflect the
-                    // changes in the value field
-                    _update(_filter, options, true);
-                });
+            valueField.bind("value_select", function(event, value, valueLogic, item) {
+                // updates the current filter to reflect the
+                // changes in the value field
+                _update(_filter, options, true);
+            });
 
             // registers for the value unselect event in the
             // value field to update the filter results
@@ -17186,25 +18354,30 @@ if (typeof require !== "undefined") {
 
             // retrieves the advanced filters section of the filter, this
             // area is going to be used to add the "new" filter
-            var advancedFilters = jQuery(".filter-advanced-filters",
-                matchedObject);
+            var advancedFilters = jQuery(".filter-advanced-filters", matchedObject);
 
             // creates the new filter element and the associated drop field
             // operation field (drop field) and the text field
-            var filter = jQuery("<div class=\"filter-advanced-filter\"></div>");
-            var dropField = jQuery("<div class=\"drop-field drop-field-select small\"" +
-                " data-number_options=\"-1\">" + "<ul class=\"data-source\" data-type=\"local\"></ul>" +
-                "</div>");
-            var operationField = jQuery("<div class=\"drop-field drop-field-select small operation-field\"" +
-                " data-number_options=\"-1\">" + "<ul class=\"data-source\" data-type=\"local\"></ul>" +
-                "</div>");
+            var filter = jQuery('<div class="filter-advanced-filter"></div>');
+            var dropField = jQuery(
+                '<div class="drop-field drop-field-select small"' +
+                    ' data-number_options="-1">' +
+                    '<ul class="data-source" data-type="local"></ul>' +
+                    "</div>"
+            );
+            var operationField = jQuery(
+                '<div class="drop-field drop-field-select small operation-field"' +
+                    ' data-number_options="-1">' +
+                    '<ul class="data-source" data-type="local"></ul>' +
+                    "</div>"
+            );
 
             // creates the remove and add buttons for the filter line
             // and creates the clear element to clear eht float layout strucure
             // (in case it's necessary)
-            var remove = jQuery("<div class=\"filter-input-remove\"></div>");
-            var add = jQuery("<div class=\"filter-input-add\"></div>");
-            var clear = jQuery("<div class=\"filter-clear\"></div>");
+            var remove = jQuery('<div class="filter-input-remove"></div>');
+            var add = jQuery('<div class="filter-input-add"></div>');
+            var clear = jQuery('<div class="filter-clear"></div>');
 
             // retrieves the data source element associated with the drop field
             // to be used to select that value of filtering
@@ -17249,11 +18422,10 @@ if (typeof require !== "undefined") {
             // registers for the value selection event in the drop field
             // so that the other components are changed according to the
             // value to be used for filtering (data type change)
-            dropField.bind("value_select",
-                function(event, value, valueLogic, item) {
-                    _selectFilter(filter, value);
-                    _update(matchedObject, options, true);
-                });
+            dropField.bind("value_select", function(event, value, valueLogic, item) {
+                _selectFilter(filter, value);
+                _update(matchedObject, options, true);
+            });
 
             // registers for the click event in the remove button to
             // remove the filter line from the list of filters
@@ -17300,8 +18472,7 @@ if (typeof require !== "undefined") {
             // check if the target element is defined, in such case
             // the filter is inserted after the target, otherwise the
             // filter (line) is prepended to the advanced filters
-            target
-                ? filter.insertAfter(target) : advancedFilters.prepend(filter);
+            target ? filter.insertAfter(target) : advancedFilters.prepend(filter);
 
             // selects the initial element of the "newly" created filter
             // this is the first value to be viewed by the end user
@@ -17311,8 +18482,7 @@ if (typeof require !== "undefined") {
         var _disableFiltering = function(matchedObject, options) {
             // retrieves the filter add element (in the advanced panel)
             // and disables it to avoid insertion of filters
-            var filterAdd = jQuery(".filter-advanced > .filter-input-add",
-                matchedObject);
+            var filterAdd = jQuery(".filter-advanced > .filter-input-add", matchedObject);
             filterAdd.hide();
         };
 
@@ -17576,8 +18746,7 @@ if (typeof require !== "undefined") {
                 var submitButton = jQuery("input[type=submit]", _element);
                 var hasSubmit = submitButton.length > 0;
                 var requiresSubmit = !noKeyboard && !hasSubmit;
-                requiresSubmit
-                    && _element.append("<input type=\"submit\" class=\"submit-button\" />");
+                requiresSubmit && _element.append('<input type="submit" class="submit-button" />');
             });
         };
 
@@ -17709,46 +18878,47 @@ if (typeof require !== "undefined") {
                 // contained in the form  an itreates over them
                 // so that trailing spaces are removed
                 var fields = jQuery(".text-field[data-object]", element);
-                !noTrim && fields.each(function(index, element) {
-                    // retrieves the current element in iteration
-                    // and the value associated, then verifies if
-                    // the data type from it is string an in case it's not
-                    // ignores the current value
-                    var _element = jQuery(this);
-                    var value = _element.uxvalue();
-                    if (typeof value !== "string") {
-                        return;
-                    }
+                !noTrim &&
+                    fields.each(function(index, element) {
+                        // retrieves the current element in iteration
+                        // and the value associated, then verifies if
+                        // the data type from it is string an in case it's not
+                        // ignores the current value
+                        var _element = jQuery(this);
+                        var value = _element.uxvalue();
+                        if (typeof value !== "string") {
+                            return;
+                        }
 
-                    // verifies if the current element is "lowered" and if
-                    // that's the case skips the trim operation as it's
-                    // considered to be and invalid element to be operated
-                    var isLower = _element.hasClass("lower");
-                    if (isLower) {
-                        return;
-                    }
+                        // verifies if the current element is "lowered" and if
+                        // that's the case skips the trim operation as it's
+                        // considered to be and invalid element to be operated
+                        var isLower = _element.hasClass("lower");
+                        if (isLower) {
+                            return;
+                        }
 
-                    // "gathers" the original value so that it's able
-                    // to detect if there was a change in the value
-                    // (resulting from the trim operation) that should
-                    // trigger the changing of the element's value
-                    var _value = value;
+                        // "gathers" the original value so that it's able
+                        // to detect if there was a change in the value
+                        // (resulting from the trim operation) that should
+                        // trigger the changing of the element's value
+                        var _value = value;
 
-                    // trims the value removing any trailing and leading
-                    // spaces and then verifies if the value is different
-                    // from the original value if that's not the case skips
-                    // the current iteration as there's nothing to be done
-                    value = value.trim();
-                    if (_value === value) {
-                        return;
-                    }
+                        // trims the value removing any trailing and leading
+                        // spaces and then verifies if the value is different
+                        // from the original value if that's not the case skips
+                        // the current iteration as there's nothing to be done
+                        value = value.trim();
+                        if (_value === value) {
+                            return;
+                        }
 
-                    // updates both the "physical" and the logical value
-                    // representation of the value in the element, so that
-                    // its value becomes trimmed as expected
-                    _element.val(value);
-                    _element.attr("data-value", value);
-                });
+                        // updates both the "physical" and the logical value
+                        // representation of the value in the element, so that
+                        // its value becomes trimmed as expected
+                        _element.val(value);
+                        _element.attr("data-value", value);
+                    });
 
                 // retrieves the current body element and uses it to retrieve
                 // the async flag state, that indicates if the interactions with
@@ -17876,7 +19046,8 @@ if (typeof require !== "undefined") {
             // the form is not of type multipart the default serialization
             // process is used instead to create a "query string"
             var form = matchedObject[0];
-            var data = enctype === "multipart/form-data" ? new FormData(form) : matchedObject.serialize();
+            var data =
+                enctype === "multipart/form-data" ? new FormData(form) : matchedObject.serialize();
 
             // verifies if the current form processing is a get based one and in
             // case it's encapsulates the parameters in the current request
@@ -17966,9 +19137,7 @@ if (typeof require !== "undefined") {
                 // that the target link is set as the current document's url
                 // so that it does not change, this allows correct reload
                 // handling of the page (improved user experience)
-                _body.triggerHandler("data", [data, url || document.URL, null,
-                    isGet, href
-                ]);
+                _body.triggerHandler("data", [data, url || document.URL, null, isGet, href]);
             };
             request.readystatechange = function() {
                 // in case the current request state is not headers ready there's
@@ -18063,8 +19232,7 @@ if (typeof require !== "undefined") {
                     if (hasFormSuccess) {
                         // retrieves the complate set of items in the form
                         // that are not part of the form success panel
-                        var otherItems = jQuery("> :not(.form-success)",
-                            matchedObject);
+                        var otherItems = jQuery("> :not(.form-success)", matchedObject);
 
                         // uses the form success panel to render it as a template
                         // using as base the form success template provided then
@@ -18319,7 +19487,7 @@ if (typeof require !== "undefined") {
          */
         var _appendHtml = function() {
             // wraps the matched objec in an highlight box container
-            matchedObject.wrap("<div class=\"highlight-box-container\"></div>");
+            matchedObject.wrap('<div class="highlight-box-container"></div>');
         };
 
         /**
@@ -18435,8 +19603,7 @@ if (typeof require !== "undefined") {
 
         var _containsTemplate = function(matchedObject, options) {
             // retrieves the hovering box template
-            var hoveringBoxTemplate = jQuery(".hovering-box-template",
-                matchedObject);
+            var hoveringBoxTemplate = jQuery(".hovering-box-template", matchedObject);
 
             // checks if the hovering box already contains the template
             var containsTemplate = hoveringBoxTemplate.length > 0;
@@ -18465,40 +19632,43 @@ if (typeof require !== "undefined") {
             var hoveringBoxRight = matchedObject.hasClass("hovering-box-right");
 
             // runs the query in the data source
-            dataSource.uxdataquery({
-                id: dataSourceId
-            }, function(validItems, moreItems) {
-                // retrieves the current (and only)
-                // item from the list of valid items
-                var currentItem = validItems[0];
+            dataSource.uxdataquery(
+                {
+                    id: dataSourceId
+                },
+                function(validItems, moreItems) {
+                    // retrieves the current (and only)
+                    // item from the list of valid items
+                    var currentItem = validItems[0];
 
-                // applies the template to the hovering box
-                // template (item) retrieving the resulting
-                // template item
-                var templateItem = hoveringBoxTemplate.uxtemplate(currentItem);
+                    // applies the template to the hovering box
+                    // template (item) retrieving the resulting
+                    // template item
+                    var templateItem = hoveringBoxTemplate.uxtemplate(currentItem);
 
-                // adds the template item item to the
-                // element (hovering box)
-                matchedObject.append(templateItem);
+                    // adds the template item item to the
+                    // element (hovering box)
+                    matchedObject.append(templateItem);
 
-                // in case the hovering box right flag
-                // is not set (no need to align to the right)
-                if (!hoveringBoxRight) {
-                    // returns immediately
-                    return;
+                    // in case the hovering box right flag
+                    // is not set (no need to align to the right)
+                    if (!hoveringBoxRight) {
+                        // returns immediately
+                        return;
+                    }
+
+                    // retrieves both the matched object width
+                    // and the template item width
+                    var matchedObjectWidth = matchedObject.outerWidth();
+                    var templateItemWidth = templateItem.width();
+
+                    // calculates the template item margin left
+                    var templateItemMarginLeft = (templateItemWidth - matchedObjectWidth) * -1;
+
+                    // sets the template item margin left
+                    templateItem.css("margin-left", templateItemMarginLeft + "px");
                 }
-
-                // retrieves both the matched object width
-                // and the template item width
-                var matchedObjectWidth = matchedObject.outerWidth();
-                var templateItemWidth = templateItem.width();
-
-                // calculates the template item margin left
-                var templateItemMarginLeft = (templateItemWidth - matchedObjectWidth) * -1;
-
-                // sets the template item margin left
-                templateItem.css("margin-left", templateItemMarginLeft + "px");
-            });
+            );
         };
 
         var _showTemplate = function(matchedObject, options) {
@@ -18510,8 +19680,7 @@ if (typeof require !== "undefined") {
             !containsTemplate && _createTemplate(matchedObject, options);
 
             // retrieves the hovering box template
-            var hoveringBoxTemplate = jQuery(".hovering-box-template",
-                matchedObject);
+            var hoveringBoxTemplate = jQuery(".hovering-box-template", matchedObject);
 
             // hides the hovering box template
             hoveringBoxTemplate.show();
@@ -18519,8 +19688,7 @@ if (typeof require !== "undefined") {
 
         var _hideTemplate = function(matchedObject, options) {
             // retrieves the hovering box template
-            var hoveringBoxTemplate = jQuery(".hovering-box-template",
-                matchedObject);
+            var hoveringBoxTemplate = jQuery(".hovering-box-template", matchedObject);
 
             // hides the hovering box template
             hoveringBoxTemplate.hide();
@@ -18660,38 +19828,41 @@ if (typeof require !== "undefined") {
                 element.addClass("error");
             });
 
-            !isRegistered && _window.scroll(function() {
-                var imagesLazy = jQuery(".image-lazy", _body);
-                imagesLazy = imagesLazy.not(".loading");
-                imagesLazy = imagesLazy.not(".loaded");
-                imagesLazy = imagesLazy.not(".error");
-                imagesLazy.each(function(index, element) {
-                    var _element = jQuery(this);
-                    updateState(_element);
+            !isRegistered &&
+                _window.scroll(function() {
+                    var imagesLazy = jQuery(".image-lazy", _body);
+                    imagesLazy = imagesLazy.not(".loading");
+                    imagesLazy = imagesLazy.not(".loaded");
+                    imagesLazy = imagesLazy.not(".error");
+                    imagesLazy.each(function(index, element) {
+                        var _element = jQuery(this);
+                        updateState(_element);
+                    });
                 });
-            });
 
-            !isRegistered && _window.resize(function() {
-                var imagesLazy = jQuery(".image-lazy", _body);
-                imagesLazy = imagesLazy.not(".loading");
-                imagesLazy = imagesLazy.not(".loaded");
-                imagesLazy = imagesLazy.not(".error");
-                imagesLazy.each(function(index, element) {
-                    var _element = jQuery(this);
-                    updateState(_element);
+            !isRegistered &&
+                _window.resize(function() {
+                    var imagesLazy = jQuery(".image-lazy", _body);
+                    imagesLazy = imagesLazy.not(".loading");
+                    imagesLazy = imagesLazy.not(".loaded");
+                    imagesLazy = imagesLazy.not(".error");
+                    imagesLazy.each(function(index, element) {
+                        var _element = jQuery(this);
+                        updateState(_element);
+                    });
                 });
-            });
 
-            !isRegistered && setInterval(function() {
-                var imagesLazy = jQuery(".image-lazy", _body);
-                imagesLazy = imagesLazy.not(".loading");
-                imagesLazy = imagesLazy.not(".loaded");
-                imagesLazy = imagesLazy.not(".error");
-                imagesLazy.each(function(index, element) {
-                    var _element = jQuery(this);
-                    updateState(_element);
-                });
-            }, 250);
+            !isRegistered &&
+                setInterval(function() {
+                    var imagesLazy = jQuery(".image-lazy", _body);
+                    imagesLazy = imagesLazy.not(".loading");
+                    imagesLazy = imagesLazy.not(".loaded");
+                    imagesLazy = imagesLazy.not(".error");
+                    imagesLazy.each(function(index, element) {
+                        var _element = jQuery(this);
+                        updateState(_element);
+                    });
+                }, 250);
         };
 
         var updateState = function(element) {
@@ -18883,7 +20054,7 @@ if (typeof require !== "undefined") {
                 // iterates over the files
                 _files.each(function(index, element) {
                     // creates the image element and adds it to the image upload
-                    var image = jQuery("<img class=\"image-upload-image\" />");
+                    var image = jQuery('<img class="image-upload-image" />');
                     imageUpload.append(image);
 
                     // creates a new file reader for reading the file
@@ -19047,10 +20218,10 @@ if (typeof require !== "undefined") {
             // element so that the buttons may be added, then retrieves
             // the "just" created incremental field and adds the buttons
             // to it (minus and plus buttons)
-            matchedObject.wrap("<div class=\"incremental-field\"></div>");
+            matchedObject.wrap('<div class="incremental-field"></div>');
             var incrementalField = matchedObject.parents(".incremental-field");
-            incrementalField.prepend("<div class=\"button minus\"></div>");
-            incrementalField.append("<div class=\"button plus\"></div>");
+            incrementalField.prepend('<div class="button minus"></div>');
+            incrementalField.append('<div class="button plus"></div>');
 
             // sets the ux global object representation as incremental
             // field, this value may be used latter for fast ux
@@ -19305,8 +20476,12 @@ if (typeof require !== "undefined") {
             // retrieves the window (alert window) elements
             var window = jQuery(".window.window-info", matchedObject);
             if (window.length === 0) {
-                window = jQuery("<div class=\"window window-info window-hide\">" + "<h1></h1>" +
-                    "<p class=\"single\"></p>" + "</div>");
+                window = jQuery(
+                    '<div class="window window-info window-hide">' +
+                        "<h1></h1>" +
+                        '<p class="single"></p>' +
+                        "</div>"
+                );
                 window.uxwindow();
                 matchedObject.append(window);
             }
@@ -19388,9 +20563,13 @@ if (typeof require !== "undefined") {
             // in case the elements do not exists creates a new element
             var window = jQuery(".window.window-lightbox", matchedObject);
             if (window.length === 0) {
-                window = jQuery("<div class=\"window window-lightbox\">" +
-                    "<div class=\"button-confirm\"></div>" + "<div class=\"button-expand\"></div>" +
-                    "<img alt=\"\" />" + "</div>");
+                window = jQuery(
+                    '<div class="window window-lightbox">' +
+                        '<div class="button-confirm"></div>' +
+                        '<div class="button-expand"></div>' +
+                        '<img alt="" />' +
+                        "</div>"
+                );
                 window.uxwindow();
                 matchedObject.append(window);
             }
@@ -19661,21 +20840,25 @@ if (typeof require !== "undefined") {
             // calls the confirm window in the document, note that
             // in case the window value is set the proper window is
             // going to be used for the confirmation display
-            _body.uxconfirm(message, function(result) {
-                // in case the result is cancel avoids the current
-                // execution and returns immediately
-                if (result === false) {
-                    return;
-                }
+            _body.uxconfirm(
+                message,
+                function(result) {
+                    // in case the result is cancel avoids the current
+                    // execution and returns immediately
+                    if (result === false) {
+                        return;
+                    }
 
-                // retrieves the matched object location and
-                // sets it in the document effectively changing
-                // the location of the current document
-                var location = matchedObject.attr("href");
-                jQuery.uxlocation(location);
-            }, {
-                window: window
-            });
+                    // retrieves the matched object location and
+                    // sets it in the document effectively changing
+                    // the location of the current document
+                    var location = matchedObject.attr("href");
+                    jQuery.uxlocation(location);
+                },
+                {
+                    window: window
+                }
+            );
         };
 
         // initializes the plugin
@@ -19745,83 +20928,85 @@ if (typeof require !== "undefined") {
                 // in case the ajax flag set a "special" click handler
                 // must be registered to intercept the call and use
                 // ajax techniques to retrieve it
-                ajax && _element.click(function(event) {
-                    // retrieves the element and retrieves the hiperlink
-                    // reference value from it to be used as the url
-                    var element = jQuery(this);
-                    var href = element.attr("href");
+                ajax &&
+                    _element.click(function(event) {
+                        // retrieves the element and retrieves the hiperlink
+                        // reference value from it to be used as the url
+                        var element = jQuery(this);
+                        var href = element.attr("href");
 
-                    // prevents the default event (avoids the
-                    // effect of the link)
-                    event.preventDefault();
+                        // prevents the default event (avoids the
+                        // effect of the link)
+                        event.preventDefault();
 
-                    // runs the remote call to retrieve the resource associated
-                    // with the link element, note that cross site reference
-                    // rules will applye to this request
-                    jQuery.ajax({
-                        type: "get",
-                        url: href,
-                        success: function(data) {
-                            element.triggerHandler("success", [data]);
-                        },
-                        error: function(request, textStatus, errorThrown) {
-                            element.triggerHandler("error", [request]);
-                        }
+                        // runs the remote call to retrieve the resource associated
+                        // with the link element, note that cross site reference
+                        // rules will applye to this request
+                        jQuery.ajax({
+                            type: "get",
+                            url: href,
+                            success: function(data) {
+                                element.triggerHandler("success", [data]);
+                            },
+                            error: function(request, textStatus, errorThrown) {
+                                element.triggerHandler("error", [request]);
+                            }
+                        });
                     });
-                });
 
                 // registers for the click event in
                 // the element only in case the dureation is valid
-                durationValid && _element.click(function(event) {
-                    // retrieves the element
-                    var element = jQuery(this);
+                durationValid &&
+                    _element.click(function(event) {
+                        // retrieves the element
+                        var element = jQuery(this);
 
-                    // retrieves the href (link) attribute, that
-                    // contains the target location of the link,
-                    // this should be an internal identifier
-                    var href = element.attr("href");
-                    var hrefValid = jQuery(href).length > 0;
+                        // retrieves the href (link) attribute, that
+                        // contains the target location of the link,
+                        // this should be an internal identifier
+                        var href = element.attr("href");
+                        var hrefValid = jQuery(href).length > 0;
 
-                    // retrieves the value of the data hash value
-                    // that if existent enables hash changing
-                    var hash = element.attr("data-hash");
+                        // retrieves the value of the data hash value
+                        // that if existent enables hash changing
+                        var hash = element.attr("data-hash");
 
-                    // retrieves the offset and converts it
-                    // into an integer to be used in the animation
-                    // that is going to be performed in the element
-                    var offset = element.attr("data-offset");
-                    var offsetInteger = parseInt(offset);
+                        // retrieves the offset and converts it
+                        // into an integer to be used in the animation
+                        // that is going to be performed in the element
+                        var offset = element.attr("data-offset");
+                        var offsetInteger = parseInt(offset);
 
-                    // verifies if the target element for ther link
-                    // value is valid, and in case it's not returns
-                    // the control flow immediately (as it's not possible
-                    // to perform smooth scrolling)
-                    if (!hrefValid) {
-                        return;
-                    }
+                        // verifies if the target element for ther link
+                        // value is valid, and in case it's not returns
+                        // the control flow immediately (as it's not possible
+                        // to perform smooth scrolling)
+                        if (!hrefValid) {
+                            return;
+                        }
 
-                    // creates the settings map based on the offset
-                    // value that has just been calculated, this map
-                    // is going to be passed to the scroll extension
-                    var settings = {
-                        offset: isNaN(offsetInteger) ? 0 : offsetInteger
-                    };
+                        // creates the settings map based on the offset
+                        // value that has just been calculated, this map
+                        // is going to be passed to the scroll extension
+                        var settings = {
+                            offset: isNaN(offsetInteger) ? 0 : offsetInteger
+                        };
 
-                    // in case the hash triggering value is defined
-                    // updates the current hash with the href value
-                    // with the provided value appended to it
-                    if (hash) {
-                        location.hash = href + "-" + hash;
-                    }
+                        // in case the hash triggering value is defined
+                        // updates the current hash with the href value
+                        // with the provided value appended to it
+                        if (hash) {
+                            location.hash = href + "-" + hash;
+                        }
 
-                    // starts the scrolling operation using the target
-                    // href location using the defined duration
-                    jQuery.uxscrollto(href, durationInteger, settings);
+                        // starts the scrolling operation using the target
+                        // href location using the defined duration
+                        jQuery.uxscrollto(href, durationInteger, settings);
 
-                    // prevents the default event (avoids the
-                    // effect of the link)
-                    event.preventDefault();
-                });
+                        // prevents the default event (avoids the
+                        // effect of the link)
+                        event.preventDefault();
+                    });
             });
         };
 
@@ -19877,8 +21062,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the links that represent expanded sub lists
             // for empty sub list verification
-            var epandedLinks = jQuery("> li > a > .link-expand:contains(+)",
-                matchedObject);
+            var epandedLinks = jQuery("> li > a > .link-expand:contains(+)", matchedObject);
 
             // opens the menus for all the selected links
             // of the list, changes also the expand icon
@@ -19895,8 +21079,7 @@ if (typeof require !== "undefined") {
                 // retrieves the list item link and the list item
                 // link expand
                 var listItemLink = jQuery("> a", listItem);
-                var listItemLinkExpand = jQuery(".link-expand",
-                    listItem);
+                var listItemLinkExpand = jQuery(".link-expand", listItem);
 
                 // shows the the list (sub list)
                 list.show();
@@ -19974,8 +21157,7 @@ if (typeof require !== "undefined") {
                 // retrieves the list item link and the list item
                 // link expand
                 var listItemLink = jQuery("> a", listItem);
-                var listItemLinkExpand = jQuery(".link-expand",
-                    listItem);
+                var listItemLinkExpand = jQuery(".link-expand", listItem);
 
                 // in case the element is open (has class
                 // open) need to close the list
@@ -19999,8 +21181,7 @@ if (typeof require !== "undefined") {
                     // links expands
                     var subListsItems = subLists.parent("li");
                     var subListsLinks = jQuery("a", subListsItems);
-                    var subListsLinkExpands = jQuery(".link-expand",
-                        subListsLinks);
+                    var subListsLinkExpands = jQuery(".link-expand", subListsLinks);
 
                     // hides the the lists (sub list)
                     subLists.slideUp(350);
@@ -20126,8 +21307,7 @@ if (typeof require !== "undefined") {
                 // menu contents
                 var menu = menuSelector ? jQuery(menuSelector) : element.parents(".menu");
                 var menuButton = jQuery("> .menu-button", menu);
-                var menuContents = jQuery(
-                    "> .menu-contents:not(.sub-menu)", menu);
+                var menuContents = jQuery("> .menu-contents:not(.sub-menu)", menu);
 
                 // retrieves the current set of visible menus and menu
                 // contents to be able to control them
@@ -20242,110 +21422,115 @@ if (typeof require !== "undefined") {
 
             // register for the key down event in the body,
             // only in case the registration was not already made
-            !isRegistered && _body.keydown(function(event) {
-                // retrieves the element
-                var element = jQuery(this);
+            !isRegistered &&
+                _body.keydown(function(event) {
+                    // retrieves the element
+                    var element = jQuery(this);
 
-                // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                    // retrieves the key value
+                    var keyValue = event.keyCode
+                        ? event.keyCode
+                        : event.charCode
+                            ? event.charCode
+                            : event.which;
 
-                // in case the key that was pressed in not the
-                // escape one there's nothing to be done and so
-                // the control flow is returned immediately
-                if (keyValue !== 27) {
-                    return;
-                }
+                    // in case the key that was pressed in not the
+                    // escape one there's nothing to be done and so
+                    // the control flow is returned immediately
+                    if (keyValue !== 27) {
+                        return;
+                    }
 
-                // retrieves the menu to retieve the and uses it to
-                // retrieve the reference to the menu contents
-                var menu = jQuery(".menu.active", element);
-                var menuContents = jQuery(".menu-contents:visible",
-                    menu);
+                    // retrieves the menu to retieve the and uses it to
+                    // retrieve the reference to the menu contents
+                    var menu = jQuery(".menu.active", element);
+                    var menuContents = jQuery(".menu-contents:visible", menu);
 
-                // checks if the current menu is of type drop
-                // (it must be removed and not hidden)
-                var isDrop = menu.hasClass("drop-menu");
+                    // checks if the current menu is of type drop
+                    // (it must be removed and not hidden)
+                    var isDrop = menu.hasClass("drop-menu");
 
-                // in case the current menu is of type drop
-                // (must be removed)
-                if (isDrop) {
-                    // removes the menu from the environment
-                    menu.remove();
-                }
-                // otherwise the normal behavior applies (hidding)
-                else {
-                    // tries to retrieve the current owner of the menu
-                    // contents and in case it exists removes the active
-                    // class from it
-                    var owner = menu.data("owner");
-                    owner && owner.removeClass("active");
+                    // in case the current menu is of type drop
+                    // (must be removed)
+                    if (isDrop) {
+                        // removes the menu from the environment
+                        menu.remove();
+                    }
+                    // otherwise the normal behavior applies (hidding)
+                    else {
+                        // tries to retrieve the current owner of the menu
+                        // contents and in case it exists removes the active
+                        // class from it
+                        var owner = menu.data("owner");
+                        owner && owner.removeClass("active");
 
-                    // removes the active class from the menu and
-                    // then hides the menu contents
-                    menu.removeClass("active");
-                    menuContents.hide();
-                    menuContents.triggerHandler("hidden");
-                }
-            });
+                        // removes the active class from the menu and
+                        // then hides the menu contents
+                        menu.removeClass("active");
+                        menuContents.hide();
+                        menuContents.triggerHandler("hidden");
+                    }
+                });
 
             // register for the click event in the body,
             // only in case the registration was not already made
-            !isRegistered && _body.click(function(event) {
-                // retrieves the element
-                var element = jQuery(this);
+            !isRegistered &&
+                _body.click(function(event) {
+                    // retrieves the element
+                    var element = jQuery(this);
 
-                // retrieves the menu to retieve the
-                // menu contents
-                var menu = jQuery(".menu.active", element);
-                var menuContents = jQuery(".menu-contents:visible",
-                    menu);
+                    // retrieves the menu to retieve the
+                    // menu contents
+                    var menu = jQuery(".menu.active", element);
+                    var menuContents = jQuery(".menu-contents:visible", menu);
 
-                // checks if the current menu is of type drop
-                // (it must be removed and not hidden)
-                var isDrop = menu.hasClass("drop-menu");
+                    // checks if the current menu is of type drop
+                    // (it must be removed and not hidden)
+                    var isDrop = menu.hasClass("drop-menu");
 
-                // in case the current menu is of type drop
-                // (must be removed)
-                if (isDrop) {
-                    // removes the menu from the environment
-                    menu.remove();
-                }
-                // otherwise the normal behavior applies (hidding)
-                else {
-                    // tries to retrieve the current owner of the menu
-                    // contents and in case it exists removes the active
-                    // class from it
-                    var owner = menu.data("owner");
-                    owner && owner.removeClass("active");
+                    // in case the current menu is of type drop
+                    // (must be removed)
+                    if (isDrop) {
+                        // removes the menu from the environment
+                        menu.remove();
+                    }
+                    // otherwise the normal behavior applies (hidding)
+                    else {
+                        // tries to retrieve the current owner of the menu
+                        // contents and in case it exists removes the active
+                        // class from it
+                        var owner = menu.data("owner");
+                        owner && owner.removeClass("active");
 
-                    // removes the active class from the menu and
-                    // then hides the menu contents
-                    menu.removeClass("active");
-                    menuContents.hide();
-                    menuContents.triggerHandler("hidden");
-                }
-            });
+                        // removes the active class from the menu and
+                        // then hides the menu contents
+                        menu.removeClass("active");
+                        menuContents.hide();
+                        menuContents.triggerHandler("hidden");
+                    }
+                });
 
             // register for the right click event in the body,
             // only in case the registration was not already made
-            !isRegistered && _window.resize(function() {
-                // retrieves the currently active drop menus
-                // to be able to remove them
-                var menu = jQuery(".drop-menu.active");
+            !isRegistered &&
+                _window.resize(function() {
+                    // retrieves the currently active drop menus
+                    // to be able to remove them
+                    var menu = jQuery(".drop-menu.active");
 
-                // removes the (drop) menu
-                menu.remove();
-            });
+                    // removes the (drop) menu
+                    menu.remove();
+                });
 
-            !isRegistered && _window.scroll(function() {
-                // retrieves the currently active drop menus
-                // to be able to remove them
-                var menu = jQuery(".drop-menu.active");
+            !isRegistered &&
+                _window.scroll(function() {
+                    // retrieves the currently active drop menus
+                    // to be able to remove them
+                    var menu = jQuery(".drop-menu.active");
 
-                // removes the (drop) menu
-                menu.remove();
-            });
+                    // removes the (drop) menu
+                    menu.remove();
+                });
         };
 
         /**
@@ -20432,10 +21617,9 @@ if (typeof require !== "undefined") {
             // be able to position the menu to the left of the corresponding link
             // in case the menu is meant bo displayed to the right no margin is
             // applies as the menu contents should be displayed to the right already
-            var contentsMarginLeft = ((contentsWidth - buttonWidth) - borderWidth) * -1;
+            var contentsMarginLeft = (contentsWidth - buttonWidth - borderWidth) * -1;
             contentsMarginLeft = right ? 0 : contentsMarginLeft;
-            !isReference
-                && menuContents.css("margin-left", contentsMarginLeft + "px");
+            !isReference && menuContents.css("margin-left", contentsMarginLeft + "px");
         };
 
         // switches over the method
@@ -20658,8 +21842,16 @@ if (typeof require !== "undefined") {
 
             // creates the message element from the html code
             // that is going to be used as the base for display
-            var messageElement = jQuery("<div class=\"notification\">" + "<p class=\"notification-title\">" +
-                title + "</p>" + "<p class=\"notification-text\">" + message + "</p>" + "</div>");
+            var messageElement = jQuery(
+                '<div class="notification">' +
+                    '<p class="notification-title">' +
+                    title +
+                    "</p>" +
+                    '<p class="notification-text">' +
+                    message +
+                    "</p>" +
+                    "</div>"
+            );
 
             // adds message element to the matched object making
             // it ready in ters of visual display (ui display)
@@ -20682,12 +21874,13 @@ if (typeof require !== "undefined") {
             // registers for the click event on the created
             // message element so that it fades out when a
             // click occurs in it (as expected)
-            link && messageElement.click(function() {
-                var element = jQuery(this);
-                element.fadeOut(fadeTimeout, function() {
-                    element.remove();
+            link &&
+                messageElement.click(function() {
+                    var element = jQuery(this);
+                    element.fadeOut(fadeTimeout, function() {
+                        element.remove();
+                    });
                 });
-            });
         };
 
         /**
@@ -20737,7 +21930,7 @@ if (typeof require !== "undefined") {
             // adds the clear element to the complete set of selected
             // options elements, this is required to provide a correct
             // alyout structure in terms of breaking
-            matchedObject.append("<div class=\"option-clear\"></div>");
+            matchedObject.append('<div class="option-clear"></div>');
         };
 
         /**
@@ -20824,7 +22017,7 @@ if (typeof require !== "undefined") {
             // to the current body element (default action)
             var overlay = jQuery(".overlay:first");
             if (overlay.length === 0) {
-                overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
+                overlay = jQuery('<div id="overlay" class="overlay"></div>');
                 overlay.uxoverlay();
                 _body.prepend(overlay);
             }
@@ -20901,21 +22094,22 @@ if (typeof require !== "undefined") {
 
                 // registers for the control key combination
                 // in the global scope
-                !keyIsNaN && jQuery.uxctrl(keyInteger, function() {
-                    // checks if the element is visible
-                    var elementVisible = _element.hasClass("visible");
+                !keyIsNaN &&
+                    jQuery.uxctrl(keyInteger, function() {
+                        // checks if the element is visible
+                        var elementVisible = _element.hasClass("visible");
 
-                    // in case the element is visible, must hide hide
-                    // in order to toggel visibility
-                    if (elementVisible) {
-                        _hide(_element, options);
-                    }
-                    // otherwise the element must be invisible and then
-                    // it must be shown in the screen
-                    else {
-                        _show(_element, options);
-                    }
-                });
+                        // in case the element is visible, must hide hide
+                        // in order to toggel visibility
+                        if (elementVisible) {
+                            _hide(_element, options);
+                        }
+                        // otherwise the element must be invisible and then
+                        // it must be shown in the screen
+                        else {
+                            _show(_element, options);
+                        }
+                    });
 
                 // registers the resize in the window
                 _window.resize(function(event) {
@@ -21168,8 +22362,11 @@ if (typeof require !== "undefined") {
                 var overlaySearch = element.parents(".overlay-search");
 
                 // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                var keyValue = event.keyCode
+                    ? event.keyCode
+                    : event.charCode
+                        ? event.charCode
+                        : event.which;
 
                 // in case the escape key is pressed
                 // need to hide the overlay search
@@ -21330,19 +22527,17 @@ if (typeof require !== "undefined") {
 
             // registers for the toggle (visibility) event so that the proper
             // hide operation is performed in the associated overlay
-            matchedObject.bind("toggle",
-                function(event, timeout, extra, autohide) {
-                    var element = jQuery(this);
-                    _toggle(element, options, timeout, extra, autohide);
-                });
+            matchedObject.bind("toggle", function(event, timeout, extra, autohide) {
+                var element = jQuery(this);
+                _toggle(element, options, timeout, extra, autohide);
+            });
 
             // registers for the show event so that the proper
             // hide operation is performed in the associated overlay
-            matchedObject.bind("show",
-                function(event, timeout, extra, autohide, timing) {
-                    var element = jQuery(this);
-                    _show(element, options, timeout, extra, autohide, timing);
-                });
+            matchedObject.bind("show", function(event, timeout, extra, autohide, timing) {
+                var element = jQuery(this);
+                _show(element, options, timeout, extra, autohide, timing);
+            });
 
             // registers for the hide event so that the proper
             // hide operation is performed in the associated overlay
@@ -21606,13 +22801,20 @@ if (typeof require !== "undefined") {
 
                 // wrapps the current element inside the panel more
                 // contents to be able to change the visibility
-                _element.wrapInner("<div class=\"panel-more-contents\"></div>");
+                _element.wrapInner('<div class="panel-more-contents"></div>');
 
                 // adds the panel more action container with the
                 // button and the divider
-                _element.append("<div class=\"panel-more-action\">" + "<li class=\"list-more\">" +
-                    "<span class=\"button\">" + moreString + "</span>" + "</li>" +
-                    "<li class=\"list-divider\"></li>" + "</div>");
+                _element.append(
+                    '<div class="panel-more-action">' +
+                        '<li class="list-more">' +
+                        '<span class="button">' +
+                        moreString +
+                        "</span>" +
+                        "</li>" +
+                        '<li class="list-divider"></li>' +
+                        "</div>"
+                );
             });
         };
 
@@ -21662,8 +22864,7 @@ if (typeof require !== "undefined") {
         var _show = function(matchedObject, options) {
             // retrieves the various (sub)-element that are going
             // to be used for the processing of the show operation
-            var panelMoreContents = jQuery(".panel-more-contents",
-                matchedObject);
+            var panelMoreContents = jQuery(".panel-more-contents", matchedObject);
             var moreButton = jQuery("li.list-more .button", matchedObject);
 
             // retrieves the string that is going to be used to
@@ -21679,8 +22880,7 @@ if (typeof require !== "undefined") {
         var _hide = function(matchedObject, options) {
             // retrieves the various (sub)-element that are going
             // to be used for the processing of the hide operation
-            var panelMoreContents = jQuery(".panel-more-contents",
-                matchedObject);
+            var panelMoreContents = jQuery(".panel-more-contents", matchedObject);
             var moreButton = jQuery("li.list-more .button", matchedObject);
 
             // retrieves the string that is going to be used to
@@ -21696,8 +22896,7 @@ if (typeof require !== "undefined") {
         var _toggle = function(matchedObject, options) {
             // retrieves the various (sub)-element that are going
             // to be used for the processing of the toggle operation
-            var panelMoreContents = jQuery(".panel-more-contents",
-                matchedObject);
+            var panelMoreContents = jQuery(".panel-more-contents", matchedObject);
 
             // checks if the the panel more contents is currently
             // visible, to toggle the visibility
@@ -21853,8 +23052,7 @@ if (typeof require !== "undefined") {
             // retrieves the current panel in the to be shown
             // and shows it in the current context, note that
             // the visibility attribute is also set
-            var currentPanel = jQuery("> .panel:nth(" + index + ")",
-                matchedObject);
+            var currentPanel = jQuery("> .panel:nth(" + index + ")", matchedObject);
             currentPanel.show();
             currentPanel.css("visibility", "visible");
         };
@@ -21960,7 +23158,7 @@ if (typeof require !== "undefined") {
             var panels = matchedObject.data("panels");
 
             // composes the panel with the panel item class
-            var panel = "<div class=\"panel-item\">" + panelHtml + "</div>";
+            var panel = '<div class="panel-item">' + panelHtml + "</div>";
 
             // retrieves the last panel and hides it
             var lastPanel = matchedObject.children(".panel-item:last-child");
@@ -22071,7 +23269,7 @@ if (typeof require !== "undefined") {
                 var _element = jQuery(element);
 
                 // adds some html to the password meter
-                _element.append("<div class=\"password-meter-contents level-0\"></div>");
+                _element.append('<div class="password-meter-contents level-0"></div>');
 
                 // sets the initial data in the element
                 _element.data("level", 0);
@@ -22088,8 +23286,7 @@ if (typeof require !== "undefined") {
                 var _element = jQuery(element);
 
                 // retrieves the password meter contents
-                var passwordMeterContents = jQuery(".password-meter-contents",
-                    _element);
+                var passwordMeterContents = jQuery(".password-meter-contents", _element);
 
                 // retrieves the target reference and then
                 // retrieves the target element
@@ -22242,21 +23439,28 @@ if (typeof require !== "undefined") {
             var rightBar = matchedObject.attr("data-right_bar");
 
             // adds the progress bar contents to the matched object
-            matchedObject.append("<span class=\"progress-bar-bar bar-left\">" +
-                "<span class=\"progress-bar-percentage\">0%</span>" + "</span>");
+            matchedObject.append(
+                '<span class="progress-bar-bar bar-left">' +
+                    '<span class="progress-bar-percentage">0%</span>' +
+                    "</span>"
+            );
 
             // in case the right bar flag is set adds the second progress
             // bar to the matched object
-            rightBar
-                && matchedObject.append("<span class=\"progress-bar-bar bar-right\">" +
-                    "<span class=\"progress-bar-percentage\">0%</span>" + "</span>");
+            rightBar &&
+                matchedObject.append(
+                    '<span class="progress-bar-bar bar-right">' +
+                        '<span class="progress-bar-percentage">0%</span>' +
+                        "</span>"
+                );
 
             // tries to retrieve the percentage and in case it
             // exists changes it
             var percentage = matchedObject.attr("data-percentage");
-            percentage && _change(matchedObject, {
-                percentage: percentage
-            });
+            percentage &&
+                _change(matchedObject, {
+                    percentage: percentage
+                });
         };
 
         /**
@@ -22281,18 +23485,18 @@ if (typeof require !== "undefined") {
             var percentageRemaining = 100.0 - percentage;
 
             // retrieves the progress bar bars
-            var progressBarBarLeft = jQuery(".progress-bar-bar.bar-left",
-                matchedObject);
-            var progressBarBarRight = jQuery(".progress-bar-bar.bar-right",
-                matchedObject);
+            var progressBarBarLeft = jQuery(".progress-bar-bar.bar-left", matchedObject);
+            var progressBarBarRight = jQuery(".progress-bar-bar.bar-right", matchedObject);
 
             // retrieves the progress bar percentages
             var progressBarPercentageLeft = jQuery(
                 ".progress-bar-bar.bar-left .progress-bar-percentage",
-                matchedObject);
+                matchedObject
+            );
             var progressBarPercentageRight = jQuery(
                 ".progress-bar-bar.bar-right .progress-bar-percentage",
-                matchedObject);
+                matchedObject
+            );
 
             // updates both the progress bar bar and percentage
             progressBarBarLeft.css("width", percentage + "%");
@@ -22532,7 +23736,7 @@ if (typeof require !== "undefined") {
                 // iterates over the range of requested rating values to
                 // create the various values (as requested)
                 for (index = 0; index < count; index++) {
-                    _element.append("<div class=\"rating-item\"></div>");
+                    _element.append('<div class="rating-item"></div>');
                 }
 
                 // selects the initial value by triggering the value change
@@ -22614,14 +23818,14 @@ if (typeof require !== "undefined") {
                     // tries to retrieve and remove any previously existing
                     // hidden element representing the current value, this
                     // avoids problems whild using ajax based form submit
-                    var previous = _element.next("input[type=hidden][name=\"" + name +
-                        "\"]");
+                    var previous = _element.next('input[type=hidden][name="' + name + '"]');
                     previous.remove();
 
                     // creates the hidden input field that is going to represent the
                     // rating element with the proper name and value set
-                    _element.after("<input type=\"hidden\" name=\"" + name + "\" value=\"" +
-                        value + "\" />");
+                    _element.after(
+                        '<input type="hidden" name="' + name + '" value="' + value + '" />'
+                    );
                 });
             });
         };
@@ -22775,10 +23979,11 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // wraps the matched object arround a scroll list container and then
             // retrieves it and adds the previous and next scroll buttons
-            matchedObject.wrap("<div class=\"scroll-list-container\"></div>");
+            matchedObject.wrap('<div class="scroll-list-container"></div>');
             var scrollListContainer = matchedObject.parents(".scroll-list-container");
-            scrollListContainer.prepend("<div class=\"scroll-previous\"></div>" +
-                "<div class=\"scroll-next\"></div>");
+            scrollListContainer.prepend(
+                '<div class="scroll-previous"></div>' + '<div class="scroll-next"></div>'
+            );
 
             matchedObject.each(function(index, element) {
                 // retrieves the current element and uses it to retrieve the
@@ -22837,9 +24042,12 @@ if (typeof require !== "undefined") {
 
                 // animates the scroll right operation using the
                 // default animation mechanisms
-                scrollListContainer.animate({
-                    scrollLeft: "-=" + scrollWidth
-                }, 400);
+                scrollListContainer.animate(
+                    {
+                        scrollLeft: "-=" + scrollWidth
+                    },
+                    400
+                );
             });
 
             scrollNext.click(function() {
@@ -22859,9 +24067,12 @@ if (typeof require !== "undefined") {
 
                 // animates the scroll left operation using the
                 // default animation mechanisms
-                scrollListContainer.animate({
-                    scrollLeft: "+=" + scrollWidth
-                }, 400);
+                scrollListContainer.animate(
+                    {
+                        scrollLeft: "+=" + scrollWidth
+                    },
+                    400
+                );
             });
         };
 
@@ -22882,8 +24093,10 @@ if (typeof require !== "undefined") {
             // width is retrieved taking into accoun that a proper
             // outer width retrieval may fail under certain conditions
             var first = jQuery(children[0]);
-            var firstWidth = first.outerWidth(true) > first.outerWidth(false) ? first.outerWidth(true) :
-                first.outerWidth(false);
+            var firstWidth =
+                first.outerWidth(true) > first.outerWidth(false)
+                    ? first.outerWidth(true)
+                    : first.outerWidth(false);
             var width = firstWidth * count;
 
             // calculates the complete scroll width to check if the
@@ -22907,9 +24120,10 @@ if (typeof require !== "undefined") {
             // the case schedules one more width refresh operation in order
             // to ensure the proper and correct values are displayed
             var isVisible = first.is(":visible");
-            !isVisible && setTimeout(function() {
-                _refreshWidth(matchedObject, options);
-            });
+            !isVisible &&
+                setTimeout(function() {
+                    _refreshWidth(matchedObject, options);
+                });
         };
 
         // initializes the plugin
@@ -23001,35 +24215,37 @@ if (typeof require !== "undefined") {
                 dataSource.bind("data_ready", function() {
                     // runs the initial data query in the data source to
                     // set the options in the select field
-                    dataSource.uxdataquery({
-                        filterString: "",
-                        filterAttributes: [value]
-                    }, function(validItems, moreItems) {
-                        // in case there are no valid items
-                        // returns immediately nothing to be done
-                        if (validItems.length === 0) {
-                            // returns immediately
-                            return;
+                    dataSource.uxdataquery(
+                        {
+                            filterString: "",
+                            filterAttributes: [value]
+                        },
+                        function(validItems, moreItems) {
+                            // in case there are no valid items
+                            // returns immediately nothing to be done
+                            if (validItems.length === 0) {
+                                // returns immediately
+                                return;
+                            }
+
+                            // iterates over all the valid items to create the
+                            // proper options and set them in the text field
+                            for (var index = 0; index < validItems.length; index++) {
+                                // retrieves the current valid item and then creates
+                                // the option and set the proper data item
+                                var validItem = validItems[index];
+                                var option = jQuery("<option>" + validItem[display] + "</option>");
+                                option.data("item", validItem);
+
+                                // adds the option to the text field (select)
+                                textField.append(option);
+                            }
+
+                            // updates the current text field setting the proper
+                            // value in the template item (render value)
+                            _update(textField, options);
                         }
-
-                        // iterates over all the valid items to create the
-                        // proper options and set them in the text field
-                        for (var index = 0; index < validItems.length; index++) {
-                            // retrieves the current valid item and then creates
-                            // the option and set the proper data item
-                            var validItem = validItems[index];
-                            var option = jQuery("<option>" + validItem[display] +
-                                "</option>");
-                            option.data("item", validItem);
-
-                            // adds the option to the text field (select)
-                            textField.append(option);
-                        }
-
-                        // updates the current text field setting the proper
-                        // value in the template item (render value)
-                        _update(textField, options);
-                    });
+                    );
                 });
             });
         };
@@ -23190,8 +24406,7 @@ if (typeof require !== "undefined") {
                         // adds or removes the selected class from it for
                         // each case (complementary)
                         var isSelected = element.hasClass("selected");
-                        isSelected
-                            ? element.removeClass("selected") : element.addClass("selected");
+                        isSelected ? element.removeClass("selected") : element.addClass("selected");
 
                         // sets the previous element in the select list
                         // useful for later referral
@@ -23300,8 +24515,7 @@ if (typeof require !== "undefined") {
                     // value with the same name is posted (so that an empty value
                     // is submitted), required for compliance
                     if (listItems.length === 0) {
-                        _element.append("<input type=\"hidden\" name=\"" + elementName +
-                            "\" />");
+                        _element.append('<input type="hidden" name="' + elementName + '" />');
                     }
 
                     // iterates over all the element in the list items to
@@ -23317,8 +24531,13 @@ if (typeof require !== "undefined") {
 
                         // adds the input element representing the list item
                         // to the list item itself
-                        _element.append("<input type=\"hidden\" name=\"" + elementName +
-                            "\" value=\"" + dataValue + "\" />");
+                        _element.append(
+                            '<input type="hidden" name="' +
+                                elementName +
+                                '" value="' +
+                                dataValue +
+                                '" />'
+                        );
                     }
                 });
             });
@@ -23355,7 +24574,7 @@ if (typeof require !== "undefined") {
 
             // creates the element to be used to sort the elements
             // of the select list
-            var orderIcon = jQuery("<div class=\"order-icon\"></div>");
+            var orderIcon = jQuery('<div class="order-icon"></div>');
 
             // retrieves the set of list items in the select
             // list and adds the order icon to them
@@ -23439,7 +24658,7 @@ if (typeof require !== "undefined") {
 
                     // calculates the target y (vertical) position
                     // for the currenly selected element
-                    var targetY = mouseY - (clonedHeight / 2);
+                    var targetY = mouseY - clonedHeight / 2;
 
                     // checks if the target position is overflowing
                     // the top position of the select list
@@ -23474,11 +24693,17 @@ if (typeof require !== "undefined") {
                     // valid (new position) taking into account
                     // the direction of the movement then in case
                     // it's valid executes the position change
-                    var isValid = offsetY > previousOffsetY ? _index + 1 !== element.index() :
-                        _index + 2 !== element.index();
-                    isValid && listElement[0] !== element[0] && listElement.after(element) &&
+                    var isValid =
+                        offsetY > previousOffsetY
+                            ? _index + 1 !== element.index()
+                            : _index + 2 !== element.index();
+                    isValid &&
+                        listElement[0] !== element[0] &&
+                        listElement.after(element) &&
                         selectList.trigger("order_changed");
-                    offsetY === 0 && listElement[0] !== element[0] && cloned.after(element) &&
+                    offsetY === 0 &&
+                        listElement[0] !== element[0] &&
+                        cloned.after(element) &&
                         selectList.trigger("order_changed");
 
                     // updates the top position of the cloned element
@@ -23586,7 +24811,7 @@ if (typeof require !== "undefined") {
                 var _element = jQuery(this);
                 var width = _element.outerWidth(true);
                 var side = _element.attr("data-side") || "right";
-                _element.css(side, (width * -1) + "px");
+                _element.css(side, width * -1 + "px");
                 _element.addClass("side-panel-" + side);
             });
         };
@@ -23648,21 +24873,22 @@ if (typeof require !== "undefined") {
 
             // registers for the global hide modal event
             // so that the side panel is properly hidden
-            !isRegistered && _body.bind("hide_modal", function() {
-                // retrieves the current element (body) and uses it
-                // to retrieve the complete set of side panels
-                var element = jQuery(this);
-                var sidePanels = jQuery(".side-panel", element);
+            !isRegistered &&
+                _body.bind("hide_modal", function() {
+                    // retrieves the current element (body) and uses it
+                    // to retrieve the complete set of side panels
+                    var element = jQuery(this);
+                    var sidePanels = jQuery(".side-panel", element);
 
-                // iterates over the complete set of side panels present
-                // to be able to hide everyone
-                sidePanels.each(function() {
-                    // runs the hide operation for the current
-                    // element (side panel in iteration)
-                    var _element = jQuery(this);
-                    _hide(_element, options);
+                    // iterates over the complete set of side panels present
+                    // to be able to hide everyone
+                    sidePanels.each(function() {
+                        // runs the hide operation for the current
+                        // element (side panel in iteration)
+                        var _element = jQuery(this);
+                        _hide(_element, options);
+                    });
                 });
-            });
         };
 
         var _ensureOverlay = function() {
@@ -23674,7 +24900,7 @@ if (typeof require !== "undefined") {
                 return overlay;
             }
             var _body = jQuery("body");
-            overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
+            overlay = jQuery('<div id="overlay" class="overlay"></div>');
             overlay.uxoverlay();
             _body.prepend(overlay);
             return overlay;
@@ -23693,7 +24919,7 @@ if (typeof require !== "undefined") {
             overlay.triggerHandler("show", [350]);
             var animation = {};
             animation[side] = 0;
-            matchedObject.css(side, (width * -1) + "px");
+            matchedObject.css(side, width * -1 + "px");
             matchedObject.show();
             matchedObject.animate(animation, {
                 duration: 350,
@@ -23758,8 +24984,11 @@ if (typeof require !== "undefined") {
             var _document = jQuery(document);
             var handler = _document.keydown(function(event) {
                 // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                var keyValue = event.keyCode
+                    ? event.keyCode
+                    : event.charCode
+                        ? event.charCode
+                        : event.which;
 
                 // switches over the key value
                 switch (keyValue) {
@@ -23899,11 +25128,10 @@ if (typeof require !== "undefined") {
          */
         var _appendHtml = function() {
             // wraps the slider contents structure
-            matchedObject.wrapInner("<div class=\"slider-contents\"></div>");
+            matchedObject.wrapInner('<div class="slider-contents"></div>');
 
             // retrieves the first slider panel
-            var firstSliderPanel = jQuery(".slider-panel:first-child",
-                matchedObject);
+            var firstSliderPanel = jQuery(".slider-panel:first-child", matchedObject);
 
             // adds the active class to the first slider panel
             firstSliderPanel.addClass("active");
@@ -23933,17 +25161,15 @@ if (typeof require !== "undefined") {
             var overlay = jQuery(".overlay:first");
             if (overlay.length === 0) {
                 _body = jQuery("body");
-                overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
+                overlay = jQuery('<div id="overlay" class="overlay"></div>');
                 overlay.uxoverlay();
                 _body.prepend(overlay);
             }
 
             // retrieves the slider panel arows
             // from the matched object
-            var sliderPanelArrowNext = jQuery(".slider-panel-arrow-next",
-                matchedObject);
-            var sliderPanelArrowPrevious = jQuery(
-                ".slider-panel-arrow-previous", matchedObject);
+            var sliderPanelArrowNext = jQuery(".slider-panel-arrow-next", matchedObject);
+            var sliderPanelArrowPrevious = jQuery(".slider-panel-arrow-previous", matchedObject);
 
             // registers for the click event in the slide panel
             // arrow next so that the next element is displayed
@@ -24007,8 +25233,11 @@ if (typeof require !== "undefined") {
             // on the arrow key pressing
             _body.keydown(function(event) {
                 // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                var keyValue = event.keyCode
+                    ? event.keyCode
+                    : event.charCode
+                        ? event.charCode
+                        : event.which;
 
                 // switches over the key value
                 switch (keyValue) {
@@ -24205,12 +25434,12 @@ if (typeof require !== "undefined") {
             var windowSrollLeft = _window.scrollLeft();
 
             // retrieves the first slider panel
-            var firstSliderPanel = jQuery(".slider-panel:first-child",
-                matchedObject);
+            var firstSliderPanel = jQuery(".slider-panel:first-child", matchedObject);
             var firstSliderPanelWidth = firstSliderPanel.outerWidth();
 
             // calculates the left position for the slider contents
-            var leftPosition = ((windowWidth - firstSliderPanelWidth) / 2) + windowSrollLeft - offsetLeft;
+            var leftPosition =
+                (windowWidth - firstSliderPanelWidth) / 2 + windowSrollLeft - offsetLeft;
 
             // changes the margin left of the slider contents to the
             // new value (new panel to be shown)
@@ -24327,7 +25556,8 @@ if (typeof require !== "undefined") {
         // the base64 code of an image that may be used to
         // clear an image based element, this is used to provide
         // a way to clear the element between image transitions
-        var IMAGE_CLEAR = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+        var IMAGE_CLEAR =
+            "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 
         // the default values for the data query json
         var defaults = {};
@@ -24366,9 +25596,14 @@ if (typeof require !== "undefined") {
 
                 // adds the image and the controls section to the current element
                 // so that the normal placeholders are available
-                _element.prepend("<div class=\"slideshow-image\">" + "<img />" + "</div>" +
-                    "<div class=\"slideshow-controls\">" +
-                    "<ul class=\"slideshow-alternates\"></ul>" + "</div>");
+                _element.prepend(
+                    '<div class="slideshow-image">' +
+                        "<img />" +
+                        "</div>" +
+                        '<div class="slideshow-controls">' +
+                        '<ul class="slideshow-alternates"></ul>' +
+                        "</div>"
+                );
 
                 // retrieves both the alternates and the items section
                 // of the current element to be used for the construction
@@ -24588,8 +25823,12 @@ if (typeof require !== "undefined") {
             // in case the index value is not set selects the next
             // value (takes care of overflow) otherwise defaults to
             // the request index (from parameter)
-            index = index === null || index === undefined ? current + 1 < items.length ? current + 1 : 0 :
-                index;
+            index =
+                index === null || index === undefined
+                    ? current + 1 < items.length
+                        ? current + 1
+                        : 0
+                    : index;
 
             // in case the current index is the same as the (target)
             // index, no need to select it (returns immediately)
@@ -24604,14 +25843,15 @@ if (typeof require !== "undefined") {
 
             // retrieves the list of (selected) alternates and disables
             // the value (going to change the item)
-            var alternates = jQuery(".slideshow-alternates > li.active",
-                matchedObject);
+            var alternates = jQuery(".slideshow-alternates > li.active", matchedObject);
             alternates.removeClass("active");
 
             // retrieves the target index alternate and selects it by adding
             // the active class to it
-            var alternate = jQuery(".slideshow-alternates > li:nth-child(" + (index + 1) + ")",
-                matchedObject);
+            var alternate = jQuery(
+                ".slideshow-alternates > li:nth-child(" + (index + 1) + ")",
+                matchedObject
+            );
             alternate.addClass("active");
 
             // retrieves the image element for the slideshow and then retrieves
@@ -24761,8 +26001,8 @@ if (typeof require !== "undefined") {
             var filterOptions = options["filterOptions"];
 
             // creates the text field element and the select list
-            var textField = jQuery("<input type=\"text\" class=\"text-field\" />");
-            var selectList = jQuery("<ul class=\"select-list\"></ul>");
+            var textField = jQuery('<input type="text" class="text-field" />');
+            var selectList = jQuery('<ul class="select-list"></ul>');
 
             // starts both the text field and the select list and then
             // adds them to the source list (matched object)
@@ -24789,8 +26029,7 @@ if (typeof require !== "undefined") {
                 // retrieves the order of the current element and
                 // in case it's valid set it in the select list
                 var elementOrder = _element.attr("data-order");
-                elementOrder
-                    && selectList.attr("data-order", elementOrder);
+                elementOrder && selectList.attr("data-order", elementOrder);
 
                 // updates the element data with parameters to
                 // be used in the component actions
@@ -24853,7 +26092,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the page up key
+                    // in case it's the page up key
                     case 33:
                         // runs the all up action in the source list
                         _allUp(sourceList, options);
@@ -24866,7 +26105,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the page down key
+                    // in case it's the page down key
                     case 34:
                         // runs the all down action in the source list
                         _allDown(sourceList, options);
@@ -24879,7 +26118,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the up key
+                    // in case it's the up key
                     case 38:
                         // runs the up action in the source list
                         _up(sourceList, options);
@@ -24892,7 +26131,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case it's the down key
+                    // in case it's the down key
                     case 40:
                         // runs teh down action in the source list
                         _down(sourceList, options);
@@ -24922,8 +26161,7 @@ if (typeof require !== "undefined") {
                     // in case it's the enter key
                     case 13:
                         // retrieves the set of selected element
-                        var selectedItems = jQuery("li.selected",
-                            sourceList);
+                        var selectedItems = jQuery("li.selected", sourceList);
 
                         // triggers the select event in the select list
                         // only in case there are items selected
@@ -24991,81 +26229,96 @@ if (typeof require !== "undefined") {
             // runs the query in the data source to retrieve the new
             // items and then contruct the list item from the
             // result provided by the data source
-            dataSource.uxdataquery({
-                filterString: textFieldValue,
-                filterAttributes: filterAttributes,
-                startRecord: 0,
-                numberRecords: numberOptions
-            }, function(validItems, moreItems) {
-                // in case the valid items value
-                // is not valid (error occurred)
-                if (!validItems) {
-                    // returns immediately
-                    return;
-                }
-
-                // empties (clears) the select list
-                selectList.empty();
-
-                // iterates over all the valid and filtered items
-                // to adds them to the select list
-                for (var index = 0; index < validItems.length; index++) {
-                    // retrieves the current item (from the valid items)
-                    var currentItem = validItems[index];
-
-                    // retrieves both the display and the value
-                    // attributes for the current item
-                    var currentDisplayAttribute = displayAttribute && VALID_TYPES.isIn(typeof currentItem[
-                        displayAttribute]) ? currentItem[displayAttribute] : currentItem;
-                    var currentValueAttribute = valueAttribute && VALID_TYPES.isIn(typeof currentItem[
-                        valueAttribute]) ? currentItem[valueAttribute] : currentItem;
-                    var currentLinkAttribute = linkAttribute && VALID_TYPES.isIn(typeof currentItem[
-                        linkAttribute]) ? currentItem[linkAttribute] : null;
-
-                    // triggers the event that will handle the validation of
-                    // the item creation and in case the return value of it
-                    // is invalid the current item is not created
-                    var result = sourceList.triggerHandler(
-                        "validate_item", [currentItem,
-                            currentValueAttribute
-                        ]);
-                    if (result === false) {
-                        continue;
+            dataSource.uxdataquery(
+                {
+                    filterString: textFieldValue,
+                    filterAttributes: filterAttributes,
+                    startRecord: 0,
+                    numberRecords: numberOptions
+                },
+                function(validItems, moreItems) {
+                    // in case the valid items value
+                    // is not valid (error occurred)
+                    if (!validItems) {
+                        // returns immediately
+                        return;
                     }
 
-                    // creates the base template item from
-                    // the current item
-                    var templateItem = jQuery("<li data-display=\"" + currentDisplayAttribute +
-                        "\" data-value=\"" + currentValueAttribute + "\">" +
-                        currentDisplayAttribute + "</li>");
+                    // empties (clears) the select list
+                    selectList.empty();
 
-                    // sets the current item in the template item data
-                    // so that it can be used for latter template rendering
-                    templateItem.data("item", currentItem);
+                    // iterates over all the valid and filtered items
+                    // to adds them to the select list
+                    for (var index = 0; index < validItems.length; index++) {
+                        // retrieves the current item (from the valid items)
+                        var currentItem = validItems[index];
 
-                    // sets the data link attribute in the
-                    // template item in case it's valid
-                    currentLinkAttribute
-                        && templateItem.attr("data-link",
-                            currentLinkAttribute);
+                        // retrieves both the display and the value
+                        // attributes for the current item
+                        var currentDisplayAttribute =
+                            displayAttribute &&
+                            VALID_TYPES.isIn(typeof currentItem[displayAttribute])
+                                ? currentItem[displayAttribute]
+                                : currentItem;
+                        var currentValueAttribute =
+                            valueAttribute && VALID_TYPES.isIn(typeof currentItem[valueAttribute])
+                                ? currentItem[valueAttribute]
+                                : currentItem;
+                        var currentLinkAttribute =
+                            linkAttribute && VALID_TYPES.isIn(typeof currentItem[linkAttribute])
+                                ? currentItem[linkAttribute]
+                                : null;
 
-                    // adds the template item item to the
-                    // select list
-                    selectList.append(templateItem);
+                        // triggers the event that will handle the validation of
+                        // the item creation and in case the return value of it
+                        // is invalid the current item is not created
+                        var result = sourceList.triggerHandler("validate_item", [
+                            currentItem,
+                            currentValueAttribute
+                        ]);
+                        if (result === false) {
+                            continue;
+                        }
+
+                        // creates the base template item from
+                        // the current item
+                        var templateItem = jQuery(
+                            '<li data-display="' +
+                                currentDisplayAttribute +
+                                '" data-value="' +
+                                currentValueAttribute +
+                                '">' +
+                                currentDisplayAttribute +
+                                "</li>"
+                        );
+
+                        // sets the current item in the template item data
+                        // so that it can be used for latter template rendering
+                        templateItem.data("item", currentItem);
+
+                        // sets the data link attribute in the
+                        // template item in case it's valid
+                        currentLinkAttribute &&
+                            templateItem.attr("data-link", currentLinkAttribute);
+
+                        // adds the template item item to the
+                        // select list
+                        selectList.append(templateItem);
+                    }
+
+                    // runs the select list initializer again
+                    // to update the event handlers in the items
+                    selectList.uxselectlist();
+
+                    // updates the source list value with the current
+                    // text field value
+                    sourceList.data("value", textFieldValue);
+
+                    // triggers the items changed event on the select list
+                    // to be used for the update of the layour
+                    selectList.triggerHandler("items_changed");
                 }
-
-                // runs the select list initializer again
-                // to update the event handlers in the items
-                selectList.uxselectlist();
-
-                // updates the source list value with the current
-                // text field value
-                sourceList.data("value", textFieldValue);
-
-                // triggers the items changed event on the select list
-                // to be used for the update of the layour
-                selectList.triggerHandler("items_changed");
-            });
+            );
         };
 
         var _up = function(matchedObject, options) {
@@ -25168,20 +26421,22 @@ if (typeof require !== "undefined") {
 
             // retrieves the target item using the "just"
             // provided index value
-            var targetItem = jQuery("li:nth-child(" + (index + 1) + ")",
-                sourceList);
+            var targetItem = jQuery("li:nth-child(" + (index + 1) + ")", sourceList);
             targetItem.addClass("selected");
 
             // checks if the element is visible, this should be the
             // main reason for the scrolling of the select list
-            var isVisible = targetItem && targetItem.length ? jQuery.uxvisible(
-                targetItem, 0, 0, selectList) : true;
+            var isVisible =
+                targetItem && targetItem.length
+                    ? jQuery.uxvisible(targetItem, 0, 0, selectList)
+                    : true;
 
             // scrolls to the select list in case the
             // target item is not visible
-            !isVisible && targetItem.uxscroll({
-                parent: selectList
-            });
+            !isVisible &&
+                targetItem.uxscroll({
+                    parent: selectList
+                });
         };
 
         // switches over the method
@@ -25255,8 +26510,8 @@ if (typeof require !== "undefined") {
 
             // adds to extra elements to the stack representing the items
             // that are inside the stack and the ones that are outside it
-            matchedObject.append("<div class=\"stack-in\"></div>");
-            matchedObject.append("<div class=\"stack-out\"></div>");
+            matchedObject.append('<div class="stack-in"></div>');
+            matchedObject.append('<div class="stack-out"></div>');
 
             // iterates over each of the selected elements to start the
             // stack structure for each of them
@@ -25264,10 +26519,9 @@ if (typeof require !== "undefined") {
                 var _element = jQuery(this);
                 var stackOut = jQuery("> .stack-out", _element);
                 var stackItems = jQuery("> .stack-item", _element);
-                var stackTop = jQuery("> .stack-item.stack-top",
-                    _element);
-                stackTop = stackTop.length === 0 ? jQuery(
-                    "> .stack-item:first", _element) : stackTop;
+                var stackTop = jQuery("> .stack-item.stack-top", _element);
+                stackTop =
+                    stackTop.length === 0 ? jQuery("> .stack-item:first", _element) : stackTop;
                 stackOut.append(stackItems);
                 push(_element, stackTop, false);
             });
@@ -25317,13 +26571,14 @@ if (typeof require !== "undefined") {
                 popAll(element);
             });
 
-            !isRegistered && _window.bind("size", function() {
-                var stacks = jQuery(".stack", _body);
-                stacks.each(function(index, value) {
-                    var _element = jQuery(this);
-                    _reposition(_element);
+            !isRegistered &&
+                _window.bind("size", function() {
+                    var stacks = jQuery(".stack", _body);
+                    stacks.each(function(index, value) {
+                        var _element = jQuery(this);
+                        _reposition(_element);
+                    });
                 });
-            });
         };
 
         var push = function(element, target, animated) {
@@ -25410,7 +26665,7 @@ if (typeof require !== "undefined") {
                 itemsOffset += isGarbage ? 0 : elementWidth;
             });
             stackIn.width(itemsWidth);
-            stackIn.css("left", String((itemsOffset * -1) + stackTopWidth) + "px");
+            stackIn.css("left", String(itemsOffset * -1 + stackTopWidth) + "px");
         };
 
         var _gc = function(element) {
@@ -25597,8 +26852,7 @@ if (typeof require !== "undefined") {
             // matched object that are going to be used in the operation
             var tabs = jQuery(".tab", matchedObject);
             var tabSelectors = jQuery(".tab-selector", matchedObject);
-            var tabSelector = jQuery(".tab-selector[href=\"" + hash + "\"]",
-                matchedObject);
+            var tabSelector = jQuery('.tab-selector[href="' + hash + '"]', matchedObject);
 
             // removes the active class from (all) the tabs
             // and from (all) the tab selectors
@@ -25691,9 +26945,7 @@ if (typeof require !== "undefined") {
                 // retrieves all the rows from the element reference
                 // and all the text fields associated with the element reference
                 var rows = jQuery("tbody > tr:not(.template)", elementReference);
-                var textFields = jQuery(
-                    "tbody > tr:not(.template) .text-field",
-                    elementReference);
+                var textFields = jQuery("tbody > tr:not(.template) .text-field", elementReference);
 
                 // iterates over all the items in the matched object
                 rows.each(function(index, element) {
@@ -25702,8 +26954,7 @@ if (typeof require !== "undefined") {
 
                     // retrieves the last row and adds the last class
                     // to it to signal the last element
-                    var lastRow = jQuery(":last-child",
-                        elementReference);
+                    var lastRow = jQuery(":last-child", elementReference);
                     lastRow.addClass("last");
 
                     // sets the line id in the element reference
@@ -25755,7 +27006,10 @@ if (typeof require !== "undefined") {
             var newLine = jQuery(".table-new-line", matchedObject);
 
             // retrieves the row elements (without the table header, footer and templates)
-            var rows = jQuery("tr", matchedObject).not("thead tr").not("tfoot tr").not(".template");
+            var rows = jQuery("tr", matchedObject)
+                .not("thead tr")
+                .not("tfoot tr")
+                .not(".template");
 
             // registers for the click event in the newline element
             newLine.click(function() {
@@ -25812,8 +27066,7 @@ if (typeof require !== "undefined") {
                     }
 
                     // retrieves the rows from the element reference
-                    var rows = jQuery("tbody > tr:not(.template)",
-                        elementReference);
+                    var rows = jQuery("tbody > tr:not(.template)", elementReference);
 
                     // in case there are no rows available
                     if (rows.length === 0) {
@@ -25824,10 +27077,8 @@ if (typeof require !== "undefined") {
 
                     // retrieves the table empty field to remove and then
                     // and retrieve the table default field to disable it
-                    var tableEmptyField = jQuery(".table-empty-field",
-                        elementReference);
-                    var tableDefaultField = jQuery(".table-default-field",
-                        elementReference);
+                    var tableEmptyField = jQuery(".table-empty-field", elementReference);
+                    var tableDefaultField = jQuery(".table-default-field", elementReference);
 
                     // retrieves the default input (text field) to be disabled
                     // and then removes the name attribute from it disables
@@ -25838,16 +27089,15 @@ if (typeof require !== "undefined") {
                     // retries the name attribute from the table empty field
                     // from each of the name fields and then (re)-sets it in
                     // each of the name fields (so that it may be restored)
-                    var name = tableEmptyField.attr("name") || tableEmptyField.attr(
-                        "data-name");
+                    var name = tableEmptyField.attr("name") || tableEmptyField.attr("data-name");
                     tableEmptyField.attr("name", name);
                     tableEmptyField.attr("data-name", name);
 
                     // in case there is only one table field element
                     // the table empty field is removed to avoid it from
                     // being submited (this should only be submited in empty table)
-                    (rows.length - tableDefaultField.length > 0) && tableEmptyField.removeAttr(
-                        "name");
+                    rows.length - tableDefaultField.length > 0 &&
+                        tableEmptyField.removeAttr("name");
                 });
 
                 // in case the table is of type edit and the table is emtpy
@@ -25904,9 +27154,10 @@ if (typeof require !== "undefined") {
             }
 
             // creates the add and remove buttons html
-            var addButtonHtml = "<td class=\"table-add\">" + "<div class=\"inline-add\"></div>" + "</td>";
-            var removeButtonHtml = "<td class=\"table-remove\">" + "<div class=\"inline-remove\"></div>" +
-                "</td>";
+            var addButtonHtml =
+                '<td class="table-add">' + '<div class="inline-add"></div>' + "</td>";
+            var removeButtonHtml =
+                '<td class="table-remove">' + '<div class="inline-remove"></div>' + "</td>";
 
             // adds the add and remove button html to the row
             row.append(removeButtonHtml);
@@ -25957,9 +27208,7 @@ if (typeof require !== "undefined") {
                 // be invisible during the first calculus, note that
                 // this valud is only set in case the value is valid
                 // (not defined as not a number)
-                isValid
-                    && addButton.css("margin-left",
-                        addButtonMarginLeft + "px");
+                isValid && addButton.css("margin-left", addButtonMarginLeft + "px");
 
                 // updates the buttons visibility
                 addButton.addClass("visible");
@@ -26025,8 +27274,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves the current last row and then add the last
                 // class to it (updating it's structure)
-                var lastRow = jQuery("tbody > tr:not(.template):last",
-                    matchedObject);
+                var lastRow = jQuery("tbody > tr:not(.template):last", matchedObject);
                 lastRow.addClass("last");
 
                 // triggers the removed line event, sends the removed
@@ -26175,9 +27423,7 @@ if (typeof require !== "undefined") {
                 // in the processing of the paste event on the table
                 var column = element.parents("td");
                 var table = column.parents(".table");
-                var target = jQuery(
-                    "> [data-object]:not([disabled], .disabled)",
-                    column);
+                var target = jQuery("> [data-object]:not([disabled], .disabled)", column);
 
                 // verifies if the paste feature has been explicitly disabled for
                 // the current table and if that's the case returns immedidately
@@ -26255,10 +27501,15 @@ if (typeof require !== "undefined") {
                     for (var _index = 0; _index < columns.length; _index++) {
                         // tries to retrieve the current element to be used in the
                         // operation that is going to populate the value
-                        var current = initial || _next(
-                            current,
-                            "> [data-object]:not([disabled], .disabled)",
-                            null, null, true);
+                        var current =
+                            initial ||
+                            _next(
+                                current,
+                                "> [data-object]:not([disabled], .disabled)",
+                                null,
+                                null,
+                                true
+                            );
                         initial = null;
                         if (!current) {
                             break;
@@ -26286,7 +27537,10 @@ if (typeof require !== "undefined") {
                     initial = _next(
                         null,
                         "> [data-object]:not([disabled], .disabled)",
-                        lastColumn, null, true);
+                        lastColumn,
+                        null,
+                        true
+                    );
 
                     // in case the next initial is an invalid one (not possible to set it)
                     // must break the current iteration no more rows available in table
@@ -26329,11 +27583,14 @@ if (typeof require !== "undefined") {
             // applies no attributes to the template (item)
             // retrieving the resulting template item, avoids
             // the auto apply (avoids problem requesting the form)
-            var templateItem = template.uxtemplate({
-                line_id: currentLineId
-            }, {
-                apply: false
-            });
+            var templateItem = template.uxtemplate(
+                {
+                    line_id: currentLineId
+                },
+                {
+                    apply: false
+                }
+            );
 
             // chekc if the current table is in edit mode
             var isEdit = matchedObject.hasClass("table-edit");
@@ -26466,17 +27723,14 @@ if (typeof require !== "undefined") {
             // retrieves the current set of next horizontal and
             // next vertical invalid values and then remvoes their
             // repsective classes (restores the original next invalid values)
-            var allHorizontalInvalid = jQuery(".next-horizontal-invalid",
-                matchedObject);
-            var allVerticalInvalid = jQuery(".next-vertical-invalid",
-                matchedObject);
+            var allHorizontalInvalid = jQuery(".next-horizontal-invalid", matchedObject);
+            var allVerticalInvalid = jQuery(".next-vertical-invalid", matchedObject);
             allHorizontalInvalid.removeClass("next-horizontal-invalid");
             allVerticalInvalid.removeClass("next-vertical-invalid");
 
             // retrieves all the text fields from the matched object that are valid
             // and then iterates over them to set the proper invalid values
-            var textFields = jQuery("tbody > tr:not(.template) .text-field",
-                matchedObject);
+            var textFields = jQuery("tbody > tr:not(.template) .text-field", matchedObject);
             textFields.each(function(index, element) {
                 // retrieves the current iteration element
                 // reference for reference
@@ -26708,8 +27962,10 @@ if (typeof require !== "undefined") {
                 // must be create enclosing the element, after
                 // the wrapping retrieves it for latter usage
                 if (action) {
-                    _element.wrap("<form action=\"" + action +
-                        "\" method=\"post\" enctype=\"multipart/form-data\" class=\"form\"></form>"
+                    _element.wrap(
+                        '<form action="' +
+                            action +
+                            '" method="post" enctype="multipart/form-data" class="form"></form>'
                     );
                     form = _element.parent(".form");
                     form.uxform();
@@ -26719,8 +27975,7 @@ if (typeof require !== "undefined") {
 
                 // inserts the uploader input afeter the element
                 // and then retrieves it from the element
-                _element.after("<input name=\"" + name +
-                    "\" type=\"file\" class=\"uploader-input\" />");
+                _element.after('<input name="' + name + '" type="file" class="uploader-input" />');
                 var uploaderInput = jQuery("+ .uploader-input", _element);
 
                 // in cas the current browser is of type mozilla
@@ -26857,7 +28112,7 @@ if (typeof require !== "undefined") {
             // sets the uploader input css attributes according
             // to the matched object attributes
             uploaderInput.css("width", width + "px");
-            uploaderInput.css("margin-left", (width * -1) + "px");
+            uploaderInput.css("margin-left", width * -1 + "px");
             uploaderInput.css("padding", "0px 0px 0px 0px");
         };
 
@@ -26921,7 +28176,7 @@ if (typeof require !== "undefined") {
 
             // adds the tag field tags to the matched object, this
             // is the container to the tag representations
-            matchedObject.prepend("<div class=\"tag-field-tags\"></div>");
+            matchedObject.prepend('<div class="tag-field-tags"></div>');
 
             // iterates over each of the matched object to load
             // its contents, as an individual operation
@@ -26968,8 +28223,7 @@ if (typeof require !== "undefined") {
 
                     // adds a new tag to the tags container, this operation
                     // will not trigger any layout change
-                    _addTag(_element, options, dataHtml,
-                        dataValue, true);
+                    _addTag(_element, options, dataHtml, dataValue, true);
                 });
 
                 // removes the targs list from the tag field, this is
@@ -26993,8 +28247,7 @@ if (typeof require !== "undefined") {
                     // update operation for the final part of the update
                     // lifecycle this way a new refresh happends after the
                     // complete layout is rendered
-                    isVisible
-                        ? _update(_element, options) : _update(_element, options, true);
+                    isVisible ? _update(_element, options) : _update(_element, options, true);
                 });
             });
         };
@@ -27036,9 +28289,7 @@ if (typeof require !== "undefined") {
 
                     // removes all the input elements contained inside the
                     // current tag field (avoid duplicated submission)
-                    var inputs = jQuery(
-                        "input:not(.text-field, .tag-empty-field)",
-                        _element);
+                    var inputs = jQuery("input:not(.text-field, .tag-empty-field)", _element);
                     inputs.remove("input");
 
                     // retrieves the complete set of tags in the current
@@ -27059,16 +28310,20 @@ if (typeof require !== "undefined") {
 
                         // adds the input element representing the list item
                         // to the list item itself
-                        _element.append("<input type=\"hidden\" name=\"" + elementName +
-                            "\" value=\"" + dataValue + "\" />");
+                        _element.append(
+                            '<input type="hidden" name="' +
+                                elementName +
+                                '" value="' +
+                                dataValue +
+                                '" />'
+                        );
                     }
 
                     // retrieves the empty field used to submit a default
                     // value in case no tags are selected and then tries
                     // to retrieve the name associated with it so that it
                     // may be used in the submission manipulation
-                    var tagEmptyField = jQuery(".tag-empty-field",
-                        _element);
+                    var tagEmptyField = jQuery(".tag-empty-field", _element);
                     var name = tagEmptyField.attr("name") || tagEmptyField.attr("data-name");
                     tagEmptyField.attr("name", name);
                     tagEmptyField.attr("data-name", name);
@@ -27080,30 +28335,29 @@ if (typeof require !== "undefined") {
                 });
             });
 
-            matchedObject.bind("value_select",
-                function(event, value, valueLogic, item) {
-                    // retrieves the target element clicked
-                    var element = jQuery(this);
+            matchedObject.bind("value_select", function(event, value, valueLogic, item) {
+                // retrieves the target element clicked
+                var element = jQuery(this);
 
-                    // in case no value is select nothing is to
-                    // be done, returns immediately
-                    if (!value) {
-                        return;
-                    }
+                // in case no value is select nothing is to
+                // be done, returns immediately
+                if (!value) {
+                    return;
+                }
 
-                    // retrieves the text field assiciated with the
-                    // element and resets its value no value present
-                    var textField = jQuery(".text-field", element);
-                    textField.val("");
+                // retrieves the text field assiciated with the
+                // element and resets its value no value present
+                var textField = jQuery(".text-field", element);
+                textField.val("");
 
-                    // adds a new tag to the tags container, this operation
-                    // will not trigger any layout change
-                    _addTag(element, options, value, valueLogic);
+                // adds a new tag to the tags container, this operation
+                // will not trigger any layout change
+                _addTag(element, options, value, valueLogic);
 
-                    // updates the current tag field layout to reflect
-                    // the changes of adding the new tag
-                    _update(element, options);
-                });
+                // updates the current tag field layout to reflect
+                // the changes of adding the new tag
+                _update(element, options);
+            });
 
             tagsContainer.mousedown(function(event) {
                 // stops the event propagation and prevents the
@@ -27180,9 +28434,15 @@ if (typeof require !== "undefined") {
 
             // constructs the tag element and updates its
             // (logic) data value reference in case it exists
-            var tag = jQuery("<div class=\"tag-field-tag\">" + "<div class=\"tag-field-label\">" + value +
-                "</div>" + "<div class=\"tag-field-remove\"></div>" +
-                "<div class=\"tag-field-clear\"></div>" + "</div>");
+            var tag = jQuery(
+                '<div class="tag-field-tag">' +
+                    '<div class="tag-field-label">' +
+                    value +
+                    "</div>" +
+                    '<div class="tag-field-remove"></div>' +
+                    '<div class="tag-field-clear"></div>' +
+                    "</div>"
+            );
             value && tag.attr("data-display", value);
             valueLogic && tag.attr("data-value", valueLogic);
 
@@ -27263,9 +28523,10 @@ if (typeof require !== "undefined") {
             // delay the update operation until the next tick, note that
             // this is only possible when the element is contained (in dom)
             if (tagsContainerHeight === 0 && tags.length > 0) {
-                isContained && setTimeout(function() {
-                    _update(matchedObject, options, noWidth);
-                }, 100);
+                isContained &&
+                    setTimeout(function() {
+                        _update(matchedObject, options, noWidth);
+                    }, 100);
                 return;
             }
 
@@ -27280,8 +28541,9 @@ if (typeof require !== "undefined") {
 
             // tries to retrieve the "original" height value for the text field
             // and updates the register to this same value (only one retrieval)
-            var textFieldHeight = textField.data("height") || (isBorderBox ? textField.outerHeight() :
-                textField.height());
+            var textFieldHeight =
+                textField.data("height") ||
+                (isBorderBox ? textField.outerHeight() : textField.height());
             textField.data("height", textFieldHeight);
 
             // retrieves the last tag in the tag sequence then uses
@@ -27367,7 +28629,8 @@ if (typeof require !== "undefined") {
             var borderBottomWidth = textField.css("border-bottom-width");
             borderBottomWidth = parseInt(borderBottomWidth);
             var borderWidth = borderTopWidth + borderBottomWidth;
-            var deltaMarginTop = ((textFieldHeight + (isBorderBox ? 0 : borderWidth) - lineHeight) / 2);
+            var deltaMarginTop =
+                (textFieldHeight + (isBorderBox ? 0 : borderWidth) - lineHeight) / 2;
 
             // retrieves the various extra components of the text field
             // and adds them together to calculate the extra pixel values
@@ -27375,8 +28638,8 @@ if (typeof require !== "undefined") {
             var textFieldPaddingRight = parseInt(textField.css("padding-right"));
             var textFieldBorderRight = parseInt(textField.css("border-right-width"));
             var textFieldBorderLeft = parseInt(textField.css("border-left-width"));
-            var textFieldExtra = lineWidth + textFieldPaddingRight + textFieldBorderRight +
-                textFieldBorderLeft;
+            var textFieldExtra =
+                lineWidth + textFieldPaddingRight + textFieldBorderRight + textFieldBorderLeft;
 
             // calculates the "new" width value to be used validating it
             // to be a positive value (avoids possible problems)
@@ -27385,8 +28648,10 @@ if (typeof require !== "undefined") {
 
             // updates the margin top of the tag container according to the
             // margin top of the text field
-            tagsContainer.css("margin-top", (textFieldMarginTop + textFieldPaddingTop + deltaMarginTop) +
-                "px");
+            tagsContainer.css(
+                "margin-top",
+                textFieldMarginTop + textFieldPaddingTop + deltaMarginTop + "px"
+            );
 
             // updates the padding top of the text field according
             // to the calculated value
@@ -27417,8 +28682,10 @@ if (typeof require !== "undefined") {
 
             // updates the maximum width value for the tag container
             // according to the size values of the text field
-            tagsContainer.css("max-width", (textFieldWidth - textFieldPaddingRight - textFieldPaddingLeft) +
-                "px");
+            tagsContainer.css(
+                "max-width",
+                textFieldWidth - textFieldPaddingRight - textFieldPaddingLeft + "px"
+            );
         };
 
         var _value = function(matchedObject, options) {
@@ -27454,8 +28721,8 @@ if (typeof require !== "undefined") {
 
         var _isDuplicate = function(matchedObject, value, valueLogic) {
             var selector = ".tag-field-tag";
-            selector += value ? "[data-display=\"" + value + "\"]" : "";
-            selector += valueLogic ? "[data-value=\"" + valueLogic + "\"]" : "";
+            selector += value ? '[data-display="' + value + '"]' : "";
+            selector += valueLogic ? '[data-value="' + valueLogic + '"]' : "";
             var result = jQuery(selector, matchedObject);
             return result.length > 0;
         };
@@ -27544,9 +28811,7 @@ if (typeof require !== "undefined") {
 
                 // starts the type specific structures
                 var startMethodName = "__start" + type;
-                type
-                    && __callMethod(startMethodName,
-                        elementReference, options);
+                type && __callMethod(startMethodName, elementReference, options);
 
                 // starts the element
                 __start(elementReference, options);
@@ -27594,15 +28859,22 @@ if (typeof require !== "undefined") {
 
                 // retrieves the key value, the key code and
                 // the which value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                var keyValue = event.keyCode
+                    ? event.keyCode
+                    : event.charCode
+                        ? event.charCode
+                        : event.which;
                 var keyCode = event.keyCode;
                 var which = event.which;
 
                 // in case the pressed key is a backspace,
                 // cursor, enter or any other movement key
                 // the default behavior must be prevented
-                if (keyCode === 8 || keyCode === 13 || keyCode > 8 && keyCode <= 46 && which === 0) {
+                if (
+                    keyCode === 8 ||
+                    keyCode === 13 ||
+                    (keyCode > 8 && keyCode <= 46 && which === 0)
+                ) {
                     // returns since the key press is valid
                     return true;
                 }
@@ -27634,7 +28906,7 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case the type is integer
+                    // in case the type is integer
                     case "integer":
                         // tests the input against the regular expression
                         validInput = /^-|\d$/.test(keyValueString);
@@ -27642,43 +28914,46 @@ if (typeof require !== "undefined") {
                         // breaks the switch
                         break;
 
-                        // in case the type is float
+                    // in case the type is float
                     case "float":
                         // tests the input against the regular expression
                         // and then in case the input is still valid runs the test
                         // on the number of decimal places
                         validInput = /^-|\d|\.$/.test(keyValueString);
-                        validInput = validInput ? __testplaces(value,
-                            decimalPlaces, caret) : validInput;
+                        validInput = validInput
+                            ? __testplaces(value, decimalPlaces, caret)
+                            : validInput;
 
                         // breaks the switch
                         break;
 
-                        // in case the type is float positive
+                    // in case the type is float positive
                     case "floatp":
                         // tests the input against the regular expression
                         // and then in case the input is still valid runs the test
                         // on the number of decimal places
                         validInput = /^\d|\.$/.test(keyValueString);
-                        validInput = validInput ? __testplaces(value,
-                            decimalPlaces, caret) : validInput;
+                        validInput = validInput
+                            ? __testplaces(value, decimalPlaces, caret)
+                            : validInput;
 
                         // breaks the switch
                         break;
 
-                        // in case the type is percent
+                    // in case the type is percent
                     case "percent":
                         // tests the input against the regular expression
                         // and then in case the input is still valid runs the test
                         // on the number of decimal places
                         validInput = /^-|\d|\.$/.test(keyValueString);
-                        validInput = validInput ? __testplaces(value,
-                            decimalPlaces, caret) : validInput;
+                        validInput = validInput
+                            ? __testplaces(value, decimalPlaces, caret)
+                            : validInput;
 
                         // breaks the switch
                         break;
 
-                        // in case the type is regex
+                    // in case the type is regex
                     case "regex":
                         // tests the input against the regular expression
                         var regex = new RegExp(regexString);
@@ -27708,8 +28983,11 @@ if (typeof require !== "undefined") {
                 }
 
                 // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                var keyValue = event.keyCode
+                    ? event.keyCode
+                    : event.charCode
+                        ? event.charCode
+                        : event.which;
 
                 // in case the escape key is pressed
                 // need to blur the text field
@@ -27809,8 +29087,9 @@ if (typeof require !== "undefined") {
                         // and then uses it to create a clone of the element
                         // with the hidden type and with the same name
                         var elementName = elementReference.attr("name");
-                        var elementClone = jQuery("<input type=\"hidden\" name=\"" +
-                            elementName + "\"/>");
+                        var elementClone = jQuery(
+                            '<input type="hidden" name="' + elementName + '"/>'
+                        );
 
                         // removes the name attribute from the element, it's
                         // no longer required and avoids unwanted submits
@@ -27903,10 +29182,10 @@ if (typeof require !== "undefined") {
                 // otherwise uses the normal element value
                 type = matchedObject.attr("data-type");
                 valueMethodName = "__value" + type;
-                hasMethod = __hasMethod(valueMethodName, matchedObject,
-                    options);
-                elementValue = hasMethod ? __callMethod(valueMethodName,
-                    matchedObject, options) : elementValue;
+                hasMethod = __hasMethod(valueMethodName, matchedObject, options);
+                elementValue = hasMethod
+                    ? __callMethod(valueMethodName, matchedObject, options)
+                    : elementValue;
 
                 // returns the retrieved value
                 return elementValue;
@@ -27922,10 +29201,11 @@ if (typeof require !== "undefined") {
                 // be formatted for such case)
                 type = matchedObject.attr("data-type");
                 valueMethodName = "__fvalue" + type;
-                hasMethod = __hasMethod(valueMethodName, matchedObject,
-                    options);
-                value = hasMethod && value !== "" ? __callMethod(
-                    valueMethodName, matchedObject, value) : value;
+                hasMethod = __hasMethod(valueMethodName, matchedObject, options);
+                value =
+                    hasMethod && value !== ""
+                        ? __callMethod(valueMethodName, matchedObject, value)
+                        : value;
 
                 // sets the value in the attributes
                 matchedObject.val(value);
@@ -28151,9 +29431,8 @@ if (typeof require !== "undefined") {
 
             // triggers the value change event in case the previous
             // input field value is different from the current
-            inputFieldValue !== previousInputFieldValue && matchedObject.triggerHandler("value_change", [
-                inputFieldValue
-            ]);
+            inputFieldValue !== previousInputFieldValue &&
+                matchedObject.triggerHandler("value_change", [inputFieldValue]);
         };
 
         var __updateError = function(matchedObject, options) {
@@ -28181,20 +29460,27 @@ if (typeof require !== "undefined") {
 
         var __callMethod = function(methodName, element, options) {
             // creates the string to be eavluated and then evaluates it
-            var evalString = "if(typeof " + methodName + " !== \"undefined\") { var result = " + methodName +
+            var evalString =
+                "if(typeof " +
+                methodName +
+                ' !== "undefined") { var result = ' +
+                methodName +
                 "(element, options)} else { var result = null; } result;";
-            var result = eval(evalString); // eslint-disable-line no-eval
+            // eslint-disable-next-line no-eval
+            var result = eval(evalString);
             return result;
         };
 
         var __hasMethod = function(methodName, element, options) {
             // creates the string to be eavluated and then evaluates it
-            var evalString = "var result = typeof " + methodName + " !== \"undefined\"; result;";
-            var result = eval(evalString); // eslint-disable-line no-eval
+            var evalString = "var result = typeof " + methodName + ' !== "undefined"; result;';
+            // eslint-disable-next-line no-eval
+            var result = eval(evalString);
             return result;
         };
 
-        var __startdatetime = function(element, options) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        var __startdatetime = function(element, options) {
             // retrieves the value of the utc offset flag
             // (if the utc flag is set the date is set to work
             // in the utc zone)
@@ -28227,8 +29513,18 @@ if (typeof require !== "undefined") {
                 var hoursString = hours > 9 ? String(hours) : "0" + String(hours);
                 var minutesString = minutes > 9 ? String(minutes) : "0" + String(minutes);
                 var secondsString = seconds > 9 ? String(seconds) : "0" + String(seconds);
-                var dateString = yearString + "/" + monthString + "/" + dayString + " " + hoursString + ":" +
-                    minutesString + ":" + secondsString;
+                var dateString =
+                    yearString +
+                    "/" +
+                    monthString +
+                    "/" +
+                    dayString +
+                    " " +
+                    hoursString +
+                    ":" +
+                    minutesString +
+                    ":" +
+                    secondsString;
 
                 // updates both the logical value and the real value
                 element.attr("data-value", dateString);
@@ -28248,8 +29544,9 @@ if (typeof require !== "undefined") {
                 // retrieves the current value and then uses it to parse
                 // it as current timestamp
                 var currentValue = element.val();
-                var currentTimestamp = utc ? (Date.parse(currentValue + " UTC") / 1000) : (Date.parseUtc(
-                    currentValue) / 1000);
+                var currentTimestamp = utc
+                    ? Date.parse(currentValue + " UTC") / 1000
+                    : Date.parseUtc(currentValue) / 1000;
 
                 // retrieves the proper string representation of the current
                 // timestamp value taking into account if the current value
@@ -28270,7 +29567,7 @@ if (typeof require !== "undefined") {
 
                 // tries to retrieve and remove any previously existing
                 // hidden element representing the current value
-                var previous = element.next("input[type=hidden][name=\"" + name + "\"]");
+                var previous = element.next('input[type=hidden][name="' + name + '"]');
                 previous.remove();
 
                 // calculates the apropriate value taking into account
@@ -28279,12 +29576,12 @@ if (typeof require !== "undefined") {
 
                 // creates the hidden field to submit the timestamp value
                 // described in the text field
-                element.after("<input type=\"hidden\" name=\"" + name + "\" value=\"" + value +
-                    "\" />");
+                element.after('<input type="hidden" name="' + name + '" value="' + value + '" />');
             });
         };
 
-        var __startdate = function(element, options) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        var __startdate = function(element, options) {
             // retrieves the reference to the top level
             // window element
             var _window = jQuery(window);
@@ -28293,7 +29590,7 @@ if (typeof require !== "undefined") {
             var noCalendar = element.hasClass("no-calendar");
 
             // starts the calendar variable that is going to be
-            // used by both parts of the conditin
+            // used by both parts of the condition
             var calendar = null;
 
             // in case the no calendar flag is set
@@ -28307,7 +29604,7 @@ if (typeof require !== "undefined") {
             else {
                 // creates the calendar component from the
                 // html code and inserts it after the element
-                calendar = jQuery("<div class=\"calendar text-field-calendar\"></div>");
+                calendar = jQuery('<div class="calendar text-field-calendar"></div>');
                 element.after(calendar);
 
                 // unsets the autocomplete feature in the text field
@@ -28485,7 +29782,7 @@ if (typeof require !== "undefined") {
 
                 // tries to retrieve and remove any previously existing
                 // hidden element representing the current value
-                var previous = element.next("input[type=hidden][name=\"" + name + "\"]");
+                var previous = element.next('input[type=hidden][name="' + name + '"]');
                 previous.remove();
 
                 // calculates the apropriate value taking into account
@@ -28494,15 +29791,15 @@ if (typeof require !== "undefined") {
 
                 // creates the hidden field to submit the timestamp value
                 // described in the text field
-                element.after("<input type=\"hidden\" name=\"" + name + "\" value=\"" + value +
-                    "\" />");
+                element.after('<input type="hidden" name="' + name + '" value="' + value + '" />');
             });
 
             // sets the calendar in the element
             element.data("calendar", calendar);
         };
 
-        var __fvaluefloatp = function(element, value) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        var __fvaluefloatp = function(element, value) {
             // retrieves the decimal places number and tries to
             // parse it as an integer, incase it fails returns
             // immediately the number without processing
@@ -28520,7 +29817,8 @@ if (typeof require !== "undefined") {
             return valueF.toFixed(decimalPlaces);
         };
 
-        var __fvaluefloat = function(element, value) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        var __fvaluefloat = function(element, value) {
             // retrieves the decimal places number and tries to
             // parse it as an integer, incase it fails returns
             // immediately the number without processing
@@ -28538,7 +29836,8 @@ if (typeof require !== "undefined") {
             return valueF.toFixed(decimalPlaces);
         };
 
-        var __valuedate = function(element, options) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        var __valuedate = function(element, options) {
             // retrieves the current value and then uses it to parse
             // it as current timestamp then returns it
             var currentValue = element.val();
@@ -28546,7 +29845,8 @@ if (typeof require !== "undefined") {
             return currentTimestamp;
         };
 
-        var __showdate = function(element, options) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        var __showdate = function(element, options) {
             // tries to retrieve the calendar from the element
             var calendar = element.data("calendar");
 
@@ -28586,7 +29886,8 @@ if (typeof require !== "undefined") {
             calendar.show();
         };
 
-        var __hidedate = function(element, options) { // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        var __hidedate = function(element, options) {
             // tries to retrieve the associated
             // calendar and hides it if necessary
             var calendar = element.data("calendar");
@@ -28637,8 +29938,9 @@ if (typeof require !== "undefined") {
             // then using it checks if the float number is still
             // valid (decimal places within range)
             var separatorIndex = stringValue.indexOf(".");
-            var valid = separatorIndex === -1 || separatorIndex >= stringValue.length -
-                decimalPlacesInteger;
+            var valid =
+                separatorIndex === -1 ||
+                separatorIndex >= stringValue.length - decimalPlacesInteger;
 
             // in case the places validation is valid according
             // to decimal separator validation, no need to run
@@ -28772,9 +30074,9 @@ if (typeof require !== "undefined") {
             // element so that the buttons may be added, then retrieves
             // the "just" created toggle field and adds the button
             // to it (to be used for toggling the state)
-            matchedObject.wrap("<div class=\"toggle-field\"></div>");
+            matchedObject.wrap('<div class="toggle-field"></div>');
             var toggleField = matchedObject.parents(".toggle-field");
-            toggleField.prepend("<div class=\"button\"></div>");
+            toggleField.prepend('<div class="button"></div>');
 
             // sets the ux global object representation as toggle
             // field, this value may be used latter for fast ux
@@ -29032,10 +30334,14 @@ if (typeof require !== "undefined") {
             acceptButton.data("window_button", true);
 
             // adds the window mask to the window in case it does not exist
-            !windowMaskExists
-                && matchedObject.append("<div class=\"window-mask\">" +
-                    "<div class=\"window-mask-contents\">Loading " +
-                    "<span class=\"window-mask-dots\"></span>" + "</div>" + "</div>");
+            !windowMaskExists &&
+                matchedObject.append(
+                    '<div class="window-mask">' +
+                        '<div class="window-mask-contents">Loading ' +
+                        '<span class="window-mask-dots"></span>' +
+                        "</div>" +
+                        "</div>"
+                );
 
             // positions the window
             _positionWindow(matchedObject, options);
@@ -29202,7 +30508,7 @@ if (typeof require !== "undefined") {
             var overlay = jQuery(".overlay:first");
             if (overlay.length === 0) {
                 _body = jQuery("body");
-                overlay = jQuery("<div id=\"overlay\" class=\"overlay\"></div>");
+                overlay = jQuery('<div id="overlay" class="overlay"></div>');
                 overlay.uxoverlay();
                 _body.prepend(overlay);
             }
@@ -29517,8 +30823,11 @@ if (typeof require !== "undefined") {
             var _document = jQuery(document);
             var handler = _document.keydown(function(event) {
                 // retrieves the key value
-                var keyValue = event.keyCode ? event.keyCode : event.charCode ? event.charCode :
-                    event.which;
+                var keyValue = event.keyCode
+                    ? event.keyCode
+                    : event.charCode
+                        ? event.charCode
+                        : event.which;
 
                 // switches over the key value
                 switch (keyValue) {
@@ -29752,8 +31061,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // retrieves the currently selected panel (if any) and then
             // calculates the initial panel index based on it
-            var selectedPanel = jQuery(".panel-stack > .panel.selected",
-                matchedObject);
+            var selectedPanel = jQuery(".panel-stack > .panel.selected", matchedObject);
             var index = selectedPanel.length > 0 ? selectedPanel.index() : 0;
 
             // tries to update the initial index value based on the index
@@ -30057,8 +31365,9 @@ if (typeof require !== "undefined") {
 
                 // retrieves the element eval attribute or html
                 // as the eval string
-                var evalString = _element.attr("data-eval") ? _element.attr("data-eval") : _element
-                    .html();
+                var evalString = _element.attr("data-eval")
+                    ? _element.attr("data-eval")
+                    : _element.html();
 
                 // in case the eval string is not valid
                 if (!evalString) {
@@ -30103,10 +31412,12 @@ if (typeof require !== "undefined") {
                 // sets the interval for continuous evaluation
                 // in case the continuous flag is set and there
                 // is no (key) selector defined
-                continuous && !selector && setInterval(function() {
-                    // evaluates the element components
-                    _eval(_element, options);
-                }, _timeout);
+                continuous &&
+                    !selector &&
+                    setInterval(function() {
+                        // evaluates the element components
+                        _eval(_element, options);
+                    }, _timeout);
 
                 // retrieves the selector using a fall back
                 // to the body element selector then uses the
@@ -30124,33 +31435,35 @@ if (typeof require !== "undefined") {
                 // for the handlers that are already bound (defined in the element)
                 keyUpHandler && triggerElement.unbind("keyup", keyUpHandler);
                 changeHandler && triggerElement.unbind("change", changeHandler);
-                valueChangedHandler
-                    && triggerElement.unbind("value_change",
-                        valueChangedHandler);
+                valueChangedHandler && triggerElement.unbind("value_change", valueChangedHandler);
 
                 // sets the key up event handler in the selector in
                 // case the continuous flag is set
-                continuous && triggerElement.keyup(keyUpHandler = function() {
-                    // evaluates the element components
-                    _eval(_element, options);
-                });
+                continuous &&
+                    triggerElement.keyup(
+                        (keyUpHandler = function() {
+                            // evaluates the element components
+                            _eval(_element, options);
+                        })
+                    );
 
                 // sets the change event handler in the selector in
                 // case the continuous flag is set
-                continuous && triggerElement.change(changeHandler = function() {
-                    // evaluates the element components
-                    _eval(_element, options);
-                });
+                continuous &&
+                    triggerElement.change(
+                        (changeHandler = function() {
+                            // evaluates the element components
+                            _eval(_element, options);
+                        })
+                    );
 
                 // sets the vlaue change event handler in the selector in
                 // case the continuous flag is set
-                continuous
-                    && triggerElement.bind(
-                        valueChangedHandler = "value_change",
-                        function() {
-                            // evaluates the element components
-                            _eval(_element, options);
-                        });
+                continuous &&
+                    triggerElement.bind((valueChangedHandler = "value_change"), function() {
+                        // evaluates the element components
+                        _eval(_element, options);
+                    });
 
                 // saves the various handlers in the element
                 // so that any further eveal request will unbind
@@ -30176,9 +31489,9 @@ if (typeof require !== "undefined") {
             // matched object
             var evalString = matchedObject.data("eval_string");
 
-            // "evals" the eval string retrieving
-            // the (eval) result
-            var evalResult = eval(evalString); // eslint-disable-line no-eval
+            // "evals" the eval string retrieving the (eval) result
+            // eslint-disable-next-line no-eval
+            var evalResult = eval(evalString);
 
             // checks if the matched object is of type input
             // (attribute value oriented) and if it's a text
@@ -30420,7 +31733,8 @@ jQuery(document).ready(function() {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Select = Select || _global.Select || {};
+var Select = (_global.Select = _global.Select || {});
+var jQuery = (_global.jQuery = _global.jQuery || null);
 
 Select.map = function(list, _function) {
     // starts the result list as an
@@ -30494,8 +31808,7 @@ Select.floatValues = function(selector, zerify, defaultValue) {
         var _element = jQuery(element);
 
         // retrieves the float value for the element
-        var valueFloat = Select._floatValue(_element, zerify,
-            defaultValue);
+        var valueFloat = Select._floatValue(_element, zerify, defaultValue);
 
         // adds the value float to the list
         // of value floats
@@ -30506,7 +31819,12 @@ Select.floatValues = function(selector, zerify, defaultValue) {
     return valueFloats;
 };
 
-Select.sum = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
+Select.sum = function(
+    firstSelector,
+    secondSelector,
+    decimalPlaces,
+    defaultValue
+) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true);
     var secondValue = Select.floatValue(secondSelector, true);
@@ -30536,16 +31854,18 @@ Select.sum = function(firstSelector, secondSelector, decimalPlaces, defaultValue
  */
 Select.sums = function(selector, decimalPlaces, defaultValue) {
     // retrieves the sum value by adding all the partial values
-    var value = Select.reduce(Select.floatValues(selector),
-        function(accumulator, item) {
-            // "zerifies" the item value (avoids)
-            // avoids "extra" erroneous values
-            item = isNaN(item) ? 0 : item;
+    var value = Select.reduce(Select.floatValues(selector), function(
+        accumulator,
+        item
+    ) {
+        // "zerifies" the item value (avoids)
+        // avoids "extra" erroneous values
+        item = isNaN(item) ? 0 : item;
 
-            // returns the addition of the accumulator
-            // and the item
-            return accumulator + item;
-        });
+        // returns the addition of the accumulator
+        // and the item
+        return accumulator + item;
+    });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -30555,7 +31875,12 @@ Select.sums = function(selector, decimalPlaces, defaultValue) {
     return value;
 };
 
-Select.subtract = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
+Select.subtract = function(
+    firstSelector,
+    secondSelector,
+    decimalPlaces,
+    defaultValue
+) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true);
     var secondValue = Select.floatValue(secondSelector, true);
@@ -30585,16 +31910,18 @@ Select.subtract = function(firstSelector, secondSelector, decimalPlaces, default
  */
 Select.subtracts = function(selector, decimalPlaces, defaultValue) {
     // retrieves the subtraction value by adding all the partial values
-    var value = Select.reduce(Select.floatValues(selector),
-        function(accumulator, item) {
-            // "zerifies" the item value (avoids)
-            // avoids "extra" erroneous values
-            item = isNaN(item) ? 0 : item;
+    var value = Select.reduce(Select.floatValues(selector), function(
+        accumulator,
+        item
+    ) {
+        // "zerifies" the item value (avoids)
+        // avoids "extra" erroneous values
+        item = isNaN(item) ? 0 : item;
 
-            // returns the subtraction of the accumulator
-            // and the item
-            return accumulator - item;
-        });
+        // returns the subtraction of the accumulator
+        // and the item
+        return accumulator - item;
+    });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -30604,7 +31931,12 @@ Select.subtracts = function(selector, decimalPlaces, defaultValue) {
     return value;
 };
 
-Select.multiply = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
+Select.multiply = function(
+    firstSelector,
+    secondSelector,
+    decimalPlaces,
+    defaultValue
+) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true, 0);
     var secondValue = Select.floatValue(secondSelector, true, 0);
@@ -30620,16 +31952,18 @@ Select.multiply = function(firstSelector, secondSelector, decimalPlaces, default
 Select.multiplys = function(selector, decimalPlaces, defaultValue) {
     // retrieves the multiplication value by multiplying
     // all the partial values
-    var value = Select.reduce(Select.floatValues(selector),
-        function(accumulator, item) {
-            // "zerifies" the item value (avoids)
-            // avoids "extra" erroneous values
-            item = isNaN(item) ? 1 : item;
+    var value = Select.reduce(Select.floatValues(selector), function(
+        accumulator,
+        item
+    ) {
+        // "zerifies" the item value (avoids)
+        // avoids "extra" erroneous values
+        item = isNaN(item) ? 1 : item;
 
-            // returns the multiplication of the accumulator
-            // and the item
-            return accumulator * item;
-        });
+        // returns the multiplication of the accumulator
+        // and the item
+        return accumulator * item;
+    });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -30639,7 +31973,12 @@ Select.multiplys = function(selector, decimalPlaces, defaultValue) {
     return value;
 };
 
-Select.divide = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
+Select.divide = function(
+    firstSelector,
+    secondSelector,
+    decimalPlaces,
+    defaultValue
+) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true, 0);
     var secondValue = Select.floatValue(secondSelector, true, 1);
@@ -30655,16 +31994,18 @@ Select.divide = function(firstSelector, secondSelector, decimalPlaces, defaultVa
 Select.divides = function(selector, decimalPlaces, defaultValue) {
     // retrieves the division value by dividing
     // all the partial values
-    var value = Select.reduce(Select.floatValues(selector),
-        function(accumulator, item) {
-            // "zerifies" the item value (avoids)
-            // avoids "extra" erroneous values
-            item = isNaN(item) ? 1 : item;
+    var value = Select.reduce(Select.floatValues(selector), function(
+        accumulator,
+        item
+    ) {
+        // "zerifies" the item value (avoids)
+        // avoids "extra" erroneous values
+        item = isNaN(item) ? 1 : item;
 
-            // returns the division of the accumulator
-            // and the item
-            return accumulator / item;
-        });
+        // returns the division of the accumulator
+        // and the item
+        return accumulator / item;
+    });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -30724,7 +32065,11 @@ Select._floatValue = function(element, zerify, defaultValue) {
     if (zerify) {
         // "casts" the value into zero (or default value) in
         // case the parsed value is not a valid float number
-        valueFloat = isNaN(valueFloat) ? (defaultValue === undefined ? 0 : defaultValue) : valueFloat;
+        valueFloat = isNaN(valueFloat)
+            ? defaultValue === undefined
+                ? 0
+                : defaultValue
+            : valueFloat;
     }
 
     // returns the float value
@@ -30738,7 +32083,9 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 
     // rounds the value in case the number of decimal places
     // value is defined
-    value = decimalPlaces ? (Math.round(value * rounder) / rounder).toFixed(decimalPlaces) : value;
+    value = decimalPlaces
+        ? (Math.round(value * rounder) / rounder).toFixed(decimalPlaces)
+        : value;
 
     // in case the value is not valid (not a number)
     // sets the default value
@@ -30783,14 +32130,15 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Base64 = Base64 || _global.Base64 || {};
+var Base64 = (_global.Base64 = _global.Base64 || {});
 
 /**
  * The key string to be used in base64.
  *
  * @type String
  */
-Base64._keyString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+Base64._keyString =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 Base64.encode = function(input, encode) {
     // the output string to be used
@@ -30826,8 +32174,12 @@ Base64.encode = function(input, encode) {
         }
 
         // creates the output
-        output = output + Base64._keyString.charAt(encoding1) + Base64._keyString.charAt(encoding2) + Base64._keyString
-            .charAt(encoding3) + Base64._keyString.charAt(encoding4);
+        output =
+            output +
+            Base64._keyString.charAt(encoding1) +
+            Base64._keyString.charAt(encoding2) +
+            Base64._keyString.charAt(encoding3) +
+            Base64._keyString.charAt(encoding4);
     }
 
     // returns the output
@@ -30912,11 +32264,11 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Array = Array || _global.Array || {};
+var Array = (_global.Array = _global.Array || {});
 
 if (typeof Array.prototype.indexOf === "undefined") {
     Array.prototype.indexOf = function(obj, start) {
-        for (var i = (start || 0), j = this.length; i < j; i++) {
+        for (var i = start || 0, j = this.length; i < j; i++) {
             if (this[i] === obj) {
                 return i;
             }
@@ -30995,7 +32347,7 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Date = Date || _global.Date || {};
+var Date = (global.Date = _global.Date || {});
 
 /**
  * Parses the given date string (without utc offset) retrieving an utc timestamp
@@ -31132,7 +32484,7 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Math = Math || _global.Math || {};
+var Math = (global.Math = _global.Math || {});
 
 if (typeof Math.log10 === "undefined") {
     Math.log10 = function(value) {
@@ -31172,8 +32524,8 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Mobile = Mobile || _global.Mobile || {};
-var document = document || _global.document || {};
+var Mobile = (global.Mobile = _global.Mobile || {});
+var document = (global.document = _global.document || {});
 
 /**
  * If the mobile touch event propagation structure should performed only under
@@ -31225,9 +32577,23 @@ Mobile.touchHandler = function(event) {
     // touch event that has just been raised, it should
     // be completly equivalent to the original touch
     var mouseEvent = document.createEvent("MouseEvent");
-    mouseEvent.initMouseEvent(type, true, true, window, 1, first.screenX,
-        first.screenY, first.clientX, first.clientY, false, false, false,
-        false, 0, null);
+    mouseEvent.initMouseEvent(
+        type,
+        true,
+        true,
+        window,
+        1,
+        first.screenX,
+        first.screenY,
+        first.clientX,
+        first.clientY,
+        false,
+        false,
+        false,
+        false,
+        0,
+        null
+    );
 
     // dispatches the event to the original target of the
     // touch event (pure emulation)
@@ -31284,81 +32650,90 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Number = Number || _global.Number || {};
+var Number = (_global.Number = _global.Number || {});
 
 Number.SYMBOLS = {
-    "EUR": ["€", 1],
-    "USD": ["$", -1],
-    "GBP": ["£", -1],
-    "BRL": ["R$", -1],
-    "CAD": ["$", -1],
-    "AUD": ["$", -1],
-    "JPY": ["¥", -1],
-    "RUB": ["₽", 1],
-    "KRW": ["₩", -1],
-    "CHF": ["fr.", 1],
-    "SGD": ["$", -1],
-    "MXN": ["$", -1],
-    "DKK": ["kr.", 1],
-    "SEK": ["kr.", 1],
-    "PLN": ["zł", 1]
+    EUR: ["€", 1],
+    USD: ["$", -1],
+    GBP: ["£", -1],
+    BRL: ["R$", -1],
+    CAD: ["$", -1],
+    AUD: ["$", -1],
+    JPY: ["¥", -1],
+    RUB: ["₽", 1],
+    KRW: ["₩", -1],
+    CHF: ["fr.", 1],
+    SGD: ["$", -1],
+    MXN: ["$", -1],
+    DKK: ["kr.", 1],
+    SEK: ["kr.", 1],
+    PLN: ["zł", 1],
+    TWD: ["NT$", -1]
 };
 
 Number.DECIMAL_PLACES = {
-    "EUR": 2,
-    "USD": 2,
-    "GBP": 2,
-    "BRL": 2,
-    "CAD": 2,
-    "AUD": 2,
-    "JPY": 0,
-    "RUB": 2,
-    "KRW": 0,
-    "CHF": 2,
-    "SGD": 2,
-    "MXN": 2,
-    "DKK": 2,
-    "SEK": 2,
-    "PLN": 2
+    EUR: 2,
+    USD: 2,
+    GBP: 2,
+    BRL: 2,
+    CAD: 2,
+    AUD: 2,
+    JPY: 0,
+    RUB: 2,
+    KRW: 0,
+    CHF: 2,
+    SGD: 2,
+    MXN: 2,
+    DKK: 2,
+    SEK: 2,
+    PLN: 2,
+    TWD: 2
 };
 
 Number.SEPARATOR = {
-    "EUR": ",",
-    "USD": ".",
-    "GBP": ".",
-    "BRL": ",",
-    "CAD": ".",
-    "AUD": ".",
-    "JPY": ".",
-    "RUB": ",",
-    "KRW": ".",
-    "CHF": ".",
-    "SGD": ".",
-    "MXN": ".",
-    "DKK": ".",
-    "SEK": ",",
-    "PLN": "."
+    EUR: ",",
+    USD: ".",
+    GBP: ".",
+    BRL: ",",
+    CAD: ".",
+    AUD: ".",
+    JPY: ".",
+    RUB: ",",
+    KRW: ".",
+    CHF: ".",
+    SGD: ".",
+    MXN: ".",
+    DKK: ".",
+    SEK: ",",
+    PLN: "."
 };
 
 Number.THOUSANDS = {
-    "EUR": " ",
-    "USD": ",",
-    "GBP": ",",
-    "BRL": ".",
-    "CAD": ",",
-    "AUD": ",",
-    "JPY": ",",
-    "RUB": " ",
-    "KRW": ",",
-    "CHF": ",",
-    "SGD": ",",
-    "MXN": ",",
-    "DKK": ",",
-    "SEK": ".",
-    "PLN": " "
+    EUR: " ",
+    USD: ",",
+    GBP: ",",
+    BRL: ".",
+    CAD: ",",
+    AUD: ",",
+    JPY: ",",
+    RUB: " ",
+    KRW: ",",
+    CHF: ",",
+    SGD: ",",
+    MXN: ",",
+    DKK: ",",
+    SEK: ".",
+    PLN: " ",
+    TWD: ","
 };
 
-Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {
+Number.prototype.formatMoney = function(
+    places,
+    separator,
+    thousands,
+    currency,
+    useSymbol
+) {
     var number = this;
     var defaultPlaces = Number.DECIMAL_PLACES[currency];
     var defaultSeparator = Number.SEPARATOR[currency];
@@ -31367,17 +32742,32 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     defaultSeparator = defaultSeparator === undefined ? "." : defaultSeparator;
     defaultThousands = defaultThousands === undefined ? "," : defaultThousands;
     places = isNaN(parseInt(places)) ? defaultPlaces : places;
-    separator = separator === null || separator === undefined ? defaultSeparator : separator;
-    thousands = thousands === null || thousands === undefined ? defaultThousands : thousands;
+    separator =
+        separator === null || separator === undefined
+            ? defaultSeparator
+            : separator;
+    thousands =
+        thousands === null || thousands === undefined
+            ? defaultThousands
+            : thousands;
     var signal = number < 0 ? "-" : "";
     var integer = parseInt(Math.abs(+number || 0).toFixed(places)) + "";
-    var remaining = (remaining = integer.length) > 3 ? remaining % 3 : 0;
+    var remaining = integer.length;
+    remaining = remaining > 3 ? remaining % 3 : 0;
     var money = signal;
     money += remaining ? integer.substr(0, remaining) + thousands : "";
-    money += integer.substr(remaining).replace(/(\d{3})(?=\d)/g,
-        "$1" + thousands);
-    money += places ? separator + Math.abs(Math.abs(number) - integer).toFixed(places).slice(2) : "";
-    money = currency ? Number._formatCurrency(money, currency, useSymbol) : money;
+    money += integer
+        .substr(remaining)
+        .replace(/(\d{3})(?=\d)/g, "$1" + thousands);
+    money += places
+        ? separator +
+          Math.abs(Math.abs(number) - integer)
+              .toFixed(places)
+              .slice(2)
+        : "";
+    money = currency
+        ? Number._formatCurrency(money, currency, useSymbol)
+        : money;
     return money;
 };
 
@@ -31422,7 +32812,7 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var Object = Object || _global.Object || {};
+var Object = (_global.Object = _global.Object || {});
 
 Object.isEmpty = function(object) {
     for (var property in object) {
@@ -31479,7 +32869,7 @@ if (typeof module !== "undefined") {
 // __credits__   = Joseph Myers <e_mayilme@hotmail.com>
 
 var _global = typeof global === "undefined" ? window : global;
-var Md5 = Md5 || _global.Md5 || {};
+var Md5 = (_global.Md5 = _global.Md5 || {});
 
 /**
  * The list of hexadecimal characters available and indexed by position in the
@@ -31487,8 +32877,23 @@ var Md5 = Md5 || _global.Md5 || {};
  *
  * @type List
  */
-Md5.HEXADECIMAL_CHARACTERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-    "a", "b", "c", "d", "e", "f"
+Md5.HEXADECIMAL_CHARACTERS = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f"
 ];
 
 /**
@@ -31553,8 +32958,9 @@ Md5.rhex = function(number) {
     // iterates over the four bytes in the 32 bit
     // number, to convert them into hexadecimal
     for (var index = 0; index < 4; index++) {
-        stringValue += Md5.HEXADECIMAL_CHARACTERS[(number >> (index * 8 + 4)) & 0x0f] + Md5.HEXADECIMAL_CHARACTERS[
-            (number >> (index * 8)) & 0x0f];
+        stringValue +=
+            Md5.HEXADECIMAL_CHARACTERS[(number >> (index * 8 + 4)) & 0x0f] +
+            Md5.HEXADECIMAL_CHARACTERS[(number >> (index * 8)) & 0x0f];
     }
 
     // returns the string value
@@ -31590,8 +32996,11 @@ Md5.md5Block = function(stringValue) {
     // iterates over a cycle value
     for (var index = 0; index < 64; index += 4) {
         // calculates the current block value
-        md5Blocks[index >> 2] = stringValue.charCodeAt(index) + (stringValue.charCodeAt(index + 1) << 8) + (
-            stringValue.charCodeAt(index + 2) << 16) + (stringValue.charCodeAt(index + 3) << 24);
+        md5Blocks[index >> 2] =
+            stringValue.charCodeAt(index) +
+            (stringValue.charCodeAt(index + 1) << 8) +
+            (stringValue.charCodeAt(index + 2) << 16) +
+            (stringValue.charCodeAt(index + 3) << 24);
     }
 
     // returns the md5 blocks
@@ -31684,11 +33093,11 @@ Md5._cmn = function(q, a, b, x, s, t) {
 };
 
 Md5._ff = function(a, b, c, d, x, s, t) {
-    return Md5._cmn((b & c) | ((~b) & d), a, b, x, s, t);
+    return Md5._cmn((b & c) | (~b & d), a, b, x, s, t);
 };
 
 Md5._gg = function(a, b, c, d, x, s, t) {
-    return Md5._cmn((b & d) | (c & (~d)), a, b, x, s, t);
+    return Md5._cmn((b & d) | (c & ~d), a, b, x, s, t);
 };
 
 Md5._hh = function(a, b, c, d, x, s, t) {
@@ -31696,7 +33105,7 @@ Md5._hh = function(a, b, c, d, x, s, t) {
 };
 
 Md5._ii = function(a, b, c, d, x, s, t) {
-    return Md5._cmn(c ^ (b | (~d)), a, b, x, s, t);
+    return Md5._cmn(c ^ (b | ~d), a, b, x, s, t);
 };
 
 Md5._md5 = function(stringValue) {
@@ -31717,8 +33126,10 @@ Md5._md5 = function(stringValue) {
     // the intermediate md5 cycles
     for (index = 64; index <= stringValue.length; index += 64) {
         // runs the intermediate md5 cycle
-        Md5._md5Cycle(state, Md5.md5Block(stringValue.substring(index - 64,
-            index)));
+        Md5._md5Cycle(
+            state,
+            Md5.md5Block(stringValue.substring(index - 64, index))
+        );
     }
 
     // retrieves the initial string value
@@ -31728,11 +33139,11 @@ Md5._md5 = function(stringValue) {
     // various tail values
     for (index = 0; index < stringValue.length; index++) {
         // calculates the current tail value
-        tail[index >> 2] |= stringValue.charCodeAt(index) << ((index % 4) << 3);
+        tail[index >> 2] |= stringValue.charCodeAt(index) << (index % 4 << 3);
     }
 
     // calculates the tail value
-    tail[index >> 2] |= 0x80 << ((index % 4) << 3);
+    tail[index >> 2] |= 0x80 << (index % 4 << 3);
 
     // in case the index is greater that
     // the minimum for the final tail calculation
@@ -31765,6 +33176,8 @@ if (typeof module !== "undefined") {
     };
 }
 
+/* eslint-disable */
+
 /**
  * Prism: Lightweight, robust, elegant syntax highlighting MIT license
  * http://www.opensource.org/licenses/mit-license.php/
@@ -31774,10 +33187,12 @@ if (typeof module !== "undefined") {
 
 var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
 
-var _ = self.Prism = {
+var _ = (self.Prism = {
     util: {
         type: function(o) {
-            return Object.prototype.toString.call(o).match(/\[object (\w+)\]/)[1];
+            return Object.prototype.toString
+                .call(o)
+                .match(/\[object (\w+)\]/)[1];
         },
         clone: function(o) {
             var type = _.util.type(o);
@@ -31828,7 +33243,7 @@ var _ = self.Prism = {
                 }
             }
 
-            return root[inside] = ret;
+            return (root[inside] = ret);
         },
         DFS: function(o, callback) {
             for (var i in o) {
@@ -31842,15 +33257,17 @@ var _ = self.Prism = {
     },
     highlightAll: function(async, callback) {
         var elements = document.querySelectorAll(
-            "code[class*=\"language-\"], [class*=\"language-\"] code, code[class*=\"lang-\"], [class*=\"lang-\"] code"
+            'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
         );
 
-        for (var i = 0, element; element = elements[i++];) {
+        for (var i = 0, element; (element = elements[i++]); ) {
             _.highlightElement(element, async === true, callback);
         }
     },
     highlightElement: function(element, async, callback) {
-        var language, grammar, parent = element;
+        var language;
+        var grammar;
+        var parent = element;
 
         while (parent && !lang.test(parent.className)) {
             parent = parent.parentNode;
@@ -31865,14 +33282,18 @@ var _ = self.Prism = {
             return;
         }
 
-        element.className = element.className.replace(lang, "").replace(/\s+/g,
-            " ") + " language-" + language;
+        element.className =
+            element.className.replace(lang, "").replace(/\s+/g, " ") +
+            " language-" +
+            language;
 
         parent = element.parentNode;
 
         if (/pre/i.test(parent.nodeName)) {
-            parent.className = parent.className.replace(lang, "").replace(
-                /\s+/g, " ") + " language-" + language;
+            parent.className =
+                parent.className.replace(lang, "").replace(/\s+/g, " ") +
+                " language-" +
+                language;
         }
 
         var code = element.textContent;
@@ -31881,8 +33302,10 @@ var _ = self.Prism = {
             return;
         }
 
-        code = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(
-            /\u00a0/g, " ");
+        code = code
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/\u00a0/g, " ");
 
         var env = {
             element: element,
@@ -31897,8 +33320,10 @@ var _ = self.Prism = {
             var worker = new Worker(_.filename);
 
             worker.onmessage = function(evt) {
-                env.highlightedCode = Token.stringify(JSON.parse(evt.data),
-                    language);
+                env.highlightedCode = Token.stringify(
+                    JSON.parse(evt.data),
+                    language
+                );
 
                 _.hooks.run("before-insert", env);
 
@@ -31908,13 +33333,18 @@ var _ = self.Prism = {
                 _.hooks.run("after-highlight", env);
             };
 
-            worker.postMessage(JSON.stringify({
-                language: env.language,
-                code: env.code
-            }));
+            worker.postMessage(
+                JSON.stringify({
+                    language: env.language,
+                    code: env.code
+                })
+            );
         } else {
-            env.highlightedCode = _.highlight(env.code, env.grammar,
-                env.language)
+            env.highlightedCode = _.highlight(
+                env.code,
+                env.grammar,
+                env.language
+            );
 
             _.hooks.run("before-insert", env);
 
@@ -31934,24 +33364,25 @@ var _ = self.Prism = {
         var Token = _.Token;
         var strarr = [text];
         var rest = grammar.rest;
+        var token = null;
 
         if (rest) {
-            for (var token in rest) {
+            for (token in rest) {
                 grammar[token] = rest[token];
             }
 
             delete grammar.rest;
         }
 
-        tokenloop: for (var token in grammar) {
+        tokenloop: for (token in grammar) {
             if (!grammar.hasOwnProperty(token) || !grammar[token]) {
                 continue;
             }
 
-            var pattern = grammar[token],
-                inside = pattern.inside,
-                lookbehind = !!pattern.lookbehind,
-                lookbehindLength = 0;
+            var pattern = grammar[token];
+            var inside = pattern.inside;
+            var lookbehind = !!pattern.lookbehind;
+            var lookbehindLength = 0;
 
             pattern = pattern.pattern || pattern;
 
@@ -31975,12 +33406,14 @@ var _ = self.Prism = {
                         lookbehindLength = match[1].length;
                     }
 
-                    var from = match.index - 1 + lookbehindLength,
-                        match = match[0].slice(lookbehindLength),
-                        len = match.length,
-                        to = from + len,
-                        before = str.slice(0, from + 1),
-                        after = str.slice(to + 1);
+                    var from = match.index - 1 + lookbehindLength;
+
+                    match = match[0].slice(lookbehindLength);
+
+                    var len = match.length;
+                    var to = from + len;
+                    var before = str.slice(0, from + 1);
+                    var after = str.slice(to + 1);
 
                     var args = [i, 1];
 
@@ -31988,8 +33421,10 @@ var _ = self.Prism = {
                         args.push(before);
                     }
 
-                    var wrapped = new Token(token, inside ? _.tokenize(match,
-                        inside) : match);
+                    var wrapped = new Token(
+                        token,
+                        inside ? _.tokenize(match, inside) : match
+                    );
 
                     args.push(wrapped);
 
@@ -32023,17 +33458,17 @@ var _ = self.Prism = {
                 return;
             }
 
-            for (var i = 0, callback; callback = callbacks[i++];) {
+            for (var i = 0, callback; (callback = callbacks[i++]); ) {
                 callback(env);
             }
         }
     }
-};
+});
 
-var Token = _.Token = function(type, content) {
+var Token = (_.Token = function(type, content) {
     this.type = type;
     this.content = content;
-};
+});
 
 Token.stringify = function(o, language, parent) {
     if (typeof o === "string") {
@@ -32041,9 +33476,11 @@ Token.stringify = function(o, language, parent) {
     }
 
     if (Object.prototype.toString.call(o) === "[object Array]") {
-        return o.map(function(element) {
-            return Token.stringify(element, language, o);
-        }).join("");
+        return o
+            .map(function(element) {
+                return Token.stringify(element, language, o);
+            })
+            .join("");
     }
 
     var env = {
@@ -32065,89 +33502,103 @@ Token.stringify = function(o, language, parent) {
     var attributes = "";
 
     for (var name in env.attributes) {
-        attributes += name + "=\"" + (env.attributes[name] || "") + "\"";
+        attributes += name + '="' + (env.attributes[name] || "") + '"';
     }
 
-    return "<" + env.tag + " class=\"" + env.classes.join(" ") + "\" " + attributes + ">" + env.content + "</" +
-        env.tag + ">";
-
+    return (
+        "<" +
+        env.tag +
+        ' class="' +
+        env.classes.join(" ") +
+        '" ' +
+        attributes +
+        ">" +
+        env.content +
+        "</" +
+        env.tag +
+        ">"
+    );
 };
 
 if (!self.document) {
-    self.addEventListener("message", function(evt) {
-        var message = JSON.parse(evt.data),
-            lang = message.language,
-            code = message.code;
+    self.addEventListener(
+        "message",
+        function(evt) {
+            var message = JSON.parse(evt.data);
+            var lang = message.language;
+            var code = message.code;
 
-        self.postMessage(JSON.stringify(_.tokenize(code, _.languages[lang])));
-        self.close();
-    }, false);
+            self.postMessage(
+                JSON.stringify(_.tokenize(code, _.languages[lang]))
+            );
+            self.close();
+        },
+        false
+    );
 }
 
 Prism.languages.markup = {
-    "comment": /&lt;!--[\w\W]*?-->/g,
-    "prolog": /&lt;\?.+?\?>/,
-    "doctype": /&lt;!DOCTYPE.+?>/,
-    "cdata": /&lt;!\[CDATA\[[\w\W]*?]]>/i,
-    "etag": {
+    comment: /&lt;!--[\w\W]*?-->/g,
+    prolog: /&lt;\?.+?\?>/,
+    doctype: /&lt;!DOCTYPE.+?>/,
+    cdata: /&lt;!\[CDATA\[[\w\W]*?]]>/i,
+    etag: {
         pattern: /&lt;\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|\w+))?\s*)*\/?>/gi,
         inside: {
-            "etag": {
+            etag: {
                 pattern: /^&lt;\/?[\w:-]+/i,
                 inside: {
-                    "punctuation": /^&lt;\/?/,
-                    "namespace": /^[\w-]+?:/
+                    punctuation: /^&lt;\/?/,
+                    namespace: /^[\w-]+?:/
                 }
             },
             "attr-value": {
                 pattern: /=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,
                 inside: {
-                    "punctuation": /=|>|"/g
+                    punctuation: /=|>|"/g
                 }
             },
-            "punctuation": /\/?>/g,
+            punctuation: /\/?>/g,
             "attr-name": {
                 pattern: /[\w:-]+/g,
                 inside: {
-                    "namespace": /^[\w-]+?:/
+                    namespace: /^[\w-]+?:/
                 }
             }
-
         }
     },
-    "entity": /&amp;#?[\da-z]{1,8};/gi
+    entity: /&amp;#?[\da-z]{1,8};/gi
 };
 
 Prism.hooks.add("wrap", function(env) {
-
     if (env.type === "entity") {
         env.attributes["title"] = env.content.replace(/&amp;/, "&");
     }
-});;
+});
 Prism.languages.css = {
-    "comment": /\/\*[\w\W]*?\*\//g,
-    "atrule": {
+    comment: /\/\*[\w\W]*?\*\//g,
+    atrule: {
         pattern: /@[\w-]+?.*?(;|(?=\s*{))/gi,
         inside: {
-            "punctuation": /[;:]/g
+            punctuation: /[;:]/g
         }
     },
-    "url": /url\((["']?).*?\1\)/gi,
-    "selector": /[^\{\}\s][^\{\};]*(?=\s*\{)/g,
-    "property": /(\b|\B)[\w-]+(?=\s*:)/ig,
-    "string": /("|')(\\?.)*?\1/g,
-    "important": /\B!important\b/gi,
-    "ignore": /&(lt|gt|amp);/gi,
-    "punctuation": /[\{\};:]/g
+    url: /url\((["']?).*?\1\)/gi,
+    selector: /[^\{\}\s][^\{\};]*(?=\s*\{)/g,
+    property: /(\b|\B)[\w-]+(?=\s*:)/gi,
+    string: /("|')(\\?.)*?\1/g,
+    important: /\B!important\b/gi,
+    ignore: /&(lt|gt|amp);/gi,
+    punctuation: /[\{\};:]/g
 };
 
 if (Prism.languages.markup) {
     Prism.languages.insertBefore("markup", "etag", {
-        "style": {
-            pattern: /(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/ig,
+        style: {
+            pattern: /(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/gi,
             inside: {
-                "etag": {
-                    pattern: /(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,
+                etag: {
+                    pattern: /(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/gi,
                     inside: Prism.languages.markup.etag.inside
                 },
                 rest: Prism.languages.css
@@ -32157,39 +33608,39 @@ if (Prism.languages.markup) {
 }
 
 Prism.languages.clike = {
-    "comment": {
+    comment: {
         pattern: /(^|[^\\])(\/\*[\w\W]*?\*\/|(^|[^:])\/\/.*?(\r?\n|$))/g,
         lookbehind: true
     },
-    "string": /("|')(\\?.)*?\1/g,
+    string: /("|')(\\?.)*?\1/g,
     "class-name": {
-        pattern: /((?:(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/ig,
+        pattern: /((?:(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/gi,
         lookbehind: true,
         inside: {
             punctuation: /(\.|\\)/
         }
     },
-    "keyword": /\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/g,
-    "boolean": /\b(true|false)\b/g,
-    "function": {
-        pattern: /[a-z0-9_]+\(/ig,
+    keyword: /\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/g,
+    boolean: /\b(true|false)\b/g,
+    function: {
+        pattern: /[a-z0-9_]+\(/gi,
         inside: {
             punctuation: /\(/
         }
     },
-    "number": /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/g,
-    "operator": /[-+]{1,2}|!|&lt;=?|>=?|={1,3}|(&amp;){1,2}|\|?\||\?|\*|\/|\~|\^|\%/g,
-    "ignore": /&(lt|gt|amp);/gi,
-    "punctuation": /[{}[\];(),.:]/g
+    number: /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/g,
+    operator: /[-+]{1,2}|!|&lt;=?|>=?|={1,3}|(&amp;){1,2}|\|?\||\?|\*|\/|\~|\^|\%/g,
+    ignore: /&(lt|gt|amp);/gi,
+    punctuation: /[{}[\];(),.:]/g
 };
 
 Prism.languages.javascript = Prism.languages.extend("clike", {
-    "keyword": /\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|throw|catch|finally|null|break|continue)\b/g,
-    "number": /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?|NaN|-?Infinity)\b/g
+    keyword: /\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|throw|catch|finally|null|break|continue)\b/g,
+    number: /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?|NaN|-?Infinity)\b/g
 });
 
 Prism.languages.insertBefore("javascript", "keyword", {
-    "regex": {
+    regex: {
         pattern: /(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,
         lookbehind: true
     }
@@ -32197,22 +33648,22 @@ Prism.languages.insertBefore("javascript", "keyword", {
 
 if (Prism.languages.markup) {
     Prism.languages.insertBefore("markup", "etag", {
-        "script": {
-            pattern: /(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/ig,
+        script: {
+            pattern: /(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/gi,
             inside: {
-                "etag": {
-                    pattern: /(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,
+                etag: {
+                    pattern: /(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/gi,
                     inside: Prism.languages.markup.etag.inside
                 },
                 rest: Prism.languages.javascript
             }
         }
     });
-};
+}
 Prism.languages.java = Prism.languages.extend("clike", {
-    "keyword": /\b(abstract|continue|for|new|switch|assert|default|goto|package|synchronized|boolean|do|if|private|this|break|double|implements|protected|throw|byte|else|import|public|throws|case|enum|instanceof|return|transient|catch|extends|int|short|try|char|final|interface|static|void|class|finally|long|strictfp|volatile|const|float|native|super|while)\b/g,
-    "number": /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\W\d*\.?\d+\b/gi,
-    "operator": {
+    keyword: /\b(abstract|continue|for|new|switch|assert|default|goto|package|synchronized|boolean|do|if|private|this|break|double|implements|protected|throw|byte|else|import|public|throws|case|enum|instanceof|return|transient|catch|extends|int|short|try|char|final|interface|static|void|class|finally|long|strictfp|volatile|const|float|native|super|while)\b/g,
+    number: /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\W\d*\.?\d+\b/gi,
+    operator: {
         pattern: /([^\.]|^)([-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\/|%|\^|(&lt;){2}|($gt;){2,3}|:|~)/g,
         lookbehind: true
     }
@@ -32231,14 +33682,14 @@ Prism.languages.java = Prism.languages.extend("clike", {
  */
 
 Prism.languages.php = Prism.languages.extend("clike", {
-    "keyword": /\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|extends|private|protected|parent|static|throw|null|echo|print|trait|namespace|use|final|yield|goto|instanceof|finally|try|catch)\b/ig,
-    "constant": /\b[A-Z0-9_]{2,}\b/g
+    keyword: /\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|extends|private|protected|parent|static|throw|null|echo|print|trait|namespace|use|final|yield|goto|instanceof|finally|try|catch)\b/gi,
+    constant: /\b[A-Z0-9_]{2,}\b/g
 });
 
 Prism.languages.insertBefore("php", "keyword", {
-    "delimiter": /(\?>|&lt;\?php|&lt;\?)/ig,
-    "variable": /(\$\w+)\b/ig,
-    "package": {
+    delimiter: /(\?>|&lt;\?php|&lt;\?)/gi,
+    variable: /(\$\w+)\b/gi,
+    package: {
         pattern: /(\\|namespace\s+|use\s+)[\w\\]+/g,
         lookbehind: true,
         inside: {
@@ -32248,14 +33699,13 @@ Prism.languages.insertBefore("php", "keyword", {
 });
 
 Prism.languages.insertBefore("php", "operator", {
-    "property": {
+    property: {
         pattern: /(->)[\w]+/g,
         lookbehind: true
     }
 });
 
 if (Prism.languages.markup) {
-
     Prism.hooks.add("before-highlight", function(env) {
         if (env.language !== "php") {
             return;
@@ -32264,12 +33714,13 @@ if (Prism.languages.markup) {
         env.tokenStack = [];
 
         env.code = env.code.replace(
-            /(?:&lt;\?php|&lt;\?|<\?php|<\?)[\w\W]*?(?:\?&gt;|\?>)/ig,
+            /(?:&lt;\?php|&lt;\?|<\?php|<\?)[\w\W]*?(?:\?&gt;|\?>)/gi,
             function(match) {
                 env.tokenStack.push(match);
 
                 return "{{{PHP" + env.tokenStack.length + "}}}";
-            });
+            }
+        );
     });
 
     Prism.hooks.add("after-highlight", function(env) {
@@ -32277,9 +33728,11 @@ if (Prism.languages.markup) {
             return;
         }
 
-        for (var i = 0, t; t = env.tokenStack[i]; i++) {
-            env.highlightedCode = env.highlightedCode.replace("{{{PHP" + (i + 1) + "}}}", Prism.highlight(t,
-                env.grammar, "php"));
+        for (var i = 0, t; (t = env.tokenStack[i]); i++) {
+            env.highlightedCode = env.highlightedCode.replace(
+                "{{{PHP" + (i + 1) + "}}}",
+                Prism.highlight(t, env.grammar, "php")
+            );
         }
 
         env.element.innerHTML = env.highlightedCode;
@@ -32289,23 +33742,24 @@ if (Prism.languages.markup) {
         if (env.language === "php" && env.type === "markup") {
             env.content = env.content.replace(
                 /(\{\{\{PHP[0-9]+\}\}\})/g,
-                "<span class=\"token php\">$1</span>");
+                '<span class="token php">$1</span>'
+            );
         }
     });
 
     Prism.languages.insertBefore("php", "comment", {
-        "markup": {
+        markup: {
             pattern: /(&lt;|<)[^?]\/?(.*?)(>|&gt;)/g,
             inside: Prism.languages.markup
         },
-        "php": /\{\{\{PHP[0-9]+\}\}\}/g
+        php: /\{\{\{PHP[0-9]+\}\}\}/g
     });
 }
 
 Prism.languages.insertBefore("php", "variable", {
-    "this": /\$this/g,
-    "global": /\$_?(GLOBALS|SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)/g,
-    "scope": {
+    this: /\$this/g,
+    global: /\$_?(GLOBALS|SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)/g,
+    scope: {
         pattern: /\b[\w\\]+::/g,
         inside: {
             keyword: /(static|self|parent)/,
@@ -32316,118 +33770,118 @@ Prism.languages.insertBefore("php", "variable", {
 
 Prism.languages.coffeescript = Prism.languages.extend("javascript", {
     "block-comment": /([#]{3}\s*\r?\n(.*\s*\r*\n*)\s*?\r?\n[#]{3})/g,
-    "comment": /(\s|^)([#]{1}[^#^\r^\n]{2,}?(\r?\n|$))/g,
-    "keyword": /\b(this|window|delete|class|extends|namespace|extend|ar|let|if|else|while|do|for|each|of|return|in|instanceof|new|with|typeof|try|catch|finally|null|undefined|break|continue)\b/g
+    comment: /(\s|^)([#]{1}[^#^\r^\n]{2,}?(\r?\n|$))/g,
+    keyword: /\b(this|window|delete|class|extends|namespace|extend|ar|let|if|else|while|do|for|each|of|return|in|instanceof|new|with|typeof|try|catch|finally|null|undefined|break|continue)\b/g
 });
 
 Prism.languages.insertBefore("coffeescript", "keyword", {
-    "function": {
+    function: {
         pattern: /[a-z|A-z]+\s*[:|=]\s*(\([.|a-z\s|,|:|{|}|\"|\'|=]*\))?\s*-&gt;/gi,
         inside: {
             "function-name": /[_?a-z-|A-Z-]+(\s*[:|=])| @[_?$?a-z-|A-Z-]+(\s*)| /g,
-            "operator": /[-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\//g
+            operator: /[-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\//g
         }
     },
     "attr-name": /[_?a-z-|A-Z-]+(\s*:)| @[_?$?a-z-|A-Z-]+(\s*)| /g
 });
 
 Prism.languages.scss = Prism.languages.extend("css", {
-    "comment": {
+    comment: {
         pattern: /(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,
         lookbehind: true
     },
-    "atrule": /@[\w-]+(?=\s+(\(|\{|;))/gi,
-    "url": /([-a-z]+-)*url(?=\()/gi,
-    "selector": /([^@;\{\}\(\)]?([^@;\{\}\(\)]|&amp;|\#\{\$[-_\w]+\})+)(?=\s*\{(\}|\s|[^\}]+(:|\{)[^\}]+))/gm
+    atrule: /@[\w-]+(?=\s+(\(|\{|;))/gi,
+    url: /([-a-z]+-)*url(?=\()/gi,
+    selector: /([^@;\{\}\(\)]?([^@;\{\}\(\)]|&amp;|\#\{\$[-_\w]+\})+)(?=\s*\{(\}|\s|[^\}]+(:|\{)[^\}]+))/gm
 });
 
 Prism.languages.insertBefore("scss", "atrule", {
-    "keyword": /@(if|else if|else|for|each|while|import|extend|debug|warn|mixin|include|function|return)|(?=@for\s+\$[-_\w]+\s)+from/i
+    keyword: /@(if|else if|else|for|each|while|import|extend|debug|warn|mixin|include|function|return)|(?=@for\s+\$[-_\w]+\s)+from/i
 });
 
 Prism.languages.insertBefore("scss", "property", {
-    "variable": /((\$[-_\w]+)|(#\{\$[-_\w]+\}))/i
+    variable: /((\$[-_\w]+)|(#\{\$[-_\w]+\}))/i
 });
 
 Prism.languages.insertBefore("scss", "ignore", {
-    "placeholder": /%[-_\w]+/i,
-    "statement": /\B!(default|optional)\b/gi,
-    "boolean": /\b(true|false)\b/g,
-    "null": /\b(null)\b/g,
-    "operator": /\s+([-+]{1,2}|={1,2}|!=|\|?\||\?|\*|\/|\%)\s+/g
+    placeholder: /%[-_\w]+/i,
+    statement: /\B!(default|optional)\b/gi,
+    boolean: /\b(true|false)\b/g,
+    null: /\b(null)\b/g,
+    operator: /\s+([-+]{1,2}|={1,2}|!=|\|?\||\?|\*|\/|\%)\s+/g
 });
 
 Prism.languages.bash = Prism.languages.extend("clike", {
-    "comment": {
+    comment: {
         pattern: /(^|[^"{\\])(#.*?(\r?\n|$))/g,
         lookbehind: true
     },
-    "string": {
+    string: {
         pattern: /("|")(\\?[\s\S])*?\1/g,
         inside: {
-            "property": /\$([a-zA-Z0-9_#\?\-\*!@]+|\{[^\}]+\})/g
+            property: /\$([a-zA-Z0-9_#\?\-\*!@]+|\{[^\}]+\})/g
         }
     },
-    "keyword": /\b(if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)\b/g
+    keyword: /\b(if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)\b/g
 });
 
 Prism.languages.insertBefore("bash", "keyword", {
-    "property": /\$([a-zA-Z0-9_#\?\-\*!@]+|\{[^}]+\})/g
+    property: /\$([a-zA-Z0-9_#\?\-\*!@]+|\{[^}]+\})/g
 });
 
 Prism.languages.insertBefore("bash", "comment", {
-    "important": /(^#!\s*\/bin\/bash)|(^#!\s*\/bin\/sh)/g
+    important: /(^#!\s*\/bin\/bash)|(^#!\s*\/bin\/sh)/g
 });
 
 Prism.languages.c = Prism.languages.extend("clike", {
-    "keyword": /\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/g,
-    "operator": /[-+]{1,2}|!=?|&lt;{1,2}=?|&gt;{1,2}=?|\-&gt;|={1,2}|\^|~|%|(&amp;){1,2}|\|?\||\?|\*|\//g
+    keyword: /\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/g,
+    operator: /[-+]{1,2}|!=?|&lt;{1,2}=?|&gt;{1,2}=?|\-&gt;|={1,2}|\^|~|%|(&amp;){1,2}|\|?\||\?|\*|\//g
 });
 
 Prism.languages.insertBefore("c", "keyword", {
-    "property": /#\s*[a-zA-Z]+/g
+    property: /#\s*[a-zA-Z]+/g
 });
 
 Prism.languages.cpp = Prism.languages.extend("c", {
-    "keyword": /\b(alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|class|compl|const|constexpr|const_cast|continue|decltype|default|delete|delete\[\]|do|double|dynamic_cast|else|enum|explicit|export|extern|float|for|friend|goto|if|inline|int|long|mutable|namespace|new|new\[\]|noexcept|nullptr|operator|private|protected|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/g,
-    "operator": /[-+]{1,2}|!=?|&lt;{1,2}=?|&gt;{1,2}=?|\-&gt;|:{1,2}|={1,2}|\^|~|%|(&amp;){1,2}|\|?\||\?|\*|\/|\b(and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/g
+    keyword: /\b(alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|class|compl|const|constexpr|const_cast|continue|decltype|default|delete|delete\[\]|do|double|dynamic_cast|else|enum|explicit|export|extern|float|for|friend|goto|if|inline|int|long|mutable|namespace|new|new\[\]|noexcept|nullptr|operator|private|protected|public|register|reinterpret_cast|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/g,
+    operator: /[-+]{1,2}|!=?|&lt;{1,2}=?|&gt;{1,2}=?|\-&gt;|:{1,2}|={1,2}|\^|~|%|(&amp;){1,2}|\|?\||\?|\*|\/|\b(and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/g
 });
 
 Prism.languages.python = {
-    "comment": {
+    comment: {
         pattern: /(^|[^\\])#.*?(\r?\n|$)/g,
         lookbehind: true
     },
-    "string": /("|')(\\?.)*?\1/g,
-    "keyword": /\b(as|assert|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/g,
-    "boolean": /\b(True|False)\b/g,
-    "number": /\b-?(0x)?\d*\.?[\da-f]+\b/g,
-    "operator": /[-+]{1,2}|=?&lt;|=?&gt;|!|={1,2}|(&){1,2}|(&amp;){1,2}|\|?\||\?|\*|\/|~|\^|%|\b(or|and|not)\b/g,
-    "ignore": /&(lt|gt|amp);/gi,
-    "punctuation": /[{}[\];(),.:]/g
+    string: /("|')(\\?.)*?\1/g,
+    keyword: /\b(as|assert|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/g,
+    boolean: /\b(True|False)\b/g,
+    number: /\b-?(0x)?\d*\.?[\da-f]+\b/g,
+    operator: /[-+]{1,2}|=?&lt;|=?&gt;|!|={1,2}|(&){1,2}|(&amp;){1,2}|\|?\||\?|\*|\/|~|\^|%|\b(or|and|not)\b/g,
+    ignore: /&(lt|gt|amp);/gi,
+    punctuation: /[{}[\];(),.:]/g
 };
 
 Prism.languages.sql = {
-    "comment": {
+    comment: {
         pattern: /(^|[^\\])(\/\*[\w\W]*?\*\/|((--)|(\/\/)).*?(\r?\n|$))/g,
         lookbehind: true
     },
-    "string": /("|')(\\?.)*?\1/g,
-    "keyword": /\b(ACTION|ADD|AFTER|ALGORITHM|ALTER|ANALYZE|APPLY|AS|ASC|AUTHORIZATION|BACKUP|BDB|BEGIN|BERKELEYDB|BIGINT|BINARY|BIT|BLOB|BOOL|BOOLEAN|BREAK|BROWSE|BTREE|BULK|BY|CALL|CASCADE|CASCADED|CASE|CHAIN|CHAR VARYING|CHARACTER VARYING|CHECK|CHECKPOINT|CLOSE|CLUSTERED|COALESCE|COLUMN|COLUMNS|COMMENT|COMMIT|COMMITTED|COMPUTE|CONNECT|CONSISTENT|CONSTRAINT|CONTAINS|CONTAINSTABLE|CONTINUE|CONVERT|CREATE|CROSS|CURRENT|CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|CURSOR|DATA|DATABASE|DATABASES|DATETIME|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFINER|DELAYED|DELETE|DENY|DESC|DESCRIBE|DETERMINISTIC|DISABLE|DISCARD|DISK|DISTINCT|DISTINCTROW|DISTRIBUTED|DO|DOUBLE|DOUBLE PRECISION|DROP|DUMMY|DUMP|DUMPFILE|DUPLICATE KEY|ELSE|ENABLE|ENCLOSED BY|END|ENGINE|ENUM|ERRLVL|ERRORS|ESCAPE|ESCAPED BY|EXCEPT|EXEC|EXECUTE|EXIT|EXPLAIN|EXTENDED|FETCH|FIELDS|FILE|FILLFACTOR|FIRST|FIXED|FLOAT|FOLLOWING|FOR|FOR EACH ROW|FORCE|FOREIGN|FREETEXT|FREETEXTTABLE|FROM|FULL|FUNCTION|GEOMETRY|GEOMETRYCOLLECTION|GLOBAL|GOTO|GRANT|GROUP|HANDLER|HASH|HAVING|HOLDLOCK|IDENTITY|IDENTITY_INSERT|IDENTITYCOL|IF|IGNORE|IMPORT|INDEX|INFILE|INNER|INNODB|INOUT|INSERT|INT|INTEGER|INTERSECT|INTO|INVOKER|ISOLATION LEVEL|JOIN|KEY|KEYS|KILL|LANGUAGE SQL|LAST|LEFT|LIMIT|LINENO|LINES|LINESTRING|LOAD|LOCAL|LOCK|LONGBLOB|LONGTEXT|MATCH|MATCHED|MEDIUMBLOB|MEDIUMINT|MEDIUMTEXT|MERGE|MIDDLEINT|MODIFIES SQL DATA|MODIFY|MULTILINESTRING|MULTIPOINT|MULTIPOLYGON|NATIONAL|NATIONAL CHAR VARYING|NATIONAL CHARACTER|NATIONAL CHARACTER VARYING|NATIONAL VARCHAR|NATURAL|NCHAR|NCHAR VARCHAR|NEXT|NO|NO SQL|NOCHECK|NOCYCLE|NONCLUSTERED|NULLIF|NUMERIC|OF|OFF|OFFSETS|ON|OPEN|OPENDATASOURCE|OPENQUERY|OPENROWSET|OPTIMIZE|OPTION|OPTIONALLY|ORDER|OUT|OUTER|OUTFILE|OVER|PARTIAL|PARTITION|PERCENT|PIVOT|PLAN|POINT|POLYGON|PRECEDING|PRECISION|PREV|PRIMARY|PRINT|PRIVILEGES|PROC|PROCEDURE|PUBLIC|PURGE|QUICK|RAISERROR|READ|READS SQL DATA|READTEXT|REAL|RECONFIGURE|REFERENCES|RELEASE|RENAME|REPEATABLE|REPLICATION|REQUIRE|RESTORE|RESTRICT|RETURN|RETURNS|REVOKE|RIGHT|ROLLBACK|ROUTINE|ROWCOUNT|ROWGUIDCOL|ROWS?|RTREE|RULE|SAVE|SAVEPOINT|SCHEMA|SELECT|SERIAL|SERIALIZABLE|SESSION|SESSION_USER|SET|SETUSER|SHARE MODE|SHOW|SHUTDOWN|SIMPLE|SMALLINT|SNAPSHOT|SOME|SONAME|START|STARTING BY|STATISTICS|STATUS|STRIPED|SYSTEM_USER|TABLE|TABLES|TABLESPACE|TEMPORARY|TEMPTABLE|TERMINATED BY|TEXT|TEXTSIZE|THEN|TIMESTAMP|TINYBLOB|TINYINT|TINYTEXT|TO|TOP|TRAN|TRANSACTION|TRANSACTIONS|TRIGGER|TRUNCATE|TSEQUAL|TYPE|TYPES|UNBOUNDED|UNCOMMITTED|UNDEFINED|UNION|UNPIVOT|UPDATE|UPDATETEXT|USAGE|USE|USER|USING|VALUE|VALUES|VARBINARY|VARCHAR|VARCHARACTER|VARYING|VIEW|WAITFOR|WARNINGS|WHEN|WHERE|WHILE|WITH|WITH ROLLUP|WITHIN|WORK|WRITE|WRITETEXT)\b/gi,
-    "boolean": /\b(TRUE|FALSE|NULL)\b/gi,
-    "number": /\b-?(0x)?\d*\.?[\da-f]+\b/g,
-    "operator": /\b(ALL|AND|ANY|BETWEEN|EXISTS|IN|LIKE|NOT|OR|IS|UNIQUE|CHARACTER SET|COLLATE|DIV|OFFSET|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b|[-+]{1}|!|=?&lt;|=?&gt;|={1}|(&amp;){1,2}|\|?\||\?|\*|\//gi,
-    "ignore": /&(lt|gt|amp);/gi,
-    "punctuation": /[;[\]()`,.]/g
+    string: /("|')(\\?.)*?\1/g,
+    keyword: /\b(ACTION|ADD|AFTER|ALGORITHM|ALTER|ANALYZE|APPLY|AS|ASC|AUTHORIZATION|BACKUP|BDB|BEGIN|BERKELEYDB|BIGINT|BINARY|BIT|BLOB|BOOL|BOOLEAN|BREAK|BROWSE|BTREE|BULK|BY|CALL|CASCADE|CASCADED|CASE|CHAIN|CHAR VARYING|CHARACTER VARYING|CHECK|CHECKPOINT|CLOSE|CLUSTERED|COALESCE|COLUMN|COLUMNS|COMMENT|COMMIT|COMMITTED|COMPUTE|CONNECT|CONSISTENT|CONSTRAINT|CONTAINS|CONTAINSTABLE|CONTINUE|CONVERT|CREATE|CROSS|CURRENT|CURRENT_DATE|CURRENT_TIME|CURRENT_TIMESTAMP|CURRENT_USER|CURSOR|DATA|DATABASE|DATABASES|DATETIME|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFINER|DELAYED|DELETE|DENY|DESC|DESCRIBE|DETERMINISTIC|DISABLE|DISCARD|DISK|DISTINCT|DISTINCTROW|DISTRIBUTED|DO|DOUBLE|DOUBLE PRECISION|DROP|DUMMY|DUMP|DUMPFILE|DUPLICATE KEY|ELSE|ENABLE|ENCLOSED BY|END|ENGINE|ENUM|ERRLVL|ERRORS|ESCAPE|ESCAPED BY|EXCEPT|EXEC|EXECUTE|EXIT|EXPLAIN|EXTENDED|FETCH|FIELDS|FILE|FILLFACTOR|FIRST|FIXED|FLOAT|FOLLOWING|FOR|FOR EACH ROW|FORCE|FOREIGN|FREETEXT|FREETEXTTABLE|FROM|FULL|FUNCTION|GEOMETRY|GEOMETRYCOLLECTION|GLOBAL|GOTO|GRANT|GROUP|HANDLER|HASH|HAVING|HOLDLOCK|IDENTITY|IDENTITY_INSERT|IDENTITYCOL|IF|IGNORE|IMPORT|INDEX|INFILE|INNER|INNODB|INOUT|INSERT|INT|INTEGER|INTERSECT|INTO|INVOKER|ISOLATION LEVEL|JOIN|KEY|KEYS|KILL|LANGUAGE SQL|LAST|LEFT|LIMIT|LINENO|LINES|LINESTRING|LOAD|LOCAL|LOCK|LONGBLOB|LONGTEXT|MATCH|MATCHED|MEDIUMBLOB|MEDIUMINT|MEDIUMTEXT|MERGE|MIDDLEINT|MODIFIES SQL DATA|MODIFY|MULTILINESTRING|MULTIPOINT|MULTIPOLYGON|NATIONAL|NATIONAL CHAR VARYING|NATIONAL CHARACTER|NATIONAL CHARACTER VARYING|NATIONAL VARCHAR|NATURAL|NCHAR|NCHAR VARCHAR|NEXT|NO|NO SQL|NOCHECK|NOCYCLE|NONCLUSTERED|NULLIF|NUMERIC|OF|OFF|OFFSETS|ON|OPEN|OPENDATASOURCE|OPENQUERY|OPENROWSET|OPTIMIZE|OPTION|OPTIONALLY|ORDER|OUT|OUTER|OUTFILE|OVER|PARTIAL|PARTITION|PERCENT|PIVOT|PLAN|POINT|POLYGON|PRECEDING|PRECISION|PREV|PRIMARY|PRINT|PRIVILEGES|PROC|PROCEDURE|PUBLIC|PURGE|QUICK|RAISERROR|READ|READS SQL DATA|READTEXT|REAL|RECONFIGURE|REFERENCES|RELEASE|RENAME|REPEATABLE|REPLICATION|REQUIRE|RESTORE|RESTRICT|RETURN|RETURNS|REVOKE|RIGHT|ROLLBACK|ROUTINE|ROWCOUNT|ROWGUIDCOL|ROWS?|RTREE|RULE|SAVE|SAVEPOINT|SCHEMA|SELECT|SERIAL|SERIALIZABLE|SESSION|SESSION_USER|SET|SETUSER|SHARE MODE|SHOW|SHUTDOWN|SIMPLE|SMALLINT|SNAPSHOT|SOME|SONAME|START|STARTING BY|STATISTICS|STATUS|STRIPED|SYSTEM_USER|TABLE|TABLES|TABLESPACE|TEMPORARY|TEMPTABLE|TERMINATED BY|TEXT|TEXTSIZE|THEN|TIMESTAMP|TINYBLOB|TINYINT|TINYTEXT|TO|TOP|TRAN|TRANSACTION|TRANSACTIONS|TRIGGER|TRUNCATE|TSEQUAL|TYPE|TYPES|UNBOUNDED|UNCOMMITTED|UNDEFINED|UNION|UNPIVOT|UPDATE|UPDATETEXT|USAGE|USE|USER|USING|VALUE|VALUES|VARBINARY|VARCHAR|VARCHARACTER|VARYING|VIEW|WAITFOR|WARNINGS|WHEN|WHERE|WHILE|WITH|WITH ROLLUP|WITHIN|WORK|WRITE|WRITETEXT)\b/gi,
+    boolean: /\b(TRUE|FALSE|NULL)\b/gi,
+    number: /\b-?(0x)?\d*\.?[\da-f]+\b/g,
+    operator: /\b(ALL|AND|ANY|BETWEEN|EXISTS|IN|LIKE|NOT|OR|IS|UNIQUE|CHARACTER SET|COLLATE|DIV|OFFSET|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b|[-+]{1}|!|=?&lt;|=?&gt;|={1}|(&amp;){1,2}|\|?\||\?|\*|\//gi,
+    ignore: /&(lt|gt|amp);/gi,
+    punctuation: /[;[\]()`,.]/g
 };
 
 Prism.languages.groovy = Prism.languages.extend("clike", {
-    "keyword": /\b(as|def|in|abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|transient|try|void|volatile|while)\b/g,
-    "string": /("""|''')[\W\w]*?\1|("|'|\/)[\W\w]*?\2/g,
-    "number": /\b0b[01_]+\b|\b0x[\da-f_]+(\.[\da-f_p\-]+)?\b|\b[\d_]+(\.[\d_]+[e]?[\d]*)?[glidf]\b|[\d_]+(\.[\d_]+)?\b/gi,
-    "operator": /={0,2}~|\?\.|\*?\.@|\.&amp;|\.(?=\w)|\.{2}(&lt;)?(?=\w)|-&gt;|\?:|[-+]{1,2}|!|&lt;=&gt;|(&gt;){1,3}|(&lt;){1,2}|={1,2}|(&amp;){1,2}|\|{1,2}|\?|\*{1,2}|\/|\^|%/g,
-    "punctuation": /\.+|[{}[\];(),:$]/g,
-    "annotation": /@\w+/
+    keyword: /\b(as|def|in|abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|native|new|package|private|protected|public|return|short|static|strictfp|super|switch|synchronized|this|throw|throws|transient|try|void|volatile|while)\b/g,
+    string: /("""|''')[\W\w]*?\1|("|'|\/)[\W\w]*?\2/g,
+    number: /\b0b[01_]+\b|\b0x[\da-f_]+(\.[\da-f_p\-]+)?\b|\b[\d_]+(\.[\d_]+[e]?[\d]*)?[glidf]\b|[\d_]+(\.[\d_]+)?\b/gi,
+    operator: /={0,2}~|\?\.|\*?\.@|\.&amp;|\.(?=\w)|\.{2}(&lt;)?(?=\w)|-&gt;|\?:|[-+]{1,2}|!|&lt;=&gt;|(&gt;){1,3}|(&lt;){1,2}|={1,2}|(&amp;){1,2}|\|{1,2}|\?|\*{1,2}|\/|\^|%/g,
+    punctuation: /\.+|[{}[\];(),:$]/g,
+    annotation: /@\w+/
 });
 
 Prism.languages.insertBefore("groovy", "punctuation", {
@@ -32440,7 +33894,7 @@ Prism.hooks.add("wrap", function(env) {
 
         if (delimiter !== "'") {
             env.content = Prism.highlight(env.content, {
-                "expression": {
+                expression: {
                     pattern: /([^\\])(\$(\{.*?\}|[\w\.]*))/,
                     lookbehind: true,
                     inside: Prism.languages.groovy
@@ -32450,7 +33904,7 @@ Prism.hooks.add("wrap", function(env) {
             env.classes.push(delimiter === "/" ? "regex" : "gstring");
         }
     }
-});;
+});
 Prism.languages.http = {
     "request-line": {
         pattern: /^(POST|GET|PUT|DELETE|OPTIONS)\b\shttps?:\/\/\S+\sHTTP\/[0-9.]+/g,
@@ -32479,7 +33933,12 @@ for (var contentType in httpLanguages) {
     if (httpLanguages[contentType]) {
         var options = {};
         options[contentType] = {
-            pattern: new RegExp("(content-type:\\s*" + contentType + "[\\w\\W]*?)\\n\\n[\\w\\W]*", "gi"),
+            pattern: new RegExp(
+                "(content-type:\\s*" +
+                    contentType +
+                    "[\\w\\W]*?)\\n\\n[\\w\\W]*",
+                "gi"
+            ),
             lookbehind: true,
             inside: {
                 rest: httpLanguages[contentType]
@@ -32490,19 +33949,19 @@ for (var contentType in httpLanguages) {
 }
 
 Prism.languages.ruby = Prism.languages.extend("clike", {
-    "comment": /#[^\r\n]*(\r?\n|$)/g,
-    "keyword": /\b(alias|and|BEGIN|begin|break|case|class|def|define_method|defined|do|each|else|elsif|END|end|ensure|false|for|if|in|module|new|next|nil|not|or|raise|redo|require|rescue|retry|return|self|super|then|throw|true|undef|unless|until|when|while|yield)\b/g,
-    "builtin": /\b(Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Stat|File|Fixnum|Fload|Hash|Integer|IO|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|String|Struct|TMS|Symbol|ThreadGroup|Thread|Time|TrueClass)\b/,
-    "constant": /\b[A-Z][a-zA-Z_0-9]*[?!]?\b/g
+    comment: /#[^\r\n]*(\r?\n|$)/g,
+    keyword: /\b(alias|and|BEGIN|begin|break|case|class|def|define_method|defined|do|each|else|elsif|END|end|ensure|false|for|if|in|module|new|next|nil|not|or|raise|redo|require|rescue|retry|return|self|super|then|throw|true|undef|unless|until|when|while|yield)\b/g,
+    builtin: /\b(Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Stat|File|Fixnum|Fload|Hash|Integer|IO|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|String|Struct|TMS|Symbol|ThreadGroup|Thread|Time|TrueClass)\b/,
+    constant: /\b[A-Z][a-zA-Z_0-9]*[?!]?\b/g
 });
 
 Prism.languages.insertBefore("ruby", "keyword", {
-    "regex": {
+    regex: {
         pattern: /(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,
         lookbehind: true
     },
-    "variable": /[@$&]+\b[a-zA-Z_][a-zA-Z_0-9]*[?!]?\b/g,
-    "symbol": /:\b[a-zA-Z_][a-zA-Z_0-9]*[?!]?\b/g
+    variable: /[@$&]+\b[a-zA-Z_][a-zA-Z_0-9]*[?!]?\b/g,
+    symbol: /:\b[a-zA-Z_][a-zA-Z_0-9]*[?!]?\b/g
 });
 
 // Hive Colony Framework
@@ -32536,7 +33995,7 @@ Prism.languages.insertBefore("ruby", "keyword", {
 function StringBuffer() {
     // creates the buffer to hold the (partial) strings
     this.buffer = [];
-};
+}
 
 /**
  * Clears the current string buffer
@@ -32668,7 +34127,7 @@ if (typeof require !== "undefined") {
 }
 
 var _global = typeof global === "undefined" ? window : global;
-var String = String || _global.String || {};
+var String = (_global.String = _global.String || {});
 
 if (typeof String.prototype.trim === "undefined") {
     String.prototype.trim = function() {
@@ -32686,7 +34145,7 @@ if (typeof String.prototype.startsWith === "undefined") {
 if (typeof String.prototype.padStart === "undefined") {
     String.prototype.padStart = function padStart(targetLength, padString) {
         targetLength = targetLength >> 0;
-        padString = String((typeof padString !== "undefined" ? padString : " "));
+        padString = String(typeof padString !== "undefined" ? padString : " ");
         if (this.length > targetLength) {
             return String(this);
         } else {
@@ -32702,7 +34161,7 @@ if (typeof String.prototype.padStart === "undefined") {
 if (typeof String.prototype.padEnd === "undefined") {
     String.prototype.padEnd = function padEnd(targetLength, padString) {
         targetLength = targetLength >> 0;
-        padString = String((typeof padString !== "undefined" ? padString : " "));
+        padString = String(typeof padString !== "undefined" ? padString : " ");
         if (this.length > targetLength) {
             return String(this);
         } else {
@@ -32876,7 +34335,9 @@ String.prototype.capitalize = function(local) {
         return a.charAt(0).toUpperCase() + a.substr(1);
     };
 
-    return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
+    return local
+        ? f(this)
+        : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 };
 
 /**
@@ -32889,7 +34350,9 @@ String.prototype.decapitalize = function(local) {
         return a.charAt(0).toLowerCase() + a.substr(1);
     };
 
-    return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
+    return local
+        ? f(this)
+        : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 };
 
 /**
@@ -32906,7 +34369,7 @@ String.prototype.encodeUtf = function() {
 
         if (character < 128) {
             utfString += String.fromCharCode(character);
-        } else if ((character > 127) && (character < 2048)) {
+        } else if (character > 127 && character < 2048) {
             utfString += String.fromCharCode((character >> 6) | 192);
             utfString += String.fromCharCode((character & 63) | 128);
         } else {
@@ -32937,14 +34400,20 @@ String.prototype.decodeUtf = function() {
         if (character < 128) {
             string += String.fromCharCode(character);
             index++;
-        } else if ((character > 191) && (character < 224)) {
+        } else if (character > 191 && character < 224) {
             character1 = this.charCodeAt(index + 1);
-            string += String.fromCharCode(((character & 31) << 6) | (character1 & 63));
+            string += String.fromCharCode(
+                ((character & 31) << 6) | (character1 & 63)
+            );
             index += 2;
         } else {
             character1 = this.charCodeAt(index + 1);
             character2 = this.charCodeAt(index + 2);
-            string += String.fromCharCode(((character & 15) << 12) | ((character1 & 63) << 6) | (character2 & 63));
+            string += String.fromCharCode(
+                ((character & 15) << 12) |
+                    ((character1 & 63) << 6) |
+                    (character2 & 63)
+            );
             index += 3;
         }
     }
@@ -32982,9 +34451,6 @@ if (typeof module !== "undefined") {
 // __date__      = $LastChangedDate$
 // __copyright__ = Copyright (c) 2008-2018 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
-
-var _global = typeof global === "undefined" ? window : global;
-var Template = Template || _global.Template || {};
 
 /**
  * Normal state for the template engin where it is trying to find new tags.
@@ -33387,7 +34853,7 @@ TemplateEngine.prototype.process = function(template, options) {
                     break;
                 }
 
-                if (current === "\"") {
+                if (current === '"') {
                     state = TEMPLATE_ENGINE_PARAMETER_VALUE_STRING;
                 } else if (current === " ") {
                     // calls the parameter value callback
@@ -33399,7 +34865,7 @@ TemplateEngine.prototype.process = function(template, options) {
                 break;
 
             case TEMPLATE_ENGINE_PARAMETER_VALUE_STRING:
-                if (current === "\"") {
+                if (current === '"') {
                     // calls the parameter value callback
                     this.callbackData("parameterValue");
 
@@ -33437,7 +34903,7 @@ TemplateHandler.prototype.resolve = function(parameter) {
         case TEMPLATE_PARAMETER_REFERENCE:
             value = this._get(value);
             break;
-    };
+    }
 
     return value;
 };
@@ -33551,6 +35017,11 @@ TemplateHandler.prototype.onTagCloseBegin = function() {
     this.temporaryNode.type = TEMPLATE_NODE_CLOSE;
 };
 
+TemplateHandler.prototype.onUndefined = function() {
+    // sets the temporary node type as undefined
+    this.temporaryNode.type = TEMPLATE_NODE_UNDEFINED;
+};
+
 TemplateHandler.prototype.onTagEnd = function(data, start, end) {
     // retrieves the current node to be used as the backup
     // value for the (pvevious) current node before context
@@ -33618,7 +35089,7 @@ TemplateHandler.prototype.onParameterValue = function(data, start, end) {
     var first = data[0];
     var code = first.charCodeAt(0);
 
-    if (first === "\"") {
+    if (first === '"') {
         temporaryParameter.value = data.slice(1, data.length - 1);
         temporaryParameter.type = TEMPLATE_PARAMETER_STRING;
     } else if (code > 0x2f && code < 0x58) {
@@ -33843,7 +35314,9 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
-var canvasRenderingContext = (_global.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype) || {};
+var canvasRenderingContext =
+    (_global.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype) ||
+    {};
 
 canvasRenderingContext.line = function(x1, y1, x2, y2) {
     this.save();
@@ -33928,7 +35401,12 @@ canvasRenderingContext.roundRectangle = function(x, y, width, height, radius) {
     this.lineTo(x + width - radius, y);
     this.quadraticCurveTo(x + width, y, x + width, y + radius);
     this.lineTo(x + width, y + height - radius);
-    this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    this.quadraticCurveTo(
+        x + width,
+        y + height,
+        x + width - radius,
+        y + height
+    );
     this.lineTo(x + radius, y + height);
     this.quadraticCurveTo(x, y + height, x, y + height - radius);
     this.lineTo(x, y + radius);
