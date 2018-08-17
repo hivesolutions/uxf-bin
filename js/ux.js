@@ -24911,12 +24911,12 @@ if (typeof require !== "undefined") {
             if (isVisible) {
                 return;
             }
-            var timeout = matchedObject.attr("data-timeout") || "350";
-            timeout = parseInt(timeout);
             matchedObject.data("visible", true);
             var overlay = _ensureOverlay();
             var width = matchedObject.outerWidth(true);
             var side = matchedObject.attr("data-side") || "right";
+            var timeout = matchedObject.attr("data-timeout") || "350";
+            timeout = parseInt(timeout);            
             overlay.triggerHandler("resize");
             overlay.triggerHandler("show", [timeout]);
             var animation = {};
@@ -24938,12 +24938,12 @@ if (typeof require !== "undefined") {
             if (!isVisible) {
                 return;
             }
-            var timeout = matchedObject.attr("data-timeout") || "350";
-            timeout = parseInt(timeout);
             matchedObject.data("visible", false);
             var overlay = _ensureOverlay();
             var width = matchedObject.outerWidth(true);
             var side = matchedObject.attr("data-side") || "right";
+            var timeout = matchedObject.attr("data-timeout") || "350";
+            timeout = parseInt(timeout);
             __unregisterClick(matchedObject, options);
             __unregisterKey(matchedObject, options);
             overlay.triggerHandler("hide", [timeout]);
