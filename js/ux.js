@@ -16935,6 +16935,11 @@ if (typeof require !== "undefined") {
                     numberRecords: numberRecords
                 },
                 function(validItems, moreItems) {
+                    // triggers the (on) data event, that is going to notify
+                	// any listener about the results that have been received
+                	// by the current filter component
+                    filter.triggerHandler("data", [validItems, moreItems]);
+
                     // removes the loading class from the filter (and the
                     // filter more bytton), so that the loading information
                     // is hidden and the proper style "notified"
@@ -17055,7 +17060,7 @@ if (typeof require !== "undefined") {
                         templateItems.push(templateItem[0]);
                         _initTemplateItem(filter, templateItem);
                     });
-
+                    
                     // adds the complete set of generated template items to the
                     // contents of the current filter
                     filterContents.append(templateItems);
