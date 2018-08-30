@@ -19895,8 +19895,9 @@ if (typeof require !== "undefined") {
         };
 
         var updateState = function(element) {
+            var load = element.hasClass("load");
             var visible = isVisible(element);
-            if (!visible) {
+            if (!visible && !load) {
                 return;
             }
 
@@ -19950,11 +19951,11 @@ if (typeof require !== "undefined") {
         };
 
         var isSet = function(element) {
-            var isLoaded = element.hasClass(".loaded");
+            var isLoaded = element.hasClass("loaded");
             if (isLoaded) {
                 return true;
             }
-            var isLoading = element.hasClass(".loading");
+            var isLoading = element.hasClass("loading");
             if (isLoading) {
                 return true;
             }
