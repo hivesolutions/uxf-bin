@@ -19895,7 +19895,7 @@ if (typeof require !== "undefined") {
         };
 
         var updateState = function(element) {
-            var load = element.hasClass("load");
+            var load = element.hasClass("load") && element.is(":visible");
             var visible = isVisible(element);
             if (!visible && !load) {
                 return;
