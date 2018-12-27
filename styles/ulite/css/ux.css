@@ -130,6 +130,22 @@ __license__   = Apache License, Version 2.0
     text-transform: uppercase;
 }
 
+.ulite-style .button > span.base {
+    display: inline;
+}
+
+.ulite-style .button > span.locked {
+    display: none;
+}
+
+.ulite-style .button.locked > span.base {
+    display: none;
+}
+
+.ulite-style .button.locked > span.locked {
+    display: inline;
+}
+
 .ulite-style .button.no-hover {
     cursor: default;
 }
