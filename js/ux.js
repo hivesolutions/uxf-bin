@@ -14231,6 +14231,10 @@ if (typeof require !== "undefined") {
                 }
             }
 
+            // adds the updating class as we should be waiting for the results
+            // this may take some time in case the data source is remote
+            dropField.addClass("updating");
+
             // nullifies the number of options in case it's necessary
             numberOptions = filterOptions ? numberOptions : null;
 
@@ -14245,6 +14249,10 @@ if (typeof require !== "undefined") {
                     numberRecords: numberOptions
                 },
                 function(validItems, moreItems) {
+                    // removes the updating class as the element is no longer under
+                    // the updating state (returned information)
+                    dropField.removeClass("updating");
+
                     // in case the valid items value is not valid (error occurred)
                     // so items are avaiable for the update (must avoid update)
                     if (!validItems) {
@@ -31829,8 +31837,7 @@ Select.reduce = function(list, _function) {
 
     // iterates over the (remaining) list elements
     for (var index = 1; index < list.length; index++) {
-        // retrieves the current item from the
-        // the list
+        // retrieves the current item from the the list
         var item = list[index];
 
         // calls the reduce function with the current
@@ -31881,12 +31888,7 @@ Select.floatValues = function(selector, zerify, defaultValue) {
     return valueFloats;
 };
 
-Select.sum = function(
-    firstSelector,
-    secondSelector,
-    decimalPlaces,
-    defaultValue
-) {
+Select.sum = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true);
     var secondValue = Select.floatValue(secondSelector, true);
@@ -31916,10 +31918,7 @@ Select.sum = function(
  */
 Select.sums = function(selector, decimalPlaces, defaultValue) {
     // retrieves the sum value by adding all the partial values
-    var value = Select.reduce(Select.floatValues(selector), function(
-        accumulator,
-        item
-    ) {
+    var value = Select.reduce(Select.floatValues(selector), function(accumulator, item) {
         // "zerifies" the item value (avoids)
         // avoids "extra" erroneous values
         item = isNaN(item) ? 0 : item;
@@ -31937,12 +31936,7 @@ Select.sums = function(selector, decimalPlaces, defaultValue) {
     return value;
 };
 
-Select.subtract = function(
-    firstSelector,
-    secondSelector,
-    decimalPlaces,
-    defaultValue
-) {
+Select.subtract = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true);
     var secondValue = Select.floatValue(secondSelector, true);
@@ -31972,10 +31966,7 @@ Select.subtract = function(
  */
 Select.subtracts = function(selector, decimalPlaces, defaultValue) {
     // retrieves the subtraction value by adding all the partial values
-    var value = Select.reduce(Select.floatValues(selector), function(
-        accumulator,
-        item
-    ) {
+    var value = Select.reduce(Select.floatValues(selector), function(accumulator, item) {
         // "zerifies" the item value (avoids)
         // avoids "extra" erroneous values
         item = isNaN(item) ? 0 : item;
@@ -31993,12 +31984,7 @@ Select.subtracts = function(selector, decimalPlaces, defaultValue) {
     return value;
 };
 
-Select.multiply = function(
-    firstSelector,
-    secondSelector,
-    decimalPlaces,
-    defaultValue
-) {
+Select.multiply = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true, 0);
     var secondValue = Select.floatValue(secondSelector, true, 0);
@@ -32014,10 +32000,7 @@ Select.multiply = function(
 Select.multiplys = function(selector, decimalPlaces, defaultValue) {
     // retrieves the multiplication value by multiplying
     // all the partial values
-    var value = Select.reduce(Select.floatValues(selector), function(
-        accumulator,
-        item
-    ) {
+    var value = Select.reduce(Select.floatValues(selector), function(accumulator, item) {
         // "zerifies" the item value (avoids)
         // avoids "extra" erroneous values
         item = isNaN(item) ? 1 : item;
@@ -32035,12 +32018,7 @@ Select.multiplys = function(selector, decimalPlaces, defaultValue) {
     return value;
 };
 
-Select.divide = function(
-    firstSelector,
-    secondSelector,
-    decimalPlaces,
-    defaultValue
-) {
+Select.divide = function(firstSelector, secondSelector, decimalPlaces, defaultValue) {
     // retrieves the first and second values
     var firstValue = Select.floatValue(firstSelector, true, 0);
     var secondValue = Select.floatValue(secondSelector, true, 1);
@@ -32056,10 +32034,7 @@ Select.divide = function(
 Select.divides = function(selector, decimalPlaces, defaultValue) {
     // retrieves the division value by dividing
     // all the partial values
-    var value = Select.reduce(Select.floatValues(selector), function(
-        accumulator,
-        item
-    ) {
+    var value = Select.reduce(Select.floatValues(selector), function(accumulator, item) {
         // "zerifies" the item value (avoids)
         // avoids "extra" erroneous values
         item = isNaN(item) ? 1 : item;
@@ -32145,9 +32120,7 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 
     // rounds the value in case the number of decimal places
     // value is defined
-    value = decimalPlaces
-        ? (Math.round(value * rounder) / rounder).toFixed(decimalPlaces)
-        : value;
+    value = decimalPlaces ? (Math.round(value * rounder) / rounder).toFixed(decimalPlaces) : value;
 
     // in case the value is not valid (not a number)
     // sets the default value
@@ -32199,8 +32172,7 @@ var Base64 = (_global.Base64 = _global.Base64 || {});
  *
  * @type String
  */
-Base64._keyString =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+Base64._keyString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 Base64.encode = function(input, encode) {
     // the output string to be used
@@ -32789,13 +32761,7 @@ Number.THOUSANDS = {
     TWD: ","
 };
 
-Number.prototype.formatMoney = function(
-    places,
-    separator,
-    thousands,
-    currency,
-    useSymbol
-) {
+Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {
     var number = this;
     var defaultPlaces = Number.DECIMAL_PLACES[currency];
     var defaultSeparator = Number.SEPARATOR[currency];
@@ -32804,32 +32770,22 @@ Number.prototype.formatMoney = function(
     defaultSeparator = defaultSeparator === undefined ? "." : defaultSeparator;
     defaultThousands = defaultThousands === undefined ? "," : defaultThousands;
     places = isNaN(parseInt(places)) ? defaultPlaces : places;
-    separator =
-        separator === null || separator === undefined
-            ? defaultSeparator
-            : separator;
-    thousands =
-        thousands === null || thousands === undefined
-            ? defaultThousands
-            : thousands;
+    separator = separator === null || separator === undefined ? defaultSeparator : separator;
+    thousands = thousands === null || thousands === undefined ? defaultThousands : thousands;
     var signal = number < 0 ? "-" : "";
     var integer = parseInt(Math.abs(+number || 0).toFixed(places)) + "";
     var remaining = integer.length;
     remaining = remaining > 3 ? remaining % 3 : 0;
     var money = signal;
     money += remaining ? integer.substr(0, remaining) + thousands : "";
-    money += integer
-        .substr(remaining)
-        .replace(/(\d{3})(?=\d)/g, "$1" + thousands);
+    money += integer.substr(remaining).replace(/(\d{3})(?=\d)/g, "$1" + thousands);
     money += places
         ? separator +
           Math.abs(Math.abs(number) - integer)
               .toFixed(places)
               .slice(2)
         : "";
-    money = currency
-        ? Number._formatCurrency(money, currency, useSymbol)
-        : money;
+    money = currency ? Number._formatCurrency(money, currency, useSymbol) : money;
     return money;
 };
 
@@ -33188,10 +33144,7 @@ Md5._md5 = function(stringValue) {
     // the intermediate md5 cycles
     for (index = 64; index <= stringValue.length; index += 64) {
         // runs the intermediate md5 cycle
-        Md5._md5Cycle(
-            state,
-            Md5.md5Block(stringValue.substring(index - 64, index))
-        );
+        Md5._md5Cycle(state, Md5.md5Block(stringValue.substring(index - 64, index)));
     }
 
     // retrieves the initial string value
@@ -33252,9 +33205,7 @@ var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
 var _ = (self.Prism = {
     util: {
         type: function(o) {
-            return Object.prototype.toString
-                .call(o)
-                .match(/\[object (\w+)\]/)[1];
+            return Object.prototype.toString.call(o).match(/\[object (\w+)\]/)[1];
         },
         clone: function(o) {
             var type = _.util.type(o);
@@ -33345,17 +33296,13 @@ var _ = (self.Prism = {
         }
 
         element.className =
-            element.className.replace(lang, "").replace(/\s+/g, " ") +
-            " language-" +
-            language;
+            element.className.replace(lang, "").replace(/\s+/g, " ") + " language-" + language;
 
         parent = element.parentNode;
 
         if (/pre/i.test(parent.nodeName)) {
             parent.className =
-                parent.className.replace(lang, "").replace(/\s+/g, " ") +
-                " language-" +
-                language;
+                parent.className.replace(lang, "").replace(/\s+/g, " ") + " language-" + language;
         }
 
         var code = element.textContent;
@@ -33382,10 +33329,7 @@ var _ = (self.Prism = {
             var worker = new Worker(_.filename);
 
             worker.onmessage = function(evt) {
-                env.highlightedCode = Token.stringify(
-                    JSON.parse(evt.data),
-                    language
-                );
+                env.highlightedCode = Token.stringify(JSON.parse(evt.data), language);
 
                 _.hooks.run("before-insert", env);
 
@@ -33402,11 +33346,7 @@ var _ = (self.Prism = {
                 })
             );
         } else {
-            env.highlightedCode = _.highlight(
-                env.code,
-                env.grammar,
-                env.language
-            );
+            env.highlightedCode = _.highlight(env.code, env.grammar, env.language);
 
             _.hooks.run("before-insert", env);
 
@@ -33483,10 +33423,7 @@ var _ = (self.Prism = {
                         args.push(before);
                     }
 
-                    var wrapped = new Token(
-                        token,
-                        inside ? _.tokenize(match, inside) : match
-                    );
+                    var wrapped = new Token(token, inside ? _.tokenize(match, inside) : match);
 
                     args.push(wrapped);
 
@@ -33590,9 +33527,7 @@ if (!self.document) {
             var lang = message.language;
             var code = message.code;
 
-            self.postMessage(
-                JSON.stringify(_.tokenize(code, _.languages[lang]))
-            );
+            self.postMessage(JSON.stringify(_.tokenize(code, _.languages[lang])));
             self.close();
         },
         false
@@ -33996,9 +33931,7 @@ for (var contentType in httpLanguages) {
         var options = {};
         options[contentType] = {
             pattern: new RegExp(
-                "(content-type:\\s*" +
-                    contentType +
-                    "[\\w\\W]*?)\\n\\n[\\w\\W]*",
+                "(content-type:\\s*" + contentType + "[\\w\\W]*?)\\n\\n[\\w\\W]*",
                 "gi"
             ),
             lookbehind: true,
@@ -34254,10 +34187,7 @@ String.prototype.optionsRegex = new RegExp("{[a-zA-Z0-9_]*(?=})", "g");
  * @return {String} The formatted value.
  */
 String.format = function(stringValue) {
-    return stringValue.format.apply(
-        stringValue,
-        Array.prototype.slice.call(arguments, 1)
-    );
+    return stringValue.format.apply(stringValue, Array.prototype.slice.call(arguments, 1));
 };
 
 /**
@@ -34397,9 +34327,7 @@ String.prototype.capitalize = function(local) {
         return a.charAt(0).toUpperCase() + a.substr(1);
     };
 
-    return local
-        ? f(this)
-        : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
+    return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 };
 
 /**
@@ -34412,9 +34340,7 @@ String.prototype.decapitalize = function(local) {
         return a.charAt(0).toLowerCase() + a.substr(1);
     };
 
-    return local
-        ? f(this)
-        : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
+    return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 };
 
 /**
@@ -34464,17 +34390,13 @@ String.prototype.decodeUtf = function() {
             index++;
         } else if (character > 191 && character < 224) {
             character1 = this.charCodeAt(index + 1);
-            string += String.fromCharCode(
-                ((character & 31) << 6) | (character1 & 63)
-            );
+            string += String.fromCharCode(((character & 31) << 6) | (character1 & 63));
             index += 2;
         } else {
             character1 = this.charCodeAt(index + 1);
             character2 = this.charCodeAt(index + 2);
             string += String.fromCharCode(
-                ((character & 15) << 12) |
-                    ((character1 & 63) << 6) |
-                    (character2 & 63)
+                ((character & 15) << 12) | ((character1 & 63) << 6) | (character2 & 63)
             );
             index += 3;
         }
@@ -35377,8 +35299,7 @@ if (typeof module !== "undefined") {
 
 var _global = typeof global === "undefined" ? window : global;
 var canvasRenderingContext =
-    (_global.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype) ||
-    {};
+    (_global.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype) || {};
 
 canvasRenderingContext.line = function(x1, y1, x2, y2) {
     this.save();
@@ -35463,12 +35384,7 @@ canvasRenderingContext.roundRectangle = function(x, y, width, height, radius) {
     this.lineTo(x + width - radius, y);
     this.quadraticCurveTo(x + width, y, x + width, y + radius);
     this.lineTo(x + width, y + height - radius);
-    this.quadraticCurveTo(
-        x + width,
-        y + height,
-        x + width - radius,
-        y + height
-    );
+    this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
     this.lineTo(x + radius, y + height);
     this.quadraticCurveTo(x, y + height, x, y + height - radius);
     this.lineTo(x, y + radius);
