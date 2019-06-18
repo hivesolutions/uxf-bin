@@ -4131,8 +4131,8 @@ if (typeof require !== "undefined") {
             var keyValue = event.keyCode
                 ? event.keyCode
                 : event.charCode
-                    ? event.charCode
-                    : event.which;
+                ? event.charCode
+                : event.which;
 
             // sets the default parameters
             parameters = parameters || [];
@@ -4222,8 +4222,8 @@ if (typeof require !== "undefined") {
                     var keyValue = event.keyCode
                         ? event.keyCode
                         : event.charCode
-                            ? event.charCode
-                            : event.which;
+                        ? event.charCode
+                        : event.which;
 
                     // in case the ctrl or the alt keys
                     // are pressed no need to handle the event
@@ -4368,8 +4368,8 @@ if (typeof require !== "undefined") {
                     var keyValue = event.keyCode
                         ? event.keyCode
                         : event.charCode
-                            ? event.charCode
-                            : event.which;
+                        ? event.charCode
+                        : event.which;
 
                     // in case the ignoring mode is set need
                     // to check if we can get out of it
@@ -4510,8 +4510,8 @@ if (typeof require !== "undefined") {
             var keyValue = event.keyCode
                 ? event.keyCode
                 : event.charCode
-                    ? event.charCode
-                    : event.which;
+                ? event.charCode
+                : event.which;
 
             // in case the key is not an enter no need to do any
             // extra verification
@@ -4625,8 +4625,8 @@ if (typeof require !== "undefined") {
                     var keyValue = event.keyCode
                         ? event.keyCode
                         : event.charCode
-                            ? event.charCode
-                            : event.which;
+                        ? event.charCode
+                        : event.which;
 
                     // switches over the key value
                     switch (keyValue) {
@@ -10683,8 +10683,8 @@ if (typeof require !== "undefined") {
                     var keyValue = event.keyCode
                         ? event.keyCode
                         : event.charCode
-                            ? event.charCode
-                            : event.which;
+                        ? event.charCode
+                        : event.which;
 
                     switch (keyValue) {
                         case 37:
@@ -12794,8 +12794,8 @@ if (typeof require !== "undefined") {
                     var keyValue = event.keyCode
                         ? event.keyCode
                         : event.charCode
-                            ? event.charCode
-                            : event.which;
+                        ? event.charCode
+                        : event.which;
 
                     // in case the key that was pressed in not the
                     // escape one there's nothing to be done and so
@@ -13045,7 +13045,8 @@ if (typeof require !== "undefined") {
             // that's the case retrieves the proper original text either from
             // it's content of from it's complete text
             if (originalElement.length > 0) {
-                originalText = originalElement.uxcontent(null, "text").trim() || originalElement.text().trim();
+                originalText =
+                    originalElement.uxcontent(null, "text").trim() || originalElement.text().trim();
                 originalExtra = null;
             }
             // otherwise sets the original text as the name of the drop field
@@ -16596,8 +16597,8 @@ if (typeof require !== "undefined") {
                         var keyValue = event.keyCode
                             ? event.keyCode
                             : event.charCode
-                                ? event.charCode
-                                : event.which;
+                            ? event.charCode
+                            : event.which;
 
                         // switches over the key value
                         switch (keyValue) {
@@ -21482,8 +21483,8 @@ if (typeof require !== "undefined") {
                     var keyValue = event.keyCode
                         ? event.keyCode
                         : event.charCode
-                            ? event.charCode
-                            : event.which;
+                        ? event.charCode
+                        : event.which;
 
                     // in case the key that was pressed in not the
                     // escape one there's nothing to be done and so
@@ -22416,8 +22417,8 @@ if (typeof require !== "undefined") {
                 var keyValue = event.keyCode
                     ? event.keyCode
                     : event.charCode
-                        ? event.charCode
-                        : event.which;
+                    ? event.charCode
+                    : event.which;
 
                 // in case the escape key is pressed
                 // need to hide the overlay search
@@ -25044,8 +25045,8 @@ if (typeof require !== "undefined") {
                 var keyValue = event.keyCode
                     ? event.keyCode
                     : event.charCode
-                        ? event.charCode
-                        : event.which;
+                    ? event.charCode
+                    : event.which;
 
                 // switches over the key value
                 switch (keyValue) {
@@ -25293,8 +25294,8 @@ if (typeof require !== "undefined") {
                 var keyValue = event.keyCode
                     ? event.keyCode
                     : event.charCode
-                        ? event.charCode
-                        : event.which;
+                    ? event.charCode
+                    : event.which;
 
                 // switches over the key value
                 switch (keyValue) {
@@ -28919,8 +28920,8 @@ if (typeof require !== "undefined") {
                 var keyValue = event.keyCode
                     ? event.keyCode
                     : event.charCode
-                        ? event.charCode
-                        : event.which;
+                    ? event.charCode
+                    : event.which;
                 var keyCode = event.keyCode;
                 var which = event.which;
 
@@ -29043,8 +29044,8 @@ if (typeof require !== "undefined") {
                 var keyValue = event.keyCode
                     ? event.keyCode
                     : event.charCode
-                        ? event.charCode
-                        : event.which;
+                    ? event.charCode
+                    : event.which;
 
                 // in case the escape key is pressed
                 // need to blur the text field
@@ -30900,8 +30901,8 @@ if (typeof require !== "undefined") {
                 var keyValue = event.keyCode
                     ? event.keyCode
                     : event.charCode
-                        ? event.charCode
-                        : event.which;
+                    ? event.charCode
+                    : event.which;
 
                 // switches over the key value
                 switch (keyValue) {
