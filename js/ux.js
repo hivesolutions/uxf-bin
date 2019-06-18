@@ -806,19 +806,21 @@ if (typeof require !== "undefined") {
 }
 
 (function(jQuery) {
-    jQuery.fn.uxcontent = function(value) {
+    jQuery.fn.uxcontent = function(value, method) {
         var element = jQuery(this);
         var other = element.clone();
         var children = other.children();
         children.remove();
 
+        method = method || "html";
+
         if (typeof value === "string") {
-            other.html(value);
-            element.html(children);
+            other[method](value);
+            element[method](children);
             element.prepend(value);
         }
 
-        return other.html();
+        return other[method]();
     };
 })(jQuery);
 
@@ -12617,7 +12619,7 @@ if (typeof require !== "undefined") {
                     // no value is defined for the element and
                     // so the text representation of the element
                     // is used instead for its logical representation
-                    var text = __element.uxcontent().trim() || __element.text().trim();
+                    var text = __element.uxcontent(null, "text").trim() || __element.text().trim();
                     __element.attr("data-value", text);
                 });
 
@@ -13043,7 +13045,7 @@ if (typeof require !== "undefined") {
             // that's the case retrieves the proper original text either from
             // it's content of from it's complete text
             if (originalElement.length > 0) {
-                originalText = originalElement.uxcontent().trim() || originalElement.text().trim();
+                originalText = originalElement.uxcontent(null, "text").trim() || originalElement.text().trim();
                 originalExtra = null;
             }
             // otherwise sets the original text as the name of the drop field
@@ -13106,7 +13108,7 @@ if (typeof require !== "undefined") {
             // retrieves both the textual/visual value of the selected
             // element and the logical/data value for it, note that the
             // content of the elememt has priority over the complete text
-            var text = element.uxcontent().trim() || element.text().trim();
+            var text = element.uxcontent(null, "text").trim() || element.text().trim();
             var value = element.attr("data-value");
 
             // verifies if the element already has the selected class
