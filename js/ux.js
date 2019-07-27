@@ -13286,7 +13286,8 @@ if (typeof require !== "undefined") {
             // object type access (hash based conditions)
             matchedObject.uxobject("dropfield");
 
-            // iterates over all the matched objects
+            // iterates over all the matched objects to the update both
+            // their logical and UI states
             matchedObject.each(function(index, element) {
                 // retrieves the element reference
                 var _element = jQuery(element);
@@ -13383,7 +13384,7 @@ if (typeof require !== "undefined") {
                 // retrieves the hidden field and tries to retrieve its value
                 // using the proper operator for that
                 var hiddenField = jQuery(".hidden-field", _element);
-                var hiddenFieldValue = hiddenField.val();
+                var hiddenFieldValue = hiddenField.val() || null;
 
                 // creates the map that will hold the complete set of
                 // value field associated with the attribute to be set
@@ -13425,6 +13426,9 @@ if (typeof require !== "undefined") {
                 // sets the initial element values
                 _element.data("cache", {});
                 _element.data("value", textFieldValue);
+                _element.data("value_logic", hiddenFieldValue);
+                _element.data("original_value", textFieldValue);
+                _element.data("original_value_logic", hiddenFieldValue);
                 _element.data("selection", 0);
                 _element.data("mouse_control", false);
                 _element.data("display_attribute", displayAttribute);
@@ -13813,6 +13817,7 @@ if (typeof require !== "undefined") {
                                 value: value
                             });
                             dropField.data("value", value);
+                            dropField.data("value_logic", valueLogic);
 
                             // iterates over all the value fields to apply the
                             // correct item value to them
@@ -13950,6 +13955,7 @@ if (typeof require !== "undefined") {
                                 value: value
                             });
                             dropField.data("value", value);
+                            dropField.data("value_logic", valueLogic);
 
                             // iterates over all the value field to apply the
                             // correct item value to them
@@ -14775,6 +14781,7 @@ if (typeof require !== "undefined") {
                 value: value
             });
             dropField.data("value", value);
+            dropField.data("value_logic", valueLogic);
             dropField.data("selection", 1);
             dropField.data("updated", false);
 
@@ -14802,6 +14809,15 @@ if (typeof require !== "undefined") {
             force && _update(dropField, options, true, [[displayAttribute, "equals", value]]);
         };
 
+        var _original = function(matchedObject, options) {
+            // runs the set operation on the currently matched object so
+            // that it gets updated with it's original values
+            _set(matchedObject, {
+                value: matchedObject.data("original_value"),
+                valueLogic: matchedObject.data("original_value_logic")
+            });
+        };
+
         var _reset = function(matchedObject, options) {
             // retrieves the drop field elements
             var dropField = matchedObject;
@@ -14827,6 +14843,7 @@ if (typeof require !== "undefined") {
                 value: ""
             });
             dropField.data("value", "");
+            dropField.data("value_logic", null);
             dropField.data("selection", 1);
             dropField.data("updated", false);
 
@@ -14886,6 +14903,7 @@ if (typeof require !== "undefined") {
                 value: value
             });
             dropField.data("value", value);
+            dropField.data("value_logic", valueLogic);
 
             // iterates over all the value field to apply the
             // correct item value to them
@@ -15065,6 +15083,12 @@ if (typeof require !== "undefined") {
                 // sets the value in the drop field value
                 _set(matchedObject, options);
                 break;
+
+            case "original":
+                // runs the original operation on the currently matched
+                // object so that the element is restored to original
+                _original(matchedObject, options);
+                return true;
 
             case "reset":
                 // resets the drop field value
@@ -27817,7 +27841,7 @@ if (typeof require !== "undefined") {
             var rows = jQuery("tbody > tr:not(.template)", matchedObject);
 
             // removes the current set of rows (empties the table)
-            // this should be able to set no ui items in the table
+            // this should be able to set no UI items in the table
             rows.remove();
 
             // in case the table is of type edit a line must be added
