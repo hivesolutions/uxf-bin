@@ -51,7 +51,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // validates that there's a valid matched object,
@@ -600,7 +600,7 @@ if (typeof require !== "undefined") {
         // encapsulates the request object around an acessor and then registers
         // for the ready state change event so that the conten type may be validated
         // as soon as possible (headers received stage) and the request canceled in
-        // case it does not correspond to an html message
+        // case it does not correspond to an HTML message
         var reference = jQuery(request);
         reference.bind("readystatechange", function() {
             // retrieves the current context as the request that is going to
@@ -628,7 +628,7 @@ if (typeof require !== "undefined") {
             // gathers the target location (redirection) in case it exists, then
             // retrieves the content type for the current request and processes
             // the value retrieving only the basic value for it, then verifies
-            // that the mime type of it is html and in case it's returns valid as
+            // that the mime type of it is HTML and in case it's returns valid as
             // the provided request is considered to be an async request
             var location = request.getResponseHeader("Location");
             var contentType = request.getResponseHeader("Content-Type") || "";
@@ -675,7 +675,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched object, to update
@@ -733,7 +733,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched object, to update
@@ -786,7 +786,7 @@ if (typeof require !== "undefined") {
             // in case the current value does not have
             // the current attribute (invalid attribute)
             // must skip current iteration
-            if (!value.hasOwnProperty(name)) {
+            if (value[name] !== undefined) {
                 continue;
             }
 
@@ -1118,12 +1118,12 @@ if (typeof require !== "undefined") {
         // it's not must create a date object that represent it
         var isDate = date.getDate !== undefined;
         if (!isDate) {
-            year = date["year"];
-            month = date["month"] || 1;
-            day = date["day"] || 1;
-            hours = date["hours"] || 0;
-            minutes = date["minutes"] || 0;
-            seconds = date["seconds"] || 0;
+            year = date.year;
+            month = date.month || 1;
+            day = date.day || 1;
+            hours = date.hours || 0;
+            minutes = date.minutes || 0;
+            seconds = date.seconds || 0;
             date = new Date(year, month - 1, day, hours, minutes, seconds);
         }
 
@@ -1480,7 +1480,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -1501,29 +1501,29 @@ if (typeof require !== "undefined") {
 
         var _getResults = function(element, query, callback) {
             // retrieves the id part of the url
-            var id = query["id"];
+            var id = query.id;
 
             // retrieves the "main" filter string, this is going to be
             // used for plain text free search with non exact matching
-            var filterString = query["filterString"];
+            var filterString = query.filterString;
 
             // determines if the "main" filter string value should be
             // used in an insnsitive way, meaning that the uppercase
             // or lowercase structure should be ignored
-            var insensitive = query["insensitive"];
+            var insensitive = query.insensitive;
 
             // retrieves the sort tuple to be used to sort
             // the resulting set of elements
-            var sort = query["sort"] || ["default", "descending"];
+            var sort = query.sort || ["default", "descending"];
 
             // retrieves the filter tuples to be used to filter
             // the result set around certain rules
-            var filters = query["filters"] || [];
+            var filters = query.filters || [];
 
             // retrieves the record count information and validates that
             // the requested number of records is not infinite (minus one)
-            var startRecord = query["startRecord"] || 0;
-            var numberRecords = query["numberRecords"] || MAX_RECORDS;
+            var startRecord = query.startRecord || 0;
+            var numberRecords = query.numberRecords || MAX_RECORDS;
             numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords;
 
             // unpacks the sort value and the sort oder from the
@@ -1816,7 +1816,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -1844,18 +1844,18 @@ if (typeof require !== "undefined") {
             var compareStrings = null;
 
             // retrieves the id part of the url
-            var id = query["id"];
+            var id = query.id;
 
             // retrieves the "main" filter string and attribute, that
             // are going to be used for local matching
-            var filterString = query["filterString"];
-            var filterAttributes = query["filterAttributes"];
-            var filters = query["filters"] || [];
+            var filterString = query.filterString;
+            var filterAttributes = query.filterAttributes;
+            var filters = query.filters || [];
 
             // retrieves the record count information and validates that
             // the requested number of records is not infinite (minus one)
-            var startRecord = query["startRecord"] || 0;
-            var numberRecords = query["numberRecords"] || MAX_RECORDS;
+            var startRecord = query.startRecord || 0;
+            var numberRecords = query.numberRecords || MAX_RECORDS;
             numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords;
 
             // sets the initial filter flag value
@@ -1908,7 +1908,7 @@ if (typeof require !== "undefined") {
                     // retrieves the current item, and
                     // then retrieves and casts the item id
                     var item = items[index];
-                    var itemId = parseInt(item["id"]);
+                    var itemId = parseInt(item.id);
 
                     // in case the item id does not
                     // represent a number
@@ -2004,7 +2004,7 @@ if (typeof require !== "undefined") {
                 else if (typeof currentItem === "object") {
                     // retrieves the name attribute from the current
                     // item and sets it in the list of compaare strings
-                    compareStrings = [currentItem["name"]];
+                    compareStrings = [currentItem.name];
                 }
                 // otherwise the current item must be a string
                 // and so it's used directly as the compare strings
@@ -2091,7 +2091,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -2165,7 +2165,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -2231,7 +2231,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -2288,7 +2288,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -2406,7 +2406,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -2499,7 +2499,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -2567,7 +2567,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -2711,7 +2711,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -2787,7 +2787,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over each of the matched object
@@ -2904,7 +2904,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects
@@ -2964,7 +2964,7 @@ if (typeof require !== "undefined") {
                     // retrieves the current error message
                     var errorMessage = errorStructure[index];
 
-                    // creates the error description html
+                    // creates the error description HTML
                     var errorDescriptionHtml =
                         '<div class="error-description">' + errorMessage + "</div>";
 
@@ -3164,7 +3164,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched object
@@ -3190,7 +3190,7 @@ if (typeof require !== "undefined") {
                 var urlInformation = parseUrl(url);
 
                 // retrieves the base name from the URL information
-                var baseName = urlInformation["baseName"];
+                var baseName = urlInformation.baseName;
 
                 // in case the video is of type youtube
                 if (YOUTUBE_MAP[baseName]) {
@@ -3210,8 +3210,8 @@ if (typeof require !== "undefined") {
         var updateYoutube = function(matchedObject, options, urlInformation) {
             // retrieves the options map to then retrieve
             // the video id from it
-            var optionsMap = urlInformation["optionsMap"];
-            var videoId = optionsMap["v"];
+            var optionsMap = urlInformation.optionsMap;
+            var videoId = optionsMap.v;
 
             // retrieves the width and the height
             var width = matchedObject.attr("data-width");
@@ -3246,7 +3246,7 @@ if (typeof require !== "undefined") {
             var controlsValue = chromeless ? "controls=0" : "controls=1";
             var autoPlayValue = autoPlay ? "autoplay=1" : "autoplay=0";
 
-            // updates the matched object html with the video embed object
+            // updates the matched object HTML with the video embed object
             // that will include a flash object into the code
             matchedObject.html(
                 "<" +
@@ -3283,7 +3283,7 @@ if (typeof require !== "undefined") {
 
         var updateVimeo = function(matchedObject, options, urlInformation) {
             // retrieves the resource reference
-            var resourceReference = urlInformation["resourceReference"];
+            var resourceReference = urlInformation.resourceReference;
 
             // retrieves the reference to the various attributes that will
             // change the way the video is going to be embedded
@@ -3303,7 +3303,7 @@ if (typeof require !== "undefined") {
             // calculates the auto play value
             var autoPlayValue = autoPlay ? "autoplay=1" : "autoplay=0";
 
-            // updates the matched object html with the video iframe
+            // updates the matched object HTML with the video iframe
             matchedObject.html(
                 '<iframe src="//player.vimeo.com/video' +
                     resourceReference +
@@ -3321,7 +3321,7 @@ if (typeof require !== "undefined") {
 
         var updateDailyMotion = function(matchedObject, options, urlInformation) {
             // retrieves the resource reference
-            var resourceReference = urlInformation["resourceReference"];
+            var resourceReference = urlInformation.resourceReference;
 
             // retrieves the reference to the various attributes that will
             // change the way the video is going to be embedded
@@ -3339,7 +3339,7 @@ if (typeof require !== "undefined") {
             var chromelessValue = chromeless ? "chromeless=1" : "chromeless=0";
             var autoPlayValue = autoPlay ? "autoplay=1" : "autoplay=0";
 
-            // updates the matched object html with the video iframe
+            // updates the matched object HTML with the video iframe
             matchedObject.html(
                 '<iframe src="//www.dailymotion.com/embed' +
                     resourceReference +
@@ -3568,7 +3568,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // tries to retrieve the gateway from the currently
@@ -3675,7 +3675,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -3707,7 +3707,7 @@ if (typeof require !== "undefined") {
             // uses it to retrieve the URL to the binie
             // resource containing the document description
             var element = matchedObject;
-            var binieUrl = element.attr("data-binie") || options["binie"];
+            var binieUrl = element.attr("data-binie") || options.binie;
 
             // splits the retrieved binie attribute as it may contain
             // multiple (valid) attributes (to be used)
@@ -3800,8 +3800,8 @@ if (typeof require !== "undefined") {
 
                 // tries to retrieve the fallback URL and the
                 // target for the link
-                var fallbackUrl = element.attr("data-fallback") || options["fallback"];
-                var target = element.attr("data-target") || options["target"];
+                var fallbackUrl = element.attr("data-fallback") || options.fallback;
+                var target = element.attr("data-target") || options.target;
 
                 // in case no fallback URL is defined, must return
                 // immediately (nothing is done)
@@ -3930,8 +3930,8 @@ if (typeof require !== "undefined") {
 
         // updates the data structure with the device with and length
         // for the defined paper size
-        data["width"] = defaultDevice["width"];
-        data["height"] = defaultDevice["length"];
+        data.width = defaultDevice.width;
+        data.height = defaultDevice.length;
     };
 })(jQuery);
 
@@ -3963,7 +3963,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves all the bars from the matched
@@ -4090,7 +4090,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             matchedObject.each(function(index, element) {
@@ -4182,7 +4182,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -4191,7 +4191,7 @@ if (typeof require !== "undefined") {
          */
         var _registerHandlers = function() {
             // retrieves the global option
-            var global = options["global"] ? options["global"] : true;
+            var global = options.global ? options.global : true;
 
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
@@ -4316,7 +4316,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -4325,7 +4325,7 @@ if (typeof require !== "undefined") {
          */
         var _registerHandlers = function() {
             // retrieves the global option
-            var global = options["global"] ? options["global"] : true;
+            var global = options.global ? options.global : true;
 
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
@@ -4585,7 +4585,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves all the elements to apply key and applies
@@ -4599,7 +4599,7 @@ if (typeof require !== "undefined") {
          */
         var _registerHandlers = function() {
             // retrieves the global option
-            var global = options["global"] ? options["global"] : true;
+            var global = options.global ? options.global : true;
 
             // iterates over all the matched objects
             matchedObject.each(function(index, element) {
@@ -4909,7 +4909,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects
@@ -6225,7 +6225,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -6314,7 +6314,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the next URL element from the
@@ -6377,7 +6377,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the previous URL element from the
@@ -6724,7 +6724,7 @@ if (typeof require !== "undefined") {
         var dimensions = axis === "x" ? "Width" : "Height";
         var scroll = "scroll" + dimensions;
 
-        // in case the element represents an html or
+        // in case the element represents an HTML or
         // body element
         if (!jQuery(element).is("html, body")) {
             // returns the element scroll minus the element
@@ -6733,15 +6733,15 @@ if (typeof require !== "undefined") {
         }
 
         // creates the size key and retrieves
-        // the html and body elements from the
+        // the HTML and body elements from the
         // element's owner document
         var size = "client" + dimensions;
         var html = element.ownerDocument.documentElement;
         var body = element.ownerDocument.body;
 
         // returns the maximum between the scroll of
-        // the html and body minus the minimum between
-        // the html and body size
+        // the HTML and body minus the minimum between
+        // the HTML and body size
         return Math.max(html[scroll], body[scroll]) - Math.min(html[size], body[size]);
     };
 
@@ -6853,7 +6853,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -6864,9 +6864,9 @@ if (typeof require !== "undefined") {
             }
 
             // retrieves the offset and padding from the options
-            var offset = options["offset"];
-            var padding = options["padding"];
-            var parent = options["parent"];
+            var offset = options.offset;
+            var padding = options.padding;
+            var parent = options.parent;
 
             // retrieves the matched object height and
             // offset to top (from offset)
@@ -7118,7 +7118,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -7293,7 +7293,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // calculates the proper name for the disable attrbute
@@ -7362,7 +7362,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // calculates the proper name for the enable attribute
@@ -7439,7 +7439,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -7715,7 +7715,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // verifies if the current user agent represents a mobile browser
@@ -7830,7 +7830,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is empty, returns immediately
@@ -8186,7 +8186,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects
@@ -8285,7 +8285,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects
@@ -8364,7 +8364,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects to be able
@@ -8430,7 +8430,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects
@@ -8585,7 +8585,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -8598,7 +8598,7 @@ if (typeof require !== "undefined") {
             // retrieves the ux apply option, taking into account
             // if the element contains any reference to the no apply
             // attribute that would disable the apply operation
-            var apply = options["apply"];
+            var apply = options.apply;
             apply = element.attr("data-no_apply") ? false : apply;
 
             // clones the element creating the template element value
@@ -8737,7 +8737,7 @@ if (typeof require !== "undefined") {
                         return isRaw ? attributeValue : attributeLocale;
                     };
 
-                    // replaces the template strings in the html with the proper attribute
+                    // replaces the template strings in the HTML with the proper attribute
                     // values this may be an expesive operation in case it's repeated
                     // frequently for a lot of times (modify with care)
                     templateContents = templateContents.replace(keyRegex, replacer);
@@ -8752,9 +8752,9 @@ if (typeof require !== "undefined") {
             // retrieves the various options for the template
             // rendering operation that will condition the
             // execution of the rendering
-            var nullify = options["nullify"];
-            var localize = options["localize"];
-            var defaultValue = options["defaultValue"];
+            var nullify = options.nullify;
+            var localize = options.localize;
+            var defaultValue = options.defaultValue;
 
             // retrirves the for each elments for the current template element
             var foreachElements = jQuery(".template-foreach", templateElement).not(
@@ -8896,7 +8896,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched object
@@ -9047,9 +9047,9 @@ if (typeof require !== "undefined") {
                 // retrieve both the date, the format and the utc from the map
                 // of provided options, to be sent to the process date
                 // function for processing
-                var date = options["date"];
-                var format = options["format"];
-                var utc = options["utc"];
+                var date = options.date;
+                var format = options.format;
+                var utc = options.utc;
 
                 // processes (formats the date) and returns it
                 return _processDate(date, format, utc);
@@ -9097,7 +9097,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -9155,7 +9155,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -9225,7 +9225,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             matchedObject.each(function(index, element) {
@@ -9465,7 +9465,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // localizes the various values that are going to be used in the
@@ -9590,7 +9590,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the index to be set on the initialized
@@ -9656,7 +9656,7 @@ if (typeof require !== "undefined") {
         var _set = function(matchedObject, options) {
             // retrieves the index value to be used to update
             // the stack panel index (argument)
-            var index = options["index"] ? options["index"] : 0;
+            var index = options.index ? options.index : 0;
 
             // updates the index value in the matched object
             // and runs the update function on top of the matched
@@ -9748,7 +9748,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // localizes the various strings that are going to be used
@@ -10036,7 +10036,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // creates the week days string (with the initial
@@ -10149,11 +10149,11 @@ if (typeof require !== "undefined") {
          */
         var _set = function(matchedObject, options) {
             // retrieves the "new" current value for the calendar
-            var current = options["current"];
+            var current = options.current;
 
             // unpacks the current value into year and month
-            var year = current["year"];
-            var month = current["month"];
+            var year = current.year;
+            var month = current.month;
 
             // updates the year and month values
             // in the matched object
@@ -10183,8 +10183,8 @@ if (typeof require !== "undefined") {
             var current = matchedObject.data("current");
 
             // unpacks the current value into year and month
-            var year = current["year"];
-            var month = current["month"];
+            var year = current.year;
+            var month = current.month;
 
             // updates the year and month values
             // in the matched object
@@ -10224,9 +10224,9 @@ if (typeof require !== "undefined") {
 
             // unpacks the current day into year, month
             // and day
-            var currentDayYear = current["year"];
-            var currentDayMonth = current["month"] - 1;
-            var currentDayNumber = current["day"];
+            var currentDayYear = current.year;
+            var currentDayMonth = current.month - 1;
+            var currentDayNumber = current.day;
 
             // creates the dates for the initial and the final
             // day of the month
@@ -10328,7 +10328,7 @@ if (typeof require !== "undefined") {
                 }
             }
 
-            // starts the html code string
+            // starts the HTML code string
             var htmlCode = "";
 
             // unsets the line open flag
@@ -10346,7 +10346,7 @@ if (typeof require !== "undefined") {
                     // in case there is a line open
                     if (lineOpen) {
                         // adds the close line tag to the
-                        // html code
+                        // HTML code
                         htmlCode += "</tr>";
                     }
                     // otherwise it must be the first line
@@ -10356,7 +10356,7 @@ if (typeof require !== "undefined") {
                     }
 
                     // adds the open line tag to the
-                    // html code
+                    // HTML code
                     htmlCode += "<tr>";
                 }
 
@@ -10371,7 +10371,7 @@ if (typeof require !== "undefined") {
                 var _day = dayTuple[2];
                 var dayClass = dayTuple[3];
 
-                // adds the cell code to the html code string
+                // adds the cell code to the HTML code string
                 htmlCode +=
                     '<td class="' +
                     dayClass +
@@ -10389,7 +10389,7 @@ if (typeof require !== "undefined") {
             // in case there is a line (still) open
             if (lineOpen) {
                 // adds the close line tag to the
-                // html code
+                // HTML code
                 htmlCode += "</tr>";
             }
 
@@ -10398,7 +10398,7 @@ if (typeof require !== "undefined") {
             var tableBody = jQuery("tbody", matchedObject);
             tableBody.empty();
 
-            // adds the (generated) html code to the table body
+            // adds the (generated) HTML code to the table body
             tableBody.append(htmlCode);
 
             // retrieves the year month values and then localizes the
@@ -10590,7 +10590,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             if (!matchedObject || matchedObject.length === 0) {
@@ -10837,7 +10837,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the initial index in the matched
@@ -10953,7 +10953,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched object
@@ -11121,7 +11121,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -11287,7 +11287,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects
@@ -11345,7 +11345,7 @@ if (typeof require !== "undefined") {
                 // button and in such case sets the new window
                 // option to open the link in a new window
                 var window = event.which === 2;
-                options["window"] = window;
+                options.window = window;
 
                 // triggers the handling of the click event to
                 // the button sub system
@@ -11527,7 +11527,7 @@ if (typeof require !== "undefined") {
         var __submit = function(matchedObject, options) {
             // in case the window flag is set returns immediately
             // no need to submit the form
-            var _window = matchedObject.data("window") || options["window"];
+            var _window = matchedObject.data("window") || options.window;
             if (_window) {
                 return;
             }
@@ -11544,7 +11544,7 @@ if (typeof require !== "undefined") {
         var __action = function(matchedObject, options) {
             // in case the window flag is set returns immediately
             // no need to take any action
-            var _window = matchedObject.data("window") || options["window"];
+            var _window = matchedObject.data("window") || options.window;
             if (_window) {
                 return;
             }
@@ -11563,7 +11563,7 @@ if (typeof require !== "undefined") {
             // retrieves the matched object link and the
             // (open in) window flag
             var link = matchedObject.data("link");
-            var _window = matchedObject.data("window") || options["window"];
+            var _window = matchedObject.data("window") || options.window;
 
             // checks the window flag and in case it's set
             // opens a new window with the link otherwise
@@ -11653,7 +11653,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             matchedObject.each(function(index, element) {
@@ -11717,12 +11717,12 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // tries to retrieve the window selector from the options
             // and in case it does not exists uses the default one
-            var windowSelector = options["window"] || ".window.window-alert";
+            var windowSelector = options.window || ".window.window-alert";
 
             // localizes the various values that are going to be used in the
             // contruction of the alert window
@@ -11780,7 +11780,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // tries to retrieve the window selector from the options
             // and in case it does not exists uses the default one
-            var windowSelector = options["window"] || ".window.window-alert";
+            var windowSelector = options.window || ".window.window-alert";
 
             // retrieves the window (alert window) elements
             var window = jQuery(windowSelector, matchedObject);
@@ -11866,7 +11866,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the initial index in the matched
@@ -12007,7 +12007,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             matchedObject.each(function(index, element) {
@@ -12457,7 +12457,7 @@ if (typeof require !== "undefined") {
                     for (var index = 0; index < listItems.length; index++) {
                         // retrieves the current list items in iteration
                         // and retrieves the value to be used as data value
-                        // defaulting to the html value in case none is provided
+                        // defaulting to the HTML value in case none is provided
                         var listItem = jQuery(listItems[index]);
                         var dataValue = listItem.attr("data-value");
                         var htmlValue = listItem.html();
@@ -12535,7 +12535,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -12849,8 +12849,8 @@ if (typeof require !== "undefined") {
         var _set = function(matchedObject, options) {
             // tries to retrieve the (new) value to be set either from
             // the value of the value logic fields
-            var value = options["value"];
-            var valueLogic = options["valueLogic"];
+            var value = options.value;
+            var valueLogic = options.valueLogic;
             value = value || valueLogic;
 
             // retrieves the complete set of element present in the
@@ -12869,7 +12869,7 @@ if (typeof require !== "undefined") {
             // tries to retrieve a possible value from the set of
             // provided options, this value is going to be used to
             // set a new value in case that's required
-            var value = options["value"];
+            var value = options.value;
 
             // determines if the current operation is a set one and
             // if that's the case redirects the control flow to the
@@ -13278,7 +13278,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the ux global object representation as drop
@@ -13299,8 +13299,8 @@ if (typeof require !== "undefined") {
 
                 // retrieves the number of options and the filter
                 // options from the provided options map
-                var numberOptions = options["numberOptions"];
-                var filterOptions = options["filterOptions"];
+                var numberOptions = options.numberOptions;
+                var filterOptions = options.filterOptions;
 
                 // retrieves the number of options attribute and then tries to
                 // parse it as an integer value in case it fails falls back to
@@ -13375,7 +13375,7 @@ if (typeof require !== "undefined") {
                 // is correctly set (otherwise)
                 textFieldValue = textFieldIsLower ? "" : textFieldValue;
 
-                // adds the "extra" html to the matched object,
+                // adds the "extra" HTML to the matched object,
                 // in case no drop field contents is found
                 dropFieldContents.length === 0 &&
                     _element.append('<div class="drop-field-clear"></div>') &&
@@ -14315,7 +14315,7 @@ if (typeof require !== "undefined") {
 
                         // tries to retrieve the unique identifier from the
                         // current item to be used as the cache key
-                        var uniqueId = currentItem["unique_id"] || currentItem["uid"];
+                        var uniqueId = currentItem.unique_id || currentItem.uid;
 
                         // retrieves the cache map from the drop field and
                         // tries to find the cache item for the unique identifier
@@ -14368,19 +14368,19 @@ if (typeof require !== "undefined") {
                         // the retrieved values (in case it's map resolves again)
                         currentDisplayAttribute =
                             currentDisplayAttribute && typeof currentDisplayAttribute === "object"
-                                ? currentDisplayAttribute["name"]
+                                ? currentDisplayAttribute.name
                                 : currentDisplayAttribute;
                         currentExtraAttribute =
                             currentExtraAttribute && typeof currentExtraAttribute === "object"
-                                ? currentExtraAttribute["extra"]
+                                ? currentExtraAttribute.extra
                                 : currentExtraAttribute;
                         currentValueAttribute =
                             currentValueAttribute && typeof currentValueAttribute === "object"
-                                ? currentValueAttribute["value"]
+                                ? currentValueAttribute.value
                                 : currentValueAttribute;
                         currentLinkAttribute =
                             currentLinkAttribute && typeof currentLinkAttribute === "object"
-                                ? currentLinkAttribute["link"]
+                                ? currentLinkAttribute.link
                                 : currentLinkAttribute;
 
                         // initializes the template item value to its original
@@ -14492,7 +14492,7 @@ if (typeof require !== "undefined") {
                         // selected element and updates the options map with
                         // this value to condition the index change call
                         var index = element.index();
-                        options["index"] = index;
+                        options.index = index;
 
                         // changes the index of the current drop field to match
                         // the one "required" in the provided options map
@@ -14566,7 +14566,7 @@ if (typeof require !== "undefined") {
                             // if this logic is reached there was a match with the list
                             // item value and the proper index change should be triggered
                             index = _element.index();
-                            options["index"] = index;
+                            options.index = index;
                             _index(dropField, options);
                         });
 
@@ -14591,7 +14591,7 @@ if (typeof require !== "undefined") {
                             // if this logic is reached there was a match with the list
                             // item value and the proper index change should be triggered
                             index = _element.index();
-                            options["index"] = index;
+                            options.index = index;
                             _index(dropField, options);
                         });
                 }
@@ -14731,12 +14731,12 @@ if (typeof require !== "undefined") {
         var _set = function(matchedObject, options) {
             // retrieves both the value of the item and the logic
             // value to be set in the hidden field
-            var value = options["value"];
-            var valueLogic = options["valueLogic"];
+            var value = options.value;
+            var valueLogic = options.valueLogic;
 
             // tries to retieve the item definition from the
             // options in case it's defined
-            var item = options["item"] || {};
+            var item = options.item || {};
 
             // retrieves the drop field elements and the final
             // value for the value attribute name of the drop field
@@ -14856,7 +14856,7 @@ if (typeof require !== "undefined") {
             // retrievs the target index from the provided options
             // map, this value will be used to retrieved the correct
             // child element for the change
-            var index = options["index"];
+            var index = options.index;
 
             // retrieves the the various elements required for
             // the changing of the index on the drop field, note
@@ -15162,7 +15162,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the ux global object representation as drop
@@ -15250,7 +15250,7 @@ if (typeof require !== "undefined") {
                 var dropItem = jQuery(".drop-item", dropList);
                 var dropItems = jQuery(".drop-options > li", dropList);
 
-                // retrieves the html based contents and the "logical" value for the
+                // retrieves the HTML based contents and the "logical" value for the
                 // currently selected element, to be used in the update
                 var contents = element.html();
                 var value = element.attr("data-value") || "";
@@ -15381,7 +15381,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched object in order
@@ -15658,7 +15658,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -15760,7 +15760,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             matchedObject.each(function(index, element) {
@@ -15843,11 +15843,11 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the base options
-            var numberRecords = options["numberRecords"];
+            var numberRecords = options.numberRecords;
 
             // retrieves the filter input
             var filterInput = jQuery(".filter-input", matchedObject);
@@ -15995,7 +15995,7 @@ if (typeof require !== "undefined") {
                     // iteration to be added
                     var _element = jQuery(this);
 
-                    // retrieves the html (text) value of the current element
+                    // retrieves the HTML (text) value of the current element
                     // in iteration and uses it to create the filter sort option
                     // element and then adds it to the filter sort (from clear)
                     var valueHtml = _element.html();
@@ -16040,7 +16040,7 @@ if (typeof require !== "undefined") {
                 // retrieves the filter more length
                 var filterMoreLength = filterMore.length;
 
-                // adds the "extra" html to the matched object,
+                // adds the "extra" HTML to the matched object,
                 // in case no filter contents is found
                 if (filterContents.length === 0) {
                     // creates the filter contents element and adds it to the
@@ -16155,11 +16155,11 @@ if (typeof require !== "undefined") {
 
                 // tries to retrieve the object identifier from the
                 // current item to be used as identifier of the element
-                var objectId = element["object_id"] || element["oid"];
+                var objectId = element.object_id || element.oid;
 
                 // tries to retrieve the unique identifier from the
                 // current item to be used as the cache key
-                var uniqueId = element["unique_id"] || element["uid"];
+                var uniqueId = element.unique_id || element.uid;
 
                 // applies the template to the template (item)
                 // retrieving the resulting template item and
@@ -17053,11 +17053,11 @@ if (typeof require !== "undefined") {
 
                         // tries to retrieve the object identifier from the
                         // current item to be used as identifier of the element
-                        var objectId = element["object_id"] || element["oid"];
+                        var objectId = element.object_id || element.oid;
 
                         // tries to retrieve the unique identifier from the
                         // current item to be used as the cache key
-                        var uniqueId = element["unique_id"] || element["uid"];
+                        var uniqueId = element.unique_id || element.uid;
 
                         // starts the template item to an invalid value, the
                         // concrete value is going to be set after condition
@@ -18124,8 +18124,8 @@ if (typeof require !== "undefined") {
             // for the current element (these are the offset
             // position of it)
             var offset = element.offset();
-            var top = offset["top"];
-            var left = offset["left"];
+            var top = offset.top;
+            var left = offset.left;
 
             // retrieves the element with and then uses
             // it to calculate the margin left for the
@@ -18472,14 +18472,14 @@ if (typeof require !== "undefined") {
                 // retrives the current element in iteration
                 var _element = jQuery(this);
 
-                // retrieves the html value of the element and
+                // retrieves the HTML value of the element and
                 // retrieves the data type attribute of it to
                 // be used both as the item and the type
                 var dataHtml = _element.html();
                 var dataType = _element.attr("data-type");
                 var dataName = _element.attr("data-name");
 
-                // adds the data html (item) and the data type
+                // adds the data HTML (item) and the data type
                 // to the corresponding lists
                 items.push(dataHtml);
                 types.push(dataType);
@@ -18720,7 +18720,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the header notification
@@ -18805,7 +18805,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the matched objects
@@ -19343,9 +19343,9 @@ if (typeof require !== "undefined") {
                     // be used as the root of the exception object
                     var data = request.response || request.responseText;
                     var jsonData = jQuery.parseJSON(data) || {};
-                    var exception = jsonData["exception"] || jsonData;
-                    var message = jsonData["message"] || "There was an error";
-                    var errors = exception["errors"] || {};
+                    var exception = jsonData.exception || jsonData;
+                    var message = jsonData.message || "There was an error";
+                    var errors = exception.errors || {};
 
                     // runs the localization operation in the message so that the proper
                     // locale version is going to be displayed
@@ -19513,7 +19513,7 @@ if (typeof require !== "undefined") {
             // gathers the target location (redirection) in case it exists, then
             // retrieves the content type for the current request and processes
             // the value retrieving only the basic value for it, then verifies
-            // that the mime type of it is html and in case it's returns valid as
+            // that the mime type of it is HTML and in case it's returns valid as
             // the provided request is considered to be an async request
             var location = request.getResponseHeader("Location");
             var contentType = request.getResponseHeader("Content-Type") || "";
@@ -19558,7 +19558,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // wraps the matched objec in an highlight box container
@@ -19606,7 +19606,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -19805,7 +19805,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -20084,7 +20084,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the matched object as a file drop
@@ -20199,7 +20199,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -20287,7 +20287,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // wraps the matched object around the the incremental field
@@ -20546,7 +20546,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the window (alert window) elements
@@ -20632,7 +20632,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // tries retrieves the window (lightbox window) elements
@@ -20879,7 +20879,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -20973,7 +20973,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -21122,7 +21122,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -21330,7 +21330,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -21763,7 +21763,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -21899,24 +21899,24 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the title and the message
             // from the options
-            var title = options["title"];
-            var message = options["message"];
+            var title = options.title;
+            var message = options.message;
 
             // retrieves the timeout to be used in the notification
             // from the options
-            var timeout = options["timeout"];
-            var fadeTimeout = options["fadeTimeout"];
+            var timeout = options.timeout;
+            var fadeTimeout = options.fadeTimeout;
 
             // retrieves the optional link element that
             // defines the target for a click in the notification
-            var link = options["link"];
+            var link = options.link;
 
-            // creates the message element from the html code
+            // creates the message element from the HTML code
             // that is going to be used as the base for display
             var messageElement = jQuery(
                 '<div class="notification">' +
@@ -22000,7 +22000,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // adds the clear element to the complete set of selected
@@ -22060,7 +22060,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -22417,7 +22417,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -22515,7 +22515,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // verifies if there's at leat on matched object and if that's
@@ -22864,7 +22864,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over each of the panel more elements
@@ -23037,7 +23037,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the index to be set on the initialized
@@ -23103,7 +23103,7 @@ if (typeof require !== "undefined") {
         var _set = function(matchedObject, options) {
             // retrieves the index value to be used to update
             // the stack panel index (argument)
-            var index = options["index"] ? options["index"] : 0;
+            var index = options.index ? options.index : 0;
 
             // updates the index value in the matched object
             // and runs the update function on top of the matched
@@ -23211,7 +23211,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // creates the panels (count) value
@@ -23228,7 +23228,7 @@ if (typeof require !== "undefined") {
 
         var _push = function(matchedObject, options) {
             // retrieves the "new" panel to be pushed
-            var panelHtml = options["panel"];
+            var panelHtml = options.panel;
 
             // retrieves the panels list
             var panels = matchedObject.data("panels");
@@ -23336,7 +23336,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -23344,7 +23344,7 @@ if (typeof require !== "undefined") {
                 // retrieves the element reference
                 var _element = jQuery(element);
 
-                // adds some html to the password meter
+                // adds some HTML to the password meter
                 _element.append('<div class="password-meter-contents level-0"></div>');
 
                 // sets the initial data in the element
@@ -23508,7 +23508,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the state of the right bar flag
@@ -23554,7 +23554,7 @@ if (typeof require !== "undefined") {
          */
         var _change = function(matchedObject, options) {
             // retrieves the percentage value from the options
-            var percentage = options["percentage"] ? options["percentage"] : 0;
+            var percentage = options.percentage ? options.percentage : 0;
 
             // calculates the remaining percentage for the right
             // handed bar
@@ -23645,7 +23645,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the data object reference in the selected objects
@@ -23777,7 +23777,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the ux global object representation as rating
@@ -24050,7 +24050,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // wraps the matched object arround a scroll list container and then
@@ -24252,7 +24252,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -24410,7 +24410,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over each of the matched object to arrange
@@ -24599,7 +24599,7 @@ if (typeof require !== "undefined") {
                     for (var index = 0; index < listItems.length; index++) {
                         // retrieves the current list items in iteration
                         // and retrieves the value to be used as data value
-                        // defaulting to the html value in case none is provided
+                        // defaulting to the HTML value in case none is provided
                         var listItem = jQuery(listItems[index]);
                         var dataValue = listItem.attr("data-value");
                         var htmlValue = listItem.html();
@@ -24872,7 +24872,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // verifies that at leat one object is selected and if that's
@@ -25138,7 +25138,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
@@ -25206,7 +25206,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // wraps the slider contents structure
@@ -25663,7 +25663,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the slideshow elements to create their
@@ -25958,7 +25958,7 @@ if (typeof require !== "undefined") {
             } else {
                 // changes the source field of the image directly to
                 // take effect immediately
-                image.attr("src", item["image"]);
+                image.attr("src", item.image);
             }
 
             // retrieves the detail section of the slideshow to update
@@ -26069,7 +26069,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the ux global object representation as source
@@ -26079,8 +26079,8 @@ if (typeof require !== "undefined") {
 
             // retrieves the options values that are going to
             // condition the way the source list is initialized
-            var numberOptions = options["numberOptions"];
-            var filterOptions = options["filterOptions"];
+            var numberOptions = options.numberOptions;
+            var filterOptions = options.filterOptions;
 
             // creates the text field element and the select list
             var textField = jQuery('<input type="text" class="text-field" />');
@@ -26579,7 +26579,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -26808,7 +26808,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // in case the matched object is not defined
@@ -27005,7 +27005,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the items in the matched object
@@ -27235,13 +27235,13 @@ if (typeof require !== "undefined") {
                 return;
             }
 
-            // creates the add and remove buttons html
+            // creates the add and remove buttons HTML
             var addButtonHtml =
                 '<td class="table-add">' + '<div class="inline-add"></div>' + "</td>";
             var removeButtonHtml =
                 '<td class="table-remove">' + '<div class="inline-remove"></div>' + "</td>";
 
-            // adds the add and remove button html to the row
+            // adds the add and remove button HTML to the row
             row.append(removeButtonHtml);
             row.append(addButtonHtml);
 
@@ -28013,7 +28013,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the element to insert the
@@ -28248,7 +28248,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the ux global object representation as text
@@ -28299,7 +28299,7 @@ if (typeof require !== "undefined") {
 
                     // retrieves the (possible virtual) value of the
                     // current tag element to be inserted then retrieves
-                    // the html value of the tag (visual value)
+                    // the HTML value of the tag (visual value)
                     var dataValue = __element.attr("data-value");
                     var dataHtml = __element.html();
 
@@ -28384,7 +28384,7 @@ if (typeof require !== "undefined") {
                     for (var index = 0; index < tags.length; index++) {
                         // retrieves the current list items in iteration
                         // and retrieves the value to be used as data value
-                        // defaulting to the html value in case none is provided
+                        // defaulting to the HTML value in case none is provided
                         var tag = jQuery(tags[index]);
                         var dataValue = tag.attr("data-value");
                         var displayValue = tag.attr("data-display");
@@ -28785,7 +28785,7 @@ if (typeof require !== "undefined") {
             for (var index = 0; index < tags.length; index++) {
                 // retrieves the current list items in iteration
                 // and retrieves the value to be used as data value
-                // defaulting to the html value in case none is provided
+                // defaulting to the HTML value in case none is provided
                 var tag = jQuery(tags[index]);
                 var dataValue = tag.attr("data-value");
                 var displayValue = tag.attr("data-display");
@@ -28873,7 +28873,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // sets the ux global object representation as text
@@ -29685,7 +29685,7 @@ if (typeof require !== "undefined") {
             // otherwise the calendar element must be created
             else {
                 // creates the calendar component from the
-                // html code and inserts it after the element
+                // HTML code and inserts it after the element
                 calendar = jQuery('<div class="calendar text-field-calendar"></div>');
                 element.after(calendar);
 
@@ -29707,8 +29707,8 @@ if (typeof require !== "undefined") {
             // calculates the calendar top and left
             // positions from the element offset and height
             // and then sets them in the calendar
-            var calendarTop = offset["top"] + height;
-            var calendarLeft = offset["left"];
+            var calendarTop = offset.top + height;
+            var calendarLeft = offset.left;
             calendar.css("top", calendarTop + "px");
             calendar.css("left", calendarLeft + "px");
 
@@ -29824,8 +29824,8 @@ if (typeof require !== "undefined") {
                 // calculates the calendar top and left
                 // positions from the element offset and height
                 // and then sets them in the calendar
-                var calendarTop = offset["top"] + height;
-                var calendarLeft = offset["left"];
+                var calendarTop = offset.top + height;
+                var calendarLeft = offset.left;
                 calendar.css("top", calendarTop + "px");
                 calendar.css("left", calendarLeft + "px");
             });
@@ -29956,8 +29956,8 @@ if (typeof require !== "undefined") {
             // calculates the calendar top and left
             // positions from the element offset and height
             // and then sets them in the calendar
-            var calendarTop = offset["top"] + height;
-            var calendarLeft = offset["left"];
+            var calendarTop = offset.top + height;
+            var calendarLeft = offset.left;
             calendar.css("top", calendarTop + "px");
             calendar.css("left", calendarLeft + "px");
 
@@ -30149,7 +30149,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // wraps the matched object around the the toggle field
@@ -30417,7 +30417,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // tries to find the window mask
@@ -30711,7 +30711,7 @@ if (typeof require !== "undefined") {
             // retrieves the appropriate name for the event to be
             // triggered indicating the state the window has closed,
             // note that the options map is used for the fallback
-            var name = options["reason"] || "cancel";
+            var name = options.reason || "cancel";
             name = success ? "success" : name;
 
             // triggers the hide handler so that any handler
@@ -31155,7 +31155,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // retrieves the currently selected panel (if any) and then
@@ -31262,7 +31262,7 @@ if (typeof require !== "undefined") {
         var _set = function(matchedObject, options) {
             // retrieves the target index from the options
             // to update the current wizard index
-            var index = options["index"];
+            var index = options.index;
 
             // retrieves the panels associated with the
             // current wizard and then uses then to calculate
@@ -31454,7 +31454,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
             // iterates over all the elements in the matched object
@@ -31462,7 +31462,7 @@ if (typeof require !== "undefined") {
                 // retrieves the element reference
                 var _element = jQuery(element);
 
-                // retrieves the element eval attribute or html
+                // retrieves the element eval attribute or HTML
                 // as the eval string
                 var evalString = _element.attr("data-eval")
                     ? _element.attr("data-eval")
@@ -31575,7 +31575,7 @@ if (typeof require !== "undefined") {
 
         /**
          * Evaluates the eval string in the matched object emmiting the
-         * resulting value to the html contents of it. The evaluation of the
+         * resulting value to the HTML contents of it. The evaluation of the
          * matched object is considered dangerous and must be used carefully.
          *
          * @param {Element}
@@ -31599,7 +31599,7 @@ if (typeof require !== "undefined") {
             var isTextField = matchedObject.hasClass("text-field");
 
             // retrieves the current matched object
-            // value or html value and compares it to the eval
+            // value or HTML value and compares it to the eval
             // result to check for differences and then checks
             // if the current element has focus
             var current = isInput ? matchedObject.val() : matchedObject.html();
@@ -31630,10 +31630,10 @@ if (typeof require !== "undefined") {
                 // according to the result of the eval
                 matchedObject.val(evalResult);
             }
-            // otherwise it's a general component and the html
+            // otherwise it's a general component and the HTML
             // code must be changed
             else {
-                // changes the html code of the target component
+                // changes the HTML code of the target component
                 // according to the result of the eval
                 matchedObject.html(evalResult);
             }
@@ -31691,7 +31691,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Creates the necessary html for the component.
+         * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {};
 
