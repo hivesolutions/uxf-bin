@@ -32427,7 +32427,7 @@ Date.parseUtc = function(dateString) {
 
     // retrieves the time zone name from the date time zone structure
     var dateTimeZoneStructure = date.getTimeZoneStructure();
-    var timeZoneName = dateTimeZoneStructure["time_zone_name"];
+    var timeZoneName = dateTimeZoneStructure.time_zone_name;
 
     // creates the date string from the date string and the time zone name
     // or it uses the new date
@@ -32506,10 +32506,10 @@ Date.prototype.getTimeZoneStructure = function() {
     var timeZoneStructure = {};
 
     // sets the utc offset value in the time zone structure
-    timeZoneStructure["utc_offset"] = utcOffset;
+    timeZoneStructure.utc_offset = utcOffset;
 
     // sets the time zone name in the time zone structure
-    timeZoneStructure["time_zone_name"] = timeZoneName;
+    timeZoneStructure.time_zone_name = timeZoneName;
 
     // returns the time zone structure
     return timeZoneStructure;
@@ -32863,7 +32863,7 @@ var Object = (_global.Object = _global.Object || {});
 
 Object.isEmpty = function(object) {
     for (var property in object) {
-        if (object.hasOwnProperty(property)) {
+        if (object[property] !== undefined) {
             return false;
         }
     }
