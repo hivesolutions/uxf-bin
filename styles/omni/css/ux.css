@@ -800,6 +800,7 @@ __license__   = Apache License, Version 2.0
 
 .omni-style .calendar-header .calendar-title {
     display: inline-block;
+    font-weight: 600;
     margin: 0px 0px 0px 0px;
 }
 
@@ -1424,6 +1425,11 @@ __license__   = Apache License, Version 2.0
 .omni-style .button.large.button-light-grey.active,
 .omni-style .button.large.button-light-grey:active {
     background-color: #e8e8e8;
+}
+
+.omni-style .button.large.button-light-grey.disabled {
+    background-color: #f4f4f4;
+    border-color: #dddddd;
 }
 
 .omni-style .button.small {
