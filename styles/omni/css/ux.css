@@ -3842,6 +3842,7 @@ __license__   = Apache License, Version 2.0
 
 .omni-style .subscript {
     font-size: 70%;
+    line-height: 70%;
 }
 
 .omni-style .tag,

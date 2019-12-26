@@ -1598,6 +1598,7 @@ __license__   = Apache License, Version 2.0
 
 .ulite-style .subscript {
     font-size: 70%;
+    line-height: 70%;
 }
 
 .ulite-style .tab-panel .block-tabs {
