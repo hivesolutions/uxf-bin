@@ -3761,6 +3761,7 @@ __license__   = Apache License, Version 2.0
 
 .omni-style .stats-panel > .link-panel {
     font-size: 10px;
+    font-weight: 600;
     text-align: center;
     text-transform: uppercase;
 }
