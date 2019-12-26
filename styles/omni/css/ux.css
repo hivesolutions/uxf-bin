@@ -2016,6 +2016,7 @@ __license__   = Apache License, Version 2.0
     cursor: pointer;
     float: left;
     font-size: 10px;
+    font-weight: 600;
     margin: 2px 6px 2px 0px;
     padding: 4px 12px 4px 12px;
     text-transform: uppercase;
@@ -3082,6 +3083,7 @@ __license__   = Apache License, Version 2.0
 .omni-style .panel-more > .panel-more-action > li.list-more span {
     background-color: #777777;
     color: #ffffff;
+    display: inline-block;
     font-size: 9px;
     font-weight: bold;
     letter-spacing: 1px;
