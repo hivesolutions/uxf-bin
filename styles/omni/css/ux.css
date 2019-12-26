@@ -625,6 +625,7 @@ __license__   = Apache License, Version 2.0
 
 .omni-style .replacer {
     cursor: pointer;
+    font-weight: 600;
 }
 
 .omni-style.animations .replacer-target {
@@ -3771,7 +3772,7 @@ __license__   = Apache License, Version 2.0
 .omni-style .stats-panel h4 {
     color: #2d2d2d;
     font-size: 10px;
-    font-weight: normal;
+    font-weight: 600;
     line-height: 14px;
     margin: 0px 0px 4px 0px;
     text-transform: uppercase;
