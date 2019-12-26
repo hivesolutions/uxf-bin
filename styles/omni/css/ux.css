@@ -1866,6 +1866,10 @@ __license__   = Apache License, Version 2.0
     width: 210px;
 }
 
+.omni-style .filter {
+    position: relative;
+}
+
 .omni-style .filter .filter-input {
     height: 30px;
 }
@@ -1906,9 +1910,9 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .filter .filter-input-buttons {
-    margin-left: 461px;
-    margin-top: -35px;
     position: absolute;
+    right: 0px;
+    top: 0px;
 }
 
 .omni-style .filter .filter-input-buttons.lower {
@@ -2187,6 +2191,7 @@ __license__   = Apache License, Version 2.0
     -khtml-box-shadow: 0px 0px 6px #e4e4e4;
     -webkit-box-shadow: 0px 0px 6px #e4e4e4;
     margin-left: -11px;
+    max-width: 100%;
     padding-bottom: 17px;
     padding-left: 10px;
     padding-right: 10px;
