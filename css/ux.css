@@ -378,6 +378,10 @@ body.wait-load {
     clear: both;
 }
 
+.filter.no-results .filter-contents {
+    display: none;
+}
+
 .link {
     cursor: pointer;
 }

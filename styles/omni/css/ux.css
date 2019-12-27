@@ -1912,7 +1912,7 @@ __license__   = Apache License, Version 2.0
 .omni-style .filter .filter-input-buttons {
     position: absolute;
     right: 0px;
-    top: 0px;
+    top: 1px;
 }
 
 .omni-style .filter .filter-input-buttons.lower {
