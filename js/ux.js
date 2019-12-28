@@ -21361,7 +21361,8 @@ if (typeof require !== "undefined") {
             var isRegistered = _body.data("menu_link_click");
             _body.data("menu_link_click", true);
 
-            // registers for the click in the matched object
+            // registers for the click in the matched object, so
+            // that the menu is show in the screen
             matchedObject.click(function(event) {
                 // retrieves the element
                 var element = jQuery(this);
@@ -21815,10 +21816,12 @@ if (typeof require !== "undefined") {
         };
 
         var _show = function(matchedObject, options) {
+        	var _body = jQuery("body");
             var menuContents = jQuery(".menu-contents", matchedObject);
             matchedObject.addClass("active");
             menuContents.show();
             menuContents.triggerHandler("shown");
+            !options.noHideModal && _body.triggerHandler("hide_modal");
         };
 
         var _hide = function(matchedObject, options) {
