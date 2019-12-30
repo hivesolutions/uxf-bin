@@ -3974,7 +3974,7 @@ __license__   = Apache License, Version 2.0
     text-transform: uppercase;
 }
 
-.omni-style.mobile-s .table tr th {
+.omni-style.mobile-s:not(.no-important) .table tr th {
     height: auto !important;
     min-width: auto !important;
     width: auto !important;
