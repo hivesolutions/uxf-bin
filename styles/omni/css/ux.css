@@ -2866,6 +2866,10 @@ __license__   = Apache License, Version 2.0
     padding: 0px 0px 16px 0px;
 }
 
+.omni-style.mobile-s .list.entity-options-list {
+    padding-bottom: 0px;
+}
+
 .omni-style .list.entity-options-list li {
     border-bottom: 1px solid #f2f2f2;
     padding-bottom: 16px;
@@ -2874,6 +2878,10 @@ __license__   = Apache License, Version 2.0
 
 .omni-style .list.entity-options-list li:first-child {
     padding-top: 0px;
+}
+
+.omni-style.mobile-s .list.entity-options-list li {
+    display: flex;
 }
 
 .omni-style .list.entity-options-list .entity-picture {
@@ -2896,6 +2904,18 @@ __license__   = Apache License, Version 2.0
     -webkit-border-radius: 0px 32px 0px 32px;
 }
 
+.omni-style.mobile-s .list.entity-options-list .entity-picture {
+    float: none;
+    flex: 0 1;
+    min-height: 96px;
+    min-width: 96px;
+}
+
+.omni-style.mobile-s .list.entity-options-list .entity-details {
+    float: none;
+    flex: 1 0;
+}
+
 .omni-style .list.entity-options-list .entity-name {
     color: #2d2d2d;
     font-size: 16px;
@@ -2909,6 +2929,10 @@ __license__   = Apache License, Version 2.0
     margin-bottom: 12px;
     margin-top: 6px;
     width: 420px;
+}
+
+.omni-style.mobile-s .list.entity-options-list .entity-description {
+    width: auto;
 }
 
 .omni-style.opensans .list.entity-options-list .entity-description {
