@@ -80,6 +80,7 @@ if (typeof require !== "undefined") {
             template.uxattr("name", "data-name");
             template.uxattr("class", "data-class");
             template.uxattr("src", "data-src");
+            template.uxattr("srcset", "data-srcset");
 
             // retrieves the meta source element to be started in the
             // first state of the apply (going to create functions)
@@ -8620,6 +8621,7 @@ if (typeof require !== "undefined") {
             templateElement.uxattr("data-name", "name");
             templateElement.uxattr("data-class", "class");
             templateElement.uxattr("data-src", "src");
+            templateElement.uxattr("data-srcset", "srcset");
 
             // applies the ux in the element, in case the/ apply flag is set,
             // note that it might be/ disabled using either the options of the
