@@ -1674,7 +1674,7 @@ __license__   = Apache License, Version 2.0
 
 .omni-style .drop-field {
     line-height: 26px;
-    width: 284px;
+    max-width: 100%;
 }
 
 .omni-style .drop-field > .text-field {
@@ -4256,6 +4256,7 @@ __license__   = Apache License, Version 2.0
 }
 
 .omni-style .tag-field > .text-field {
+    max-width: 100%;
     width: 312px;
 }
 
@@ -4323,6 +4324,7 @@ __license__   = Apache License, Version 2.0
     font-family: Arial, sans-serif;
     font-size: 13px;
     height: 32px;
+    max-width: 100%;
     padding: 2px 6px 2px 6px;
     width: 270px;
 }
@@ -4453,6 +4455,7 @@ __license__   = Apache License, Version 2.0
     font-family: Arial, sans-serif;
     font-size: 13px;
     height: 100px;
+    max-width: 100%;
     padding: 2px 6px 2px 6px;
     resize: none;
     width: 270px;
