@@ -14764,6 +14764,10 @@ if (typeof require !== "undefined") {
             // update operation is still going to be performed
             var force = Boolean(incomplete && options.force);
 
+            // defines if the value to be set has valid meaning
+            // by using the value and value logic definition
+            var hasValue = Boolean(value || (valueLogic !== null && valueLogic !== undefined));
+
             // retrieves the complete set of value fields from the drop
             // field to apply the item values into them
             var valueFields = dropField.data("value_fields");
@@ -14794,10 +14798,6 @@ if (typeof require !== "undefined") {
                 var _value = item[key];
                 field.val(_value);
             }
-
-            // defines if the value to be set has valid meaning
-            // by using the value and value logic definition
-            var hasValue = Boolean(value || (valueLogic !== null && valueLogic !== undefined));
 
             // in case there's a valid value in the drop field adds
             // the drop field lock class to the drop field (symbol)
