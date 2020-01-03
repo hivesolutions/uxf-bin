@@ -2905,9 +2905,9 @@ __license__   = Apache License, Version 2.0
 
 .omni-style.mobile-s .list.entity-options-list .entity-picture {
     float: none;
-    flex: 0 1;
     min-height: 96px;
     min-width: 96px;
+    flex: 0 1;
 }
 
 .omni-style.mobile-s .list.entity-options-list .entity-details {
