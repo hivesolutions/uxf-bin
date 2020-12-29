@@ -521,14 +521,14 @@ if (typeof require !== "undefined") {
         // if that's not the case the extra query is not going to be applied
         var hasExtra = _body.hasClass("extra-query");
 
-        // calculates the aditional set of values of the base href value
+        // calculates the additional set of values of the base href value
         // so that this request may be "marked" as special avoiding possible
         // errors with cache in the browser/client side
         var hasQuery = href.indexOf("?") !== -1;
         var extraParams = "x-async=1&x-partial=1";
         var extraQuery = hasQuery ? "&" + extraParams : "?" + extraParams;
 
-        // trigers the async operation start handler indicating that an
+        // triggers the async operation start handler indicating that an
         // asynchronous request is going to start, this trigger should
         // enable all the visuals so that the user is notified about the
         // remote communication that is going to occur
@@ -1028,17 +1028,17 @@ if (typeof require !== "undefined") {
 (function(jQuery) {
     // the various regex values for the time
     // date format part replacement
-    var YEAR_CHARACTER = new RegExp("%Y", "g");
-    var MONTH_CHARACTER = new RegExp("%m", "g");
-    var DAY_CHARACTER = new RegExp("%d", "g");
-    var HOUR_CHARACTER = new RegExp("%H", "g");
-    var MINUTE_CHARACTER = new RegExp("%M", "g");
-    var SECOND_CHARACTER = new RegExp("%S", "g");
-    var FULL_MONTH_CHARACTER = new RegExp("%B", "g");
-    var ABBREVIATED_MONTH_CHARACTER = new RegExp("%b", "g");
+    var YEAR_CHARACTER = /%Y/g;
+    var MONTH_CHARACTER = /%m/g;
+    var DAY_CHARACTER = /%d/g;
+    var HOUR_CHARACTER = /%H/g;
+    var MINUTE_CHARACTER = /%M/g;
+    var SECOND_CHARACTER = /%S/g;
+    var FULL_MONTH_CHARACTER = /%B/g;
+    var ABBREVIATED_MONTH_CHARACTER = /%b/g;
 
     // the lists for the month string values both in full
-    // name mode and in abreviated mode
+    // name mode and in abbreviated mode
     var FULL_MONTHS = [
         "January",
         "February",
@@ -2881,7 +2881,7 @@ if (typeof require !== "undefined") {
     jQuery.fn.uxerror = function(method, options) {
         // the regex for string character regex,
         // for string replacement
-        var STRING_CHARACTER_REGEX = new RegExp("'", "g");
+        var STRING_CHARACTER_REGEX = /'/g;
 
         // the default values for the error
         var defaults = {};
@@ -2943,7 +2943,7 @@ if (typeof require !== "undefined") {
 
                 // replaces the list joining character in order
                 // to virtually "join" multiple lists
-                var listJoinCharacter = new RegExp("\\]\\[", "g");
+                var listJoinCharacter = /\]\[/g;
                 error = error.replace(listJoinCharacter, ", ");
 
                 // sets the initial value of the error structure
@@ -6940,7 +6940,7 @@ if (typeof require !== "undefined") {
      * The regular expression that is going to be used to match possible illegal
      * attribute values (template ones).
      */
-    var ATTR_REGEX = new RegExp("%\\[.*\\]");
+    var ATTR_REGEX = /%\[.*\]/;
 
     jQuery.fn.uxattr = function(attrName, attrNameTarget) {
         // sets the jquery matched object
@@ -7677,22 +7677,16 @@ if (typeof require !== "undefined") {
     jQuery.fn.uxmobile = function(options) {
         // the regular expression that is going to be used
         // to validate the compete user agent string for mobile
-        var MOBILE_REGEX = new RegExp(
-            /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i
-        );
+        var MOBILE_REGEX = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i;
 
         // the more permissive table regular expression that is
         // validated also for the table browsers, note that this
         // expression will also be valid for "simple" mobiles
-        var TABLET_REGEX = new RegExp(
-            /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino|android|ipad|playbook|silk/i
-        );
+        var TABLET_REGEX = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino|android|ipad|playbook|silk/i;
 
         // the regular expression to test the base prefix
         // of the user agent string for mobile browser """
-        var MOBILE_PREFIX_REGEX = new RegExp(
-            /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i
-        );
+        var MOBILE_PREFIX_REGEX = /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i;
 
         // the default values for the browser
         var defaults = {};
@@ -8262,7 +8256,7 @@ if (typeof require !== "undefined") {
     jQuery.fn.uxenumeration = function(options) {
         // the regex for string character regex,
         // for string replacement
-        var STRING_CHARACTER_REGEX = new RegExp("'", "g");
+        var STRING_CHARACTER_REGEX = /'/g;
 
         // the default values for the name change
         var defaults = {};
@@ -8834,14 +8828,14 @@ if (typeof require !== "undefined") {
     jQuery.fn.uxtimestamp = function(method, options) {
         // the various regex values for the time
         // date format part replacement
-        var YEAR_CHARACTER = new RegExp("%Y", "g");
-        var MONTH_CHARACTER = new RegExp("%m", "g");
-        var DAY_CHARACTER = new RegExp("%d", "g");
-        var HOUR_CHARACTER = new RegExp("%H", "g");
-        var MINUTE_CHARACTER = new RegExp("%M", "g");
-        var SECOND_CHARACTER = new RegExp("%S", "g");
-        var FULL_MONTH_CHARACTER = new RegExp("%B", "g");
-        var ABBREVIATED_MONTH_CHARACTER = new RegExp("%b", "g");
+        var YEAR_CHARACTER = /%Y/g;
+        var MONTH_CHARACTER = /%m/g;
+        var DAY_CHARACTER = /%d/g;
+        var HOUR_CHARACTER = /%H/g;
+        var MINUTE_CHARACTER = /%M/g;
+        var SECOND_CHARACTER = /%S/g;
+        var FULL_MONTH_CHARACTER = /%B/g;
+        var ABBREVIATED_MONTH_CHARACTER = /%b/g;
 
         // the lists for the month string values
         var FULL_MONTHS = [
@@ -9085,9 +9079,9 @@ if (typeof require !== "undefined") {
         options = jQuery.extend(defaults, options);
 
         // creates the various regular expressions for substitution
-        var newlineRegex = RegExp("\\\\n", "g");
-        var boldStartRegex = RegExp("\\[", "g");
-        var boldEndRegex = RegExp("\\]", "g");
+        var newlineRegex = /\\n/g;
+        var boldStartRegex = /\[/g;
+        var boldEndRegex = /\]/g;
 
         /**
          * Initializer of the plugin, runs the necessary functions to initialize
@@ -19493,7 +19487,7 @@ if (typeof require !== "undefined") {
             matchedObject.removeClass("error");
 
             // updates the current state of the form element so that it reflects
-            // the orginal state of the form elements (as expected)
+            // the original state of the form elements (as expected)
             matchedObject.data("submited", false);
             matchedObject.data("confirmed", false);
 
@@ -23373,10 +23367,10 @@ if (typeof require !== "undefined") {
     jQuery.fn.uxpasswordmeter = function(options) {
         // the various regex values for password
         // strength validation
-        var NUMBER_REGEX = new RegExp("\\d+");
-        var LETTER_LOWER_REGEX = new RegExp("[a-z]");
-        var LETTER_UPPER_REGEX = new RegExp("[A-Z]");
-        var SPECIAL_CHARACTER_REGEX = new RegExp("[.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]");
+        var NUMBER_REGEX = /\d+/;
+        var LETTER_LOWER_REGEX = /[a-z]/;
+        var LETTER_UPPER_REGEX = /[A-Z]/;
+        var SPECIAL_CHARACTER_REGEX = /[.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/;
 
         // the default values for the name change
         var defaults = {};
@@ -23509,7 +23503,7 @@ if (typeof require !== "undefined") {
             }
 
             // in case the password contains at least
-            // a number in it
+            // one number in it
             if (NUMBER_REGEX.test(password)) {
                 // increments the strength value
                 strengthValue++;
@@ -34267,7 +34261,7 @@ String.prototype.strip = function(s) {
 /**
  * The compiled options regular expression.
  */
-String.prototype.optionsRegex = new RegExp("{[a-zA-Z0-9_]*(?=})", "g");
+String.prototype.optionsRegex = /{[a-zA-Z0-9_]*(?=})/g;
 
 /**
  * Formats the given string according to the arguments.
@@ -34384,7 +34378,7 @@ String.prototype.formatOptions = function(optionsMap) {
 
 /**
  * Formats the current string according to the c language standard template
- * format (provides backward compatibility).
+ * format (provides backward compatability).
  *
  * @return {String} The formatted string according to the standard c template
  *         format.
