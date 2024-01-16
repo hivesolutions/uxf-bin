@@ -12498,7 +12498,7 @@ if (typeof require !== "undefined") {
 /**
  * jQuery drop down plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a drop down component. Should be used for situations
- * where a menu should be displayed uppon a button based action.
+ * where a menu should be displayed upon a button based action.
  *
  * @name uxf-drop-down.js
  * @author João Magalhães <joamag@hive.pt>
@@ -22160,7 +22160,7 @@ if (typeof require !== "undefined") {
             }
 
             // registers for the click event on the element
-            // to aovid propagation
+            // to avoid propagation
             matchedObject.click(function(event) {
                 // stops the event propagation, no need
                 // to propagate clicks to the upper levels
@@ -22171,7 +22171,7 @@ if (typeof require !== "undefined") {
             // triggered the show function is called for the
             // associated element (indirect show)
             matchedObject.bind("show", function() {
-                // retrieves the current elemenet and runs the hide
+                // retrieves the current element and runs the hide
                 // operation in it (to hide it)
                 var element = jQuery(this);
                 _show(element, options);
@@ -22181,7 +22181,7 @@ if (typeof require !== "undefined") {
             // triggered the hide function is called for the
             // associated element (indirect hide)
             matchedObject.bind("hide", function() {
-                // retrieves the current elemenet and runs the hide
+                // retrieves the current element and runs the hide
                 // operation in it (to hide it)
                 var element = jQuery(this);
                 _hide(element, options);
@@ -22356,11 +22356,11 @@ if (typeof require !== "undefined") {
             overlay.triggerHandler("show", [duration / 1.25, null, null, timing]);
 
             // focus in the text field as this is the default behaviour
-            // to be executed uppon showing the overlay panel, note that
+            // to be executed upon showing the overlay panel, note that
             // if no text field exists nothing happens
             textField.focus();
 
-            // thiggers the shown event indicating that the overlay panel
+            // triggers the shown event indicating that the overlay panel
             // has just finished beeing shown
             matchedObject.triggerHandler("shown");
         };
@@ -22519,10 +22519,15 @@ if (typeof require !== "undefined") {
             // only the first (and major one is selected)
             var overlay = jQuery(".overlay:first");
 
+            // checks if the current component is also an overlay
+            // panel, this is going to change the way the hide
+            // is going to be performed
+            var isOverlayPanel = matchedObject.hasClass("overlay-panel");
+
             // hides both the overlay and the current
             // object (as expected by the search overlay)
             overlay.triggerHandler("hide", [200]);
-            matchedObject.fadeOut(200);
+            !isOverlayPanel && matchedObject.fadeOut(200);
         };
 
         // initializes the plugin
@@ -22579,7 +22584,7 @@ if (typeof require !== "undefined") {
          * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
-            // verifies if there's at leat on matched object and if that's
+            // verifies if there's at least on matched object and if that's
             // not the case returns immediately (avoiding possible issues)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -22589,7 +22594,7 @@ if (typeof require !== "undefined") {
             // operation so that it becomes of the correct size, then
             // adds the resizable class to the current element to identify
             // the element as an element that is meant to be resizes, this
-            // is imporant to avoid error in the resize operations
+            // is important to avoid error in the resize operations
             _resize(matchedObject, options);
             matchedObject.addClass("resizable");
 
@@ -22608,7 +22613,7 @@ if (typeof require !== "undefined") {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
-            // verifies if there's at leat on matched object and if that's
+            // verifies if there's at least on matched object and if that's
             // not the case returns immediately (avoiding possible issues)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -22624,7 +22629,7 @@ if (typeof require !== "undefined") {
                 _resize(matchedObject, options);
             });
 
-            // registers the laod event in the window, avoids
+            // registers the load event in the window, avoids
             // possible initial resize problem
             _window.load(function(event) {
                 // resizes the overlay in the screen
@@ -22634,7 +22639,7 @@ if (typeof require !== "undefined") {
             // registers the resize in the window, this is a custom
             // event triggered at the correct timing of the window
             // sizing workflow, this will trigger a delayed based
-            // resizing operation on the oeverlay element
+            // resizing operation on the overlay element
             _window.bind("size", function(event) {
                 // resizes the overlay in the screen
                 _resizeDelay(matchedObject, options);
@@ -22644,7 +22649,7 @@ if (typeof require !== "undefined") {
             // no propagation of it is done
             matchedObject.click(function(event) {
                 // retrieves the current element (overlay) and the
-                // reference to the body top elemenet
+                // reference to the body top element
                 var element = jQuery(this);
                 var _body = jQuery("body");
 
@@ -22683,7 +22688,7 @@ if (typeof require !== "undefined") {
                 _hide(element, options, timeout, timing);
             });
 
-            // registers for the resize event on the overlayy
+            // registers for the resize event on the overlay
             // so that the overlay may be resized in for such events
             matchedObject.bind("resize", function() {
                 // retrieves teh current element and uses it
@@ -22692,7 +22697,7 @@ if (typeof require !== "undefined") {
                 _resize(element, options);
             });
 
-            // registers for the transition end envet so that the
+            // registers for the transition end event so that the
             // visual state of the element is properly updated
             matchedObject.bind("transitionend", function(event) {
                 var element = jQuery(this);
@@ -22754,7 +22759,7 @@ if (typeof require !== "undefined") {
 
         var _reset = function(matchedObject, options) {
             // verifies if the current element is visible (block),
-            // retrieving then the opcity value of it so that's it's
+            // retrieving then the opacity value of it so that's it's
             // considered the original value (to be restored latter)
             // then and in case the element is invisible sets the
             // opacity to the default zero value (for animation)
