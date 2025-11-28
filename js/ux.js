@@ -3384,12 +3384,12 @@ if (typeof require !== "undefined") {
             // split list
             for (var index = 0; index < optionsSplit.length; index++) {
                 // retrieves the (current) option
-                var option = optionsSplit[0];
+                var option = optionsSplit[index];
 
-                // splits the option arround the separator
+                // splits the option around the separator
                 var optionSplit = option.split("=");
 
-                // starts the value for the option varialbes
+                // starts the value for the option variables
                 // that are going to store characteristics
                 var optionName = null;
                 var optionValue = null;
@@ -27429,9 +27429,9 @@ if (typeof require !== "undefined") {
                     return;
                 }
 
-                // retrieves the current last row and then add the last
+                // retrieves the current last row and then adds the last
                 // class to it (updating it's structure)
-                var lastRow = jQuery("tbody > tr:not(.template):last", matchedObject);
+                var lastRow = jQuery("tbody > tr:not(.template):last", table);
                 lastRow.addClass("last");
 
                 // triggers the removed line event, sends the removed
@@ -27443,7 +27443,7 @@ if (typeof require !== "undefined") {
 
             // registers for the click on the text field
             textField.focus(function() {
-                // rertrieves the current element (text field)
+                // retrieves the current element (text field)
                 var element = jQuery(this);
 
                 // retrieves the cell, the row associated with
@@ -27924,6 +27924,10 @@ if (typeof require !== "undefined") {
             // removes the current set of rows (empties the table)
             // this should be able to set no UI items in the table
             rows.remove();
+
+            // removes the max rows class from the matched object
+            // in case it exists
+            matchedObject.removeClass("max-rows");
 
             // in case the table is of type edit a line must be added
             // to the end of the table in case the table is empty
