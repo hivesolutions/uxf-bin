@@ -3737,7 +3737,7 @@ if (typeof require !== "undefined") {
                 "";
 
             // in case the complete set of required colony print field
-            // are defined the gateway object is overriden with a new
+            // are defined the gateway object is overridden with a new
             // map that emulates the same interface but using the colony
             // cloud infra-structure for proper printing
             if (printUrl && printKey && printNode) {
@@ -3780,7 +3780,7 @@ if (typeof require !== "undefined") {
                     format: format
                 };
 
-                // tries to retrive the data processing method for
+                // tries to retrieve the data processing method for
                 // the currently defined format in case it exists
                 // calls it with the data structure so that it
                 // "completes" it with the "extra" data
@@ -3788,7 +3788,7 @@ if (typeof require !== "undefined") {
                 method && method(gateway, data);
 
                 // reverses the binie urls list and then uses this
-                // list as the queue for the printin operation, note
+                // list as the queue for the printing operation, note
                 // that the callback should be called only after the
                 // complete set of queue elements have been processed
                 binieUrls = binieUrls.reverse();
@@ -3909,7 +3909,7 @@ if (typeof require !== "undefined") {
 (function(jQuery) {
     jQuery.fn.uxgprintpdf = function(gateway, data) {
         // retrieves the complete set of device specifications
-        // for the current system and sets the intial value of
+        // for the current system and sets the initial value of
         // the default device variable as unset
         var devices = gateway.pdevices();
         var defaultDevice = null;
