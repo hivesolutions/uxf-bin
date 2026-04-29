@@ -13902,7 +13902,7 @@ if (typeof require !== "undefined") {
                 var template = jQuery(".template", dropField);
 
                 // verifies if the drop field is currently configured to
-                // be submited after the pressing of the action
+                // be submitted after the pressing of the action
                 var isSubmit = dropField.attr("data-submit");
 
                 // retrieves the current value for the hidden field
@@ -14889,7 +14889,7 @@ if (typeof require !== "undefined") {
             var element = jQuery("> :nth-child(" + (index + 1) + ")", dropFieldContents);
 
             // verifies if the drop field is currently configured to
-            // be submited after the pressing of the action
+            // be submitted after the pressing of the action
             var isSubmit = dropField.attr("data-submit");
 
             // retrieves the value, the logic value
@@ -15298,7 +15298,7 @@ if (typeof require !== "undefined") {
 
                 // registers for the pre submit event, so that it's possible
                 // to create an hidden input representing the value that
-                // will be submited accordint to the drop list
+                // will be submitted accordint to the drop list
                 parentForm.bind("pre_submit", function() {
                     // retrieves the name of the element, this value is
                     // going to be used in the input element to be create
@@ -18891,8 +18891,8 @@ if (typeof require !== "undefined") {
                 // retrieves the state of the submitted flag
                 // and then updates it to the valid value,
                 // notice that this value contains a spelling error
-                var submitted = element.data("submited");
-                element.data("submited", true);
+                var submitted = element.data("submitted");
+                element.data("submitted", true);
 
                 // in case the form was not already submitted
                 // need to prevent the event from bubbling and
@@ -18925,7 +18925,7 @@ if (typeof require !== "undefined") {
 
                     // updates the submitted flag to the original invalid value
                     // so that the form may be re-submitted latter on
-                    element.data("submited", false);
+                    element.data("submitted", false);
 
                     // stops the event propagation and prevents
                     // the default behavior (avoids duplicate
@@ -18970,7 +18970,7 @@ if (typeof require !== "undefined") {
 
                     // unsets the submitted flag for the current form, so
                     // that the form may be submitted on confirm (latter)
-                    element.data("submited", false);
+                    element.data("submitted", false);
 
                     // stops the event propagation so that the current submit
                     // operation is delayed by one tick (until confirmation)
@@ -19143,7 +19143,7 @@ if (typeof require !== "undefined") {
             _body.triggerHandler("async_start");
 
             // retrieves the encoding type that is going to be used to encode
-            // the current form to be submited, this will change the way the
+            // the current form to be submitted, this will change the way the
             // submission will be done
             var enctype = matchedObject.attr("enctype") || "application/x-www-form-urlencoded";
 
@@ -19292,9 +19292,9 @@ if (typeof require !== "undefined") {
                 url: action,
                 data: data,
                 complete: function(request, textStatus) {
-                    // removes the submited and confirmed flags from the
+                    // removes the submitted and confirmed flags from the
                     // form so that it's possible to re-submit it
-                    matchedObject.data("submited", false);
+                    matchedObject.data("submitted", false);
                     matchedObject.data("confirmed", false);
 
                     // triggers the unlock event so that the various
@@ -19359,7 +19359,7 @@ if (typeof require !== "undefined") {
                     }
 
                     // triggers the success event on the matched object, this
-                    // should indicate that the form was correctly submited
+                    // should indicate that the form was correctly submitted
                     matchedObject.triggerHandler("success", [data]);
                 },
                 error: function(request, textStatus, errorThrown) {
@@ -19433,16 +19433,16 @@ if (typeof require !== "undefined") {
             matchedObject.triggerHandler("unlock");
             _body.triggerHandler("async_end");
 
-            // removes the submited flag from the form (allows re-submit)
+            // removes the submitted flag from the form (allows re-submit)
             // then set the form as non asynchronous and submits it, removing
             // the same flag after the submit operation is completed, so that's
             // possible to re-use the form after the initial submission
-            matchedObject.data("submited", false);
+            matchedObject.data("submitted", false);
             matchedObject.addClass("no-async");
             matchedObject.submit();
             matchedObject.triggerHandler("post_submit");
             matchedObject.triggerHandler("unlock");
-            matchedObject.data("submited", false);
+            matchedObject.data("submitted", false);
             matchedObject.removeClass("no-async");
         };
 
@@ -19499,7 +19499,7 @@ if (typeof require !== "undefined") {
 
             // updates the current state of the form element so that it reflects
             // the original state of the form elements (as expected)
-            matchedObject.data("submited", false);
+            matchedObject.data("submitted", false);
             matchedObject.data("confirmed", false);
 
             // triggers the unlock event on the matched object so that any element
@@ -19532,7 +19532,7 @@ if (typeof require !== "undefined") {
 
             // updates the current state of the form element so that it reflects
             // the original state of the form elements (as expected)
-            matchedObject.data("submited", false);
+            matchedObject.data("submitted", false);
             matchedObject.data("confirmed", false);
 
             // triggers the unlock event on the matched object so that any element
@@ -27248,7 +27248,7 @@ if (typeof require !== "undefined") {
 
                     // in case there is only one table field element
                     // the table empty field is removed to avoid it from
-                    // being submited (this should only be submited in empty table)
+                    // being submitted (this should only be submitted in empty table)
                     rows.length - tableDefaultField.length > 0 &&
                         tableEmptyField.removeAttr("name");
                 });
