@@ -3974,6 +3974,15 @@ __license__   = Apache License, Version 2.0
     -webkit-border-radius: 12px 12px 12px 12px;
 }
 
+.omni-style .tag.round {
+    border-radius: 12px 12px 12px 12px;
+    -o-border-radius: 12px 12px 12px 12px;
+    -ms-border-radius: 12px 12px 12px 12px;
+    -moz-border-radius: 12px 12px 12px 12px;
+    -khtml-border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+}
+
 .omni-style .table {
     position: relative;
     width: 100%;
