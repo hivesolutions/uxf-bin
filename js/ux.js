@@ -222,7 +222,7 @@ if (typeof require !== "undefined") {
             scan.uxscan();
 
             // applies the browser plugin, this should change the body
-            // classes reflecting the current environemnt in which the
+            // classes reflecting the current environment in which the
             // system is currently running, this may also patch the
             // jquery environment so that it contains the browser object
             _body.uxbrowser();
@@ -234,7 +234,7 @@ if (typeof require !== "undefined") {
 
             // applies the mobile plugin, this extension is going
             // to change the classes of the body for a mobile browser
-            // situation, that way the code may be used conditionaly
+            // situation, that way the code may be used conditionally
             // taking into account if this is a desktop or mobile browser
             _body.uxmobile();
 
@@ -350,7 +350,7 @@ if (typeof require !== "undefined") {
             // some resize event related limitations on some browsers
             _body.uxresize();
 
-            // applies the eval (javascript evalutation)
+            // applies the eval (javascript evaluation)
             // this is a dangerous operation
             _eval.uxeval();
 
@@ -473,7 +473,7 @@ if (typeof require !== "undefined") {
         var _body = jQuery("body");
 
         // normnalizes the current async reference so the href value
-        // is allways a valid string value that may be used with no
+        // is always a valid string value that may be used with no
         // dependency on its current data type
         href = href.href || href;
 
@@ -487,7 +487,7 @@ if (typeof require !== "undefined") {
 
         // in case the provided link value is invalid, not set
         // or empty there's no panel to be changed and everything
-        // shuold remain the same (no update)
+        // should remain the same (no update)
         if (!href) {
             return true;
         }
@@ -566,7 +566,7 @@ if (typeof require !== "undefined") {
                 }
 
                 // retrieves the reference to the body element to be used in the
-                // current reponse handler for a series of operations
+                // current response handler for a series of operations
                 var _body = jQuery("body");
 
                 // retrieves the current async state that is in processing in case
@@ -599,8 +599,8 @@ if (typeof require !== "undefined") {
             }
         });
 
-        // encapsulates the request object around an acessor and then registers
-        // for the ready state change event so that the conten type may be validated
+        // encapsulates the request object around an accessor and then registers
+        // for the ready state change event so that the contain type may be validated
         // as soon as possible (headers received stage) and the request canceled in
         // case it does not correspond to an HTML message
         var reference = jQuery(request);
@@ -963,12 +963,12 @@ if (typeof require !== "undefined") {
             valueS = second[element];
             type = typeof valueF;
 
-            // by default the comparision of the elements is
+            // by default the comparison of the elements is
             // considered to be valid
             valid = true;
 
             // switched over the type for the value and runs the
-            // appropriate comparision operations
+            // appropriate comparison operations
             switch (type) {
                 case "object":
                     valid = jQuery.uxequals(valueF, valueS);
@@ -979,13 +979,13 @@ if (typeof require !== "undefined") {
                     break;
             }
 
-            // in case the result of the comparision was valid
-            // continues the loop to the other comparision operations
+            // in case the result of the comparison was valid
+            // continues the loop to the other comparison operations
             if (valid) {
                 continue;
             }
 
-            // in case the the comparision operation has failed the
+            // in case the the comparison operation has failed the
             // control has reached this place and an invalid result
             // must be returned to the caller function
             return false;
@@ -993,7 +993,7 @@ if (typeof require !== "undefined") {
 
         // in case the control as reached this place all the
         // tests have passed and the structures are considered
-        // equal (deep comparision)
+        // equal (deep comparison)
         return true;
     };
 })(jQuery);
@@ -1091,7 +1091,7 @@ if (typeof require !== "undefined") {
             // retrieves the padding value
             padding = padding || "0";
 
-            // converts the value to a string and retrives
+            // converts the value to a string and retrieves
             // the length of it
             var stringValue = String(value);
             var stringValueLength = stringValue.length;
@@ -1147,7 +1147,7 @@ if (typeof require !== "undefined") {
         // in case the format is defined, the date is
         // meant to be formatted
         if (format) {
-            // replaces all the format values wit the proper
+            // replaces all the format values with the proper
             // date values in the format string
             format = format.replace(YEAR_CHARACTER, year);
             format = format.replace(MONTH_CHARACTER, _getStringValue(month, 2));
@@ -1353,8 +1353,8 @@ if (typeof require !== "undefined") {
         };
 
         // adds the callable to the queue of functions pending
-        // to be processed and then in case the queue is now empy
-        // runs the callable providing it with the callbacl
+        // to be processed and then in case the queue is now empty
+        // runs the callable providing it with the callback
         queue.push(callable);
         if (queue.length === 1) {
             callable(callback);
@@ -1403,7 +1403,7 @@ if (typeof require !== "undefined") {
 (function(jQuery) {
     /**
      * The amount of precision (in decimal places) that is going to be used for
-     * the round opertion internal usage (delta calculus).
+     * the round operation internal usage (delta calculus).
      */
     var FLOAT_PRECISION = 14;
 
@@ -1528,7 +1528,7 @@ if (typeof require !== "undefined") {
             var numberRecords = query.numberRecords || MAX_RECORDS;
             numberRecords = numberRecords === -1 ? MAX_RECORDS : numberRecords;
 
-            // unpacks the sort value and the sort oder from the
+            // unpacks the sort value and the sort order from the
             // sort tuple and uses them to create the "final" sort
             // string to be used in the query string
             var sortValue = sort ? sort[0] : null;
@@ -1550,7 +1550,7 @@ if (typeof require !== "undefined") {
                 var value = filter[2];
 
                 // in case the current value is a sequence must join
-                // all of its values arround the separator token
+                // all of its values around the separator token
                 var isSequence = typeof value === "object";
                 if (isSequence) {
                     value = value.join(";");
@@ -1627,7 +1627,7 @@ if (typeof require !== "undefined") {
 
             // sets a timeout for the request to be performed, this
             // timeout will allow the performing of a delayed request
-            // (ths way resource usage is minimized)
+            // (this way resource usage is minimized)
             setTimeout(function() {
                 // retrieves the current identifier from the
                 // matched object and checks it against the
@@ -1877,7 +1877,7 @@ if (typeof require !== "undefined") {
             }
 
             // retrieves the element items, these should contain the
-            // list of items currently registered in the data souce
+            // list of items currently registered in the data source
             var items = element.data("items");
 
             // retrieves the value of the insensitive flag in in the
@@ -1937,7 +1937,7 @@ if (typeof require !== "undefined") {
             // prefix (starts with)
             for (index = 0; index < items.length; index++) {
                 // retrieves the current item, that is going to be used as
-                // the basis of the comparision operation
+                // the basis of the comparison operation
                 var currentItem = items[index];
 
                 // creates the valid flag that is going to be used to control
@@ -1959,13 +1959,13 @@ if (typeof require !== "undefined") {
 
                     // in case the operator of the filter is not the equals one
                     // or the current item is not an object, must skip the current
-                    // iteraion (format not compatible with filter to be applied)
+                    // iteration (format not compatible with filter to be applied)
                     if (operator !== "equals" || typeof currentItem !== "object") {
                         continue;
                     }
 
-                    // extras the calue that is going to be used as the base coparision
-                    // for the current filter and determines if the comparision is
+                    // extras the value that is going to be used as the base coparision
+                    // for the current filter and determines if the comparison is
                     // valid if that's the case continues the loop (still valid)
                     var _value = currentItem[name];
                     if (_value === value) {
@@ -2725,7 +2725,7 @@ if (typeof require !== "undefined") {
                 _updateQueryElement(_element, options);
 
                 // triggers the ready event on the data source
-                // this should be able to notifiy possible listeners
+                // this should be able to notify possible listeners
                 // that the data is ready to be managed and "explored"
                 _element.trigger("data_ready");
             });
@@ -2832,7 +2832,7 @@ if (typeof require !== "undefined") {
                 });
 
                 // creates the jquery function associated with the
-                // newly created data souce function
+                // newly created data source function
                 jQuery.fn["uxdatasource" + name] = _dataSource(_items);
             });
         };
@@ -3182,7 +3182,7 @@ if (typeof require !== "undefined") {
 
                 // in case the current URL value is not valid
                 // must return immediately because it's not possible
-                // to go any furhter with the current processing
+                // to go any further with the current processing
                 if (!url) {
                     return;
                 }
@@ -3374,7 +3374,7 @@ if (typeof require !== "undefined") {
             var options = match[7] ? match[7] : null;
             var location = match[9] ? match[9] : null;
 
-            // splits the various options arround the and character
+            // splits the various options around the and character
             var optionsSplit = options ? options.split("&") : [];
 
             // creates the options map
@@ -3983,7 +3983,7 @@ if (typeof require !== "undefined") {
                 // retrieves the element reference
                 var _element = jQuery(element);
 
-                // retrieves the percentage from the elment
+                // retrieves the percentage from the element
                 // and parses it as a float
                 var percentage = _element.attr("data-percentage");
                 percentage = parseFloat(percentage);
@@ -4035,10 +4035,10 @@ if (typeof require !== "undefined") {
                 var barWidth = _element.width();
                 var contentsWidth = contents.outerWidth();
 
-                // in case the bar width is enought to hold the
+                // in case the bar width is enough to hold the
                 // contents (no overflow)
                 if (contentsWidth <= barWidth) {
-                    // retursn immediately (continues the loop)
+                    // returns immediately (continues the loop)
                     return;
                 }
 
@@ -4218,7 +4218,7 @@ if (typeof require !== "undefined") {
                 var targetObject = global ? jQuery(document) : _element;
 
                 // creates the handler function with a clojure in the current
-                // enviroment that will change the location to the URL defined
+                // environment that will change the location to the URL defined
                 // in the key element
                 var handler = function(event) {
                     // retrieves the key value
@@ -4622,7 +4622,7 @@ if (typeof require !== "undefined") {
                 }
 
                 // creates the handler function with a clojure in the current
-                // enviroment that will increment and decrement the current page
+                // environment that will increment and decrement the current page
                 var handler = function(event) {
                     // retrieves the key value
                     var keyValue = event.keyCode
@@ -4848,7 +4848,7 @@ if (typeof require !== "undefined") {
                 });
 
                 // registers the changing of contents in
-                // the itnernal structure of the window
+                // the internal structure of the window
                 _element.bind("layout", function() {
                     _element.uxcenter(
                         topOffset,
@@ -4928,7 +4928,7 @@ if (typeof require !== "undefined") {
                 var target = jQuery(targetSelector);
 
                 // retrieves the target element value so that it's
-                // possible to check if the target should be automaitcally
+                // possible to check if the target should be automatically
                 // shown (replaced)
                 var value = target.uxvalue();
 
@@ -6233,7 +6233,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -6555,7 +6555,7 @@ if (typeof require !== "undefined") {
             target = 9e9;
         }
 
-        // exteds the settings with the default setttings
+        // exteds the settings with the default settings
         settings = jQuery.extend({}, uxscrollto.defaults, settings);
 
         // speed is still recognized for backwards compatibility
@@ -6716,7 +6716,7 @@ if (typeof require !== "undefined") {
      * badly) on IE, quirks mode.
      *
      * @param {Element}
-     *            element The element to be used aas reference for the scroll.
+     *            element The element to be used as reference for the scroll.
      * @param {String}
      *            axis The axis to be used in scroll reference.
      * @return {Element} The input element.
@@ -6772,12 +6772,12 @@ if (typeof require !== "undefined") {
 
 (function(jQuery) {
     jQuery.uxvisible = function(element, offset, delta, parent) {
-        // retreives the offset value, talking into
-        // acccount the default value
+        // retrieves the offset value, talking into
+        // account the default value
         offset = offset || 0;
 
         // retrieves the delta value that can be used to
-        // control the poistion of the element to be teste
+        // control the position of the element to be teste
         // for visibility (margin delta)
         delta = delta || 0;
 
@@ -7126,7 +7126,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (performance issues may be created)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -7447,7 +7447,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (performance issues may be created)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -7778,14 +7778,14 @@ if (typeof require !== "undefined") {
         matchedObject.each(function(index, element) {
             // retrieves the reference to the current
             // element for which the original operation will
-            // be perfomed and the value set to the original
+            // be performed and the value set to the original
             var _element = jQuery(this);
 
             // retrieves the object (type) for the currently
             // matched object then uses it to construct the method
             // name to be used and uses it to restore the state of
             // the object to its original value, note that the reset
-            // operation is unsed in case no original exists
+            // operation is used in case no original exists
             var object = _element.attr("data-object");
             var method = _element["ux" + object];
             var result = method ? method.call(_element, "original") : false;
@@ -7887,7 +7887,7 @@ if (typeof require !== "undefined") {
         matchedObject.each(function(index, element) {
             // retrieves the reference to the current
             // element for which the reset operation will
-            // be perfomed and the value set to the original
+            // be performed and the value set to the original
             var _element = jQuery(this);
 
             // retrieves the object (type) for the currently
@@ -7920,7 +7920,7 @@ if (typeof require !== "undefined") {
         var matchedObject = this;
         var _window = jQuery(window);
 
-        // verifies if there's at leat one valid object matched and
+        // verifies if there's at least one valid object matched and
         // if that's not the case returns the current context immediately
         if (!matchedObject || matchedObject.length === 0) {
             return this;
@@ -7928,7 +7928,7 @@ if (typeof require !== "undefined") {
 
         // tries to retrieve the defined generate timeout value
         // from the matched object and in case it's not defined
-        // fallback to a defualt value, then uses this value to
+        // fallback to a default value, then uses this value to
         // define a timeout for the resize operation
         var timeout = matchedObject.attr("data-timeout") || 1000;
         setTimeout(function() {
@@ -7952,7 +7952,7 @@ if (typeof require !== "undefined") {
         var matchedObject = this;
         var _window = jQuery(window);
 
-        // verifies if there's at leat one valid object matched and
+        // verifies if there's at least one valid object matched and
         // if that's not the case returns the current context immediately
         if (!matchedObject || matchedObject.length === 0) {
             return this;
@@ -7978,7 +7978,7 @@ if (typeof require !== "undefined") {
         minimalHeight = parseInt(minimalHeight);
 
         var measure = function() {
-            // tries to retrive the pixel ratio of the current device
+            // tries to retrieve the pixel ratio of the current device
             // so that it may be used to populate global class values
             var ratio = window.devicePixelRatio;
             if (!ratio) {
@@ -8084,7 +8084,7 @@ if (typeof require !== "undefined") {
             matchedObject.attr("data-device", nextDevice);
 
             // in case the device has changed a device change event is raised
-            // so thtat any listner is notified about such changed
+            // so that any listener is notified about such changed
             deviceChanged && matchedObject.triggerHandler("device_change", [nextDevice]);
         };
 
@@ -8097,7 +8097,7 @@ if (typeof require !== "undefined") {
         };
 
         // registers for the resize event on the current window so
-        // thtat the proper watch (tick) operation is performed
+        // that the proper watch (tick) operation is performed
         _window.resize(function() {
             watch();
         });
@@ -8149,7 +8149,7 @@ if (typeof require !== "undefined") {
         var valueF = matchedObject.is("input, textarea") ? matchedObject.val : matchedObject.text;
 
         // retrieves the object (type) for the currently
-        // matched object then uses it to contruct the method
+        // matched object then uses it to construct the method
         // name to be used and uses it to retrieve the the
         // value for the component
         var object = matchedObject.attr("data-object");
@@ -8479,13 +8479,13 @@ if (typeof require !== "undefined") {
                 valueString = separator ? valueString.replace(".", separator) : valueString;
 
                 // in case the magnitude separator is defined
-                // there's a necessecity to process it by spliting
+                // there's a necessecity to process it by splitting
                 // the value string into integer and decimal part
                 if (magnitudeSeparator) {
                     // retrieves the value for the separator
                     separator = separator || ".";
 
-                    // splits the value string and then retrives
+                    // splits the value string and then retrieves
                     // the integer part of the value
                     var valueStringSplit = valueString.split(separator);
                     var integerPart = valueStringSplit[0];
@@ -8705,7 +8705,7 @@ if (typeof require !== "undefined") {
                     // sued in next iteration
                     var newBaseKey = key + ".";
 
-                    // applies the attributes to the template contens
+                    // applies the attributes to the template contents
                     // based in the current attribute value and with
                     // the new base key value
                     templateContents = _applyAttributes(
@@ -8745,7 +8745,7 @@ if (typeof require !== "undefined") {
                     };
 
                     // replaces the template strings in the HTML with the proper attribute
-                    // values this may be an expesive operation in case it's repeated
+                    // values this may be an expensive operation in case it's repeated
                     // frequently for a lot of times (modify with care)
                     templateContents = templateContents.replace(keyRegex, replacer);
                 }
@@ -8763,7 +8763,7 @@ if (typeof require !== "undefined") {
             var localize = options.localize;
             var defaultValue = options.defaultValue;
 
-            // retrirves the for each elments for the current template element
+            // retrirves the for each elements for the current template element
             var foreachElements = jQuery(".template-foreach", templateElement).not(
                 ".template-foreach .template-foreach"
             );
@@ -8947,7 +8947,7 @@ if (typeof require !== "undefined") {
                 // to the given format string as requested by user
                 var dateString = _processDate(date, format, utc);
 
-                // sets the "new" formated date value in the element and
+                // sets the "new" formatted date value in the element and
                 // adds the processed class to it
                 _element.html(dateString);
                 _element.addClass("processed");
@@ -8982,7 +8982,7 @@ if (typeof require !== "undefined") {
             // in case the format is defined, the date is
             // meant to be formatted
             if (format) {
-                // replaces all the format values wit the proper
+                // replaces all the format values with the proper
                 // date values in the format string
                 format = format.replace(YEAR_CHARACTER, year);
                 format = format.replace(MONTH_CHARACTER, _getStringValue(month, 2));
@@ -9033,7 +9033,7 @@ if (typeof require !== "undefined") {
             // retrieves the padding value
             padding = padding || "0";
 
-            // converts the value to a string and retrives
+            // converts the value to a string and retrieves
             // the length of it
             var stringValue = String(value);
             var stringValueLength = stringValue.length;
@@ -9343,7 +9343,7 @@ if (typeof require !== "undefined") {
             element.css("background-position", "0px 0px");
 
             // resets the various values of the element so that the
-            // animation is set to start from the beginning (orginal values)
+            // animation is set to start from the beginning (original values)
             element.data("height", height);
             element.data("frame", 0);
             element.data("count", frameCount);
@@ -9356,7 +9356,7 @@ if (typeof require !== "undefined") {
             }, frameTimeout);
 
             // updates the reference to the interval in the element so that
-            // it may be refernced latter for cancellation
+            // it may be referenced latter for cancellation
             element.data("interval", interval);
         };
 
@@ -9404,7 +9404,7 @@ if (typeof require !== "undefined") {
         };
 
         // switches over the method so that the proper execution is going
-        // to be perfoemed for the selected element
+        // to be performed for the selected element
         switch (method) {
             case "init":
                 // starts the sprite based animation for the current object
@@ -9476,7 +9476,7 @@ if (typeof require !== "undefined") {
          */
         var _appendHtml = function() {
             // localizes the various values that are going to be used in the
-            // contruction of the alert window
+            // construction of the alert window
             var information = jQuery.uxlocale("Information");
             var confirm = jQuery.uxlocale("Confirm");
             var cancel = jQuery.uxlocale("Cancel");
@@ -9506,7 +9506,7 @@ if (typeof require !== "undefined") {
             var windowButtonCancel = jQuery(".button-cancel", window);
 
             // converts the message into a string in case that's required
-            // (diferent data type) and then processes the "wiki" message
+            // (different data type) and then processes the "wiki" message
             message = typeof message === "string" ? message : String(message);
             message = matchedObject.uxwiki(message);
 
@@ -9862,7 +9862,7 @@ if (typeof require !== "undefined") {
 
                 // creates the date object from the timestamp
                 // and then uses it to unpack the various date
-                // values fro it (value decomposition)
+                // values from it (value decomposition)
                 var date = new Date(timestamp);
                 var year = date.getFullYear();
                 var month = date.getMonth() + 1;
@@ -9915,7 +9915,7 @@ if (typeof require !== "undefined") {
 
                 // creates the date object from the timestamp
                 // and then uses it to unpack the various date
-                // values fro it (value decomposition)
+                // values from it (value decomposition)
                 var date = new Date(timestamp);
                 var year = date.getFullYear();
                 var month = date.getMonth() + 1;
@@ -10215,7 +10215,7 @@ if (typeof require !== "undefined") {
         var _update = function(matchedObject, options) {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly update operation is not meant to
+            // immediately update operation is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -10486,7 +10486,7 @@ if (typeof require !== "undefined") {
             // retrieves all the (valid) cells from the matched object
             var cells = jQuery("tbody td", matchedObject);
 
-            // registrs for the click event in the cells
+            // registers for the click event in the cells
             cells.click(function() {
                 // retrieves the element
                 var element = jQuery(this);
@@ -10605,7 +10605,7 @@ if (typeof require !== "undefined") {
             }
 
             // iterates over the complete set of selected elements
-            // to correclty initialize all of them
+            // to correctly initialize all of them
             matchedObject.each(function(index, element) {
                 var _element = jQuery(this);
                 setTimeout(function() {
@@ -10789,7 +10789,7 @@ if (typeof require !== "undefined") {
         };
 
         // switches over the method, to be able to correctly handle
-        // the action that was rquested by logic
+        // the action that was requested by logic
         switch (method) {
             case "next":
                 _next(matchedObject, options);
@@ -10896,10 +10896,10 @@ if (typeof require !== "undefined") {
                 index += 1;
 
                 // in case the current value "overflows" the current
-                // section count the index calue is reseted
+                // section count the index value is reset
                 index = index === sectionCount ? 0 : index;
 
-                // adds the new section calss and shows the matched object
+                // adds the new section class and shows the matched object
                 // with a fade effect
                 matchedObject.addClass("section-" + (index + 1));
                 matchedObject.fadeIn(300);
@@ -10965,7 +10965,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // iterates over all the matched object
             matchedObject.each(function(index, element) {
-                // retrieves the element refence
+                // retrieves the element reference
                 var _element = jQuery(element);
                 _update(_element, options);
             });
@@ -11059,7 +11059,7 @@ if (typeof require !== "undefined") {
         };
 
         var _update = function(matchedObject, options) {
-            // retrives the value and the checked value
+            // retrieves the value and the checked value
             var value = matchedObject.val();
             var checked = matchedObject.attr("data-checked");
 
@@ -11164,7 +11164,7 @@ if (typeof require !== "undefined") {
                     return;
                 }
 
-                // retieves all the button associated with the button group
+                // retrieves all the button associated with the button group
                 // then removes the selected class from them
                 var buttons = jQuery(".button", buttonGroup);
                 buttons.removeClass("selected");
@@ -11182,7 +11182,7 @@ if (typeof require !== "undefined") {
             // be created in case that's required
             parentForm.bind("pre_submit", function() {
                 // retrieves the current element (form) and the associated underlying
-                // button groups for the opearation
+                // button groups for the operation
                 var element = jQuery(this);
                 var buttonGroups = jQuery(".button-group", element);
 
@@ -11201,7 +11201,7 @@ if (typeof require !== "undefined") {
                         return;
                     }
 
-                    // tries to retrieve the anme attribute out of the element
+                    // tries to retrieve the name attribute out of the element
                     // in case it's not defined returns immediately
                     var name = _element.attr("name");
                     if (!name) {
@@ -11580,7 +11580,7 @@ if (typeof require !== "undefined") {
 
         var __show = function(matchedObject, options) {
             // retrieves the show value from the matched object
-            // this valud should contain the target selector
+            // this value should contain the target selector
             var show = matchedObject.data("show");
 
             // retrieves the target to be show and display it on
@@ -11732,7 +11732,7 @@ if (typeof require !== "undefined") {
             var windowSelector = options.window || ".window.window-alert";
 
             // localizes the various values that are going to be used in the
-            // contruction of the alert window
+            // construction of the alert window
             var confirm = jQuery.uxlocale("Confirm");
             var cancel = jQuery.uxlocale("Cancel");
 
@@ -11761,7 +11761,7 @@ if (typeof require !== "undefined") {
             var windowButtonCancel = jQuery(".button-cancel", window);
 
             // converts the message into a string in case that's required
-            // (diferent data type) and then processes the "wiki" message
+            // (different data type) and then processes the "wiki" message
             message = typeof message === "string" ? message : String(message);
             message = matchedObject.uxwiki(message);
 
@@ -11922,7 +11922,7 @@ if (typeof require !== "undefined") {
                 // otherwise the interval mode is enabled, the timeout
                 // must be used to set the interval
                 else {
-                    // sets a new inteval with the defined timeout value
+                    // sets a new interval with the defined timeout value
                     // (this is considered to be the default behavior)
                     setInterval(function() {
                         // updates the changer value to show the
@@ -11952,7 +11952,7 @@ if (typeof require !== "undefined") {
             index += 1;
 
             // in case the current value "overflows" the current
-            // section count the index calue is reseted
+            // section count the index value is reset
             index = index === sectionCount ? 0 : index;
 
             // retrieves the current panel to be shown and
@@ -12055,7 +12055,7 @@ if (typeof require !== "undefined") {
 
                 // creates the (local) data source to be used in the target
                 // section, this data source is going to be constantly manpulated
-                // throught the internal items list
+                // through the internal items list
                 var targetSource = jQuery('<ul class="data-source" data-type="local"></ul>');
 
                 // creates the various arrow elements to be used to "cross" the
@@ -12068,7 +12068,7 @@ if (typeof require !== "undefined") {
                 var clear = jQuery('<div class="clear"></div>');
 
                 // iterates over each of the items in the list of predefined items
-                // to add them to the local (and target) data souce, initial setting
+                // to add them to the local (and target) data source, initial setting
                 // then removes the items section to avoid extra elements in dom
                 itemsList.each(function(index, element) {
                     var _element = jQuery(this);
@@ -12139,7 +12139,7 @@ if (typeof require !== "undefined") {
             var targetList = jQuery(".target-section .select-list", matchedObject);
 
             // retrieves the source list value as the source
-            // element to be able to register it for the valide
+            // element to be able to register it for the valid
             // item event (and filter the ones in the target)
             var sourceElement = jQuery(".source-section .source-list", matchedObject);
 
@@ -12219,7 +12219,7 @@ if (typeof require !== "undefined") {
                     var item = jQuery(items[index]);
 
                     // retrieves the data value from the selected item defaulting
-                    // to the text represention in case none is provided
+                    // to the text representation in case none is provided
                     var dataValue = item.attr("data-value");
                     var htmlValue = item.text();
                     dataValue = dataValue || htmlValue;
@@ -12314,7 +12314,7 @@ if (typeof require !== "undefined") {
             });
 
             // registers for the click event on the left arrow to be
-            // able to tranfers the selected target elements back to
+            // able to transfers the selected target elements back to
             // the source list
             arrowLeft.click(function() {
                 // retrieves the current element and then uses it to
@@ -12347,7 +12347,7 @@ if (typeof require !== "undefined") {
                     // the list representing the target items in the data source
                     var item = _selectedItem.data("item");
 
-                    // retrieves the index of the item (valye) in the target
+                    // retrieves the index of the item (value) in the target
                     // items list and then uses it to remove the item from
                     // the list of target items
                     var _index = targetItems.indexOfObject(item);
@@ -12361,7 +12361,7 @@ if (typeof require !== "undefined") {
             });
 
             // registers for the click event on the right arrow to be
-            // able to tranfers the selected source elements into
+            // able to transfers the selected source elements into
             // the target list
             arrowRight.click(function() {
                 // retrieves the current element and then uses it to
@@ -12547,7 +12547,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -12608,7 +12608,7 @@ if (typeof require !== "undefined") {
                 // container element so that it may be correctly used
                 container.prepend(prepend);
 
-                // retreives the compete set of elements that are meant
+                // retrieves the compete set of elements that are meant
                 // to be defaulted in case no logical value is defined
                 // allowing proper value interface for them
                 var defaults = input ? elements : jQuery([]);
@@ -12684,7 +12684,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -12715,7 +12715,7 @@ if (typeof require !== "undefined") {
             });
 
             // registers for the click operation in the element so that the
-            // visibility of the curren drop down is hidden
+            // visibility of the current drop down is hidden
             elements.click(function(event) {
                 // retrieves the reference to the "clicked" element and
                 // the associated parent and child elements that are
@@ -12812,7 +12812,7 @@ if (typeof require !== "undefined") {
                     }
 
                     // retrieves the reference to the complete set of drop down
-                    // conatainers that are visible for the current body and then
+                    // containers that are visible for the current body and then
                     // runs the hide operation for the associated drop down
                     var container = jQuery(".drop-down-container.visible", element);
                     var dropDown = jQuery(".drop-down", container);
@@ -12826,7 +12826,7 @@ if (typeof require !== "undefined") {
                     var element = jQuery(this);
 
                     // retrieves the reference to the complete set of drop down
-                    // conatainers that are visible for the current body and then
+                    // containers that are visible for the current body and then
                     // runs the hide operation for the associated drop down
                     var container = jQuery(".drop-down-container.visible", element);
                     var dropDown = jQuery(".drop-down", container);
@@ -12840,7 +12840,7 @@ if (typeof require !== "undefined") {
                     var element = jQuery("body");
 
                     // retrieves the reference to the complete set of drop down
-                    // conatainers that are visible for the current body and then
+                    // containers that are visible for the current body and then
                     // runs the hide operation for the associated drop down
                     var container = jQuery(".drop-down-container.visible", element);
                     var dropDown = jQuery(".drop-down", container);
@@ -12896,7 +12896,7 @@ if (typeof require !== "undefined") {
         };
 
         var _update = function(matchedObject, options) {
-            // saves the state value that determins if the current drop down
+            // saves the state value that determines if the current drop down
             // for update was empty before the update
             var wasEmpty = matchedObject.data("empty") || false;
 
@@ -13107,7 +13107,7 @@ if (typeof require !== "undefined") {
             }
 
             // retrieves the reference to the various elements
-            // tha are going to be used in the element selection
+            // that are going to be used in the element selection
             var container = matchedObject.parents(".drop-down-container");
             var button = jQuery(".button-drop-down", container);
             var input = jQuery("input", container);
@@ -13115,7 +13115,7 @@ if (typeof require !== "undefined") {
 
             // retrieves both the textual/visual value of the selected
             // element and the logical/data value for it, note that the
-            // content of the elememt has priority over the complete text
+            // content of the element has priority over the complete text
             var text = element.uxcontent(null, "text").trim() || element.text().trim();
             var value = element.attr("data-value");
 
@@ -13124,7 +13124,7 @@ if (typeof require !== "undefined") {
             var same = element.hasClass("selected");
 
             // removes the invalid class from both the container and the
-            // drop down (matched object) element, as at leat one selection
+            // drop down (matched object) element, as at least one selection
             // has been performed (invalidation has been removed)
             matchedObject.removeClass("invalid");
             container.removeClass("invalid");
@@ -13240,7 +13240,7 @@ if (typeof require !== "undefined") {
 /**
  * jQuery drop field plugin, this jQuery plugin provides the base
  * infra-structure for the creation of a drop field component. The most
- * "powerfull" drop based component to be used together with a data source and
+ * "powerful" drop based component to be used together with a data source and
  * provides both the select and the "find" modes of working for active (mouse
  * only) or passive (kwyboard based) models of interaction.
  *
@@ -13331,7 +13331,7 @@ if (typeof require !== "undefined") {
                 // retrieves any possible filter information, both the name
                 // and the operation, these values may be used to change the
                 // default behavior of the query so that a "composite" filter
-                // is used instead giveing more flexibility to the query
+                // is used instead giving more flexibility to the query
                 var filterName = _element.attr("data-filter_name") || null;
                 var filterOperation = _element.attr("data-filter_operation") || "like";
 
@@ -13454,7 +13454,7 @@ if (typeof require !== "undefined") {
                 // that have an hidden (logical) value defined but that don't
                 // have a valid value defined in the drop field, this is
                 // considered a "self bootstrap" operation  and should be used
-                // carrefully in order to avoid extra server side calls
+                // carefully in order to avoid extra server side calls
                 var bootstrap = !textFieldValue && hiddenFieldValue;
                 bootstrap &&
                     setTimeout(function() {
@@ -13477,7 +13477,7 @@ if (typeof require !== "undefined") {
             var textField = jQuery(".text-field", matchedObject);
 
             // checks if the drop field click event is already
-            // registerd in the body and set the variable as
+            // registered in the body and set the variable as
             // true to avoid further registrations
             var isRegistered = _body.data("drop_field_click");
             _body.data("drop_field_click", true);
@@ -13582,7 +13582,7 @@ if (typeof require !== "undefined") {
 
             // registers for the update drop event that should refresh
             // the currently associated drop list with the latest
-            // data comming from the data source
+            // data coming from the data source
             matchedObject.bind("update_drop", function() {
                 var element = jQuery(this);
                 _update(element, options, true);
@@ -13694,7 +13694,7 @@ if (typeof require !== "undefined") {
                 dropField.addClass("focus");
 
                 // triggers the focus event on the drop field so that
-                // any listner gets notified abou the new event
+                // any listener gets notified about the new event
                 dropField.triggerHandler("focus");
 
                 // avoids the propagation of the event otherwise
@@ -13713,7 +13713,7 @@ if (typeof require !== "undefined") {
                 var mouseControl = dropField.data("mouse_control");
 
                 // hides the drop field contents, only in case the mouse
-                // control flag is set, prevents the browser from hidding
+                // control flag is set, prevents the browser from hiding
                 // the drop field contents in case before the click event
                 // is propagated
                 !mouseControl && _hide(dropField);
@@ -13730,7 +13730,7 @@ if (typeof require !== "undefined") {
                 dropField.removeClass("focus");
 
                 // triggers the blur event on the drop field so that
-                // any listner gets notified abou the new event
+                // any listener gets notified about the new event
                 dropField.triggerHandler("blur");
 
                 // avoids the propagation of the event otherwise
@@ -14009,7 +14009,7 @@ if (typeof require !== "undefined") {
                         _hide(dropField);
 
                         // stops the event propagation (to
-                        // avoid colateral problem in text field)
+                        // avoid collateral problem in text field)
                         event.stopPropagation();
 
                         // breaks the switch
@@ -14124,7 +14124,7 @@ if (typeof require !== "undefined") {
             });
 
             // registers for the paste event on the text field so that
-            // any new text "transfered" to the text field is used to
+            // any new text "transferred" to the text field is used to
             // update the current drop field status
             textField.bind("paste", function() {
                 // retrieves the reference to the current element and
@@ -14215,7 +14215,7 @@ if (typeof require !== "undefined") {
             // and replaced by a single filter tuple value
             if (filterName) {
                 // runs the defaulting operation in the filters value so that
-                // the provided set of filters is allways an empty list, then
+                // the provided set of filters is always an empty list, then
                 // adds the new filter tuple to the sequence and invalidates
                 // the filter string so that no base filtering is used
                 filters = filters || [];
@@ -14270,14 +14270,14 @@ if (typeof require !== "undefined") {
                     dropField.removeClass("updating");
 
                     // in case the valid items value is not valid (error occurred)
-                    // so items are avaiable for the update (must avoid update)
+                    // so items are available for the update (must avoid update)
                     if (!validItems) {
                         return;
                     }
 
                     // in case the drop field is locked or the containing
                     // text field does not contains focus there is no need
-                    // to process the results (something occured in betweed
+                    // to process the results (something occurred in between
                     // the request and the response) must return immediately,
                     // note that this immediate return operation may be skipped
                     // in case the force flag is set (avoids skipping)
@@ -14291,11 +14291,11 @@ if (typeof require !== "undefined") {
                     // empties (clears) the drop field contents
                     dropFieldContents.empty();
 
-                    // in case no valid items were retrieves, must show
+                    // in case no valid items were retrieved, must show
                     // the no results element
                     if (validItems.length === 0) {
                         // clones the drop field no results element, to create
-                        // an instance to be added, then removes the hidding
+                        // an instance to be added, then removes the hiding
                         // class from it
                         var _dropFieldNoResults = dropFieldNoResults.clone();
                         _dropFieldNoResults.removeClass("drop-field-no-results");
@@ -14306,7 +14306,7 @@ if (typeof require !== "undefined") {
                     }
 
                     // retrieves the cache map to be used to determine if the
-                    // various elements should be contructed from scratch or
+                    // various elements should be constructed from scratch or
                     // if an already existing element should be used instead
                     var cache = dropField.data("cache") || {};
 
@@ -14514,8 +14514,8 @@ if (typeof require !== "undefined") {
 
                     // retrieves the previous selection (original selection)
                     // using the value from the text field, then tries to guess
-                    // the index by comparing the string value agains the
-                    // display value of the list item (this is usefull for the
+                    // the index by comparing the string value against the
+                    // display value of the list item (this is useful for the
                     // select type drop fields)
                     var preSelection = jQuery(
                         "li[data-display='" + textFieldValue + "']",
@@ -14562,7 +14562,7 @@ if (typeof require !== "undefined") {
                     bootstrap &&
                         listItems.each(function(index, element) {
                             // retrieves the current list item (element) in iteration and
-                            // unpacks its data value, checking it agains the currently
+                            // unpacks its data value, checking it against the currently
                             // set logic value (for proper match value)
                             var _element = jQuery(this);
                             var isValid = valueLogic === _element.attr("data-value");
@@ -14587,7 +14587,7 @@ if (typeof require !== "undefined") {
                         options.force &&
                         listItems.each(function(index, element) {
                             // retrieves the current list item (element) in iteration and
-                            // unpacks its data value, checking it agains the currently
+                            // unpacks its data value, checking it against the currently
                             // set "display" value (for proper match value)
                             var _element = jQuery(this);
                             var isValid = value === _element.attr("data-display");
@@ -14639,7 +14639,7 @@ if (typeof require !== "undefined") {
             // retrieves the current selection value
             var selection = matchedObject.data("selection");
 
-            // in case the selection row not "overlfows"
+            // in case the selection row not "overflows"
             if (selection > 0) {
                 // decrements the current selection
                 matchedObject.data("selection", selection - 1);
@@ -14656,7 +14656,7 @@ if (typeof require !== "undefined") {
             // retrieves the "current" list items
             var listItems = jQuery(".drop-field-contents > *", matchedObject);
 
-            // in case the selection row not "overlfows"
+            // in case the selection row not "overflows"
             if (selection < listItems.length) {
                 // increments the current selection
                 matchedObject.data("selection", selection + 1);
@@ -14741,7 +14741,7 @@ if (typeof require !== "undefined") {
             var value = options.value;
             var valueLogic = options.valueLogic;
 
-            // tries to retieve the item definition from the
+            // tries to retrieve the item definition from the
             // options in case it's defined
             var item = options.item || {};
 
@@ -15025,7 +15025,7 @@ if (typeof require !== "undefined") {
             var isVisible = dropFieldContents.is(":visible");
             !isVisible && dropFieldContents.show();
 
-            // determines if the drop field contents is bord box based
+            // determines if the drop field contents is border box based
             // sizing, if that the case a different sizing is going to
             // be applied to determine the width of the drop field
             var boxSizing = dropFieldContents.css("box-sizing");
@@ -15058,7 +15058,7 @@ if (typeof require !== "undefined") {
             var dropField = matchedObject;
             var dropFieldContents = jQuery(".drop-field-contents", dropField);
 
-            // tries to retieve the updated flag from the
+            // tries to retrieve the updated flag from the
             // drop field and in case it's not been already
             // updated, runs the update process on it after
             // that sets the updated flag on its data
@@ -15115,13 +15115,13 @@ if (typeof require !== "undefined") {
 
             case "index":
                 // selects the proper index value in the drop
-                // field, usefull for drop field select elements
+                // field, useful for drop field select elements
                 _index(matchedObject, options);
                 break;
 
             case "value":
                 // retrieves the value and returns it to the
-                // caler function for handling
+                // caller function for handling
                 var value = _value(matchedObject, options);
                 return value;
 
@@ -15144,7 +15144,7 @@ if (typeof require !== "undefined") {
  * jQuery drop list plugin, this jQuery plugin provides the base infra-structure
  * for the creation of a drop list component. To be used in graphical operations
  * where the list of elements to be selected (both text or graphical) should not
- * allways be viewable and its visibility should be "togglable".
+ * always be viewable and its visibility should be "togglable".
  *
  * @name uxf-drop-list.js
  * @author João Magalhães <joamag@hive.pt>
@@ -15238,7 +15238,7 @@ if (typeof require !== "undefined") {
                 _menuContents.trigger("hide");
 
                 // verifies the current drop list status to check if it's
-                // currently acive or not in case it's active hides it
+                // currently active or not in case it's active hides it
                 // and then removes the active class
                 if (isActive) {
                     dropOptions.hide();
@@ -15298,7 +15298,7 @@ if (typeof require !== "undefined") {
 
                 // registers for the pre submit event, so that it's possible
                 // to create an hidden input representing the value that
-                // will be submitted accordint to the drop list
+                // will be submitted according to the drop list
                 parentForm.bind("pre_submit", function() {
                     // retrieves the name of the element, this value is
                     // going to be used in the input element to be create
@@ -15406,7 +15406,7 @@ if (typeof require !== "undefined") {
             // to create their internal structure
             matchedObject.each(function(index, element) {
                 // retrieves the current drop tag element and uses
-                // its title attribute to create the strcture
+                // its title attribute to create the structure
                 var _element = jQuery(this);
                 var title = _element.attr("data-title");
 
@@ -15465,7 +15465,7 @@ if (typeof require !== "undefined") {
                 // current drop tag
                 var items = jQuery("> .items", dropTag);
 
-                // checks if the drop tag is curently in the disable
+                // checks if the drop tag is currently in the disable
                 // state in such case returns immediately nothing to
                 // be done on a disabled drop tag
                 var isDisabled = dropTag.hasClass("disabled");
@@ -15473,7 +15473,7 @@ if (typeof require !== "undefined") {
                     return;
                 }
 
-                // checks if the drop tag is curently in the open
+                // checks if the drop tag is currently in the open
                 // state in order to change it
                 var isOpen = dropTag.hasClass("open");
 
@@ -15528,7 +15528,7 @@ if (typeof require !== "undefined") {
             // registers for the click event on the various list items
             // to select them (go into tag mode)
             listItems.click(function() {
-                // retieves the current element, the drop tag associated with
+                // retrieves the current element, the drop tag associated with
                 // it and the drop tag text
                 var element = jQuery(this);
                 var dropTag = element.parents(".drop-tag");
@@ -15569,7 +15569,7 @@ if (typeof require !== "undefined") {
             // registers for the click event on the various list items
             // to select them (go into tag mode)
             listItems.click(function() {
-                // retieves the current element, the drop tag associated with
+                // retrieves the current element, the drop tag associated with
                 // it and the drop tag text
                 var element = jQuery(this);
                 var dropTag = element.parents(".drop-tag");
@@ -15721,7 +15721,7 @@ if (typeof require !== "undefined") {
                 event.stopPropagation();
                 event.preventDefault();
 
-                // retrieves the data tranfer and the files
+                // retrieves the data transfer and the files
                 // rom the original event
                 var dataTransfer = event.originalEvent.dataTransfer;
                 var files = dataTransfer.files;
@@ -15895,8 +15895,8 @@ if (typeof require !== "undefined") {
                 // an input should be created if none is found
                 var noInput = _element.attr("data-no_input");
 
-                // tries to retrieve the (default and inital) sort attribute for
-                // the filter and in case it exits sets it inthe filter sate
+                // tries to retrieve the (default and initial) sort attribute for
+                // the filter and in case it exits sets it in the filter state
                 var sort = _element.attr("data-sort");
                 sort && _element.data("sort", sort.split(":"));
 
@@ -15912,8 +15912,8 @@ if (typeof require !== "undefined") {
                 var filterContents = jQuery("> .filter-contents", _element);
                 var filterMore = jQuery("> .filter-more", _element);
 
-                // retrieves the text field (element) assicated with the
-                // curernt filter for the main filtering
+                // retrieves the text field (element) associated with the
+                // current filter for the main filtering
                 var textField = jQuery("> .text-field", _element);
 
                 // in case there is no text field defined for the
@@ -15942,7 +15942,7 @@ if (typeof require !== "undefined") {
                 }
 
                 // in case the text field is still not found the extra no input
-                // class is aded to the currently selected filter element
+                // class is added to the currently selected filter element
                 textField.length === 0 && _element.addClass("no-input");
 
                 // creates the element representing the buttons for the filter
@@ -15982,7 +15982,7 @@ if (typeof require !== "undefined") {
                 var isGallery = _element.hasClass("gallery-list");
 
                 // retrieves the element button that was just created to
-                // add the apropriate class
+                // add the appropriate class
                 var toggleViews = jQuery(".filter-input-toggle-views", _element);
 
                 // adds the appropriate filter input class to the toggle
@@ -16027,7 +16027,7 @@ if (typeof require !== "undefined") {
                     filterOption.insertBefore(filterClear);
                 });
 
-                // adds the devault sort option to the filter, this value exists for
+                // adds the default sort option to the filter, this value exists for
                 // every search and indicates that no sort will occur (default is used)
                 filterSort.prepend(
                     '<div class="filter-sort-option selected equals" data-order="equals">default</div>'
@@ -16042,13 +16042,13 @@ if (typeof require !== "undefined") {
                 // filters and so the filtering is enabled
                 advanced && hasFiltering && _addFilter(_element);
 
-                // in case there is currenlty no valid filtering in the data
+                // in case there is currently no valid filtering in the data
                 // source must disabled the filtering part in the advanced area
                 !hasFiltering && _disableFiltering();
 
                 // retrieves the text value from the filter more
-                // and then encapsulates it arround the text divisor
-                // then adds it in conjuction to the spinner to the
+                // and then encapsulates it around the text divisor
+                // then adds it in conjunction to the spinner to the
                 // filter more component, as the new filter more contents
                 var filterMoreText = filterMore.html();
                 filterMore.html(
@@ -16125,7 +16125,7 @@ if (typeof require !== "undefined") {
             var filterSelect = jQuery(".filter-advanced-select", matchedObject);
 
             // checks if the filter click event is already
-            // registerd in the body and set the variable as
+            // registered in the body and set the variable as
             // true to avoid further registrations
             var isRegistered = _body.data("filter_click");
             matchedObject.length > 0 && _body.data("filter_click", true);
@@ -16157,7 +16157,7 @@ if (typeof require !== "undefined") {
                 var template = jQuery(".template", filter);
 
                 // retrieves the cache map to be used to determine if the
-                // various elements should be contructed from scratch or
+                // various elements should be constructed from scratch or
                 // if an already existing element should be used instead
                 var cache = filter.data("cache") || {};
 
@@ -16584,7 +16584,7 @@ if (typeof require !== "undefined") {
                 var filterString = filter.data("filter_string");
                 var filterInputValue = element.attr("data-value");
 
-                // in case no string value changes occured
+                // in case no string value changes occurred
                 if (filterString === filterInputValue) {
                     // returns immediately
                     return;
@@ -16755,7 +16755,7 @@ if (typeof require !== "undefined") {
 
                 // tries to retrieve the value for the infinite loading
                 // support in the matched object (by default it's disabled)
-                // in case the value is not eabled returns immediately, as
+                // in case the value is not enabled returns immediately, as
                 // there's nothing to be done for it
                 var infinite = element.attr("data-infinite") || false;
                 if (!infinite) {
@@ -16777,7 +16777,7 @@ if (typeof require !== "undefined") {
 
                         // retrieves the filter more element height as the
                         // delta value for the visibility testing this way
-                        // the visibility test is done agains the top
+                        // the visibility test is done against the top
                         var delta = filterMore.outerHeight() * -1;
 
                         // checks if the element is currently visible, so that
@@ -16795,7 +16795,7 @@ if (typeof require !== "undefined") {
                 );
 
                 // stores the on scroll event handler in the current context
-                // so thtat it may be used altter on for unregistration
+                // so that it may be used altter on for unregistration
                 element.data("on_scroll", onScroll);
 
                 // registers for the destroyed event on the element and
@@ -16849,7 +16849,7 @@ if (typeof require !== "undefined") {
             numberRecords = filter.hasClass("table-list") ? 14 : numberRecords;
 
             // determines if the provided filter value (parameter) is defined
-            // (diferent from undefined) if that's the case updates the filter
+            // (different from undefined) if that's the case updates the filter
             // value data state for the filter
             var setValue = filterValue !== null && filterValue !== undefined;
             setValue && filter.data("filter_value", filterValue || "");
@@ -16897,7 +16897,7 @@ if (typeof require !== "undefined") {
                 // in case the filter is already complete or
                 // it has data pending to be retrieved
                 if (complete || pending) {
-                    // returns immeidately (can not retrieve
+                    // returns immediately (can not retrieve
                     // any more data for now)
                     return;
                 }
@@ -17042,7 +17042,7 @@ if (typeof require !== "undefined") {
                     }
 
                     // retrieves the cache map to be used to determine if the
-                    // various elements should be contructed from scratch or
+                    // various elements should be constructed from scratch or
                     // if an already existing element should be used instead
                     var cache = filter.data("cache") || {};
 
@@ -17108,7 +17108,7 @@ if (typeof require !== "undefined") {
                             // the specification (correct behaviour)
                             templateItem.uxapply();
                         }
-                        // otherwise must re-create the template item by runing
+                        // otherwise must re-create the template item by running
                         // the template engine again
                         else {
                             // applies the template to the template (item)
@@ -17143,7 +17143,7 @@ if (typeof require !== "undefined") {
                     // in case there are no items to be shown
                     if (validItemsLength > 0) {
                         // hides the filter no results panel and
-                        // removes the no results class from tghe
+                        // removes the no results class from the
                         // currently defined filter element
                         filterNoResults.hide();
                         filter.removeClass("no-results");
@@ -17199,7 +17199,7 @@ if (typeof require !== "undefined") {
                         // (menu) in iteration
                         var _element = jQuery(this);
 
-                        // retrieves ther complete set of buttons currently present
+                        // retrieves the complete set of buttons currently present
                         // in the menu and removes the selected class from them
                         // (avoiding any possible visual problems)
                         var buttons = jQuery(".button:not(.menu-link)", _element);
@@ -17258,7 +17258,7 @@ if (typeof require !== "undefined") {
             // a menu of type drop (provisory)
             menu.addClass("drop-menu");
 
-            // retrieves ther complete set of buttons currently present
+            // retrieves the complete set of buttons currently present
             // in the menu and removes the selected class from them
             // (avoiding any possible visual problems)
             var buttons = jQuery(".button:not(.menu-link)", menu);
@@ -17316,14 +17316,14 @@ if (typeof require !== "undefined") {
             // current menu, to be used further ahead
             var menuContents = jQuery("> .menu-contents", menu);
 
-            // retrieves ther complete set of buttons currently present
+            // retrieves the complete set of buttons currently present
             // in the menu to register for their appropriate events and
-            // remove the default buton behavior
+            // remove the default button behavior
             var buttons = jQuery(".button:not(.menu-link)", menu);
 
             // retrieves the target buttons and then retrieves also the non
             // target buttons (these button need to be registered for the
-            // varios mouse event to control the sub menu behavior)
+            // various mouse event to control the sub menu behavior)
             var targetButtons = jQuery(".button[data-target]", menu);
             var nonTargetButtons = jQuery(":not(.sub-menu) .button:not([data-target])", menu);
 
@@ -17337,7 +17337,7 @@ if (typeof require !== "undefined") {
 
                 // creates the timeout to handle the proper show of
                 // the sub menu (but only in case the element is still
-                // correctly slected)
+                // correctly selected)
                 setTimeout(function() {
                     // in case the element is not selected anymore
                     // need to avoid showing the sub menu
@@ -17481,7 +17481,7 @@ if (typeof require !== "undefined") {
                         // in case the current button refers a link that
                         // must be opened as a document and this is the first
                         // element to be parsed opens the link in the current
-                        // document otherwise creates a new window and opend
+                        // document otherwise creates a new window and opened
                         // the link in it (external opening)
                         isDocument && index === 0
                             ? jQuery.uxlocation(link)
@@ -17526,7 +17526,7 @@ if (typeof require !== "undefined") {
                     }
 
                     // stops the event propagation and prevents
-                    // the default bahavior (avoids propagation problems)
+                    // the default behavior (avoids propagation problems)
                     event.stopPropagation();
                     event.preventDefault();
                 });
@@ -17535,7 +17535,7 @@ if (typeof require !== "undefined") {
                 // to avoid unwanted propagation
                 _element.dblclick(function(event) {
                     // stops the event propagation and prevents
-                    // the default bahavior (avoids propagation problems)
+                    // the default behavior (avoids propagation problems)
                     event.stopPropagation();
                     event.preventDefault();
                 });
@@ -17548,7 +17548,7 @@ if (typeof require !== "undefined") {
             var selection = matchedObject.data("selection");
             var _selection = selection[0];
 
-            // in case the selection row not "overlfows"
+            // in case the selection row not "overflows"
             if (_selection > 0) {
                 // decrements the current selection
                 matchedObject.data("selection", [_selection - 1]);
@@ -17568,7 +17568,7 @@ if (typeof require !== "undefined") {
             // retrieves the "current" list items
             var listItems = jQuery(".filter-contents > *", matchedObject);
 
-            // in case the selection row not "overlfows"
+            // in case the selection row not "overflows"
             if (_selection < listItems.length) {
                 // increments the current selection
                 matchedObject.data("selection", [_selection + 1]);
@@ -17663,13 +17663,13 @@ if (typeof require !== "undefined") {
             // orders the selection according
             // to the typical arithmetic function
             selection.sort(function(first, second) {
-                // returns the diference between the first
-                // adn the second elements
+                // returns the difference between the first
+                // and the second elements
                 return first - second;
             });
 
             // iterates over all the items in the selection
-            // to correclty update their control classes
+            // to correctly update their control classes
             for (var index = 0; index < selection.length; index++) {
                 // retrieves the current the previous and the next
                 // selections (for processing)
@@ -17718,7 +17718,7 @@ if (typeof require !== "undefined") {
             // reference to the selected list item
             var _element = selectedListItem.get(0);
 
-            // cheks if the element is visible using
+            // checks if the element is visible using
             // the appropriate visibility extension
             var isVisible = _element ? jQuery.uxvisible(selectedListItem, pageOffset) : true;
 
@@ -17860,7 +17860,7 @@ if (typeof require !== "undefined") {
             // retrieves the "current" list items
             var listItems = jQuery(".filter-contents > *", matchedObject);
 
-            // in case the selection row not "overlfows"
+            // in case the selection row not "overflows"
             if (value > listItems.length) {
                 // updates the matched object (runs the loading
                 // of additional values) and returns immediately
@@ -18116,7 +18116,7 @@ if (typeof require !== "undefined") {
             var target = element.attr("data-target");
             var subMenu = jQuery(target, menu);
 
-            // retrieves ther complete set of buttons currently present
+            // retrieves the complete set of buttons currently present
             // in the sub menu to register for their appropriate events
             var subButtons = jQuery(".button:not(.menu-link)", subMenu);
 
@@ -18156,7 +18156,7 @@ if (typeof require !== "undefined") {
             var scrollY = window.scrollY ? window.scrollY : document.body.scrollTop;
             var scrollX = window.scrollX ? window.scrollX : document.body.scrollLeft;
 
-            // sets the proper postion attributes for the
+            // sets the proper position attributes for the
             // submenu so that it's positioned to the right
             // of the action element
             subMenu.css("position", "fixed");
@@ -18183,7 +18183,7 @@ if (typeof require !== "undefined") {
 
             // shows the sub menu with a fade effect
             subMenu.fadeIn(150, function() {
-                // unsets the flag that controlls the
+                // unsets the flag that controls the
                 // showing state of the sub menu
                 subMenu.data("showing", false);
             });
@@ -18466,7 +18466,7 @@ if (typeof require !== "undefined") {
             );
 
             // creates the remove and add buttons for the filter line
-            // and creates the clear element to clear eht float layout strucure
+            // and creates the clear element to clear eht float layout structure
             // (in case it's necessary)
             var remove = jQuery('<div class="filter-input-remove"></div>');
             var add = jQuery('<div class="filter-input-add"></div>');
@@ -18487,7 +18487,7 @@ if (typeof require !== "undefined") {
             // be able to "parse" the items and insert them into the
             // the items and types lists
             dataFiltering.each(function(index, element) {
-                // retrives the current element in iteration
+                // retrieves the current element in iteration
                 var _element = jQuery(this);
 
                 // retrieves the HTML value of the element and
@@ -18531,7 +18531,7 @@ if (typeof require !== "undefined") {
                 _update(matchedObject, options, true);
             });
 
-            // regiters for the click event in the add button to
+            // registers for the click event in the add button to
             // add a new filter line next to the current filter
             add.click(function() {
                 // retrieves the current button element and uses it
@@ -18630,7 +18630,7 @@ if (typeof require !== "undefined") {
                 // must be processed
                 else if (event.shiftKey) {
                     // retrieves the current index for the selection to check
-                    // it agains the pivot index value
+                    // it against the pivot index value
                     var index = templateItemIndex + 1;
 
                     // actions a range selection over the current pivot
@@ -18762,7 +18762,7 @@ if (typeof require !== "undefined") {
          */
         var _registerHandlers = function() {
             // retrieves the close links for the notification and the
-            // set of header notitications that are meant to be closable
+            // set of header notifications that are meant to be closable
             var linkClose = jQuery("> .link-close", matchedObject);
             var closables = matchedObject.filter(".link-close");
 
@@ -19047,7 +19047,7 @@ if (typeof require !== "undefined") {
                 // and instead should submit the form in ajax
                 var isAjax = element.hasClass("form-ajax");
                 if (isAjax) {
-                    // schedules the execution of the ajax submit fo
+                    // schedules the execution of the ajax submit for
                     // the next tick so that the submit event handlers
                     // may be executed before the submission
                     setTimeout(function() {
@@ -19350,7 +19350,7 @@ if (typeof require !== "undefined") {
 
                     // checks if the success for panel exists in the form
                     // in case it exist it must be shown and the other contents
-                    // fo the form hidden
+                    // of the form hidden
                     var formSuccess = jQuery(".form-success", matchedObject);
                     var hasFormSuccess = formSuccess.length;
                     if (hasFormSuccess) {
@@ -19454,7 +19454,7 @@ if (typeof require !== "undefined") {
             // removes the submitted flag from the form (allows re-submit)
             // then set the form as non asynchronous and submits it, removing
             // the same flag after the submit operation is completed, so that's
-            // possible to re-use the form after the initial submission
+            // possible to reuse the form after the initial submission
             matchedObject.data("submitted", false);
             matchedObject.addClass("no-async");
             matchedObject.submit();
@@ -19610,7 +19610,7 @@ if (typeof require !== "undefined") {
          * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
-            // wraps the matched objec in an highlight box container
+            // wraps the matched object in an highlight box container
             matchedObject.wrap('<div class="highlight-box-container"></div>');
         };
 
@@ -19859,7 +19859,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -19916,7 +19916,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -20169,7 +20169,7 @@ if (typeof require !== "undefined") {
             // drop event
             matchedObject.bind("file_drop", function(event, files) {
                 // retrieves the element and saves it
-                // as iamge upload (box)
+                // as image upload (box)
                 var element = jQuery(this);
                 var imageUpload = element;
 
@@ -20469,7 +20469,7 @@ if (typeof require !== "undefined") {
             var textField = jQuery(".text-field", incrementalField);
             var floatvalue = textField.uxfloat();
 
-            // tries to retrive a possibly existing increment URL value
+            // tries to retrieve a possibly existing increment URL value
             // to be used for location change
             var incrementUrl = textField.attr("data-increment_url");
 
@@ -20508,7 +20508,7 @@ if (typeof require !== "undefined") {
             var textField = jQuery(".text-field", incrementalField);
             var floatvalue = textField.uxfloat();
 
-            // tries to retrive a possibly existing decrement URL value
+            // tries to retrieve a possibly existing decrement URL value
             // to be used for location change
             var decrementUrl = textField.attr("data-decrement_url");
 
@@ -20620,7 +20620,7 @@ if (typeof require !== "undefined") {
             windowHeader.addClass(type || "information");
 
             // converts the message into a string in case that's required
-            // (diferent data type) and then processes the "wiki" message
+            // (different data type) and then processes the "wiki" message
             message = typeof message === "string" ? message : String(message);
             message = matchedObject.uxwiki(message);
 
@@ -20754,7 +20754,7 @@ if (typeof require !== "undefined") {
                 window.removeClass("loading");
 
                 // triggers the laaded event so that any listener is
-                // notified abou the end of the image loading
+                // notified about the end of the image loading
                 window.triggerHandler("loaded");
 
                 // runs the (final) animation operation for the buttons, this
@@ -20800,7 +20800,7 @@ if (typeof require !== "undefined") {
                 // going to be centered in the viewport
                 var element = jQuery(this);
 
-                // retrieves the global window element refernece and
+                // retrieves the global window element reference and
                 // the image associated with the lightbox window
                 var _window = jQuery(window);
                 var windowImage = jQuery("img", element);
@@ -20813,9 +20813,9 @@ if (typeof require !== "undefined") {
                 var maxHeight = height - 32;
                 var maxWidth = width - 32;
 
-                // retrieves the currently defined maximum dimenstion for the
+                // retrieves the currently defined maximum dimension for the
                 // image and parses these values as integers, these values are
-                // going to be used to decide if the image maximum dimenstions
+                // going to be used to decide if the image maximum dimensions
                 // have changed or not (for recentering position)
                 var _maxHeight = windowImage.css("max-height");
                 var _maxWidth = windowImage.css("max-width");
@@ -20830,7 +20830,7 @@ if (typeof require !== "undefined") {
                     return;
                 }
 
-                // updates the maximum dimenstions for the image of the
+                // updates the maximum dimensions for the image of the
                 // lightbox so that no overlap exists in the window viewport
                 windowImage.css("max-height", maxHeight + "px");
                 windowImage.css("max-width", maxWidth + "px");
@@ -20877,7 +20877,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves the value for the currently selected
                 // (image) path and uses it to determine the next
-                // (target) path for iamge source updating
+                // (target) path for image source updating
                 var currentPath = windowImage.attr("src");
                 var targetPath = currentPath === path ? largePath : path;
                 window.addClass("loading");
@@ -21102,7 +21102,7 @@ if (typeof require !== "undefined") {
                         var offset = element.attr("data-offset");
                         var offsetInteger = parseInt(offset);
 
-                        // verifies if the target element for ther link
+                        // verifies if the target element for the link
                         // value is valid, and in case it's not returns
                         // the control flow immediately (as it's not possible
                         // to perform smooth scrolling)
@@ -21176,7 +21176,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -21195,7 +21195,7 @@ if (typeof require !== "undefined") {
                 // retrieves the element
                 var element = jQuery(this);
 
-                // retrieves the list that contiains the current
+                // retrieves the list that contains the current
                 // element (first list parent) and then uses it
                 // to retrieve the associated list item parent
                 var list = jQuery(element.parents(".list")[0]);
@@ -21222,7 +21222,7 @@ if (typeof require !== "undefined") {
                 // retrieves the element reference
                 var _element = jQuery(element);
 
-                // retrieves the imediate parent list item and the
+                // retrieves the immediate parent list item and the
                 // associated sub list (for empty verification)
                 var listItem = jQuery(_element.parents("li")[0]);
                 var subList = jQuery("> .list", listItem);
@@ -21248,7 +21248,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -21263,7 +21263,7 @@ if (typeof require !== "undefined") {
                 // retrieves the element
                 var element = jQuery(this);
 
-                // retrieves the list item that contiains the current
+                // retrieves the list item that contains the current
                 // element (first list parent) and then uses it
                 // to retrieve the (child) list
                 var listItem = element.parent("li");
@@ -21389,7 +21389,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -21405,7 +21405,7 @@ if (typeof require !== "undefined") {
             var menuContents = jQuery(".menu-contents", menu);
 
             // checks if the menu link click event is already
-            // registerd in the body and set the variable as
+            // registered in the body and set the variable as
             // true to avoid further registrations
             var isRegistered = _body.data("menu_link_click");
             _body.data("menu_link_click", true);
@@ -21429,7 +21429,7 @@ if (typeof require !== "undefined") {
                 // menu references
                 var menuSelector = element.attr("data-menu");
 
-                // retrieves the menu to retieve the
+                // retrieves the menu to retrieve the
                 // menu contents
                 var menu = menuSelector ? jQuery(menuSelector) : element.parents(".menu");
                 var menuButton = jQuery("> .menu-button", menu);
@@ -21520,12 +21520,12 @@ if (typeof require !== "undefined") {
             // registers for the click event in the menu contents
             menuContents.click(function(event) {
                 // stops the event propagation (avoids
-                // unecessary closing of the window)
+                // unnecessary closing of the window)
                 event.stopPropagation();
             });
 
             // registers for the hide event in the menu so
-            // that if such event is triggerred the menu
+            // that if such event is triggered the menu
             // is correctly hidden from the environment
             menu.bind("hide", function() {
                 // retrieves the current element and sets it as the
@@ -21567,7 +21567,7 @@ if (typeof require !== "undefined") {
                         return;
                     }
 
-                    // retrieves the menu to retieve the and uses it to
+                    // retrieves the menu to retrieve the and uses it to
                     // retrieve the reference to the menu contents
                     var menu = jQuery(".menu.active", element);
                     var menuContents = jQuery(".menu-contents:visible", menu);
@@ -21582,7 +21582,7 @@ if (typeof require !== "undefined") {
                         // removes the menu from the environment
                         menu.remove();
                     }
-                    // otherwise the normal behavior applies (hidding)
+                    // otherwise the normal behavior applies (hiding)
                     else {
                         // tries to retrieve the current owner of the menu
                         // contents and in case it exists removes the active
@@ -21605,7 +21605,7 @@ if (typeof require !== "undefined") {
                     // retrieves the element
                     var element = jQuery(this);
 
-                    // retrieves the menu to retieve the
+                    // retrieves the menu to retrieve the
                     // menu contents
                     var menu = jQuery(".menu.active", element);
                     var menuContents = jQuery(".menu-contents:visible", menu);
@@ -21620,7 +21620,7 @@ if (typeof require !== "undefined") {
                         // removes the menu from the environment
                         menu.remove();
                     }
-                    // otherwise the normal behavior applies (hidding)
+                    // otherwise the normal behavior applies (hiding)
                     else {
                         // tries to retrieve the current owner of the menu
                         // contents and in case it exists removes the active
@@ -21668,7 +21668,7 @@ if (typeof require !== "undefined") {
          * @param {Element}
          *            menuButton The button used in the triggering of the menu,
          *            if any.
-         * @parm {Element} menuLink The link element used in the triggering of
+         * @param {Element} menuLink The link element used in the triggering of
          *       the menu, if any.
          */
         var _reposition = function(menu, menuButton, menuLink) {
@@ -21679,18 +21679,18 @@ if (typeof require !== "undefined") {
             var menuContents = jQuery(".menu-contents", menu);
 
             // in case no menu link is defined it's not possible
-            // to run the reposition operation, not enought information
+            // to run the reposition operation, not enough information
             // to archive the objective
             if (menuLink.length === 0) {
                 return;
             }
 
             // retrieves the first element from the menu button as the
-            // element that referes it, this is going to be used for
+            // element that refers it, this is going to be used for
             // internal and more accurate computation
             var menuButtonElement = menuButton[0];
 
-            // "resets" the left margin of the contents as this is usefull
+            // "resets" the left margin of the contents as this is useful
             // to obtain better left offset values
             menuContents.css("margin-left", "0px");
 
@@ -21701,7 +21701,7 @@ if (typeof require !== "undefined") {
             var contentsHeight = menuContents.outerHeight(true);
             var contentsLeft = menuContents.offset().left;
 
-            // tries to retrive the button bounding (box) and then uses
+            // tries to retrieve the button bounding (box) and then uses
             // it as the button with value in case it exists, this is
             // required so that it's possible to use decimal pixel values
             // for the calculus of the required offset margins
@@ -21829,7 +21829,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -21919,14 +21919,14 @@ if (typeof require !== "undefined") {
         // logic is going to be performed
         switch (method) {
             case "show":
-                // runs the show operation for the selected object effectivly
+                // runs the show operation for the selected object effectively
                 // showing its inner contents (as expected)
                 _show(matchedObject, options);
                 break;
 
             case "hide":
-                // runs the hide operation for the selected object effectivly
-                // hidding its inner contents (as expected)
+                // runs the hide operation for the selected object effectively
+                // hiding its inner contents (as expected)
                 _hide(matchedObject, options);
                 break;
 
@@ -22223,7 +22223,7 @@ if (typeof require !== "undefined") {
             });
 
             // registers for the animation end event so that if
-            // the curernt object is in a invible mode it is gc
+            // the current object is in a invible mode it is gc
             matchedObject.bind("animationend", function() {
                 // retrieves the current element for the event
                 // and runs the appropriate collect operation
@@ -22263,7 +22263,7 @@ if (typeof require !== "undefined") {
                         var elementVisible = _element.hasClass("visible");
 
                         // in case the element is visible, must hide hide
-                        // in order to toggel visibility
+                        // in order to toggle visibility
                         if (elementVisible) {
                             _hide(_element, options);
                         }
@@ -22363,7 +22363,7 @@ if (typeof require !== "undefined") {
 
             // centers the object in the screen, this is required
             // in order to avoid init glitches that would be created
-            // for situations where theres an offscreen resize
+            // for situations where there's an offscreen resize
             matchedObject.uxcenter(offsetFloat);
 
             // runs the collect operation on the current element to
@@ -22387,7 +22387,7 @@ if (typeof require !== "undefined") {
             textField.focus();
 
             // triggers the shown event indicating that the overlay panel
-            // has just finished beeing shown
+            // has just finished being shown
             matchedObject.triggerHandler("shown");
         };
 
@@ -22717,7 +22717,7 @@ if (typeof require !== "undefined") {
             // registers for the resize event on the overlay
             // so that the overlay may be resized in for such events
             matchedObject.bind("resize", function() {
-                // retrieves teh current element and uses it
+                // retrieves the current element and uses it
                 // resize the overlay in the screen
                 var element = jQuery(this);
                 _resize(element, options);
@@ -22967,7 +22967,7 @@ if (typeof require !== "undefined") {
                 var _element = jQuery(this);
                 var moreString = _element.attr("data-more");
 
-                // wrapps the current element inside the panel more
+                // wraps the current element inside the panel more
                 // contents to be able to change the visibility
                 _element.wrapInner('<div class="panel-more-contents"></div>');
 
@@ -23637,7 +23637,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {};
 
         /**
-         * Changes the current (pecentage) value for the progress bar component.
+         * Changes the current (percentage) value for the progress bar component.
          *
          * @param {Element}
          *            matchedObject The reference to the current matched object.
@@ -23747,7 +23747,7 @@ if (typeof require !== "undefined") {
             // iterates over all the matched objects to update their
             // current internal state values
             matchedObject.each(function(index, element) {
-                // retrieves the element refence
+                // retrieves the element reference
                 var _element = jQuery(element);
                 _update(_element, options);
             });
@@ -23795,7 +23795,7 @@ if (typeof require !== "undefined") {
         };
 
         var _update = function(matchedObject, options) {
-            // retrives the value and the checked value
+            // retrieves the value and the checked value
             var value = matchedObject.val();
             var checked = matchedObject.attr("data-checked");
 
@@ -23963,7 +23963,7 @@ if (typeof require !== "undefined") {
 
                 // retrieves the parent form to the current rating
                 // element, this form must be registered so that it's
-                // possible to create a hiden value element that represents
+                // possible to create a hidden value element that represents
                 // the rating component in terms of form submission
                 var parentForm = _element.parents("form");
 
@@ -24008,13 +24008,13 @@ if (typeof require !== "undefined") {
             // rating component (to be used latter)
             var count = element.data("count");
 
-            // removes both te hover and the inactive class from the
+            // removes both the hover and the inactive class from the
             // complete list of rating items no hover or inactive when
             // the value is selected (defined be specification)
             items.removeClass("hover");
             items.removeClass("inactive");
 
-            // initializes the index counter and the item vlaue that are
+            // initializes the index counter and the item value that are
             // going to be used in multiple iteration sequences
             var index = null;
             var item = null;
@@ -24048,7 +24048,7 @@ if (typeof require !== "undefined") {
             // rating component (to be used latter)
             var count = element.data("count");
 
-            // initializes the index counter and the item vlaue that are
+            // initializes the index counter and the item value that are
             // going to be used in multiple iteration sequences
             var index = null;
             var item = null;
@@ -24060,7 +24060,7 @@ if (typeof require !== "undefined") {
                 item.addClass("hover");
             }
 
-            // iterates over the "remaning" set of items in order to mark
+            // iterates over the "remaining" set of items in order to mark
             // them as inactive because they are not hovered
             for (index = _index + 1; index < count; index++) {
                 item = jQuery(items[index]);
@@ -24145,7 +24145,7 @@ if (typeof require !== "undefined") {
          * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
-            // wraps the matched object arround a scroll list container and then
+            // wraps the matched object around a scroll list container and then
             // retrieves it and adds the previous and next scroll buttons
             matchedObject.wrap('<div class="scroll-list-container"></div>');
             var scrollListContainer = matchedObject.parents(".scroll-list-container");
@@ -24160,7 +24160,7 @@ if (typeof require !== "undefined") {
                 var scrollListContainer = _element.parents(".scroll-list-container");
 
                 // retrieves the various margin value from the element
-                // to update the scoll list container with these elements
+                // to update the scroll list container with these elements
                 var marginLeft = _element.css("margin-left");
                 var marginRight = _element.css("margin-right");
                 var marginTop = _element.css("margin-top");
@@ -24258,7 +24258,7 @@ if (typeof require !== "undefined") {
 
             // retrieves the first child and uses it to calculate
             // the complete width for the children, note that the
-            // width is retrieved taking into accoun that a proper
+            // width is retrieved taking into account that a proper
             // outer width retrieval may fail under certain conditions
             var first = jQuery(children[0]);
             var firstWidth =
@@ -24373,7 +24373,7 @@ if (typeof require !== "undefined") {
                 var dataSource = jQuery("> .data-source", element);
 
                 // retrieves the name of the value to be used for
-                // the comparision and then retrieves the name of
+                // the comparison and then retrieves the name of
                 // the attribute to be used in the display
                 var value = _element.attr("data-value");
                 var display = _element.attr("data-display") || value;
@@ -24509,7 +24509,7 @@ if (typeof require !== "undefined") {
             // them according to their options
             matchedObject.each(function(index, element) {
                 // retrieves the current element and uses it
-                // to update ths current arrange structure
+                // to update the current arrange structure
                 var _element = jQuery(this);
                 _update(_element, options);
             });
@@ -24545,7 +24545,7 @@ if (typeof require !== "undefined") {
                 var listItems = null;
 
                 // retrieves the current element reference and uses
-                // it to retrive the current select list
+                // it to retrieve the current select list
                 var element = jQuery(this);
                 var selectList = element.parent(".select-list");
 
@@ -24637,7 +24637,7 @@ if (typeof require !== "undefined") {
                 }
             });
 
-            // registers for the double click event on the list itesm
+            // registers for the double click event on the list items
             // to trigger the select action
             listItems.dblclick(function(event) {
                 // retrieves the current element and then uses
@@ -24650,7 +24650,7 @@ if (typeof require !== "undefined") {
             });
 
             // iterates over each of the matched objects
-            // to register them agains the submission of the form
+            // to register them against the submission of the form
             matchedObject.each(function(index, element) {
                 // retrieves the current element for iteration
                 var _element = jQuery(element);
@@ -24761,7 +24761,7 @@ if (typeof require !== "undefined") {
             // to be used for the sorting of the elements
             orderIcons.mousedown(function() {
                 // retrieves the current element reference and uses
-                // it to retrive the current select list
+                // it to retrieve the current select list
                 var orderIcon = jQuery(this);
                 var element = orderIcon.parent("li");
                 var selectList = element.parent(".select-list");
@@ -24778,7 +24778,7 @@ if (typeof require !== "undefined") {
                 var _body = jQuery("body");
 
                 // retrieves the current with for the select
-                // list to be used for the contruction of the
+                // list to be used for the construction of the
                 // cloned element
                 var selectListWidth = selectList.width();
 
@@ -24807,7 +24807,7 @@ if (typeof require !== "undefined") {
                 _body.addClass("do-moving");
 
                 var move = function(event) {
-                    // retrives the previous data from the select list
+                    // retrieves the previous data from the select list
                     // and uses it to set the mouse position
                     var previousOffsetY = selectList.data("offset_y");
                     var previousY = selectList.data("mouse_y");
@@ -24825,7 +24825,7 @@ if (typeof require !== "undefined") {
                     var clonedHeight = cloned.outerHeight();
 
                     // calculates the target y (vertical) position
-                    // for the currenly selected element
+                    // for the currently selected element
                     var targetY = mouseY - clonedHeight / 2;
 
                     // checks if the target position is overflowing
@@ -24886,7 +24886,7 @@ if (typeof require !== "undefined") {
                 };
 
                 var remove = function() {
-                    // retrieves the items that are consideres to be
+                    // retrieves the items that are considered to be
                     // cloned elements and removes (no more usage)
                     var cloned = jQuery("li.clone", selectList);
                     cloned.remove();
@@ -24967,7 +24967,7 @@ if (typeof require !== "undefined") {
          * Creates the necessary HTML for the component.
          */
         var _appendHtml = function() {
-            // verifies that at leat one object is selected and if that's
+            // verifies that at least one object is selected and if that's
             // not the case returns the control flow immediately
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -24988,13 +24988,13 @@ if (typeof require !== "undefined") {
          * Registers the event handlers for the created objects.
          */
         var _registerHandlers = function() {
-            // verifies that at leat one object is selected and if that's
+            // verifies that at least one object is selected and if that's
             // not the case returns the control flow immediately
             if (!matchedObject || matchedObject.length === 0) {
                 return;
             }
 
-            // retrieves the various element that are going to be registerd
+            // retrieves the various element that are going to be registered
             // for events for the current side panel element
             var _body = jQuery("body");
             var cancel = jQuery(".button-cancel", matchedObject);
@@ -25817,7 +25817,7 @@ if (typeof require !== "undefined") {
                     });
                 });
 
-                // iteates over the range of the item to inset the
+                // iterates over the range of the item to inset the
                 // list item representing the alternative for the item
                 for (index = 0; index < _items.length; index++) {
                     alternates.append("<li></li>");
@@ -25830,7 +25830,7 @@ if (typeof require !== "undefined") {
 
                 // creates the interval to update the slideshow position
                 // to the next one and then sets it in the current element
-                // data (for possible future cancelation)
+                // data (for possible future cancellation)
                 var interval = setInterval(function() {
                     __select(_element, options, null);
                 }, 5000);
@@ -25899,21 +25899,21 @@ if (typeof require !== "undefined") {
                 var element = jQuery(this);
                 var slideshow = element.parents(".slideshow");
 
-                // retrieves the current interval and clears it (cancelation)
+                // retrieves the current interval and clears it (cancellation)
                 // so that no more automated changing takes place
                 var interval = slideshow.data("interval");
                 clearInterval(interval);
 
-                // retrieves the index of the curret element index
+                // retrieves the index of the current element index
                 // and selects the equivalent item in the slideshow
                 var index = element.index();
                 __select(slideshow, options, index);
             });
 
             // registers for the pause event on the matched object, that
-            // should pause the current seqeunce of images
+            // should pause the current sequence of images
             matchedObject.bind("pause", function() {
-                // retrives the current element (slideshow) and uses it to
+                // retrieves the current element (slideshow) and uses it to
                 // gather the registered interval to cancel it (no more iterations)
                 var slideshow = jQuery(this);
                 var interval = slideshow.data("interval");
@@ -25955,7 +25955,7 @@ if (typeof require !== "undefined") {
             var current = matchedObject.data("index");
 
             // sets the default value for the items value, so that
-            // a valid sequence allways exists
+            // a valid sequence always exists
             items = items || [];
 
             // calculates the proper next index value, taking into account
@@ -25972,7 +25972,7 @@ if (typeof require !== "undefined") {
             var current = matchedObject.data("index");
 
             // sets the default value for the items value, so that
-            // a valid sequence allways exists
+            // a valid sequence always exists
             items = items || [];
 
             // calculates the proper previous index value, taking into account
@@ -26225,7 +26225,7 @@ if (typeof require !== "undefined") {
             var textField = jQuery(".text-field", sourceList);
 
             // registers the source list to the items changed event
-            // to propagate it down to the assicated select list
+            // to propagate it down to the associated select list
             sourceList.bind("items_changed", function(event) {
                 // retrieves the current element (source list) and uses
                 // it to retrieve the select list to propagate down the
@@ -26307,7 +26307,7 @@ if (typeof require !== "undefined") {
 
                     // in case it's the down key
                     case 40:
-                        // runs teh down action in the source list
+                        // runs the down action in the source list
                         _down(sourceList, options);
 
                         // stops the event propagation
@@ -26401,7 +26401,7 @@ if (typeof require !== "undefined") {
             numberOptions = _numberOptions ? parseInt(_numberOptions) : numberOptions;
 
             // runs the query in the data source to retrieve the new
-            // items and then contruct the list item from the
+            // items and then construct the list item from the
             // result provided by the data source
             dataSource.uxdataquery(
                 {
@@ -26676,7 +26676,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -26707,7 +26707,7 @@ if (typeof require !== "undefined") {
         var _registerHandlers = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -26719,14 +26719,14 @@ if (typeof require !== "undefined") {
             var _body = jQuery("body");
 
             // checks if the stack click event is already
-            // registerd in the body and sets the variable as
+            // registered in the body and sets the variable as
             // true to avoid further registrations
             var isRegistered = _body.data("stack_click");
             _body.data("stack_click", true);
 
             // registers for the push event with the proper target
             // parameter that should push a stack item into the
-            // curent included stack
+            // current included stack
             matchedObject.bind("push", function(event, target) {
                 var element = jQuery(this);
                 push(element, target);
@@ -26905,7 +26905,7 @@ if (typeof require !== "undefined") {
         var _appendHtml = function() {
             // in case the matched object is not defined
             // or in case it's an empty list must return
-            // immediatly initialization is not meant to
+            // immediately initialization is not meant to
             // be run (corruption may occur)
             if (!matchedObject || matchedObject.length === 0) {
                 return;
@@ -26965,7 +26965,7 @@ if (typeof require !== "undefined") {
                 element.addClass("active");
                 targetElement.addClass("active");
 
-                // triggers the tab slected event on the tab panel
+                // triggers the tab selected event on the tab panel
                 // indicating that a new tab has been selected
                 tabPanel.triggerHandler("tab_selected", [targetElement]);
 
@@ -27142,7 +27142,7 @@ if (typeof require !== "undefined") {
                     // reference for reference
                     var elementReference = jQuery(element);
 
-                    // in case the current element does not containts
+                    // in case the current element does not contain
                     // the invalid class no need to update the invalid
                     // stat of it
                     if (!elementReference.hasClass("invalid")) {
@@ -27271,7 +27271,7 @@ if (typeof require !== "undefined") {
                         tableEmptyField.removeAttr("name");
                 });
 
-                // in case the table is of type edit and the table is emtpy
+                // in case the table is of type edit and the table is empty
                 // a line must be added to the end of the table in
                 // case the table is empty
                 if (isEdit && rows.length === 0) {
@@ -27377,7 +27377,7 @@ if (typeof require !== "undefined") {
                 // sets the add button left margin, it's important
                 // to re-calculate this value because the table may
                 // be invisible during the first calculus, note that
-                // this valud is only set in case the value is valid
+                // this value is only set in case the value is valid
                 // (not defined as not a number)
                 isValid && addButton.css("margin-left", addButtonMarginLeft + "px");
 
@@ -27418,14 +27418,14 @@ if (typeof require !== "undefined") {
                 // retrieves the element
                 var element = jQuery(this);
 
-                // retrieves the element row (adn table) and
+                // retrieves the element row (and table) and
                 // removes it from the table
                 var table = element.parents(".table");
                 var elementRow = element.parents("tr");
                 elementRow.remove();
 
                 // removes the max row classes effectively indicating
-                // that the max rows rule is no longe applicable
+                // that the max rows rule is no longer applicable
                 table.removeClass("max-rows");
 
                 // updates the invalid values on the current
@@ -27644,7 +27644,7 @@ if (typeof require !== "undefined") {
                 }
 
                 // verifies if the provided text data is valid for the structured paste
-                // oepration and if that's not the case reuturns immedidately
+                // operation and if that's not the case reuturns immedidately
                 var isValid = textData.indexOf(ending) !== -1 || textData.indexOf("\t") !== -1;
                 if (!isValid) {
                     return;
@@ -27654,11 +27654,11 @@ if (typeof require !== "undefined") {
                 // the current target should be the first to be populated
                 var initial = target;
 
-                // splits the provided text data arround the newline character to
+                // splits the provided text data around the newline character to
                 // retrieve the multiple line values of it
                 var lines = textData.split(ending);
 
-                // iterates over the miltiple lines contained in the text to populate
+                // iterates over the multiple lines contained in the text to populate
                 // the associated lines in the table
                 for (index = 0; index < lines.length; index++) {
                     // retrieves the current line and splits arrount its columns
@@ -27725,7 +27725,7 @@ if (typeof require !== "undefined") {
                 }
 
                 // stops the propagation of the event and then prevents the default
-                // set of operations from happending
+                // set of operations from happening
                 event.stopPropagation();
                 event.stopImmediatePropagation();
                 event.preventDefault();
@@ -27773,7 +27773,7 @@ if (typeof require !== "undefined") {
                 }
             );
 
-            // chekc if the current table is in edit mode
+            // check if the current table is in edit mode
             var isEdit = matchedObject.hasClass("table-edit");
 
             // in case the table is editable, must update the
@@ -27834,7 +27834,7 @@ if (typeof require !== "undefined") {
             // classes must be updated to reflect that
             if (isLastRow) {
                 // removes the last class from all of the rows
-                // and then adds the last class to the tempate item
+                // and then adds the last class to the template item
                 // (the newly created row)
                 rows.removeClass("last");
                 templateItem.addClass("last");
@@ -27902,8 +27902,8 @@ if (typeof require !== "undefined") {
 
         var _updateInvalid = function(matchedObject, options) {
             // retrieves the current set of next horizontal and
-            // next vertical invalid values and then remvoes their
-            // repsective classes (restores the original next invalid values)
+            // next vertical invalid values and then removes their
+            // respective classes (restores the original next invalid values)
             var allHorizontalInvalid = jQuery(".next-horizontal-invalid", matchedObject);
             var allVerticalInvalid = jQuery(".next-vertical-invalid", matchedObject);
             allHorizontalInvalid.removeClass("next-horizontal-invalid");
@@ -27917,7 +27917,7 @@ if (typeof require !== "undefined") {
                 // reference for reference
                 var elementReference = jQuery(element);
 
-                // in case the current element does not containts
+                // in case the current element does not contain
                 // the invalid class no need to update the invalid
                 // stat of it
                 if (!elementReference.hasClass("invalid")) {
@@ -28010,8 +28010,8 @@ if (typeof require !== "undefined") {
             // iterates continuously trying to find the next element
             // in reference to the provided one using the provided selector
             while (true) {
-                // iterates continuosly over the complete set of remaining
-                // columns in the curren row, trying to find any that contains
+                // iterates continuously over the complete set of remaining
+                // columns in the current row, trying to find any that contains
                 // elements that comply with the provided selectors
                 while (true) {
                     // in case the current column selector is invalid, no
@@ -28036,13 +28036,13 @@ if (typeof require !== "undefined") {
                 }
 
                 // verifies if this is the last row if that's the case there's
-                // nothing remaing to be done and the loop must break
+                // nothing remaining to be done and the loop must break
                 var isLast = row.hasClass("last");
                 if (isLast) {
                     break;
                 }
 
-                // retieves the next row and the column in set as the first one
+                // retrieves the next row and the column in set as the first one
                 // so that its possible to continue the loop
                 row = row.next();
                 columns = jQuery("> td", row);
@@ -28060,8 +28060,8 @@ if (typeof require !== "undefined") {
                 return _next(element, selector, column, row, false, true);
             }
 
-            // reurns the default invalid value meaning that no valid next element
-            // was found according to the provided criterea
+            // returns the default invalid value meaning that no valid next element
+            // was found according to the provided criteria
             return null;
         };
 
@@ -28125,7 +28125,7 @@ if (typeof require !== "undefined") {
                 // retrieves the element reference
                 var _element = jQuery(element);
 
-                // retrieves teh various attributes
+                // retrieves the various attributes
                 // from the element
                 var name = _element.attr("data-name");
                 var action = _element.attr("data-action");
@@ -28442,7 +28442,7 @@ if (typeof require !== "undefined") {
 
                     // updates (resizes) the tag field, then sets another
                     // update operation for the final part of the update
-                    // lifecycle this way a new refresh happends after the
+                    // lifecycle this way a new refresh happens after the
                     // complete layout is rendered
                     isVisible ? _update(_element, options) : _update(_element, options, true);
                 });
@@ -28463,7 +28463,7 @@ if (typeof require !== "undefined") {
             var textField = jQuery(".text-field", matchedObject);
 
             // iterates over each of the matched objects
-            // to register them agains the submission of the form
+            // to register them against the submission of the form
             matchedObject.each(function(index, element) {
                 // retrieves the current element for iteration
                 var _element = jQuery(element);
@@ -28542,7 +28542,7 @@ if (typeof require !== "undefined") {
                     return;
                 }
 
-                // retrieves the text field assiciated with the
+                // retrieves the text field associated with the
                 // element and resets its value no value present
                 var textField = jQuery(".text-field", element);
                 textField.val("");
@@ -28728,7 +28728,7 @@ if (typeof require !== "undefined") {
             }
 
             // verifies if the auto width mode is enabled for the tag field
-            // this is usefull for situations where the width should not
+            // this is useful for situations where the width should not
             // be computed automatically (eg: percent based width)
             var autoWidth = matchedObject.attr("data-auto_width");
 
@@ -28756,7 +28756,7 @@ if (typeof require !== "undefined") {
             // of the last line
             for (var index = tags.length - 1; index >= 0; index--) {
                 // retrieves the current tag and retrieves its
-                // ofsset value to the top for comparision
+                // offset value to the top for comparison
                 var tag = jQuery(tags[index]);
                 var _referenceTop = tag.offset().top;
 
@@ -28789,7 +28789,7 @@ if (typeof require !== "undefined") {
             lineWidth = lineWidth + tagsContainerPaddingLeft + tagsContainerPaddingRight;
 
             // calculates the size of the line using the last tag
-            // height as reference and then devides the tags container
+            // height as reference and then divides the tags container
             // height with the line height to calculate the number of
             // lines in the tags container, using it to calculate the
             // "new" padding to the top
@@ -28912,7 +28912,7 @@ if (typeof require !== "undefined") {
             }
 
             // returns the "just" computed sequence value comprising
-            // the list of valus separated with comas
+            // the list of values separated with commas
             return value;
         };
 
@@ -30323,7 +30323,7 @@ if (typeof require !== "undefined") {
                 // retrieves the value of the attribute that defines
                 // the various modes in case the value is not defined
                 // returns immediately otherwise trims the value and
-                // splits it arround the separator value
+                // splits it around the separator value
                 var modesS = _element.attr("data-modes");
                 if (!modesS) {
                     modesS = "percent";
@@ -30662,14 +30662,14 @@ if (typeof require !== "undefined") {
 
                 // registers for the show operation on the current
                 // window, this is considered to be an explicit
-                // reques to show it as soon as possible
+                // request to show it as soon as possible
                 _element.bind("show", function() {
                     _show(_element, options);
                 });
 
                 // registers for the hide operation on the current
                 // window, this is considered to be an explicit
-                // reques to hide it as soon as possible
+                // request to hide it as soon as possible
                 _element.bind("hide", function() {
                     _hide(_element, options);
                 });
@@ -30803,7 +30803,7 @@ if (typeof require !== "undefined") {
             var overlay = jQuery(".overlay:first");
 
             // unregisters from the click event on the global overlay
-            // so that the windows stop respoding from the event
+            // so that the windows stop responding from the event
             __unregisterClick(matchedObject, options);
 
             // unregisters from the key event for the dismissal
@@ -30895,8 +30895,8 @@ if (typeof require !== "undefined") {
         };
 
         var _positionWindow = function(matchedObject, options, noLimit) {
-            // verfies if the current window is visible and if that's
-            // not the case returns immedaitely, avoiding possible extra
+            // verifies if the current window is visible and if that's
+            // not the case returns immediately, avoiding possible extra
             // usage of resources (position operation is expensive)
             var isVisible = matchedObject.hasClass("visible");
             if (!isVisible) {
@@ -30945,7 +30945,7 @@ if (typeof require !== "undefined") {
             var maxHeight = isContentBox ? windowHeight - extraHeight : windowHeight;
 
             // decrements both the dimensions by twice the value of
-            // the paddin for both sides of the dimension
+            // the padding for both sides of the dimension
             maxWidth -= padding * 2;
             maxHeight -= padding * 2;
 
@@ -31392,7 +31392,7 @@ if (typeof require !== "undefined") {
             var firstIndex = parseInt(matchedObject.attr("data-first_index")) || 0;
             var lastIndex = parseInt(matchedObject.attr("data-last_index")) || panels.length - 1;
 
-            // checks if the current index greater thant the
+            // checks if the current index greater than the
             // first or the last positions, in such case
             // it's not possible to set the position
             if (index < firstIndex || index > lastIndex) {
@@ -31474,7 +31474,7 @@ if (typeof require !== "undefined") {
                 buttonPrevious.uxdisable();
             }
             // otherwise it's a normal situation and the previous
-            // button must be displayed normaly
+            // button must be displayed normally
             else {
                 // enables the previous button, adding
                 // the action to it
@@ -31495,7 +31495,7 @@ if (typeof require !== "undefined") {
                 index: index
             });
 
-            // triggers the index changed in the matched obect
+            // triggers the index changed in the matched object
             // so that listeners can change their behaviour accordingly
             matchedObject.triggerHandler("index_changed", [index]);
         };
@@ -31545,7 +31545,7 @@ if (typeof require !== "undefined") {
 
 (function(jQuery) {
     jQuery.fn.uxeval = function(element, method, options) {
-        // the defaut timeout for eval
+        // the default timeout for eval
         var DEFAULT_TIMEOUT = 1000;
 
         // the default values for the eval
@@ -31677,7 +31677,7 @@ if (typeof require !== "undefined") {
                         })
                     );
 
-                // sets the vlaue change event handler in the selector in
+                // sets the value change event handler in the selector in
                 // case the continuous flag is set
                 continuous &&
                     triggerElement.bind((valueChangedHandler = "value_change"), function() {
@@ -31695,7 +31695,7 @@ if (typeof require !== "undefined") {
         };
 
         /**
-         * Evaluates the eval string in the matched object emmiting the
+         * Evaluates the eval string in the matched object emitting the
          * resulting value to the HTML contents of it. The evaluation of the
          * matched object is considered dangerous and must be used carefully.
          *
