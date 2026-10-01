@@ -472,6 +472,10 @@ if (typeof require !== "undefined") {
         // for async verification
         var _body = jQuery("body");
 
+        // retrieves the logger of the plugin, to be used to
+        // log the failures of the asynchronous links
+        var logger = jQuery.uxlogger("uxlinkasync");
+
         // normnalizes the current async reference so the href value
         // is always a valid string value that may be used with no
         // dependency on its current data type
@@ -594,7 +598,13 @@ if (typeof require !== "undefined") {
                 // the current layout must be updated (async fashion)
                 _body.triggerHandler("data", [data, href, uuid, !verify]);
             },
-            error: function() {
+            error: function(request, status, error) {
+                // logs the failure of the request, unless it has been aborted
+                // as its contents are not async (eg: a file to be downloaded)
+                if (status !== "abort") {
+                    logger.warn("Async link failed, loading it:", href, request.status, error);
+                }
+
                 document.location = href;
             }
         });
@@ -1266,6 +1276,66 @@ if (typeof require !== "undefined") {
 
 if (typeof require !== "undefined") {
     var jQuery = require("../_compat").jQuery;
+    var Logging = require("hive-js-util").Logging;
+}
+
+(function(jQuery) {
+    /**
+     * The format of the messages logged by the plugins, with the time,
+     * the level and the name of the plugin that logged them.
+     */
+    var FORMAT = "{asctime} [{level}] [{name}] {message}";
+
+    /**
+     * Retrieves the logger of the plugin with the given name, with the
+     * level defined for the current browser (local storage) or for the
+     * application (body), defaulting to the warning level.
+     *
+     * @param {String}
+     *            name The name of the plugin to retrieve the logger for.
+     * @return {Logger} The logger of the plugin, that propagates its
+     *         records to the default logger (that prints them).
+     */
+    jQuery.uxlogger = function(name) {
+        var _body = jQuery("body");
+
+        // tries to retrieve the level defined in the local storage, that
+        // takes precedence over the one of the body (eg: debug of a single
+        // client), ignoring the local storage in case it's not accessible
+        var level = null;
+        try {
+            level = window.localStorage && window.localStorage.getItem("uxf:log:level");
+        } catch (exception) {
+            level = null;
+        }
+
+        // falls back to the level defined in the body (by the application)
+        // and then to the warning one, converting the name of the level into
+        // its value, using the warning level in case the name is not valid
+        level = level || _body.data("log_level") || "warning";
+        level = Logging.LevelsMap[String(level).toUpperCase()];
+        level = typeof level === "number" ? level : Logging.constants.WARNING;
+
+        // retrieves the default logger, that prints the records of the
+        // loggers of the plugins, and in case it's created by this call
+        // sets the format of the plugins (with their names) in it
+        var exists = Boolean(Logging.loggers[Logging.constants.DEFAULT_LOGGER_NAME]);
+        var root = Logging.getLogger();
+        !exists && root.setFormatter(new Logging.SimpleFormatter(FORMAT));
+
+        // retrieves the logger of the plugin, with no handlers as its
+        // records are propagated to the default logger, updates its
+        // level and returns it to the caller
+        var logger = Logging.getLogger(name, {
+            propagate: true
+        });
+        logger.setLevel(level);
+        return logger;
+    };
+})(jQuery);
+
+if (typeof require !== "undefined") {
+    var jQuery = require("../_compat").jQuery;
 }
 
 (function(jQuery) {
@@ -1472,6 +1542,10 @@ if (typeof require !== "undefined") {
         // sets the jquery matched object
         var matchedObject = this;
 
+        // retrieves the logger of the plugin, to be used to
+        // log the failures of the requests of the data source
+        var logger = jQuery.uxlogger("uxdataqueryjson");
+
         /**
          * Initializer of the plugin, runs the necessary functions to initialize
          * the structures.
@@ -1667,9 +1741,19 @@ if (typeof require !== "undefined") {
                             return;
                         }
 
+                        // logs the failure of the request, before the parsing of
+                        // the error information (that may not be valid JSON)
+                        logger.error("Query of data source failed:", url, request.status, error);
+
                         // tries to parse the error information provided by the
-                        // server side as a JSON based object
-                        var errorMap = jQuery.parseJSON(request.responseText) || {};
+                        // server side as a JSON based object, ignoring it in case
+                        // it's not valid JSON (eg: the error page of a proxy)
+                        var errorMap = null;
+                        try {
+                            errorMap = jQuery.parseJSON(request.responseText) || {};
+                        } catch (exception) {
+                            errorMap = {};
+                        }
                         var message = errorMap.message;
                         var uid = errorMap.uid;
 
@@ -2083,6 +2167,10 @@ if (typeof require !== "undefined") {
         // sets the jquery matched object
         var matchedObject = this;
 
+        // retrieves the logger of the plugin, to be used
+        // to log the queries run in the data sources
+        var logger = jQuery.uxlogger("uxdataquery");
+
         /**
          * Initializer of the plugin, runs the necessary functions to initialize
          * the structures.
@@ -2122,9 +2210,14 @@ if (typeof require !== "undefined") {
             // immediately with no results because it was not possible
             // to retrieve any kind of data from an invalid data source
             if (elementType === null || elementType === undefined) {
+                logger.warn("Query of data source with no type:", query);
                 callback([], false);
                 return;
             }
+
+            // logs the query (debug) so that the queries run in the
+            // data sources (eg: of the filters) may be followed
+            logger.debug("Query of data source:", elementType, query);
 
             // runs the data query method for the specific
             // data source type
@@ -3668,6 +3761,10 @@ if (typeof require !== "undefined") {
         // sets the jquery matched object
         var matchedObject = this;
 
+        // retrieves the logger of the plugin, to be used
+        // to log the print jobs (and their failures)
+        var logger = jQuery.uxlogger("uxgprint");
+
         /**
          * Initializer of the plugin, runs the necessary functions to initialize
          * the structures.
@@ -3772,6 +3869,14 @@ if (typeof require !== "undefined") {
                             },
                             beforeSend: function(xhr) {
                                 xhr.setRequestHeader("X-Secret-Key", printKey);
+                            },
+                            error: function(request, status, error) {
+                                logger.error(
+                                    "Print job failed in node:",
+                                    printNode,
+                                    request.status,
+                                    error
+                                );
                             }
                         });
                     }
@@ -3823,10 +3928,15 @@ if (typeof require !== "undefined") {
                 // in case no fallback URL is defined, must return
                 // immediately (nothing is done)
                 if (!fallbackUrl) {
-                    // returns immediately, nothing can
-                    // be done
+                    // logs the print that is not performed and returns
+                    // immediately, nothing can be done
+                    logger.warn("Print with no gateway nor fallback:", binieUrl);
                     return;
                 }
+
+                // logs the fallback of the print, as there's
+                // no gateway to be used for the printing
+                logger.info("Print with no gateway, falling back to:", fallbackUrl);
 
                 // in case the target parameter is set a new window
                 // must be created with the defined target
@@ -3879,11 +3989,15 @@ if (typeof require !== "undefined") {
                     _printQueue(queue, data, gateway, callback);
                 },
                 success: function(data) {
-                    // prints the "just" received data using the
-                    // gateway plugin (direct access to driver)
+                    // logs and prints the "just" received data using
+                    // the gateway plugin (direct access to driver)
+                    logger.info("Print job of document:", binieUrl);
                     gateway.print(false, data);
                 },
-                error: function() {
+                error: function(request, status, error) {
+                    // logs the failure of the retrieval of the data
+                    logger.error("Print data retrieval failed:", binieUrl, request.status, error);
+
                     // retrieves the body and uses it to raise an info message
                     // about the error in the retrieval of the data
                     var _body = jQuery("body");
@@ -4357,6 +4471,10 @@ if (typeof require !== "undefined") {
         // sets the jquery matched object
         var matchedObject = this;
 
+        // retrieves the logger of the plugin, to be used
+        // to log the detection of the scans (and errors)
+        var logger = jQuery.uxlogger("uxscan");
+
         /**
          * Initializer of the plugin, runs the necessary functions to initialize
          * the structures.
@@ -4499,7 +4617,8 @@ if (typeof require !== "undefined") {
                             // in case the current key is an enter
                             // (time to send the scan error)
                             if (keyValue === 13) {
-                                // triggers the scan error event
+                                // logs and triggers the scan error event
+                                logger.debug("Scan error with sequence:", sequence);
                                 targetObject.trigger("scan_error", [sequence]);
                             }
 
@@ -4527,7 +4646,8 @@ if (typeof require !== "undefined") {
                             // in case the current key is an enter
                             // (time to send the scan error)
                             if (keyValue === 13) {
-                                // triggers the scan error event
+                                // logs and triggers the scan error event
+                                logger.debug("Scan error with sequence:", sequence);
                                 targetObject.trigger("scan_error", [sequence]);
                             }
 
@@ -4578,8 +4698,9 @@ if (typeof require !== "undefined") {
                         var value = digits ? typedSequence : sequence;
                         var alternative = digits ? sequence : typedSequence;
 
-                        // in case the sequence is considered to be valid the scan
-                        // event is triggered with the value and its alternative
+                        // in case the sequence is considered to be valid the scan is
+                        // logged and its event triggered with the value and alternative
+                        isValid && logger.debug("Scan detected:", value, alternative);
                         isValid && targetObject.trigger("scan", [value, alternative]);
 
                         // resets the various data values in the
@@ -19023,6 +19144,10 @@ if (typeof require !== "undefined") {
         // sets the jquery matched object
         var matchedObject = this;
 
+        // retrieves the logger of the plugin, to be used
+        // to log the failures of the submissions
+        var logger = jQuery.uxlogger("uxform");
+
         /**
          * Initializer of the plugin, runs the necessary functions to initialize
          * the structures.
@@ -19538,6 +19663,7 @@ if (typeof require !== "undefined") {
                     // assumed to be down (no data received) an error
                     // is triggered and the control returned immediately
                     if (!data) {
+                        logger.warn("Submission with no data received:", action);
                         matchedObject.triggerHandler("error");
                         return;
                     }
@@ -19591,6 +19717,10 @@ if (typeof require !== "undefined") {
                     matchedObject.triggerHandler("success", [data]);
                 },
                 error: function(request, textStatus, errorThrown) {
+                    // logs the failure of the submission, before the parsing of
+                    // the error information (that may not be valid JSON)
+                    logger.warn("Submission failed:", action, request.status, errorThrown);
+
                     // resets the form error contents to the original values
                     // this should remove all the values in it
                     resetErrors(matchedObject, options);
@@ -19599,9 +19729,15 @@ if (typeof require !== "undefined") {
                     // the response value) and then uses the result to retrieve the
                     // exception and then the errors list, note that in case there's
                     // no exception key value the proper json structure is going to
-                    // be used as the root of the exception object
+                    // be used as the root of the exception object, ignoring the data
+                    // in case it's not valid JSON (eg: the error page of a proxy)
                     var data = request.response || request.responseText;
-                    var jsonData = jQuery.parseJSON(data) || {};
+                    var jsonData = null;
+                    try {
+                        jsonData = jQuery.parseJSON(data) || {};
+                    } catch (exception) {
+                        jsonData = {};
+                    }
                     var exception = jsonData.exception || jsonData;
                     var message = jsonData.message || "There was an error";
                     var errors = exception.errors || {};
@@ -33166,6 +33302,186 @@ if (typeof module !== "undefined") {
 // __license__   = Apache License, Version 2.0
 
 var _global = typeof global === "undefined" ? window : global;
+var _Object = (_global._Object = _global._Object || {});
+
+/**
+ * Retrieves an element from the given object for the given key, in case the
+ * element is not found the default value is returned.
+ *
+ * @param {Object}
+ *            object The object to be used to retrieve the element.
+ * @param {String}
+ *            key The index key to be used in the retrieval.
+ * @param {Object}
+ *            defaultValue The default value to be returned in case no element
+ *            is found.
+ * @return {Object} The retrieved element.
+ */
+_Object.get = function(object, key, defaultValue) {
+    // tries to retrieve the value
+    var value = object[key];
+
+    // returns the valid value
+    return value !== null && value !== undefined ? value : defaultValue;
+};
+
+/**
+ * Creates a new constructor for the given base constructor and base class. The
+ * inheritance process changes the given class prototype references.
+ *
+ * @param {Function}
+ *            constructorFunction The base constructor function to be used.
+ * @param {Class}
+ *            baseClass The base class to inherit from.
+ * @return {Function} The newly created constructor / class.
+ */
+_Object.inherit = function(constructorFunction, baseClass) {
+    var targetClass = function() {
+        // creates the base element
+        // eslint-disable-next-line new-cap
+        this.base = new baseClass();
+
+        // call the constructor function
+        constructorFunction.apply(this, arguments);
+    };
+
+    // iterates over all the elements of the base class prototype
+    for (var element in baseClass.prototype) {
+        // creates the current element in the target class
+        this.createElement(targetClass, baseClass, element);
+    }
+
+    // returns the target class (constructor)
+    return targetClass;
+};
+
+/**
+ * Creates an element in the target class. The new element references the
+ * element in the base class.
+ *
+ * @param {Class}
+ *            targetClass The target class to be used.
+ * @param {Class}
+ *            baseClass The base class to be used.
+ * @param {String}
+ *            element The name of the element to be created.
+ */
+_Object.createElement = function(targetClass, baseClass, element) {
+    // in case the element is invalid
+    if (!element || !baseClass.prototype[element]) {
+        // returns immediately
+        return;
+    }
+
+    // retrieves the base fnction for the current element
+    var baseFunction = baseClass.prototype[element];
+
+    targetClass.prototype[element] = function() {
+        return baseFunction.apply(this, arguments);
+    };
+};
+
+/**
+ * Extends the given object with the given extension object.
+ *
+ * @param {Object}
+ *            object The base object to be used.
+ * @param {Object}
+ *            extensionObject The object ot be used to extend the base one.
+ * @return {Object} The resulting object.
+ */
+_Object.extend = function(object, extensionObject) {
+    // allocates the space for the values and for
+    // the keys that are going to be used
+    var value = null;
+    var key = null;
+
+    // allocates the new object map
+    var newObject = {};
+
+    // iterates over all the keys in the
+    // base object
+    for (key in object) {
+        // retrieves the value
+        value = object[key];
+
+        // sets the value in the new object
+        newObject[key] = value;
+    }
+
+    // iterates over all the keys in
+    // the extension object
+    for (key in extensionObject) {
+        // retrieves the value and then sets
+        // the value in the new object
+        value = extensionObject[key];
+        newObject[key] = value;
+    }
+
+    // returns the new object
+    return newObject;
+};
+
+/**
+ * Extends the given object with the given extension object. This method uses
+ * the base object for the creation of the resulting object.
+ *
+ * @param {Object}
+ *            object The base object to be used.
+ * @param {Object}
+ *            extensionObject The object ot be used to extend the base one.
+ * @return {Object} The resulting object.
+ */
+_Object._extend = function(object, extensionObject) {
+    // allocates the space for the values and for
+    // the keys that are going to be used
+    var value = null;
+    var key = null;
+
+    // iterates over all the keys in
+    // the extension object
+    for (key in extensionObject) {
+        // retrieves the value
+        value = extensionObject[key];
+
+        // sets the value in the base object
+        object[key] = value;
+    }
+
+    // returns the base object as the
+    // resulting object
+    return object;
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        _Object: _Object
+    };
+}
+
+// Hive Colony Framework
+// Copyright (c) 2008-2024 Hive Solutions Lda.
+//
+// This file is part of Hive Colony Framework.
+//
+// Hive Colony Framework is free software: you can redistribute it and/or modify
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
+//
+// Hive Colony Framework is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// Apache License for more details.
+//
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
+
+// __author__    = João Magalhães <joamag@hive.pt>
+// __copyright__ = Copyright (c) 2008-2024 Hive Solutions Lda.
+// __license__   = Apache License, Version 2.0
+
+var _global = typeof global === "undefined" ? window : global;
 var Object = (_global.Object = _global.Object || {});
 
 Object.isEmpty = function(object) {
@@ -33521,6 +33837,862 @@ Md5._md5 = function(stringValue) {
 if (typeof module !== "undefined") {
     module.exports = {
         Md5: Md5
+    };
+}
+
+// Hive Colony Framework
+// Copyright (c) 2008-2024 Hive Solutions Lda.
+//
+// This file is part of Hive Colony Framework.
+//
+// Hive Colony Framework is free software: you can redistribute it and/or modify
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
+//
+// Hive Colony Framework is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// Apache License for more details.
+//
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
+
+// __author__    = João Magalhães <joamag@hive.pt>
+// __copyright__ = Copyright (c) 2008-2024 Hive Solutions Lda.
+// __license__   = Apache License, Version 2.0
+
+var _global = typeof global === "undefined" ? window : global;
+var Logging = (_global.Logging = _global.Logging || {});
+
+/**
+ * The currently created loggers.
+ *
+ * @type Map
+ */
+Logging.loggers = {};
+
+Logging.getLogger = function(loggerName, defaults) {
+    // ensures the proper loading of the stream handler to avoid
+    // any unwanted behaviour (in the defaults creation)
+    if (typeof require !== "undefined") {
+        require("./handlers");
+        require("./formatters");
+    }
+
+    // verifies if the defaults have been sent and if that's
+    // not the case builds the default ones
+    if (typeof defaults === "undefined") {
+        defaults = {
+            handlers: [Logging.StreamHandler],
+            formatter: Logging.SimpleFormatter
+        };
+    }
+
+    // starts the initial reference to logger, this may
+    // be constructed by the end of the execution
+    var logger = null;
+
+    // retrieves the logger name, falling back to the
+    // default name in case none is provided
+    loggerName = loggerName || Logging.constants.DEFAULT_LOGGER_NAME;
+
+    // in case there is no logger with the given
+    // name in the logger map
+    if (!Logging.loggers[loggerName]) {
+        // creates a new logger with the given name (and propagation
+        // to the default logger) and sets the logger in the loggers map
+        logger = new Logging.Logger(
+            loggerName,
+            defaults.level || undefined,
+            undefined,
+            defaults.propagate
+        );
+        Logging.loggers[loggerName] = logger;
+
+        // iterates over the multiple values of the defaults
+        // to build the proper handlers
+        var defaultHandlers = defaults.handlers || [];
+        for (var index = 0; index < defaultHandlers.length; index++) {
+            var handler = new defaultHandlers[index]();
+            logger.addHandler(handler);
+        }
+
+        // creates the default formatter for the logger and set it
+        // changing the value for all the current handlers
+        var DefaultFormatter = defaults.formatter || null;
+        if (DefaultFormatter) {
+            var formatter = new DefaultFormatter();
+            logger.setFormatter(formatter);
+        }
+    }
+
+    // retrieves the logger and returns it to
+    // the caller method
+    logger = Logging.loggers[loggerName];
+    return logger;
+};
+
+Logging.debug = function(messageValue) {
+    var logger = Logging.getLogger(Logging.constants.DEFAULT_LOGGER_NAME);
+    logger.debug.apply(logger, arguments);
+};
+
+Logging.info = function(messageValue) {
+    var logger = Logging.getLogger(Logging.constants.DEFAULT_LOGGER_NAME);
+    logger.info.apply(logger, arguments);
+};
+
+Logging.warn = function(messageValue) {
+    var logger = Logging.getLogger(Logging.constants.DEFAULT_LOGGER_NAME);
+    logger.warn.apply(logger, arguments);
+};
+
+Logging.warning = Logging.warn;
+
+Logging.error = function(messageValue) {
+    var logger = Logging.getLogger(Logging.constants.DEFAULT_LOGGER_NAME);
+    logger.error.apply(logger, arguments);
+};
+
+Logging.critical = function(messageValue) {
+    var logger = Logging.getLogger(Logging.constants.DEFAULT_LOGGER_NAME);
+    logger.critical.apply(logger, arguments);
+};
+
+/**
+ * The map containing the logging constants.
+ *
+ * @type Map
+ */
+Logging.constants = {
+    /**
+     * The critical number.
+     *
+     * @type Integer
+     */
+    CRITICAL: 50,
+
+    /**
+     * The error number.
+     *
+     * @type Integer
+     */
+    ERROR: 40,
+
+    /**
+     * The warning number.
+     *
+     * @type Integer
+     */
+    WARNING: 30,
+
+    /**
+     * The info number.
+     *
+     * @type Integer
+     */
+    INFO: 20,
+
+    /**
+     * The debug number.
+     *
+     * @type Integer
+     */
+    DEBUG: 10,
+
+    /**
+     * The not set number.
+     *
+     * @type Integer
+     */
+    NOTSET: 0,
+
+    /**
+     * The default level number.
+     *
+     * @type Integer
+     */
+    DEFAULT_LEVEL: 20,
+
+    /**
+     * The critical value.
+     *
+     * @type String
+     */
+    CRITICAL_VALUE: "CRITICAL",
+
+    /**
+     * The error value.
+     *
+     * @type String
+     */
+    ERROR_VALUE: "ERROR",
+
+    /**
+     * The warning value.
+     *
+     * @type String
+     */
+    WARNING_VALUE: "WARNING",
+
+    /**
+     * The info value.
+     *
+     * @type String
+     */
+    INFO_VALUE: "INFO",
+
+    /**
+     * The debug value.
+     *
+     * @type String
+     */
+    DEBUG_VALUE: "DEBUG",
+
+    /**
+     * The not set value.
+     *
+     * @type String
+     */
+    NOTSET_VALUE: "NOTSET",
+
+    /**
+     * The default level value.
+     *
+     * @type String
+     */
+    DEFAULT_LEVEL_VALUE: "INFO",
+
+    /**
+     * The default logger name.
+     *
+     * @type String
+     */
+    DEFAULT_LOGGER_NAME: "default"
+};
+
+Logging.LevelsMap = {};
+
+Logging.LevelsMap[Logging.constants.CRITICAL] = Logging.constants.CRITICAL_VALUE;
+Logging.LevelsMap[Logging.constants.ERROR] = Logging.constants.ERROR_VALUE;
+Logging.LevelsMap[Logging.constants.WARNING] = Logging.constants.WARNING_VALUE;
+Logging.LevelsMap[Logging.constants.INFO] = Logging.constants.INFO_VALUE;
+Logging.LevelsMap[Logging.constants.DEBUG] = Logging.constants.DEBUG_VALUE;
+Logging.LevelsMap[Logging.constants.NOTSET] = Logging.constants.NOTSET_VALUE;
+
+Logging.LevelsMap[Logging.constants.CRITICAL_VALUE] = Logging.constants.CRITICAL;
+Logging.LevelsMap[Logging.constants.ERROR_VALUE] = Logging.constants.ERROR;
+Logging.LevelsMap[Logging.constants.WARNING_VALUE] = Logging.constants.WARNING;
+Logging.LevelsMap[Logging.constants.INFO_VALUE] = Logging.constants.INFO;
+Logging.LevelsMap[Logging.constants.DEBUG_VALUE] = Logging.constants.DEBUG;
+Logging.LevelsMap[Logging.constants.NOTSET_VALUE] = Logging.constants.NOTSET;
+
+/**
+ * Constructor of the class.
+ *
+ * @param {String}
+ *            loggerName The name of the logger.
+ * @param {Integer}
+ *            level The level of verbosity of the logger.
+ * @param {Array}
+ *            handlers The handlers of the logger.
+ * @param {Boolean}
+ *            propagate If the records of the logger should also be
+ *            handled by the handlers of the default logger.
+ */
+Logging.Logger = function(loggerName, level, handlers, propagate) {
+    this.loggerName = loggerName;
+
+    this.level = typeof level === "undefined" ? Logging.constants.DEFAULT_LEVEL : level;
+    this.handlers = typeof handlers === "undefined" ? [] : handlers;
+    this.propagate = typeof propagate === "undefined" ? false : propagate;
+};
+
+/**
+ * Adds a new handler to the logger.
+ *
+ * @param {Handler}
+ *            handler The handler to be added to the logger.
+ */
+Logging.Logger.prototype.addHandler = function(handler) {
+    this.handlers.push(handler);
+};
+
+/**
+ * Sets the level of verbosity.
+ *
+ * @param {String}
+ *            level The level of verbosity to be set.
+ */
+Logging.Logger.prototype.setLevel = function(level) {
+    this.level = level;
+};
+
+Logging.Logger.prototype.debug = function(messageValue) {
+    if (this.isEnabledFor(Logging.constants.DEBUG)) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        this._log(messageValue, Logging.constants.DEBUG, args);
+    }
+};
+
+Logging.Logger.prototype.info = function(messageValue) {
+    if (this.isEnabledFor(Logging.constants.INFO)) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        this._log(messageValue, Logging.constants.INFO, args);
+    }
+};
+
+Logging.Logger.prototype.warn = function(messageValue) {
+    if (this.isEnabledFor(Logging.constants.WARNING)) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        this._log(messageValue, Logging.constants.WARNING, args);
+    }
+};
+
+Logging.Logger.prototype.warning = Logging.Logger.prototype.warn;
+
+Logging.Logger.prototype.error = function(messageValue) {
+    if (this.isEnabledFor(Logging.constants.ERROR)) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        this._log(messageValue, Logging.constants.ERROR, args);
+    }
+};
+
+Logging.Logger.prototype.critical = function(messageValue) {
+    if (this.isEnabledFor(Logging.constants.CRITICAL)) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        this._log(messageValue, Logging.constants.CRITICAL, args);
+    }
+};
+
+Logging.Logger.prototype.isEnabledFor = function(level) {
+    return level >= this.getEffectiveLevel();
+};
+
+Logging.Logger.prototype.getEffectiveLevel = function() {
+    return this.level;
+};
+
+Logging.Logger.prototype.setFormatter = function(formatter) {
+    for (var index = 0; index < this.handlers.length; index++) {
+        var handler = this.handlers[index];
+        handler.setFormatter(formatter);
+    }
+};
+
+Logging.Logger.prototype._log = function(messageValue, level, args) {
+    // creates a new record for the message value and the level,
+    // together with the name of the logger and the extra arguments
+    var record = new Logging.Record(messageValue, level, this.loggerName, args);
+
+    // handles the record
+    this.handle(record);
+};
+
+Logging.Logger.prototype.handle = function(record) {
+    // calls the handlers for the record
+    this.callHandlers(record);
+};
+
+Logging.Logger.prototype.callHandlers = function(record) {
+    // iterates over all the handlers
+    for (var index = 0; index < this.handlers.length; index++) {
+        // retrieves the current handler and
+        // handles the record with the handler
+        var handler = this.handlers[index];
+        handler.handle(record);
+    }
+
+    // in case the logger propagates its records and it's not the
+    // default logger, the record is also handled by the handlers
+    // of the default logger (eg: for the reporting of errors)
+    if (this.propagate && this.loggerName !== Logging.constants.DEFAULT_LOGGER_NAME) {
+        Logging.getLogger(Logging.constants.DEFAULT_LOGGER_NAME).callHandlers(record);
+    }
+};
+
+/**
+ * Constructor of the class.
+ *
+ * @param {String}
+ *            message The message.
+ * @param {Integer}
+ *            level The level.
+ * @param {String}
+ *            name The name of the logger of the record.
+ * @param {Array}
+ *            args The extra arguments of the logging of the record.
+ */
+Logging.Record = function(message, level, name, args) {
+    this.message = message;
+    this.level = level;
+    this.name = typeof name === "undefined" ? Logging.constants.DEFAULT_LOGGER_NAME : name;
+    this.args = typeof args === "undefined" ? [] : args;
+    this.created = new Date();
+};
+
+/**
+ * Retrieves the message.
+ *
+ * @return {String} The message.
+ */
+Logging.Record.prototype.getMessage = function() {
+    return this.message;
+};
+
+/**
+ * Retrieves the level.
+ *
+ * @return {Integer} The level.
+ */
+Logging.Record.prototype.getLevel = function() {
+    return this.level;
+};
+
+/**
+ * Retrieves the level string value.
+ *
+ * @return {String} The level string value.
+ */
+Logging.Record.prototype.getLevelString = function() {
+    return Logging.LevelsMap[this.level];
+};
+
+/**
+ * Retrieves the name of the logger.
+ *
+ * @return {String} The name of the logger.
+ */
+Logging.Record.prototype.getName = function() {
+    return this.name;
+};
+
+/**
+ * Retrieves the extra arguments.
+ *
+ * @return {Array} The extra arguments.
+ */
+Logging.Record.prototype.getArgs = function() {
+    return this.args;
+};
+
+/**
+ * Retrieves the date of creation.
+ *
+ * @return {Date} The date of creation.
+ */
+Logging.Record.prototype.getCreated = function() {
+    return this.created;
+};
+
+/**
+ * Constructor of the class.
+ */
+Logging.Handler = function() {
+    this.formatter = null;
+};
+
+Logging.Handler.isReady = function() {
+    return true;
+};
+
+/**
+ * Sets the formatter for the handler.
+ *
+ * @param {Formatter}
+ *            formatter The formatter for the handler.
+ */
+Logging.Handler.prototype.setFormatter = function(formatter) {
+    this.formatter = formatter;
+};
+
+Logging.Handler.prototype.handle = function(record) {
+    // emits the record so that it gets pipelined
+    // to the inner implementation
+    this.emit(record);
+};
+
+Logging.Handler.prototype.format = function(record) {
+    // sets the initial value for the message
+    var message = null;
+
+    // in case no formatter
+    if (!this.formatter) {
+        // retrieves the record message and returns
+        // it to the caller method
+        message = record.getMessage();
+        return message;
+    }
+
+    // formats the message using the formatter
+    // and returns it to the caller
+    message = this.formatter.format(record);
+    return message;
+};
+
+Logging.Handler.prototype.formatArgs = function(record) {
+    // sets the initial value for the arguments
+    var args = null;
+
+    // in case no formatter (or a formatter that only
+    // formats messages) is defined
+    if (!this.formatter || !this.formatter.formatArgs) {
+        // retrieves the formatted message followed by the
+        // extra arguments and returns them to the caller
+        args = [this.format(record)].concat(record.getArgs());
+        return args;
+    }
+
+    // formats the arguments using the formatter, with the
+    // colors of the handler and returns them to the caller
+    args = this.formatter.formatArgs(record, this.colors);
+    return args;
+};
+
+Logging.Handler.prototype.flush = function() {};
+
+Logging.Handler.prototype.emit = function(record) {};
+
+/**
+ * Constructor of the class.
+ */
+Logging.Formatter = function() {};
+
+Logging.Formatter.prototype.format = function(record) {};
+
+Logging.Formatter.prototype.formatArgs = function(record, colors) {
+    return [this.format(record)].concat(record.getArgs());
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        Logging: Logging
+    };
+}
+
+// Hive Colony Framework
+// Copyright (c) 2008-2024 Hive Solutions Lda.
+//
+// This file is part of Hive Colony Framework.
+//
+// Hive Colony Framework is free software: you can redistribute it and/or modify
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
+//
+// Hive Colony Framework is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// Apache License for more details.
+//
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
+
+// __author__    = João Magalhães <joamag@hive.pt>
+// __copyright__ = Copyright (c) 2008-2024 Hive Solutions Lda.
+// __license__   = Apache License, Version 2.0
+
+if (typeof require !== "undefined") {
+    var logging = require("../logging");
+    var general = require("../../general");
+    var Logging = logging.Logging;
+    var _Object = general._Object;
+}
+
+/**
+ * Constructor of the class.
+ */
+Logging.SimpleFormatter = function(formatString) {
+    this.formatString = formatString || "{asctime} [{level}] {message}";
+};
+
+Logging.SimpleFormatter = _Object.inherit(Logging.SimpleFormatter, Logging.Formatter);
+
+/**
+ * The map containing the styles of the options of the format, for
+ * each of the supported colors, CSS styles for the browser console
+ * (through the "%c" directive) and ANSI escape codes for terminals.
+ *
+ * @type Map
+ */
+Logging.SimpleFormatter.COLORS = {
+    css: {
+        asctime: "color: gray",
+        level: {
+            NOTSET: "background: #6b7280; color: white; font-weight: bold; border-radius: 3px",
+            DEBUG: "background: #6b7280; color: white; font-weight: bold; border-radius: 3px",
+            INFO: "background: #2563eb; color: white; font-weight: bold; border-radius: 3px",
+            WARNING: "background: #d97706; color: white; font-weight: bold; border-radius: 3px",
+            ERROR: "background: #dc2626; color: white; font-weight: bold; border-radius: 3px",
+            CRITICAL: "background: #7f1d1d; color: white; font-weight: bold; border-radius: 3px"
+        },
+        name: [
+            "color: #0891b2; font-weight: bold",
+            "color: #7c3aed; font-weight: bold",
+            "color: #db2777; font-weight: bold",
+            "color: #059669; font-weight: bold",
+            "color: #4f46e5; font-weight: bold",
+            "color: #65a30d; font-weight: bold",
+            "color: #c026d3; font-weight: bold",
+            "color: #0d9488; font-weight: bold",
+            "color: #9333ea; font-weight: bold",
+            "color: #16a34a; font-weight: bold"
+        ],
+        reset: ""
+    },
+    ansi: {
+        asctime: "\u001b[90m",
+        level: {
+            NOTSET: "\u001b[1;90m",
+            DEBUG: "\u001b[1;90m",
+            INFO: "\u001b[1;36m",
+            WARNING: "\u001b[1;33m",
+            ERROR: "\u001b[1;31m",
+            CRITICAL: "\u001b[1;97;41m"
+        },
+        name: [
+            "\u001b[1;32m",
+            "\u001b[1;34m",
+            "\u001b[1;35m",
+            "\u001b[1;92m",
+            "\u001b[1;94m",
+            "\u001b[1;95m"
+        ],
+        reset: "\u001b[0m"
+    }
+};
+
+/**
+ * Selects the style for the given name from the given sequence of
+ * styles, using a hash of the name, so that the same name always
+ * gets the same style (as done by the debug library).
+ *
+ * @param {String}
+ *            name The name to select the style for.
+ * @param {Array}
+ *            styles The sequence of styles to select from.
+ * @return {String} The style selected for the name.
+ */
+Logging.SimpleFormatter.selectColor = function(name, styles) {
+    // computes a 32 bit hash of the name, iterating
+    // over the complete set of its characters
+    var hash = 0;
+    name = String(name);
+    for (var index = 0; index < name.length; index++) {
+        hash = (hash << 5) - hash + name.charCodeAt(index);
+        hash |= 0;
+    }
+
+    // uses the hash to select the style from the
+    // sequence of styles and returns it
+    return styles[Math.abs(hash) % styles.length];
+};
+
+Logging.SimpleFormatter.prototype.format = function(record) {
+    var options = this.getOptions(record);
+    return this.formatString.formatOptions(options);
+};
+
+Logging.SimpleFormatter.prototype.formatArgs = function(record, colors) {
+    // retrieves the styles for the requested colors and in case
+    // there are none (no colors) formats the record as a single
+    // message followed by the extra arguments of the record
+    var styles = colors ? Logging.SimpleFormatter.COLORS[colors] : null;
+    if (!styles) {
+        return [this.format(record)].concat(record.getArgs());
+    }
+
+    // splits the format string around the message, as the message is
+    // sent as an argument of its own (never interpreted as a format),
+    // removing the spaces around it, as they're added by the console
+    var options = this.getOptions(record);
+    var index = this.formatString.indexOf("{message}");
+    var head = index === -1 ? this.formatString : this.formatString.slice(0, index);
+    var tail = index === -1 ? "" : this.formatString.slice(index + "{message}".length);
+    head = head.replace(/\s+$/, "");
+    tail = tail.replace(/^\s+/, "").formatOptions(options);
+
+    // styles each of the options of the head of the format string, the
+    // CSS styles are sent as arguments of the "%c" directives and the
+    // ANSI codes are added around the values, escaping the percent
+    // signs of the head, as it's interpreted as a format
+    var values = [];
+    var nameStyle = Logging.SimpleFormatter.selectColor(record.getName(), styles.name);
+    head = head.replace(/{([a-zA-Z0-9_]*)}|[^{]+|{/g, function(match, key) {
+        // in case the match is not an option it's
+        // escaped and returned as it is
+        if (typeof key === "undefined") {
+            return match.replace(/%/g, "%%");
+        }
+
+        // retrieves the value of the option and its style, in case
+        // no style is defined for the option returns its value
+        var value = String(options[key]).replace(/%/g, "%%");
+        var style = null;
+        if (key === "asctime") style = styles.asctime;
+        if (key === "level") style = styles.level[record.getLevelString()];
+        if (key === "name") style = nameStyle;
+        if (!style) {
+            return value;
+        }
+
+        // in case the colors are ANSI codes they're added around the
+        // value, otherwise the CSS styles are sent as arguments
+        if (colors === "ansi") {
+            return style + value + styles.reset;
+        }
+        values.push(style, styles.reset);
+        value = key === "level" ? " " + value + " " : value;
+        return "%c" + value + "%c";
+    });
+
+    // builds the arguments from the head, the CSS styles, the message, the
+    // tail and the extra arguments, unescaping the percent signs of the
+    // head in case nothing follows it (as it's not interpreted as a format)
+    var args = head ? [head].concat(values) : [];
+    if (index !== -1) args.push(record.getMessage());
+    if (tail) args.push(tail);
+    args = args.concat(record.getArgs());
+    if (head && args.length === 1) args[0] = head.replace(/%%/g, "%");
+    return args;
+};
+
+Logging.SimpleFormatter.prototype.getOptions = function(record) {
+    var date = record.getCreated();
+    var asctime = "{0}-{1}-{2} {3}:{4}:{5},{6}".format(
+        date.getFullYear(),
+        String(date.getMonth() + 1).padStart(2, "0"),
+        String(date.getDate()).padStart(2, "0"),
+        String(date.getHours()).padStart(2, "0"),
+        String(date.getMinutes()).padStart(2, "0"),
+        String(date.getSeconds()).padStart(2, "0"),
+        String(date.getMilliseconds()).padStart(3, "0")
+    );
+    var level = record.getLevelString();
+    var name = record.getName();
+    var message = record.getMessage();
+    return {
+        level: level,
+        asctime: asctime,
+        name: name,
+        message: message
+    };
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        Logging: Logging
+    };
+}
+
+// Hive Colony Framework
+// Copyright (c) 2008-2024 Hive Solutions Lda.
+//
+// This file is part of Hive Colony Framework.
+//
+// Hive Colony Framework is free software: you can redistribute it and/or modify
+// it under the terms of the Apache License as published by the Apache
+// Foundation, either version 2.0 of the License, or (at your option) any
+// later version.
+//
+// Hive Colony Framework is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// Apache License for more details.
+//
+// You should have received a copy of the Apache License along with
+// Hive Colony Framework. If not, see <http://www.apache.org/licenses/>.
+
+// __author__    = João Magalhães <joamag@hive.pt>
+// __copyright__ = Copyright (c) 2008-2024 Hive Solutions Lda.
+// __license__   = Apache License, Version 2.0
+
+if (typeof require !== "undefined") {
+    var logging = require("../logging");
+    var general = require("../../general");
+    var Logging = logging.Logging;
+    var _Object = general._Object;
+}
+
+/**
+ * Constructor of the class.
+ *
+ * @param {Object}
+ *            stream The stream to be used.
+ * @param {String}
+ *            colors The colors to be used in the output ("css" for the
+ *            browser console and "ansi" for terminals), detected from
+ *            the environment when not provided, an invalid value (eg:
+ *            null) disables them.
+ */
+Logging.StreamHandler = function(stream, colors) {
+    this.stream = stream || console;
+    this.colors = typeof colors === "undefined" ? Logging.StreamHandler.getColors() : colors;
+};
+
+Logging.StreamHandler = _Object.inherit(Logging.StreamHandler, Logging.Handler);
+
+Logging.StreamHandler.MAPPING = {
+    NOTSET: "debug",
+    DEBUG: "debug",
+    INFO: "info",
+    WARNING: "warn",
+    ERROR: "error",
+    CRITICAL: "error"
+};
+
+/**
+ * Detects the colors supported by the current environment, the
+ * environment variables of the terminals (NO_COLOR and FORCE_COLOR)
+ * taking precedence over the detection.
+ *
+ * @return {String} The colors supported by the environment, "ansi"
+ *         for terminals, "css" for the browser console and null for
+ *         no colors (eg: output redirected to a file).
+ */
+Logging.StreamHandler.getColors = function() {
+    // retrieves the environment variables, which only exist
+    // under Node.js (and its derivatives)
+    var hasProcess = typeof process !== "undefined" && Boolean(process.env);
+    var env = hasProcess ? process.env : {};
+
+    // in case the colors are explicitly disabled or forced through
+    // the environment (as defined by no-color.org and force-color.org)
+    // the environment value is used
+    if (env.NO_COLOR) return null;
+    if (env.FORCE_COLOR) return "ansi";
+
+    // in case there's a standard output (Node.js) the colors are only
+    // used for terminals, otherwise the browser console is assumed
+    if (hasProcess && process.stdout) {
+        return process.stdout.isTTY ? "ansi" : null;
+    }
+    return typeof window === "undefined" ? null : "css";
+};
+
+Logging.StreamHandler.prototype.emit = function(record) {
+    this.base.emit(record);
+
+    // formats the record retrieving the arguments to be
+    // printed (message, styles and extra arguments)
+    var args = this.formatArgs(record);
+
+    // retrieves the method of the stream for the level of the
+    // record, falling back to the info one in case the stream
+    // does not provide it (eg: custom streams)
+    var name = Logging.StreamHandler.MAPPING[record.getLevelString()];
+    var method = this.stream[name] || this.stream.info;
+
+    // prints the message to the stream
+    // flushes the stream
+    method.apply(this.stream, args);
+    this.flush();
+};
+
+if (typeof module !== "undefined") {
+    module.exports = {
+        Logging: Logging
     };
 }
 
