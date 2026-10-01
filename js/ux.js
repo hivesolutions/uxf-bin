@@ -4653,8 +4653,10 @@ if (typeof require !== "undefined") {
                             // in case the current key is an enter
                             // (time to send the scan error)
                             if (keyValue === 13) {
-                                // logs and triggers the scan error event
-                                logger.debug("Scan error with sequence:", sequence);
+                                // logs the scan error with only the length of the
+                                // sequence, as it may contain keys typed by the user,
+                                // and triggers the scan error event
+                                logger.debug("Scan error with length:", sequence.length);
                                 targetObject.trigger("scan_error", [sequence]);
                             }
 
@@ -4682,8 +4684,10 @@ if (typeof require !== "undefined") {
                             // in case the current key is an enter
                             // (time to send the scan error)
                             if (keyValue === 13) {
-                                // logs and triggers the scan error event
-                                logger.debug("Scan error with sequence:", sequence);
+                                // logs the scan error with only the length of the
+                                // sequence, as it may contain keys typed by the user,
+                                // and triggers the scan error event
+                                logger.debug("Scan error with length:", sequence.length);
                                 targetObject.trigger("scan_error", [sequence]);
                             }
 
