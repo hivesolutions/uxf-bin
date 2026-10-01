@@ -1323,12 +1323,12 @@ if (typeof require !== "undefined") {
         var root = Logging.getLogger();
         !exists && root.setFormatter(new Logging.SimpleFormatter(FORMAT));
 
-        // retrieves the logger of the plugin, with no handlers as its
-        // records are propagated to the default logger, updates its
-        // level and returns it to the caller
-        var logger = Logging.getLogger(name, {
-            propagate: true
-        });
+        // retrieves the logger of the plugin, created with no handlers as
+        // its records are propagated to the default logger (also in case
+        // it has been created by the application), updates its level and
+        // returns it to the caller
+        var logger = Logging.getLogger(name, {});
+        logger.propagate = true;
         logger.setLevel(level);
         return logger;
     };
@@ -33866,11 +33866,12 @@ var _global = typeof global === "undefined" ? window : global;
 var Logging = (_global.Logging = _global.Logging || {});
 
 /**
- * The currently created loggers.
+ * The currently created loggers, kept in case the logging is
+ * loaded more than once (eg: bundled in other libraries).
  *
  * @type Map
  */
-Logging.loggers = {};
+Logging.loggers = Logging.loggers || {};
 
 Logging.getLogger = function(loggerName, defaults) {
     // ensures the proper loading of the stream handler to avoid
@@ -34338,9 +34339,12 @@ Logging.Handler.prototype.formatArgs = function(record) {
     // in case no formatter (or a formatter that only
     // formats messages) is defined
     if (!this.formatter || !this.formatter.formatArgs) {
-        // retrieves the formatted message followed by the
-        // extra arguments and returns them to the caller
+        // retrieves the formatted message followed by the extra
+        // arguments, after a string directive in case there are
+        // extra arguments (so that the message is never interpreted
+        // as a format) and returns them to the caller
         args = [this.format(record)].concat(record.getArgs());
+        args = args.length > 1 ? ["%s"].concat(args) : args;
         return args;
     }
 
@@ -34362,7 +34366,11 @@ Logging.Formatter = function() {};
 Logging.Formatter.prototype.format = function(record) {};
 
 Logging.Formatter.prototype.formatArgs = function(record, colors) {
-    return [this.format(record)].concat(record.getArgs());
+    // formats the message followed by the extra arguments, after a
+    // string directive in case there are extra arguments, so that
+    // the message is never interpreted as a format by the console
+    var args = [this.format(record)].concat(record.getArgs());
+    return args.length > 1 ? ["%s"].concat(args) : args;
 };
 
 if (typeof module !== "undefined") {
@@ -34497,10 +34505,13 @@ Logging.SimpleFormatter.prototype.format = function(record) {
 Logging.SimpleFormatter.prototype.formatArgs = function(record, colors) {
     // retrieves the styles for the requested colors and in case
     // there are none (no colors) formats the record as a single
-    // message followed by the extra arguments of the record
+    // message followed by the extra arguments of the record, after
+    // a string directive in case there are extra arguments (so that
+    // the message is never interpreted as a format)
     var styles = colors ? Logging.SimpleFormatter.COLORS[colors] : null;
     if (!styles) {
-        return [this.format(record)].concat(record.getArgs());
+        var _args = [this.format(record)].concat(record.getArgs());
+        return _args.length > 1 ? ["%s"].concat(_args) : _args;
     }
 
     // splits the format string around the message, as the message is
@@ -34550,7 +34561,9 @@ Logging.SimpleFormatter.prototype.formatArgs = function(record, colors) {
     // builds the arguments from the head, the CSS styles, the message, the
     // tail and the extra arguments, unescaping the percent signs of the
     // head in case nothing follows it (as it's not interpreted as a format)
-    var args = head ? [head].concat(values) : [];
+    // and using a string directive as the head in case there's none (so
+    // that the message is never interpreted as a format)
+    var args = head ? [head].concat(values) : ["%s"];
     if (index !== -1) args.push(record.getMessage());
     if (tail) args.push(tail);
     args = args.concat(record.getArgs());
@@ -34559,15 +34572,18 @@ Logging.SimpleFormatter.prototype.formatArgs = function(record, colors) {
 };
 
 Logging.SimpleFormatter.prototype.getOptions = function(record) {
+    // formats the date of the record padding its values with zeros,
+    // with no use of padStart (and repeat), as they are not available
+    // in older browsers and the formatting must never fail
     var date = record.getCreated();
     var asctime = "{0}-{1}-{2} {3}:{4}:{5},{6}".format(
         date.getFullYear(),
-        String(date.getMonth() + 1).padStart(2, "0"),
-        String(date.getDate()).padStart(2, "0"),
-        String(date.getHours()).padStart(2, "0"),
-        String(date.getMinutes()).padStart(2, "0"),
-        String(date.getSeconds()).padStart(2, "0"),
-        String(date.getMilliseconds()).padStart(3, "0")
+        ("0" + (date.getMonth() + 1)).slice(-2),
+        ("0" + date.getDate()).slice(-2),
+        ("0" + date.getHours()).slice(-2),
+        ("0" + date.getMinutes()).slice(-2),
+        ("0" + date.getSeconds()).slice(-2),
+        ("00" + date.getMilliseconds()).slice(-3)
     );
     var level = record.getLevelString();
     var name = record.getName();
@@ -34659,14 +34675,19 @@ Logging.StreamHandler.getColors = function() {
 
     // in case the colors are explicitly disabled or forced through
     // the environment (as defined by no-color.org and force-color.org)
-    // the environment value is used
+    // the environment value is used, a FORCE_COLOR of 0 (or false)
+    // disabling them, as done by Node.js
     if (env.NO_COLOR) return null;
-    if (env.FORCE_COLOR) return "ansi";
+    if (typeof env.FORCE_COLOR !== "undefined") {
+        return env.FORCE_COLOR === "0" || env.FORCE_COLOR === "false" ? null : "ansi";
+    }
 
     // in case there's a standard output (Node.js) the colors are only
-    // used for terminals, otherwise the browser console is assumed
+    // used for terminals (both the standard output and error, as the
+    // warnings and errors are printed to the latter), otherwise the
+    // browser console is assumed
     if (hasProcess && process.stdout) {
-        return process.stdout.isTTY ? "ansi" : null;
+        return process.stdout.isTTY && (!process.stderr || process.stderr.isTTY) ? "ansi" : null;
     }
     return typeof window === "undefined" ? null : "css";
 };
