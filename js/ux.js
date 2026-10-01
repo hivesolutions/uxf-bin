@@ -34341,10 +34341,11 @@ Logging.Handler.prototype.formatArgs = function(record) {
     if (!this.formatter || !this.formatter.formatArgs) {
         // retrieves the formatted message followed by the extra
         // arguments, after a string directive in case there are
-        // extra arguments (so that the message is never interpreted
-        // as a format) and returns them to the caller
+        // extra arguments and the message is a string (so that it's
+        // never interpreted as a format, while other values remain
+        // inspectable) and returns them to the caller
         args = [this.format(record)].concat(record.getArgs());
-        args = args.length > 1 ? ["%s"].concat(args) : args;
+        args = args.length > 1 && typeof args[0] === "string" ? ["%s"].concat(args) : args;
         return args;
     }
 
@@ -34367,10 +34368,11 @@ Logging.Formatter.prototype.format = function(record) {};
 
 Logging.Formatter.prototype.formatArgs = function(record, colors) {
     // formats the message followed by the extra arguments, after a
-    // string directive in case there are extra arguments, so that
-    // the message is never interpreted as a format by the console
+    // string directive in case there are extra arguments and the
+    // message is a string, so that it's never interpreted as a format
+    // by the console (while other values remain inspectable)
     var args = [this.format(record)].concat(record.getArgs());
-    return args.length > 1 ? ["%s"].concat(args) : args;
+    return args.length > 1 && typeof args[0] === "string" ? ["%s"].concat(args) : args;
 };
 
 if (typeof module !== "undefined") {
@@ -34561,13 +34563,15 @@ Logging.SimpleFormatter.prototype.formatArgs = function(record, colors) {
     // builds the arguments from the head, the CSS styles, the message, the
     // tail and the extra arguments, unescaping the percent signs of the
     // head in case nothing follows it (as it's not interpreted as a format)
-    // and using a string directive as the head in case there's none (so
-    // that the message is never interpreted as a format)
-    var args = head ? [head].concat(values) : ["%s"];
+    // and using a string directive as the head in case there's none and a
+    // string is followed by other arguments (so that it's never interpreted
+    // as a format, while other values remain inspectable)
+    var args = head ? [head].concat(values) : [];
     if (index !== -1) args.push(record.getMessage());
     if (tail) args.push(tail);
     args = args.concat(record.getArgs());
     if (head && args.length === 1) args[0] = head.replace(/%%/g, "%");
+    if (!head && args.length > 1 && typeof args[0] === "string") args.unshift("%s");
     return args;
 };
 
