@@ -527,6 +527,10 @@ body.wait-load {
     overflow: hidden;
 }
 
+.switch-field-label {
+    cursor: pointer;
+}
+
 .tab-panel .tab {
     display: none;
 }
