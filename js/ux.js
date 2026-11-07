@@ -14656,14 +14656,16 @@ if (typeof require !== "undefined") {
                         return;
                     }
 
-                    // in case the drop field is locked or the containing
-                    // text field does not contains focus there is no need
-                    // to process the results (something occurred in between
-                    // the request and the response) must return immediately,
-                    // note that this immediate return operation may be skipped
-                    // in case the force flag is set (avoids skipping)
+                    // in case the drop field is locked, the value of the text
+                    // field is no longer the one of the request (eg: reset or
+                    // typed over) or the containing text field does not contains
+                    // focus there is no need to process the results (something
+                    // occurred in between the request and the response) must
+                    // return immediately, note that this immediate return
+                    // operation may be skipped in case the force flag is set
                     var isInvalid =
                         (!isSelect && dropField.hasClass("drop-field-lock")) ||
+                        (!isSelect && textField.val() !== textFieldValue) ||
                         !textField.hasClass("focus");
                     if (isInvalid && !force) {
                         return;
@@ -23158,9 +23160,13 @@ if (typeof require !== "undefined") {
                 var offset = _element.attr("data-offset");
                 var offsetFloat = parseFloat(offset);
 
+                // retrieves the position of the element
+                // in the screen (top for touch devices)
+                var position = __position();
+
                 // centers the matched object with the
                 // current vertical offset in percentage
-                _element.uxcenter(offsetFloat);
+                _element.uxcenter(offsetFloat, null, null, null, null, null, null, position);
             });
         };
 
@@ -23274,16 +23280,24 @@ if (typeof require !== "undefined") {
 
                 // registers the resize in the window
                 _window.resize(function(event) {
+                    // retrieves the position of the element
+                    // in the screen (top for touch devices)
+                    var position = __position();
+
                     // centers the current element with the
                     // current vertical offset in percentage
-                    _element.uxcenter(offsetFloat);
+                    _element.uxcenter(offsetFloat, null, null, null, null, null, null, position);
                 });
 
                 // registers the scroll in the window
                 _window.scroll(function() {
+                    // retrieves the position of the element
+                    // in the screen (top for touch devices)
+                    var position = __position();
+
                     // centers the current element with the
                     // current vertical offset in percentage
-                    _element.uxcenter(offsetFloat);
+                    _element.uxcenter(offsetFloat, null, null, null, null, null, null, position);
                 });
 
                 // registers for the global hide modal event
@@ -23350,6 +23364,10 @@ if (typeof require !== "undefined") {
             var offset = matchedObject.attr("data-offset");
             var offsetFloat = parseFloat(offset);
 
+            // retrieves the position of the overlay panel in
+            // the screen, at the top for touch devices
+            var position = __position();
+
             // retrieves eventual items of the overlay panel,
             // including a text field value
             var textField = jQuery(".text-field", matchedObject);
@@ -23362,7 +23380,7 @@ if (typeof require !== "undefined") {
             // centers the object in the screen, this is required
             // in order to avoid init glitches that would be created
             // for situations where there's an offscreen resize
-            matchedObject.uxcenter(offsetFloat);
+            matchedObject.uxcenter(offsetFloat, null, null, null, null, null, null, position);
 
             // runs the collect operation on the current element to
             // restore it to a base state (so that it can be used)
@@ -23455,6 +23473,16 @@ if (typeof require !== "undefined") {
             return timing;
         };
 
+        var __position = function() {
+            // determines the position of the overlay panel in the screen,
+            // at the top for touch devices, so that it's not covered by
+            // their (on screen) keyboard, and at the center otherwise
+            var _body = jQuery("body");
+            var isTouch = _body.hasClass("touch");
+            var position = isTouch ? "top" : "center";
+            return position;
+        };
+
         // initializes the plugin
         initialize();
 
@@ -23504,7 +23532,24 @@ if (typeof require !== "undefined") {
         /**
          * Creates the necessary HTML for the component.
          */
-        var _appendHtml = function() {};
+        var _appendHtml = function() {
+            // iterates over all the elements in the matched object
+            matchedObject.each(function(index, element) {
+                // retrieves the element reference
+                var _element = jQuery(element);
+
+                // tries to retrieve the clear button of the overlay search
+                // and in case it does not exists creates a new one, used
+                // to clear the text field of the overlay search in devices
+                // where it fills the width of the screen (eg: phones), as
+                // shown only for them by the style
+                var clearButton = jQuery(".overlay-search-clear", _element);
+                if (clearButton.length === 0) {
+                    clearButton = jQuery('<div class="overlay-search-clear"></div>');
+                    _element.append(clearButton);
+                }
+            });
+        };
 
         /**
          * Registers the event handlers for the created objects.
@@ -23536,6 +23581,48 @@ if (typeof require !== "undefined") {
                     _hide(overlaySearch, options);
                 }
             });
+
+            // retrieves the clear button for the matched object
+            var clearButton = jQuery(".overlay-search-clear", matchedObject);
+
+            // registers for the mouse down event in the clear button
+            clearButton.mousedown(function(event) {
+                // avoids event propagation this way the focus
+                // is not lost when clicking on the clear button
+                // (this is the desired behavior)
+                event.stopPropagation();
+                event.preventDefault();
+            });
+
+            // registers for the click event in the clear button to
+            // clear the overlay search, that remains shown so that
+            // a new search may be started right away
+            clearButton.click(function() {
+                // retrieves the element
+                var element = jQuery(this);
+
+                // retrieves the parent overlay search
+                var overlaySearch = element.parents(".overlay-search");
+
+                // clears the overlay search
+                _clear(overlaySearch, options);
+            });
+        };
+
+        var _clear = function(matchedObject, options) {
+            // retrieves the drop field (if any) and the text
+            // field of the overlay search to be cleared
+            var dropField = jQuery(".drop-field", matchedObject);
+            var textField = jQuery(".text-field", matchedObject);
+
+            // resets the drop field and the text field to their empty
+            // state (no value nor results), hiding the (empty) list of
+            // the drop field, and then focuses the text field so that
+            // a new value may be typed right away
+            dropField.uxreset();
+            textField.uxreset();
+            dropField.triggerHandler("hide_drop");
+            textField.focus();
         };
 
         var _hide = function(matchedObject, options) {

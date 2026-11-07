@@ -452,6 +452,10 @@ body.wait-load {
     visibility: hidden;
 }
 
+.overlay-search .overlay-search-clear {
+    display: none;
+}
+
 .overlay {
     display: none;
     left: 0px;
